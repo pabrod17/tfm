@@ -1,0 +1,11 @@
+export const FIND_GAME_BY_ID_COMPLETED = "project/games/findGameByIdCompleted";
+export const FIND_GAMES_BY_USER_ID_COMPLETED = "project/games/findGamesByUserIdCompleted";
+export const FIND_GAMES_BY_PLAYER_ID_COMPLETED = "project/games/findGamesByPlayerIdCompleted";
+export const FIND_GAMES_BY_TWO_DATES_AND_TEAM_ID_OR_SEASON_ID_COMPLETED = "project/games/findGamesByTwoDatesAndTeamIdOrSeasonIdCompleted";
+export const FIND_GAMES_BY_TEAM_ID_COMPLETED = "project/games/findGamesByTeamIdCompleted";
+export const FIND_GAMES_BY_SEASON_ID_COMPLETED = "project/games/findGamesBySeasonIdCompleted";
+export const ADD_GAME_COMPLETED = "project/games/addGameCompleted";
+export const ADD_PLAYER_TO_GAME_COMPLETED = "project/games/addPlayerToGameCompleted";
+export const UPDATE_GAME_COMPLETED = "project/games/updateGameCompleted";
+export const REMOVE_GAME_COMPLETED = "project/games/removeGameCompleted";
+export const REMOVE_PLAYER_TO_GAME_COMPLETED = "project/games/removePlayerToGameCompleted";

@@ -1,0 +1,15 @@
+export const FIND_EXERCISE_BY_ID_COMPLETED = "project/exercises/findExerciseByIdCompleted";
+export const FIND_ALL_EXERCISES_COMPLETED = "project/exercises/findAllExercisesCompleted";
+export const FIND_EXERCISES_BY_TYPE_COMPLETED = "project/exercises/findExercisesByTypeCompleted";
+export const FIND_EXERCISES_BY_TRAINING_ID_COMPLETED = "project/exercises/findExercisesByTrainingIdCompleted";
+export const FIND_EXERCISES_BY_GAME_ID_COMPLETED = "project/exercises/findExercisesByGameIdCompleted";
+export const ADD_EXERCISE_COMPLETED = "project/exercises/addExerciseCompleted";
+export const ADD_EXERCISE_TO_TRAINING_COMPLETED = "project/exercises/addExerciseToTrainingCompleted";
+export const ADD_EXERCISE_TO_GAME_COMPLETED = "project/exercises/addExerciseToGameCompleted";
+export const UPDATE_EXERCISE_COMPLETED = "project/exercises/updatExerciseCompleted";
+export const REMOVE_EXERCISE_COMPLETED = "project/exercises/removeExerciseCompleted";
+export const REMOVE_EXERCISE_TO_TRAINING_COMPLETED = "project/exercises/removeExerciseToTrainingCompleted";
+export const REMOVE_EXERCISE_TO_GAME_COMPLETED = "project/exercises/removeExerciseToGameCompleted";
+export const FIND_ALL_EXERCISES_PAGE_COMPLETED = "project/exercises/findAllExercisesPageCompleted";
+export const FIND_EXERCISES_BY_TYPE_PAGE_COMPLETED = "project/exercises/findExercisesByTypePageCompleted";
+export const CLEAR_EXERCISE_SEARCH = "project/lesion/clearExerciseSearch";
