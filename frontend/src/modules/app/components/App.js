@@ -24,8 +24,6 @@ const App = () => {
         <div>
             <Router>
                 <div>
-                <img className="fondoBasket"  src={canastaRed}></img>
-
                     <Header/>
                     <Body/>
                 </div>
