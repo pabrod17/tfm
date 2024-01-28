@@ -1,115 +1,164 @@
-import React from 'react';
-import {useSelector} from 'react-redux';
-import {Link} from 'react-router-dom';
-import {FormattedMessage} from 'react-intl';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
 import users from '../../users';
 import logo1 from './logo1.png';
 
+import * as React from 'react';
+import { styled, useTheme } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import MuiDrawer from '@mui/material/Drawer';
+import MuiAppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import List from '@mui/material/List';
+import CssBaseline from '@mui/material/CssBaseline';
+import Typography from '@mui/material/Typography';
+import Divider from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import MailIcon from '@mui/icons-material/Mail';
+import Drawer from '@mui/material/Drawer';
+
+const drawerWidth = 240;
+
+// const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
+//   ({ theme, open }) => ({
+//     flexGrow: 1,
+//     padding: theme.spacing(3),
+//     transition: theme.transitions.create('margin', {
+//       easing: theme.transitions.easing.sharp,
+//       duration: theme.transitions.duration.leavingScreen,
+//     }),
+//     marginLeft: open ? 240 : 0,
+//     width: '100%', // Nueva línea para hacer que el ancho sea del 100%
+//     ...(open && {
+//       transition: theme.transitions.create('margin', {
+//         easing: theme.transitions.easing.easeOut,
+//         duration: theme.transitions.duration.enteringScreen,
+//       }),
+//       marginLeft: 240,
+//     }),
+//   }),
+// );
+
+const AppBar = styled(MuiAppBar, {
+  shouldForwardProp: (prop) => prop !== 'open',
+})(({ theme, open }) => ({
+  transition: theme.transitions.create(['margin', 'width'], {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  backgroundColor: 'red',
+  ...(open && {
+    width: `calc(100% - ${drawerWidth}px)`,
+    marginLeft: `${drawerWidth}px`,
+    transition: theme.transitions.create(['margin', 'width'], {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  }),
+}));
+
+const DrawerHeader = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  padding: theme.spacing(0, 1),
+  // necessary for content to be below app bar
+  ...theme.mixins.toolbar,
+  justifyContent: 'flex-end',
+}));
+
 const Header = () => {
+  const theme = useTheme();
+  const [open, setOpen] = React.useState(false);
 
-    const userName = useSelector(users.selectors.getUserName);
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
 
-    return (
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
 
-        <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
-            <a className="logo" href="/"><img src={logo1} alt="description"></img></a>
+  return (
 
-
-            <Link className=" nav-link centrado" to="/">TeamHub</Link>
-            {/* <Link className=" nav-link " to="/">Teams</Link>
-            <Link className=" nav-link " to="/">Seasons</Link> */}
-            {/* <div className="wrapper">
-                <ul>
-                    <li><Link className=" nav-link" to="/">Teams</Link>
-                            <ul>
-                                <li><Link className=" nav-link link-color" to="/">AddTeam</Link></li>
-                                <li><Link className=" nav-link link-color" to="/">UpdateTeam</Link></li>
-                                <li><Link className=" nav-link link-color" to="/">RemoveTeam</Link></li>
-                                <li><Link className=" nav-link link-color" to="/">Find</Link>
-                                    <ul>
-                                        <li><Link className=" nav-link link-color" to="/">ByName</Link></li>
-                                        <li><Link className=" nav-link link-color" to="/teams/all/result">AllTeams</Link></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                    </li>
-                    <li><Link className=" nav-link" to="/">Seasons</Link>
-                            <ul>
-                                <li><Link className=" nav-link link-color" to="/">AddSeason</Link></li>
-                                <li><Link className=" nav-link link-color" to="/">UpdateSeason</Link></li>
-                                <li><Link className=" nav-link link-color" to="/">RemoveSeason</Link></li>
-                                <li><Link className=" nav-link link-color" to="/">Find</Link>
-                                    <ul>
-                                        <li><Link className=" nav-link link-color" to="/">ByDates</Link></li>
-                                        <li><Link className=" nav-link link-color" to="/">AllSeasons</Link></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                    </li>
-                </ul>
-            </div> */}
-
-
-            <button className="navbar-toggler" type="button" 
-                data-toggle="collapse" data-target="#navbarSupportedContent" 
-                aria-controls="navbarSupportedContent" aria-expanded="false" 
-                aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-            </button>
-
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
-
-                <ul className="navbar-nav mr-auto">
-                </ul>
-                
-                <ul className="navbar-nav mr-auto">
-
-                </ul>
-                {userName ? 
-
-                <ul className="navbar-nav">
-                
-                    <li className="nav-item dropdown">
-
-                        <a className="dropdown-toggle nav-link" href="/"
-                            data-toggle="dropdown">
-                            <span className="fas fa-user"></span>&nbsp;
-                            {userName}
-                        </a>
-                        <div className="dropdown-menu dropdown-menu-right">
-                            <Link className="dropdown-item" to="/users/update-profile">
-                                <FormattedMessage id="project.users.UpdateProfile.title"/>
-                            </Link>
-                            <Link className="dropdown-item" to="/users/change-password">
-                                <FormattedMessage id="project.users.ChangePassword.title"/>
-                            </Link>
-                            <div className="dropdown-divider"></div>
-                            <Link className="dropdown-item" to="/users/logout">
-                                <FormattedMessage id="project.app.Header.logout"/>
-                            </Link>
-                        </div>
-
-                    </li>
-
-                </ul>
-                
-                :
-
-                <ul className="navbar-nav">
-                    <li className="nav-item">
-                        <Link className="nav-link link-color" to="/users/login">
-                            <FormattedMessage id="project.users.Login.title"/>
-                        </Link>
-                    </li>
-                </ul>
-                
-                }
-
-            </div>
-        </nav>
-
-    );
-
-};
-
+    <Box sx={{ display: 'flex' }}>
+      <CssBaseline />
+      <AppBar position="fixed" open={open}>
+        <Toolbar>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            onClick={handleDrawerOpen}
+            edge="start"
+            sx={{ mr: 2, ...(open && { display: 'none' }) }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" noWrap component="div">
+            TeamHub
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      <Drawer
+        sx={{
+          width: drawerWidth,
+          flexShrink: 0,
+          '& .MuiDrawer-paper': {
+            width: drawerWidth,
+            boxSizing: 'border-box',
+          },
+        }}
+        variant="persistent"
+        anchor="left"
+        open={open}
+      >
+        <DrawerHeader>
+          <IconButton onClick={handleDrawerClose}>
+            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+          </IconButton>
+        </DrawerHeader>
+        <Divider />
+        <List>
+          {['Teams', 'Seasons', 'Games', 'Plays', 'Trainings'].map((text, index) => (
+            <ListItem key={text} disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+        <Divider />
+        <List>
+          {['Lesion', 'Exercises', 'Stretching'].map((text, index) => (
+            <ListItem key={text} disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+      </Drawer>
+      {/* <Main open={open}>
+        <DrawerHeader />
+        <Typography paragraph>
+          Lorem ipsum do asdfafa dfasdfa sdfa
+        </Typography>
+      </Main> */}
+    </Box>
+  );
+}
 export default Header;

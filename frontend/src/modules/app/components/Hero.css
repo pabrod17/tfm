@@ -14,7 +14,7 @@
 
 
 body {
-  background-color: #23272A;
+  /* background-color: #0091ff; */
 }
 /*Slider*/
 #slider {
@@ -253,6 +253,7 @@ body {
   width: 70px; 
   height: 50px;
   display: flex;
+  left: 60%;
 }
 
 .images-teams {
@@ -408,6 +409,16 @@ video {
     transform: translate(-50%, -50%);
     color: rgb(184, 175, 175);
     transition: background-color .5s;
+
+}
+
+.der{
+  position: absolute;
+  top: 50%;
+  left: 98%;
+  transform: translate(-50%, -50%);
+  color: rgb(184, 175, 175);
+  transition: background-color .5s;
 
 }
 

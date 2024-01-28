@@ -15,13 +15,6 @@ import * as actionPlays from '../../plays/actions';
 import * as actionTrainings from '../../trainings/actions';
 import * as actionGames from '../../games/actions';
 
-import {Grid} from '@material-ui/core';
-import {AppBar, Toolbar, IconButton, Typography} from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
-import {makeStyles} from '@material-ui/core/styles';
-import YouTubeIcon from '@material-ui/icons/YouTube';
-import PublicIcon from '@material-ui/icons/Public';
-import VideocamIcon from '@material-ui/icons/Videocam';
 import avatar from '../../players/components/avatar.jpg';
 import notaLapiz from '../../notes/components/notaLapiz.jpg';
 import bigBall from '../../trainings/components/bigBall.jpg';
