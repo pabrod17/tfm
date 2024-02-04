@@ -78,3 +78,12 @@ cd frontend
 yarn install (only first time to download libraries)
 yarn start
 ```
+
+## First design web version
+
+Sidebar and Home
+Topbar removed (I'm still wondering if it will be necessary to add it)
+
+
+![DiagramaClases](dashboard_first_version.png)
+

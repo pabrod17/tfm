@@ -57,84 +57,52 @@ const Home = () => {
     const buttons = Array.from({ length: 7 }, (_, index) => index);
 
     return (
-
-        <div id="carouselExampleIndicators" class="carousel">
-            <ol id="pagination">
-            {buttons.map((_, index) => (
-          <button
-            key={index}
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide-to={index}
-            className={index === activeButton ? 'active' : ''}
-            onClick={() => handleButtonClick(index)}
-          ></button>
-        ))}
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="d-block w-100 h-100" src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/123024/leopard2.jpg' alt="First slide" />
-                    <a href="/teams/all" class="btn-neon">
-
-                        <FormattedMessage id="project.teams.fields.teams" />
-                    </a>
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/123024/lion2.jpg' alt="Second slide" />
-                    <a href="/seasons/all" class="btn-neon">
-
-                        <FormattedMessage id="project.seasons.fields.seasons" />
-                    </a>
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100 " src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/123024/tiger2.jpg' alt="Third slide" />
-                    <a href="/lesion/home" class="btn-neon" onClick={() => handleFindAllLesions(dispatch, history)}>
-
-                        <FormattedMessage id="project.lesion.fields.lesion" />
-                    </a>
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100 " src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/123024/bear2.jpg' alt="Fourth slide" />
-                    <a href="/trainings/home" class="btn-neon" onClick={() => handleFindAllTrainings(dispatch, history)}>
-                        <span id="span1"></span>
-                        <span id="span2"></span>
-                        <span id="span3"></span>
-                        <span id="span4"></span>
-                        <FormattedMessage id="project.trainings.fields.trainings" />
-                    </a>
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100 grande" src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/123024/tiger2.jpg' alt="Fith slide" />
-                    <a href="/games/home" class="btn-neon" onClick={() => handleFindAllGames(dispatch, history)}>
-                        <span id="span1"></span>
-                        <span id="span2"></span>
-                        <span id="span3"></span>
-                        <span id="span4"></span>
-                        <FormattedMessage id="project.games.fields.games" />
-                    </a>
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100 grande" src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/123024/tiger2.jpg' alt="Sixth slide" />
-                    <a href="/stretchings/home" class="btn-neon" onClick={() => handleFindAllStretchings(dispatch, history)}>
-                        <span id="span1"></span>
-                        <span id="span2"></span>
-                        <span id="span3"></span>
-                        <span id="span4"></span>
-                        <FormattedMessage id="project.stretchings.fields.stretchings" />
-                    </a>
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100 grande" src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/123024/tiger2.jpg' alt="Seventh slide" />
-                    <a href="/exercises/home" class="btn-neon" onClick={() => handleFindAllExercises(dispatch, history)}>
-                        <span id="span1"></span>
-                        <span id="span2"></span>
-                        <span id="span3"></span>
-                        <span id="span4"></span>
-                        <FormattedMessage id="project.exercises.fields.exercises" />
-                    </a>
-                </div>
-            </div>
-        </div>
+<div>
+<div class="holaaaaaa">
+  <div class="homecard">
+    <span></span>
+    <div class="content">
+    <h2><a href="/teams/all">Teams</a></h2>
+    </div>
+  </div>
+  <div class="homecard">
+    <span></span>
+    <div class="content">
+    <h2><a href="/seasons/all">Seaons</a></h2>
+    </div>
+  </div>
+  <div class="homecard">
+    <span></span>
+    <div class="content">
+    <h2><a href="/games/home">Games</a></h2>
+    </div>
+  </div>
+  <div class="homecard">
+    <span></span>
+    <div class="content">
+    <h2><a href="/trainings/home">Trainings</a></h2>
+    </div>
+  </div>
+  <div class="homecard">
+    <span></span>
+    <div class="content">
+    <h2><a href="/lesion/home">Lesion</a></h2>
+    </div>
+  </div>
+  <div class="homecard">
+    <span></span>
+    <div class="content">
+    <h2><a href="/exercises/home">Exercise</a></h2>
+    </div>
+  </div>
+  <div class="homecard">
+    <span></span>
+    <div class="content">
+    <h2><a href="/stretchings/home">Stretching</a></h2>
+    </div>
+  </div>
+</div>
+</div>
     );
 
 };

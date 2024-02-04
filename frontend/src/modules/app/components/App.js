@@ -1,7 +1,6 @@
 import React, {useEffect, useState, createContext} from 'react';
 import {useDispatch} from 'react-redux';
 import {BrowserRouter as Router} from 'react-router-dom';
-import { ThemeProvider } from 'next-themes';
 
 import Header from './Header';
 import SideBar from './SideBar';
@@ -13,12 +12,27 @@ import Footer from './Footer';
 import users from '../../users';
 import './Hero.css';
 import canastaRed from './canastaRed.jpg';
-import { Button, createTheme, CssBaseline } from '@mui/material';
 import { ColorModeContext, useMode } from '../../../theme';
 import { Box } from '@mui/system';
+import { Light, Dark } from '../../../theme';
+import { ThemeProvider, createMuiTheme, Paper, Switch } from '@material-ui/core';
+
+
 
 const App = () => {
-    const [theme, colorMode] = useMode();
+    const [isDark, setIsDark] = useState(true);
+
+
+    const theme = createMuiTheme({
+        palette: {
+          type: isDark ? "dark" : "light",
+          background: {
+              paper: isDark ? "#1a2035" : "#fff",
+          }
+
+        },
+      });
+
 
     const dispatch = useDispatch();
 
@@ -28,22 +42,33 @@ const App = () => {
             () => dispatch(users.actions.logout())));
     
     });
-
+    const paperStyle = {
+        backgroundSize: 'cover',
+        width: 'auto',  // Ajusta el ancho según tus necesidades
+        height: 'auto', // Ajusta la altura según tus necesidades
+      };
     return (
-        <div>
+            <ThemeProvider theme={theme}>
+
+            
+        
+        <Paper style={paperStyle}>
+            <Switch checked={isDark} onChange={e=>setIsDark(!isDark)}
+                />
             <Router>
                 <div>
                 <Box sx={{ display: 'flex' }}>
+                <SideBar/> 
 
-                <Header/>
-                {/* <SideBar/> */}
+                {/* <Header/> */}
                     <Body/>
                     </Box>
 
                 </div>
             </Router>
             {/* <Footer/> */}
-        </div>
+        </Paper>
+        </ThemeProvider>
     );
 
 }

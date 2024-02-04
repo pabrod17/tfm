@@ -73,13 +73,15 @@ import LesionHomeByType from '../../lesion/components/LesionHomeByType';
 import ExercisesHomeByType from '../../exercises/components/ExercisesHomeByType';
 import StretchingsHomeByType from '../../stretchings/components/StretchingsHomeByType';
 
+
 const Body = () => {
 
     const loggedIn = useSelector(users.selectors.isLoggedIn);
-    
+
     return (
 
-        <div className="hero-container">
+
+        <div>
             {/* <video src={video} autoPlay loop muted /> */}
             
             <br/>

@@ -86,6 +86,8 @@ const Header = () => {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  const urlsFirst = ['/teams/all', '/seasons/all', '/games/home', '/trainings/home'];
+  const urlsSecond = ['/lesion/home', '/exercises/home', '/stretchings/home'];
 
   return (
 
@@ -106,6 +108,13 @@ const Header = () => {
             TeamHub
           </Typography>
         </Toolbar>
+        <ul className="navbar-nav">
+                    <li className="nav-item">
+                        <Link className="nav-link link-color" to="/users/login">
+                            <FormattedMessage id="project.users.Login.title"/>
+                        </Link>
+                    </li>
+                </ul>
       </AppBar>
       <Drawer
         sx={{
@@ -127,9 +136,9 @@ const Header = () => {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Teams', 'Seasons', 'Games', 'Plays', 'Trainings'].map((text, index) => (
+          {['Teams', 'Seasons', 'Games', 'Trainings'].map((text, index) => (
             <ListItem key={text} disablePadding>
-              <ListItemButton>
+              <ListItemButton component={Link} to={urlsFirst[index]}>
                 <ListItemIcon>
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                 </ListItemIcon>
@@ -142,7 +151,7 @@ const Header = () => {
         <List>
           {['Lesion', 'Exercises', 'Stretching'].map((text, index) => (
             <ListItem key={text} disablePadding>
-              <ListItemButton>
+              <ListItemButton component={Link} to={urlsSecond[index]}>
                 <ListItemIcon>
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                 </ListItemIcon>
