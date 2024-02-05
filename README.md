@@ -87,3 +87,6 @@ Topbar removed (I'm still wondering if it will be necessary to add it)
 
 ![DiagramaClases](dashboard_first_version.png)
 
+New Topbar added
+
+![ToolBare](toolbar.png)

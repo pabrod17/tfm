@@ -21,6 +21,8 @@ import * as actionExercises from '../..//exercises/actions';
 
 import back from './back.jpg'; //1920x1200
 import Carousel from 'react-bootstrap/Carousel';
+import Cajita from './Cajita';
+import Topbar from './TopBar';
 
 const handleFindAllLesions = (dispatch, history) => {
     dispatch(actionLesion.findAllLesionPage({ page: 0 }, () => history.push('/lesion/home')));
@@ -58,6 +60,9 @@ const Home = () => {
 
     return (
 <div>
+{/* <Cajita></Cajita> */}
+
+
 <div class="holaaaaaa">
   <div class="homecard">
     <span></span>

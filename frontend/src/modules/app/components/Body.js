@@ -72,9 +72,10 @@ import ExercisesHomeByGame from '../../exercises/components/ExercisesHomeByGame'
 import LesionHomeByType from '../../lesion/components/LesionHomeByType';
 import ExercisesHomeByType from '../../exercises/components/ExercisesHomeByType';
 import StretchingsHomeByType from '../../stretchings/components/StretchingsHomeByType';
+import Topbar from './TopBar';
 
 
-const Body = () => {
+const Body = ({ isDark, setIsDark}) => {
 
     const loggedIn = useSelector(users.selectors.isLoggedIn);
 
@@ -86,6 +87,7 @@ const Body = () => {
             
             <br/>
             <AppGlobalComponents/>
+            <Topbar isDark={isDark} setIsDark={setIsDark}/>
             <Routes>
                 <Route exact path="/" element={<Home/>}></Route>
                 {loggedIn && <Route exact path="/teams/new" element={<AddTeam/>}></Route>}

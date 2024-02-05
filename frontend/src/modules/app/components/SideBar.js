@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
+import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 import "react-pro-sidebar/dist/css/styles.css";
@@ -38,6 +38,43 @@ const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
 
+  const themes = {
+    light: {
+      sidebar: {
+        backgroundColor: '#ffffff',
+        color: '#607489',
+      },
+      menu: {
+        menuContent: '#fbfcfd',
+        icon: '#0098e5',
+        hover: {
+          backgroundColor: '#c5e4ff',
+          color: '#44596e',
+        },
+        disabled: {
+          color: '#9fb6cf',
+        },
+      },
+    },
+    dark: {
+      sidebar: {
+        backgroundColor: '#0b2948',
+        color: '#8ba1b7',
+      },
+      menu: {
+        menuContent: '#082440',
+        icon: '#59d0ff',
+        hover: {
+          backgroundColor: '#00458b',
+          color: '#b6c8d9',
+        },
+        disabled: {
+          color: '#3e5e7e',
+        },
+      },
+    },
+  };
+
   return (
     <Box height= "100vh"
       sx={{
@@ -57,7 +94,7 @@ const Sidebar = () => {
         },
       }}
     >
-      <ProSidebar collapsed={isCollapsed}>
+      <ProSidebar collapsed={isCollapsed} backgroundColor={"rgb(230, 230, 230, 0.3)"}>
         <Menu iconShape="square">
           {/* LOGO AND MENU ICON */}
           <MenuItem
@@ -72,10 +109,10 @@ const Sidebar = () => {
                 display="flex"
                 justifyContent="space-between"
                 alignItems="center"
-                ml="15px"
+                ml="10px"
               >
                 <Typography variant="h3" >
-                  ADMINIS
+                  TeamHub
                 </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />
@@ -125,21 +162,29 @@ const Sidebar = () => {
               Data
             </Typography>
             <Item
-              title="Manage Team"
+              title="Teams"
               to="/team"
               icon={<PeopleOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
+
             <Item
-              title="Contacts Information"
+              title="Seasons"
               to="/contacts"
               icon={<ContactsOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Invoices Balances"
+              title="Games"
+              to="/invoices"
+              icon={<ReceiptOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Tranings"
               to="/invoices"
               icon={<ReceiptOutlinedIcon />}
               selected={selected}
@@ -153,21 +198,21 @@ const Sidebar = () => {
               Pages
             </Typography>
             <Item
-              title="Profile Form"
+              title="Lesion"
               to="/form"
               icon={<PersonOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Calendar"
+              title="Exercise"
               to="/calendar"
               icon={<CalendarTodayOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="FAQ Page"
+              title="Stretching"
               to="/faq"
               icon={<HelpOutlineOutlinedIcon />}
               selected={selected}

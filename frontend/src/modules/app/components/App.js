@@ -4,6 +4,7 @@ import {BrowserRouter as Router} from 'react-router-dom';
 
 import Header from './Header';
 import SideBar from './SideBar';
+import TopBar from './TopBar';
 
 import Body from './Body';
 import Home from './Home';
@@ -16,6 +17,9 @@ import { ColorModeContext, useMode } from '../../../theme';
 import { Box } from '@mui/system';
 import { Light, Dark } from '../../../theme';
 import { ThemeProvider, createMuiTheme, Paper, Switch } from '@material-ui/core';
+import Topbar from './TopBar';
+import { AppBar, Toolbar } from '@mui/material';
+import Cajita from './Cajita';
 
 
 
@@ -32,8 +36,8 @@ const App = () => {
 
         },
       });
-
-
+// color para react pro sidebar: #0c1e35
+// otro color: #0b2948
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -53,15 +57,26 @@ const App = () => {
             
         
         <Paper style={paperStyle}>
-            <Switch checked={isDark} onChange={e=>setIsDark(!isDark)}
-                />
+            {/* <Switch checked={isDark} onChange={e=>setIsDark(!isDark)}/> */}
             <Router>
                 <div>
                 <Box sx={{ display: 'flex' }}>
+
                 <SideBar/> 
+                <div>
+
+                        {/* <AppBar >
+                            hola
+                        
+                        </AppBar>
+                        <TopBar/> */}
+                    </div>
+                {/* <Topbar/>  */}
 
                 {/* <Header/> */}
-                    <Body/>
+                    <Body 
+                        isDark={isDark} setIsDark={setIsDark}
+                        />
                     </Box>
 
                 </div>
