@@ -19,6 +19,7 @@ const Topbar = ({ isDark, setIsDark}) => {
       borderRadius: 1,
       width: "100%",
       color:"white",
+      marginLeft:-2
 
     }}
   >      {/* SEARCH BAR */}
