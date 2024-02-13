@@ -55,7 +55,7 @@ const AppBar = styled(MuiAppBar, {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
-  backgroundColor: 'red',
+  backgroundColor: '#1a2035',
   ...(open && {
     width: `calc(100% - ${drawerWidth}px)`,
     marginLeft: `${drawerWidth}px`,
@@ -66,6 +66,7 @@ const AppBar = styled(MuiAppBar, {
   }),
 }));
 
+
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
@@ -73,6 +74,8 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
   justifyContent: 'flex-end',
+  backgroundColor: '#1a2035',
+
 }));
 
 const Header = () => {
@@ -91,7 +94,9 @@ const Header = () => {
 
   return (
 
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex' }}
+    backgroundColor='#1a2035'
+    >
       <CssBaseline />
       <AppBar position="fixed" open={open}>
         <Toolbar>
@@ -123,6 +128,8 @@ const Header = () => {
           '& .MuiDrawer-paper': {
             width: drawerWidth,
             boxSizing: 'border-box',
+            backgroundColor: "#1a2035",
+
           },
         }}
         variant="persistent"

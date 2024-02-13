@@ -38,45 +38,9 @@ const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
 
-  const themes = {
-    light: {
-      sidebar: {
-        backgroundColor: '#ffffff',
-        color: '#607489',
-      },
-      menu: {
-        menuContent: '#fbfcfd',
-        icon: '#0098e5',
-        hover: {
-          backgroundColor: '#c5e4ff',
-          color: '#44596e',
-        },
-        disabled: {
-          color: '#9fb6cf',
-        },
-      },
-    },
-    dark: {
-      sidebar: {
-        backgroundColor: '#0b2948',
-        color: '#8ba1b7',
-      },
-      menu: {
-        menuContent: '#082440',
-        icon: '#59d0ff',
-        hover: {
-          backgroundColor: '#00458b',
-          color: '#b6c8d9',
-        },
-        disabled: {
-          color: '#3e5e7e',
-        },
-      },
-    },
-  };
 
   return (
-    <Box height= "100vh"
+    <Box 
       sx={{
         "& .pro-sidebar-inner": {
         },
@@ -90,18 +54,33 @@ const Sidebar = () => {
           color: "#868dfb !important",
         },
         "& .pro-menu-item.active": {
-          color: "#6870fa !important",
+          color: "#6fa !important",
         },
+        "& .MuiDrawer-paper": {
+          backgroundColor: "#1a2035",
+
+        }
       }}
     >
-      <ProSidebar collapsed={isCollapsed} backgroundColor={"rgb(230, 230, 230, 0.3)"}>
-        <Menu iconShape="square">
+      <ProSidebar collapsed={isCollapsed} 
+sx={{ boxShadow: 0 }}
+      >
+        <Menu iconShape="square"       
+        style={{
+        // color: "#00FF1F",
+        backgroundColor: '#1a2035',
+        height:"100vh",
+        boxShadow:"#00FF1F"
+        }}
+        >
           {/* LOGO AND MENU ICON */}
           <MenuItem
             onClick={() => setIsCollapsed(!isCollapsed)}
             icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
             style={{
               margin: "10px 0 20px 0",
+              color: "#00FF1F",
+
             }}
           >
             {!isCollapsed && (
