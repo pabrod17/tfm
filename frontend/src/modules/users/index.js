@@ -4,6 +4,7 @@ import reducer from './reducer';
 import * as selectors from './selectors';
 
 export {default as Login} from './components/Login';
+export {default as LoginNew} from './components/LoginNew';
 export {default as SignUp} from './components/SignUp';
 export {default as UpdateProfile} from './components/UpdateProfile';
 export {default as ChangePassword} from './components/ChangePassword';

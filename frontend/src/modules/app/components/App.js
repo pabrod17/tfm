@@ -10,7 +10,7 @@ import Body from './Body';
 import Home from './Home';
 
 import Footer from './Footer';
-import users from '../../users';
+import users, { LoginNew, Login } from '../../users';
 import './Hero.css';
 import canastaRed from './canastaRed.jpg';
 import { ColorModeContext, useMode } from '../../../theme';
@@ -20,6 +20,7 @@ import { ThemeProvider, createMuiTheme, Paper, Switch } from '@material-ui/core'
 import Topbar from './TopBar';
 import { AppBar, Toolbar } from '@mui/material';
 import Cajita from './Cajita';
+import {useSelector} from 'react-redux';
 
 
 
@@ -51,6 +52,10 @@ const App = () => {
         width: 'auto',  // Ajusta el ancho según tus necesidades
         height: 'auto', // Ajusta la altura según tus necesidades
       };
+
+      const userName = useSelector(users.selectors.getUserName);
+
+
     return (
             <ThemeProvider theme={theme}>
 
@@ -59,7 +64,7 @@ const App = () => {
         <Paper style={paperStyle}>
             {/* <Switch checked={isDark} onChange={e=>setIsDark(!isDark)}/> */}
             <Router>
-                <div>
+            {userName ? <div>
                 <Box sx={{ display: 'flex' }}>
 
                 <SideBar/> 
@@ -79,7 +84,13 @@ const App = () => {
                         />
                     </Box>
 
-                </div>
+                </div> : <div>
+                    <Login></Login>
+
+
+                </div>}
+
+                
             </Router>
             {/* <Footer/> */}
         </Paper>

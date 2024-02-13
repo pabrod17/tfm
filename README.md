@@ -90,3 +90,7 @@ Topbar removed (I'm still wondering if it will be necessary to add it)
 New Topbar added
 
 ![ToolBare](toolbar.png)
+
+New Login page created
+
+![ToolBare](login.png)
