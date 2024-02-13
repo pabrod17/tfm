@@ -59,11 +59,12 @@ const Sidebar = () => {
         "& .MuiDrawer-paper": {
           backgroundColor: "#1a2035",
 
-        }
+        },
+        boxShadow: 5,
       }}
     >
       <ProSidebar collapsed={isCollapsed} 
-sx={{ boxShadow: 0 }}
+
       >
         <Menu iconShape="square"       
         style={{
