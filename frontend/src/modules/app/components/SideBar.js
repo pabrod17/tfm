@@ -61,6 +61,8 @@ const Sidebar = () => {
 
         },
         boxShadow: 5,
+        height:"100vh",
+        boxShadow:"#00FF1F"
       }}
     >
       <ProSidebar collapsed={isCollapsed} 
