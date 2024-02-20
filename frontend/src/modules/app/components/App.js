@@ -84,12 +84,12 @@ const App = () => {
                         />
                     </Box>
 
-                </div> : <div>
-                    <Login></Login>
-
-
-                </div>}
-
+                </div> : 
+                <div>
+                <Login></Login>
+                </div>
+            }
+{/* mirar como hacer para poner el login y al lado la imagen!! */}
                 
             </Router>
             {/* <Footer/> */}
