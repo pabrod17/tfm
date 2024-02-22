@@ -6,7 +6,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { Errors } from '../../common';
 import * as actions from '../actions';
-
+import Topbar from '../../app/components/TopBar';
+import logo from '../../app/components/logoBalonOscuro.jpg'
 const Login = () => {
 
     const dispatch = useDispatch();
@@ -102,7 +103,54 @@ const Login = () => {
     }
 
     return (
+        <div>
+<nav class="navbar navbar-expand-lg navbar-light border border-dark ">
+  <div class="container-fluid">
+    <a class="navbar-brand login-menu" href="#">TeamHub</a>
+    <div class="col collapse navbar-collapse" id="navbarSupportedContent">
+      {/* <ul class="navbar-nav mr-auto   mt-2 mb-lg-0 justify-content-center">
+        <li class="nav-item">
+          <a class="mr-sm-2 nav-link login-menu2" aria-current="page" href="#">Teams</a>
+        </li>
+        <li class="nav-item">
+          <a class="mr-sm-2 nav-link login-menu2" aria-current="page" href="#">Players</a>
+        </li>
+        <li class="nav-item">
+          <a class="mr-sm-2 nav-link login-menu2" aria-current="page" href="#">Games</a>
+        </li>
+      </ul> */}
+    </div>
+    <ul class="navbar-nav mr-auto   mt-2 mb-lg-0 justify-content-center">
+        <li class="nav-item">
+          <a class="mr-sm-2 nav-link login-menu2" aria-current="page" href="#">Lesion</a>
+        </li>
+        <li class="nav-item">
+          <a class="mr-sm-2 nav-link login-menu2" aria-current="page" href="#">Stretching</a>
+        </li>
+        <li class="nav-item">
+          <a class="mr-sm-2 nav-link login-menu2" aria-current="page" href="#">Statistics</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="mr-sm-2 nav-link login-menu2" aria-current="page" href="#">Teams</a>
+        </li>
+        <li class="nav-item">
+          <a class="mr-sm-2 nav-link login-menu2" aria-current="page" href="#">Players</a>
+        </li>
+        <li class="nav-item">
+          <a class="mr-sm-2 nav-link login-menu2" aria-current="page" href="#">Games</a>
+        </li>
+      </ul>
+      <form class="form-inline mt-2 mb-lg-0">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign in</button>
+    </form>
+  </div>
+</nav>   
+
+
+
         <div class="wrapper">
+
             <Errors errors={backendErrors} onClose={() => setBackendErrors(null)}/>
             <div class="form-container">
                 <div class="slide-controls">
@@ -215,7 +263,11 @@ const Login = () => {
                         </form>
                     )}
                 </div>
+
             </div>
+            
+        </div>
+
         </div>
     );
 

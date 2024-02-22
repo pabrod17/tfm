@@ -65,7 +65,7 @@ const App = () => {
             {/* <Switch checked={isDark} onChange={e=>setIsDark(!isDark)}/> */}
             <Router>
             {userName ? <div>
-                <Box sx={{ display: 'flex' }}>
+                <Box sx={{ display: 'flex' }}  >
 
                 <SideBar/> 
                 <div>
@@ -85,7 +85,7 @@ const App = () => {
                     </Box>
 
                 </div> : 
-                <div>
+                <div className='hero-container'>
                 <Login></Login>
                 </div>
             }

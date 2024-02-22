@@ -85,7 +85,6 @@ const Body = ({ isDark, setIsDark}) => {
         <div>
             {/* <video src={video} autoPlay loop muted /> */}
             
-            <br/>
             <AppGlobalComponents/>
             <Topbar isDark={isDark} setIsDark={setIsDark}/>
             <Routes>
