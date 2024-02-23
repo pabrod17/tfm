@@ -98,3 +98,7 @@ New Login page created
 Login Second version
 
 ![ToolBare](login2.png)
+
+Lesion cards
+
+![ToolBare](lesion_cards.png)

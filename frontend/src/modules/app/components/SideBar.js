@@ -71,7 +71,7 @@ const Sidebar = () => {
         <Menu iconShape="square"       
         style={{
         // color: "#00FF1F",
-        backgroundColor: '#1a2035',
+        backgroundColor: '#000000',
         height:"100vh",
         boxShadow:"#00FF1F"
         }}
@@ -145,7 +145,7 @@ const Sidebar = () => {
             </Typography>
             <Item
               title="Teams"
-              to="/team"
+              to="/teams/all"
               icon={<PeopleOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
@@ -153,21 +153,21 @@ const Sidebar = () => {
 
             <Item
               title="Seasons"
-              to="/contacts"
+              to="/seasons/all"
               icon={<ContactsOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
               title="Games"
-              to="/invoices"
+              to="/games/home"
               icon={<ReceiptOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
               title="Tranings"
-              to="/invoices"
+              to="/trainings/home"
               icon={<ReceiptOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
@@ -181,21 +181,21 @@ const Sidebar = () => {
             </Typography>
             <Item
               title="Lesion"
-              to="/form"
+              to="/lesion/home"
               icon={<PersonOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
               title="Exercise"
-              to="/calendar"
+              to="/exercises/home"
               icon={<CalendarTodayOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
               title="Stretching"
-              to="/faq"
+              to="/stretchings/home"
               icon={<HelpOutlineOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}

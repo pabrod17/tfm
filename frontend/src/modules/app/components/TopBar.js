@@ -14,6 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import * as React from 'react';
 import {useDispatch} from 'react-redux';
 import users from '../../users';
+import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 
 const Topbar = ({ isDark, setIsDark}) => {
   const dispatch = useDispatch();
@@ -35,7 +36,6 @@ const Topbar = ({ isDark, setIsDark}) => {
       borderRadius: 1,
       width: "100%",
       color:"white",
-      marginLeft:-2
 
     }}
   >      {/* SEARCH BAR */}
@@ -48,8 +48,8 @@ const Topbar = ({ isDark, setIsDark}) => {
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
       >
-        <IconButton sx={{ color: "white" }}>
-          <PersonOutlinedIcon />
+        <IconButton sx={{ color: "white", size:"big" }}>
+          <PersonOutlinedIcon sx={{ fontSize: 30 }} />
         </IconButton>      </Button>
       <Menu
         id="basic-menu"
@@ -71,9 +71,8 @@ const Topbar = ({ isDark, setIsDark}) => {
         <IconButton sx={{ color: "white" }}>
           <PersonOutlinedIcon />
         </IconButton> */}
-        <IconButton sx={{ color: "white" }}>
-          <NotificationsOutlinedIcon />
-          Jugadores lesionados
+        <IconButton sx={{ color: "white"}}>
+          <LocalHospitalIcon sx={{ fontSize: 30 }} />
         </IconButton>
         <Switch checked={isDark} onChange={e=>setIsDark(!isDark)}/>
 
