@@ -117,7 +117,7 @@ const Body = ({ isDark, setIsDark}) => {
                 {loggedIn && <Route exact path="/players/view/:id:playerId" element={<PlayerView/>}></Route>}
                 {loggedIn && <Route exact path="/players/view/:id" element={<PlayerView/>}></Route>}
                 {loggedIn && <Route exact path="/lesion/home" element={<LesionHome/>}></Route>}
-                {loggedIn && <Route exact path="/lesion/home/type/:lesionType" element={<LesionHomeByType/>}></Route>}
+                {loggedIn && <Route exact path="/lesion/home/type/:lesionType/:tabValue" element={<LesionHomeByType/>}></Route>}
                 {loggedIn && <Route exact path="/lesion/home/player/:playerId" element={<LesionHomeByPlayer/>}></Route>}
                 {loggedIn && <Route exact path="/lesion/addLesion" element={<AddLesion/>}></Route>}
                 {loggedIn && <Route exact path="/lesion/update/:id" element={<UpdateLesion/>}></Route>}
