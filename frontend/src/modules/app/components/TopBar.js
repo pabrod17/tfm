@@ -7,7 +7,7 @@ import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import SearchIcon from "@mui/icons-material/Search";
-import { ThemeProvider, createMuiTheme, Paper, Switch } from '@material-ui/core';
+import { ThemeProvider, createMuiTheme, Paper, Switch, Container } from '@material-ui/core';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -15,6 +15,7 @@ import * as React from 'react';
 import {useDispatch} from 'react-redux';
 import users from '../../users';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
+import Sidebar from "../../app/components/SideBar";
 
 const Topbar = ({ isDark, setIsDark}) => {
   const dispatch = useDispatch();
@@ -26,20 +27,16 @@ const Topbar = ({ isDark, setIsDark}) => {
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+  const handleLogout = () => {
+    setAnchorEl(null);
     dispatch(users.actions.logout());
   };
+
   return (
-    <Box
-    sx={{
-      display: 'flex',
-      flexDirection: 'row-reverse',
-      borderRadius: 1,
-      width: "100%",
-      color:"white",
+    <Container fixed dir="rtl"       style={{ marginRight: 0, height: '50px', position: 'absolute', right: 0 }}
 
-    }}
   >      {/* SEARCH BAR */}
-
       {/* ICONS */}
       <Button
         id="basic-button"
@@ -60,9 +57,9 @@ const Topbar = ({ isDark, setIsDark}) => {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <MenuItem >Profile</MenuItem>
+        <MenuItem >My account</MenuItem>
+        <MenuItem onClick={handleLogout}>Logout</MenuItem>
       </Menu>
 
         {/* <IconButton sx={{ color: "white" }}>
@@ -76,7 +73,8 @@ const Topbar = ({ isDark, setIsDark}) => {
         </IconButton>
         <Switch checked={isDark} onChange={e=>setIsDark(!isDark)}/>
 
-    </Box>
+    </Container>
+
   );
 };
 

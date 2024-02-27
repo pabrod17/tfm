@@ -16,7 +16,7 @@ import canastaRed from './canastaRed.jpg';
 import { ColorModeContext, useMode } from '../../../theme';
 import { Box } from '@mui/system';
 import { Light, Dark } from '../../../theme';
-import { ThemeProvider, createMuiTheme, Paper, Switch } from '@material-ui/core';
+import { ThemeProvider, createMuiTheme, Paper, Switch, Grid } from '@material-ui/core';
 import Topbar from './TopBar';
 import { AppBar, Toolbar } from '@mui/material';
 import Cajita from './Cajita';
@@ -65,23 +65,33 @@ const App = () => {
             {/* <Switch checked={isDark} onChange={e=>setIsDark(!isDark)}/> */}
             <Router>
             {userName ? <div>
-                <Box sx={{ display: 'flex' }}  >
+                <Box sx={{ display: 'flex' }}>
 
                 <SideBar/> 
-                <div>
 
                         {/* <AppBar >
                             hola
                         
                         </AppBar>
                         <TopBar/> */}
-                    </div>
+                
+                
                 {/* <Topbar/>  */}
 
                 {/* <Header/> */}
+                <Box
+        display="flex"
+        flexDirection="column"  // Asegúrate de que sea una columna
+        alignItems="center"
+        width="100%"  // O ajusta el ancho según tus necesidades
+>            
+
                     <Body 
                         isDark={isDark} setIsDark={setIsDark}
                         />
+                    </Box>
+                    <Topbar sx={{ position: 'absolute', right: 0 }} isDark={isDark} setIsDark={setIsDark}/>
+
                     </Box>
 
                 </div> : 

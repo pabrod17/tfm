@@ -12,6 +12,7 @@ import {Pager} from '../../common';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
+import { Button, Toolbar } from '@mui/material';
 
 const LesionHomeByType = () => {
 
@@ -64,13 +65,17 @@ console.log("TUPOSSSSS: ",tabValue )
     // console.log("hola --> " +lesionsSearch.criteria.page );
 
     return(
-        <div>
-            <Box 
-            sx={{ 
-                maxWidth: { xs: 320, sm: 480 }, 
-                bgcolor: 'background.dark',
-                boxShadow: 1,
-                borderRadius: 2,
+        <div className=''>
+
+            <Box
+                sx={{
+                    maxWidth: { xs: 320, sm: 480 },
+                    bgcolor: 'background.dark',
+                    boxShadow: 1,
+                    borderRadius: 4,
+                    margin: 'auto',  // Centra horizontalmente
+                    marginTop: '50px', // Ajusta la distancia desde la parte superior según sea necesario
+                    textAlign: 'center', // Centra el contenido dentro del Box
                 }}>
       <Tabs
         value={value}
@@ -87,7 +92,26 @@ console.log("TUPOSSSSS: ",tabValue )
         <Tab value={5} sx={{ color: '#ffffff' }} onClick={() => handleSetTypeLesion(psychological, dispatch)} label={psychological}/>
 
       </Tabs>
-    </Box>
+      </Box>
+      <Box
+                sx={{
+                    maxWidth: { xs: 320, sm: 480 },
+                    margin: 'auto',  // Centra horizontalmente
+                    textAlign: 'center', // Centra el contenido dentro del Box
+                }}>
+    <Button
+    sx={{
+        margin: 'auto',  // Centra horizontalmente
+        marginTop: '15px', // Ajusta la distancia desde la parte superior según sea necesario
+        textAlign: 'center', // Centra el contenido dentro del Box
+    }}
+    
+    
+    variant="contained" color="primary" >
+        Tu Botón
+      </Button>
+      </Box>
+
             <div>
                 {lesionsSearch && lesionsSearch.result && (
                 <Lesions lesions={lesionsSearch.result.items}/>

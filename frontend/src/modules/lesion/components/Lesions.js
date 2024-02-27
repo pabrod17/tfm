@@ -138,7 +138,9 @@ const Lesions = ({ lesions }) => {
     setOpen(false);
   };
   return (
-    <div className="card-group">
+    
+    <div className="card-group lesions_contaner">
+      
       <LesionsList items={lesions} fallback={"Loading..."} dispatch={dispatch} history={history}
         open={open} setOpen={setOpen} handleClickOpen={handleClickOpen} handleClose={handleClose}
       />

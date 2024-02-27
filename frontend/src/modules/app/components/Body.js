@@ -86,7 +86,6 @@ const Body = ({ isDark, setIsDark}) => {
             {/* <video src={video} autoPlay loop muted /> */}
             
             <AppGlobalComponents/>
-            <Topbar isDark={isDark} setIsDark={setIsDark}/>
             <Routes>
                 <Route exact path="/" element={<Home/>}></Route>
                 {loggedIn && <Route exact path="/teams/new" element={<AddTeam/>}></Route>}

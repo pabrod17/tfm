@@ -16,30 +16,83 @@ import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import userr from './user.png';
+import { Grid } from "@material-ui/core";
+import {useNavigate} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
+import * as actionsLesion from '../../lesion/actions';
+import * as actionTraining from '../..//trainings/actions';
+import * as actionGames from '../..//games/actions';
+import * as actionStretchings from '../..//stretchings/actions';
+import * as actionExercises from '../..//exercises/actions';
+import * as actionsTeams from '../../teams/actions';
+import * as actionsSeasons from '../../seasons/actions';
 
-const Item = ({ title, to, icon, selected, setSelected }) => {
-  const theme = useTheme();
-  return (
-    <MenuItem
-      active={selected === title}
-      style={{
-      }}
-      onClick={() => setSelected(title)}
-      icon={icon}
-    >
-      <Typography>{title}</Typography>
-      <Link to={to} />
-    </MenuItem>
-  );
-};
+
+
 
 const Sidebar = () => {
   const theme = useTheme();
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
+  const dispatch = useDispatch();
+  const history = useNavigate();
 
+  const Item = ({title, to, icon, selected, setSelected, dispatch }) => {
+    const theme = useTheme();
+    return (
+      <MenuItem
+        active={selected === title}
+        style={{
+        }}
+        onClick={() => {
+          setSelected(title);
+          handleMenuOption(to, dispatch);  // Llama a la función handleMenuOption
+        }}      icon={icon}
+      >
+        <Typography>{title}</Typography>
+        {/* <Link to={to}  */}
+      </MenuItem>
+    );
+  };
+
+  const handleMenuOption = (to, dispatch) => {
+    if(to ===  "/lesion/home") {
+      dispatch(actionsLesion.findAllLesionPage({page: 0}));
+      history(`/lesion/home`);
+    } else
+    if(to === "/trainings/home") {
+      dispatch(actionTraining.findTrainingsByUserId(() => history('/trainings/home')));
+    }
+    else
+    if(to === "/games/home") {
+      dispatch(actionGames.findGamesByUserId(() => history('/games/home')));
+    }
+    else
+    if(to === "/stretchings/home") {
+      dispatch(actionStretchings.findAllStretchingsPage({page: 0}));
+      history(`/stretchings/home`);
+    }
+    else
+    if(to === "/exercises/home") {
+      dispatch(actionExercises.findAllExercisesPage({page: 0}));
+      history(`/exercises/home`);
+    }
+    else
+    if(to === "/teams/all") {
+      history('/teams/all');
+    }
+    else
+    if(to === "/seasons/all") {
+      history('/seasons/all');
+    }
+    //Hacer algo con los teams y seasons!!!!!!
+
+
+}
 
   return (
+    <Grid item>
+
     <Box 
       sx={{
         "& .pro-sidebar-inner": {
@@ -60,9 +113,6 @@ const Sidebar = () => {
           backgroundColor: "#1a2035",
 
         },
-        boxShadow: 5,
-        height:"100vh",
-        boxShadow:"#00FF1F"
       }}
     >
       <ProSidebar collapsed={isCollapsed} 
@@ -149,6 +199,8 @@ const Sidebar = () => {
               icon={<PeopleOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+              onClick={() => handleMenuOption()}
+              dispatch={dispatch}
             />
 
             <Item
@@ -157,6 +209,8 @@ const Sidebar = () => {
               icon={<ContactsOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+              onClick={() => handleMenuOption()}
+              dispatch={dispatch}
             />
             <Item
               title="Games"
@@ -164,6 +218,8 @@ const Sidebar = () => {
               icon={<ReceiptOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+              onClick={() => handleMenuOption()}
+              dispatch={dispatch}
             />
             <Item
               title="Tranings"
@@ -171,6 +227,8 @@ const Sidebar = () => {
               icon={<ReceiptOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+              onClick={() => handleMenuOption()}
+              dispatch={dispatch}
             />
 
             <Typography
@@ -182,14 +240,18 @@ const Sidebar = () => {
             <Item
               title="Lesion"
               to="/lesion/home"
+              onClick={() => handleMenuOption()}
               icon={<PersonOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+              dispatch={dispatch}
             />
             <Item
               title="Exercise"
               to="/exercises/home"
               icon={<CalendarTodayOutlinedIcon />}
+              onClick={() => handleMenuOption()}
+              dispatch={dispatch}
               selected={selected}
               setSelected={setSelected}
             />
@@ -199,6 +261,8 @@ const Sidebar = () => {
               icon={<HelpOutlineOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+              onClick={() => handleMenuOption()}
+              dispatch={dispatch}
             />
 
             <Typography
@@ -239,6 +303,8 @@ const Sidebar = () => {
         </Menu>
       </ProSidebar>
     </Box>
+    </Grid>
+
   );
 };
 

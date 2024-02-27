@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState, createContext} from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import * as actions from '../actions';
@@ -11,6 +11,7 @@ import { Pager } from '../../common';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
+import { Button, Toolbar } from '@mui/material';
 
 const LesionHome = () => {
 
@@ -33,13 +34,12 @@ const LesionHome = () => {
         setValue(newValue);
     };
 
-    if (!lesionsSearch) {
-        console.log("HOLA");
-        dispatch(actions.findAllLesionPage({ page: page }, () => console.log("ADIOS")));
-
-        return "Loading...";
-
-    }
+    useEffect(() => {
+        if (!lesionsSearch) {
+          console.log("HOLA");
+          dispatch(actions.findAllLesionPage({ page: page }, () => console.log("ADIOS")));
+        }
+      }, [page, lesionsSearch, dispatch]);
 
     const previousFindAllLesionResultPage = (dispatch) => {
         console.log("bajo " + page);
@@ -69,43 +69,56 @@ const LesionHome = () => {
         history(`/lesion/home`);
     }
     return (
-        <div>
-            {/* <div>
-                <div className="btn-group white-space mx-auto">
-                    <div class="btn-group mr-5 mb-5 " role="group" aria-label="First group">
-                        <button className="btn addplayer" onClick={() => history(`/lesion/addLesion`)}><FormattedMessage id="project.lesion.fields.addLesion" /></button>
-                    </div>
-                </div>
-            </div> */}
+        <div className=''>
+
             <Box
                 sx={{
                     maxWidth: { xs: 320, sm: 480 },
                     bgcolor: 'background.dark',
                     boxShadow: 1,
-                    borderRadius: 2,
+                    borderRadius: 4,
                     margin: 'auto',  // Centra horizontalmente
                     marginTop: '50px', // Ajusta la distancia desde la parte superior según sea necesario
                     textAlign: 'center', // Centra el contenido dentro del Box
                 }}>
-                <Tabs
-                    value={value}
-                    onChange={handleChange}
-                    variant="scrollable"
-                    scrollButtons="auto"
-                    aria-label="scrollable auto tabs example"
-                >
-                    <Tab sx={{ color: '#40FF00' }} onClick={() => handleSetAllLesion(dispatch)} label="All" />
-                    <Tab sx={{ color: '#ffffff' }} onClick={() => handleSetTypeLesion(1, handleChange, muscle, dispatch)} label={muscle} />
-                    <Tab sx={{ color: '#ffffff' }} onClick={() => handleSetTypeLesion(2, handleChange, tendon, dispatch)} label={tendon} />
-                    <Tab sx={{ color: '#ffffff' }} onClick={() => handleSetTypeLesion(3, handleChange, joint, dispatch)} label={joint} />
-                    <Tab sx={{ color: '#ffffff' }} onClick={() => handleSetTypeLesion(4, handleChange, spine, dispatch)} label={spine} />
-                    <Tab sx={{ color: '#ffffff' }} onClick={() => handleSetTypeLesion(5, handleChange, psychological, dispatch)} label={psychological} />
-
-                </Tabs>
-            </Box>
-            <div>
-                <Lesions lesions={lesionsSearch.result.items} />
-                {/* <Pager 
+                    
+      <Tabs
+        value={value}
+        onChange={handleChange}
+        variant="scrollable"
+        scrollButtons="auto"
+        aria-label="scrollable auto tabs example"
+      >
+        <Tab sx={{ color: '#40FF00' }} onClick={() => handleSetAllLesion(dispatch)} label="All" />
+        <Tab sx={{ color: '#ffffff' }} onClick={() => handleSetTypeLesion(1, handleChange, muscle, dispatch)} label={muscle} />
+        <Tab sx={{ color: '#ffffff' }} onClick={() => handleSetTypeLesion(2, handleChange, tendon, dispatch)} label={tendon} />
+        <Tab sx={{ color: '#ffffff' }} onClick={() => handleSetTypeLesion(3, handleChange, joint, dispatch)} label={joint} />
+        <Tab sx={{ color: '#ffffff' }} onClick={() => handleSetTypeLesion(4, handleChange, spine, dispatch)} label={spine} />
+        <Tab sx={{ color: '#ffffff' }} onClick={() => handleSetTypeLesion(5, handleChange, psychological, dispatch)} label={psychological} />
+      </Tabs>
+  </Box>
+  <Box
+                sx={{
+                    maxWidth: { xs: 320, sm: 480 },
+                    margin: 'auto',  // Centra horizontalmente
+                    textAlign: 'center', // Centra el contenido dentro del Box
+                }}>
+    <Button
+    sx={{
+        margin: 'auto',  // Centra horizontalmente
+        marginTop: '15px', // Ajusta la distancia desde la parte superior según sea necesario
+        textAlign: 'center', // Centra el contenido dentro del Box
+    }}
+    
+    
+    variant="contained" color="primary" >
+        Tu Botón
+      </Button>
+      </Box>
+      
+      {lesionsSearch && lesionsSearch.result && (
+                <Lesions lesions={lesionsSearch.result.items}/>
+                )}                {/* <Pager 
                 back={{
                     enabled: lesionsSearch.criteria.page >= 1,
                     onClick: () => previousFindAllLesionResultPage(dispatch) }}
@@ -113,7 +126,6 @@ const LesionHome = () => {
                     enabled: lesionsSearch.result.existMoreItems,
 
                     onClick: () => nextFindAllLesionResultPage(dispatch)}}/> */}
-            </div>
         </div>
 
     );
