@@ -56,39 +56,37 @@ function LesionsList({ items, fallback, dispatch, history, open, setOpen, handle
 
 
 
-<div>
-<div class="flip-card">
-    <div class="flip-card-inner">
-        <div class="flip-card-front">
-        <div class="card">
-  <img src={lesionPierna} alt="Person" class="card__image_lesion"></img>
-
-  <span class="title">{item.lesionName}</span>
-<div class="buttons">
-  <button class="post">{item.lesionType}</button>
-</div>
-</div>
-
+        <div>
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="card">
+                  <img src={lesionPierna} alt="Person" class="card__image_lesion"></img>
+                  <span class="title">{item.lesionName}</span>
+                  <div class="buttons">
+                    <button class="post">{item.lesionType}</button>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-card-back">
+                <div class="card">
+                  <span class="desc">{item.description}</span>
+                  <a href="#" class="button">
+                    <span class="desc">{item.medication}</span>
+                  </a>
+                </div>
+                <ul class="social-icons trashgrande trash_position">
+                <li><a type="button" onClick={() => handleRemoveLesion(item.id, dispatch, history)}>
+                  <i class="fa fa-trash"></i></a></li>
+                </ul>
+                <ul class="social-icons configgrande config_position">
+                    <li><a type="button" onClick={() => handleUpdateLesion(item.id, dispatch, history)}>
+                    <i class="fa fa-wrench"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="flip-card-back">
-        <div class="card">
-
-  <span class="desc">{item.description}</span>
-  <a href="#" class="button">
-  <span class="desc">{item.medication}</span>
-  </a>
-
-
-
-
-</div>
-
-        </div>
-    </div>
-</div>
-
-
-</div>
       </div>;
 
 
@@ -138,9 +136,9 @@ const Lesions = ({ lesions }) => {
     setOpen(false);
   };
   return (
-    
+
     <div className="card-group lesions_contaner">
-      
+
       <LesionsList items={lesions} fallback={"Loading..."} dispatch={dispatch} history={history}
         open={open} setOpen={setOpen} handleClickOpen={handleClickOpen} handleClose={handleClose}
       />

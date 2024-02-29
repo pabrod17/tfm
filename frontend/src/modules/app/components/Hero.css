@@ -2537,6 +2537,21 @@ main {
 
 }
 
+.trash_position {
+  position: fixed;
+  bottom: 10px;
+  left: 20px;
+  margin: -15px
+}
+
+.config_position {
+  position: fixed;
+  bottom: 10px;
+  right: 20px;
+  margin: -15px
+}
+
+
 .lesiongrande a:before {
   transform: scale(1);
   -ms-transform: scale(1);
@@ -2546,7 +2561,33 @@ main {
   height: 45px;
   border-radius: 100%;
   display: block;
-  background: linear-gradient(45deg, #0026ff, #00e1ff);
+  background: linear-gradient(111.4deg, rgb(246, 4, 26) 0.4%, rgb(251, 139, 34) 100.2%);
+  transition: all 265ms ease-out;
+}
+
+.configgrande a:before {
+  transform: scale(1);
+  -ms-transform: scale(1);
+  -webkit-transform: scale(1);
+  content: " ";
+  width: 45px;
+  height: 45px;
+  border-radius: 100%;
+  display: block;
+  background: radial-gradient(circle at -1% 57.5%, rgb(19, 170, 82) 0%, rgb(0, 102, 43) 90%);
+  transition: all 265ms ease-out;
+}
+
+.trashgrande a:before {
+  transform: scale(1);
+  -ms-transform: scale(1);
+  -webkit-transform: scale(1);
+  content: " ";
+  width: 45px;
+  height: 45px;
+  border-radius: 100%;
+  display: block;
+  background: linear-gradient(98.3deg, rgb(0, 0, 0) 10.6%, rgb(255, 0, 0) 97.7%);
   transition: all 265ms ease-out;
 }
 
@@ -2583,8 +2624,30 @@ main {
   transform: scale(2.2);
   -ms-transform: scale(2.2);
   -webkit-transform: scale(2.2);
-  color: #0026ff;
-  background: -webkit-linear-gradient(45deg, #0026ff, #00e1ff);
+  color: #ff003c;
+  background: linear-gradient(111.4deg, rgb(246, 4, 26) 0.4%, rgb(251, 139, 34) 100.2%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 265ms ease-in;
+}
+
+.trashgrande a:hover i {
+  transform: scale(2.2);
+  -ms-transform: scale(2.2);
+  -webkit-transform: scale(2.2);
+  color: #ff003c;
+  background: linear-gradient(98.3deg, rgb(0, 0, 0) 10.6%, rgb(255, 0, 0) 97.7%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 265ms ease-in;
+}
+
+.configgrande a:hover i {
+  transform: scale(2.2);
+  -ms-transform: scale(2.2);
+  -webkit-transform: scale(2.2);
+  color: #ff003c;
+  background: radial-gradient(circle at -1% 57.5%, rgb(19, 170, 82) 0%, rgb(0, 102, 43) 90%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   transition: all 265ms ease-in;
