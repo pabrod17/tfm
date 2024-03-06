@@ -102,3 +102,15 @@ Login Second version
 Lesion cards
 
 ![ToolBare](lesion_cards.png)
+
+Lesion form
+
+![ToolBare](lesionForm.png)
+
+Lesion cards NEW DESIGN 1:
+
+![ToolBare](lesionHome1.png)
+
+Lesion cards NEW DESIGN 2:
+
+![ToolBare](lesionHome2.png)
