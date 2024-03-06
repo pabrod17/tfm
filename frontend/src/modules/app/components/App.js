@@ -49,7 +49,7 @@ const App = () => {
     });
     const paperStyle = {
 
-        // backgroundImage: `url(${linea_roja_grande})`,
+        backgroundImage: `url(${linea_roja_grande})`,
         backgroundRepeat: 'no-repeat', // Evita la repetición de la imagen de fondo
         backgroundAttachment: 'fixed', // Fija la imagen de fondo
         backgroundSize: 'cover',
@@ -61,7 +61,7 @@ const App = () => {
 
         // background: `linear-gradient(to right, #33001b, #ff0084)`, // Define aquí tus colores
         // background: `linear-gradient(97deg,#000000,#a11ebe,#f79817)`, // Define aquí tus colores
-        background: `linear-gradient(147deg,#ffffff ,#4400f9,#000000 35% 70%,#660bd8,#ffffff)`, // Define aquí tus colores
+        // background: `linear-gradient(147deg,#ffffff ,#4400f9,#000000 35% 70%,#660bd8,#ffffff)`, // Define aquí tus colores
 
 
       };

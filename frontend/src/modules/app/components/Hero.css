@@ -341,7 +341,7 @@ max-height: 360px;
   flex-direction: column;
   padding: 20px;
   border-radius: 20px;
-  background-color: rgba(0, 89, 255, 0.25);
+  background-color: transparent;
   backdrop-filter: blur(2px);
   box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
 }
