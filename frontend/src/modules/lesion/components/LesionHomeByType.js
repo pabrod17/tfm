@@ -12,7 +12,8 @@ import {Pager} from '../../common';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import { Button, Toolbar } from '@mui/material';
+import { Button, IconButton, Toolbar } from '@mui/material';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 const LesionHomeByType = () => {
 
@@ -99,17 +100,18 @@ console.log("TUPOSSSSS: ",tabValue )
                     margin: 'auto',  // Centra horizontalmente
                     textAlign: 'center', // Centra el contenido dentro del Box
                 }}>
-    <Button
-    sx={{
-        margin: 'auto',  // Centra horizontalmente
-        marginTop: '15px', // Ajusta la distancia desde la parte superior según sea necesario
-        textAlign: 'center', // Centra el contenido dentro del Box
-    }}
-    
-    
-    variant="contained" color="primary" >
-        Tu Botón
-      </Button>
+          <IconButton >
+          <AddCircleOutlineIcon                 sx={{
+                    margin: 'auto',  // Centra horizontalmente
+                    textAlign: 'center', // Centra el contenido dentro del Box
+                    fontSize:"70px",
+                    bgcolor:"linear-gradient(147deg,#ffffff ,#4400f9,#000000 35% 70%,#660bd8,#ffffff)",
+                    color:"white"
+                }}
+                onClick={() => history(`/lesion/addLesion`)}
+                >
+            </AddCircleOutlineIcon>
+          </IconButton>
       </Box>
 
             <div>
