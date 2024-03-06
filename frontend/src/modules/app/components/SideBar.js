@@ -96,6 +96,8 @@ const Sidebar = () => {
     <Box 
       sx={{
         "& .pro-sidebar-inner": {
+          backgroundColor: "transparent",
+
         },
         "& .pro-icon-wrapper": {
           backgroundColor: "transparent !important",
@@ -121,7 +123,8 @@ const Sidebar = () => {
         <Menu iconShape="square"       
         style={{
         // color: "#00FF1F",
-        backgroundColor: '#000000',
+        //Para poner la sidebar transparent, comentar la siguiente linea:
+        // backgroundColor: '#000000',
         height:"100vh",
         boxShadow:"#00FF1F"
         }}

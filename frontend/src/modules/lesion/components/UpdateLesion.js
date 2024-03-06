@@ -1,139 +1,156 @@
-import React, {useState} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
-import {useNavigate} from 'react-router-dom';
-import {FormattedMessage} from 'react-intl';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
 
-import {Errors} from '../../common';
+import { Errors } from '../../common';
 import * as actions from '../actions';
 import * as selectors from '../selectors';
-import {useParams} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { Box, Button, FilledInput, Grid, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material';
+import FormControl from '@mui/material/FormControl';
+import lesionPierna from '../../lesion/components/lesionPierna.jpg';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
 
 const UpdateLesion = () => {
 
-    const lesion = useSelector(selectors.getOneLesion);
-    const {id} = useParams();
-    const dispatch = useDispatch();
-    const history = useNavigate();
-    const [lesionName, setLesionName] = useState(lesion.lesionName);
-    const [description, setDescription] = useState(lesion.description);
-    const [medication, setMedication] = useState(lesion.medication);
-    const [lesionType, setLesionType] = useState(lesion.lesionType);
-    const [backendErrors, setBackendErrors] = useState(null);
-    let form;
+  const lesion = useSelector(selectors.getOneLesion);
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const history = useNavigate();
+  const [lesionName, setLesionName] = useState(lesion.lesionName);
+  const [description, setDescription] = useState(lesion.description);
+  const [medication, setMedication] = useState(lesion.medication);
+  const [lesionType, setLesionType] = useState(lesion.lesionType);
+  const [backendErrors, setBackendErrors] = useState(null);
+  let form;
 
-    const handleSubmit = event => {
+  const handleSubmit = event => {
 
-        event.preventDefault();
-    
-        if (form.checkValidity()) {
-            
-            dispatch(actions.updateLesion(lesion.id, lesionName.trim(), 
-            description.trim(), medication.trim(), lesionType,
-            () => reloadWindow(),
-            errors => setBackendErrors(errors),
-            ));
-        } else {
-            setBackendErrors(null);
-            form.classList.add('was-validated');
-            }
-        }
-
-        const reloadWindow = () =>{
-            history(`/lesion/home`);
-            window.location.reload('true');
-        }
+    event.preventDefault();
 
 
-        const muscle = "Muscular";
-        const tendon = "Tendinosa";
-        const joint = "Articular";
-        const spine = "ColumnaVertebral";
-        const psychological  = "Psicologica";
-        return(
+    dispatch(actions.updateLesion(lesion.id, lesionName.trim(),
+      description.trim(), medication.trim(), lesionType,
+      () => reloadWindow(),
+      errors => setBackendErrors(errors),
+    ));
+    setBackendErrors(null);
+  }
 
-            <div>
-                <Errors errors={backendErrors} onClose={() => setBackendErrors(null)}/>
-                <div className="card bg-light border-dark centrado-update-add">
-                    <h5 className="card-header">
-                    <FormattedMessage id="project.lesion.fields.updateLesion"/>
-                    </h5>
-                    <div className="card-body">
-                        <form ref={node => form = node} 
-                            className="needs-validation" noValidate onSubmit={e => handleSubmit(e)}>
-                            <div className="form-group row">
-                                <label htmlFor="firstName" className="col-md-6 col-form-label">
-                                <FormattedMessage id="project.lesion.fields.lesionName"/>
-                                </label>
-                                <div className="col-md-9">
-                                    <input type="text" id="lesionName" className="form-control"
-                                        value={lesionName}
-                                        onChange={e => setLesionName(e.target.value)}
-                                        autoFocus
-                                        required/>
-                                    <div className="invalid-feedback">
-                                        <FormattedMessage id='project.global.validator.required'/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label htmlFor="firstName" className="col-md-12 col-form-label">
-                                <FormattedMessage id="project.exercises.fields.description"/>
-                                </label>
-                                <div className="col-md-12">
-                                    <textarea  type="text" id="description" className="form-control"
-                                        value={description}
-                                        onChange={e => setDescription(e.target.value)}
-                                        autoFocus
-                                        required/>
-                                    <div className="invalid-feedback">
-                                        <FormattedMessage id='project.global.validator.required'/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label htmlFor="firstName" className="col-md-12 col-form-label">
-                                <FormattedMessage id="project.lesion.fields.medication"/>
-                                </label>
-                                <div className="col-md-12">
-                                    <textarea type="text" id="medication" className="form-control"
-                                        value={medication}
-                                        onChange={e => setMedication(e.target.value)}
-                                        autoFocus
-                                        required/>
-                                    <div className="invalid-feedback">
-                                        <FormattedMessage id='project.global.validator.required'/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className=" row">
-                            <label htmlFor="firstName" className="col-md-5 col-form-label">
-                            <FormattedMessage id="project.lesion.fields.lesionType"/>
-                                </label>
-                            <div class="dropdown col-md-6">
-                                <button class="dropbtn">{lesionType} 
-                                <i class="fa fa-caret-down"></i>
-                                </button>
-                                <div class="dropdown-content">
-                                <a type="button" onClick={() => setLesionType(muscle)} ><FormattedMessage id="project.lesion.fields.muscle"/></a>
-                                <a type="button" onClick={() => setLesionType(tendon)} ><FormattedMessage id="project.lesion.fields.tendon"/></a>
-                                <a type="button" onClick={() => setLesionType(joint)} ><FormattedMessage id="project.lesion.fields.joint"/></a>
-                                <a type="button" onClick={() => setLesionType(spine)} ><FormattedMessage id="project.lesion.fields.spine"/></a>
-                                <a type="button" onClick={() => setLesionType(psychological)} ><FormattedMessage id="project.lesion.fields.psychological"/></a>
-                                </div>
-                            </div>
-                            </div>
-                            <div className="form-group row">
-                                <div className="offset-md-8 col-md-1">
-                                    <button type="submit" className="btn btn-primary">
-                                        <FormattedMessage id="project.global.buttons.save"/>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        );
+  const reloadWindow = () => {
+    history(`/lesion/home`);
+    window.location.reload('true');
+  }
+
+  const handleChange = (event) => {
+    setLesionType(event.target.value);
+  };
+
+  const muscle = "Muscular";
+  const tendon = "Tendinosa";
+  const joint = "Articular";
+  const spine = "ColumnaVertebral";
+  const psychological = "Psicologica";
+  return (
+
+    <div className='login-box ' >
+      <Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
+      <img src={lesionPierna} alt="Person" class="card__image_lesion"></img>
+
+      <Box
+        component="form"
+        sx={{
+          '& .MuiTextField-root': { mb: 2, width: '100%' },
+          margin: '50px', // Centra el formulario en la pantalla
+        }}
+        noValidate
+        autoComplete="off"
+      >
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <TextField
+              label="Nombre"
+              InputLabelProps={{ sx: { color: '#00bfff', fontSize: 20, fontWeight: 'regular' } }}
+              InputProps={{ sx: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular' } }}
+              value={lesionName}
+              onChange={(e) => setLesionName(e.target.value)}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <InputLabel id="demo-simple-select-label"
+              sx={{
+                color: "#00bfff",
+                margin: "15px"
+              }}
+
+            >Type</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={lesionType}
+              label="Type"
+              onChange={handleChange}
+              autoWidth
+              sx={{
+                color: "white",
+                margin: "15px"
+              }}
+              inputProps={{
+                MenuProps: {
+                  MenuListProps: {
+                    sx: {
+                      backgroundColor: 'rgb(58 60 84)',
+                      color: "white"
+                    }
+                  }
+                }
+              }}
+            >
+              <MenuItem value={muscle}><FormattedMessage id="project.lesion.fields.muscle" /></MenuItem>
+              <MenuItem value={tendon}><FormattedMessage id="project.lesion.fields.tendon" /></MenuItem>
+              <MenuItem value={joint}><FormattedMessage id="project.lesion.fields.joint" /></MenuItem>
+              <MenuItem value={spine}><FormattedMessage id="project.lesion.fields.spine" /></MenuItem>
+              <MenuItem value={psychological}><FormattedMessage id="project.lesion.fields.psychological" /></MenuItem>
+
+            </Select>
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              id="outlined-multiline-static"
+              label="Descripción"
+              InputLabelProps={{ sx: { color: '#00bfff', fontSize: 20, fontWeight: 'regular' } }}
+              InputProps={{ sx: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular' } }}
+              multiline
+              rows={4}
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              id="outlined-multiline-static"
+              label="Medicación"
+              InputLabelProps={{ sx: { color: '#00bfff', fontSize: 20, fontWeight: 'regular' } }}
+              InputProps={{ sx: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular' } }}
+              multiline
+              rows={4}
+              value={medication}
+              onChange={(e) => setMedication(e.target.value)}
+            />
+          </Grid>
+          <a type='submit' onClick={(e) => handleSubmit(e)}>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <FormattedMessage id="project.global.buttons.save" />
+          </a>
+        </Grid>
+      </Box>
+    </div>
+  );
 }
 
 export default UpdateLesion;

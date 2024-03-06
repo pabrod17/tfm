@@ -21,6 +21,7 @@ import Topbar from './TopBar';
 import { AppBar, Toolbar } from '@mui/material';
 import Cajita from './Cajita';
 import {useSelector} from 'react-redux';
+import linea_roja_grande from './fondoCanasta2.jpg';
 
 
 
@@ -33,8 +34,7 @@ const App = () => {
           type: isDark ? "dark" : "light",
           background: {
               paper: isDark ? "#1a2035" : "#fff",
-          }
-
+          },
         },
       });
 // color para react pro sidebar: #0c1e35
@@ -48,9 +48,22 @@ const App = () => {
     
     });
     const paperStyle = {
+
+        // backgroundImage: `url(${linea_roja_grande})`,
+        backgroundRepeat: 'no-repeat', // Evita la repetición de la imagen de fondo
+        backgroundAttachment: 'fixed', // Fija la imagen de fondo
         backgroundSize: 'cover',
-        width: 'auto',  // Ajusta el ancho según tus necesidades
+        width: 'auto',  // Ajusta el ancho según tus necedsidades
         height: 'auto', // Ajusta la altura según tus necesidades
+        // background: `linear-gradient(to right, #0f0c29, #302b63, #24243e)`, // Define aquí tus colores
+        // background: `linear-gradient(to left, #870000, #190a05)`, // Define aquí tus colores
+        // background: `linear-gradient(to right, #141e30, #243b55)`, // Define aquí tus colores
+
+        // background: `linear-gradient(to right, #33001b, #ff0084)`, // Define aquí tus colores
+        // background: `linear-gradient(97deg,#000000,#a11ebe,#f79817)`, // Define aquí tus colores
+        background: `linear-gradient(147deg,#ffffff ,#4400f9,#000000 35% 70%,#660bd8,#ffffff)`, // Define aquí tus colores
+
+
       };
 
       const userName = useSelector(users.selectors.getUserName);
