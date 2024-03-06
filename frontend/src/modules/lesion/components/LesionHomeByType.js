@@ -85,12 +85,12 @@ console.log("TUPOSSSSS: ",tabValue )
         scrollButtons="auto"
         aria-label="scrollable auto tabs example"
       >
-        <Tab value={0} sx={{ color: '#40FF00' }} onClick={() => handleSetAllLesion(dispatch)} label="All"/>
-        <Tab value={1} sx={{ color: '#ffffff' }} onClick={() => handleSetTypeLesion(muscle, dispatch)} label={muscle}/>
-        <Tab value={2} sx={{ color: '#ffffff' }} onClick={() => handleSetTypeLesion(tendon, dispatch)} label={tendon}/>
-        <Tab value={3} sx={{ color: '#ffffff' }} onClick={() => handleSetTypeLesion(joint, dispatch)} label={joint}/>
-        <Tab value={4} sx={{ color: '#ffffff' }} onClick={() => handleSetTypeLesion(spine, dispatch)} label={spine}/>
-        <Tab value={5} sx={{ color: '#ffffff' }} onClick={() => handleSetTypeLesion(psychological, dispatch)} label={psychological}/>
+        <Tab value={0} sx={{ color: '#40FF00', fontSize:"20px" }} onClick={() => handleSetAllLesion(dispatch)} label="All"/>
+        <Tab value={1} sx={{ color: '#ffffff', fontSize:"20px" }} onClick={() => handleSetTypeLesion(muscle, dispatch)} label={muscle}/>
+        <Tab value={2} sx={{ color: '#ffffff', fontSize:"20px" }} onClick={() => handleSetTypeLesion(tendon, dispatch)} label={tendon}/>
+        <Tab value={3} sx={{ color: '#ffffff', fontSize:"20px" }} onClick={() => handleSetTypeLesion(joint, dispatch)} label={joint}/>
+        <Tab value={4} sx={{ color: '#ffffff', fontSize:"20px" }} onClick={() => handleSetTypeLesion(spine, dispatch)} label={spine}/>
+        <Tab value={5} sx={{ color: '#ffffff', fontSize:"20px" }} onClick={() => handleSetTypeLesion(psychological, dispatch)} label={psychological}/>
 
       </Tabs>
       </Box>

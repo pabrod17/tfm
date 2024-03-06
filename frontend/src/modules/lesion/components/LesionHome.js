@@ -89,13 +89,14 @@ const LesionHome = () => {
         variant="scrollable"
         scrollButtons="auto"
         aria-label="scrollable auto tabs example"
+        
       >
-        <Tab sx={{ color: '#40FF00' }} onClick={() => handleSetAllLesion(dispatch)} label="All" />
-        <Tab sx={{ color: '#ffffff' }} onClick={() => handleSetTypeLesion(1, handleChange, muscle, dispatch)} label={muscle} />
-        <Tab sx={{ color: '#ffffff' }} onClick={() => handleSetTypeLesion(2, handleChange, tendon, dispatch)} label={tendon} />
-        <Tab sx={{ color: '#ffffff' }} onClick={() => handleSetTypeLesion(3, handleChange, joint, dispatch)} label={joint} />
-        <Tab sx={{ color: '#ffffff' }} onClick={() => handleSetTypeLesion(4, handleChange, spine, dispatch)} label={spine} />
-        <Tab sx={{ color: '#ffffff' }} onClick={() => handleSetTypeLesion(5, handleChange, psychological, dispatch)} label={psychological} />
+        <Tab sx={{ color: '#40FF00', fontSize:"20px"}} onClick={() => handleSetAllLesion(dispatch)} label="All" />
+        <Tab sx={{ color: '#ffffff', fontSize:"20px" }} onClick={() => handleSetTypeLesion(1, handleChange, muscle, dispatch)} label={muscle} />
+        <Tab sx={{ color: '#ffffff', fontSize:"20px" }} onClick={() => handleSetTypeLesion(2, handleChange, tendon, dispatch)} label={tendon} />
+        <Tab sx={{ color: '#ffffff', fontSize:"20px" }} onClick={() => handleSetTypeLesion(3, handleChange, joint, dispatch)} label={joint} />
+        <Tab sx={{ color: '#ffffff', fontSize:"20px" }} onClick={() => handleSetTypeLesion(4, handleChange, spine, dispatch)} label={spine} />
+        <Tab sx={{ color: '#ffffff', fontSize:"20px" }} onClick={() => handleSetTypeLesion(5, handleChange, psychological, dispatch)} label={psychological} />
       </Tabs>
   </Box>
   <Box
