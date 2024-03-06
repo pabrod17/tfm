@@ -114,3 +114,7 @@ Lesion cards NEW DESIGN 1:
 Lesion cards NEW DESIGN 2:
 
 ![ToolBare](lesionHome2.png)
+
+Lesion cards NEW DESIGN 3:
+
+![ToolBare](lesionHome3.png)

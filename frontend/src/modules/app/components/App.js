@@ -21,7 +21,7 @@ import Topbar from './TopBar';
 import { AppBar, Toolbar } from '@mui/material';
 import Cajita from './Cajita';
 import {useSelector} from 'react-redux';
-import linea_roja_grande from './fondoCanasta2.jpg';
+import linea_roja_grande from './canchaOscura.jpeg';
 
 
 
