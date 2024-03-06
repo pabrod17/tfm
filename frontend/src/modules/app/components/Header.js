@@ -55,7 +55,8 @@ const AppBar = styled(MuiAppBar, {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
-  backgroundColor: '#1a2035',
+  backgroundColor: '#0000',
+  opacity: "0.5",
   ...(open && {
     width: `calc(100% - ${drawerWidth}px)`,
     marginLeft: `${drawerWidth}px`,
@@ -95,10 +96,9 @@ const Header = () => {
   return (
 
     <Box sx={{ display: 'flex' }}
-    backgroundColor='#1a2035'
     >
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar  open={open}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -113,13 +113,6 @@ const Header = () => {
             TeamHub
           </Typography>
         </Toolbar>
-        <ul className="navbar-nav">
-                    <li className="nav-item">
-                        <Link className="nav-link link-color" to="/users/login">
-                            <FormattedMessage id="project.users.Login.title"/>
-                        </Link>
-                    </li>
-                </ul>
       </AppBar>
       <Drawer
         sx={{
@@ -128,7 +121,7 @@ const Header = () => {
           '& .MuiDrawer-paper': {
             width: drawerWidth,
             boxSizing: 'border-box',
-            backgroundColor: "#1a2035",
+            backgroundColor: "transparent",
 
           },
         }}
