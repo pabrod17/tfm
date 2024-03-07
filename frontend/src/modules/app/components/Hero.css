@@ -241,8 +241,9 @@ background: -webkit-linear-gradient(to top right, rgb(7 16 45), rgb(58 60 84));
 
 
 .lesions_contaner {
-margin-left: 212px;
-margin-right: 200px;
+/* margin-left: 165px; */
+  align-items: center;
+  justify-content:center;
 }
 
 .flip-card {
@@ -1234,7 +1235,17 @@ form .btn input[type="submit"]{
 
 
 
+  .page-item.disabled .page-link {
+    color: white;
+    background-color: transparent;
+    border-color: white;
+  }
 
+  .page-item .page-link {
+    color: white;
+    background-color: #6e4f2d;
+    border-color: white;
+  }
 
 
 
