@@ -49,10 +49,15 @@
   left: 50%;
   padding: 40px;
   transform: translate(-50%, -50%);
-background-color: rgb(7 16 45);
-background: linear-gradient(to top right, rgb(7 16 45), rgb(58 60 84));
-background: -webkit-linear-gradient(to top right, rgb(7 16 45), rgb(58 60 84));
+border-radius: 20px;
+background-color: rgba(0, 89, 255, 0.25);
+box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px) saturate(180%);
+
 }
+
+
+
 
 .login-box h2 {
   margin: 0 0 30px;

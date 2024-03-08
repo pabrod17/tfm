@@ -96,8 +96,8 @@ const Sidebar = () => {
     <Box 
       sx={{
         "& .pro-sidebar-inner": {
+        //Para poner la sidebar transparent: backgroundColor: "transparent"
           backgroundColor: "transparent",
-
         },
         "& .pro-icon-wrapper": {
           backgroundColor: "transparent !important",

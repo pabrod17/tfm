@@ -126,3 +126,7 @@ Lesion cards NEW DESIGN 4:
 Lesion cards NEW DESIGN 5 with blur:
 
 ![ToolBare](lesionHome5.png)
+
+Lesion form new design
+
+![ToolBare](lesionForm2.png)
