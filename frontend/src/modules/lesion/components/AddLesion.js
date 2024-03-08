@@ -1,55 +1,55 @@
-import React, {useState} from 'react';
-import {useDispatch} from 'react-redux';
-import {FormattedMessage} from 'react-intl';
-import {useNavigate} from 'react-router-dom';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { FormattedMessage } from 'react-intl';
+import { useNavigate } from 'react-router-dom';
 
-import {Errors} from '../../common';
+import { Errors } from '../../common';
 import * as actions from '../actions';
-import {useParams} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import lesionPierna from '../../lesion/components/lesionPierna.jpg';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import { Box, Button, FilledInput, Grid, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material';
 
 const AddLesion = () => {
-    const dispatch = useDispatch();
-    const history = useNavigate();
-    const [lesionName, setLesionName] = useState("");
-    const [description, setDescription] = useState("");
-    const [medication, setMedication] = useState("");
-    const [lesionType, setLesionType] = useState("");
-    const [backendErrors, setBackendErrors] = useState(null);
-    let form;
+  const dispatch = useDispatch();
+  const history = useNavigate();
+  const [lesionName, setLesionName] = useState("");
+  const [description, setDescription] = useState("");
+  const [medication, setMedication] = useState("");
+  const [lesionType, setLesionType] = useState("");
+  const [backendErrors, setBackendErrors] = useState(null);
+  let form;
 
-    const handleSubmit = event => {
+  const handleSubmit = event => {
 
-        event.preventDefault();
-    
-            dispatch(actions.addLesion(lesionName.trim(), 
-            description.trim(), medication.trim(), lesionType,
-            () => reloadWindow(),
-            errors => setBackendErrors(errors),
-            ));
-            setBackendErrors(null);
-        }
-        const reloadWindow = () =>{
-            history('/lesion/addLesion');
-            window.location.reload('true');
-        }
+    event.preventDefault();
 
-        const muscle = "Muscular";
-        const tendon = "Tendinosa";
-        const joint = "Articular";
-        const spine = "ColumnaVertebral";
-        const psychological  = "Psicologica";
+    dispatch(actions.addLesion(lesionName.trim(),
+      description.trim(), medication.trim(), lesionType,
+      () => reloadWindow(),
+      errors => setBackendErrors(errors),
+    ));
+    setBackendErrors(null);
+  }
+  const reloadWindow = () => {
+    history('/lesion/addLesion');
+    window.location.reload('true');
+  }
 
-        const handleChange = (event) => {
-            setLesionType(event.target.value);
-          };
+  const muscle = "Muscular";
+  const tendon = "Tendinosa";
+  const joint = "Articular";
+  const spine = "ColumnaVertebral";
+  const psychological = "Psicologica";
 
-        return(
+  const handleChange = (event) => {
+    setLesionType(event.target.value);
+  };
 
-                <div className='login-box ' >
+  return (
+
+    <div className='login-box ' >
       <Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
       <img src={lesionPierna} alt="Person" class="card__image_lesion_update_create"></img>
 
@@ -65,7 +65,7 @@ const AddLesion = () => {
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <TextField
-              label="Nombre"
+              label={<FormattedMessage id="project.lesion.fields.lesionName" />}
               InputLabelProps={{ sx: { color: '#00bfff', fontSize: 20, fontWeight: 'regular' } }}
               InputProps={{ sx: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular' } }}
               value={lesionName}
@@ -79,7 +79,7 @@ const AddLesion = () => {
                 margin: "15px"
               }}
 
-            >Type</InputLabel>
+            ><FormattedMessage id="project.lesion.fields.lesionType" /></InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
@@ -113,7 +113,7 @@ const AddLesion = () => {
           <Grid item xs={12}>
             <TextField
               id="outlined-multiline-static"
-              label="Descripción"
+              label={<FormattedMessage id="project.exercises.fields.description" />}
               InputLabelProps={{ sx: { color: '#00bfff', fontSize: 20, fontWeight: 'regular' } }}
               InputProps={{ sx: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular' } }}
               multiline
@@ -125,7 +125,7 @@ const AddLesion = () => {
           <Grid item xs={12}>
             <TextField
               id="outlined-multiline-static"
-              label="Medicación"
+              label={<FormattedMessage id="project.lesion.fields.medication" />}
               InputLabelProps={{ sx: { color: '#00bfff', fontSize: 20, fontWeight: 'regular' } }}
               InputProps={{ sx: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular' } }}
               multiline
@@ -144,7 +144,7 @@ const AddLesion = () => {
         </Grid>
       </Box>
     </div>
-        );
+  );
 }
 
 export default AddLesion;

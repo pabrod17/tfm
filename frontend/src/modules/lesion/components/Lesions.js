@@ -39,23 +39,6 @@ function LesionsList({ items, fallback, dispatch, history, open, setOpen, handle
   } else {
     return items.map(item => {
       return <div key={item.id}>
-
-        {/* <div class="container222 images-new">
-
-          <div class="wrapper2">
-            <div class="banner-image"> </div>
-            <h1> {item.lesionName}</h1>
-          </div>
-          <div class="button-wrapper">
-            <button variant="outlined" class="btn outline" onClick={handleClickOpen}>
-              DETAILS</button>
-            <button class="btn fill">{item.lesionType}</button>
-          </div>
-
-        </div> */}
-
-
-
         <div>
           <div class="flip-card">
             <div class="flip-card-inner">
@@ -88,36 +71,6 @@ function LesionsList({ items, fallback, dispatch, history, open, setOpen, handle
           </div>
         </div>
       </div>;
-
-
-      {/* //       <Card sx={{ maxWidth: 345 }} raised="true">
-      //   <CardActionArea>
-      //     <CardMedia
-      //       component="img"
-      //       height="140"
-      //       image={lesionPierna}
-      //       alt="green iguana"
-      //     />
-      //     <CardContent>
-      //       <Typography gutterBottom variant="h5" component="div">
-      //       {item.lesionName}
-      //       </Typography>
-      //       <Typography variant="body2" color="text.secondary">
-      //         Lizards are a widespread group of squamate reptiles, with over 6,000
-      //         species, ranging across all continents except Antarctica
-      //       </Typography>
-      //     </CardContent>
-      //   </CardActionArea>
-      //   <CardActions>
-      //     <Button size="small" color="primary">
-      //     {item.lesionType}
-      //     </Button>
-      //   </CardActions>
-      // </Card> */}
-
-
-
-
     });
   }
 }

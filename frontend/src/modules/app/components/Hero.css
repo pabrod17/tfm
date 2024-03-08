@@ -52,13 +52,48 @@
 border-radius: 20px;
 background-color: rgba(0, 89, 255, 0.25);
 box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(5px) saturate(180%);
+
+}
+
+.login-box-exercise {
+  position: relative;
+  top: 65%;
+  left: 50%;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+border-radius: 20px;
+background-color: rgba(255, 0, 0, 0.25);
+box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
 
 }
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.login-box-exercise h2,
 .login-box h2 {
   margin: 0 0 30px;
   padding: 0;
@@ -66,10 +101,12 @@ box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
   text-align: center;
 }
 
+.login-box-exercise .user-box,
 .login-box .user-box {
   position: relative;
 }
 
+.login-box-exercise .user-box input,
 .login-box .user-box input {
   width: 100%;
   padding: 10px 0;
@@ -81,6 +118,8 @@ box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
   outline: none;
   background: transparent;
 }
+
+.login-box-exercise .user-box label,
 .login-box .user-box label {
   position: absolute;
   top:0;
@@ -92,6 +131,8 @@ box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
   transition: .5s;
 }
 
+.login-box-exercise .user-box input:focus ~ label,
+.login-box-exercise .user-box input:valid ~ label,
 .login-box .user-box input:focus ~ label,
 .login-box .user-box input:valid ~ label {
   top: -20px;
@@ -100,6 +141,7 @@ box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
   font-size: 12px;
 }
 
+.login-box-exercise form a,
 .login-box form a {
   position: relative;
   display: inline-block;
@@ -116,6 +158,7 @@ box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
 
 }
 
+.login-box-exercise a:hover,
 .login-box a:hover {
   background: #03e9f4;
   color: #fff;
@@ -126,11 +169,13 @@ box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
               0 0 100px #03e9f4;
 }
 
+.login-box-exercise a span,
 .login-box a span {
   position: absolute;
   display: block;
 }
 
+.login-box-exercise a span:nth-child(1),
 .login-box a span:nth-child(1) {
   top: 0;
   left: -100%;
@@ -149,6 +194,7 @@ box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
   }
 }
 
+.login-box-exercise a span:nth-child(2),
 .login-box a span:nth-child(2) {
   top: -100%;
   right: 0;
@@ -168,6 +214,7 @@ box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
   }
 }
 
+.login-box-exercise a span:nth-child(3),
 .login-box a span:nth-child(3) {
   bottom: 0;
   right: -100%;
@@ -187,6 +234,7 @@ box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
   }
 }
 
+.login-box-exercise a span:nth-child(4),
 .login-box a span:nth-child(4) {
   bottom: -100%;
   left: 0;
@@ -321,6 +369,16 @@ max-height: 360px;
   box-shadow: 0 10px 50px rgba(235, 25, 110, 1);
 }
 
+.card__image_exercise_update_create {
+  height: 160px;
+  width: 160px;
+  border-radius: 50%;
+  margin-left: 50px;
+  margin-right: auto;
+  border: 5px solid #272133;
+  margin-top: 20px;
+  box-shadow: 0 10px 50px rgb(255, 217, 0);
+}
 
 .card__image_lesion {
   height: 160px;
@@ -331,6 +389,17 @@ max-height: 360px;
   border: 5px solid #272133;
   margin-top: 20px;
   box-shadow: 0 10px 50px rgba(235, 25, 110, 1);
+}
+
+.card__image_exercise {
+  height: 160px;
+  width: 160px;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 5px solid #272133;
+  margin-top: 20px;
+  box-shadow: 0 10px 50px rgb(255, 217, 0);
 }
 
 
@@ -361,6 +430,18 @@ max-height: 360px;
   padding: 20px;
   border-radius: 20px;
   background-color: rgba(0, 89, 255, 0.25);
+  box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
+}
+
+.card_exercise {
+  width: 360px;
+  height: 360px;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: rgba(255, 0, 0, 0.25);
   box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
 }
 

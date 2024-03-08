@@ -58,7 +58,6 @@ const LesionHome = () => {
 
     const handleSetTypeLesion = (tabValue, handleChange, lesionType, dispatch) => {
         setValue(tabValue);
-
         dispatch(actions.findLesionByTypePage({ page: 0, lesionType: lesionType }));
         history(`/lesion/home/type/${lesionType}/${tabValue}`);
     }

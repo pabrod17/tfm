@@ -130,3 +130,13 @@ Lesion cards NEW DESIGN 5 with blur:
 Lesion form new design
 
 ![ToolBare](lesionForm2.png)
+
+### Final home designs
+
+Lesion home final design:
+
+![ToolBare](lesionHome3.png)
+
+Exercise home final design:
+
+![ToolBare](exerciseHome.png)

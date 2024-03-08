@@ -1,11 +1,15 @@
-import React, {useState} from 'react';
-import {useDispatch} from 'react-redux';
-import {FormattedMessage} from 'react-intl';
-import {useNavigate} from 'react-router-dom';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { FormattedMessage } from 'react-intl';
+import { useNavigate } from 'react-router-dom';
 
-import {Errors} from '../../common';
+import { Errors } from '../../common';
 import * as actions from '../actions';
-import {useParams} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+import { Box, Button, FilledInput, Grid, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material';
+import exercise from '../../app/components/exercise.jpg';
 
 const AddExercise = () => {
     const dispatch = useDispatch();
@@ -20,121 +24,133 @@ const AddExercise = () => {
     const handleSubmit = event => {
 
         event.preventDefault();
-    
-        if (form.checkValidity()) {
-            
-            dispatch(actions.addExercise(exerciseName.trim(), 
+
+        dispatch(actions.addExercise(exerciseName.trim(),
             description.trim(), objective.trim(), exerciseType,
             () => reloadWindow(),
             errors => setBackendErrors(errors),
-            ));
-        } else {
-            setBackendErrors(null);
-            form.classList.add('was-validated');
-            }
-        }
-        const reloadWindow = () =>{
-            history('/exercises/addExercise');
-            window.location.reload('true');
-        }
+        ));
+        setBackendErrors(null);
+    }
+    const reloadWindow = () => {
+        history('/exercises/addExercise');
+        window.location.reload('true');
+    }
 
-        const tactic = "Tactico";
-        const technique = "Tecnica";
-        const physical = "Fisico";
-        const globalized = "Global";
-        const specific  = "Especifico";
-        const psychological = "Psicologico";
-        const strategy = "Estrategia";
-        const preMatch = "PrePartido";
+    const tactic = "Tactico";
+    const technique = "Tecnica";
+    const physical = "Fisico";
+    const globalized = "Global";
+    const specific = "Especifico";
+    const psychological = "Psicologico";
+    const strategy = "Estrategia";
+    const preMatch = "PrePartido";
 
-        return(
+    const handleChange = (event) => {
+        setExerciseType(event.target.value);
+    };
 
-            <div>
-                <Errors errors={backendErrors} onClose={() => setBackendErrors(null)}/>
-                <div className="card bg-light border-dark centrado-update-add">
-                    <h5 className="card-header">
-                    <FormattedMessage id="project.exercises.fields.addExercise"/>
-                    </h5>
-                    <div className="card-body">
-                        <form ref={node => form = node} 
-                            className="needs-validation" noValidate onSubmit={e => handleSubmit(e)}>
-                            <div className="form-group row">
-                                <label htmlFor="firstName" className="col-md-6 col-form-label">
-                                <FormattedMessage id="project.exercises.fields.name"/>
-                                </label>
-                                <div className="col-md-9">
-                                    <input type="text" id="exerciseName" className="form-control"
-                                        value={exerciseName}
-                                        onChange={e => setExerciseName(e.target.value)}
-                                        autoFocus
-                                        required/>
-                                    <div className="invalid-feedback">
-                                        <FormattedMessage id='project.global.validator.required'/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label htmlFor="firstName" className="col-md-12 col-form-label">
-                                <FormattedMessage id="project.exercises.fields.description"/>
-                                </label>
-                                <div className="col-md-12">
-                                    <textarea  type="text" id="description" className="form-control"
-                                        value={description}
-                                        onChange={e => setDescription(e.target.value)}
-                                        autoFocus
-                                        required/>
-                                    <div className="invalid-feedback">
-                                        <FormattedMessage id='project.global.validator.required'/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label htmlFor="firstName" className="col-md-12 col-form-label">
-                                <FormattedMessage id="project.exercises.fields.objective"/>
-                                </label>
-                                <div className="col-md-12">
-                                    <textarea  type="text" id="objective" className="form-control"
-                                        value={objective}
-                                        onChange={e => setObjective(e.target.value)}
-                                        autoFocus
-                                        required/>
-                                    <div className="invalid-feedback">
-                                        <FormattedMessage id='project.global.validator.required'/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className=" row">
-                            <label htmlFor="firstName" className="col-md-5 col-form-label">
-                            <FormattedMessage id="project.exercises.fields.type"/>
-                                </label>
-                            <div class="dropdown col-md-6">
-                                <button class="dropbtn">{exerciseType} 
-                                <i class="fa fa-caret-down"></i>
-                                </button>
-                                <div class="dropdown-content">
-                                    <a type="button" onClick={() => setExerciseType(tactic, dispatch)}><FormattedMessage id="project.exercises.fields.tactic"/></a>
-                                    <a type="button" onClick={() => setExerciseType(technique, dispatch)}><FormattedMessage id="project.exercises.fields.technique"/></a>
-                                    <a type="button" onClick={() => setExerciseType(physical, dispatch)}><FormattedMessage id="project.exercises.fields.physical"/></a>
-                                    <a type="button" onClick={() => setExerciseType(globalized, dispatch)}><FormattedMessage id="project.exercises.fields.globalized"/></a>
-                                    <a type="button" onClick={() => setExerciseType(specific, dispatch)}><FormattedMessage id="project.exercises.fields.specific"/></a>
-                                    <a type="button" onClick={() => setExerciseType(psychological, dispatch)}><FormattedMessage id="project.exercises.fields.psychological"/></a>
-                                    <a type="button" onClick={() => setExerciseType(strategy, dispatch)}><FormattedMessage id="project.exercises.fields.strategy"/></a>
-                                    <a type="button" onClick={() => setExerciseType(preMatch, dispatch)}><FormattedMessage id="project.exercises.fields.preMatch"/></a>
-                                </div>
-                            </div>
-                            </div>
-                            <div className="form-group row">
-                                <div className="offset-md-8 col-md-1">
-                                    <button type="submit" className="btn btn-primary">
-                                        <FormattedMessage id="project.global.buttons.save"/>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        );
+    return (
+
+        <div className='login-box-exercise' >
+            <Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
+            <img src={exercise} alt="Person" class="card__image_exercise_update_create"></img>
+
+            <Box
+                component="form"
+                sx={{
+                    '& .MuiTextField-root': { mb: 2, width: '100%' },
+                    margin: '50px', // Centra el formulario en la pantalla
+                }}
+                noValidate
+                autoComplete="off"
+            >
+                <Grid container spacing={2}>
+                    <Grid item xs={12}>
+                        <TextField
+                            label={<FormattedMessage id="project.exercises.fields.name" />}
+                            InputLabelProps={{ sx: { color: '#00bfff', fontSize: 20, fontWeight: 'regular' } }}
+                            InputProps={{ sx: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular' } }}
+                            value={exerciseName}
+                            onChange={(e) => setExerciseName(e.target.value)}
+                        />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <InputLabel id="demo-simple-select-label"
+                            sx={{
+                                color: "#00bfff",
+                                margin: "15px"
+                            }}
+
+                        ><FormattedMessage id="project.exercises.fields.typeOnly" /></InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={exerciseType}
+                            label="Type"
+                            onChange={handleChange}
+                            autoWidth
+                            sx={{
+                                color: "white",
+                                margin: "15px"
+                            }}
+                            inputProps={{
+                                MenuProps: {
+                                    MenuListProps: {
+                                        sx: {
+                                            backgroundColor: 'rgb(58 60 84)',
+                                            color: "white"
+                                        }
+                                    }
+                                }
+                            }}
+                        >
+                            <MenuItem value={tactic}><FormattedMessage id="project.exercises.fields.tactic" /></MenuItem>
+                            <MenuItem value={technique}><FormattedMessage id="project.exercises.fields.technique" /></MenuItem>
+                            <MenuItem value={physical}><FormattedMessage id="project.exercises.fields.physical" /></MenuItem>
+                            <MenuItem value={globalized}><FormattedMessage id="project.exercises.fields.globalized" /></MenuItem>
+                            <MenuItem value={specific}><FormattedMessage id="project.exercises.fields.specific" /></MenuItem>
+                            <MenuItem value={psychological}><FormattedMessage id="project.exercises.fields.psychological" /></MenuItem>
+                            <MenuItem value={strategy}><FormattedMessage id="project.exercises.fields.strategy" /></MenuItem>
+                            <MenuItem value={preMatch}><FormattedMessage id="project.exercises.fields.preMatch" /></MenuItem>
+
+                        </Select>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <TextField
+                            id="outlined-multiline-static"
+                            label={<FormattedMessage id="project.exercises.fields.description" />}
+                            InputLabelProps={{ sx: { color: '#00bfff', fontSize: 20, fontWeight: 'regular' } }}
+                            InputProps={{ sx: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular' } }}
+                            multiline
+                            rows={4}
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                        />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <TextField
+                            id="outlined-multiline-static"
+                            label={<FormattedMessage id="project.exercises.fields.objective" />}
+                            InputLabelProps={{ sx: { color: '#00bfff', fontSize: 20, fontWeight: 'regular' } }}
+                            InputProps={{ sx: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular' } }}
+                            multiline
+                            rows={4}
+                            value={objective}
+                            onChange={(e) => setObjective(e.target.value)}
+                        />
+                    </Grid>
+                    <a type='submit' onClick={(e) => handleSubmit(e)}>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <FormattedMessage id="project.global.buttons.save" />
+                    </a>
+                </Grid>
+            </Box>
+        </div>
+    );
 }
 
 export default AddExercise;

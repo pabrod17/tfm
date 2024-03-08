@@ -71,7 +71,7 @@ const UpdateLesion = () => {
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <TextField
-              label="Nombre"
+              label={<FormattedMessage id="project.lesion.fields.lesionName" />}
               InputLabelProps={{ sx: { color: '#00bfff', fontSize: 20, fontWeight: 'regular' } }}
               InputProps={{ sx: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular' } }}
               value={lesionName}
@@ -85,7 +85,7 @@ const UpdateLesion = () => {
                 margin: "15px"
               }}
 
-            >Type</InputLabel>
+            ><FormattedMessage id="project.lesion.fields.lesionType" /></InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
@@ -119,7 +119,7 @@ const UpdateLesion = () => {
           <Grid item xs={12}>
             <TextField
               id="outlined-multiline-static"
-              label="Descripción"
+              label={<FormattedMessage id="project.exercises.fields.description" />}
               InputLabelProps={{ sx: { color: '#00bfff', fontSize: 20, fontWeight: 'regular' } }}
               InputProps={{ sx: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular' } }}
               multiline
@@ -131,7 +131,7 @@ const UpdateLesion = () => {
           <Grid item xs={12}>
             <TextField
               id="outlined-multiline-static"
-              label="Medicación"
+              label={<FormattedMessage id="project.lesion.fields.medication" />}
               InputLabelProps={{ sx: { color: '#00bfff', fontSize: 20, fontWeight: 'regular' } }}
               InputProps={{ sx: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular' } }}
               multiline

@@ -60,7 +60,7 @@ export default {
     //exercises
     'project.exercises.fields.addExercise' : 'Engadir Exercicio',
     'project.exercises.fields.updateExercise' : 'Actualizar Exercicio',
-    'project.exercises.fields.name' : 'Nome Exercicio',
+    'project.exercises.fields.name' : 'Nome',
     'project.exercises.fields.description' : 'Descripción',
     'project.exercises.fields.objective' : 'Obxectivo',
     'project.exercises.fields.type' : 'Tipo Exercicio',
@@ -88,9 +88,9 @@ export default {
     //lesion
     'project.lesion.fields.addLesion' : 'Engadir Lesión',
     'project.lesion.fields.updateLesion' : 'Actualizar Lesión',
-    'project.lesion.fields.lesionName' : 'Nombre Lesión',
+    'project.lesion.fields.lesionName' : 'Nombre',
     'project.lesion.fields.medication' : 'Medicación',
-    'project.lesion.fields.lesionType' : 'Tipo Lesión',
+    'project.lesion.fields.lesionType' : 'Tipo',
     'project.lesion.fields.muscle' : 'Muscular',
     'project.lesion.fields.tendon' : 'Tendinosa',
     'project.lesion.fields.joint' : 'Articular',

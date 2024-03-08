@@ -1,41 +1,50 @@
-import React, {useState} from 'react';
-import {useSelector} from 'react-redux';
-import {useNavigate} from 'react-router-dom';
+import React, { useEffect, useState, createContext } from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import * as actions from '../actions';
-import {useDispatch} from 'react-redux';
-import {FormattedMessage} from 'react-intl';
+import { useDispatch } from 'react-redux';
+import { FormattedMessage } from 'react-intl';
 
 import * as selectors from '../selectors';
 import Exercises from './Exercises';
-import {Pager} from '../../common';
+import { Pager } from '../../common';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Box from '@mui/material/Box';
+import { Button, IconButton, Pagination, Stack, Toolbar } from '@mui/material';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 const ExercisesHome = () => {
     const exercisesSearch = useSelector(selectors.getExercisesSearch);
     const dispatch = useDispatch();
     const history = useNavigate();
     const [page, setPage] = useState(0);
+    const [value, setValue] = useState(0);
 
     const tactic = "Tactico";
     const technique = "Tecnica";
     const physical = "Fisico";
     const globalized = "Global";
-    const specific  = "Especifico";
+    const specific = "Especifico";
     const psychological = "Psicologico";
     const strategy = "Estrategia";
     const preMatch = "PrePartido";
     console.log("subida " + page);
 
-    if(!exercisesSearch){
-        console.log("HOLA");
-        dispatch(actions.findAllExercisesPage({page: page}, () => console.log("ADIOS")));
-        
-        return "Loading...";
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
 
-    } 
+    useEffect(() => {
+        if (!exercisesSearch) {
+            console.log("HOLA");
+            dispatch(actions.findAllExercisesPage({ page: page }, () => console.log("ADIOS")));
+        }
+    }, [page, exercisesSearch, dispatch]);
 
     const previousFindAllExercisesResultPage = (dispatch) => {
         console.log("bajo " + page);
-        setPage(page-1);
+        setPage(page - 1);
         console.log("bajada " + page);
 
         dispatch(actions.previousFindAllExercisesResultPage(page));
@@ -43,54 +52,88 @@ const ExercisesHome = () => {
 
     const nextFindAllExercisesResultPage = (dispatch) => {
         console.log("subo " + page);
-        setPage(page+1);
+        setPage(page + 1);
 
         dispatch(actions.nextFindAllExercisesResultPage(page));
     }
 
 
-    const handleSetTypeExercise = (exerciseType, dispatch) => {
-        dispatch(actions.findExercisesByTypePage({page: page, exerciseType: exerciseType}));
-        history(`/exercises/home/type/${exerciseType}`);
+    const handleSetTypeExercise = (tabValue, handleChange, exerciseType, dispatch) => {
+        setValue(tabValue);
+        dispatch(actions.findExercisesByTypePage({ page: page, exerciseType: exerciseType }));
+        history(`/exercises/home/type/${exerciseType}/${tabValue}`);
     }
 
-    return(
-        <div>
-            <div>
-                <div className="btn-group white-space mx-auto">
-                    <div class="btn-group mr-5 mb-5 " role="group" aria-label="First group">
-                        <button className="btn addplayer" onClick={() => history(`/exercises/addExercise`)}><FormattedMessage id="project.exercises.fields.addExercise"/></button>
-                    </div>
-                    <div class="btn-group mr-5 mb-5" role="group" aria-label="Fift group">
-                        <div class="dropdown">
-                            <button class="dropbtn lesion"><FormattedMessage id="project.exercises.fields.type"/>
-                            <i class="fa fa-caret-down"></i>
-                            </button>
-                            <div class="dropdown-content lesion">
-                                    <a type="button" onClick={() => handleSetTypeExercise(tactic, dispatch)}><FormattedMessage id="project.exercises.fields.tactic"/></a>
-                                    <a type="button" onClick={() => handleSetTypeExercise(technique, dispatch)}><FormattedMessage id="project.exercises.fields.technique"/></a>
-                                    <a type="button" onClick={() => handleSetTypeExercise(physical, dispatch)}><FormattedMessage id="project.exercises.fields.physical"/></a>
-                                    <a type="button" onClick={() => handleSetTypeExercise(globalized, dispatch)}><FormattedMessage id="project.exercises.fields.globalized"/></a>
-                                    <a type="button" onClick={() => handleSetTypeExercise(specific, dispatch)}><FormattedMessage id="project.exercises.fields.specific"/></a>
-                                    <a type="button" onClick={() => handleSetTypeExercise(psychological, dispatch)}><FormattedMessage id="project.exercises.fields.psychological"/></a>
-                                    <a type="button" onClick={() => handleSetTypeExercise(strategy, dispatch)}><FormattedMessage id="project.exercises.fields.strategy"/></a>
-                                    <a type="button" onClick={() => handleSetTypeExercise(preMatch, dispatch)}><FormattedMessage id="project.exercises.fields.preMatch"/></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <Exercises exercises={exercisesSearch.result.items}/>
-                <Pager 
-                back={{
-                    enabled: exercisesSearch.criteria.page >= 1,
-                    onClick: () => previousFindAllExercisesResultPage(dispatch) }}
-                next={{
-                    enabled: exercisesSearch.result.existMoreItems,
+    const handleSetAllExercise = (dispatch) => {
+        dispatch(actions.findAllExercises({ page: page }));
+        history(`/exercises/home`);
+    }
 
-                    onClick: () => nextFindAllExercisesResultPage(dispatch)}}/>
-            </div>
+    return (
+
+        <div className=''>
+
+            <Box
+                sx={{
+                    maxWidth: { xs: 320, sm: 480 },
+                    bgcolor: 'background.dark',
+                    boxShadow: 1,
+                    borderRadius: 4,
+                    margin: 'auto',  // Centra horizontalmente
+                    marginTop: '50px', // Ajusta la distancia desde la parte superior según sea necesario
+                    textAlign: 'center', // Centra el contenido dentro del Box
+                }}>
+
+                <Tabs
+                    value={value}
+                    onChange={handleChange}
+                    variant="scrollable"
+                    scrollButtons="auto"
+                    aria-label="scrollable auto tabs example"
+                >
+                    <Tab sx={{ color: '#40FF00', fontSize: "20px" }} onClick={() => handleSetAllExercise(dispatch)} label="All" />
+                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeExercise(1, handleChange, tactic, dispatch)} label={tactic} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeExercise(2, handleChange, technique, dispatch)} label={technique} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeExercise(3, handleChange, physical, dispatch)} label={physical} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeExercise(4, handleChange, globalized, dispatch)} label={globalized} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeExercise(5, handleChange, specific, dispatch)} label={specific} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeExercise(6, handleChange, psychological, dispatch)} label={psychological} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeExercise(7, handleChange, strategy, dispatch)} label={strategy} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeExercise(8, handleChange, preMatch, dispatch)} label={preMatch} />
+                </Tabs>
+            </Box>
+            <Box
+                sx={{
+                    maxWidth: { xs: 320, sm: 480 },
+                    margin: 'auto',  // Centra horizontalmente
+                    textAlign: 'center', // Centra el contenido dentro del Box
+                }}>
+                <IconButton >
+                    <AddCircleOutlineIcon sx={{
+                        margin: 'auto',  // Centra horizontalmente
+                        textAlign: 'center', // Centra el contenido dentro del Box
+                        fontSize: "70px",
+                        bgcolor: "linear-gradient(147deg,#ffffff ,#4400f9,#000000 35% 70%,#660bd8,#ffffff)",
+                        color: "white"
+                    }}
+                        onClick={() => history(`/exercises/addExercise`)}
+                    >
+                    </AddCircleOutlineIcon>
+                </IconButton>
+                <Pager
+                    back={{
+                        enabled: exercisesSearch && exercisesSearch.criteria && exercisesSearch.criteria.page >= 1,
+                        onClick: () => previousFindAllExercisesResultPage(dispatch)
+                    }}
+                    next={{
+                        enabled: exercisesSearch && exercisesSearch.result && exercisesSearch.result.existMoreItems,
+
+                        onClick: () => nextFindAllExercisesResultPage(dispatch)
+                    }} />
+            </Box>
+            {exercisesSearch && exercisesSearch.result && (
+                <Exercises exercises={exercisesSearch.result.items} />
+            )}
         </div>
 
     );

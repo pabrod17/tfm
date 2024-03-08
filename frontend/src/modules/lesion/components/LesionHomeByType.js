@@ -54,7 +54,6 @@ const LesionHomeByType = () => {
     }
 
     const handleSetTypeLesion = (lesionType, dispatch) => {
-        console.log("hoalalalallala 22222")
         dispatch(actions.findLesionByTypePage({ page: page, lesionType: lesionType }));
         history(`/lesion/home/type/${lesionType}/${value}`);
     }
@@ -63,7 +62,6 @@ const LesionHomeByType = () => {
         dispatch(actions.findAllLesionPage({ page: page }));
         history(`/lesion/home`);
     }
-    // console.log("hola --> " +lesionsSearch.criteria.page );
 
     return (
         <div className=''>

@@ -160,7 +160,7 @@ const Body = ({ isDark, setIsDark}) => {
                 {loggedIn && <Route exact path="/exercises/view/:id" element={<ExerciseView/>}></Route>}
                 {loggedIn && <Route exact path="/exercises/home/training/:trainingId" element={<ExercisesHomeByTraining/>}></Route>}
                 {loggedIn && <Route exact path="/exercises/home/game/:gameId" element={<ExercisesHomeByGame/>}></Route>}
-                {loggedIn && <Route exact path="/exercises/home/type/:exerciseType" element={<ExercisesHomeByType/>}></Route>}
+                {loggedIn && <Route exact path="/exercises/home/type/:exerciseType/:tabValue" element={<ExercisesHomeByType/>}></Route>}
                 {loggedIn && <Route exact path="/users/update-profile" element={<UpdateProfile/>}></Route>}
                 {loggedIn && <Route exact path="/users/change-password" element={<ChangePassword/>}></Route>}
                 {loggedIn && <Route exact path="/users/logout" element={<Logout/>}></Route>}

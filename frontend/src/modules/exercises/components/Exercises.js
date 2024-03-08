@@ -28,28 +28,39 @@ function ExercisesList({ items, fallback, dispatch, history}) {
         return fallback;
     } else {
         return items.map(item => {
-          return <div className="images-teams" key={item.id}>
-            
-            <div class="">
-              <div class="card hola pruebo">
-                <img src={exercise} alt="Person" class="card__image lesionando"></img>
-                <p class="card__name">{item.exerciseName}</p>
-                <div class="grid-container">
+          return <div key={item.id}>
+          <div>
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <div class="card_exercise">
+                    <img src={exercise} alt="Person" class="card__image_exercise"></img>
+                    <span class="title">{item.exerciseName}</span>
+                    <div class="buttons">
+                      <button class="post">{item.exerciseType}</button>
+                    </div>
+                  </div>
                 </div>
-                <ul class="social-icons lesiongrande">
-                <li><a type="button" onClick={() => handleRemoveExercise(item.id, dispatch, history)}>
-                  <i class="fa fa-trash"></i></a></li>
-                  
-                  <li><a type="button" onClick={() => handleViewExercise(item.id, dispatch, history)}>
-                    <i class="fa fa-address-book"></i></a></li>
-                    <li><a type="button" onClick={() => handleUpdateExercise(item.id, dispatch, history)}>
-                    <i class="fa fa-wrench"></i></a></li>
-                  <li><a href="#"><i class="fa fa-codepen"></i></a></li>
-                </ul>
-                <button class="btn-player draw-border">{item.exerciseType}</button>
+                <div class="flip-card-back">
+                  <div class="card_exercise">
+                    <span class="desc">{item.description}</span>
+                    <a href="#" class="button">
+                      <span class="desc">{item.objective}</span>
+                    </a>
+                  </div>
+                  <ul class="social-icons trashgrande trash_position">
+                  <li><a type="button" onClick={() => handleRemoveExercise(item.id, dispatch, history)}>
+                    <i class="fa fa-trash"></i></a></li>
+                  </ul>
+                  <ul class="social-icons configgrande config_position">
+                      <li><a type="button" onClick={() => handleUpdateExercise(item.id, dispatch, history)}>
+                      <i class="fa fa-wrench"></i></a></li>
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>;
+          </div>
+        </div>;
         });
       }
 }
@@ -61,7 +72,7 @@ const Exercises = ({exercises}) => {
     const history = useNavigate();
 
     return(
-        <div className="card-group">
+        <div className="card-group lesions_contaner">
           <ExercisesList items={exercises} fallback={"Loading..."} dispatch = {dispatch} history={history} />
         </div>
     )
