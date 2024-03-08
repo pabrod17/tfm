@@ -310,6 +310,16 @@ max-height: 360px;
 }
 
 
+.card__image_lesion_update_create {
+  height: 160px;
+  width: 160px;
+  border-radius: 50%;
+  margin-left: 50px;
+  margin-right: auto;
+  border: 5px solid #272133;
+  margin-top: 20px;
+  box-shadow: 0 10px 50px rgba(235, 25, 110, 1);
+}
 
 
 .card__image_lesion {

@@ -57,7 +57,7 @@ const UpdateLesion = () => {
 
     <div className='login-box ' >
       <Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
-      <img src={lesionPierna} alt="Person" class="card__image_lesion"></img>
+      <img src={lesionPierna} alt="Person" class="card__image_lesion_update_create"></img>
 
       <Box
         component="form"
