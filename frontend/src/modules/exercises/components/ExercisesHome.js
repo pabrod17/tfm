@@ -65,7 +65,7 @@ const ExercisesHome = () => {
     }
 
     const handleSetAllExercise = (dispatch) => {
-        dispatch(actions.findAllExercises({ page: page }));
+        dispatch(actions.findAllExercisesPage({ page: page }));
         history(`/exercises/home`);
     }
 
@@ -92,14 +92,14 @@ const ExercisesHome = () => {
                     aria-label="scrollable auto tabs example"
                 >
                     <Tab sx={{ color: '#40FF00', fontSize: "20px" }} onClick={() => handleSetAllExercise(dispatch)} label="All" />
-                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeExercise(1, handleChange, tactic, dispatch)} label={tactic} />
-                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeExercise(2, handleChange, technique, dispatch)} label={technique} />
-                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeExercise(3, handleChange, physical, dispatch)} label={physical} />
-                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeExercise(4, handleChange, globalized, dispatch)} label={globalized} />
-                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeExercise(5, handleChange, specific, dispatch)} label={specific} />
-                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeExercise(6, handleChange, psychological, dispatch)} label={psychological} />
-                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeExercise(7, handleChange, strategy, dispatch)} label={strategy} />
-                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeExercise(8, handleChange, preMatch, dispatch)} label={preMatch} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeExercise(1, handleChange, tactic, dispatch)} label={<FormattedMessage id="project.exercises.fields.tactic"/>} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeExercise(2, handleChange, technique, dispatch)} label={<FormattedMessage id="project.exercises.fields.technique"/>} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeExercise(3, handleChange, physical, dispatch)} label={<FormattedMessage id="project.exercises.fields.physical"/>} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeExercise(4, handleChange, globalized, dispatch)} label={<FormattedMessage id="project.exercises.fields.globalized"/>} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeExercise(5, handleChange, specific, dispatch)} label={<FormattedMessage id="project.exercises.fields.specific"/>} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeExercise(6, handleChange, psychological, dispatch)} label={<FormattedMessage id="project.exercises.fields.psychological"/>} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeExercise(7, handleChange, strategy, dispatch)} label={<FormattedMessage id="project.exercises.fields.strategy"/>} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeExercise(8, handleChange, preMatch, dispatch)} label={<FormattedMessage id="project.exercises.fields.preMatch"/>} />
                 </Tabs>
             </Box>
             <Box

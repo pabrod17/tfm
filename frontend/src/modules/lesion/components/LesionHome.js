@@ -89,11 +89,11 @@ const LesionHome = () => {
 
                 >
                     <Tab sx={{ color: '#40FF00', fontSize: "20px" }} onClick={() => handleSetAllLesion(dispatch)} label="All" />
-                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeLesion(1, handleChange, muscle, dispatch)} label={muscle} />
-                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeLesion(2, handleChange, tendon, dispatch)} label={tendon} />
-                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeLesion(3, handleChange, joint, dispatch)} label={joint} />
-                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeLesion(4, handleChange, spine, dispatch)} label={spine} />
-                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeLesion(5, handleChange, psychological, dispatch)} label={psychological} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeLesion(1, handleChange, muscle, dispatch)} label={<FormattedMessage id="project.lesion.fields.muscle"/>} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeLesion(2, handleChange, tendon, dispatch)} label={<FormattedMessage id="project.lesion.fields.tendon"/>} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeLesion(3, handleChange, joint, dispatch)} label={<FormattedMessage id="project.lesion.fields.joint"/>} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeLesion(4, handleChange, spine, dispatch)} label={<FormattedMessage id="project.lesion.fields.spine"/>} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeLesion(5, handleChange, psychological, dispatch)} label={<FormattedMessage id="project.lesion.fields.psychological"/>} />
                 </Tabs>
             </Box>
             <Box
