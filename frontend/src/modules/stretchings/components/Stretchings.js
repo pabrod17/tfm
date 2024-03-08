@@ -29,28 +29,38 @@ function StretchingsList({ items, fallback, dispatch, history}) {
         return fallback;
     } else {
         return items.map(item => {
-          return <div className="images-teams" key={item.id}>
-            
-            <div class="">
-              <div class="card hola pruebo">
-                <img src={estiramientos} alt="Person" class="card__image lesionando"></img>
-                <p class="card__name">{item.stretchingName}</p>
-                <div class="grid-container">
+          return <div key={item.id}>
+          <div>
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <div class="card_stretching">
+                    <img src={estiramientos} alt="Person" class="card__image_stretching"></img>
+                    <span class="title">{item.stretchingName}</span>
+                    <div class="buttons">
+                      <button class="post">{item.stretchingType}</button>
+                    </div>
+                  </div>
                 </div>
-                <ul class="social-icons lesiongrande">
-                <li><a type="button" onClick={() => handleRemoveStretching(item.id, dispatch, history)}>
-                  <i class="fa fa-trash"></i></a></li>
-                  
-                  <li><a type="button" onClick={() => handleViewStretching(item.id, dispatch, history)}>
-                    <i class="fa fa-address-book"></i></a></li>
-                    <li><a type="button" onClick={() => handleUpdateStretching(item.id, dispatch, history)}>
-                    <i class="fa fa-wrench"></i></a></li>
-                  <li><a href="#"><i class="fa fa-codepen"></i></a></li>
-                </ul>
-                <button class="btn-player draw-border">{item.stretchingType}</button>
+                <div class="flip-card-back">
+                  <div class="card_stretching">
+                    <a href="#" class="button">
+                      <span class="desc">{item.description}</span>
+                    </a>
+                  </div>
+                  <ul class="social-icons trashgrande trash_position">
+                  <li><a type="button" onClick={() => handleRemoveStretching(item.id, dispatch, history)}>
+                    <i class="fa fa-trash"></i></a></li>
+                  </ul>
+                  <ul class="social-icons configgrande config_position">
+                      <li><a type="button" onClick={() => handleUpdateStretching(item.id, dispatch, history)}>
+                      <i class="fa fa-wrench"></i></a></li>
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>;
+          </div>
+        </div>;
         });
       }
 }
@@ -60,7 +70,7 @@ const Stretchings = ({stretchings}) => {
     const history = useNavigate();
 
     return(
-        <div className="card-group">
+        <div className="card-group lesions_contaner">
           <StretchingsList items={stretchings} fallback={"Loading..."} dispatch = {dispatch} history={history} />
         </div>
     )

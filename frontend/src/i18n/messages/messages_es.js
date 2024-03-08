@@ -221,8 +221,8 @@ export default {
     'project.stretchings.fields.addStretching' : 'Añadir Estiramiento',
     'project.stretchings.fields.myStretchings' : 'Mis Estiramientos',
 
-    'project.stretchings.fields.stretchingName' : 'Nombre Estiramiento',
-    'project.stretchings.fields.stretchingType' : 'Tipo Estiramiento',
+    'project.stretchings.fields.stretchingName' : 'Nombre',
+    'project.stretchings.fields.stretchingType' : 'Tipo',
     'project.stretchings.fields.hamstrings' : 'Isquiotibiales',
     'project.stretchings.fields.buttocks' : 'Glúteos',
     'project.stretchings.fields.calf' : 'Gemelos',

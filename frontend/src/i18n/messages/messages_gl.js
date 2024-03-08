@@ -223,8 +223,8 @@ export default {
     'project.stretchings.fields.addStretching' : 'Engadir Estiramento',
     'project.stretchings.fields.myStretchings' : 'Meus Estiramentos',
 
-    'project.stretchings.fields.stretchingName' : 'Nome Estiramento',
-    'project.stretchings.fields.stretchingType' : 'Tipo Estiramento',
+    'project.stretchings.fields.stretchingName' : 'Nome',
+    'project.stretchings.fields.stretchingType' : 'Tipo',
     'project.stretchings.fields.hamstrings' : 'Isquiotibiales',
     'project.stretchings.fields.buttocks' : 'Nádegas',
     'project.stretchings.fields.calf' : 'Xemelgos',

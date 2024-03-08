@@ -1,11 +1,15 @@
-import React, {useState} from 'react';
-import {useDispatch} from 'react-redux';
-import {FormattedMessage} from 'react-intl';
-import {useNavigate} from 'react-router-dom';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { FormattedMessage } from 'react-intl';
+import { useNavigate } from 'react-router-dom';
 
-import {Errors} from '../../common';
+import { Errors } from '../../common';
 import * as actions from '../actions';
-import {useParams} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import estiramientos from './estiramientos.jpg'; //1920x1200
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+import { Box, Button, FilledInput, Grid, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material';
 
 const AddStretching = () => {
     const dispatch = useDispatch();
@@ -19,109 +23,125 @@ const AddStretching = () => {
     const handleSubmit = event => {
 
         event.preventDefault();
-    
-        if (form.checkValidity()) {
-            
-            dispatch(actions.addStretching(stretchingName.trim(), 
+
+        dispatch(actions.addStretching(stretchingName.trim(),
             description.trim(), stretchingType,
             () => reloadWindow(),
             errors => setBackendErrors(errors),
-            ));
-        } else {
-            setBackendErrors(null);
-            form.classList.add('was-validated');
-            }
-        }
-        const reloadWindow = () =>{
-            history('/stretchings/addStretching');
-            window.location.reload('true');
-        }
+        ));
+        setBackendErrors(null);
+    }
+    const reloadWindow = () => {
+        history('/stretchings/addStretching');
+        window.location.reload('true');
+    }
 
-        const hamstrings = "Isquiotibiales";
-        const buttocks = "Gluteos";
-        const calf = "Gemelos";
-        const adductors = "Adductores";
-        const shoulder  = "Hombro";
-        const quadriceps = "Cuadriceps";
-        const back = "Espalda";
-        const pectoral = "Pectoral";
-        const crotch = "Ingle";
-        const triceps  = "Triceps";
-        return(
+    const hamstrings = "Isquiotibiales";
+    const buttocks = "Gluteos";
+    const calf = "Gemelos";
+    const adductors = "Adductores";
+    const shoulder = "Hombro";
+    const quadriceps = "Cuadriceps";
+    const back = "Espalda";
+    const pectoral = "Pectoral";
+    const crotch = "Ingle";
+    const triceps = "Triceps";
 
-            <div>
-                <Errors errors={backendErrors} onClose={() => setBackendErrors(null)}/>
-                <div className="card bg-light border-dark centrado-update-add">
-                    <h5 className="card-header">
-                    <FormattedMessage id="project.stretchings.fields.addStretching"/>
-                    </h5>
-                    <div className="card-body">
-                        <form ref={node => form = node} 
-                            className="needs-validation" noValidate onSubmit={e => handleSubmit(e)}>
-                            <div className="form-group row">
-                                <label htmlFor="firstName" className="col-md-6 col-form-label">
-                                <FormattedMessage id="project.stretchings.fields.stretchingName"/>
-                                </label>
-                                <div className="col-md-9">
-                                    <input type="text" id="stretchingName" className="form-control"
-                                        value={stretchingName}
-                                        onChange={e => setStretchingName(e.target.value)}
-                                        autoFocus
-                                        required/>
-                                    <div className="invalid-feedback">
-                                        <FormattedMessage id='project.global.validator.required'/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label htmlFor="firstName" className="col-md-12 col-form-label">
-                                <FormattedMessage id="project.exercises.fields.description"/>
-                                </label>
-                                <div className="col-md-12">
-                                    <textarea  type="text" id="description" className="form-control"
-                                        value={description}
-                                        onChange={e => setDescription(e.target.value)}
-                                        autoFocus
-                                        required/>
-                                    <div className="invalid-feedback">
-                                        <FormattedMessage id='project.global.validator.required'/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className=" row">
-                            <label htmlFor="firstName" className="col-md-5 col-form-label">
-                            <FormattedMessage id="project.stretchings.fields.stretchingType"/>
-                                </label>
-                            <div class="dropdown col-md-6">
-                                <button class="dropbtn">{stretchingType} 
-                                <i class="fa fa-caret-down"></i>
-                                </button>
-                                <div class="dropdown-content">
-                                <a type="button" onClick={() => setStretchingType(hamstrings)} ><FormattedMessage id="project.stretchings.fields.hamstrings"/></a>
-                                <a type="button" onClick={() => setStretchingType(buttocks)} ><FormattedMessage id="project.stretchings.fields.buttocks"/></a>
-                                <a type="button" onClick={() => setStretchingType(calf)} ><FormattedMessage id="project.stretchings.fields.calf"/></a>
-                                <a type="button" onClick={() => setStretchingType(adductors)} ><FormattedMessage id="project.stretchings.fields.adductors"/></a>
-                                <a type="button" onClick={() => setStretchingType(shoulder)} ><FormattedMessage id="project.stretchings.fields.shoulder"/></a>
-                                <a type="button" onClick={() => setStretchingType(quadriceps)} ><FormattedMessage id="project.stretchings.fields.quadriceps"/></a>
-                                <a type="button" onClick={() => setStretchingType(back)} ><FormattedMessage id="project.stretchings.fields.back"/></a>
-                                <a type="button" onClick={() => setStretchingType(pectoral)} ><FormattedMessage id="project.stretchings.fields.pectoral"/></a>
-                                <a type="button" onClick={() => setStretchingType(crotch)} ><FormattedMessage id="project.stretchings.fields.crotch"/></a>
-                                <a type="button" onClick={() => setStretchingType(triceps)} ><FormattedMessage id="project.stretchings.fields.triceps"/></a>
-                                </div>
-                            </div>
-                            </div>
-                            <div className="form-group row">
-                                <div className="offset-md-8 col-md-1">
-                                    <button type="submit" className="btn btn-primary">
-                                        <FormattedMessage id="project.global.buttons.save"/>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        );
+    const handleChange = (event) => {
+        setStretchingType(event.target.value);
+    };
+
+    return (
+
+        <div className='login-box-stretching' >
+            <Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
+            <img src={estiramientos} alt="Person" class="card__image_stretching_update_create"></img>
+
+            <Box
+                component="form"
+                sx={{
+                    '& .MuiTextField-root': { mb: 2, width: '100%' },
+                    margin: '50px', // Centra el formulario en la pantalla
+                }}
+                noValidate
+                autoComplete="off"
+            >
+                <Grid container spacing={2}>
+                    <Grid item xs={12}>
+                        <TextField
+                            label={<FormattedMessage id="project.stretchings.fields.stretchingName" />}
+                            InputLabelProps={{ sx: { color: '#00bfff', fontSize: 20, fontWeight: 'regular' } }}
+                            InputProps={{ sx: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular' } }}
+                            value={stretchingName}
+                            onChange={(e) => setStretchingName(e.target.value)}
+                        />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <InputLabel id="demo-simple-select-label"
+                            sx={{
+                                color: "#00bfff",
+                                margin: "15px"
+                            }}
+
+                        ><FormattedMessage id="project.stretchings.fields.stretchingType" /></InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={stretchingType}
+                            label="Type"
+                            onChange={handleChange}
+                            autoWidth
+                            sx={{
+                                color: "white",
+                                margin: "15px"
+                            }}
+                            inputProps={{
+                                MenuProps: {
+                                    MenuListProps: {
+                                        sx: {
+                                            backgroundColor: 'rgb(58 60 84)',
+                                            color: "white"
+                                        }
+                                    }
+                                }
+                            }}
+                        >
+                            <MenuItem value={hamstrings}><FormattedMessage id="project.stretchings.fields.hamstrings" /></MenuItem>
+                            <MenuItem value={buttocks}><FormattedMessage id="project.stretchings.fields.buttocks" /></MenuItem>
+                            <MenuItem value={calf}><FormattedMessage id="project.stretchings.fields.calf" /></MenuItem>
+                            <MenuItem value={adductors}><FormattedMessage id="project.stretchings.fields.adductors" /></MenuItem>
+                            <MenuItem value={shoulder}><FormattedMessage id="project.stretchings.fields.shoulder" /></MenuItem>
+                            <MenuItem value={quadriceps}><FormattedMessage id="project.stretchings.fields.quadriceps" /></MenuItem>
+                            <MenuItem value={back}><FormattedMessage id="project.stretchings.fields.back" /></MenuItem>
+                            <MenuItem value={pectoral}><FormattedMessage id="project.stretchings.fields.pectoral" /></MenuItem>
+                            <MenuItem value={crotch}><FormattedMessage id="project.stretchings.fields.crotch" /></MenuItem>
+                            <MenuItem value={triceps}><FormattedMessage id="project.stretchings.fields.triceps" /></MenuItem>
+
+                        </Select>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <TextField
+                            id="outlined-multiline-static"
+                            label={<FormattedMessage id="project.exercises.fields.description" />}
+                            InputLabelProps={{ sx: { color: '#00bfff', fontSize: 20, fontWeight: 'regular' } }}
+                            InputProps={{ sx: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular' } }}
+                            multiline
+                            rows={4}
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                        />
+                    </Grid>
+                    <a type='submit' onClick={(e) => handleSubmit(e)}>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <FormattedMessage id="project.global.buttons.save" />
+                    </a>
+                </Grid>
+            </Box>
+        </div>
+    );
 }
 
 export default AddStretching;

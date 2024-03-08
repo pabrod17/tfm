@@ -140,3 +140,7 @@ Lesion home final design:
 Exercise home final design:
 
 ![ToolBare](exerciseHome.png)
+
+Stretching home final design:
+
+![ToolBare](stretchingHome.png)

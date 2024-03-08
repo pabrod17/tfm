@@ -1,13 +1,18 @@
-import React, {useState} from 'react';
-import {useSelector} from 'react-redux';
-import {useNavigate} from 'react-router-dom';
+import React, { useEffect, useState, createContext } from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import * as actions from '../actions';
-import {useDispatch} from 'react-redux';
-import {FormattedMessage} from 'react-intl';
+import { useDispatch } from 'react-redux';
+import { FormattedMessage } from 'react-intl';
 
 import * as selectors from '../selectors';
 import Stretchings from './Stretchings';
-import {Pager} from '../../common';
+import { Pager } from '../../common';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Box from '@mui/material/Box';
+import { Button, IconButton, Pagination, Stack, Toolbar } from '@mui/material';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 const StretchingsHome = () => {
 
@@ -15,92 +20,122 @@ const StretchingsHome = () => {
     const dispatch = useDispatch();
     const history = useNavigate();
     const [page, setPage] = useState(0);
+    const [value, setValue] = useState(0);
 
     const hamstrings = "Isquiotibiales";
     const buttocks = "Gluteos";
     const calf = "Gemelos";
     const adductors = "Adductores";
-    const shoulder  = "Hombro";
+    const shoulder = "Hombro";
     const quadriceps = "Cuadriceps";
     const back = "Espalda";
     const pectoral = "Pectoral";
     const crotch = "Ingle";
-    const triceps  = "Triceps";
+    const triceps = "Triceps";
     console.log("subida " + page);
 
-    if(!stretchingsSearch){
-        console.log("HOLA");
-        dispatch(actions.findAllStretchingsPage({page: page}, () => console.log("ADIOS")));
-        return "Loading...";
-    } 
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
+
+    useEffect(() => {
+        if (!stretchingsSearch) {
+            console.log("HOLA");
+            dispatch(actions.findAllStretchingsPage({ page: page }, () => console.log("ADIOS")));
+        }
+    }, [page, stretchingsSearch, dispatch]);
 
     const previousFindAllStretchingsResultPage = (dispatch) => {
         console.log("bajo " + page);
-        setPage(page-1);
+        setPage(page - 1);
         console.log("bajada " + page);
         dispatch(actions.previousFindAllStretchingsResultPage(page));
     }
 
     const nextFindAllStretchingsResultPage = (dispatch) => {
         console.log("subo " + page);
-        setPage(page+1);
+        setPage(page + 1);
         dispatch(actions.nextFindAllStretchingsResultPage(page));
     }
 
-
-
-
-
-
-
-
-
-    const handleSetTypeStretching = (stretchingType, dispatch) => {
-        dispatch(actions.findStretchingsByTypePage({page: 0, stretchingType: stretchingType}));
-        history(`/stretchings/home/type/${stretchingType}`);
+    const handleSetTypeStretching = (tabValue, handleChange, stretchingType, dispatch) => {
+        setValue(tabValue);
+        dispatch(actions.findStretchingsByTypePage({ page: page, stretchingType: stretchingType }));
+        history(`/stretchings/home/type/${stretchingType}/${tabValue}`);
     }
 
-    return(
-        <div>
-            <div>
-                <div className="btn-group white-space mx-auto">
-                    <div class="btn-group mr-5 mb-5 " role="group" aria-label="First group">
-                        <button className="btn addplayer" onClick={() => history(`/stretchings/addStretching`)}><FormattedMessage id="project.stretchings.fields.addStretching"/></button>
-                    </div>
-                    <div class="btn-group mr-5 mb-5" role="group" aria-label="Fift group">
-                        <div class="dropdown">
-                            <button class="dropbtn lesion"><FormattedMessage id="project.stretchings.fields.stretchingType"/> 
-                            <i class="fa fa-caret-down"></i>
-                            </button>
-                            <div class="dropdown-content lesion">
-                            <a type="button" onClick={() => handleSetTypeStretching(hamstrings, dispatch)}><FormattedMessage id="project.stretchings.fields.hamstrings"/></a>
-                            <a type="button" onClick={() => handleSetTypeStretching(buttocks, dispatch)}><FormattedMessage id="project.stretchings.fields.buttocks"/></a>
-                            <a type="button"  onClick={() => handleSetTypeStretching(calf, dispatch)}><FormattedMessage id="project.stretchings.fields.calf"/></a>
-                            <a type="button" onClick={() => handleSetTypeStretching(adductors, dispatch)}><FormattedMessage id="project.stretchings.fields.adductors"/></a>
-                            <a type="button" onClick={() => handleSetTypeStretching(shoulder, dispatch)}><FormattedMessage id="project.stretchings.fields.shoulder"/></a>
-                            <a type="button" onClick={() => handleSetTypeStretching(quadriceps, dispatch)}><FormattedMessage id="project.stretchings.fields.quadriceps"/></a>
-                            <a type="button" onClick={() => handleSetTypeStretching(back, dispatch)}><FormattedMessage id="project.stretchings.fields.back"/></a>
-                            <a type="button"  onClick={() => handleSetTypeStretching(pectoral, dispatch)}><FormattedMessage id="project.stretchings.fields.pectoral"/></a>
-                            <a type="button" onClick={() => handleSetTypeStretching(crotch, dispatch)}><FormattedMessage id="project.stretchings.fields.crotch"/></a>
-                            <a type="button" onClick={() => handleSetTypeStretching(triceps, dispatch)}><FormattedMessage id="project.stretchings.fields.triceps"/></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <Stretchings stretchings={stretchingsSearch.result.items}/>
-                <Pager 
-                back={{
-                    enabled: stretchingsSearch.criteria.page >= 1,
-                    onClick: () => previousFindAllStretchingsResultPage(dispatch) }}
-                next={{
-                    enabled: stretchingsSearch.result.existMoreItems,
+    const handleSetAllStretching = (dispatch) => {
+        dispatch(actions.findAllStretchingsPage({ page: page }));
+        history(`/stretchings/home`);
+    }
 
-                    onClick: () => nextFindAllStretchingsResultPage(dispatch)}}/>
-            </div>
+    return (
+        <div className=''>
+
+            <Box
+                sx={{
+                    maxWidth: { xs: 320, sm: 480 },
+                    bgcolor: 'background.dark',
+                    boxShadow: 1,
+                    borderRadius: 4,
+                    margin: 'auto',  // Centra horizontalmente
+                    marginTop: '50px', // Ajusta la distancia desde la parte superior según sea necesario
+                    textAlign: 'center', // Centra el contenido dentro del Box
+                }}>
+
+                <Tabs
+                    value={value}
+                    onChange={handleChange}
+                    variant="scrollable"
+                    scrollButtons="auto"
+                    aria-label="scrollable auto tabs example"
+                >
+                    <Tab sx={{ color: '#40FF00', fontSize: "20px" }} onClick={() => handleSetAllStretching(dispatch)} label="All" />
+                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeStretching(1, handleChange, hamstrings, dispatch)} label={<FormattedMessage id="project.stretchings.fields.hamstrings" />} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeStretching(2, handleChange, buttocks, dispatch)} label={<FormattedMessage id="project.stretchings.fields.buttocks" />} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeStretching(3, handleChange, calf, dispatch)} label={<FormattedMessage id="project.stretchings.fields.calf" />} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeStretching(4, handleChange, adductors, dispatch)} label={<FormattedMessage id="project.stretchings.fields.adductors" />} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeStretching(5, handleChange, shoulder, dispatch)} label={<FormattedMessage id="project.stretchings.fields.shoulder" />} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeStretching(6, handleChange, quadriceps, dispatch)} label={<FormattedMessage id="project.stretchings.fields.quadriceps" />} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeStretching(7, handleChange, back, dispatch)} label={<FormattedMessage id="project.stretchings.fields.back" />} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeStretching(8, handleChange, pectoral, dispatch)} label={<FormattedMessage id="project.stretchings.fields.pectoral" />} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeStretching(9, handleChange, crotch, dispatch)} label={<FormattedMessage id="project.stretchings.fields.crotch" />} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeStretching(10, handleChange, triceps, dispatch)} label={<FormattedMessage id="project.stretchings.fields.triceps" />} />
+                </Tabs>
+            </Box>
+            <Box
+                sx={{
+                    maxWidth: { xs: 320, sm: 480 },
+                    margin: 'auto',  // Centra horizontalmente
+                    textAlign: 'center', // Centra el contenido dentro del Box
+                }}>
+                <IconButton >
+                    <AddCircleOutlineIcon sx={{
+                        margin: 'auto',  // Centra horizontalmente
+                        textAlign: 'center', // Centra el contenido dentro del Box
+                        fontSize: "70px",
+                        bgcolor: "linear-gradient(147deg,#ffffff ,#4400f9,#000000 35% 70%,#660bd8,#ffffff)",
+                        color: "white"
+                    }}
+                        onClick={() => history(`/stretchings/addStretching`)}
+                    >
+                    </AddCircleOutlineIcon>
+                </IconButton>
+                <Pager
+                    back={{
+                        enabled: stretchingsSearch && stretchingsSearch.criteria && stretchingsSearch.criteria.page >= 1,
+                        onClick: () => previousFindAllStretchingsResultPage(dispatch)
+                    }}
+                    next={{
+                        enabled: stretchingsSearch && stretchingsSearch.result && stretchingsSearch.result.existMoreItems,
+
+                        onClick: () => nextFindAllStretchingsResultPage(dispatch)
+                    }} />
+            </Box>
+            {stretchingsSearch && stretchingsSearch.result && (
+                <Stretchings stretchings={stretchingsSearch.result.items} />
+            )}
         </div>
-
     );
 
 }
