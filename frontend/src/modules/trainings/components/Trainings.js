@@ -59,66 +59,131 @@ function TrainingsList({ items, exercisesList, stretchingsList, teamId, fallback
         return fallback;
     } else {
         return items.map(item => {
-          return <div className="images-teams" key={item.id}>
-            
-            <div class="">
-              <div class="card hola trainjeje">
-                <img src={bigBall} alt="Person" class="card__image entreno"></img>
-                <p class="card__name">{item.objective}</p>
-                <p class="card__name">                
-                <FormattedDate
-                    value={ item.trainingDate }
-                    year="numeric"
-                    month="long"
-                    day="numeric"
-                /> 
-                </p>
-                <div class="grid-container">
+            return <div key={item.id}>
+            <div>
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <div class="card_training">
+                      <img src={bigBall} alt="Person" class="card__image_training"></img>
+                      <span class="title">{item.objective}</span>
+                      <div class="buttons">
+                <button class="post">{
+                  <FormattedDate
+                     value={ item.trainingDate }
+                     year="numeric"
+                     month="long"
+                     day="numeric"
+                 /> }
+                 </button>
+              </div>
+                    </div>
+                  </div>
+                  <div class="flip-card-back">
+                    <div class="card_training">
+                    <span class="desc">{item.durationMinutes}</span>
+                  <a href="#" class="button">
+                    <span class="desc">{item.description}</span>
+                  </a>
+                    </div>
+                    <ul class="social-icons trashgrande trash_position">
+                    <li><a type="button" onClick={() => handleRemoveTraining(item.id, dispatch, history)}>
+                      <i class="fa fa-trash"></i></a></li>
+                    </ul>
+                    <ul class="social-icons configgrande config_position">
+                        <li><a type="button" onClick={() => handleUpdateTraining(item.id, dispatch, history)}>
+                        <i class="fa fa-wrench"></i></a></li>
+                    </ul>
+                  </div>
                 </div>
-                <ul class="social-icons lesiongrande">
-                <li><a type="button" onClick={() => handleRemoveTraining(item.id, dispatch, history)}>
-                  <i class="fa fa-trash"></i></a></li>
-                  
-                  <li><a type="button" onClick={() => handleViewTraining(item.id, dispatch, history)}>
-                    <i class="fa fa-address-book"></i></a></li>
-                    <li><a type="button" onClick={() => handleUpdateTraining(item.id, dispatch, history)}>
-                    <i class="fa fa-wrench"></i></a></li>
-                  <li><a href="#"><i class="fa fa-codepen"></i></a></li>
-                </ul>
-
-                {/* <div class="dropdown">
-                <button class="btn-player draw-border">Change Team</button>
-                            <div class="dropdown-content">
-                            {playersList.map(team => 
-                                        <a type="button" onClick={() => handleFindPlayersByTraining(item.id, team.id, dispatch, history)}> 
-                                            {team.id} : {"  "}{team.teamName}
-                                        </a>)}
-                            </div>
-                </div> */}
-                <div class="dropdown">
-                <button class="btn-player draw-border"><FormattedMessage id="project.stretchings.fields.addStretching"/></button>
-                            <div class="dropdown-content">
-                            {stretchingsList.map(stretching => 
-                                        <a type="button" onClick={() => handleAddStretchingToTraining(item.id, stretching.id, dispatch, history)}> 
-                                            {stretching.id} : {" Rival: "}{stretching.stretchingName}
-                                        </a>)}
-                            </div>
-                </div>
-                <div class="dropdown">
-                <button class="btn-player draw-border"><FormattedMessage id="project.exercises.fields.addExercise"/></button>
-                            <div class="dropdown-content">
-                            {exercisesList.map(exercise => 
-                                        <a type="button" onClick={() => handleAddExerciseToTraining(item.id, exercise.id, dispatch, history)}> 
-                                            {exercise.id} : {exercise.exerciseName}
-                                        </a>)}
-                            </div>
-                </div>
-                <button class="btn-player draw-border" type="button" onClick={() => handleFindPlayersByTraining(item.id, teamId,dispatch, history)}><FormattedMessage id="project.players.fields.players"/></button>
-                <button class="btn-player draw-border" type="button" onClick={() => handleFindStretchingsByTraining(item.id, dispatch, history)}><FormattedMessage id="project.stretchings.fields.myStretchings"/></button>
-                <button class="btn-player draw-border" type="button" onClick={() => handleFindExercisesByTraining(item.id, dispatch, history)}><FormattedMessage id="project.exercises.fields.myExercises"/></button>
               </div>
             </div>
           </div>;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          // return <div className="images-teams" key={item.id}>
+            
+          //   <div class="">
+          //     <div class="card hola trainjeje">
+          //       <img src={bigBall} alt="Person" class="card__image entreno"></img>
+          //       <p class="card__name">{item.objective}</p>
+          //       <p class="card__name">                
+          //       <FormattedDate
+          //           value={ item.trainingDate }
+          //           year="numeric"
+          //           month="long"
+          //           day="numeric"
+          //       /> 
+          //       </p>
+          //       <div class="grid-container">
+          //       </div>
+          //       <ul class="social-icons lesiongrande">
+          //       <li><a type="button" onClick={() => handleRemoveTraining(item.id, dispatch, history)}>
+          //         <i class="fa fa-trash"></i></a></li>
+                  
+          //         <li><a type="button" onClick={() => handleViewTraining(item.id, dispatch, history)}>
+          //           <i class="fa fa-address-book"></i></a></li>
+          //           <li><a type="button" onClick={() => handleUpdateTraining(item.id, dispatch, history)}>
+          //           <i class="fa fa-wrench"></i></a></li>
+          //         <li><a href="#"><i class="fa fa-codepen"></i></a></li>
+          //       </ul>
+
+          //       {/* <div class="dropdown">
+          //       <button class="btn-player draw-border">Change Team</button>
+          //                   <div class="dropdown-content">
+          //                   {playersList.map(team => 
+          //                               <a type="button" onClick={() => handleFindPlayersByTraining(item.id, team.id, dispatch, history)}> 
+          //                                   {team.id} : {"  "}{team.teamName}
+          //                               </a>)}
+          //                   </div>
+          //       </div> */}
+          //       <div class="dropdown">
+          //       <button class="btn-player draw-border"><FormattedMessage id="project.stretchings.fields.addStretching"/></button>
+          //                   <div class="dropdown-content">
+          //                   {stretchingsList.map(stretching => 
+          //                               <a type="button" onClick={() => handleAddStretchingToTraining(item.id, stretching.id, dispatch, history)}> 
+          //                                   {stretching.id} : {" Rival: "}{stretching.stretchingName}
+          //                               </a>)}
+          //                   </div>
+          //       </div>
+          //       <div class="dropdown">
+          //       <button class="btn-player draw-border"><FormattedMessage id="project.exercises.fields.addExercise"/></button>
+          //                   <div class="dropdown-content">
+          //                   {exercisesList.map(exercise => 
+          //                               <a type="button" onClick={() => handleAddExerciseToTraining(item.id, exercise.id, dispatch, history)}> 
+          //                                   {exercise.id} : {exercise.exerciseName}
+          //                               </a>)}
+          //                   </div>
+          //       </div>
+          //       <button class="btn-player draw-border" type="button" onClick={() => handleFindPlayersByTraining(item.id, teamId,dispatch, history)}><FormattedMessage id="project.players.fields.players"/></button>
+          //       <button class="btn-player draw-border" type="button" onClick={() => handleFindStretchingsByTraining(item.id, dispatch, history)}><FormattedMessage id="project.stretchings.fields.myStretchings"/></button>
+          //       <button class="btn-player draw-border" type="button" onClick={() => handleFindExercisesByTraining(item.id, dispatch, history)}><FormattedMessage id="project.exercises.fields.myExercises"/></button>
+          //     </div>
+          //   </div>
+          // </div>;
         });
       }
 }
@@ -129,65 +194,128 @@ function TrainingsListUser({ items, exercisesList, stretchingsList, fallback, di
       return fallback;
   } else {
       return items.map(item => {
-        return <div className="images-teams" key={item.id}>
-          
-          <div class="">
-            <div class="card hola trainjeje">
-              <img src={bigBall} alt="Person" class="card__image entreno"></img>
-              <p class="card__name">{item.objective}</p>
-              <p class="card__name">                
-              <FormattedDate
-                  value={ item.trainingDate }
-                  year="numeric"
-                  month="long"
-                  day="numeric"
-              /> 
-              </p>
-              <div class="grid-container">
+    return <div key={item.id}>
+    <div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div class="card_training">
+              <img src={bigBall} alt="Person" class="card__image_training"></img>
+              <span class="title">{item.objective}</span>
+              <div class="buttons">
+                <button class="post">{
+                  <FormattedDate
+                     value={ item.trainingDate }
+                     year="numeric"
+                     month="long"
+                     day="numeric"
+                 /> }
+                 </button>
               </div>
-              <ul class="social-icons lesiongrande">
-              <li><a type="button" onClick={() => handleRemoveTraining(item.id, dispatch, history)}>
-                <i class="fa fa-trash"></i></a></li>
-                
-                <li><a type="button" onClick={() => handleViewTraining(item.id, dispatch, history)}>
-                  <i class="fa fa-address-book"></i></a></li>
-                  <li><a type="button" onClick={() => handleUpdateTraining(item.id, dispatch, history)}>
-                  <i class="fa fa-wrench"></i></a></li>
-                <li><a href="#"><i class="fa fa-codepen"></i></a></li>
-              </ul>
-
-              {/* <div class="dropdown">
-              <button class="btn-player draw-border">Change Team</button>
-                          <div class="dropdown-content">
-                          {playersList.map(team => 
-                                      <a type="button" onClick={() => handleFindPlayersByTraining(item.id, team.id, dispatch, history)}> 
-                                          {team.id} : {"  "}{team.teamName}
-                                      </a>)}
-                          </div>
-              </div> */}
-                <div class="dropdown">
-                <button class="btn-player draw-border"><FormattedMessage id="project.stretchings.fields.addStretching"/></button>
-                            <div class="dropdown-content">
-                            {stretchingsList.map(stretching => 
-                                        <a type="button" onClick={() => handleAddStretchingToTraining(item.id, stretching.id, dispatch, history)}> 
-                                            {stretching.id} : {" Rival: "}{stretching.stretchingName}
-                                        </a>)}
-                            </div>
-                </div>
-                <div class="dropdown">
-                <button class="btn-player draw-border"><FormattedMessage id="project.exercises.fields.addExercise"/></button>
-                            <div class="dropdown-content">
-                            {exercisesList.map(exercise => 
-                                        <a type="button" onClick={() => handleAddExerciseToTraining(item.id, exercise.id, dispatch, history)}> 
-                                            {exercise.id} : {exercise.exerciseName}
-                                        </a>)}
-                            </div>
-                </div>
-                <button class="btn-player draw-border" type="button" onClick={() => handleFindStretchingsByTraining(item.id, dispatch, history)}><FormattedMessage id="project.stretchings.fields.myStretchings"/></button>
-                <button class="btn-player draw-border" type="button" onClick={() => handleFindExercisesByTraining(item.id, dispatch, history)}><FormattedMessage id="project.exercises.fields.myExercises"/></button>
             </div>
           </div>
-        </div>;
+          <div class="flip-card-back">
+            <div class="card_training">
+            <span class="desc">{item.durationMinutes}</span>
+          <a href="#" class="button">
+            <span class="desc">{item.description}</span>
+          </a>
+            </div>
+            <ul class="social-icons trashgrande trash_position">
+            <li><a type="button" onClick={() => handleRemoveTraining(item.id, dispatch, history)}>
+              <i class="fa fa-trash"></i></a></li>
+            </ul>
+            <ul class="social-icons configgrande config_position">
+                <li><a type="button" onClick={() => handleUpdateTraining(item.id, dispatch, history)}>
+                <i class="fa fa-wrench"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      //   return <div className="images-teams" key={item.id}>
+          
+      //     <div class="">
+      //       <div class="card hola trainjeje">
+      //         <img src={bigBall} alt="Person" class="card__image entreno"></img>
+      //         <p class="card__name">{item.objective}</p>
+      //         <p class="card__name">                
+      //         <FormattedDate
+      //             value={ item.trainingDate }
+      //             year="numeric"
+      //             month="long"
+      //             day="numeric"
+      //         /> 
+      //         </p>
+      //         <div class="grid-container">
+      //         </div>
+      //         <ul class="social-icons lesiongrande">
+      //         <li><a type="button" onClick={() => handleRemoveTraining(item.id, dispatch, history)}>
+      //           <i class="fa fa-trash"></i></a></li>
+                
+      //           <li><a type="button" onClick={() => handleViewTraining(item.id, dispatch, history)}>
+      //             <i class="fa fa-address-book"></i></a></li>
+      //             <li><a type="button" onClick={() => handleUpdateTraining(item.id, dispatch, history)}>
+      //             <i class="fa fa-wrench"></i></a></li>
+      //           <li><a href="#"><i class="fa fa-codepen"></i></a></li>
+      //         </ul>
+
+      //         {/* <div class="dropdown">
+      //         <button class="btn-player draw-border">Change Team</button>
+      //                     <div class="dropdown-content">
+      //                     {playersList.map(team => 
+      //                                 <a type="button" onClick={() => handleFindPlayersByTraining(item.id, team.id, dispatch, history)}> 
+      //                                     {team.id} : {"  "}{team.teamName}
+      //                                 </a>)}
+      //                     </div>
+      //         </div> */}
+      //           <div class="dropdown">
+      //           <button class="btn-player draw-border"><FormattedMessage id="project.stretchings.fields.addStretching"/></button>
+      //                       <div class="dropdown-content">
+      //                       {stretchingsList.map(stretching => 
+      //                                   <a type="button" onClick={() => handleAddStretchingToTraining(item.id, stretching.id, dispatch, history)}> 
+      //                                       {stretching.id} : {" Rival: "}{stretching.stretchingName}
+      //                                   </a>)}
+      //                       </div>
+      //           </div>
+      //           <div class="dropdown">
+      //           <button class="btn-player draw-border"><FormattedMessage id="project.exercises.fields.addExercise"/></button>
+      //                       <div class="dropdown-content">
+      //                       {exercisesList.map(exercise => 
+      //                                   <a type="button" onClick={() => handleAddExerciseToTraining(item.id, exercise.id, dispatch, history)}> 
+      //                                       {exercise.id} : {exercise.exerciseName}
+      //                                   </a>)}
+      //                       </div>
+      //           </div>
+      //           <button class="btn-player draw-border" type="button" onClick={() => handleFindStretchingsByTraining(item.id, dispatch, history)}><FormattedMessage id="project.stretchings.fields.myStretchings"/></button>
+      //           <button class="btn-player draw-border" type="button" onClick={() => handleFindExercisesByTraining(item.id, dispatch, history)}><FormattedMessage id="project.exercises.fields.myExercises"/></button>
+      //       </div>
+      //     </div>
+      //   </div>;
       });
     }
 }
@@ -218,13 +346,13 @@ const Trainings = ({trainings}) => {
 
     if (!team) {
       return(
-        <div className="card-group">
+        <div className="card-group lesions_contaner">
         <TrainingsListUser items={trainings} exercisesList={exercisesList} stretchingsList={stretchingsList} fallback={"Loading..."} dispatch = {dispatch} history={history} />
         </div>
     );
   } else {
       return(
-          <div className="card-group">
+          <div className="card-group lesions_contaner">
           <TrainingsList items={trainings} exercisesList={exercisesList} stretchingsList={stretchingsList}  teamId={team.id} fallback={"Loading..."} dispatch = {dispatch} history={history} />
           </div>
       );

@@ -148,7 +148,7 @@ const TrainingHome = () => {
                         bgcolor: "linear-gradient(147deg,#ffffff ,#4400f9,#000000 35% 70%,#660bd8,#ffffff)",
                         color: "white"
                     }}
-                        onClick={() => history(`/stretchings/addStretching`)}
+                        onClick={() => history(`/trainings/addTraining`)}
                     >
                     </AddCircleOutlineIcon>
                 </IconButton>
