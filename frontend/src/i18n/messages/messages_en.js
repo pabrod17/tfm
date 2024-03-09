@@ -280,5 +280,8 @@ export default {
     'project.trainings.fields.training' : 'Training',
     'project.trainings.fields.durationOnly' : 'Duration',
 
-
+    //sidebar
+    'project.sidebar.fields.club' : 'Club',
+    'project.sidebar.fields.events' : 'Events',
+    'project.sidebar.fields.physicalHealth' : 'Physical Health',
 }

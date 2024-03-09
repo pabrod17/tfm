@@ -26,6 +26,7 @@ import * as actionStretchings from '../..//stretchings/actions';
 import * as actionExercises from '../..//exercises/actions';
 import * as actionsTeams from '../../teams/actions';
 import * as actionsSeasons from '../../seasons/actions';
+import { FormattedMessage } from 'react-intl';
 
 
 
@@ -193,8 +194,9 @@ const Sidebar = () => {
             <Typography
               variant="h6"
               sx={{ m: "15px 0 5px 20px" }}
+              color={"blue"}
             >
-              Data
+              <FormattedMessage id="project.sidebar.fields.club"/>
             </Typography>
             <Item
               title="Teams"
@@ -215,6 +217,14 @@ const Sidebar = () => {
               onClick={() => handleMenuOption()}
               dispatch={dispatch}
             />
+
+            <Typography
+              variant="h6"
+              sx={{ m: "15px 0 5px 20px" }}
+              color={"red"}
+            >
+              <FormattedMessage id="project.sidebar.fields.events"/>
+            </Typography>
             <Item
               title="Games"
               to="/games/home"
@@ -237,8 +247,9 @@ const Sidebar = () => {
             <Typography
               variant="h6"
               sx={{ m: "15px 0 5px 20px" }}
+              color={"pink"}
             >
-              Pages
+              <FormattedMessage id="project.sidebar.fields.physicalHealth"/>
             </Typography>
             <Item
               title="Lesion"
@@ -271,6 +282,7 @@ const Sidebar = () => {
             <Typography
               variant="h6"
               sx={{ m: "15px 0 5px 20px" }}
+              color={"orange"}
             >
               Charts
             </Typography>

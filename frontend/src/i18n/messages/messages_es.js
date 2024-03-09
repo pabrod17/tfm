@@ -262,4 +262,8 @@ export default {
     'project.trainings.fields.training' : 'Entrenamiento',
     'project.trainings.fields.durationOnly' : 'Duración',
 
+    //sidebar
+    'project.sidebar.fields.club' : 'Club',
+    'project.sidebar.fields.events' : 'Eventos',
+    'project.sidebar.fields.physicalHealth' : 'Salud Física',
 }
