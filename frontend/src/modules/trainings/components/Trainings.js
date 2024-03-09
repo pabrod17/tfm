@@ -83,7 +83,9 @@ function TrainingsList({ items, exercisesList, stretchingsList, teamId, fallback
                     <div class="card_training">
                     <span class="desc">{item.durationMinutes}</span>
                   <a href="#" class="button">
-                    <span class="desc">{item.description}</span>
+                  <span class="title">{item.durationMinutes} &nbsp;
+              <FormattedMessage id="project.statistics.fields.minutes"/>
+            </span>
                   </a>
                     </div>
                     <ul class="social-icons trashgrande trash_position">
@@ -216,9 +218,11 @@ function TrainingsListUser({ items, exercisesList, stretchingsList, fallback, di
           </div>
           <div class="flip-card-back">
             <div class="card_training">
-            <span class="desc">{item.durationMinutes}</span>
+            <span class="title">{item.durationMinutes} &nbsp;
+              <FormattedMessage id="project.statistics.fields.minutes"/>
+            </span>
           <a href="#" class="button">
-            <span class="desc">{item.description}</span>
+            <span class="desc desc2">{item.description}</span>
           </a>
             </div>
             <ul class="social-icons trashgrande trash_position">

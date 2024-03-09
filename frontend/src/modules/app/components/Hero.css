@@ -642,6 +642,11 @@ max-height: 360px;
   font-size: 13px;
 }
 
+.desc2 {
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+}
+
 .buttons {
   display: flex;
   align-items: center;
