@@ -180,7 +180,7 @@ export default {
     'project.statistics.fields.addGameStatistics' : 'Engadir Estatísticas Partido',
     'project.statistics.fields.addPlayerGameStatistics' : 'Engadir Estatísticas Jugador Partido',
 
-    'project.statistics.fields.duration' : 'Duración Minutos',
+    'project.statistics.fields.duration' : 'Duración',
     'project.statistics.fields.minutes' : 'Minutos',
 
     'project.statistics.fields.totalPointsRival' : 'Total Puntos Rival',

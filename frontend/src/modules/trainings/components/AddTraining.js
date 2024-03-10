@@ -33,14 +33,16 @@ import * as actionsTeams from '../../teams/actions';
 import * as selectorsSeasons from '../../seasons/selectors';
 import * as actionsSeasons from '../../seasons/actions';
 import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Grid';
-import TextField from '@mui/material/TextField';
+import { Box, Button, FilledInput, Grid, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { shadows } from '@mui/system';
+import bigBall from '../../trainings/components/bigBall.jpg';
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 
 const AddTraining = () => {
 	const dispatch = useDispatch();
@@ -157,186 +159,108 @@ const AddTraining = () => {
 			m={10}
 			sx={{
 				border: '2px solid grey',
-				background: "linear-gradient(-45deg, #290c28 0%, #302b63 100% )",
+				background: "linear-gradient(-45deg, #41295a 0%, #2F0743 100% )",
 				borderRadius: "20px",
 			}}
 		>
-			<Grid container spacing={2}>
+
+			<Grid container spacing={2}
+			>
 				<Grid item xs={6} md={6} >
+					<img src={bigBall} alt="Person" class="card__image_training_update_create"></img>
+
 					<Box
 						component="form"
 						sx={{
 							'& .MuiTextField-root': { m: 1, width: '25ch' },
+							background: "linear-gradient(-45deg, #f12711 0%, #f5af19 60% )",
+							borderRadius: "20px",
+							boxShadow: 12
 						}}
 						noValidate
 						autoComplete="off"
 					>
-						<div>
-							<TextField
-								required
-								id="outlined-required"
-								label="Required"
-								defaultValue="Hello World"
-							/>
-							<TextField
-								disabled
-								id="outlined-disabled"
-								label="Disabled"
-								defaultValue="Hello World"
-							/>
-							<TextField
-								id="outlined-password-input"
-								label="Password"
-								type="password"
-								autoComplete="current-password"
-							/>
-							<TextField
-								id="outlined-read-only-input"
-								label="Read Only"
-								defaultValue="Hello World"
-								InputProps={{
-									readOnly: true,
-								}}
-							/>
-							<TextField
-								id="outlined-number"
-								label="Number"
-								type="number"
-								InputLabelProps={{
-									shrink: true,
-								}}
-							/>
-							<TextField id="outlined-search" label="Search field" type="search" />
-							<TextField
-								id="outlined-helperText"
-								label="Helper text"
-								defaultValue="Default Value"
-								helperText="Some important text"
-							/>
-						</div>
-						<div>
-							<TextField
-								required
-								id="filled-required"
-								label="Required"
-								defaultValue="Hello World"
-								variant="filled"
-							/>
-							<TextField
-								disabled
-								id="filled-disabled"
-								label="Disabled"
-								defaultValue="Hello World"
-								variant="filled"
-							/>
-							<TextField
-								id="filled-password-input"
-								label="Password"
-								type="password"
-								autoComplete="current-password"
-								variant="filled"
-							/>
-							<TextField
-								id="filled-read-only-input"
-								label="Read Only"
-								defaultValue="Hello World"
-								InputProps={{
-									readOnly: true,
-								}}
-								variant="filled"
-							/>
-							<TextField
-								id="filled-number"
-								label="Number"
-								type="number"
-								InputLabelProps={{
-									shrink: true,
-								}}
-								variant="filled"
-							/>
-							<TextField
-								id="filled-search"
-								label="Search field"
-								type="search"
-								variant="filled"
-							/>
-							<TextField
-								id="filled-helperText"
-								label="Helper text"
-								defaultValue="Default Value"
-								helperText="Some important text"
-								variant="filled"
-							/>
-						</div>
-						<div>
-							<TextField
-								required
-								id="standard-required"
-								label="Required"
-								defaultValue="Hello World"
-								variant="standard"
-							/>
-							<TextField
-								disabled
-								id="standard-disabled"
-								label="Disabled"
-								defaultValue="Hello World"
-								variant="standard"
-							/>
-							<TextField
-								id="standard-password-input"
-								label="Password"
-								type="password"
-								autoComplete="current-password"
-								variant="standard"
-							/>
-							<TextField
-								id="standard-read-only-input"
-								label="Read Only"
-								defaultValue="Hello World"
-								InputProps={{
-									readOnly: true,
-								}}
-								variant="standard"
-							/>
-							<TextField
-								id="standard-number"
-								label="Number"
-								type="number"
-								InputLabelProps={{
-									shrink: true,
-								}}
-								variant="standard"
-							/>
-							<TextField
-								id="standard-search"
-								label="Search field"
-								type="search"
-								variant="standard"
-							/>
-							<TextField
-								id="standard-helperText"
-								label="Helper text"
-								defaultValue="Default Value"
-								helperText="Some important text"
-								variant="standard"
-							/>
-						</div>
-						<Button variant="contained" color="success">
-							Success
-						</Button>
+						<Grid container spacing={2}>
+							<Grid item xs={12}>
+
+								{/* <div className='form_add_training_general'> */}
+								<Box
+									component="form"
+									sx={{
+										'& .MuiTextField-root': { mb: 2, width: '100%' },
+										margin: '50px', // Centra el formulario en la pantalla
+									}}
+									noValidate
+									autoComplete="off"
+								>
+								<h4 class="margin_training_form"
+								><FormattedMessage id="project.global.fields.date"/></h4>
+									<LocalizationProvider dateAdapter={AdapterDayjs}>
+												<DemoContainer components={['DatePicker']}>
+													<DatePicker
+														value={trainingDate}
+														onChange={(trainingDate) => setTrainingDate(trainingDate)}
+													/>     
+													 </DemoContainer>
+									</LocalizationProvider>
+									<h4 class="margin_training_form"
+								><FormattedMessage id="project.statistics.fields.duration"/></h4>
+									<LocalizationProvider dateAdapter={AdapterDayjs}>
+												<DemoContainer components={['DatePicker']}>
+												<TimePicker label="Basic time picker" />
+													 </DemoContainer>
+									</LocalizationProvider>
+									<TextField
+										id="outlined-multiline-static-1"
+										label={<FormattedMessage id="project.exercises.fields.description" />}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										multiline
+										rows={4}
+										sx={{
+											border: '2px solid grey',
+											background: "linear-gradient(-45deg, #41295a 0%, #2F0743 100% )",
+											borderRadius: "20px",
+										}}
+									/>
+
+									<TextField
+										id="outlined-multiline-static-1"
+										label={<FormattedMessage id="project.trainings.fields.objective"/>}//Objetivo
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										multiline
+										rows={4}
+										sx={{
+											border: '2px solid grey',
+											background: "linear-gradient(-45deg, #41295a 0%, #2F0743 100% )",
+											borderRadius: "20px",
+										}}
+									/>
+
+									<Button variant="contained" color="success">
+										Success
+									</Button>
+								</Box>
+							</Grid>
+						</Grid>
 					</Box>  </Grid>
 				<Grid item xs={6} md={6} >
 					<Typography
-						sx={{ flex: '1 1 100%' }}
+						sx={{ flex: '1 1 100%', mt: 10, color:"white" }}
 						variant="h6"
 						id="tableTitle"
 						component="div"
 					>
 						Team Selection
 					</Typography>
-					<div style={{ height: 400, width: '100%' }}>
+					<div style={{ height: 400, width: '100%', }}>
 						<DataGrid
+							sx={{
+								background: "linear-gradient(-45deg, #f12711 0%, #f5af19 100% )",
+								borderRadius: "20px",
+								boxShadow: 12
+							}}
 							rows={rows}
 							columns={columns}
 							initialState={{
@@ -353,50 +277,56 @@ const AddTraining = () => {
 									setRowSelectionModelTeam(newRowSelectionModelTeam);
 								}
 								console.log("qwqwqw: ", rowSelectionModelTeam)
-							  }}
+							}}
 						/>
 					</div>
 					<Grid item >
-					<Typography
-						sx={{ flex: '1 1 100%', mt: 3.5 }}
-						variant="h6"
-						id="tableTitle"
-						component="div"
-					>
-						Season Selection
-					</Typography>
-					<div style={{ height: 400, width: '100%' }}>
-						<DataGrid
-							rows={rows}
-							columns={columns}
-							initialState={{
-								pagination: {
-									paginationModel: { page: 0, pageSize: 5 },
-								},
-							}}
-							pageSizeOptions={[5, 10]}
-							checkboxSelection
-							rowSelectionModel={rowSelectionModelSeason}
-							onRowSelectionModelChange={(newRowSelectionModelSeason) => {
-								if (newRowSelectionModelSeason.length <= 1) {
-									setRowSelectionModelSeason(newRowSelectionModelSeason);
-									console.log(" 111111: ", newRowSelectionModelSeason)
-									setSeasonId((prevSeasonId) => {
-										console.log(" seasonnnn PRIMEROOOOO: ", newRowSelectionModelSeason);
-										return newRowSelectionModelSeason;
-									  });								} else {
-									setRowSelectionModelSeason(newRowSelectionModelSeason[newRowSelectionModelSeason.length-1]);
-									console.log(" 22222: ", newRowSelectionModelSeason[newRowSelectionModelSeason.length-1])
-									setSeasonId((prevSeasonId) => {
-										console.log(" seasonnnn SEGIMDPOPPPPP: ", newRowSelectionModelSeason[newRowSelectionModelSeason.length-1]);
-										return newRowSelectionModelSeason[newRowSelectionModelSeason.length-1];
-									  });
-								}
+						<Typography
+							sx={{ flex: '1 1 100%', mt: 3.5, color:"white" }}
+							variant="h6"
+							id="tableTitle"
+							component="div"
+						>
+							Season Selection
+						</Typography>
+						<div style={{ height: 400, width: '100%' }}>
+							<DataGrid
+								sx={{
+									background: "linear-gradient(-45deg, #f12711 0%, #f5af19 100% )",
+									borderRadius: "20px",
+									boxShadow: 12
+								}}
+								rows={rows}
+								columns={columns}
+								initialState={{
+									pagination: {
+										paginationModel: { page: 0, pageSize: 5 },
+									},
+								}}
+								pageSizeOptions={[5, 10]}
+								checkboxSelection
+								rowSelectionModel={rowSelectionModelSeason}
+								onRowSelectionModelChange={(newRowSelectionModelSeason) => {
+									if (newRowSelectionModelSeason.length <= 1) {
+										setRowSelectionModelSeason(newRowSelectionModelSeason);
+										console.log(" 111111: ", newRowSelectionModelSeason)
+										setSeasonId((prevSeasonId) => {
+											console.log(" seasonnnn PRIMEROOOOO: ", newRowSelectionModelSeason);
+											return newRowSelectionModelSeason;
+										});
+									} else {
+										setRowSelectionModelSeason(newRowSelectionModelSeason[newRowSelectionModelSeason.length - 1]);
+										console.log(" 22222: ", newRowSelectionModelSeason[newRowSelectionModelSeason.length - 1])
+										setSeasonId((prevSeasonId) => {
+											console.log(" seasonnnn SEGIMDPOPPPPP: ", newRowSelectionModelSeason[newRowSelectionModelSeason.length - 1]);
+											return newRowSelectionModelSeason[newRowSelectionModelSeason.length - 1];
+										});
+									}
 
-							  }}
-						/>
-					</div>
-				</Grid>
+								}}
+							/>
+						</div>
+					</Grid>
 				</Grid>
 			</Grid>
 		</Box>

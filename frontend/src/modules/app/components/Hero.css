@@ -490,6 +490,14 @@ max-height: 360px;
   box-shadow: 0 10px 50px rgb(255, 217, 0);
 }
 
+.card__image_training_update_create {
+  height: 160px;
+  width: 160px;
+  border-radius: 50%;
+  margin-bottom: 50px;
+  border: 5px solid #272133;
+  box-shadow: 0 10px 50px rgb(255, 111, 0);}
+
 .card__image_stretching_update_create {
   height: 160px;
   width: 160px;
@@ -499,6 +507,11 @@ max-height: 360px;
   border: 5px solid #272133;
   margin-top: 20px;
   box-shadow: 0 10px 50px rgb(255, 255, 255);
+}
+
+.form_add_training_general {
+  border-radius: 20px;
+  box-shadow: 0 10px 50px rgb(255, 0, 0);
 }
 
 .card__image_lesion {
@@ -651,6 +664,10 @@ max-height: 360px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.margin_training_form {
+  margin-left: 10px;
 }
 
 .button {

@@ -192,7 +192,7 @@ export default {
     'project.statistics.fields.addGameStatistics' : 'Add Game Statistics',
     'project.statistics.fields.addPlayerGameStatistics' : 'Add Player Game Statistics',
 
-    'project.statistics.fields.duration' : 'Duration Minutes',
+    'project.statistics.fields.duration' : 'Duration',
     'project.statistics.fields.minutes' : 'Minutes',
 
     'project.statistics.fields.totalPointsRival' : 'Total Points Rival',
