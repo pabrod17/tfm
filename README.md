@@ -143,4 +143,8 @@ Exercise home final design:
 
 Stretching home final design:
 
-![ToolBare](stretchingHome.png)
+![ToolBare](stretchingHome1.png)
+
+Trainings home final design:
+
+![ToolBare](trainingHome.png)
