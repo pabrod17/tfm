@@ -133,11 +133,7 @@
 
 
 .login-box {
-  position: relative;
-  top: 65%;
-  left: 50%;
   padding: 40px;
-  transform: translate(-50%, -50%);
 border-radius: 20px;
 background-color: rgba(0, 89, 255, 0.25);
 box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
@@ -145,11 +141,7 @@ box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
 }
 
 .login-box-exercise {
-  position: relative;
-  top: 65%;
-  left: 50%;
   padding: 40px;
-  transform: translate(-50%, -50%);
 border-radius: 20px;
 background-color: rgba(255, 0, 0, 0.25);
 box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
@@ -157,11 +149,7 @@ box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
 }
 
 .login-box-stretching {
-  position: relative;
-  top: 65%;
-  left: 50%;
   padding: 40px;
-  transform: translate(-50%, -50%);
 border-radius: 20px;
 background-color: rgba(255, 0, 221, 0.25);
 box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);

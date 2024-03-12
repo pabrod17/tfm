@@ -52,7 +52,22 @@ const AddStretching = () => {
     };
 
     return (
-
+		<Box
+			my={4}
+			display="flex"
+			alignItems="center"
+			gap={4}
+			p={5}
+			m={10}
+			sx={{
+				border: '2px solid grey',
+				bgcolor: "#23192d",
+				borderRadius: "20px",
+				flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
+				flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
+                boxShadow:"0 15px 65px rgba(0, 0, 0, 0.5)"
+			}}
+		>
         <div className='login-box-stretching' >
             <Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
             <img src={estiramientos} alt="Person" class="card__image_stretching_update_create"></img>
@@ -141,6 +156,7 @@ const AddStretching = () => {
                 </Grid>
             </Box>
         </div>
+        </Box>
     );
 }
 
