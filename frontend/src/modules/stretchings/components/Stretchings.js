@@ -54,7 +54,7 @@ const StretchingCard = ({ dispatch, history, item, handleOpenDescriptionModal, h
             <div className="flip-card-back">
               <div className="card_stretching">
                 <a onClick={() => handleOpenDescriptionModal(item.description)} class="button_apple ">
-                  <span className="desc scroll_efect">{item.description}</span>
+                  <span className="desc scroll_efect_stretching">{item.description}</span>
                 </a>
                 <hr></hr>
               </div>
@@ -116,7 +116,7 @@ const Stretchings = ({stretchings}) => {
           aria-describedby="child-modal-description"
         >
           <Box sx={{ ...style, width: "auto" }}>
-            <h2 id="child-modal-title" className="color_modal_title_lesion" sx={{ mb: '100px' }} ><FormattedMessage id="project.exercises.fields.description" />:</h2>
+            <h2 id="child-modal-title" className="color_modal_title_stretching" sx={{ mb: '100px' }} ><FormattedMessage id="project.exercises.fields.description" />:</h2>
             <p id="child-modal-description">
               {modalDescription}
             </p>

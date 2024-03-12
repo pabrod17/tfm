@@ -56,12 +56,12 @@ const ExerciseCard = ({ dispatch, history, item, handleOpenDescriptionModal, han
             </div>
             <div className="flip-card-back">
               <div className="card_exercise">
-                <a onClick={() => handleOpenDescriptionModal(item.description)} class=" scroll_efect">
-                  <span className="desc">{item.description}</span>
+                <a onClick={() => handleOpenDescriptionModal(item.description)} class="without_underline">
+                  <span className="desc scroll_efect">{item.description}</span>
                 </a>
                 <hr></hr>
-                <a onClick={() => handleOpenObjectiveModal(item.objective)} class="button_apple scroll_efect_objective" >
-                  <span class="desc">{item.objective}</span>
+                <a onClick={() => handleOpenObjectiveModal(item.objective)} class="button_apple" >
+                  <span class="desc scroll_efect_objective">{item.objective}</span>
                 </a>
                 <hr></hr>
               </div>
