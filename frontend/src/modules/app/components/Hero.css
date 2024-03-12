@@ -639,6 +639,20 @@ max-height: 360px;
 }
 
 
+.post_training {
+  width: 100%;
+  padding: 10px;
+  margin-top: 7px;
+  border: none;
+  border-radius: 11px;
+  font-size: 22px;
+  font-family: Sans-serif;
+  color: #fff;
+  background-size: 200% 100%;
+  background: linear-gradient(180deg,#10ff00,#000000);
+  transition: 0.3s ease-out;
+  margin-right: 50px;
+}
 .post {
   width: 100%;
   padding: 10px;

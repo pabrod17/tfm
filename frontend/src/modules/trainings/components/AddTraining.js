@@ -164,9 +164,9 @@ const AddTraining = () => {
 			}}
 		>
 
-			<Grid container margin={5} spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}
+			<Grid container margin={5} spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
 			>
-				<Grid item xs={6} md={6} >
+				<Grid item xs={12} md={12} >
 					<img src={bigBall} alt="Person" class="card__image_training_update_create"></img>
 
 					<Box
@@ -175,7 +175,7 @@ const AddTraining = () => {
 							'& .MuiTextField-root': { m: 1, width: '25ch' },
 							background: "linear-gradient(-45deg, #f5af19 0%, #f12711 100% )",
 							borderRadius: "20px",
-							boxShadow: 12
+							boxShadow: 12,
 						}}
 						noValidate
 						autoComplete="off"
@@ -189,26 +189,46 @@ const AddTraining = () => {
 									sx={{
 										'& .MuiTextField-root': { mb: 2, width: '100%' },
 										margin: '50px', // Centra el formulario en la pantalla
+
 									}}
 									noValidate
 									autoComplete="off"
 								>
-								<h4 class="margin_training_form"
-								><FormattedMessage id="project.global.fields.date"/></h4>
+									<h4 class="margin_training_form"
+									><FormattedMessage id="project.global.fields.date" /></h4>
 									<LocalizationProvider dateAdapter={AdapterDayjs}>
-												<DemoContainer components={['DatePicker']}>
-													<DatePicker
-														value={trainingDate}
-														onChange={(trainingDate) => setTrainingDate(trainingDate)}
-													/>     
-													 </DemoContainer>
+										<DemoContainer components={['DatePicker']}>
+											<DatePicker
+												sx={{
+													border: '2px solid grey',
+													background: "linear-gradient(-45deg, #41295a 0%, #2F0743 100% )",
+													borderRadius: "20px",
+													colorAdjust: "#00bfff",
+													'& input': { color: 'white' }
+												}}
+
+
+
+												value={trainingDate}
+												onChange={(trainingDate) => setTrainingDate(trainingDate)}
+											/>
+										</DemoContainer>
 									</LocalizationProvider>
 									<h4 class="margin_training_form"
-								><FormattedMessage id="project.statistics.fields.duration"/></h4>
+									><FormattedMessage id="project.statistics.fields.duration" /></h4>
 									<LocalizationProvider dateAdapter={AdapterDayjs}>
-												<DemoContainer components={['DatePicker']}>
-												<TimePicker label="Basic time picker" />
-													 </DemoContainer>
+										<DemoContainer components={['DatePicker']}>
+											<TimePicker
+												sx={{
+													border: '2px solid grey',
+													background: "linear-gradient(-45deg, #41295a 0%, #2F0743 100% )",
+													borderRadius: "20px",
+													'& label': { color: 'white' },
+													'& input': { color: 'white' }
+												}}
+
+												label="Basic time picker" />
+										</DemoContainer>
 									</LocalizationProvider>
 									<TextField
 										id="outlined-multiline-static-1"
@@ -226,7 +246,7 @@ const AddTraining = () => {
 
 									<TextField
 										id="outlined-multiline-static-1"
-										label={<FormattedMessage id="project.trainings.fields.objective"/>}//Objetivo
+										label={<FormattedMessage id="project.trainings.fields.objective" />}//Objetivo
 										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
 										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
 										multiline
@@ -238,51 +258,53 @@ const AddTraining = () => {
 										}}
 									/>
 
-									<Button variant="contained" color="success">
-										Success
-									</Button>
+
 								</Box>
 							</Grid>
 						</Grid>
 					</Box>  </Grid>
-				<Grid item xs={6} md={6} >
-					<Typography
-						sx={{ flex: '1 1 100%', mt: 10, color:"#00bfff" }}
-						variant="h6"
-						id="tableTitle"
-						component="div"
-					>
-						Team Selection
-					</Typography>
-					<div style={{ height: 400, width: '100%', }}>
-						<DataGrid
-							sx={{
-								background: "linear-gradient(-45deg, #f12711 0%, #f5af19 100% )",
-								borderRadius: "20px",
-								boxShadow: 12
-							}}
-							rows={rows}
-							columns={columns}
-							initialState={{
-								pagination: {
-									paginationModel: { page: 0, pageSize: 5 },
-								},
-							}}
-							pageSizeOptions={[5, 10]}
-							checkboxSelection
-							rowSelectionModel={rowSelectionModelTeam}
-							onRowSelectionModelChange={(newRowSelectionModelTeam) => {
-								if (newRowSelectionModelTeam.length <= 1) {
-									console.log("qwqwqw 2222: ", newRowSelectionModelTeam)
-									setRowSelectionModelTeam(newRowSelectionModelTeam);
-								}
-								console.log("qwqwqw: ", rowSelectionModelTeam)
-							}}
-						/>
-					</div>
-					<Grid item >
+				<Grid container spacing={2}>
+				<Grid item xs={12} md={6}>
 						<Typography
-							sx={{ flex: '1 1 100%', mt: 3.5, color:"#00bfff" }}
+							sx={{ flex: '1 1 100%', mt: 3.5, color: "#00bfff", ml:2 }}
+							variant="h6"
+							id="tableTitle"
+							component="div"
+						>
+							Team Selection
+						</Typography>
+						<div style={{ height: 400, width: '100%', }}>
+							<DataGrid
+								sx={{
+									background: "linear-gradient(-45deg, #f12711 0%, #f5af19 100% )",
+									borderRadius: "20px",
+									boxShadow: 12,
+									ml:2
+								}}
+								rows={rows}
+								columns={columns}
+								initialState={{
+									pagination: {
+										paginationModel: { page: 0, pageSize: 5 },
+									},
+								}}
+								pageSizeOptions={[5, 10]}
+								checkboxSelection
+								rowSelectionModel={rowSelectionModelTeam}
+								onRowSelectionModelChange={(newRowSelectionModelTeam) => {
+									if (newRowSelectionModelTeam.length <= 1) {
+										console.log("qwqwqw 2222: ", newRowSelectionModelTeam)
+										setRowSelectionModelTeam(newRowSelectionModelTeam);
+									}
+									console.log("qwqwqw: ", rowSelectionModelTeam)
+								}}
+							/>
+						</div>
+					</Grid>
+
+					<Grid item xs={12} md={6}>
+						<Typography
+							sx={{ flex: '1 1 100%', mt: 3.5, color: "#00bfff" }}
 							variant="h6"
 							id="tableTitle"
 							component="div"
@@ -327,8 +349,12 @@ const AddTraining = () => {
 							/>
 						</div>
 					</Grid>
+
 				</Grid>
+
 			</Grid>
+			<button className="post_training"><FormattedMessage id="project.global.buttons.save" /></button>
+                  
 		</Box>
 
 
