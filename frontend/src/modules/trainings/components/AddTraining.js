@@ -157,7 +157,7 @@ const AddTraining = () => {
 			m={10}
 			sx={{
 				border: '2px solid grey',
-				background: "linear-gradient(-45deg, #41295a 0%, #2F0743 100% )",
+				background: "linear-gradient(-45deg, #41295a 0%, #2F0743 70% )",
 				borderRadius: "20px",
 				flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 				flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
@@ -173,7 +173,7 @@ const AddTraining = () => {
 						component="form"
 						sx={{
 							'& .MuiTextField-root': { m: 1, width: '25ch' },
-							background: "linear-gradient(-45deg, #f12711 0%, #f5af19 60% )",
+							background: "linear-gradient(-45deg, #f5af19 0%, #f12711 100% )",
 							borderRadius: "20px",
 							boxShadow: 12
 						}}
@@ -247,7 +247,7 @@ const AddTraining = () => {
 					</Box>  </Grid>
 				<Grid item xs={6} md={6} >
 					<Typography
-						sx={{ flex: '1 1 100%', mt: 10, color:"white" }}
+						sx={{ flex: '1 1 100%', mt: 10, color:"#00bfff" }}
 						variant="h6"
 						id="tableTitle"
 						component="div"
@@ -282,7 +282,7 @@ const AddTraining = () => {
 					</div>
 					<Grid item >
 						<Typography
-							sx={{ flex: '1 1 100%', mt: 3.5, color:"white" }}
+							sx={{ flex: '1 1 100%', mt: 3.5, color:"#00bfff" }}
 							variant="h6"
 							id="tableTitle"
 							component="div"
