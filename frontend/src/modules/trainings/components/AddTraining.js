@@ -149,8 +149,6 @@ const AddTraining = () => {
 
 	return (
 		<Box
-			height="45vw"
-			width="80vw"  // Ocupa el 100% del ancho de la pantalla
 			my={4}
 			display="flex"
 			alignItems="center"
@@ -161,10 +159,12 @@ const AddTraining = () => {
 				border: '2px solid grey',
 				background: "linear-gradient(-45deg, #41295a 0%, #2F0743 100% )",
 				borderRadius: "20px",
+				flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
+				flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
 			}}
 		>
 
-			<Grid container spacing={2}
+			<Grid container margin={5} spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}
 			>
 				<Grid item xs={6} md={6} >
 					<img src={bigBall} alt="Person" class="card__image_training_update_create"></img>

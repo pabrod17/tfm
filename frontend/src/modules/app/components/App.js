@@ -96,6 +96,8 @@ const App = () => {
         display="flex"
         flexDirection="column"  // Asegúrate de que sea una columna
         alignItems="center"
+        // justifyContent="center"
+
         width="100%"  // O ajusta el ancho según tus necesidades
 >            
 
