@@ -409,6 +409,22 @@ box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
   justify-content:center;
 }
 
+
+.color_modal_title {
+  color: rgb(255, 217, 0);
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Ajusta la opacidad según tus preferencias */
+  z-index: 999; /* Ajusta el índice z para asegurar que esté por encima del resto de los elementos */
+}
+
+
 .flip-card {
   background-color: transparent;
   width: 360px;
@@ -459,8 +475,20 @@ max-height: 360px;
 
 .flip-card-front {
   /* backdrop-filter: blur(10px) saturate(180%); */
-
 }
+
+.scroll_efect {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration: none; /* Elimina el subrayado */
+}
+
+.scroll_efect_objective {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration: none; /* Elimina el subrayado */
+}
+
 
 .flip-card-back {
   transform: rotateY(180deg);
@@ -652,8 +680,9 @@ max-height: 360px;
 
 .desc {
   color: rgb(151 153 167);
-  font-size: 13px;
+  font-size: 16px;
 }
+
 
 .desc2 {
   color: rgb(0, 0, 0);
@@ -679,12 +708,14 @@ max-height: 360px;
   text-decoration: none;
 }
 
-.button:first-child {
-  box-shadow: 0 4px 6px -1px #488aec31, 0 2px 4px -1px #488aec17;
-  background-color: #488aec;
-}
 
-.button:last-child {
+.button_apple {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  padding: 6px;
+  text-decoration: none;
   box-shadow: 0 4px 6px -1px #0b162531, 0 2px 4px -1px #0e192b17;
   background-color: #fff;
 }

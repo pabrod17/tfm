@@ -54,8 +54,8 @@ function LesionsList({ items, fallback, dispatch, history, open, setOpen, handle
               <div class="flip-card-back">
                 <div class="card">
                   <span class="desc">{item.description}</span>
-                  <a href="#" class="button">
-                    <span class="desc">{item.medication}</span>
+                  <a href="#" class="button ">
+                    <span class="desc ">{item.medication}</span>
                   </a>
                 </div>
                 <ul class="social-icons trashgrande trash_position">
