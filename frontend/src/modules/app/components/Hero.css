@@ -422,6 +422,10 @@ box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
   color: rgb(255, 255, 255);
 }
 
+.color_modal_title_training {
+  color: rgb(255, 111, 0);
+}
+
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -487,6 +491,15 @@ max-height: 360px;
 
 .without_underline {
   text-decoration: none; 
+}
+
+.scroll_efect_training {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration: none; 
+  display: -webkit-box;
+  -webkit-line-clamp: 5; /* Ajusta el número de líneas que deseas mostrar */
+  -webkit-box-orient: vertical;
 }
 
 .scroll_efect_stretching {
