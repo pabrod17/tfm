@@ -53,6 +53,7 @@ const App = () => {
         backgroundRepeat: 'no-repeat', // Evita la repetición de la imagen de fondo
         backgroundAttachment: 'fixed', // Fija la imagen de fondo
         backgroundSize: 'cover',
+        overflowX: 'hidden',
         width: 'auto',  // Ajusta el ancho según tus necedsidades
         height: 'auto', // Ajusta la altura según tus necesidades
         // background: `linear-gradient(to right, #0f0c29, #302b63, #24243e)`, // Define aquí tus colores
