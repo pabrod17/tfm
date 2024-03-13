@@ -7,7 +7,7 @@ public class TrainingDto {
     
     private Long id;
     private Date trainingDate;
-    private Integer durationMinutes;
+    private String durationMinutes;
     private String description;
     private String objective;
     private Long seasonTeam;
@@ -15,7 +15,7 @@ public class TrainingDto {
     public TrainingDto() {
     }
 
-    public TrainingDto(Long id, Date trainingDate, Integer durationMinutes, String description, String objective,
+    public TrainingDto(Long id, Date trainingDate, String durationMinutes, String description, String objective,
             Long seasonTeam) {
         this.id = id;
         this.trainingDate = trainingDate;
@@ -41,11 +41,11 @@ public class TrainingDto {
         this.trainingDate = trainingDate;
     }
 
-    public Integer getDurationMinutes() {
+    public String getDurationMinutes() {
         return durationMinutes;
     }
 
-    public void setDurationMinutes(Integer durationMinutes) {
+    public void setDurationMinutes(String durationMinutes) {
         this.durationMinutes = durationMinutes;
     }
 

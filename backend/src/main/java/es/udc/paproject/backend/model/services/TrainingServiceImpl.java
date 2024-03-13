@@ -52,7 +52,7 @@ public class TrainingServiceImpl implements TrainingService {
     private SeasonTeamDao seasonTeamDao;
     
     @Override
-    public Training addTraining(Long teamId, Long seasonId, LocalDateTime trainingDate, Integer durationMinutes,
+    public Training addTraining(Long teamId, Long seasonId, LocalDateTime trainingDate, String durationMinutes,
             String description, String objective) throws InstanceNotFoundException {
 
                 Training training = null;
@@ -365,7 +365,7 @@ public class TrainingServiceImpl implements TrainingService {
     }
 
     @Override
-    public Training updateTraining(Long trainingId, LocalDateTime trainingDate, Integer durationMinutes, String description,
+    public Training updateTraining(Long trainingId, LocalDateTime trainingDate, String durationMinutes, String description,
             String objective) throws InstanceNotFoundException {
 
         if (!trainingDao.existsById(trainingId)) {
