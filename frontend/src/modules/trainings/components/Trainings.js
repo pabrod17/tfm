@@ -68,6 +68,21 @@ const style = {
 
 };
 
+function obtenerHoraFormateada(fechaHoraString) {
+  // Crear un objeto Date a partir de la cadena de texto
+  var dateObj = new Date(fechaHoraString);
+
+  // Obtener la hora y los minutos del objeto Date
+  var hora = dateObj.getHours();
+  var minutos = dateObj.getMinutes();
+
+  // Formatear la hora y los minutos en un string HH:MM
+  var horaFormateada = hora.toString().padStart(2, '0') + ':' + minutos.toString().padStart(2, '0');
+
+  return horaFormateada;
+}
+
+
 const TrainingCardUser = ({ dispatch, history, item, handleOpenDescriptionModal }) => {
   return (
     <div key={item.id}>
@@ -92,8 +107,7 @@ const TrainingCardUser = ({ dispatch, history, item, handleOpenDescriptionModal 
                 </div>
                 <div class="flip-card-back">
             <div class="card_training">
-            <span class="title">{item.durationMinutes} &nbsp;
-              <FormattedMessage id="project.statistics.fields.minutes"/>
+            <span class="title">{obtenerHoraFormateada(item.durationMinutes)} &nbsp;
             </span>
             <hr></hr>
           <a onClick={() => handleOpenDescriptionModal(item.description)} class="button_apple">

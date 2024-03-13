@@ -19,12 +19,23 @@
 
 
 
+/**
+ * VOY A CAMBIAR EL SIGNIFICADO DE LA DURACION! 
+ * 	AHORA SERA LA HORA DEL ENTRENAMIENTO Y SE PASA COMO STRING
+ */
+
+
+
+
+
+
 
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import dayjs from 'dayjs';
 
 import { Errors } from '../../common';
 import * as actions from '../actions';
@@ -56,7 +67,6 @@ const AddTraining = () => {
 	const [backendErrors, setBackendErrors] = useState(null);
 	const [rowSelectionModelTeam, setRowSelectionModelTeam] = React.useState([]);
 	const [rowSelectionModelSeason, setRowSelectionModelSeason] = React.useState([]);
-
 	let form;
 
 	const teams = useSelector(selectorsTeams.getAllTeams);
@@ -69,6 +79,23 @@ const AddTraining = () => {
 		return "Loading...";
 	}
 
+	const columnsTeams = [
+		{ field: 'id', headerName: 'ID', width: 70 },
+		{ field: 'name', headerName: 'Name', width: 160 },
+	];
+
+	const rowsTeams = [
+	];
+
+	if (teamsList) {
+		teamsList.map(team => {
+			rowsTeams.push({
+				id: team.id,
+				name: team.teamName
+			});
+		})
+	}
+
 	const seasonsList = seasons.seasons;
 
 	if (!seasonsList) {
@@ -76,73 +103,93 @@ const AddTraining = () => {
 		return "Loading...";
 	}
 
+	const columnsSeasons = [
+		{ field: 'id', name: 'ID', width: 70 },
+		{ field: 'name', headerName: 'Name', width: 160 },
+		{ field: 'startDate', headerName: 'startDate', width: 160 },
+		{ field: 'endDate', headerName: 'endDate', width: 160 },
+	];
+	const fecha = new Date("2024-06-14T22:00:00.000+0000");
+	const año = fecha.getFullYear();
+	const mes = fecha.getMonth() + 1; // Los meses en JavaScript van de 0 a 11, por lo que sumamos 1
+	const dia = fecha.getDate();
+
+	const rowsSeasons = [
+	];
+
+	if (seasonsList) {
+		seasonsList.map(season => {
+        // Formatear fechas
+        const startDate = new Date(season.startDate);
+        const endDate = new Date(season.endDate);
+        // Obtener día, mes y año en el formato deseado
+        const formattedStartDate = `${startDate.getDate()}/${startDate.getMonth() + 1}/${startDate.getFullYear()}`;
+        const formattedEndDate = `${endDate.getDate()}/${endDate.getMonth() + 1}/${endDate.getFullYear()}`;
+			rowsSeasons.push({
+				id: season.id,
+				name: season.calendario,
+				startDate: formattedStartDate,
+				endDate: formattedEndDate
+			});
+		})
+	}
+
+
+
+	
+
 	const handleSubmit = event => {
 
 		event.preventDefault();
 
-		if (form.checkValidity()) {
 			if (teamId == null) {
-				dispatch(actions.addTrainingWithSeason(seasonId, trainingDate, durationMinutes,
+				console.log("unooo season: ", seasonId[0])
+				dispatch(actions.addTrainingWithSeason(seasonId[0], trainingDate, durationMinutes,
 					description.trim(), objective.trim(),
 					() => reloadWindow(),
 					errors => setBackendErrors(errors),
 				));
 			} else if (seasonId == null) {
-				dispatch(actions.addTrainingWithTeam(teamId, trainingDate, durationMinutes,
+				console.log("unooo team: ", teamId[0])
+				dispatch(actions.addTrainingWithTeam(teamId[0], trainingDate, durationMinutes,
 					description.trim(), objective.trim(),
 					() => reloadWindow(),
 					errors => setBackendErrors(errors),
 				));
 			} else {
-				dispatch(actions.addTraining(teamId, seasonId, trainingDate, durationMinutes,
+				dispatch(actions.addTraining(teamId[0], seasonId[0], dateConversor(trainingDate), timeConversor(durationMinutes),
 					description.trim(), objective.trim(),
 					() => reloadWindow(),
 					errors => setBackendErrors(errors),
 				));
 			}
-		} else {
-			setBackendErrors(null);
-			form.classList.add('was-validated');
-		}
 	}
 	const reloadWindow = () => {
 		history('/trainings/addTraining');
 		window.location.reload('true');
 	}
 
-	const columns = [
-		{ field: 'id', headerName: 'ID', width: 70 },
-		{ field: 'firstName', headerName: 'First name', width: 130 },
-		{ field: 'lastName', headerName: 'Last name', width: 130 },
-		{
-			field: 'age',
-			headerName: 'Age',
-			type: 'number',
-			width: 90,
-		},
-		{
-			field: 'fullName',
-			headerName: 'Full name',
-			description: 'This column has a value getter and is not sortable.',
-			sortable: false,
-			width: 160,
-			valueGetter: (params) =>
-				`${params.row.firstName || ''} ${params.row.lastName || ''}`,
-		},
-	];
-
-	const rows = [
-		{ id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-		{ id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-		{ id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-		{ id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-		{ id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-		{ id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-		{ id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-		{ id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-		{ id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-	];
-
+	function dateConversor(trainingDate) {
+		const dateObj2 = new Date(trainingDate);
+		dateObj2.setDate(dateObj2.getDate() + 1);
+		// Obtener la fecha en formato ISO 8601 (UTC)
+		const trainingDateUpdated = dateObj2.toISOString();
+	
+		return trainingDateUpdated;
+	}
+	
+	//hago esta conversion para luego poder pasar el valor de la bd previo cuando se actualice: 
+		//defaultValue={dayjs('2022-04-17T15:30')}
+	function timeConversor(durationMinutes) {
+				const dateObj = new Date(durationMinutes.$d);
+				const year = dateObj.getFullYear();
+				const month = String(dateObj.getMonth() + 1).padStart(2, '0'); 
+				const day = String(dateObj.getDate()).padStart(2, '0'); 
+				const hours = String(dateObj.getHours()).padStart(2, '0'); 
+				const minutes = String(dateObj.getMinutes()).padStart(2, '0'); 
+				const finalTime = `${year}-${month}-${day}T${hours}:${minutes}`;
+				return finalTime;
+	}
 
 
 
@@ -163,7 +210,7 @@ const AddTraining = () => {
 				flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
 			}}
 		>
-
+            <Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
 			<Grid container margin={5} spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
 			>
 				<Grid item xs={12} md={12} >
@@ -204,21 +251,32 @@ const AddTraining = () => {
 													background: "linear-gradient(-45deg, #41295a 0%, #2F0743 100% )",
 													borderRadius: "20px",
 													colorAdjust: "#00bfff",
+													'& label': { color: 'white' },
 													'& input': { color: 'white' }
 												}}
-
-
-
-												value={trainingDate}
-												onChange={(trainingDate) => setTrainingDate(trainingDate)}
+												label={<FormattedMessage id="project.global.fields.date" />}
+												autoFocus
+												required
+												onChange={(newDate) =>
+													{
+														setTrainingDate(newDate.toISOString())
+														console.log("formattedDate:", newDate.$d.toISOString());
+													
+													
+													}
+													
+												
+												}
 											/>
 										</DemoContainer>
 									</LocalizationProvider>
 									<h4 class="margin_training_form"
-									><FormattedMessage id="project.statistics.fields.duration" /></h4>
+									>Time</h4>
 									<LocalizationProvider dateAdapter={AdapterDayjs}>
-										<DemoContainer components={['DatePicker']}>
+										<DemoContainer components={['TimePicker']}>
 											<TimePicker
+											    id="time-picker"
+
 												sx={{
 													border: '2px solid grey',
 													background: "linear-gradient(-45deg, #41295a 0%, #2F0743 100% )",
@@ -227,7 +285,13 @@ const AddTraining = () => {
 													'& input': { color: 'white' }
 												}}
 
-												label="Basic time picker" />
+												label="Time" 
+												onChange={(durationMinutes) => {
+													setDurationMinutes(durationMinutes)
+													console.log("holaaa222; ", durationMinutes)
+												}}
+												/>
+												
 										</DemoContainer>
 									</LocalizationProvider>
 									<TextField
@@ -242,6 +306,8 @@ const AddTraining = () => {
 											background: "linear-gradient(-45deg, #41295a 0%, #2F0743 100% )",
 											borderRadius: "20px",
 										}}
+										value={description}
+										onChange={(e) => setDescription(e.target.value)}
 									/>
 
 									<TextField
@@ -256,6 +322,8 @@ const AddTraining = () => {
 											background: "linear-gradient(-45deg, #41295a 0%, #2F0743 100% )",
 											borderRadius: "20px",
 										}}
+										value={objective}
+										onChange={(e) => setObjective(e.target.value)}
 									/>
 
 
@@ -281,8 +349,8 @@ const AddTraining = () => {
 									boxShadow: 12,
 									ml:2
 								}}
-								rows={rows}
-								columns={columns}
+								rows={rowsTeams}
+								columns={columnsTeams}
 								initialState={{
 									pagination: {
 										paginationModel: { page: 0, pageSize: 5 },
@@ -293,10 +361,21 @@ const AddTraining = () => {
 								rowSelectionModel={rowSelectionModelTeam}
 								onRowSelectionModelChange={(newRowSelectionModelTeam) => {
 									if (newRowSelectionModelTeam.length <= 1) {
-										console.log("qwqwqw 2222: ", newRowSelectionModelTeam)
 										setRowSelectionModelTeam(newRowSelectionModelTeam);
+										console.log(" 111111: ", newRowSelectionModelTeam)
+										setTeamId((prevTeamId) => {
+											console.log(" seasonnnn PRIMEROOOOO: ", newRowSelectionModelTeam);
+											return newRowSelectionModelTeam;
+										});
+									} else {
+										setRowSelectionModelTeam(newRowSelectionModelTeam[newRowSelectionModelTeam.length - 1]);
+										console.log(" 22222: ", newRowSelectionModelTeam[newRowSelectionModelTeam.length - 1])
+										setTeamId((prevTeamId) => {
+											console.log(" seasonnnn SEGIMDPOPPPPP: ", newRowSelectionModelTeam[newRowSelectionModelTeam.length - 1]);
+											return newRowSelectionModelTeam[newRowSelectionModelTeam.length - 1];
+										});
 									}
-									console.log("qwqwqw: ", rowSelectionModelTeam)
+
 								}}
 							/>
 						</div>
@@ -318,8 +397,8 @@ const AddTraining = () => {
 									borderRadius: "20px",
 									boxShadow: 12
 								}}
-								rows={rows}
-								columns={columns}
+								rows={rowsSeasons}
+								columns={columnsSeasons}
 								initialState={{
 									pagination: {
 										paginationModel: { page: 0, pageSize: 5 },
@@ -353,7 +432,7 @@ const AddTraining = () => {
 				</Grid>
 
 			</Grid>
-			<button className="post_training"><FormattedMessage id="project.global.buttons.save" /></button>
+			<button className="post_training" onClick={(e) => handleSubmit(e)}><FormattedMessage id="project.global.buttons.save" /></button>
                   
 		</Box>
 

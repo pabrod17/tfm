@@ -148,3 +148,7 @@ Stretching home final design:
 Trainings home final design:
 
 ![ToolBare](trainingHome.png)
+
+Trainings form design:
+
+![ToolBare](trainingForm.png)
