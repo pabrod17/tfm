@@ -104,7 +104,7 @@ const AddTraining = () => {
 	}
 
 	const columnsSeasons = [
-		{ field: 'id', name: 'ID', width: 70 },
+		{ field: 'id', headerName: 'ID', width: 70 },
 		{ field: 'name', headerName: 'Name', width: 160 },
 		{ field: 'startDate', headerName: 'startDate', width: 160 },
 		{ field: 'endDate', headerName: 'endDate', width: 160 },
@@ -142,21 +142,25 @@ const AddTraining = () => {
 
 		event.preventDefault();
 
-			if (teamId == null) {
+			if (teamId.length === 0) {
 				console.log("unooo season: ", seasonId[0])
+
 				dispatch(actions.addTrainingWithSeason(seasonId[0], trainingDate, durationMinutes,
 					description.trim(), objective.trim(),
 					() => reloadWindow(),
 					errors => setBackendErrors(errors),
 				));
-			} else if (seasonId == null) {
-				console.log("unooo team: ", teamId[0])
+			} else if (seasonId.length === 0) {
+				console.log("unooo team ((season NULL)): ", teamId[0])
+
 				dispatch(actions.addTrainingWithTeam(teamId[0], trainingDate, durationMinutes,
 					description.trim(), objective.trim(),
 					() => reloadWindow(),
 					errors => setBackendErrors(errors),
 				));
 			} else {
+				console.log("unooo team TODOOOOOOOO ")
+
 				dispatch(actions.addTraining(teamId[0], seasonId[0], dateConversor(trainingDate), timeConversor(durationMinutes),
 					description.trim(), objective.trim(),
 					() => reloadWindow(),
@@ -334,7 +338,7 @@ const AddTraining = () => {
 				<Grid container spacing={2}>
 				<Grid item xs={12} md={6}>
 						<Typography
-							sx={{ flex: '1 1 100%', mt: 3.5, color: "#00bfff", ml:2 }}
+							sx={{ flex: '1 1 100%', mt: 3.5, color: "#00bfff", m:2 }}
 							variant="h6"
 							id="tableTitle"
 							component="div"
@@ -347,7 +351,7 @@ const AddTraining = () => {
 									background: "linear-gradient(-45deg, #f12711 0%, #f5af19 100% )",
 									borderRadius: "20px",
 									boxShadow: 12,
-									ml:2
+									m:2,
 								}}
 								rows={rowsTeams}
 								columns={columnsTeams}
@@ -383,7 +387,7 @@ const AddTraining = () => {
 
 					<Grid item xs={12} md={6}>
 						<Typography
-							sx={{ flex: '1 1 100%', mt: 3.5, color: "#00bfff" }}
+							sx={{ flex: '1 1 100%', mt: 3.5, color: "#00bfff", m:2 }}
 							variant="h6"
 							id="tableTitle"
 							component="div"
@@ -395,7 +399,8 @@ const AddTraining = () => {
 								sx={{
 									background: "linear-gradient(-45deg, #f12711 0%, #f5af19 100% )",
 									borderRadius: "20px",
-									boxShadow: 12
+									boxShadow: 12,
+									m:2
 								}}
 								rows={rowsSeasons}
 								columns={columnsSeasons}
