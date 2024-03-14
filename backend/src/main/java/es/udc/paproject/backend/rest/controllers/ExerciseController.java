@@ -116,9 +116,11 @@ public class ExerciseController {
     }
 
     @PostMapping("/{trainingId}/addExerciseToTraining")
-    public void addExerciseToTraining(@PathVariable Long trainingId, @RequestParam Long exerciseId)
+    public void addExerciseToTraining(@PathVariable Long trainingId, @RequestParam List<Long> exerciseIds)
             throws InstanceNotFoundException {
-                exerciseService.addExerciseToTraining(trainingId, exerciseId);
+        for (Long exerciseId : exerciseIds) {
+            exerciseService.addExerciseToTraining(trainingId, exerciseId);
+        }
     }
     
     @PostMapping("/{gameId}/addExerciseToGame")
