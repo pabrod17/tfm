@@ -240,6 +240,10 @@ export default {
     //teams
     'project.teams.fields.changeTeam' : 'Cambiar Equipo',
 
+    'project.teams.fields.name' : 'Nome',
+    'project.teams.fields.arena' : 'Estadio',
+    'project.teams.fields.owner' : 'Propiedade',
+
     'project.teams.fields.addTeamToSeason' : 'Engadir Equipo a Tempada',
     
     'project.teams.fields.addTeam' : 'Engadir Equipo',

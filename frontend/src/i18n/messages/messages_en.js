@@ -251,6 +251,9 @@ export default {
     //teams
     'project.teams.fields.changeTeam' : 'Change Team',
 
+    'project.teams.fields.name' : 'Name',
+    'project.teams.fields.arena' : 'Arena',
+    'project.teams.fields.owner' : 'Owner',
 
     'project.teams.fields.addTeamToSeason' : 'Add Team to Season',
 

@@ -81,7 +81,9 @@ const AddTraining = () => {
 
 	const columnsTeams = [
 		{ field: 'id', headerName: 'ID', width: 70 },
-		{ field: 'name', headerName: 'Name', width: 160 },
+		{ field: 'name', headerName: <FormattedMessage id="project.teams.fields.name"/>, width: 160 },
+		{ field: 'arena', headerName: <FormattedMessage id="project.teams.fields.arena"/>, width: 160 },
+		{ field: 'owner', headerName: <FormattedMessage id="project.teams.fields.owner"/>, width: 160 }
 	];
 
 	const rowsTeams = [
@@ -91,7 +93,9 @@ const AddTraining = () => {
 		teamsList.map(team => {
 			rowsTeams.push({
 				id: team.id,
-				name: team.teamName
+				name: team.teamName,
+				arena: team.arenaName,
+				owner: team.ownerName
 			});
 		})
 	}
@@ -105,9 +109,9 @@ const AddTraining = () => {
 
 	const columnsSeasons = [
 		{ field: 'id', headerName: 'ID', width: 70 },
-		{ field: 'name', headerName: 'Name', width: 160 },
-		{ field: 'startDate', headerName: 'startDate', width: 160 },
-		{ field: 'endDate', headerName: 'endDate', width: 160 },
+		{ field: 'name', headerName: <FormattedMessage id="project.seasons.fields.name"/>, width: 160 },
+		{ field: 'startDate', headerName: <FormattedMessage id='project.seasons.fields.startDate'/>, width: 160 },
+		{ field: 'endDate', headerName: <FormattedMessage id='project.seasons.fields.endDate'/>, width: 160 },
 	];
 	const fecha = new Date("2024-06-14T22:00:00.000+0000");
 	const año = fecha.getFullYear();
