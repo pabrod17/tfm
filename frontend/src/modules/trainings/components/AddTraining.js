@@ -113,10 +113,6 @@ const AddTraining = () => {
 		{ field: 'startDate', headerName: <FormattedMessage id='project.seasons.fields.startDate'/>, width: 160 },
 		{ field: 'endDate', headerName: <FormattedMessage id='project.seasons.fields.endDate'/>, width: 160 },
 	];
-	const fecha = new Date("2024-06-14T22:00:00.000+0000");
-	const año = fecha.getFullYear();
-	const mes = fecha.getMonth() + 1; // Los meses en JavaScript van de 0 a 11, por lo que sumamos 1
-	const dia = fecha.getDate();
 
 	const rowsSeasons = [
 	];
@@ -147,24 +143,18 @@ const AddTraining = () => {
 		event.preventDefault();
 
 			if (teamId.length === 0) {
-				console.log("unooo season: ", seasonId[0])
-
-				dispatch(actions.addTrainingWithSeason(seasonId[0], trainingDate, durationMinutes,
+				dispatch(actions.addTrainingWithSeason(seasonId[0], dateConversor(trainingDate), timeConversor(durationMinutes),
 					description.trim(), objective.trim(),
 					() => reloadWindow(),
 					errors => setBackendErrors(errors),
 				));
 			} else if (seasonId.length === 0) {
-				console.log("unooo team ((season NULL)): ", teamId[0])
-
-				dispatch(actions.addTrainingWithTeam(teamId[0], trainingDate, durationMinutes,
+				dispatch(actions.addTrainingWithTeam(teamId[0], dateConversor(trainingDate), timeConversor(durationMinutes),
 					description.trim(), objective.trim(),
 					() => reloadWindow(),
 					errors => setBackendErrors(errors),
 				));
 			} else {
-				console.log("unooo team TODOOOOOOOO ")
-
 				dispatch(actions.addTraining(teamId[0], seasonId[0], dateConversor(trainingDate), timeConversor(durationMinutes),
 					description.trim(), objective.trim(),
 					() => reloadWindow(),
