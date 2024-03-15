@@ -8,7 +8,7 @@ import es.udc.paproject.backend.model.exceptions.InstanceNotFoundException;
 
 public interface TeamService {
 
-    Team addTeam(Long userId, String teamName) throws InstanceNotFoundException, DuplicateInstanceException;
+    Team addTeam(Long userId, String teamName, String arenaName, String ownerName) throws InstanceNotFoundException, DuplicateInstanceException;
 
     void addTeamToSeason(Long seasonId, Long teamId, Long userId) throws InstanceNotFoundException;
 
@@ -24,5 +24,5 @@ public interface TeamService {
     
     void clearSeasonTeamTable(Long userId) throws InstanceNotFoundException;
 
-    Team updateTeam(Long userId, Long teamId, String teamName) throws InstanceNotFoundException;
+    Team updateTeam(Long userId, Long teamId, String teamName, String arenaName, String ownerName) throws InstanceNotFoundException;
 }

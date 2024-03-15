@@ -59,6 +59,8 @@ CREATE INDEX UserIndexByStartDate ON Season (startDate);
 CREATE TABLE Team (
     id BIGINT NOT NULL AUTO_INCREMENT,
     teamName VARCHAR(60) COLLATE latin1_bin NOT NULL,
+    arenaName VARCHAR(60) COLLATE latin1_bin NOT NULL,
+    ownerName VARCHAR(60) COLLATE latin1_bin NOT NULL,
     CONSTRAINT TeamPK PRIMARY KEY (id),
     CONSTRAINT TeamNameUniqueKey UNIQUE (teamName)
 ) ENGINE = InnoDB;

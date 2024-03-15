@@ -57,7 +57,7 @@ public class TeamServiceTest {
 		User user = createUser("usuario");
 		userService.signUp(user);
 
-		Team team = teamService.addTeam(user.getId(), "primero");
+		Team team = teamService.addTeam(user.getId(), "primero", "arenaName", "ownerName");
 
 		Long teamId = team.getId();
 		Team foundTeam = teamService.findTeamById(user.getId(), teamId);
@@ -74,7 +74,7 @@ public class TeamServiceTest {
 		User user = createUser("usuario");
 		userService.signUp(user);
 
-		Team team = teamService.addTeam(user.getId(), "segundo");
+		Team team = teamService.addTeam(user.getId(), "segundo", "arenaName", "ownerName");
 
 		Team foundTeam = teamService.findTeamByName(user.getId(), "segundo");
 
@@ -104,9 +104,9 @@ public class TeamServiceTest {
 		User user = createUser("usuario");
 		userService.signUp(user);
 
-		teamService.addTeam(user.getId(), "segundo");
+		teamService.addTeam(user.getId(), "segundo", "arenaName", "ownerName");
 
-		assertThrows(DuplicateInstanceException.class, () -> teamService.addTeam(user.getId(), "segundo"));
+		assertThrows(DuplicateInstanceException.class, () -> teamService.addTeam(user.getId(), "segundo", "arenaName", "ownerName"));
 	}
 
 	@Test
@@ -114,14 +114,14 @@ public class TeamServiceTest {
 
 		User user = createUser("usuario");
 		userService.signUp(user);
-		Team team1 = teamService.addTeam(user.getId(), "primero");
-		Team team2 = teamService.addTeam(user.getId(), "segundo");
-		Team team3 = teamService.addTeam(user.getId(), "tercero");
+		Team team1 = teamService.addTeam(user.getId(), "primero", "arenaName", "ownerName");
+		Team team2 = teamService.addTeam(user.getId(), "segundo", "arenaName", "ownerName");
+		Team team3 = teamService.addTeam(user.getId(), "tercero", "arenaName", "ownerName");
 
 		User user2 = createUser("usuario2");
 		userService.signUp(user2);
-		teamService.addTeam(user2.getId(), "primero2");
-		teamService.addTeam(user2.getId(), "segundo2");
+		teamService.addTeam(user2.getId(), "primero2", "arenaName", "ownerName");
+		teamService.addTeam(user2.getId(), "segundo2", "arenaName", "ownerName");
 
 		List<Team> teams = new ArrayList<>();
 		teams.add(team1);
@@ -141,9 +141,9 @@ public class TeamServiceTest {
 
 		User user = createUser("usuario");
 		userService.signUp(user);
-		teamService.addTeam(user.getId(), "primero");
-		Team team2 = teamService.addTeam(user.getId(), "segundo");
-		teamService.addTeam(user.getId(), "tercero");
+		teamService.addTeam(user.getId(), "primero", "arenaName", "ownerName");
+		Team team2 = teamService.addTeam(user.getId(), "segundo", "arenaName", "ownerName");
+		teamService.addTeam(user.getId(), "tercero", "arenaName", "ownerName");
 
 		teamService.removeTeam(user.getId(), team2.getId());
 
@@ -163,9 +163,9 @@ public class TeamServiceTest {
 		User user = createUser("usuario");
 		userService.signUp(user);
 
-		Team team = teamService.addTeam(user.getId(), "primero");
+		Team team = teamService.addTeam(user.getId(), "primero", "arenaName", "ownerName");
 
-		teamService.updateTeam(user.getId(), team.getId(), "segundo");
+		teamService.updateTeam(user.getId(), team.getId(), "segundo", "arenaName", "ownerName");
 
 		assertEquals("segundo", teamService.findTeamById(user.getId(), team.getId()).getTeamName());
 		assertEquals("segundo", seasonTeamDao.findByUserId(user.getId()).get(0).getTeam().getTeamName());
@@ -181,8 +181,8 @@ public class TeamServiceTest {
         User user = createUser("usuario");
 		userService.signUp(user);
 
-		Team team = teamService.addTeam(user.getId(),"equipo");
-		Team team2 = teamService.addTeam(user.getId(),"dos");
+		Team team = teamService.addTeam(user.getId(),"equipo", "arenaName", "ownerName");
+		Team team2 = teamService.addTeam(user.getId(),"dos", "arenaName", "ownerName");
 
 		Season season = seasonService.addSeason(user.getId(),startDate1, endDate1, "Calendario");
 		Season season2 = seasonService.addSeason(user.getId(),startDate2, endDate2, "Calendario");

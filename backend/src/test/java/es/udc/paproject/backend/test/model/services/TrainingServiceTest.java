@@ -64,7 +64,7 @@ public class TrainingServiceTest {
     }
 
     private Team createTeam(Long userId, String teamName) throws InstanceNotFoundException, DuplicateInstanceException {
-        return teamService.addTeam(userId, teamName);
+        return teamService.addTeam(userId, teamName, "arenaName", "ownerName");
     }
 
     private Season createSeason(Long userId, String calendario)

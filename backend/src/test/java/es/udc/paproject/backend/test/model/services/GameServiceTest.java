@@ -62,8 +62,8 @@ public class GameServiceTest {
         return user;
     }
 
-    private Team createTeam(Long userId, String teamName) throws InstanceNotFoundException, DuplicateInstanceException {
-        return teamService.addTeam(userId, teamName);
+    private Team createTeam(Long userId, String teamName, String arenaName, String ownerName) throws InstanceNotFoundException, DuplicateInstanceException {
+        return teamService.addTeam(userId, teamName, arenaName, ownerName);
     }
 
     private Season createSeason(Long userId, String calendario) throws InstanceNotFoundException, DuplicateInstanceException,
@@ -96,7 +96,7 @@ public class GameServiceTest {
     public void testAddGameAndFindGameById() throws DuplicateInstanceException, InstanceNotFoundException {
 
         User user = createUser("paco");
-        Team team = createTeam(user.getId(), "team");
+        Team team = createTeam(user.getId(), "team", "arenaName", "ownerName");
         Game game = gameService.addGame(team.getId(), null, gameDate, "rival");
 
         Game gameFound = gameService.findGameById(game.getId());
@@ -109,7 +109,7 @@ public class GameServiceTest {
             IncorrectDniException, IncorrectEmailException, IncorrectPhoneNumberException {
 
         User user = createUser("paco");
-        Team team = createTeam(user.getId(), "team");
+        Team team = createTeam(user.getId(), "team", "arenaName", "ownerName");
         Game game = gameService.addGame(team.getId(), null, gameDate, "rival");
         Game game2 = gameService.addGame(team.getId(), null, gameDate, "rival");
         Player player = createPlayer(team.getId());
@@ -131,7 +131,7 @@ public class GameServiceTest {
             IncorrectDniException, IncorrectEmailException, IncorrectPhoneNumberException {
 
         User user = createUser("paco");
-        Team team = createTeam(user.getId(), "team");
+        Team team = createTeam(user.getId(), "team", "arenaName", "ownerName");
         Game game = gameService.addGame(team.getId(), null, gameDate, "rival");
         Game game2 = gameService.addGame(team.getId(), null, gameDate, "rival");
         Player player = createPlayer(team.getId());
@@ -156,7 +156,7 @@ public class GameServiceTest {
             StartDateAfterEndDateException {
 
         User user = createUser("paco");
-        Team team = createTeam(user.getId(), "team");
+        Team team = createTeam(user.getId(), "team", "arenaName", "ownerName");
         gameService.addGame(team.getId(), null, gameDate, "rival");
         gameService.addGame(team.getId(), null, gameDate2, "rival");
         gameService.addGame(team.getId(), null, gameDate3, "rival");
@@ -172,8 +172,8 @@ public class GameServiceTest {
             StartDateAfterEndDateException {
 
         User user = createUser("paco");
-        Team team = createTeam(user.getId(), "team");
-        Team team2 = createTeam(user.getId(), "team2");
+        Team team = createTeam(user.getId(), "team", "arenaName", "ownerName");
+        Team team2 = createTeam(user.getId(), "team2", "arenaName", "ownerName");
         gameService.addGame(team.getId(), null, gameDate, "rival");
         gameService.addGame(team2.getId(), null, gameDate2, "rival");
         gameService.addGame(team.getId(), null, gameDate3, "rival");
@@ -212,7 +212,7 @@ public class GameServiceTest {
         User user = createUser("paco");
         Season season = createSeason(user.getId(), "seasonssss");
         Season season2 = createSeason(user.getId(), "seasonssss25222 sdcs");
-        Team team2 = createTeam(user.getId(), "team2");
+        Team team2 = createTeam(user.getId(), "team2", "arenaName", "ownerName");
         gameService.addGame(team2.getId(), null, gameDate, "rival");
         gameService.addGame(null, season.getId(), gameDate, "rival");
         gameService.addGame(null, season2.getId(), gameDate2, "rival");
@@ -230,7 +230,7 @@ public class GameServiceTest {
         User user = createUser("paco");
         Season season = createSeason(user.getId(), "seasonssss");
         Season season2 = createSeason(user.getId(), "seasonssss25222 sdcs");
-        Team team2 = createTeam(user.getId(), "team2");
+        Team team2 = createTeam(user.getId(), "team2", "arenaName", "ownerName");
         gameService.addGame(team2.getId(), null, gameDate, "rival");
         Game game = gameService.addGame(null, season.getId(), gameDate, "rival");
         Game game2 = gameService.addGame(null, season2.getId(), gameDate2, "rival");
@@ -251,7 +251,7 @@ public class GameServiceTest {
         User user = createUser("paco");
         Season season = createSeason(user.getId(), "seasonssss");
         Season season2 = createSeason(user.getId(), "seasonssss25222 sdcs");
-        Team team2 = createTeam(user.getId(), "team2");
+        Team team2 = createTeam(user.getId(), "team2", "arenaName", "ownerName");
         gameService.addGame(team2.getId(), null, gameDate, "rival");
         gameService.addGame(null, season.getId(), gameDate, "rival");
         Game game2 = gameService.addGame(null, season2.getId(), gameDate2, "rival");

@@ -58,7 +58,7 @@ public class NoteServiceTest {
     }
 
     private Team createTeam(Long userId, String teamName) throws InstanceNotFoundException, DuplicateInstanceException {
-        return teamService.addTeam(userId, teamName);
+        return teamService.addTeam(userId, teamName, "arenaName", "ownerName");
     }
 
     private Player createPlayer1(Long teamId) throws InstanceNotFoundException, IncorrectDniException,

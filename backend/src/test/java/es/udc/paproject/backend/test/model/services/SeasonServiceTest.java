@@ -203,8 +203,8 @@ public class SeasonServiceTest {
 		User user = createUser("usuario");
 		userService.signUp(user);
 		
-		Team team = teamService.addTeam(user.getId(),"equipo");
-		Team team2 = teamService.addTeam(user.getId(),"dos");
+		Team team = teamService.addTeam(user.getId(),"equipo", "arenaName", "ownerName");
+		Team team2 = teamService.addTeam(user.getId(),"dos", "arenaName", "ownerName");
 
 		Season season = seasonService.addSeason(user.getId(), startDate1, endDate1, "Calendario");
 		Season season2 = seasonService.addSeason(user.getId(), startDate2, endDate2, "Calendario");
