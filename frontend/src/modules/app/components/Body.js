@@ -73,6 +73,7 @@ import LesionHomeByType from '../../lesion/components/LesionHomeByType';
 import ExercisesHomeByType from '../../exercises/components/ExercisesHomeByType';
 import StretchingsHomeByType from '../../stretchings/components/StretchingsHomeByType';
 import Topbar from './TopBar';
+import UpdateTrainingExercise from '../../trainings/components/UpdateTrainingExercise';
 
 
 const Body = ({ isDark, setIsDark}) => {
@@ -135,6 +136,11 @@ const Body = ({ isDark, setIsDark}) => {
                 {loggedIn && <Route exact path="/trainings/addTraining" element={<AddTraining/>}></Route>}
                 {loggedIn && <Route exact path="/trainings/view/:id" element={<TrainingView/>}></Route>}
                 {loggedIn && <Route exact path="/trainings/update/:id" element={<UpdateTraining/>}></Route>}
+
+                {loggedIn && <Route exact path="/trainings/update/:id/exercise/:tabValue" element={<UpdateTrainingExercise/>}></Route>}
+                {loggedIn && <Route exact path="/trainings/update/:id/stretching/:tabValue" element={<UpdateTraining/>}></Route>}
+
+
                 {loggedIn && <Route exact path="/games/home" element={<GamesHome/>}></Route>}
                 {loggedIn && <Route exact path="/games/addGame" element={<AddGame/>}></Route>}
                 {loggedIn && <Route exact path="/games/view/:id" element={<GameView/>}></Route>}

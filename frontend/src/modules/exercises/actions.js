@@ -93,12 +93,13 @@ export const findExercisesByType = (exerciseType, onSuccess, onErrors) => dispat
         onErrors);
 }
 
-const findExercisesByTrainingIdCompleted = exercises => ({
+const findExercisesByTrainingIdCompleted = exercisesByTrainingId => ({
     type: actionTypes.FIND_EXERCISES_BY_TRAINING_ID_COMPLETED,
-    exercises
+    exercisesByTrainingId
 });
 
 export const findExercisesByTrainingId = (trainingId, onSuccess, onErrors) => dispatch => {
+    dispatch(clearExerciseSearch());
     backend.exerciseService.findExercisesByTrainingId(trainingId,
         exercises => {
             dispatch(findExercisesByTrainingIdCompleted(exercises));

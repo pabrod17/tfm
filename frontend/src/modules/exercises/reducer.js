@@ -5,7 +5,8 @@ import * as actionTypes from './actionsTypes';
 const initialState = {
     exercise: null,
     exercises:null,
-    exercisesSearch: null
+    exercisesSearch: null,
+    exercisesByTrainingId: null
 };
 
 const exercise = (state = initialState.exercise, action) => {
@@ -38,12 +39,21 @@ const exercises = (state = initialState.exercises, action) => {
         
         case actionTypes.FIND_ALL_EXERCISES_COMPLETED:
             return action.exercises;
-        case actionTypes.FIND_EXERCISES_BY_TRAINING_ID_COMPLETED:
-            return action.exercises;
         case actionTypes.FIND_EXERCISES_BY_GAME_ID_COMPLETED:
             return action.exercises;
         case actionTypes.FIND_EXERCISES_BY_TYPE_COMPLETED:
             return action.exercises;
+        default:
+            return state;
+    }
+}
+
+const exercisesByTrainingId = (state = initialState.exercisesByTrainingId, action) => {
+
+    switch (action.type) {
+        
+        case actionTypes.FIND_EXERCISES_BY_TRAINING_ID_COMPLETED:
+            return action.exercisesByTrainingId;
         default:
             return state;
     }
@@ -70,7 +80,8 @@ const exercisesSearch = (state = initialState.exercisesSearch, action) => {
 const reducer = combineReducers({
     exercise,
     exercises,
-    exercisesSearch
+    exercisesSearch,
+    exercisesByTrainingId
 });
 
 export default reducer;
