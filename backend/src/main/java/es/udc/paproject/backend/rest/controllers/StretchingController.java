@@ -126,10 +126,10 @@ public class StretchingController {
     }
 
     @PostMapping("/{trainingId}/addStretchingToTraining")
-    public void addStretchingToTraining(@PathVariable Long trainingId,  @RequestParam List<Long> stretchingIds)
+    public void addStretchingToTraining(@PathVariable Long trainingId,  @RequestParam List<Long> stretchingId)
             throws InstanceNotFoundException {
-        for (Long stretchingId : stretchingIds) {
-            stretchingService.addStretchingToTraining(trainingId, stretchingId);
+        for (Long id : stretchingId) {
+            stretchingService.addStretchingToTraining(trainingId, id);
         }
     }
 

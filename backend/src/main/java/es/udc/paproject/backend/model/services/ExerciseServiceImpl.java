@@ -160,13 +160,13 @@ public class ExerciseServiceImpl implements ExerciseService {
         if (!trainingDao.existsById(trainingId)) {
             throw new InstanceNotFoundException("project.entities.training");
         }
+        List<Exercise> exercises = new ArrayList<>();
 
         List<TrainingExercise> trainingExercises = trainingExerciseDao.findByTrainingId(trainingId);
         if (trainingExercises.isEmpty()) {
-            throw new InstanceNotFoundException("project.entities.exercise");
+            return exercises;
         }
 
-        List<Exercise> exercises = new ArrayList<>();
         for (TrainingExercise trainingExercise : trainingExercises) {
             if(trainingExercise.getExercise() != null) {
                 exercises.add(trainingExercise.getExercise());
@@ -174,7 +174,7 @@ public class ExerciseServiceImpl implements ExerciseService {
         }
 
         if (exercises.isEmpty()) {
-            throw new InstanceNotFoundException("project.entities.exercise");
+            return exercises;
         }
 
         exercises = exercises.stream().distinct().collect(Collectors.toList());

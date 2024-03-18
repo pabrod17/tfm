@@ -209,13 +209,13 @@ public class StretchingServiceImpl implements StretchingService {
         if (!trainingDao.existsById(trainingId)) {
             throw new InstanceNotFoundException("project.entities.training");
         }
+        List<Stretching> stretchings = new ArrayList<>();
 
         List<TrainingStretching> trainingStretchings = trainingStretchingDao.findByTrainingId(trainingId);
         if (trainingStretchings.isEmpty()) {
-            throw new InstanceNotFoundException("project.entities.stretching");
+            return stretchings;
         }
 
-        List<Stretching> stretchings = new ArrayList<>();
         for (TrainingStretching trainingStretching : trainingStretchings) {
             if(trainingStretching.getStretching() != null) {
                 stretchings.add(trainingStretching.getStretching());
@@ -223,7 +223,7 @@ public class StretchingServiceImpl implements StretchingService {
         }
 
         if (stretchings.isEmpty()) {
-            throw new InstanceNotFoundException("project.entities.stretching");
+            return stretchings;
         }
 
         stretchings = stretchings.stream().distinct().collect(Collectors.toList());
