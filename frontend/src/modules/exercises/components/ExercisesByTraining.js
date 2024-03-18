@@ -77,8 +77,8 @@ const ExerciseCard = ({ dispatch, trainingId, history, item, handleOpenDescripti
 
 function ExercisesList({ items, trainingId, fallback, dispatch, history, openDescription, openObjective, handleOpenDescription, handleOpenObjective, handleClose }) {
   if (!items || items.length === 0) {
-    dispatch(actions.findExercisesByTrainingId(trainingId, () => history(`/trainings/update/${trainingId}/exercise`)));
-    return fallback;
+    // dispatch(actions.findExercisesByTrainingId(trainingId, () => history(`/trainings/update/${trainingId}/exercise`)));
+    // return fallback;
   } else {
     return items.map(item => (
       <ExerciseCard dispatch={dispatch} trainingId={trainingId} history={history} key={item.id} item={item} handleOpenDescriptionModal={handleOpenDescription} handleOpenObjectiveModal={handleOpenObjective} />

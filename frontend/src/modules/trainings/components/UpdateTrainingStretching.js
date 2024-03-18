@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useEffect, useState, createContext } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 import {FormattedMessage} from 'react-intl';
@@ -20,60 +20,104 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import dayjs from 'dayjs';
-import * as actionsExercises from '../../exercises/actions';
+import { DataGrid } from '@mui/x-data-grid';
+import * as selectorsStretchings from '../../stretchings/selectors';
 import * as actionsStretchings from '../../stretchings/actions';
+import ExercisesByTraining from '../../exercises/components/ExercisesByTraining';
+import StretchingsByTraining from '../../stretchings/components/StretchingsByTraining';
 
-const UpdateTraining = () => {
+const UpdateTrainingStretching = () => {
     const training = useSelector(selectors.getOneTraining);
+
     const {id} = useParams();
 
     const dispatch = useDispatch();
     const history = useNavigate();
-    const [trainingDate , setTrainingDate ] = useState(dayjs(training.trainingDate));
-    const [durationMinutes, setDurationMinutes] = useState(dayjs(training.durationMinutes));
-    const [description , setDescription ] = useState(training.description);
-    const [objective , setObjective] = useState(training.objective);
     const [backendErrors, setBackendErrors] = useState(null);
-    const [value, setValue] = useState(0);
+    const { stretchingType, tabValue } = useParams();
+    const [value, setValue] = useState(parseInt(tabValue, 10) || 0);
+    const [showTable, setShowTable] = useState(true);
+	const [stretchingIds, setStretchingIds] = useState(null);
+
+    console.log("dentro PARA stretchings: ", tabValue)
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+
     let form;
+
+    const stretchingList = useSelector(selectorsStretchings.getStretchingsByTrainingId) || [];
+    const stretchingListAll = useSelector(selectorsStretchings.getAllStretchings) || [];
+
+    useEffect(() => {
+        if (!stretchingList) {
+            dispatch(actionsStretchings.findStretchingsByTrainingId(id, () => history(`/stretchings/home/training/${id}/stretching`)));
+        }
+    }, [dispatch, stretchingList, history, id]);
+
+    useEffect(() => {
+        if (!stretchingListAll) {
+            dispatch(actionsStretchings.findAllStretchings(() => history(`/stretchings/home/training/${id}/stretching`)));
+        }
+    }, [dispatch, stretchingListAll, history]);
+
+    let filteredStretchings = stretchingListAll.stretchings;
+
+        filteredStretchings = stretchingListAll.stretchings.filter(stretching => {
+            return !stretchingList || !stretchingList.some(ex => ex.id === stretching.id);
+        });
+
+
+    const columnsStretchings = [
+        { field: 'id', headerName: 'ID', width: 70 },
+        { field: 'name', headerName: <FormattedMessage id="project.stretchings.fields.stretchingName"/>, width: 160 },
+        { field: 'type', headerName: <FormattedMessage id="project.stretchings.fields.stretchingType" />, width: 160 },
+        { field: 'description', headerName: <FormattedMessage id="project.exercises.fields.description" />, width: 160 }
+    ];
+
+    const rowsStretchings = [
+    ];
+
+    if (filteredStretchings) {
+        filteredStretchings.map(stretching => {
+            rowsStretchings.push({
+                id: stretching.id,
+                name: stretching.stretchingName,
+                type: stretching.stretchingType,
+                description: stretching.description
+            });
+        })
+    }
+
+
+
+
+
+
+
 
     const handleSubmit = event => {
 
         event.preventDefault();
     
-            dispatch(actions.updateTraining(training.id, dateConversor(trainingDate), durationMinutes,
-            description.trim(), objective.trim(),
-            () => reloadWindow(),
+        dispatch(actionsStretchings.addStretchingToTraining(id, stretchingIds,
             errors => setBackendErrors(errors),
+            history(`/trainings/update/${id}`)
             ));
         }
-        const reloadWindow = () =>{
-            history('/trainings/home');
-            window.location.reload('true');
-        }
 
-        const handleUpdateTraining = (dispatch) => {
+        const handleUpdateTraining = (tabValue, dispatch) => {
+            setValue(tabValue);
             dispatch(actions.findTrainingById(id, () => history(`/trainings/update/${id}`)));
         }
         const handleUpdateTrainingExercise = (tabValue, dispatch) => {
             setValue(tabValue);
-            console.log("PRIMERO PARA exercises: ", tabValue)
-            dispatch(actions.findTrainingById(id, () => {
-                dispatch(actionsExercises.findExercisesByTrainingId(id, () => history(`/trainings/update/${id}/exercise/${tabValue}`)));
-            }));
-            history(`/trainings/update/${id}/exercise/${tabValue}`);
+            dispatch(actions.findTrainingById(id, () => history(`/trainings/update/${id}/exercise/${tabValue}`)));
         }
         const handleUpdateTrainingStretching = (tabValue, dispatch) => {
             setValue(tabValue);
-            console.log("PRIMERO PARA STRETCHINGS: ", tabValue)
-            dispatch(actions.findTrainingById(id, () => {
-                dispatch(actionsStretchings.findStretchingsByTrainingId(id, () => history(`/trainings/update/${id}/stretching/${tabValue}`)));
-            }));
-            history(`/trainings/update/${id}/stretching/${tabValue}`);
+            dispatch(actions.findTrainingById(id, () => history(`/trainings/update/${id}/stretching/${tabValue}`)));
         }
 
         function dateConversor(trainingDate) {
@@ -105,25 +149,37 @@ const UpdateTraining = () => {
                             background: "linear-gradient(-45deg, #41295a 0%, #2F0743 70% )",
                             bgcolor:"red",
                             boxShadow: 6,
-                            borderRadius: 3
+                            borderRadius: 3,
+                            mb:2
                         }}
         >
-          <Tab sx={{ color: '#40FF00', fontSize: "30px", padding:"20px"}} onClick={() => handleUpdateTraining(dispatch)} label="General"  />
-          <Tab sx={{ color: '#f5af19', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTrainingExercise(1, dispatch)} label="Exercises"  />
-          <Tab sx={{ color: 'rgb(255, 0, 247)', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTrainingStretching(2, dispatch)} label="Stretchings"  />
+          <Tab value={0} sx={{ color: '#40FF00', fontSize: "30px", padding:"20px"}} onClick={() => handleUpdateTraining(0, dispatch)} label="General"  />
+          <Tab value={1} sx={{ color: '#f5af19', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTrainingExercise(1, dispatch)} label="Exercises"  />
+          <Tab value={2} sx={{ color: 'rgb(255, 0, 247)', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTrainingStretching(2, dispatch)} label="Stretchings"  />
         </Tabs>
       </Box>
+      <input type="checkbox" class="theme-checkbox" onClick={() => setShowTable(!showTable)}/>
+
 </Box>
+<Box
+			display="flex"
+			alignItems="center"
+			p={1}
+			sx={{
+				flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
+			}}
+		>
+{showTable && (
+
+
 
 
 <Box
-			my={4}
 			display="flex"
 			alignItems="center"
-			gap={4}
-			p={5}
-			m={10}
+			p={1}
 			sx={{
+                maxWidth: { xs: 300, sm: 920 },
 				border: '2px solid grey',
 				background: "linear-gradient(-45deg, #41295a 0%, #2F0743 70% )",
 				borderRadius: "20px",
@@ -132,135 +188,55 @@ const UpdateTraining = () => {
 			}}
 		>
             <Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
-			<Grid container margin={5} spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
+			<Grid container ml={5} mr={5} mb={1} spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
 			>
-				<Grid item xs={12} md={12} >
-					<img src={bigBall} alt="Person" class="card__image_training_update_create"></img>
-
-					<Box
-						component="form"
-						sx={{
-							'& .MuiTextField-root': { m: 1, width: '25ch' },
-							background: "linear-gradient(-45deg, #f5af19 0%, #f12711 100% )",
-							borderRadius: "20px",
-							boxShadow: 12,
-						}}
-						noValidate
-						autoComplete="off"
-					>
-						<Grid container spacing={2}>
-							<Grid item xs={12}>
-
-								{/* <div className='form_add_training_general'> */}
-								<Box
-									component="form"
-									sx={{
-										'& .MuiTextField-root': { mb: 2, width: '100%' },
-										margin: '50px', // Centra el formulario en la pantalla
-
-									}}
-									noValidate
-									autoComplete="off"
-								>
-									<h4 class="margin_training_form"
-									><FormattedMessage id="project.global.fields.date" /></h4>
-									<LocalizationProvider dateAdapter={AdapterDayjs}>
-										<DemoContainer components={['DatePicker']}>
-											<DatePicker
-												sx={{
-													border: '2px solid grey',
-													background: "linear-gradient(-45deg, #41295a 0%, #2F0743 100% )",
-													borderRadius: "20px",
-													colorAdjust: "#00bfff",
-													'& label': { color: 'white' },
-													'& input': { color: 'white' }
-												}}
-												label={<FormattedMessage id="project.global.fields.date" />}
-												autoFocus
-												required
-                                                value={trainingDate}
-												onChange={(newDate) =>
-													{
-														setTrainingDate(newDate.toISOString())
-														console.log("formattedDate:", newDate.$d.toISOString());
-													
-													
-													}
-													
-												
-												}
-											/>
-										</DemoContainer>
-									</LocalizationProvider>
-									<h4 class="margin_training_form"
-									>Time</h4>
-									<LocalizationProvider dateAdapter={AdapterDayjs}>
-										<DemoContainer components={['TimePicker']}>
-											<TimePicker
-											    id="time-picker"
-
-												sx={{
-													border: '2px solid grey',
-													background: "linear-gradient(-45deg, #41295a 0%, #2F0743 100% )",
-													borderRadius: "20px",
-													'& label': { color: 'white' },
-													'& input': { color: 'white' }
-												}}
-                                                value={durationMinutes}
-												label="Time" 
-												onChange={(durationMinutes) => {
-													setDurationMinutes(durationMinutes)
-													console.log("holaaa222; ", durationMinutes)
-												}}
-												/>
-												
-										</DemoContainer>
-									</LocalizationProvider>
-									<TextField
-										id="outlined-multiline-static-1"
-										label={<FormattedMessage id="project.exercises.fields.description" />}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
-										multiline
-										rows={4}
-										sx={{
-											border: '2px solid grey',
-											background: "linear-gradient(-45deg, #41295a 0%, #2F0743 100% )",
-											borderRadius: "20px",
-										}}
-										value={description}
-										onChange={(e) => setDescription(e.target.value)}
-									/>
-
-									<TextField
-										id="outlined-multiline-static-1"
-										label={<FormattedMessage id="project.trainings.fields.objective" />}//Objetivo
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
-										multiline
-										rows={4}
-										sx={{
-											border: '2px solid grey',
-											background: "linear-gradient(-45deg, #41295a 0%, #2F0743 100% )",
-											borderRadius: "20px",
-										}}
-										value={objective}
-										onChange={(e) => setObjective(e.target.value)}
-									/>
-
-
-								</Box>
-							</Grid>
-						</Grid>
-					</Box>  </Grid>
+				<Grid item xs={12} md={12}>
+						<Typography
+							sx={{ flex: '1 1 100%', mt: 3.5, color: "#00bfff", m:2 }}
+							variant="h6"
+							id="tableTitle"
+							component="div"
+						>
+							Team Selection
+						</Typography>
+						<div style={{ width: '100%', }}>
+							<DataGrid
+								sx={{
+									background: "linear-gradient(-45deg, #f12711 0%, #f5af19 100% )",
+									borderRadius: "20px",
+									boxShadow: 12,
+									m:2,
+								}}
+								rows={rowsStretchings}
+								columns={columnsStretchings}
+								initialState={{
+									pagination: {
+										paginationModel: { page: 0, pageSize: 5 },
+									},
+								}}
+								pageSizeOptions={[5, 10]}
+								checkboxSelection
+								onRowSelectionModelChange={(newRowSelectionModelTeam) => {
+                                        setStretchingIds((prevStretchingId) => {
+										console.log(" seasonnnn PRIMEROOOOO: ", newRowSelectionModelTeam);
+										return newRowSelectionModelTeam;
+										 });
+								}}
+							/>
+						</div>
+                        
+					</Grid>
 			</Grid>
-			<button className="post_training" onClick={(e) => handleSubmit(e)}><FormattedMessage id="project.global.buttons.save" /></button>
-                  
+
+
+			<button className="post_training" type='submit' onClick={(e) => handleSubmit(e)}><FormattedMessage id="project.global.buttons.save" /></button>
+
 		</Box>
+)}
 
+            <StretchingsByTraining stretchings={stretchingList} trainingId={id} />
 
-
-
+            </Box>
 
 
 
@@ -365,4 +341,4 @@ const UpdateTraining = () => {
 );
 }
 
-export default UpdateTraining;
+export default UpdateTrainingStretching;

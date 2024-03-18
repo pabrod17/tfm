@@ -5,7 +5,8 @@ import * as actionTypes from './actionsTypes';
 const initialState = {
     stretching: null,
     stretchings:null,
-    stretchingsSearch: null
+    stretchingsSearch: null,
+    stretchingsByTrainingId: null
 };
 
 const stretching = (state = initialState.stretching, action) => {
@@ -44,12 +45,21 @@ const stretchings = (state = initialState.stretchings, action) => {
             return action.stretchings;
         case actionTypes.FIND_STRETCHINGS_BY_PLAYER_ID_COMPLETED:
             return action.stretchings;
-        case actionTypes.FIND_STRETCHINGS_BY_TRAINING_ID_COMPLETED:
-            return action.stretchings;
         case actionTypes.FIND_STRETCHINGS_BY_GAME_ID_COMPLETED:
             return action.stretchings;
         case actionTypes.FIND_STRETCHINGS_BY_TYPE_COMPLETED:
             return action.stretchings;
+        default:
+            return state;
+    }
+}
+
+const stretchingsByTrainingId = (state = initialState.stretchingsByTrainingId, action) => {
+
+    switch (action.type) {
+
+        case actionTypes.FIND_STRETCHINGS_BY_TRAINING_ID_COMPLETED:
+            return action.stretchingsByTrainingId;
         default:
             return state;
     }
@@ -76,7 +86,8 @@ const stretchingsSearch = (state = initialState.stretchingsSearch, action) => {
 const reducer = combineReducers({
     stretching,
     stretchings,
-    stretchingsSearch
+    stretchingsSearch,
+    stretchingsByTrainingId
 });
 
 export default reducer;

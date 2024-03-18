@@ -8,3 +8,6 @@ export const getAllStretchings = state =>
 
 export const getStretchingsSearch = state =>
     getModuleState(state).stretchingsSearch;
+    
+export const getStretchingsByTrainingId = state =>
+    getModuleState(state).stretchingsByTrainingId;

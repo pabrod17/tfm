@@ -16,3 +16,4 @@ export const REMOVE_STRETCHING_TO_GAME_COMPLETED = "project/stretchings/removeSt
 export const CLEAR_STRETCHING_SEARCH = "project/lesion/clearStretchingSearch";
 export const FIND_ALL_STRETCHINGS_PAGE_COMPLETED = "project/stretchings/findAllStretchingsPageCompleted";
 export const FIND_STRETCHINGS_BY_TYPE_PAGE_COMPLETED = "project/stretchings/findStretchingsByTypePageCompleted";
+export const CLEAR_STRETCHINGS_BY_TRAINING_ID = "project/lesion/clearStretchingsByTrainingId";

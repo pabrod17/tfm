@@ -35,6 +35,10 @@ const clearStretchingSearch = () => ({
     type: actionTypes.CLEAR_STRETCHING_SEARCH
 });
 
+const clearStretchingByTrainingId = () => ({
+    type: actionTypes.CLEAR_STRETCHINGS_BY_TRAINING_ID
+});
+
 
 const findAllStretchingsPageCompleted = stretchingsSearch => ({
     type: actionTypes.FIND_ALL_STRETCHINGS_PAGE_COMPLETED,
@@ -116,12 +120,13 @@ export const findStretchingsByPlayerId = (playerId, onSuccess, onErrors) => disp
         onErrors);
 }
 
-const findStretchingsByTrainingIdCompleted = stretchings => ({
+const findStretchingsByTrainingIdCompleted = stretchingsByTrainingId => ({
     type: actionTypes.FIND_STRETCHINGS_BY_TRAINING_ID_COMPLETED,
-    stretchings
+    stretchingsByTrainingId
 });
 
 export const findStretchingsByTrainingId = (trainingId, onSuccess, onErrors) => dispatch => {
+    dispatch(clearStretchingByTrainingId());
     backend.stretchingService.findStretchingsByTrainingId(trainingId,
         stretchings => {
             dispatch(findStretchingsByTrainingIdCompleted(stretchings));

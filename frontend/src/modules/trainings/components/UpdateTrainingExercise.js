@@ -32,19 +32,17 @@ const UpdateTrainingExercise = () => {
     const training = useSelector(selectors.getOneTraining);
 
     const {id} = useParams();
-    const navigate = useNavigate();
 
     const dispatch = useDispatch();
     const history = useNavigate();
-    const [trainingDate , setTrainingDate ] = useState(dayjs(training.trainingDate));
-    const [durationMinutes, setDurationMinutes] = useState(dayjs(training.durationMinutes));
-    const [description , setDescription ] = useState(training.description);
-    const [objective , setObjective] = useState(training.objective);
     const [backendErrors, setBackendErrors] = useState(null);
     const { exerciseType, tabValue } = useParams();
     const [value, setValue] = useState(parseInt(tabValue, 10) || 0);
     const [showTable, setShowTable] = useState(true);
 	const [exerciseIds, setExerciseIds] = useState(null);
+
+    console.log("dentro PARA exercises: ", tabValue)
+
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -52,22 +50,27 @@ const UpdateTrainingExercise = () => {
 
     let form;
 
-    const exercisesList = useSelector(selectorsExercises.getExercisesByTrainingId);
-    const exercisesListAll = useSelector(selectorsExercises.getAllExercises);
+    const exercisesList = useSelector(selectorsExercises.getExercisesByTrainingId) || [];
+    const exercisesListAll = useSelector(selectorsExercises.getAllExercises) || [];
 
     useEffect(() => {
         if (!exercisesList) {
-            dispatch(actionsExercises.findExercisesByTrainingId(id, () => history.push(`/exercises/home/training/${id}/exercise`)));
+            dispatch(actionsExercises.findExercisesByTrainingId(id, () => history(`/exercises/home/training/${id}/exercise`)));
         }
     }, [dispatch, exercisesList, history, id]);
 
     useEffect(() => {
         if (!exercisesListAll) {
-            dispatch(actionsExercises.findAllExercises(() => history.push(`/exercises/home/training/${id}/exercise`)));
+            dispatch(actionsExercises.findAllExercises(() => history(`/exercises/home/training/${id}/exercise`)));
         }
     }, [dispatch, exercisesListAll, history]);
 
-    const filteredExercises = exercisesListAll.exercises.filter(exercise => !exercisesList.some(ex => ex.id === exercise.id));
+    let filteredExercises = exercisesListAll.exercises;
+
+        filteredExercises = exercisesListAll.exercises.filter(exercise => {
+            return !exercisesList || !exercisesList.some(ex => ex.id === exercise.id);
+        });
+    
     
     const columnsExercises = [
         { field: 'id', headerName: 'ID', width: 70 },
@@ -109,14 +112,17 @@ const UpdateTrainingExercise = () => {
             ));
         }
 
-        const handleUpdateTraining = (dispatch) => {
+        const handleUpdateTraining = (tabValue, dispatch) => {
+            setValue(tabValue);
             dispatch(actions.findTrainingById(id, () => history(`/trainings/update/${id}`)));
         }
-        const handleUpdateTrainingExercise = (dispatch) => {
-            dispatch(actions.findTrainingById(id, () => history(`/trainings/update/${id}/exercise/${value}`)));
+        const handleUpdateTrainingExercise = (tabValue, dispatch) => {
+            setValue(tabValue);
+            dispatch(actions.findTrainingById(id, () => history(`/trainings/update/${id}/exercise/${tabValue}`)));
         }
-        const handleUpdateTrainingStretching = (dispatch) => {
-            dispatch(actions.findTrainingById(id, () => history(`/trainings/update/${id}/stretching/${value}`)));
+        const handleUpdateTrainingStretching = (tabValue, dispatch) => {
+            setValue(tabValue);
+            dispatch(actions.findTrainingById(id, () => history(`/trainings/update/${id}/stretching/${tabValue}`)));
         }
 
         const handleAddExerciseToTraining = (dispatch, history) => {
@@ -156,9 +162,9 @@ const UpdateTrainingExercise = () => {
                             mb:2
                         }}
         >
-          <Tab value={0} sx={{ color: '#40FF00', fontSize: "30px", padding:"20px"}} onClick={() => handleUpdateTraining(dispatch)} label="General"  />
-          <Tab value={1} sx={{ color: '#f5af19', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTrainingExercise(dispatch)} label="Exercises"  />
-          <Tab value={2} sx={{ color: 'rgb(255, 0, 247)', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTrainingStretching(dispatch)} label="Stretchings"  />
+          <Tab value={0} sx={{ color: '#40FF00', fontSize: "30px", padding:"20px"}} onClick={() => handleUpdateTraining(0, dispatch)} label="General"  />
+          <Tab value={1} sx={{ color: '#f5af19', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTrainingExercise(1, dispatch)} label="Exercises"  />
+          <Tab value={2} sx={{ color: 'rgb(255, 0, 247)', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTrainingStretching(2, dispatch)} label="Stretchings"  />
         </Tabs>
       </Box>
       <input type="checkbox" class="theme-checkbox" onClick={() => setShowTable(!showTable)}/>
