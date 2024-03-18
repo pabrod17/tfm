@@ -22,11 +22,33 @@ import { AppBar, Toolbar } from '@mui/material';
 import Cajita from './Cajita';
 import {useSelector} from 'react-redux';
 import linea_roja_grande from './canchaOscura.jpeg';
-
+import plash1 from './plash1.jpeg';
+import plash2 from './plash2.jpeg';
+import plash3 from './plash3.jpeg';
+import plash4 from './plash4.jpeg';
 
 
 const App = () => {
     const [isDark, setIsDark] = useState(true);
+    const [backgroundImage, setBackgroundImage] = useState(linea_roja_grande); // Imagen inicial
+
+    const toggleBackgroundImage = (count) => {
+        if(count==1) {
+            setBackgroundImage(plash1);
+        }
+        if(count==2) {
+            setBackgroundImage(plash2);
+        }
+        if(count==3) {
+            setBackgroundImage(plash3);
+        }
+        if(count==4) {
+            setBackgroundImage(plash4);
+        }
+        if(count==5) {
+            setBackgroundImage(linea_roja_grande);
+        }
+        }
 
 
     const theme = createMuiTheme({
@@ -49,7 +71,7 @@ const App = () => {
     });
     const paperStyle = {
 
-        backgroundImage: `url(${linea_roja_grande})`,
+        backgroundImage: `url(${backgroundImage})`,
         backgroundRepeat: 'no-repeat', // Evita la repetición de la imagen de fondo
         backgroundAttachment: 'fixed', // Fija la imagen de fondo
         backgroundSize: 'cover',
@@ -106,7 +128,7 @@ const App = () => {
                         isDark={isDark} setIsDark={setIsDark}
                         />
                     </Box>
-                    <Topbar sx={{ position: 'absolute', right: 0 }} isDark={isDark} setIsDark={setIsDark}/>
+                    <Topbar sx={{ position: 'absolute', right: 0 }} toggleBackgroundImage={toggleBackgroundImage} isDark={isDark} setIsDark={setIsDark}/>
 
                     </Box>
 

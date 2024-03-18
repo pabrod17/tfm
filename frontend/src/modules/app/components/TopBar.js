@@ -16,8 +16,9 @@ import {useDispatch} from 'react-redux';
 import users from '../../users';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import Sidebar from "../../app/components/SideBar";
+import StarsIcon from '@material-ui/icons/Stars';
 
-const Topbar = ({ isDark, setIsDark}) => {
+const Topbar = ({toggleBackgroundImage, isDark, setIsDark}) => {
   const dispatch = useDispatch();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -72,7 +73,21 @@ const Topbar = ({ isDark, setIsDark}) => {
           <LocalHospitalIcon sx={{ fontSize: 30 }} />
         </IconButton>
         <Switch checked={isDark} onChange={e=>setIsDark(!isDark)}/>
-
+        <IconButton sx={{ color: "white"}}>
+          <StarsIcon color="primary" fontSize="large" onClick={() => toggleBackgroundImage(1)} />
+        </IconButton>
+        <IconButton sx={{ color: "white"}}>
+          <StarsIcon color="secondary" fontSize="large" onClick={() => toggleBackgroundImage(2)} />
+        </IconButton>
+        <IconButton sx={{ color: "white"}}>
+          <StarsIcon color="action" fontSize="large" onClick={() => toggleBackgroundImage(3)} />
+        </IconButton>
+        <IconButton sx={{ color: "yellow"}}>
+          <StarsIcon color="yellow" fontSize="large" onClick={() => toggleBackgroundImage(4)} />
+        </IconButton>
+        <IconButton sx={{ color: "green"}}>
+          <StarsIcon color="green" fontSize="large" onClick={() => toggleBackgroundImage(5)} />
+        </IconButton>
     </Container>
 
   );
