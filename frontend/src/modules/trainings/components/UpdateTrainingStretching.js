@@ -74,7 +74,30 @@ const UpdateTrainingStretching = () => {
             const columnsStretchings2 = [
                 { field: 'id', headerName: 'ID', width: 70 },
                 { field: 'name', headerName: <FormattedMessage id="project.stretchings.fields.stretchingName"/>, width: 160 },
-                { field: 'type', headerName: <FormattedMessage id="project.stretchings.fields.stretchingType" />, width: 160 },
+                { field: 'type', headerName: <FormattedMessage id="project.stretchings.fields.stretchingType" />, width: 160,
+                renderCell: (params) => (
+                    <div style={{ backgroundColor: 
+                        params.row.type === 'Isquiotibiales' ? '#DD2476' : // Azul oscuro
+                        params.row.type === 'Gluteos' ? '#FF512F' : // Verde esmeralda
+                        params.row.type === 'Gemelos' ? '#FF0000' : // Amarillo
+                        params.row.type === 'Adductores' ? '#0f9b0f' : // Blanco
+                        params.row.type === 'Hombro' ? '#DDDDDD' : // Gris claro
+                        params.row.type === 'Cuadriceps' ? '#FF6B6B' : // Rosa
+                        params.row.type === 'Espalda' ? '#8E2DE2' : // Morado oscuro
+                        params.row.type === 'Pectoral' ? '#00FFF3' : // Negro
+                        params.row.type === 'Ingle' ? '#FFFF00' : // Negro
+                        'green', // Por defecto
+                        borderRadius: '5px',
+                        padding: '5px'
+                    }}>
+                    {params.value}
+                    </div>
+                ), },
+
+
+
+
+
                 { field: 'description', headerName: <FormattedMessage id="project.exercises.fields.description" />, width: 160 }
             ];
             setColumnsStretchings(columnsStretchings2);

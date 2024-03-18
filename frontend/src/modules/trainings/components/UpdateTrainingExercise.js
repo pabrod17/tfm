@@ -75,9 +75,25 @@ const UpdateTrainingExercise = () => {
             const columnsExercises2 = [
                 { field: 'id', headerName: 'ID', width: 70 },
                 { field: 'name', headerName: <FormattedMessage id="project.exercises.fields.name"/>, width: 160 },
-                { field: 'type', headerName: <FormattedMessage id="project.exercises.fields.typeOnly" />, width: 160 },
+                { field: 'type', headerName: <FormattedMessage id="project.exercises.fields.typeOnly" />, width: 160,
+                renderCell: (params) => (
+                    <div style={{ backgroundColor: 
+                        params.row.type === 'Tactico' ? '#DD2476' : // Azul oscuro
+                        params.row.type === 'Tecnica' ? '#FF512F' : // Verde esmeralda
+                        params.row.type === 'Fisico' ? '#FFD166' : // Amarillo
+                        params.row.type === 'Global' ? '#0f9b0f' : // Blanco
+                        params.row.type === 'Especifico' ? '#DDDDDD' : // Gris claro
+                        params.row.type === 'Psicologico' ? '#FF6B6B' : // Rosa
+                        params.row.type === 'Estrategia' ? '#8E2DE2' : // Morado oscuro
+                        params.row.type === 'PrePartido' ? '#00FFF3' : // Negro
+                        'green', // Por defecto
+                        borderRadius: '5px',
+                        padding: '5px'                    }}>
+                    {params.value}
+                    </div>
+                ), },
                 { field: 'description', headerName: <FormattedMessage id="project.exercises.fields.description" />, width: 160 },
-                { field: 'objective', headerName: <FormattedMessage id="project.exercises.fields.objective" />, width: 160 }
+                { field: 'objective', headerName: <FormattedMessage id="project.exercises.fields.objective" />, width: 160 },
             ];
             setColumnsExercises(columnsExercises2);
 
