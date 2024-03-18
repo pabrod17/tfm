@@ -40,6 +40,8 @@ const UpdateTrainingExercise = () => {
     const [value, setValue] = useState(parseInt(tabValue, 10) || 0);
     const [showTable, setShowTable] = useState(true);
 	const [exerciseIds, setExerciseIds] = useState(null);
+    const [rowsExercises, setRowsExercises] = useState([]);
+    const [columnsExercises, setColumnsExercises] = useState([]);
 
     console.log("dentro PARA exercises: ", tabValue)
 
@@ -48,51 +50,52 @@ const UpdateTrainingExercise = () => {
         setValue(newValue);
     };
 
+    let filteredExercises = [];
     let form;
 
-    const exercisesList = useSelector(selectorsExercises.getExercisesByTrainingId) || [];
-    const exercisesListAll = useSelector(selectorsExercises.getAllExercises) || [];
+    const exercisesList = useSelector(selectorsExercises.getExercisesByTrainingId);
+    const exercisesListAll = useSelector(selectorsExercises.getAllExercises);
 
     useEffect(() => {
         if (!exercisesList) {
-            dispatch(actionsExercises.findExercisesByTrainingId(id, () => history(`/exercises/home/training/${id}/exercise`)));
+            dispatch(actionsExercises.findExercisesByTrainingId(id, () => history(`/trainings/update/${id}/exercise/${1}`)));
+            dispatch(actions.findTrainingById(id, () => history(`/trainings/update/${id}/exercise/${1}`)));
         }
     }, [dispatch, exercisesList, history, id]);
 
     useEffect(() => {
-        if (!exercisesListAll) {
-            dispatch(actionsExercises.findAllExercises(() => history(`/exercises/home/training/${id}/exercise`)));
+        if (!exercisesListAll.exercises) {
+            dispatch(actionsExercises.findAllExercises(() => history(`/trainings/update/${id}/exercise/${1}`)));
+        } else {
+            filteredExercises = exercisesListAll.exercises;
+            filteredExercises = exercisesListAll.exercises.filter(exercise => {
+                    return !exercisesList || !exercisesList.some(ex => ex.id === exercise.id);
+                });
+
+            const columnsExercises2 = [
+                { field: 'id', headerName: 'ID', width: 70 },
+                { field: 'name', headerName: <FormattedMessage id="project.exercises.fields.name"/>, width: 160 },
+                { field: 'type', headerName: <FormattedMessage id="project.exercises.fields.typeOnly" />, width: 160 },
+                { field: 'description', headerName: <FormattedMessage id="project.exercises.fields.description" />, width: 160 },
+                { field: 'objective', headerName: <FormattedMessage id="project.exercises.fields.objective" />, width: 160 }
+            ];
+            setColumnsExercises(columnsExercises2);
+
+            if (filteredExercises) {
+                const newRowsExercises = filteredExercises.map(exercise => ({
+                    id: exercise.id,
+                    name: exercise.exerciseName,
+                    type: exercise.exerciseType,
+                    description: exercise.description,
+                    objective: exercise.objective
+                }));
+                setRowsExercises(newRowsExercises);
+            }
+
         }
     }, [dispatch, exercisesListAll, history]);
 
-    let filteredExercises = exercisesListAll.exercises;
 
-        filteredExercises = exercisesListAll.exercises.filter(exercise => {
-            return !exercisesList || !exercisesList.some(ex => ex.id === exercise.id);
-        });
-    
-    const columnsExercises = [
-        { field: 'id', headerName: 'ID', width: 70 },
-        { field: 'name', headerName: <FormattedMessage id="project.exercises.fields.name"/>, width: 160 },
-        { field: 'type', headerName: <FormattedMessage id="project.exercises.fields.typeOnly" />, width: 160 },
-        { field: 'description', headerName: <FormattedMessage id="project.exercises.fields.description" />, width: 160 },
-        { field: 'objective', headerName: <FormattedMessage id="project.exercises.fields.objective" />, width: 160 }
-    ];
-
-    const rowsExercises = [
-    ];
-
-    if (filteredExercises) {
-        filteredExercises.map(exercise => {
-            rowsExercises.push({
-                id: exercise.id,
-                name: exercise.exerciseName,
-                type: exercise.exerciseType,
-                description: exercise.description,
-                objective: exercise.objective
-            });
-        })
-    }
 
 
 

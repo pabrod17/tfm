@@ -38,58 +38,61 @@ const UpdateTrainingStretching = () => {
     const [value, setValue] = useState(parseInt(tabValue, 10) || 0);
     const [showTable, setShowTable] = useState(true);
 	const [stretchingIds, setStretchingIds] = useState(null);
-
-    console.log("dentro PARA stretchings: ", tabValue)
+    const [rowsStretchings, setRowsStretchings] = useState([]);
+    const [columnsStretchings, setColumnsStretchings] = useState([]);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-
+    let filteredStretchings = [];
     let form;
 
-    const stretchingList = useSelector(selectorsStretchings.getStretchingsByTrainingId) || [];
-    const stretchingListAll = useSelector(selectorsStretchings.getAllStretchings) || [];
+    const stretchingList = useSelector(selectorsStretchings.getStretchingsByTrainingId);
+    const stretchingListAll = useSelector(selectorsStretchings.getAllStretchings);
 
     useEffect(() => {
+        console.log("PRIMEROOOOOO, ", stretchingList)
         if (!stretchingList) {
-            dispatch(actionsStretchings.findStretchingsByTrainingId(id, () => history(`/stretchings/home/training/${id}/stretching`)));
+            console.log("PRIMEROOOOOO 111111, ", stretchingList)
+            dispatch(actionsStretchings.findStretchingsByTrainingId(id, () => history(`/trainings/update/${id}/stretching/${2}`)));
+            dispatch(actions.findTrainingById(id, () => history(`/trainings/update/${id}/stretching/${2}`)));
         }
     }, [dispatch, stretchingList, history, id]);
 
     useEffect(() => {
-        if (!stretchingListAll) {
-            dispatch(actionsStretchings.findAllStretchings(() => history(`/stretchings/home/training/${id}/stretching`)));
+        console.log("SEGUNDOOO: " , stretchingListAll)
+        if (!stretchingListAll.stretchings) {
+            console.log("SEGUNDOOO 2222222: ", stretchingListAll)
+            dispatch(actionsStretchings.findAllStretchings(() => history(`/trainings/update/${id}/stretching/${2}`)));
+        } else {
+            filteredStretchings = stretchingListAll.stretchings;
+                filteredStretchings = stretchingListAll.stretchings.filter(stretching => {
+                    return !stretchingList || !stretchingList.some(ex => ex.id === stretching.id);
+                });
+        
+        
+            const columnsStretchings2 = [
+                { field: 'id', headerName: 'ID', width: 70 },
+                { field: 'name', headerName: <FormattedMessage id="project.stretchings.fields.stretchingName"/>, width: 160 },
+                { field: 'type', headerName: <FormattedMessage id="project.stretchings.fields.stretchingType" />, width: 160 },
+                { field: 'description', headerName: <FormattedMessage id="project.exercises.fields.description" />, width: 160 }
+            ];
+            setColumnsStretchings(columnsStretchings2);
+
+        
+            if (filteredStretchings) {
+                const newRowsStretchings = filteredStretchings.map(stretching => ({
+                    id: stretching.id,
+                    name: stretching.stretchingName,
+                    type: stretching.stretchingType,
+                    description: stretching.description
+                }));
+                // Actualizar el estado de rowsStretchings
+                setRowsStretchings(newRowsStretchings);
+            }
+        
         }
     }, [dispatch, stretchingListAll, history]);
-
-    let filteredStretchings = stretchingListAll.stretchings;
-
-        filteredStretchings = stretchingListAll.stretchings.filter(stretching => {
-            return !stretchingList || !stretchingList.some(ex => ex.id === stretching.id);
-        });
-
-
-
-    const columnsStretchings = [
-        { field: 'id', headerName: 'ID', width: 70 },
-        { field: 'name', headerName: <FormattedMessage id="project.stretchings.fields.stretchingName"/>, width: 160 },
-        { field: 'type', headerName: <FormattedMessage id="project.stretchings.fields.stretchingType" />, width: 160 },
-        { field: 'description', headerName: <FormattedMessage id="project.exercises.fields.description" />, width: 160 }
-    ];
-
-    const rowsStretchings = [
-    ];
-
-    if (filteredStretchings) {
-        filteredStretchings.map(stretching => {
-            rowsStretchings.push({
-                id: stretching.id,
-                name: stretching.stretchingName,
-                type: stretching.stretchingType,
-                description: stretching.description
-            });
-        })
-    }
 
 
 
