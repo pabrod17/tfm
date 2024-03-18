@@ -64,9 +64,12 @@ const UpdateTrainingStretching = () => {
 
     let filteredStretchings = stretchingListAll.stretchings;
 
+    if(!stretchingListAll) {
         filteredStretchings = stretchingListAll.stretchings.filter(stretching => {
             return !stretchingList || !stretchingList.some(ex => ex.id === stretching.id);
         });
+    }
+
 
 
     const columnsStretchings = [

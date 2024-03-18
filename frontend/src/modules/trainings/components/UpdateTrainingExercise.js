@@ -67,10 +67,11 @@ const UpdateTrainingExercise = () => {
 
     let filteredExercises = exercisesListAll.exercises;
 
+    if(!exercisesListAll) {
         filteredExercises = exercisesListAll.exercises.filter(exercise => {
             return !exercisesList || !exercisesList.some(ex => ex.id === exercise.id);
         });
-    
+    }
     
     const columnsExercises = [
         { field: 'id', headerName: 'ID', width: 70 },
