@@ -85,7 +85,6 @@ const TrainingHome = () => {
 
     return (
         <div className=''>
-
             <Box
                 sx={{
                     maxWidth: { xs: 320, sm: 480 },
@@ -132,7 +131,6 @@ const TrainingHome = () => {
                     All
                 </button>
             </div>
-
             </Box>
             <Box
                 sx={{
@@ -154,39 +152,7 @@ const TrainingHome = () => {
                 </IconButton>
             </Box>
             <Trainings trainings={trainings.trainings} />
-
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     );
 }
 

@@ -206,6 +206,7 @@ const AddTraining = () => {
 				borderRadius: "20px",
 				flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 				flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
+				boxShadow:"0 10px 50px rgb(0, 0, 0)"
 			}}
 		>
             <Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
@@ -252,7 +253,6 @@ const AddTraining = () => {
 													'& label': { color: 'white' },
 													'& input': { color: 'white' }
 												}}
-												label={<FormattedMessage id="project.global.fields.date" />}
 												autoFocus
 												required
 												onChange={(newDate) =>
@@ -283,7 +283,6 @@ const AddTraining = () => {
 													'& input': { color: 'white' }
 												}}
 
-												label="Time" 
 												onChange={(durationMinutes) => {
 													setDurationMinutes(durationMinutes)
 													console.log("holaaa222; ", durationMinutes)
@@ -434,146 +433,6 @@ const AddTraining = () => {
 			<button className="post_training" onClick={(e) => handleSubmit(e)}><FormattedMessage id="project.global.buttons.save" /></button>
                   
 		</Box>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		// <div>
-		//     <Errors errors={backendErrors} onClose={() => setBackendErrors(null)}/>
-		//     <div className="card bg-light border-dark centrado-update-add">
-		//         <h5 className="card-header">
-		//         <FormattedMessage id="project.trainings.fields.addTraining"/>
-		//         </h5>
-		//         <div className="card-body">
-		//             <form ref={node => form = node} 
-		//                 className="needs-validation" noValidate onSubmit={e => handleSubmit(e)}>
-		//                 <div className="form-group row">
-		//                 <label htmlFor="trainingDate" className="col-md-4 col-form-label">
-		//                 <FormattedMessage id="project.global.fields.date"/>
-		//                 </label>
-		//                 <div className="col-md-8">
-		//                     <input type="date" id="trainingDate" className="form-control"
-		//                         value={trainingDate}
-		//                         onChange={e => setTrainingDate(e.target.value)}
-		//                         autoFocus
-		//                         required/>
-		//                     <div className="invalid-feedback">
-		//                         <FormattedMessage id='project.global.validator.required'/>
-		//                     </div>
-		//                 </div>
-		//             </div>
-		//                 <div className="form-group row">
-		//                     <label htmlFor="firstName" className="col-md-12 col-form-label">
-		//                     <FormattedMessage id="project.statistics.fields.duration"/>
-		//                     </label>
-		//                     <div className="col-md-12">
-		//                         <textarea  type="text" id="durationMinutes" className="form-control"
-		//                             value={durationMinutes}
-		//                             onChange={e => setDurationMinutes(e.target.value)}
-		//                             autoFocus
-		//                             required/>
-		//                         <div className="invalid-feedback">
-		//                             <FormattedMessage id='project.global.validator.required'/>
-		//                         </div>
-		//                     </div>
-		//                 </div>
-		//                 <div className="form-group row">
-		//                     <label htmlFor="firstName" className="col-md-12 col-form-label">
-		//                     <FormattedMessage id="project.exercises.fields.description"/>
-		//                     </label>
-		//                     <div className="col-md-12">
-		//                         <textarea  type="text" id="description" className="form-control"
-		//                             value={description}
-		//                             onChange={e => setDescription(e.target.value)}
-		//                             autoFocus
-		//                             required/>
-		//                         <div className="invalid-feedback">
-		//                             <FormattedMessage id='project.global.validator.required'/>
-		//                         </div>
-		//                     </div>
-		//                 </div>
-		//                 <div className="form-group row">
-		//                     <label htmlFor="firstName" className="col-md-12 col-form-label">
-		//                     <FormattedMessage id="project.trainings.fields.objective"/>
-		//                     </label>
-		//                     <div className="col-md-12">
-		//                         <textarea type="text" id="objective" className="form-control"
-		//                             value={objective}
-		//                             onChange={e => setObjective(e.target.value)}
-		//                             autoFocus
-		//                             required/>
-		//                         <div className="invalid-feedback">
-		//                             <FormattedMessage id='project.global.validator.required'/>
-		//                         </div>
-		//                     </div>
-		//                 </div>
-		//                 <div class="dropdown">
-		//                 <button class="btn-player draw-border"><FormattedMessage id="project.teams.fields.team"/></button>
-		//                             <div class="dropdown-content">
-		//                             {teamsList.map(team => 
-		//                                         <a type="button" onClick={() => setTeamId(team.id)}> 
-		//                                             {team.id} : {"  "}{team.teamName}
-		//                                         </a>)}
-		//                             </div>
-		//                 </div>
-		//                 <div class="dropdown">
-		//                 <button class="btn-player draw-border"><FormattedMessage id="project.seasons.fields.season"/></button>
-		//                             <div class="dropdown-content">
-		//                             {seasonsList.map(season => 
-		//                                         <a type="button" onClick={() => setSeasonId(season.id)}> 
-		//                                             {season.id} : {"  "}{season.calendario}
-		//                                         </a>)}
-		//                             </div>
-		//                 </div>
-		//                 <div className="form-group row">
-		//                     <div className="offset-md-8 col-md-1">
-		//                         <button type="submit" className="btn btn-primary">
-		//                             <FormattedMessage id="project.global.buttons.save"/>
-		//                         </button>
-		//                     </div>
-		//                 </div>
-		//             </form>
-		//         </div>
-		//     </div>
-		// </div>
 	);
 }
 

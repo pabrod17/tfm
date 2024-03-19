@@ -141,7 +141,8 @@ const UpdateTraining = () => {
 				borderRadius: "20px",
 				flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 				flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
-			}}
+                boxShadow:"0 10px 50px rgb(0, 0, 0)"
+            }}
 		>
             <Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
 			<Grid container margin={5} spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
@@ -156,6 +157,7 @@ const UpdateTraining = () => {
 							background: "linear-gradient(-45deg, #f5af19 0%, #f12711 100% )",
 							borderRadius: "20px",
 							boxShadow: 12,
+                            boxShadow:"0 10px 50px rgb(0, 0, 0)"
 						}}
 						noValidate
 						autoComplete="off"
