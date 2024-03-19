@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, createContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
@@ -17,11 +17,22 @@ const UpdateStretching = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
     const history = useNavigate();
-    const [stretchingName, setStretchingName] = useState(stretching.stretchingName);
-    const [description, setDescription] = useState(stretching.description);
-    const [stretchingType, setStretchingType] = useState(stretching.stretchingType);
+    const [stretchingName, setStretchingName] = useState(null);
+    const [description, setDescription] = useState(null);
+    const [stretchingType, setStretchingType] = useState(null);
     const [backendErrors, setBackendErrors] = useState(null);
     let form;
+
+    useEffect(() => {
+        if (!stretching) {
+            dispatch(actions.findStretchingById(id, () => history(`/stretchings/update/${id}`)));
+        } else {
+            setStretchingName(stretching.stretchingName);
+          setDescription(stretching.description);
+          setStretchingType(stretching.stretchingType);
+    
+        }
+    }, [dispatch, stretching, history, id]);
 
     const handleSubmit = event => {
 
@@ -87,8 +98,14 @@ const UpdateStretching = () => {
             >
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
+                    <InputLabel id="demo-simple-select-label"
+                                sx={{
+                                    color: "#00bfff",
+                                    fontSize:"18px",
+                                    ml: "5px"
+                                }}
+                            ><FormattedMessage id="project.stretchings.fields.stretchingName" /></InputLabel>
                         <TextField
-                            label={<FormattedMessage id="project.stretchings.fields.stretchingName" />}
                             InputLabelProps={{ sx: { color: '#00bfff', fontSize: 20, fontWeight: 'regular' } }}
                             InputProps={{ sx: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular' } }}
                             value={stretchingName}
@@ -99,9 +116,9 @@ const UpdateStretching = () => {
                         <InputLabel id="demo-simple-select-label"
                             sx={{
                                 color: "#00bfff",
-                                margin: "15px"
+                                fontSize:"18px",
+                                ml: "5px"
                             }}
-
                         ><FormattedMessage id="project.stretchings.fields.stretchingType" /></InputLabel>
                         <Select
                             labelId="demo-simple-select-label"
@@ -138,9 +155,15 @@ const UpdateStretching = () => {
                         </Select>
                     </Grid>
                     <Grid item xs={12}>
+                    <InputLabel id="demo-simple-select-label"
+                            sx={{
+                                color: "#00bfff",
+                                fontSize:"18px",
+                                ml: "5px"
+                            }}
+                        ><FormattedMessage id="project.exercises.fields.description" /></InputLabel>
                         <TextField
                             id="outlined-multiline-static"
-                            label={<FormattedMessage id="project.exercises.fields.description" />}
                             InputLabelProps={{ sx: { color: '#00bfff', fontSize: 20, fontWeight: 'regular' } }}
                             InputProps={{ sx: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular' } }}
                             multiline

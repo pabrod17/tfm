@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, createContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
@@ -19,12 +19,24 @@ const UpdateLesion = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const history = useNavigate();
-  const [lesionName, setLesionName] = useState(lesion.lesionName);
-  const [description, setDescription] = useState(lesion.description);
-  const [medication, setMedication] = useState(lesion.medication);
-  const [lesionType, setLesionType] = useState(lesion.lesionType);
+  const [lesionName, setLesionName] = useState(null);
+  const [description, setDescription] = useState(null);
+  const [medication, setMedication] = useState(null);
+  const [lesionType, setLesionType] = useState(null);
   const [backendErrors, setBackendErrors] = useState(null);
   let form;
+
+  useEffect(() => {
+    if (!lesion) {
+        dispatch(actions.findLesionById(id, () => history(`/lesion/update/${id}`)));
+    } else {
+      setLesionName(lesion.lesionName);
+      setDescription(lesion.description);
+      setMedication(lesion.medication);
+      setLesionType(lesion.lesionType);
+
+    }
+}, [dispatch, lesion, history, id]);
 
   const handleSubmit = event => {
 
@@ -85,8 +97,15 @@ const UpdateLesion = () => {
       >
         <Grid container spacing={2}>
           <Grid item xs={12}>
+          <InputLabel id="demo-simple-select-label"
+              sx={{
+                color: "#00bfff",
+                fontSize:"18px",
+                ml: "5px"
+              }}
+
+            ><FormattedMessage id="project.lesion.fields.lesionName" /></InputLabel>
             <TextField
-              label={<FormattedMessage id="project.lesion.fields.lesionName" />}
               InputLabelProps={{ sx: { color: '#00bfff', fontSize: 20, fontWeight: 'regular' } }}
               InputProps={{ sx: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular' } }}
               value={lesionName}
@@ -97,7 +116,8 @@ const UpdateLesion = () => {
             <InputLabel id="demo-simple-select-label"
               sx={{
                 color: "#00bfff",
-                margin: "15px"
+                fontSize:"18px",
+                ml: "5px"
               }}
 
             ><FormattedMessage id="project.lesion.fields.lesionType" /></InputLabel>
@@ -132,9 +152,16 @@ const UpdateLesion = () => {
             </Select>
           </Grid>
           <Grid item xs={12}>
+          <InputLabel id="demo-simple-select-label"
+              sx={{
+                color: "#00bfff",
+                fontSize:"18px",
+                margin: "5px"
+              }}
+
+            ><FormattedMessage id="project.exercises.fields.description" /></InputLabel>
             <TextField
               id="outlined-multiline-static"
-              label={<FormattedMessage id="project.exercises.fields.description" />}
               InputLabelProps={{ sx: { color: '#00bfff', fontSize: 20, fontWeight: 'regular' } }}
               InputProps={{ sx: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular' } }}
               multiline
@@ -144,9 +171,16 @@ const UpdateLesion = () => {
             />
           </Grid>
           <Grid item xs={12}>
+          <InputLabel id="demo-simple-select-label"
+              sx={{
+                color: "#00bfff",
+                fontSize:"18px",
+                ml: "5px"
+              }}
+
+            ><FormattedMessage id="project.lesion.fields.medication" /></InputLabel>
             <TextField
               id="outlined-multiline-static"
-              label={<FormattedMessage id="project.lesion.fields.medication" />}
               InputLabelProps={{ sx: { color: '#00bfff', fontSize: 20, fontWeight: 'regular' } }}
               InputProps={{ sx: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular' } }}
               multiline

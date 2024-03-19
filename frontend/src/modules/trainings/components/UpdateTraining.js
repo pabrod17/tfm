@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useEffect, useState, createContext } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 import {FormattedMessage} from 'react-intl';
@@ -29,10 +29,10 @@ const UpdateTraining = () => {
 
     const dispatch = useDispatch();
     const history = useNavigate();
-    const [trainingDate , setTrainingDate ] = useState(dayjs(training.trainingDate));
-    const [durationMinutes, setDurationMinutes] = useState(dayjs(training.durationMinutes));
-    const [description , setDescription ] = useState(training.description);
-    const [objective , setObjective] = useState(training.objective);
+    const [trainingDate , setTrainingDate ] = useState(null);
+    const [durationMinutes, setDurationMinutes] = useState(null);
+    const [description , setDescription ] = useState(null);
+    const [objective , setObjective] = useState(null);
     const [backendErrors, setBackendErrors] = useState(null);
     const [value, setValue] = useState(0);
 
@@ -40,6 +40,18 @@ const UpdateTraining = () => {
         setValue(newValue);
     };
     let form;
+
+    useEffect(() => {
+        if (!training) {
+            dispatch(actions.findTrainingById(id, () => history(`/trainings/update/${id}`)));
+        } else {
+            setTrainingDate(dayjs(training.trainingDate));
+            setDurationMinutes(dayjs(training.durationMinutes));
+            setDescription(dayjs(training.description));
+            setObjective(dayjs(training.objective));
+
+        }
+    }, [dispatch, training, history, id]);
 
     const handleSubmit = event => {
 

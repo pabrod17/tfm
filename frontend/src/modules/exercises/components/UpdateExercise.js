@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, createContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
@@ -19,12 +19,24 @@ const UpdateExercise = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
     const history = useNavigate();
-    const [exerciseName, setExerciseName] = useState(exercise.exerciseName);
-    const [description, setDescription] = useState(exercise.description);
-    const [objective, setObjective] = useState(exercise.objective);
-    const [exerciseType, setExerciseType] = useState(exercise.exerciseType);
+    const [exerciseName, setExerciseName] = useState(null);
+    const [description, setDescription] = useState(null);
+    const [objective, setObjective] = useState(null);
+    const [exerciseType, setExerciseType] = useState(null);
     const [backendErrors, setBackendErrors] = useState(null);
     let form;
+
+    useEffect(() => {
+        if (!exercise) {
+            dispatch(actions.findExerciseById(id, () => history(`/exercises/update/${id}`)));
+        } else {
+            setExerciseName(exercise.exerciseName);
+          setDescription(exercise.description);
+          setObjective(exercise.objective);
+          setExerciseType(exercise.exerciseType);
+    
+        }
+    }, [dispatch, exercise, history, id]);
 
     const handleSubmit = event => {
 
@@ -88,8 +100,15 @@ const UpdateExercise = () => {
             >
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
+                            <InputLabel id="demo-simple-select-label"
+                                sx={{
+                                    color: "#00bfff",
+                                    fontSize:"18px",
+                                    ml: "5px"
+                                }}
+
+                            ><FormattedMessage id="project.exercises.fields.name" /></InputLabel>
                         <TextField
-                            label={<FormattedMessage id="project.exercises.fields.name" />}
                             InputLabelProps={{ sx: { color: '#00bfff', fontSize: 20, fontWeight: 'regular' } }}
                             InputProps={{ sx: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular' } }}
                             value={exerciseName}
@@ -100,7 +119,8 @@ const UpdateExercise = () => {
                         <InputLabel id="demo-simple-select-label"
                             sx={{
                                 color: "#00bfff",
-                                margin: "15px"
+                                fontSize:"18px",
+                                ml: "5px"
                             }}
 
                         ><FormattedMessage id="project.exercises.fields.typeOnly" /></InputLabel>
@@ -137,9 +157,16 @@ const UpdateExercise = () => {
                         </Select>
                     </Grid>
                     <Grid item xs={12}>
+                    <InputLabel id="demo-simple-select-label"
+                                sx={{
+                                    color: "#00bfff",
+                                    fontSize:"18px",
+                                    ml: "5px"
+                                }}
+
+                            ><FormattedMessage id="project.exercises.fields.description" /></InputLabel>
                         <TextField
                             id="outlined-multiline-static"
-                            label={<FormattedMessage id="project.exercises.fields.description" />}
                             InputLabelProps={{ sx: { color: '#00bfff', fontSize: 20, fontWeight: 'regular' } }}
                             InputProps={{ sx: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular' } }}
                             multiline
@@ -149,9 +176,16 @@ const UpdateExercise = () => {
                         />
                     </Grid>
                     <Grid item xs={12}>
+                    <InputLabel id="demo-simple-select-label"
+                                sx={{
+                                    color: "#00bfff",
+                                    fontSize:"18px",
+                                    ml: "5px"
+                                }}
+
+                            ><FormattedMessage id="project.exercises.fields.objective" /></InputLabel>
                         <TextField
                             id="outlined-multiline-static"
-                            label={<FormattedMessage id="project.exercises.fields.objective" />}
                             InputLabelProps={{ sx: { color: '#00bfff', fontSize: 20, fontWeight: 'regular' } }}
                             InputProps={{ sx: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular' } }}
                             multiline

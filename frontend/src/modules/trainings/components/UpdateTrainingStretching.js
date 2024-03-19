@@ -130,8 +130,8 @@ const UpdateTrainingStretching = () => {
     
         dispatch(actionsStretchings.addStretchingToTraining(id, stretchingIds,
             errors => setBackendErrors(errors),
-            history(`/trainings/update/${id}`)
             ));
+            window.location.reload();
         }
 
         const handleUpdateTraining = (tabValue, dispatch) => {
@@ -241,6 +241,7 @@ const UpdateTrainingStretching = () => {
 										paginationModel: { page: 0, pageSize: 5 },
 									},
 								}}
+                                autoHeight={true} // Permitir que la tabla determine su propio tamaño si los datos no se han cargado
 								pageSizeOptions={[5, 10]}
 								checkboxSelection
 								onRowSelectionModelChange={(newRowSelectionModelTeam) => {

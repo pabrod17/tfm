@@ -126,10 +126,9 @@ const UpdateTrainingExercise = () => {
     
         dispatch(actionsExercises.addExerciseToTraining(id, exerciseIds,
             errors => setBackendErrors(errors),
-            history(`/trainings/update/${id}`)
             ));
+            window.location.reload();
         }
-
         const handleUpdateTraining = (tabValue, dispatch) => {
             setValue(tabValue);
             dispatch(actions.findTrainingById(id, () => history(`/trainings/update/${id}`)));
@@ -241,6 +240,7 @@ const UpdateTrainingExercise = () => {
 										paginationModel: { page: 0, pageSize: 5 },
 									},
 								}}
+                                autoHeight={true} // Permitir que la tabla determine su propio tamaño si los datos no se han cargado
 								pageSizeOptions={[5, 10]}
 								checkboxSelection
 								onRowSelectionModelChange={(newRowSelectionModelTeam) => {
