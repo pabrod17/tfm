@@ -152,3 +152,11 @@ Trainings home final design:
 Trainings form design:
 
 ![ToolBare](trainingForm.png)
+
+Games form design:
+
+![ToolBare](gameForm.png)
+
+Games home final design:
+
+![ToolBare](gamesHome.png)
