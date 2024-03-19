@@ -27,14 +27,14 @@ export const findGamesByTeamId = (teamId, onSuccess, onErrors) =>
 export const findGamesBySeasonId = (seasonId, onSuccess, onErrors) =>
     appFetch(`/games/${seasonId}/season`, config('GET'), onSuccess, onErrors);
 
-export const addGame = (teamId, seasonId, gameDate, rival, onSuccess, onErrors) =>
-    appFetch(`/games?teamId=${teamId}&seasonId=${seasonId}&gameDate=${gameDate}&rival=${rival}`, config('POST'), onSuccess, onErrors);
+export const addGame = (teamId, seasonId, gameDate, rival, description, onSuccess, onErrors) =>
+    appFetch(`/games?teamId=${teamId}&seasonId=${seasonId}&gameDate=${gameDate}&rival=${rival}&description=${description}`, config('POST'), onSuccess, onErrors);
 
-export const addGameWithTeam = (teamId, gameDate, rival, onSuccess, onErrors) =>
-    appFetch(`/games?teamId=${teamId}&gameDate=${gameDate}&rival=${rival}`, config('POST'), onSuccess, onErrors);
+export const addGameWithTeam = (teamId, gameDate, rival, description, onSuccess, onErrors) =>
+    appFetch(`/games?teamId=${teamId}&gameDate=${gameDate}&rival=${rival}&description=${description}`, config('POST'), onSuccess, onErrors);
 
-export const addGameWithSeason = (seasonId, gameDate, rival, onSuccess, onErrors) =>
-    appFetch(`/games?seasonId=${seasonId}&gameDate=${gameDate}&rival=${rival}`, config('POST'), onSuccess, onErrors);
+export const addGameWithSeason = (seasonId, gameDate, rival, description, onSuccess, onErrors) =>
+    appFetch(`/games?seasonId=${seasonId}&gameDate=${gameDate}&rival=${rival}&description=${description}`, config('POST'), onSuccess, onErrors);
 
 
 export const addPlayerToGame = (playerId, gameId, onSuccess, onErrors) =>

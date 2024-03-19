@@ -117,8 +117,8 @@ const addGameCompleted = game => ({
     game
 });
 
-export const addGame = (teamId, seasonId, gameDate, rival, onSuccess, onErrors) => dispatch => {
-    backend.gameService.addGame(teamId, seasonId, gameDate, rival,
+export const addGame = (teamId, seasonId, gameDate, rival, description, onSuccess, onErrors) => dispatch => {
+    backend.gameService.addGame(teamId, seasonId, gameDate, rival, description,
         game => {
             dispatch(addGameCompleted(game));
             onSuccess();
@@ -126,8 +126,8 @@ export const addGame = (teamId, seasonId, gameDate, rival, onSuccess, onErrors) 
         onErrors);
 }
 
-export const addGameWithTeam = (teamId, gameDate, rival, onSuccess, onErrors) => dispatch => {
-    backend.gameService.addGameWithTeam(teamId, gameDate, rival,
+export const addGameWithTeam = (teamId, gameDate, rival, description, onSuccess, onErrors) => dispatch => {
+    backend.gameService.addGameWithTeam(teamId, gameDate, rival, description,
         game => {
             dispatch(addGameCompleted(game));
             onSuccess();
@@ -135,8 +135,8 @@ export const addGameWithTeam = (teamId, gameDate, rival, onSuccess, onErrors) =>
         onErrors);
 }
 
-export const addGameWithSeason = (seasonId, gameDate, rival, onSuccess, onErrors) => dispatch => {
-    backend.gameService.addGameWithSeason(seasonId, gameDate, rival,
+export const addGameWithSeason = (seasonId, gameDate, rival, description, onSuccess, onErrors) => dispatch => {
+    backend.gameService.addGameWithSeason(seasonId, gameDate, rival, description,
         game => {
             dispatch(addGameCompleted(game));
             onSuccess();

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState, createContext } from 'react';
 import {useSelector} from 'react-redux';
 import PropTypes from 'prop-types';
 import {useDispatch} from 'react-redux';
@@ -13,13 +13,14 @@ import * as actionsPlayers from '../../players/actions';
 import * as selectorsPlayers from '../../players/selectors';
 import * as actionsTeams from '../../teams/actions';
 import * as selectorsTeams from '../../teams/selectors';
-import bigBall from '../../trainings/components/bigBall.jpg';
-import naranja from '../../games/components/naranja.jpg';
+import naranja from '../../games/components/ballunsplash.jpeg';
 import * as actionsStatistics from '../../statistics/actions';
 import * as actionStretchings from '../../stretchings/actions';
 import * as selectorsStretchings from '../../stretchings/selectors';
 import * as actionExercises from '../../exercises/actions';
 import * as selectorsExercises from '../../exercises/selectors';
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
 
 const handleViewGame = (id, dispatch, history) => {
     dispatch(actions.findGameById(id, () => history(`/games/view/${id}`)));
@@ -69,155 +70,139 @@ const handleAddExerciseToGame = (gameId, exerciseId, dispatch, history) => {
   dispatch(actionExercises.addExerciseToGame(gameId, exerciseId, () => history('/games/home')));
 }
 
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 900,
+  background: 'linear-gradient(-45deg, #0f0c29 0%, #302b63 100% )',  // Cambiado a background
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+  borderRadius: "20px",
 
-function GamesList({ items, exercisesList, stretchingsList, player, teamId, fallback, dispatch, history}) {
-    if (!items || items.length === 0) {
-        dispatch(actions.findGamesByUserId(() => history('/games/home')));
-        return fallback;
-    } else {
-        return items.map(item => {
-          return <div className="images-teams" key={item.id}>
-            
-            <div class="">
-              <div class="card hola games">
-                <img src={naranja} alt="Person" class="card__image partidito"></img>
-                <p class="card__name"><FormattedMessage id="project.games.fields.rival"/>: {item.rival}</p>
-                <p class="card__name">                
+};
+
+const GameCardUser = ({ dispatch, history, item, handleOpenDescriptionModal }) => {
+  return (
+    <div key={item.id}>
+      <div>
+        <div className="flip-card">
+          <div className="flip-card-inner">
+            <div className="flip-card-front">
+              <div className="card_game">
+                <img src={naranja} alt="Person" className="card__image_game"></img>
+                <span class="title">{item.rival}</span>
+                <div className="buttons">
+                <button class="post">{
                 <FormattedDate
-                    value={ item.gameDate }
-                    year="numeric"
-                    month="long"
-                    day="numeric"
-                /> 
-                </p>
-                <div class="grid-container">
+                   value={ item.trainingDate }
+                   year="numeric"
+                   month="long"
+                   day="numeric"
+               /> }
+               </button>
+               </div>
+                  </div>
                 </div>
-                <ul class="social-icons lesiongrande">
-                <li><a type="button" onClick={() => handleRemoveGameToPlayer(item.id, player.id, dispatch, history)}>
-                  <i class="fa fa-trash"></i></a></li>
-                  
-                  <li><a type="button" onClick={() => handleViewGame(item.id, dispatch, history)}>
-                    <i class="fa fa-address-book"></i></a></li>
-                    <li><a type="button" onClick={() => handleUpdateGame(item.id, dispatch, history)}>
-                    <i class="fa fa-wrench"></i></a></li>
-                  <li><a href="#"><i class="fa fa-codepen"></i></a></li>
-                </ul>
-
-                <div class="dropdown">
-                <button class="btn-player draw-border"><FormattedMessage id="project.stretchings.fields.addStretching"/></button>
-                            <div class="dropdown-content">
-                            {stretchingsList.map(stretching => 
-                                        <a type="button" onClick={() => handleAddStretchingToGame(item.id, stretching.id, dispatch, history)}> 
-                                            {stretching.id} : {" Rival: "}{stretching.stretchingName}
-                                        </a>)}
-                            </div>
+                <div class="flip-card-back">
+            <div class="card_game">
+          <a onClick={() => handleOpenDescriptionModal(item.description)} class="button_apple">
+            <span class="desc desc3 scroll_efect_stretching">{item.description}</span>
+          </a>
+          <hr></hr>
+            </div>
+                  <ul class="social-icons trashgrande trash_position">
+                  <li><a type="button" onClick={() => handleRemoveGame(item.id, dispatch, history)}>
+                    <i class="fa fa-trash"></i></a></li>
+                  </ul>
+                  <ul class="social-icons configgrande config_position">
+                      <li><a type="button" onClick={() => handleUpdateGame(item.id, dispatch, history)}>
+                      <i class="fa fa-wrench"></i></a></li>
+                  </ul>
                 </div>
-                <div class="dropdown">
-                <button class="btn-player draw-border"><FormattedMessage id="project.exercises.fields.addExercise"/></button>
-                            <div class="dropdown-content">
-                            {exercisesList.map(exercise => 
-                                        <a type="button" onClick={() => handleAddExerciseToGame(item.id, exercise.id, dispatch, history)}> 
-                                            {exercise.id} : {exercise.exerciseName}
-                                        </a>)}
-                            </div>
-                </div>
-                <button class="btn-player draw-border" type="button" onClick={() => handleFindPlayersByGame(item.id, teamId,dispatch, history)}><FormattedMessage id="project.players.fields.players"/></button>
-                <button className="btn-player draw-border" onClick={() => handleFindGameStatisticsByGame(item.id, dispatch, history)}><FormattedMessage id="project.statistics.fields.game"/></button>
-                <button className="btn-player draw-border" onClick={() => handleAddGameStatistics(item.id, dispatch, history)}><FormattedMessage id="project.statistics.fields.addGameStatistics"/></button>
-                <button class="btn-player draw-border" type="button" onClick={() => handleFindStretchingsByGame(item.id, dispatch, history)}><FormattedMessage id="project.stretchings.fields.myStretchings"/></button>
-                <button class="btn-player draw-border" type="button" onClick={() => handleFindExercisesByGame(item.id, dispatch, history)}><FormattedMessage id="project.exercises.fields.myExercises"/></button>
               </div>
             </div>
-          </div>;
-        });
-      }
-}
+          </div>
+        </div>
+  );
+};
 
-
-function GamesListUser({ items, exercisesList, stretchingsList, fallback, dispatch, history}) {
-    if (!items || items.length === 0) {
-        dispatch(actions.findGamesByUserId(() => history('/games/home')));
-        return fallback;
-    } else {
-        return items.map(item => {
-          return <div className="images-teams" key={item.id}>
-            
-            <div class="">
-              <div class="card hola gamesuser">
-                <img src={naranja} alt="Person" class="card__image partidito"></img>
-                <p class="card__name">Rival: {item.rival}</p>
-                <p class="card__name">                
+const GameCard = ({ dispatch, history, item, handleOpenDescriptionModal, handleOpenMedicationModal }) => {
+  return (
+    <div key={item.id}>
+      <div>
+        <div className="flip-card">
+          <div className="flip-card-inner">
+            <div className="flip-card-front">
+              <div className="card_game">
+                <img src={naranja} alt="Person" className="card__image_game"></img>
+                <span class="title">{item.rival}</span>
+                <div className="buttons">
+                <button class="post">{
                 <FormattedDate
-                    value={ item.gameDate }
-                    year="numeric"
-                    month="long"
-                    day="numeric"
-                /> 
-                </p>
-                <div class="grid-container">
+                   value={ item.trainingDate }
+                   year="numeric"
+                   month="long"
+                   day="numeric"
+               /> }
+               </button>
+               </div>
+                  </div>
                 </div>
-                <ul class="social-icons lesiongrande">
-                <li><a type="button" onClick={() => handleRemoveGame(item.id, dispatch, history)}>
-                  <i class="fa fa-trash"></i></a></li>
-                  
-                  <li><a type="button" onClick={() => handleViewGame(item.id, dispatch, history)}>
-                    <i class="fa fa-address-book"></i></a></li>
-                    <li><a type="button" onClick={() => handleUpdateGame(item.id, dispatch, history)}>
-                    <i class="fa fa-wrench"></i></a></li>
-                  <li><a href="#"><i class="fa fa-codepen"></i></a></li>
-                </ul>
-  
-                {/* <div class="dropdown">
-                <button class="btn-player draw-border">Change Team</button>
-                            <div class="dropdown-content">
-                            {playersList.map(team => 
-                                        <a type="button" onClick={() => handleFindPlayersByTraining(item.id, team.id, dispatch, history)}> 
-                                            {team.id} : {"  "}{team.teamName}
-                                        </a>)}
-                            </div>
-                </div> */}
-                <div class="dropdown">
-                <button class="btn-player draw-border"><FormattedMessage id="project.stretchings.fields.addStretching"/></button>
-                            <div class="dropdown-content">
-                            {stretchingsList.map(stretching => 
-                                        <a type="button" onClick={() => handleAddStretchingToGame(item.id, stretching.id, dispatch, history)}> 
-                                            {stretching.id} : {" Rival: "}{stretching.stretchingName}
-                                        </a>)}
-                            </div>
+                <div class="flip-card-back">
+                  <div class="card_game">
+                  <a onClick={() => handleOpenDescriptionModal(item.description)} class="button_apple">
+            <span class="desc scroll_efect_training">{item.description}</span>
+          </a>
+          <hr></hr>
+                  </div>
+                  <ul class="social-icons trashgrande trash_position">
+                  <li><a type="button" onClick={() => handleRemoveGame(item.id, dispatch, history)}>
+                    <i class="fa fa-trash"></i></a></li>
+                  </ul>
+                  <ul class="social-icons configgrande config_position">
+                      <li><a type="button" onClick={() => handleUpdateGame(item.id, dispatch, history)}>
+                      <i class="fa fa-wrench"></i></a></li>
+                  </ul>
                 </div>
-                <div class="dropdown">
-                <button class="btn-player draw-border"><FormattedMessage id="project.exercises.fields.addExercise"/></button>
-                            <div class="dropdown-content">
-                            {exercisesList.map(exercise => 
-                                        <a type="button" onClick={() => handleAddExerciseToGame(item.id, exercise.id, dispatch, history)}> 
-                                            {exercise.id} : {exercise.exerciseName}
-                                        </a>)}
-                            </div>
-                </div>
-                  <button className="btn-player draw-border" onClick={() => handleFindGameStatisticsByGame(item.id, dispatch, history)}><FormattedMessage id="project.statistics.fields.game"/></button>
-                  <button className="btn-player draw-border" onClick={() => handleAddGameStatistics(item.id, dispatch, history)}><FormattedMessage id="project.statistics.fields.addGameStatistics"/></button>
-                  <button class="btn-player draw-border" type="button" onClick={() => handleFindStretchingsByGame(item.id, dispatch, history)}><FormattedMessage id="project.stretchings.fields.myStretchings"/></button>
-                  <button class="btn-player draw-border" type="button" onClick={() => handleFindExercisesByGame(item.id, dispatch, history)}><FormattedMessage id="project.exercises.fields.myExercises"/></button>
               </div>
             </div>
-          </div>;
-        });
-      }
+          </div>
+        </div>
+  );
+};
+
+
+
+
+
+
+
+
+
+  function GamesList({ items, exercisesList, stretchingsList, teamId, fallback, dispatch, history, handleOpenDescription }) {
+    if (!items || items.length === 0) {
+      dispatch(actions.findGamesByUserId(() => history('/games/home')));
+      return fallback;
+    } else {
+      return items.map(item => (
+        <GameCard dispatch={dispatch} exercisesList={exercisesList} stretchingsList={stretchingsList} history={history} key={item.id} item={item} handleOpenDescriptionModal={handleOpenDescription} />
+      ));
+    }
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  function GamesListUser({ items, exercisesList, stretchingsList, fallback, dispatch, history, handleOpenDescription }) {
+    if (!items || items.length === 0) {
+      dispatch(actions.findGamesByUserId(() => history('/games/home')));
+      return fallback;
+    } else {
+      return items.map(item => (
+        <GameCardUser dispatch={dispatch} exercisesList={exercisesList} stretchingsList={stretchingsList} history={history} key={item.id} item={item} handleOpenDescriptionModal={handleOpenDescription} />
+      ));
+    }
+  }
 
 
 const Games = ({games}) => {
@@ -228,6 +213,18 @@ const Games = ({games}) => {
     const player = useSelector(selectorsPlayers.getPlayer);
     const stretchings = useSelector(selectorsStretchings.getAllStretchings);
     const exercises = useSelector(selectorsExercises.getAllExercises);
+    const [modalDescription, setModalDescription] = useState('');
+    const [openDescription, setOpenDescription] = React.useState(false);
+
+    const handleOpenDescription = (description) => {
+      setModalDescription(description);
+      setOpenDescription(true);
+    };
+  
+    const handleClose = () => {
+      setModalDescription('');
+      setOpenDescription(false);
+    };
 
     const exercisesList = exercises.exercises;
 
@@ -245,15 +242,51 @@ const Games = ({games}) => {
 
     if (!team) {
         return(
-          <div className="card-group">
-          <GamesListUser items={games} exercisesList={exercisesList} stretchingsList={stretchingsList} fallback={"Loading..."} dispatch = {dispatch} history={history} />
+          <div className="card-group lesions_contaner">
+          <GamesListUser items={games} exercisesList={exercisesList} stretchingsList={stretchingsList} fallback={"Loading..."} dispatch = {dispatch} history={history} handleOpenDescription={handleOpenDescription}/>
+          {(openDescription) && (
+        <div className="modal-backdrop" onClick={handleClose}></div>
+      )}
+      {openDescription && (
+        <Modal
+          open={openDescription}
+          onClose={handleClose}
+          aria-labelledby="child-modal-title"
+          aria-describedby="child-modal-description"
+        >
+          <Box sx={{ ...style, width: "auto" }}>
+            <h2 id="child-modal-title" className="color_modal_title_training" sx={{ mb: '100px' }} ><FormattedMessage id="project.exercises.fields.description" />:</h2>
+            <p id="child-modal-description">
+              {modalDescription}
+            </p>
+          </Box>
+        </Modal>
+      )}
           </div>
       );
     } else {
         return(
-            <div className="card-group">
-            <GamesList items={games} exercisesList={exercisesList} stretchingsList={stretchingsList} player={player} teamId={team.id} fallback={"Loading..."} dispatch = {dispatch} history={history} />
-            </div>
+            <div className="card-group lesions_contaner">
+            <GamesList items={games} exercisesList={exercisesList} stretchingsList={stretchingsList} player={player} teamId={team.id} fallback={"Loading..."} dispatch = {dispatch} history={history} handleOpenDescription={handleOpenDescription}/>
+            {(openDescription) && (
+        <div className="modal-backdrop" onClick={handleClose}></div>
+      )}
+      {openDescription && (
+        <Modal
+          open={openDescription}
+          onClose={handleClose}
+          aria-labelledby="child-modal-title"
+          aria-describedby="child-modal-description"
+        >
+          <Box sx={{ ...style, width: "auto" }}>
+            <h2 id="child-modal-title" className="color_modal_title_training" sx={{ mb: '100px' }} ><FormattedMessage id="project.exercises.fields.description" />:</h2>
+            <p id="child-modal-description">
+              {modalDescription}
+            </p>
+          </Box>
+        </Modal>
+      )}
+          </div>
         );
     };
 

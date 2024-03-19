@@ -23,7 +23,9 @@
   position: relative;
 }
 
-
+.rival_color {
+  color:red;
+}
 
 
 
@@ -600,6 +602,15 @@ max-height: 360px;
   border: 5px solid #272133;
   box-shadow: 0 10px 50px rgb(255, 111, 0);}
 
+.card__image_game_update_create {
+  height: 160px;
+  width: 160px;
+  border-radius: 50%;
+  margin-bottom: 50px;
+  border: 5px solid #272133;
+  box-shadow: 0 10px 50px rgb(0, 0, 0);
+}
+
 .card__image_stretching_update_create {
   height: 160px;
   width: 160px;
@@ -684,6 +695,29 @@ max-height: 360px;
   box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
 }
 
+.card__image_game {
+  height: 160px;
+  width: 160px;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 5px solid #272133;
+  margin-top: 20px;
+  box-shadow: 0 10px 50px rgb(0, 0, 0);
+}
+
+.card_game {
+  width: 360px;
+  height: 360px;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 20px;
+  background: linear-gradient(-45deg, #120b4e 0%, #dd0808 100% );
+  box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
+}
+
 
 .post_training {
   width: 100%;
@@ -698,6 +732,21 @@ max-height: 360px;
   transition: 0.3s ease-out;
   margin-right: 50px;
 }
+
+.post_game {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 11px;
+  font-size: 22px;
+  font-family: Sans-serif;
+  color: #fff;
+  background-size: 200% 100%;
+  background: linear-gradient(180deg,#0004ff,#000000);
+  transition: 0.3s ease-out;
+  margin-right: 50px;
+}
+
 .post {
   width: 100%;
   padding: 10px;
@@ -774,6 +823,11 @@ max-height: 360px;
 .desc2 {
   color: rgb(0, 0, 0);
   font-size: 20px;
+}
+
+.desc3 {
+  color: rgb(0, 0, 0);
+  font-size: 16px;
 }
 
 .buttons {
