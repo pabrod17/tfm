@@ -78,7 +78,7 @@ public class StatisticsServiceTest {
     }
 
     private Game createGameToTeam(Long teamId) throws InstanceNotFoundException {
-        return gameService.addGame(teamId, null, gameDate, "rival");
+        return gameService.addGame(teamId, null, gameDate, "rival", "description");
     }
 
     @Test

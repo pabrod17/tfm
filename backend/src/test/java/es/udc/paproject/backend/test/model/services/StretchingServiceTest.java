@@ -84,7 +84,7 @@ public class StretchingServiceTest {
     }
 
     private Game createGame(Long teamId) throws InstanceNotFoundException {
-        return gameService.addGame(teamId, null, startDate, "rival");
+        return gameService.addGame(teamId, null, startDate, "rival", "description");
     }
 
     // Hamstrings, Buttocks, Calf, Adductors, Shoulder, Quadriceps, Back, Pectoral,

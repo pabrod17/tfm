@@ -10,14 +10,17 @@ public class GameDto {
     private Long seasonTeam;
     private Long gameStatistics;
 
+    private String description;
+
     public GameDto() {
     }
 
-    public GameDto(Long id, Date gameDate, String rival, Long seasonTeam) {
+    public GameDto(Long id, Date gameDate, String rival, Long seasonTeam, String description) {
         this.id = id;
         this.gameDate = gameDate;
         this.rival = rival;
         this.seasonTeam = seasonTeam;
+        this.description = description;
     }
 
     public Long getId() {
@@ -44,6 +47,14 @@ public class GameDto {
         this.rival = rival;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public Long getSeasonTeam() {
         return seasonTeam;
     }
@@ -59,4 +70,5 @@ public class GameDto {
     public void setGameStatistics(Long gameStatistics) {
         this.gameStatistics = gameStatistics;
     }
+
 }

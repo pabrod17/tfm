@@ -49,12 +49,12 @@ public class GameServiceImpl implements GameService {
     private UserDao userDao;
 
     @Override
-    public Game addGame(Long teamId, Long seasonId, LocalDateTime gameDate, String rival)
+    public Game addGame(Long teamId, Long seasonId, LocalDateTime gameDate, String rival, String description)
             throws InstanceNotFoundException {
 
         Game game = null;
         if(teamId == null && seasonId == null){
-            game = new Game(gameDate, rival,null);
+            game = new Game(gameDate, rival,null, description);
             gameDao.save(game);
         }else{
 
@@ -79,7 +79,7 @@ public class GameServiceImpl implements GameService {
                 seasonTeams = seasonTeamDao.findSeasonTeamsBySeasonId(seasonId);
 
             }
-            game = new Game(gameDate, rival,seasonTeams.get(0));
+            game = new Game(gameDate, rival,seasonTeams.get(0), description);
             gameDao.save(game);
         }
         return game;
@@ -345,7 +345,7 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    public Game updateGame(Long gameId, LocalDateTime gameDate, String rival) throws InstanceNotFoundException {
+    public Game updateGame(Long gameId, LocalDateTime gameDate, String rival, String description) throws InstanceNotFoundException {
         
         if (!gameDao.existsById(gameId)) {
             throw new InstanceNotFoundException("project.entities.game");
@@ -357,6 +357,8 @@ public class GameServiceImpl implements GameService {
             game.setGameDate(gameDate);
         if(rival != null)
             game.setRival(rival);
+        if(description != null)
+            game.setDescription(description);
         gameDao.save(game);
         return game;
     }

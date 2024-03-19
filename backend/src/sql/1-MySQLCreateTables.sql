@@ -213,6 +213,7 @@ CREATE TABLE Game (
     gameDate DATE,
     rival VARCHAR(500),
     objective VARCHAR(500),
+    description VARCHAR(500) NOT NULL,
     seasonTeamId BIGINT NOT NULL,
     gameStatisticsId BIGINT,
     CONSTRAINT GamePK PRIMARY KEY (id),

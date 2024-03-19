@@ -20,15 +20,18 @@ public class Game {
     private String rival;
     private SeasonTeam seasonTeam;
     private GameStatistics gameStatistics;
+
+    private String description;
     
 
     public Game() {
     }
 
-    public Game(LocalDateTime gameDate, String rival, SeasonTeam seasonTeam) {
+    public Game(LocalDateTime gameDate, String rival, SeasonTeam seasonTeam, String description) {
         this.gameDate = gameDate;
         this.rival = rival;
         this.seasonTeam = seasonTeam;
+        this.description = description;
     }
 
     @Id
@@ -57,7 +60,15 @@ public class Game {
         this.rival = rival;
     }
 
-	@ManyToOne(fetch=FetchType.LAZY)
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name= "seasonTeamId", nullable = true)
     public SeasonTeam getSeasonTeam() {
         return seasonTeam;

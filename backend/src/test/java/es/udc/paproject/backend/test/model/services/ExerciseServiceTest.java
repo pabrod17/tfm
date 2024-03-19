@@ -62,7 +62,7 @@ public class ExerciseServiceTest {
     }
 
     private Game createGame(Long teamId) throws InstanceNotFoundException {
-        return gameService.addGame(teamId, null, startDate, "rival");
+        return gameService.addGame(teamId, null, startDate, "rival", "description");
     }
 
     // Tactic, Technique, Physical, Globalized, Specific, Psychological, Strategy,

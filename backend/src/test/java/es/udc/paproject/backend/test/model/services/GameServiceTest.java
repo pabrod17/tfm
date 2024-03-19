@@ -97,7 +97,7 @@ public class GameServiceTest {
 
         User user = createUser("paco");
         Team team = createTeam(user.getId(), "team", "arenaName", "ownerName");
-        Game game = gameService.addGame(team.getId(), null, gameDate, "rival");
+        Game game = gameService.addGame(team.getId(), null, gameDate, "rival", "description");
 
         Game gameFound = gameService.findGameById(game.getId());
 
@@ -110,8 +110,8 @@ public class GameServiceTest {
 
         User user = createUser("paco");
         Team team = createTeam(user.getId(), "team", "arenaName", "ownerName");
-        Game game = gameService.addGame(team.getId(), null, gameDate, "rival");
-        Game game2 = gameService.addGame(team.getId(), null, gameDate, "rival");
+        Game game = gameService.addGame(team.getId(), null, gameDate, "rival", "description");
+        Game game2 = gameService.addGame(team.getId(), null, gameDate, "rival", "description");
         Player player = createPlayer(team.getId());
         Player player2 = createPlayer2(team.getId());
         Player player3 = createPlayer3(team.getId());
@@ -132,8 +132,8 @@ public class GameServiceTest {
 
         User user = createUser("paco");
         Team team = createTeam(user.getId(), "team", "arenaName", "ownerName");
-        Game game = gameService.addGame(team.getId(), null, gameDate, "rival");
-        Game game2 = gameService.addGame(team.getId(), null, gameDate, "rival");
+        Game game = gameService.addGame(team.getId(), null, gameDate, "rival", "description");
+        Game game2 = gameService.addGame(team.getId(), null, gameDate, "rival", "description");
         Player player = createPlayer(team.getId());
         Player player2 = createPlayer2(team.getId());
         Player player3 = createPlayer3(team.getId());
@@ -157,9 +157,9 @@ public class GameServiceTest {
 
         User user = createUser("paco");
         Team team = createTeam(user.getId(), "team", "arenaName", "ownerName");
-        gameService.addGame(team.getId(), null, gameDate, "rival");
-        gameService.addGame(team.getId(), null, gameDate2, "rival");
-        gameService.addGame(team.getId(), null, gameDate3, "rival");
+        gameService.addGame(team.getId(), null, gameDate, "rival", "description");
+        gameService.addGame(team.getId(), null, gameDate2, "rival", "description");
+        gameService.addGame(team.getId(), null, gameDate3, "rival", "description");
 
 
         List<Game> games = gameService.findGamesByTwoDatesAndTeamIdOrSeasonId(user.getId(), team.getId(), null, startDate, endDate);
@@ -174,9 +174,9 @@ public class GameServiceTest {
         User user = createUser("paco");
         Team team = createTeam(user.getId(), "team", "arenaName", "ownerName");
         Team team2 = createTeam(user.getId(), "team2", "arenaName", "ownerName");
-        gameService.addGame(team.getId(), null, gameDate, "rival");
-        gameService.addGame(team2.getId(), null, gameDate2, "rival");
-        gameService.addGame(team.getId(), null, gameDate3, "rival");
+        gameService.addGame(team.getId(), null, gameDate, "rival", "description");
+        gameService.addGame(team2.getId(), null, gameDate2, "rival", "description");
+        gameService.addGame(team.getId(), null, gameDate3, "rival", "description");
 
 
         List<Game> games = gameService.findGamesByTeamId(team.getId());
@@ -193,9 +193,9 @@ public class GameServiceTest {
         User user = createUser("paco");
         Season season = createSeason(user.getId(), "seasonssss");
         Season season2 = createSeason(user.getId(), "seasonssss25222 sdcs");
-        gameService.addGame(null, season.getId(), gameDate, "rival");
-        gameService.addGame(null, season2.getId(), gameDate2, "rival");
-        gameService.addGame(null, season.getId(), gameDate3, "rival");
+        gameService.addGame(null, season.getId(), gameDate, "rival", "description");
+        gameService.addGame(null, season2.getId(), gameDate2, "rival", "description");
+        gameService.addGame(null, season.getId(), gameDate3, "rival", "description");
 
 
         List<Game> games = gameService.findGamesBySeasonId(season.getId());
@@ -213,10 +213,10 @@ public class GameServiceTest {
         Season season = createSeason(user.getId(), "seasonssss");
         Season season2 = createSeason(user.getId(), "seasonssss25222 sdcs");
         Team team2 = createTeam(user.getId(), "team2", "arenaName", "ownerName");
-        gameService.addGame(team2.getId(), null, gameDate, "rival");
-        gameService.addGame(null, season.getId(), gameDate, "rival");
-        gameService.addGame(null, season2.getId(), gameDate2, "rival");
-        gameService.addGame(null, season.getId(), gameDate3, "rival");
+        gameService.addGame(team2.getId(), null, gameDate, "rival", "description");
+        gameService.addGame(null, season.getId(), gameDate, "rival", "description");
+        gameService.addGame(null, season2.getId(), gameDate2, "rival", "description");
+        gameService.addGame(null, season.getId(), gameDate3, "rival", "description");
 
 
         List<Game> games = gameService.findGamesByUserId(user.getId());
@@ -231,10 +231,10 @@ public class GameServiceTest {
         Season season = createSeason(user.getId(), "seasonssss");
         Season season2 = createSeason(user.getId(), "seasonssss25222 sdcs");
         Team team2 = createTeam(user.getId(), "team2", "arenaName", "ownerName");
-        gameService.addGame(team2.getId(), null, gameDate, "rival");
-        Game game = gameService.addGame(null, season.getId(), gameDate, "rival");
-        Game game2 = gameService.addGame(null, season2.getId(), gameDate2, "rival");
-        gameService.addGame(null, season.getId(), gameDate3, "rival");
+        gameService.addGame(team2.getId(), null, gameDate, "rival", "description");
+        Game game = gameService.addGame(null, season.getId(), gameDate, "rival", "description");
+        Game game2 = gameService.addGame(null, season2.getId(), gameDate2, "rival", "description");
+        gameService.addGame(null, season.getId(), gameDate3, "rival", "description");
 
         gameService.removeGame(game.getId());
         gameService.removeGame(game2.getId());
@@ -252,17 +252,17 @@ public class GameServiceTest {
         Season season = createSeason(user.getId(), "seasonssss");
         Season season2 = createSeason(user.getId(), "seasonssss25222 sdcs");
         Team team2 = createTeam(user.getId(), "team2", "arenaName", "ownerName");
-        gameService.addGame(team2.getId(), null, gameDate, "rival");
-        gameService.addGame(null, season.getId(), gameDate, "rival");
-        Game game2 = gameService.addGame(null, season2.getId(), gameDate2, "rival");
-        gameService.addGame(null, season.getId(), gameDate3, "rival");
+        gameService.addGame(team2.getId(), null, gameDate, "rival", "description");
+        gameService.addGame(null, season.getId(), gameDate, "rival", "description");
+        Game game2 = gameService.addGame(null, season2.getId(), gameDate2, "rival", "description");
+        gameService.addGame(null, season.getId(), gameDate3, "rival", "description");
 
-        Game gameUpdated = gameService.updateGame(game2.getId(), gameDate3, "cambios lo");
+        Game gameUpdated = gameService.updateGame(game2.getId(), gameDate3, "cambios lo", "description");
 
         List<Game> games = gameService.findGamesByUserId(user.getId());
         assertEquals(games.get(2), gameUpdated);
         assertEquals(games.get(2).getGameDate(), gameDate3);
-        assertEquals(games.get(2).getRival(), "cambios lo");
+        assertEquals(games.get(2).getRival(), "cambios lo", "description");
     }
 
     @Test

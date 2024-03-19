@@ -16,7 +16,7 @@ public class GameConversor {
     
     public final static GameDto toGameDto(Game game) {
         return new GameDto(game.getId(),toDate(game.getGameDate()), game.getRival(),
-        game.getSeasonTeam().getId());
+        game.getSeasonTeam().getId(), game.getDescription());
     }
 
     public final static List<GameDto> toGameDtos(List<Game> games) {
