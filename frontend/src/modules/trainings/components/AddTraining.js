@@ -219,17 +219,17 @@ const AddTraining = () => {
 					<Box
 						component="form"
 						sx={{
-							'& .MuiTextField-root': { m: 1, width: '25ch' },
 							background: "linear-gradient(-45deg, #f5af19 0%, #f12711 100% )",
 							borderRadius: "20px",
 							borderColor:"black",
                             boxShadow:"0 10px 50px rgb(0, 0, 0)"
 						}}
+						autoHeight={true} // Permitir que la tabla determine su propio tamaño si los datos no se han cargado
 						noValidate
 						autoComplete="off"
 					>
 						<Grid container spacing={2}>
-							<Grid item xs={12}>
+							<Grid item xs={6}>
 
 								{/* <div className='form_add_training_general'> */}
 								<Box
@@ -255,6 +255,7 @@ const AddTraining = () => {
 													'& label': { color: 'white' },
 													'& input': { color: 'white' },
 													borderColor:"black",
+                                                    boxShadow:"0 10px 10px rgb(0, 0, 0)"
 
 												}}
 												autoFocus
@@ -286,6 +287,7 @@ const AddTraining = () => {
 													'& label': { color: 'white' },
 													'& input': { color: 'white' },
 													borderColor:"black",
+                                                    boxShadow:"0 10px 10px rgb(0, 0, 0)"
 												}}
 
 												onChange={(durationMinutes) => {
@@ -296,6 +298,23 @@ const AddTraining = () => {
 												
 										</DemoContainer>
 									</LocalizationProvider>
+
+
+								</Box>
+							</Grid>
+							<Grid item xs={6}>
+
+								{/* <div className='form_add_training_general'> */}
+								<Box
+									component="form"
+									sx={{
+										'& .MuiTextField-root': { mb: 2, width: '100%' },
+										margin: '50px', // Centra el formulario en la pantalla
+
+									}}
+									noValidate
+									autoComplete="off"
+								>
 									<TextField
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.exercises.fields.description" />}
@@ -308,6 +327,7 @@ const AddTraining = () => {
 											background: "linear-gradient(-45deg, #41295a 0%, #2F0743 100% )",
 											borderRadius: "20px",
 											borderColor:"black",
+											boxShadow:"0 10px 10px rgb(0, 0, 0)"
 										}}
 										value={description}
 										onChange={(e) => setDescription(e.target.value)}
@@ -325,6 +345,7 @@ const AddTraining = () => {
 											background: "linear-gradient(-45deg, #41295a 0%, #2F0743 100% )",
 											borderRadius: "20px",
 											borderColor:"black",
+											boxShadow:"0 10px 10px rgb(0, 0, 0)"
 										}}
 										value={objective}
 										onChange={(e) => setObjective(e.target.value)}

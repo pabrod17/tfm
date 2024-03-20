@@ -162,13 +162,13 @@ const AddGame = () => {
 					<Box
 						component="form"
 						sx={{
-							'& .MuiTextField-root': { m: 1, width: '25ch' },
                             background: "linear-gradient(-45deg, #0E24A0 0%, #900C0C 100% )",
 							borderRadius: "20px",
                             borderColor:"black",
                             boxShadow:"0 10px 50px rgb(0, 0, 0)"
 
 						}}
+                        autoHeight={true} // Permitir que la tabla determine su propio tamaño si los datos no se han cargado
 						noValidate
 						autoComplete="off"
 					>
@@ -197,7 +197,8 @@ const AddGame = () => {
 													colorAdjust: "#00bfff",
 													'& label': { color: 'white' },
 													'& input': { color: 'white' },
-                                                    borderColor:"transparent"
+                                                    borderColor:"black",
+                                                    boxShadow:"0 10px 10px rgb(0, 0, 0)"
 												}}
 												autoFocus
 												required
@@ -224,7 +225,9 @@ const AddGame = () => {
 										sx={{
 											border: '2px solid grey',
 											borderRadius: "20px",
-                                            borderColor:"transparent"
+                                            borderColor:"black",
+                                            boxShadow:"0 10px 10px rgb(0, 0, 0)"
+
 										}}
 										value={rival}
 										onChange={(e) => setRival(e.target.value)}
@@ -240,8 +243,9 @@ const AddGame = () => {
 										sx={{
 											border: '2px solid grey',
 											borderRadius: "20px",
-                                            borderColor:"transparent"
-										}}
+                                            borderColor:"black",
+                                            boxShadow:"0 10px 10px rgb(0, 0, 0)"
+                                        }}
 										value={description}
 										onChange={(e) => setDescription(e.target.value)}
 									/>

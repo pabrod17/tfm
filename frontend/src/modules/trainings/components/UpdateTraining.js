@@ -156,7 +156,6 @@ const UpdateTraining = () => {
 					<Box
 						component="form"
 						sx={{
-							'& .MuiTextField-root': { m: 1, width: '25ch' },
 							background: "linear-gradient(-45deg, #f5af19 0%, #f12711 100% )",
 							borderRadius: "20px",
 							boxShadow: 12,
@@ -191,7 +190,9 @@ const UpdateTraining = () => {
 													borderRadius: "20px",
 													colorAdjust: "#00bfff",
 													'& label': { color: 'white' },
-													'& input': { color: 'white' }
+													'& input': { color: 'white' },
+                                                    borderColor:"black",
+                                                    boxShadow:"0 10px 10px rgb(0, 0, 0)"
 												}}
 												label={<FormattedMessage id="project.global.fields.date" />}
 												autoFocus
@@ -222,7 +223,9 @@ const UpdateTraining = () => {
 													background: "linear-gradient(-45deg, #41295a 0%, #2F0743 100% )",
 													borderRadius: "20px",
 													'& label': { color: 'white' },
-													'& input': { color: 'white' }
+													'& input': { color: 'white' },
+                                                    borderColor:"black",
+                                                    boxShadow:"0 10px 10px rgb(0, 0, 0)"
 												}}
                                                 value={durationMinutes}
 												label="Time" 
@@ -245,6 +248,8 @@ const UpdateTraining = () => {
 											border: '2px solid grey',
 											background: "linear-gradient(-45deg, #41295a 0%, #2F0743 100% )",
 											borderRadius: "20px",
+                                            borderColor:"black",
+                                            boxShadow:"0 10px 10px rgb(0, 0, 0)"
 										}}
 										value={description}
 										onChange={(e) => setDescription(e.target.value)}
@@ -261,6 +266,8 @@ const UpdateTraining = () => {
 											border: '2px solid grey',
 											background: "linear-gradient(-45deg, #41295a 0%, #2F0743 100% )",
 											borderRadius: "20px",
+                                            borderColor:"black",
+                                            boxShadow:"0 10px 10px rgb(0, 0, 0)"
 										}}
 										value={objective}
 										onChange={(e) => setObjective(e.target.value)}
