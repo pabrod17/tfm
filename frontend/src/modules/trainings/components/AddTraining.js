@@ -206,6 +206,7 @@ const AddTraining = () => {
 				borderRadius: "20px",
 				flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 				flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
+				borderColor:"black",
 				boxShadow:"0 10px 50px rgb(0, 0, 0)"
 			}}
 		>
@@ -221,7 +222,8 @@ const AddTraining = () => {
 							'& .MuiTextField-root': { m: 1, width: '25ch' },
 							background: "linear-gradient(-45deg, #f5af19 0%, #f12711 100% )",
 							borderRadius: "20px",
-							boxShadow: 12,
+							borderColor:"black",
+                            boxShadow:"0 10px 50px rgb(0, 0, 0)"
 						}}
 						noValidate
 						autoComplete="off"
@@ -251,7 +253,9 @@ const AddTraining = () => {
 													borderRadius: "20px",
 													colorAdjust: "#00bfff",
 													'& label': { color: 'white' },
-													'& input': { color: 'white' }
+													'& input': { color: 'white' },
+													borderColor:"black",
+
 												}}
 												autoFocus
 												required
@@ -280,7 +284,8 @@ const AddTraining = () => {
 													background: "linear-gradient(-45deg, #41295a 0%, #2F0743 100% )",
 													borderRadius: "20px",
 													'& label': { color: 'white' },
-													'& input': { color: 'white' }
+													'& input': { color: 'white' },
+													borderColor:"black",
 												}}
 
 												onChange={(durationMinutes) => {
@@ -302,6 +307,7 @@ const AddTraining = () => {
 											border: '2px solid grey',
 											background: "linear-gradient(-45deg, #41295a 0%, #2F0743 100% )",
 											borderRadius: "20px",
+											borderColor:"black",
 										}}
 										value={description}
 										onChange={(e) => setDescription(e.target.value)}
@@ -318,6 +324,7 @@ const AddTraining = () => {
 											border: '2px solid grey',
 											background: "linear-gradient(-45deg, #41295a 0%, #2F0743 100% )",
 											borderRadius: "20px",
+											borderColor:"black",
 										}}
 										value={objective}
 										onChange={(e) => setObjective(e.target.value)}
@@ -343,8 +350,9 @@ const AddTraining = () => {
 								sx={{
 									background: "linear-gradient(-45deg, #f12711 0%, #f5af19 100% )",
 									borderRadius: "20px",
-									boxShadow: 12,
 									m:2,
+									borderColor:"black",
+									boxShadow:"0 10px 50px rgb(0, 0, 0)"
 								}}
 								rows={rowsTeams}
 								columns={columnsTeams}
@@ -392,8 +400,9 @@ const AddTraining = () => {
 								sx={{
 									background: "linear-gradient(-45deg, #f12711 0%, #f5af19 100% )",
 									borderRadius: "20px",
-									boxShadow: 12,
-									m:2
+									m:2,
+									borderColor:"black",
+									boxShadow:"0 10px 50px rgb(0, 0, 0)"
 								}}
 								rows={rowsSeasons}
 								columns={columnsSeasons}

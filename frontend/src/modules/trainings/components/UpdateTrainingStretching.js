@@ -177,7 +177,9 @@ const UpdateTrainingStretching = () => {
                             bgcolor:"red",
                             boxShadow: 6,
                             borderRadius: 3,
-                            mb:2
+                            mb:2,
+                            borderColor:"black",
+                            boxShadow:"0 10px 50px rgb(0, 0, 0)"
                         }}
         >
           <Tab value={0} sx={{ color: '#40FF00', fontSize: "30px", padding:"20px"}} onClick={() => handleUpdateTraining(0, dispatch)} label="General"  />
@@ -212,7 +214,8 @@ const UpdateTrainingStretching = () => {
 				borderRadius: "20px",
 				flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 				flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
-                boxShadow:"0 10px 50px rgb(0, 0, 0)"
+                borderColor:"black",
+				boxShadow:"0 10px 50px rgb(0, 0, 0)"
 			}}
 		>
             <Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
@@ -234,6 +237,7 @@ const UpdateTrainingStretching = () => {
 									borderRadius: "20px",
 									boxShadow: 12,
 									m:2,
+                                    borderColor:"black",
                                     boxShadow:"0 10px 50px rgb(0, 0, 0)"
 								}}
 								rows={rowsStretchings}

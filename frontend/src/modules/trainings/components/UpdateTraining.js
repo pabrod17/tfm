@@ -47,8 +47,8 @@ const UpdateTraining = () => {
         } else {
             setTrainingDate(dayjs(training.trainingDate));
             setDurationMinutes(dayjs(training.durationMinutes));
-            setDescription(dayjs(training.description));
-            setObjective(dayjs(training.objective));
+            setDescription(training.description);
+            setObjective(training.objective);
 
         }
     }, [dispatch, training, history, id]);
@@ -109,6 +109,8 @@ const UpdateTraining = () => {
         margin: 'auto',  // Centra horizontalmente
         marginTop: '100px', // Ajusta la distancia desde la parte superior según sea necesario
         textAlign: 'center', // Centra el contenido dentro del Box
+        borderColor:"black",
+        boxShadow:"0 10px 50px rgb(0, 0, 0)"
     }}>
 
 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -141,6 +143,7 @@ const UpdateTraining = () => {
 				borderRadius: "20px",
 				flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 				flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
+                borderColor:"black",
                 boxShadow:"0 10px 50px rgb(0, 0, 0)"
             }}
 		>
@@ -157,6 +160,7 @@ const UpdateTraining = () => {
 							background: "linear-gradient(-45deg, #f5af19 0%, #f12711 100% )",
 							borderRadius: "20px",
 							boxShadow: 12,
+                            borderColor:"black",
                             boxShadow:"0 10px 50px rgb(0, 0, 0)"
 						}}
 						noValidate

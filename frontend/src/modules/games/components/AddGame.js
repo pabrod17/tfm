@@ -149,7 +149,8 @@ const AddGame = () => {
 				borderRadius: "20px",
 				flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 				flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
-                boxShadow:"0 10px 50px rgb(0, 8, 255)"
+                boxShadow:"0 10px 50px rgb(0, 8, 255)",
+                borderColor:"black"
 			}}
 		>
             <Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
@@ -164,7 +165,8 @@ const AddGame = () => {
 							'& .MuiTextField-root': { m: 1, width: '25ch' },
                             background: "linear-gradient(-45deg, #0E24A0 0%, #900C0C 100% )",
 							borderRadius: "20px",
-							boxShadow: 12,
+                            borderColor:"black",
+                            boxShadow:"0 10px 50px rgb(0, 0, 0)"
 
 						}}
 						noValidate
@@ -194,7 +196,8 @@ const AddGame = () => {
 													borderRadius: "20px",
 													colorAdjust: "#00bfff",
 													'& label': { color: 'white' },
-													'& input': { color: 'white' }
+													'& input': { color: 'white' },
+                                                    borderColor:"black"
 												}}
 												autoFocus
 												required
@@ -221,6 +224,7 @@ const AddGame = () => {
 										sx={{
 											border: '2px solid grey',
 											borderRadius: "20px",
+                                            borderColor:"black"
 										}}
 										value={rival}
 										onChange={(e) => setRival(e.target.value)}
@@ -236,6 +240,7 @@ const AddGame = () => {
 										sx={{
 											border: '2px solid grey',
 											borderRadius: "20px",
+                                            borderColor:"black"
 										}}
 										value={description}
 										onChange={(e) => setDescription(e.target.value)}
@@ -264,6 +269,8 @@ const AddGame = () => {
 									boxShadow: 12,
 									m:2,
                                     color:"white",
+                                    borderColor:"black",
+                                    boxShadow:"0 10px 50px rgb(0, 0, 0)"
 								}}
 								rows={rowsTeams}
 								columns={columnsTeams}
@@ -314,6 +321,8 @@ const AddGame = () => {
 									boxShadow: 12,
 									m:2,
                                     color:"white",
+                                    borderColor:"black",
+                                    boxShadow:"0 10px 50px rgb(0, 0, 0)"
 								}}
 								rows={rowsSeasons}
 								columns={columnsSeasons}
