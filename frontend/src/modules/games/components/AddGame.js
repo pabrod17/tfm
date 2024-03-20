@@ -197,7 +197,7 @@ const AddGame = () => {
 													colorAdjust: "#00bfff",
 													'& label': { color: 'white' },
 													'& input': { color: 'white' },
-                                                    borderColor:"black"
+                                                    borderColor:"transparent"
 												}}
 												autoFocus
 												required
@@ -224,7 +224,7 @@ const AddGame = () => {
 										sx={{
 											border: '2px solid grey',
 											borderRadius: "20px",
-                                            borderColor:"black"
+                                            borderColor:"transparent"
 										}}
 										value={rival}
 										onChange={(e) => setRival(e.target.value)}
@@ -240,7 +240,7 @@ const AddGame = () => {
 										sx={{
 											border: '2px solid grey',
 											borderRadius: "20px",
-                                            borderColor:"black"
+                                            borderColor:"transparent"
 										}}
 										value={description}
 										onChange={(e) => setDescription(e.target.value)}
