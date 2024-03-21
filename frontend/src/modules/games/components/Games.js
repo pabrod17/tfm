@@ -76,7 +76,7 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 900,
-  background: 'linear-gradient(-45deg, #0f0c29 0%, #302b63 100% )',  // Cambiado a background
+  background: 'linear-gradient(-45deg, #120b4e 0%, #900C0C 100% )',  // Cambiado a background
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
@@ -255,7 +255,7 @@ const Games = ({games}) => {
           aria-describedby="child-modal-description"
         >
           <Box sx={{ ...style, width: "auto" }}>
-            <h2 id="child-modal-title" className="color_modal_title_training" sx={{ mb: '100px' }} ><FormattedMessage id="project.exercises.fields.description" />:</h2>
+            <h2 id="child-modal-title" className="color_modal_title_game" sx={{ mb: '100px' }} ><FormattedMessage id="project.exercises.fields.description" />:</h2>
             <p id="child-modal-description">
               {modalDescription}
             </p>
@@ -279,7 +279,7 @@ const Games = ({games}) => {
           aria-describedby="child-modal-description"
         >
           <Box sx={{ ...style, width: "auto" }}>
-            <h2 id="child-modal-title" className="color_modal_title_training" sx={{ mb: '100px' }} ><FormattedMessage id="project.exercises.fields.description" />:</h2>
+            <h2 id="child-modal-title" className="color_modal_title_game" sx={{ mb: '100px' }} ><FormattedMessage id="project.exercises.fields.description" />:</h2>
             <p id="child-modal-description">
               {modalDescription}
             </p>

@@ -462,6 +462,10 @@ box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
   color: rgb(255, 111, 0);
 }
 
+.color_modal_title_game {
+  color: rgb(0, 140, 255);
+}
+
 .modal-backdrop {
   position: fixed;
   top: 0;
