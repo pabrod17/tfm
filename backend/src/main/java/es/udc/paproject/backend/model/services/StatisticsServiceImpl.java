@@ -213,91 +213,102 @@ public class StatisticsServiceImpl implements StatisticsService {
             Integer totalBlockedShotsRival, Integer totalAssistsRival, Integer totalPersonalFoulsRival,
             Integer totalTechnicalFoulsRival, Integer totalUnsportsmanlikeFoulsRival) throws InstanceNotFoundException {
 
-                
-
-        if (!gameDao.existsById(gameId)) {
-            throw new InstanceNotFoundException("project.entities.game");
-        }
-        if (!gameStatisticsDao.existsById(gameStatisticsId)) {
-            throw new InstanceNotFoundException("project.entities.statistics");
-        }
-
-
-        GameStatistics gameStatistics = gameStatisticsDao.findById(gameStatisticsId).get();
-
-        if(totalPoints != null) {
-            gameStatistics.setTotalPoints(totalPoints);
-        }
-        if(durationMinutes != null) {
-            gameStatistics.setDurationMinutes(durationMinutes);
-        }
-        if(totalThreePointShots != null) {
-            gameStatistics.setTotalThreePointShots(totalThreePointShots);
-        }
-        if(totalSetShots != null) {
-            gameStatistics.setTotalSetShots(totalSetShots);
-        }
-        if(totalFreeShots != null) {
-            gameStatistics.setTotalFreeShots(totalFreeShots);
-        }
-        if(totalRebounds != null) {
-            gameStatistics.setTotalRebounds(totalRebounds);
-        }
-        if(totalBlockedShot != null) {
-            gameStatistics.setTotalBlockedShot(totalBlockedShot);
-        }
-        if(totalAssists != null) {
-            gameStatistics.setTotalAssists(totalAssists);
-        }
-        if(totalPersonalFouls != null) {
-            gameStatistics.setTotalPersonalFouls(totalPersonalFouls);
-        }
-        if(totalTechnicalFouls != null) {
-            gameStatistics.setTotalTechnicalFouls(totalTechnicalFouls);
-        }
-        if(totalUnsportsmanlikeFouls != null) {
-            gameStatistics.setTotalUnsportsmanlikeFouls(totalUnsportsmanlikeFouls);
-        }
+        if(gameStatisticsId==null) {
+            if (!gameDao.existsById(gameId)) {
+                throw new InstanceNotFoundException("project.entities.game");
+            }
+            return addStatisticsToGame( gameId,  totalPoints,  durationMinutes,
+                    totalThreePointShots, totalSetShots, totalFreeShots, totalRebounds,
+                    totalBlockedShot, totalAssists, totalPersonalFouls, totalTechnicalFouls,
+                    totalUnsportsmanlikeFouls, totalPointsRival, totalThreePointShotsRival,
+                    totalSetShotsRival, totalFreeShotsRival, totalReboundsRival,
+                    totalBlockedShotsRival, totalAssistsRival, totalPersonalFoulsRival,
+                    totalTechnicalFoulsRival, totalUnsportsmanlikeFoulsRival);
+        } else {
+            if (!gameDao.existsById(gameId)) {
+                throw new InstanceNotFoundException("project.entities.game");
+            }
+            if (!gameStatisticsDao.existsById(gameStatisticsId)) {
+                throw new InstanceNotFoundException("project.entities.statistics");
+            }
 
 
-        if(totalPointsRival != null) {
-            gameStatistics.setTotalPointsRival(totalPointsRival);
-        }
-        if(totalThreePointShotsRival != null) {
-            gameStatistics.setTotalThreePointShotsRival(totalThreePointShotsRival);
-        }
-        if(totalSetShotsRival != null) {
-            gameStatistics.setTotalSetShotsRival(totalSetShotsRival);
-        }
-        if(totalFreeShotsRival != null) {
-            gameStatistics.setTotalFreeShotsRival(totalFreeShotsRival);
-        }
-        if(totalReboundsRival != null) {
-            gameStatistics.setTotalReboundsRival(totalReboundsRival);
-        }
-        if(totalBlockedShotsRival != null) {
-            gameStatistics.setTotalBlockedShotsRival(totalBlockedShotsRival);
-        }
-        if(totalAssistsRival != null) {
-            gameStatistics.setTotalAssistsRival(totalAssistsRival);
-        }
-        if(totalPersonalFoulsRival != null) {
-            gameStatistics.setTotalPersonalFoulsRival(totalPersonalFoulsRival);
-        }
-        if(totalTechnicalFoulsRival != null) {
-            gameStatistics.setTotalTechnicalFoulsRival(totalTechnicalFoulsRival);
-        }
-        if(totalUnsportsmanlikeFoulsRival != null) {
-            gameStatistics.setTotalUnsportsmanlikeFoulsRival(totalUnsportsmanlikeFoulsRival);
-        }
+            GameStatistics gameStatistics = gameStatisticsDao.findById(gameStatisticsId).get();
 
-        gameStatisticsDao.save(gameStatistics);
-        
-        Game game = gameDao.findById(gameId).get();
+            if(totalPoints != null) {
+                gameStatistics.setTotalPoints(totalPoints);
+            }
+            if(durationMinutes != null) {
+                gameStatistics.setDurationMinutes(durationMinutes);
+            }
+            if(totalThreePointShots != null) {
+                gameStatistics.setTotalThreePointShots(totalThreePointShots);
+            }
+            if(totalSetShots != null) {
+                gameStatistics.setTotalSetShots(totalSetShots);
+            }
+            if(totalFreeShots != null) {
+                gameStatistics.setTotalFreeShots(totalFreeShots);
+            }
+            if(totalRebounds != null) {
+                gameStatistics.setTotalRebounds(totalRebounds);
+            }
+            if(totalBlockedShot != null) {
+                gameStatistics.setTotalBlockedShot(totalBlockedShot);
+            }
+            if(totalAssists != null) {
+                gameStatistics.setTotalAssists(totalAssists);
+            }
+            if(totalPersonalFouls != null) {
+                gameStatistics.setTotalPersonalFouls(totalPersonalFouls);
+            }
+            if(totalTechnicalFouls != null) {
+                gameStatistics.setTotalTechnicalFouls(totalTechnicalFouls);
+            }
+            if(totalUnsportsmanlikeFouls != null) {
+                gameStatistics.setTotalUnsportsmanlikeFouls(totalUnsportsmanlikeFouls);
+            }
 
-        game.setGameStatistics(gameStatistics);
-        gameDao.save(game);
-        return gameStatistics;
+
+            if(totalPointsRival != null) {
+                gameStatistics.setTotalPointsRival(totalPointsRival);
+            }
+            if(totalThreePointShotsRival != null) {
+                gameStatistics.setTotalThreePointShotsRival(totalThreePointShotsRival);
+            }
+            if(totalSetShotsRival != null) {
+                gameStatistics.setTotalSetShotsRival(totalSetShotsRival);
+            }
+            if(totalFreeShotsRival != null) {
+                gameStatistics.setTotalFreeShotsRival(totalFreeShotsRival);
+            }
+            if(totalReboundsRival != null) {
+                gameStatistics.setTotalReboundsRival(totalReboundsRival);
+            }
+            if(totalBlockedShotsRival != null) {
+                gameStatistics.setTotalBlockedShotsRival(totalBlockedShotsRival);
+            }
+            if(totalAssistsRival != null) {
+                gameStatistics.setTotalAssistsRival(totalAssistsRival);
+            }
+            if(totalPersonalFoulsRival != null) {
+                gameStatistics.setTotalPersonalFoulsRival(totalPersonalFoulsRival);
+            }
+            if(totalTechnicalFoulsRival != null) {
+                gameStatistics.setTotalTechnicalFoulsRival(totalTechnicalFoulsRival);
+            }
+            if(totalUnsportsmanlikeFoulsRival != null) {
+                gameStatistics.setTotalUnsportsmanlikeFoulsRival(totalUnsportsmanlikeFoulsRival);
+            }
+
+            gameStatisticsDao.save(gameStatistics);
+
+            Game game = gameDao.findById(gameId).get();
+
+            game.setGameStatistics(gameStatistics);
+            gameDao.save(game);
+            return gameStatistics;
+        }
     }
 
     @Override

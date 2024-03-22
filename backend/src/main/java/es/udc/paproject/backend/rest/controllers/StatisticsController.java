@@ -87,7 +87,7 @@ public class StatisticsController {
     }
 
     @PutMapping("/{gameId}")
-    public GameStatisticsDto updateGameStatistics(@PathVariable Long gameId, @RequestParam Long gameStatisticsId,
+    public GameStatisticsDto updateGameStatistics(@PathVariable Long gameId, @RequestParam(required = false) Long gameStatisticsId,
     @RequestParam Integer totalPoints, @RequestParam Integer durationMinutes, @RequestParam Integer totalThreePointShots, @RequestParam Integer totalSetShots,
     @RequestParam Integer totalFreeShots, @RequestParam Integer totalRebounds, @RequestParam Integer totalBlockedShot, @RequestParam Integer totalAssists,
     @RequestParam Integer totalPersonalFouls, @RequestParam Integer totalTechnicalFouls, @RequestParam Integer totalUnsportsmanlikeFouls,
