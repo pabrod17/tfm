@@ -11,7 +11,10 @@ import * as selectors from '../selectors';
 import * as actionsGames from '../../games/actions';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Box from '@mui/material/Box';
+import { Box, Button, FilledInput, Grid, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material';
+import { DataGrid } from '@mui/x-data-grid';
+import naranja from '../../games/components/ballunsplash.jpeg';
+import Typography from '@mui/material/Typography';
 
 const UpdateGameStatistics = () => {
     const dispatch = useDispatch();
@@ -22,29 +25,61 @@ const UpdateGameStatistics = () => {
     const { stretchingType, tabValue } = useParams();
     const [value, setValue] = useState(parseInt(tabValue, 10) || 0);
 
-    const [totalPoints, setTotalPoints] = useState(null);
-    const [durationMinutes, setDurationMinutes] = useState(null);
-    const [totalThreePointShots, setTotalThreePointShots] = useState(null);
-    const [totalSetShots, setTotalSetShots] = useState(null);
-    const [totalFreeShots, setTotalFreeShots] = useState(null);
-    const [totalRebounds, setTotalRebounds] = useState(null);
-    const [totalBlockedShot, setTotalBlockedShot] = useState(null);
-    const [totalAssists, setTotalAssists] = useState(null);
-    const [totalPersonalFouls, setTotalPersonalFouls] = useState(null);
-    const [totalTechnicalFouls, setTotalTechnicalFouls] = useState(null);
-    const [totalUnsportsmanlikeFouls, setTotalUnsportsmanlikeFouls] = useState(null);
+    //OTRA OPCION:
+        //Arriba: Card con el numero de minutos, Card con rebotes, Card con tapones, Card con asistencias
+            //Aqui habria que mirar como mirar los items del rival ( o en la misma card o en otra al lado)
+        //Abajo: Dos graficos uno para puntos y otro para faltas
+            //Aqui habria que mirar como mirar los items del rival (Pero si es un grafico se pueden meter ahi los dos tipos)
 
-    const [totalPointsRival, setTotalPointsRival] = useState(null);
-    const [totalThreePointShotsRival, setTotalThreePointShotsRival] = useState(null);
-    const [totalSetShotsRival, setTotalSetShotsRival] = useState(null);
-    const [totalFreeShotsRival, setTotalFreeShotsRival] = useState(null);
-    const [totalReboundsRival, setTotalReboundsRival] = useState(null);
-    const [totalBlockedShotsRival, setTotalBlockedShotsRival] = useState(null);
-    const [totalAssistsRival, setTotalAssistsRival] = useState(null);
-    const [totalPersonalFoulsRival, setTotalPersonalFoulsRival] = useState(null);
-    const [totalTechnicalFoulsRival, setTotalTechnicalFoulsRival] = useState(null);
-    const [totalUnsportsmanlikeFoulsRival, setTotalUnsportsmanlikeFoulsRival] = useState(null);
-    const [backendErrors, setBackendErrors] = useState(null);
+
+    //Hacer un grafico que compare lo de mi equipo y lo del rival para cada section
+
+    //puntos -> primer grafico de barras verticales: bar chart
+    const [totalFreeShots, setTotalFreeShots] = useState(0);
+    const [totalSetShots, setTotalSetShots] = useState(0);
+    const [totalThreePointShots, setTotalThreePointShots] = useState(0);
+            //tiros totales:
+        const [totalPoints, setTotalPoints] = useState(0);
+
+    //duracion -> una card arriba a la izq con el numero en grande como vi en algun otro dashboard
+    const [durationMinutes, setDurationMinutes] = useState(0);
+    
+    //Rebotes
+    const [totalRebounds, setTotalRebounds] = useState(0);
+
+    //Tapones
+    const [totalBlockedShot, setTotalBlockedShot] = useState(0);
+    //Asistencias
+    const [totalAssists, setTotalAssists] = useState(0);
+    //Faltas -> circulo -> Charts - Pie
+    const [totalPersonalFouls, setTotalPersonalFouls] = useState(0);
+    const [totalTechnicalFouls, setTotalTechnicalFouls] = useState(0);
+    const [totalUnsportsmanlikeFouls, setTotalUnsportsmanlikeFouls] = useState(0);
+        const [totalFouls, setTotalFouls] = useState(0);
+
+    //RIVAL: puntos
+    const [totalPointsRival, setTotalPointsRival] = useState(0);
+    const [totalThreePointShotsRival, setTotalThreePointShotsRival] = useState(0);
+    const [totalSetShotsRival, setTotalSetShotsRival] = useState(0);
+        //RIVAL: total puntos
+        const [totalFreeShotsRival, setTotalFreeShotsRival] = useState(0);
+    
+    //RIVAL: rebotes
+    const [totalReboundsRival, setTotalReboundsRival] = useState(0);
+    
+    //RIVAL: tapones
+    const [totalBlockedShotsRival, setTotalBlockedShotsRival] = useState(0);
+    
+    //RIVAL: asistencias
+    const [totalAssistsRival, setTotalAssistsRival] = useState(0);
+    
+    //RIVAL: faltas
+    const [totalPersonalFoulsRival, setTotalPersonalFoulsRival] = useState(0);
+    const [totalTechnicalFoulsRival, setTotalTechnicalFoulsRival] = useState(0);
+    const [totalUnsportsmanlikeFoulsRival, setTotalUnsportsmanlikeFoulsRival] = useState(0);
+        const [totalFoulsRival, setTotalFoulsRival] = useState(0);
+
+    const [backendErrors, setBackendErrors] = useState(0);
     let form;
 
     const handleChange = (event, newValue) => {
@@ -87,14 +122,14 @@ const UpdateGameStatistics = () => {
 
         event.preventDefault();
     
-            dispatch(actions.updateGameStatistics(id, gameStatistics.id, totalPoints, durationMinutes, 
+            dispatch(actions.updateGameStatistics(id, gameStatistics ? gameStatistics.id : null, totalPoints, durationMinutes, 
                 totalThreePointShots,totalSetShots,totalFreeShots,totalRebounds,
                 totalBlockedShot,totalAssists,totalPersonalFouls,totalTechnicalFouls,
                 totalUnsportsmanlikeFouls,totalPointsRival,totalThreePointShotsRival,
                 totalSetShotsRival,totalFreeShotsRival,totalReboundsRival,totalBlockedShotsRival,
                 totalAssistsRival,totalPersonalFoulsRival,totalTechnicalFoulsRival,
                 totalUnsportsmanlikeFoulsRival,
-            () => reloadWindow(),
+            () => window.location.reload('true'),
             errors => setBackendErrors(errors),
             ));
         }
@@ -173,368 +208,817 @@ const UpdateGameStatistics = () => {
 <Box
 			display="flex"
 			alignItems="center"
-			p={1}
+			p={5}
+            pt={0}
+            
 			sx={{
-                maxWidth: { xs: 300, sm: 920 },
+                maxWidth: { sm: 1235 },
+
 				border: '2px solid grey',
                 background: "linear-gradient(-35deg, #081971 30%, #7C0C0C 80% )",
 				borderRadius: "20px",
 				flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 				flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
-                borderColor:"black",
-				boxShadow:"0 10px 50px rgb(0, 0, 0)"
+                boxShadow:"0 10px 50px rgb(0, 8, 255)",
+                borderColor:"black"
 			}}
 		>
             <Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
+			<Grid container 
+			>
+				<Grid item xs={12} md={12} >
+                <Typography
+							sx={{ flex: '1 1 100%', mt: 3.5, color: "#36FF00", m:2, mb:3, fontSize:30, textAlign: 'center' }}
+                            variant="h6"
+							id="tableTitle"
+							component="div"
+                        >
+							My Team
+						</Typography>
+					<Box
+						component="form"
+						sx={{
+                            background: "linear-gradient(-45deg, #0E24A0 0%, #900C0C 100% )",
+							borderRadius: "20px",
+                            borderColor:"black",
+                            boxShadow:"0 10px 50px rgb(0, 0, 0)",
 
-            <div>
-                <Errors errors={backendErrors} onClose={() => setBackendErrors(null)}/>
-                <div className="card bg-light border-dark">
-                    <h5 className="card-header">
-                    <FormattedMessage id="project.statistics.fields.updateGameStatistics"/>
-                    </h5>
-                    <div className="card-body">
-                        <form ref={node => form = node} 
-                            className="needs-validation" noValidate onSubmit={e => handleSubmit(e)}>
+						}}
+                        autoHeight={true} // Permitir que la tabla determine su propio tamaño si los datos no se han cargado
+						noValidate
+						autoComplete="off"
+					>
+						<Grid container margin={5} spacing={{ xs: 0, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+							<Grid item xs={3}>
+								<Box
+									component="form"
+									sx={{
+										'& .MuiTextField-root': { mb: 2 },
+										margin: '30px', // Centra el formulario en la pantalla
 
-                            <div className="form-group row">
-                                <label htmlFor="firstName" className="col-md-6 col-form-label">
-                                <FormattedMessage id="project.statistics.fields.totalPoints"/>
-                                </label>
-                                <div className="col-md-6">
-                                    <input  type="text" id="totalPoints" className="form-control"
-                                        value={totalPoints}
-                                        onChange={e => setTotalPoints(e.target.value)}
-                                        autoFocus
-                                        required/>
-                                    <div className="invalid-feedback">
-                                        <FormattedMessage id='project.global.validator.required'/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label htmlFor="firstName" className="col-md-6 col-form-label">
-                                <FormattedMessage id="project.statistics.fields.duration"/>
-                                </label>
-                                <div className="col-md-6">
-                                    <input  type="text" id="durationMinutes" className="form-control"
-                                        value={durationMinutes}
-                                        onChange={e => setDurationMinutes(e.target.value)}
-                                        autoFocus
-                                        required/>
-                                    <div className="invalid-feedback">
-                                        <FormattedMessage id='project.global.validator.required'/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label htmlFor="firstName" className="col-md-6 col-form-label">
-                                <FormattedMessage id="project.statistics.fields.totalThreePointShots"/>
-                                </label>
-                                <div className="col-md-6">
-                                    <input  type="text" id="totalThreePointShots" className="form-control"
-                                        value={totalThreePointShots}
-                                        onChange={e => setTotalThreePointShots(e.target.value)}
-                                        autoFocus
-                                        required/>
-                                    <div className="invalid-feedback">
-                                        <FormattedMessage id='project.global.validator.required'/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label htmlFor="firstName" className="col-md-6 col-form-label">
-                                <FormattedMessage id="project.statistics.fields.totalSetShots"/>
-                                </label>
-                                <div className="col-md-6">
-                                    <input  type="text" id="totalSetShots" className="form-control"
-                                        value={totalSetShots}
-                                        onChange={e => setTotalSetShots(e.target.value)}
-                                        autoFocus
-                                        required/>
-                                    <div className="invalid-feedback">
-                                        <FormattedMessage id='project.global.validator.required'/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label htmlFor="firstName" className="col-md-6 col-form-label">
-                                <FormattedMessage id="project.statistics.fields.totalFreeShots"/>
-                                </label>
-                                <div className="col-md-6">
-                                    <input  type="text" id="totalFreeShots" className="form-control"
+									}}
+									noValidate
+									autoComplete="off"
+								>
+									
+									<TextField
+										id="outlined-number"
+										label={<FormattedMessage id="project.statistics.fields.totalFreeShots"/>}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' }}}
+                                        inputProps={{min:0}}
+                                        type="number"
+										sx={{
+											border: '2px solid grey',
+											borderRadius: "20px",
+                                            borderColor:"black",
+                                            boxShadow:"0 10px 10px rgb(0, 0, 0)"
+
+										}}
                                         value={totalFreeShots}
-                                        onChange={e => setTotalFreeShots(e.target.value)}
-                                        autoFocus
-                                        required/>
-                                    <div className="invalid-feedback">
-                                        <FormattedMessage id='project.global.validator.required'/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label htmlFor="firstName" className="col-md-6 col-form-label">
-                                <FormattedMessage id="project.statistics.fields.totalRebounds"/>
-                                </label>
-                                <div className="col-md-6">
-                                    <input  type="text" id="totalRebounds" className="form-control"
-                                        value={totalRebounds}
-                                        onChange={e => setTotalRebounds(e.target.value)}
-                                        autoFocus
-                                        required/>
-                                    <div className="invalid-feedback">
-                                        <FormattedMessage id='project.global.validator.required'/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label htmlFor="firstName" className="col-md-6 col-form-label">
-                                <FormattedMessage id="project.statistics.fields.totalBlockedShot"/>
-                                </label>
-                                <div className="col-md-6">
-                                    <input  type="text" id="totalBlockedShot" className="form-control"
-                                        value={totalBlockedShot}
-                                        onChange={e => setTotalBlockedShot(e.target.value)}
-                                        autoFocus
-                                        required/>
-                                    <div className="invalid-feedback">
-                                        <FormattedMessage id='project.global.validator.required'/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label htmlFor="firstName" className="col-md-6 col-form-label">
-                                <FormattedMessage id="project.statistics.fields.totalAssists"/>
-                                </label>
-                                <div className="col-md-6">
-                                    <input  type="text" id="totalAssists" className="form-control"
-                                        value={totalAssists}
-                                        onChange={e => setTotalAssists(e.target.value)}
-                                        autoFocus
-                                        required/>
-                                    <div className="invalid-feedback">
-                                        <FormattedMessage id='project.global.validator.required'/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label htmlFor="firstName" className="col-md-6 col-form-label">
-                                <FormattedMessage id="project.statistics.fields.totalPersonalFouls"/>
-                                </label>
-                                <div className="col-md-6">
-                                    <input  type="text" id="totalPersonalFouls" className="form-control"
+										onChange={(e) => setTotalFreeShots(e.target.value)}
+									/>
+								</Box>
+							</Grid>
+							<Grid item xs={3}>
+								<Box
+									component="form"
+									sx={{
+										'& .MuiTextField-root': { mb: 2 },
+										margin: '30px', // Centra el formulario en la pantalla
+
+									}}
+									noValidate
+									autoComplete="off"
+								>
+									
+									<TextField
+										id="outlined-number"
+										label={<FormattedMessage id="project.statistics.fields.totalSetShots"/>}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+                                        inputProps={{min:0}}
+                                        type="number"
+										sx={{
+											border: '2px solid grey',
+											borderRadius: "20px",
+                                            borderColor:"black",
+                                            boxShadow:"0 10px 10px rgb(0, 0, 0)"
+
+										}}
+                                        value={totalSetShots}
+										onChange={(e) => setTotalSetShots(e.target.value)}
+									/>
+								</Box>
+							</Grid>
+                            <Grid item xs={3}>
+								<Box
+									component="form"
+									sx={{
+										'& .MuiTextField-root': { mb: 2 },
+										margin: '30px', // Centra el formulario en la pantalla
+
+									}}
+									noValidate
+									autoComplete="off"
+								>
+									
+									<TextField
+										id="outlined-number"
+										label={<FormattedMessage id="project.statistics.fields.totalThreePointShots"/>}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+                                        inputProps={{min:0}}
+                                        type="number"
+										sx={{
+											border: '2px solid grey',
+											borderRadius: "20px",
+                                            borderColor:"black",
+                                            boxShadow:"0 10px 10px rgb(0, 0, 0)"
+
+										}}
+                                        value={totalThreePointShots}
+										onChange={(e) => setTotalThreePointShots(e.target.value)}
+									/>
+								</Box>
+							</Grid>
+                            <Grid item xs={3}>
+								<Box
+									component="form"
+									sx={{
+										'& .MuiTextField-root': { mb: 2 },
+										margin: '30px', // Centra el formulario en la pantalla
+
+									}}
+									noValidate
+									autoComplete="off"
+								>
+									
+									<TextField
+										id="outlined-number"
+										label={<FormattedMessage id="project.statistics.fields.totalPoints"/>}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+                                        inputProps={{min:0}}
+                                        type="number"
+										sx={{
+											border: '2px solid grey',
+											borderRadius: "20px",
+                                            borderColor:"black",
+                                            boxShadow:"0 10px 10px rgb(0, 0, 0)"
+
+										}}
+                                        value={totalPoints}
+										onChange={(e) => setTotalPoints(e.target.value)}
+									/>
+								</Box>
+							</Grid>
+                            <Grid item xs={3}>
+								<Box
+									component="form"
+									sx={{
+										'& .MuiTextField-root': { mb: 2 },
+										margin: '30px', // Centra el formulario en la pantalla
+										marginTop: '0px', // Centra el formulario en la pantalla
+
+									}}
+									noValidate
+									autoComplete="off"
+								>
+									
+									<TextField
+										id="outlined-number"
+										label={<FormattedMessage id="project.statistics.fields.totalPersonalFouls"/>}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+                                        inputProps={{min:0}}
+                                        type="number"
+										sx={{
+											border: '2px solid grey',
+											borderRadius: "20px",
+                                            borderColor:"black",
+                                            boxShadow:"0 10px 10px rgb(0, 0, 0)"
+
+										}}
                                         value={totalPersonalFouls}
-                                        onChange={e => setTotalPersonalFouls(e.target.value)}
-                                        autoFocus
-                                        required/>
-                                    <div className="invalid-feedback">
-                                        <FormattedMessage id='project.global.validator.required'/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label htmlFor="firstName" className="col-md-6 col-form-label">
-                                <FormattedMessage id="project.statistics.fields.totalTechnicalFouls"/>
-                                </label>
-                                <div className="col-md-6">
-                                    <input  type="text" id="totalTechnicalFouls" className="form-control"
+										onChange={(e) => setTotalPersonalFouls(e.target.value)}
+									/>
+								</Box>
+							</Grid>
+                            <Grid item xs={3}>
+								<Box
+									component="form"
+									sx={{
+										'& .MuiTextField-root': { mb: 2 },
+										margin: '30px', // Centra el formulario en la pantalla
+										marginTop: '0px', // Centra el formulario en la pantalla
+
+									}}
+									noValidate
+									autoComplete="off"
+								>
+									
+									<TextField
+										id="outlined-number"
+										label={<FormattedMessage id="project.statistics.fields.totalTechnicalFouls"/>}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+                                        inputProps={{min:0}}
+                                        type="number"
+										sx={{
+											border: '2px solid grey',
+											borderRadius: "20px",
+                                            borderColor:"black",
+                                            boxShadow:"0 10px 10px rgb(0, 0, 0)"
+
+										}}
                                         value={totalTechnicalFouls}
-                                        onChange={e => setTotalTechnicalFouls(e.target.value)}
-                                        autoFocus
-                                        required/>
-                                    <div className="invalid-feedback">
-                                        <FormattedMessage id='project.global.validator.required'/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label htmlFor="firstName" className="col-md-6 col-form-label">
-                                <FormattedMessage id="project.statistics.fields.totalUnsportsmanlikeFouls"/>
-                                </label>
-                                <div className="col-md-6">
-                                    <input  type="text" id="totalUnsportsmanlikeFouls" className="form-control"
+										onChange={(e) => setTotalTechnicalFouls(e.target.value)}
+									/>
+								</Box>
+							</Grid>
+                            <Grid item xs={3}>
+								<Box
+									component="form"
+									sx={{
+										'& .MuiTextField-root': { mb: 2 },
+										margin: '30px', // Centra el formulario en la pantalla
+										marginTop: '0px', // Centra el formulario en la pantalla
+
+									}}
+									noValidate
+									autoComplete="off"
+								>
+									
+									<TextField
+										id="outlined-number"
+										label={<FormattedMessage id="project.statistics.fields.totalUnsportsmanlikeFouls"/>}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+                                        inputProps={{min:0}}
+                                        type="number"
+										sx={{
+											border: '2px solid grey',
+											borderRadius: "20px",
+                                            borderColor:"black",
+                                            boxShadow:"0 10px 10px rgb(0, 0, 0)"
+
+										}}
                                         value={totalUnsportsmanlikeFouls}
-                                        onChange={e => setTotalUnsportsmanlikeFouls(e.target.value)}
-                                        autoFocus
-                                        required/>
-                                    <div className="invalid-feedback">
-                                        <FormattedMessage id='project.global.validator.required'/>
-                                    </div>
-                                </div>
-                            </div>
+										onChange={(e) => setTotalUnsportsmanlikeFouls(e.target.value)}
+									/>
+								</Box>
+							</Grid>
+                            <Grid item xs={3}>
+								<Box
+									component="form"
+									sx={{
+										'& .MuiTextField-root': { mb: 2 },
+										margin: '30px', // Centra el formulario en la pantalla
+										marginTop: '0px', // Centra el formulario en la pantalla
 
+									}}
+									noValidate
+									autoComplete="off"
+								>
+									
+									<TextField
+										id="outlined-number"
+										label={<FormattedMessage id="project.statistics.fields.totalFouls"/>}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+                                        inputProps={{min:0}}
+                                        type="number"
+										sx={{
+											border: '2px solid grey',
+											borderRadius: "20px",
+                                            borderColor:"black",
+                                            boxShadow:"0 10px 10px rgb(0, 0, 0)"
 
+										}}
+                                        value={totalFouls}
+										onChange={(e) => setTotalFouls(e.target.value)}
+									/>
+								</Box>
+							</Grid>
+                            <Grid item xs={3}>
+								<Box
+									component="form"
+									sx={{
+										'& .MuiTextField-root': { mb: 2 },
+										margin: '30px', // Centra el formulario en la pantalla
+										marginTop: '0px', // Centra el formulario en la pantalla
 
+									}}
+									noValidate
+									autoComplete="off"
+								>
+									
+									<TextField
+										id="outlined-number"
+										label={<FormattedMessage id="project.statistics.fields.totalRebounds"/>}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+                                        inputProps={{min:0}}
+                                        type="number"
+										sx={{
+											border: '2px solid grey',
+											borderRadius: "20px",
+                                            borderColor:"black",
+                                            boxShadow:"0 10px 10px rgb(0, 0, 0)"
 
+										}}
+                                        value={totalRebounds}
+										onChange={(e) => setTotalRebounds(e.target.value)}
+									/>
+								</Box>
+							</Grid>
+                            <Grid item xs={3}>
+								<Box
+									component="form"
+									sx={{
+										'& .MuiTextField-root': { mb: 2 },
+										margin: '30px', // Centra el formulario en la pantalla
+										marginTop: '0px', // Centra el formulario en la pantalla
 
+									}}
+									noValidate
+									autoComplete="off"
+								>
+									
+									<TextField
+										id="outlined-number"
+										label={<FormattedMessage id="project.statistics.fields.totalBlockedShot"/>}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+                                        inputProps={{min:0}}
+                                        type="number"
+										sx={{
+											border: '2px solid grey',
+											borderRadius: "20px",
+                                            borderColor:"black",
+                                            boxShadow:"0 10px 10px rgb(0, 0, 0)"
 
+										}}
+                                        value={totalBlockedShot}
+										onChange={(e) => setTotalBlockedShot(e.target.value)}
+									/>
+								</Box>
+							</Grid>
+                            <Grid item xs={3}>
+								<Box
+									component="form"
+									sx={{
+										'& .MuiTextField-root': { mb: 2 },
+										margin: '30px', // Centra el formulario en la pantalla
+										marginTop: '0px', // Centra el formulario en la pantalla
 
+									}}
+									noValidate
+									autoComplete="off"
+								>
+									
+									<TextField
+										id="outlined-number"
+										label={<FormattedMessage id="project.statistics.fields.totalAssists"/>}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+                                        inputProps={{min:0}}
+                                        type="number"
+										sx={{
+											border: '2px solid grey',
+											borderRadius: "20px",
+                                            borderColor:"black",
+                                            boxShadow:"0 10px 10px rgb(0, 0, 0)"
 
+										}}
+                                        value={totalAssists}
+										onChange={(e) => setTotalAssists(e.target.value)}
+									/>
+								</Box>
+							</Grid>
+                            <Grid item xs={3}>
+								<Box
+									component="form"
+									sx={{
+										'& .MuiTextField-root': { mb: 2 },
+										margin: '30px', // Centra el formulario en la pantalla
+										marginTop: '0px', // Centra el formulario en la pantalla
 
-                            <div className="form-group row">
-                                <label htmlFor="firstName" className="col-md-6 col-form-label">
-                                <FormattedMessage id="project.statistics.fields.totalPointsRival"/>
-                                </label>
-                                <div className="col-md-6">
-                                    <input  type="text" id="totalPointsRival" className="form-control"
-                                        value={totalPointsRival}
-                                        onChange={e => setTotalPointsRival(e.target.value)}
-                                        autoFocus
-                                        required/>
-                                    <div className="invalid-feedback">
-                                        <FormattedMessage id='project.global.validator.required'/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label htmlFor="firstName" className="col-md-6 col-form-label">
-                                <FormattedMessage id="project.statistics.fields.totalThreePointShotsRival"/>
-                                </label>
-                                <div className="col-md-6">
-                                    <input  type="text" id="totalThreePointShotsRival" className="form-control"
-                                        value={totalThreePointShotsRival}
-                                        onChange={e => setTotalThreePointShotsRival(e.target.value)}
-                                        autoFocus
-                                        required/>
-                                    <div className="invalid-feedback">
-                                        <FormattedMessage id='project.global.validator.required'/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label htmlFor="firstName" className="col-md-6 col-form-label">
-                                <FormattedMessage id="project.statistics.fields.totalSetShotsRival"/>
-                                </label>
-                                <div className="col-md-6">
-                                    <input  type="text" id="totalSetShotsRival" className="form-control"
-                                        value={totalSetShotsRival}
-                                        onChange={e => setTotalSetShotsRival(e.target.value)}
-                                        autoFocus
-                                        required/>
-                                    <div className="invalid-feedback">
-                                        <FormattedMessage id='project.global.validator.required'/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label htmlFor="firstName" className="col-md-6 col-form-label">
-                                <FormattedMessage id="project.statistics.fields.totalFreeShotsRival"/>
-                                </label>
-                                <div className="col-md-6">
-                                    <input  type="text" id="totalFreeShotsRival" className="form-control"
+									}}
+									noValidate
+									autoComplete="off"
+								>
+									
+									<TextField
+										id="outlined-number"
+										label={<FormattedMessage id="project.statistics.fields.duration"/>}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+                                        inputProps={{min:0}}
+                                        type="number"
+										sx={{
+											border: '2px solid grey',
+											borderRadius: "20px",
+                                            borderColor:"black",
+                                            boxShadow:"0 10px 10px rgb(0, 0, 0)"
+
+										}}
+                                        value={durationMinutes}
+										onChange={(e) => setDurationMinutes(e.target.value)}
+									/>
+								</Box>
+							</Grid>
+						</Grid>
+					</Box>  
+                </Grid>
+
+                <Grid item xs={12} md={12} marginTop={-2} >
+                <Typography
+							sx={{ flex: '1 1 100%', mt: 0, color: "#FF0000", mb:3, fontSize:30, textAlign: 'center' }}
+
+                            variant="h6"
+							id="tableTitle"
+							component="div"
+                        >
+							Rival
+						</Typography>
+					<Box
+						component="form"
+						sx={{
+                            background: "linear-gradient(-45deg, #0E24A0 0%, #900C0C 100% )",
+							borderRadius: "20px",
+                            borderColor:"black",
+                            boxShadow:"0 10px 50px rgb(0, 0, 0)",
+
+						}}
+                        autoHeight={true} // Permitir que la tabla determine su propio tamaño si los datos no se han cargado
+						noValidate
+						autoComplete="off"
+					>
+						<Grid container margin={5} spacing={{ xs: 0, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+							<Grid item xs={3}>
+								<Box
+									component="form"
+									sx={{
+										'& .MuiTextField-root': { mb: 2 },
+										margin: '30px', // Centra el formulario en la pantalla
+
+									}}
+									noValidate
+									autoComplete="off"
+								>
+									
+									<TextField
+										id="outlined-number"
+										label={<FormattedMessage id="project.statistics.fields.totalFreeShots"/>}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+                                        inputProps={{min:0}}
+                                        type="number"
+										sx={{
+											border: '2px solid grey',
+											borderRadius: "20px",
+                                            borderColor:"black",
+                                            boxShadow:"0 10px 10px rgb(0, 0, 0)"
+
+										}}
                                         value={totalFreeShotsRival}
-                                        onChange={e => setTotalFreeShotsRival(e.target.value)}
-                                        autoFocus
-                                        required/>
-                                    <div className="invalid-feedback">
-                                        <FormattedMessage id='project.global.validator.required'/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label htmlFor="firstName" className="col-md-6 col-form-label">
-                                <FormattedMessage id="project.statistics.fields.totalReboundsRival"/>
-                                </label>
-                                <div className="col-md-6">
-                                    <input  type="text" id="totalReboundsRival" className="form-control"
-                                        value={totalReboundsRival}
-                                        onChange={e => setTotalReboundsRival(e.target.value)}
-                                        autoFocus
-                                        required/>
-                                    <div className="invalid-feedback">
-                                        <FormattedMessage id='project.global.validator.required'/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label htmlFor="firstName" className="col-md-6 col-form-label">
-                                <FormattedMessage id="project.statistics.fields.totalBlockedShotRival"/>
-                                </label>
-                                <div className="col-md-6">
-                                    <input  type="text" id="totalBlockedShotsRival" className="form-control"
-                                        value={totalBlockedShotsRival}
-                                        onChange={e => setTotalBlockedShotsRival(e.target.value)}
-                                        autoFocus
-                                        required/>
-                                    <div className="invalid-feedback">
-                                        <FormattedMessage id='project.global.validator.required'/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label htmlFor="firstName" className="col-md-6 col-form-label">
-                                <FormattedMessage id="project.statistics.fields.totalAssistsRival"/>
-                                </label>
-                                <div className="col-md-6">
-                                    <input  type="text" id="totalAssistsRival" className="form-control"
-                                        value={totalAssistsRival}
-                                        onChange={e => setTotalAssistsRival(e.target.value)}
-                                        autoFocus
-                                        required/>
-                                    <div className="invalid-feedback">
-                                        <FormattedMessage id='project.global.validator.required'/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label htmlFor="firstName" className="col-md-6 col-form-label">
-                                <FormattedMessage id="project.statistics.fields.totalPersonalFoulsRival"/>
-                                </label>
-                                <div className="col-md-6">
-                                    <input  type="text" id="totalPersonalFoulsRival" className="form-control"
+										onChange={(e) => setTotalFreeShotsRival(e.target.value)}
+									/>
+								</Box>
+							</Grid>
+							<Grid item xs={3}>
+								<Box
+									component="form"
+									sx={{
+										'& .MuiTextField-root': { mb: 2 },
+										margin: '30px', // Centra el formulario en la pantalla
+
+									}}
+									noValidate
+									autoComplete="off"
+								>
+									
+									<TextField
+										id="outlined-number"
+										label={<FormattedMessage id="project.statistics.fields.totalSetShots"/>}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+                                        inputProps={{min:0}}
+                                        type="number"
+										sx={{
+											border: '2px solid grey',
+											borderRadius: "20px",
+                                            borderColor:"black",
+                                            boxShadow:"0 10px 10px rgb(0, 0, 0)"
+
+										}}
+                                        value={totalSetShotsRival}
+										onChange={(e) => setTotalSetShotsRival(e.target.value)}
+									/>
+								</Box>
+							</Grid>
+                            <Grid item xs={3}>
+								<Box
+									component="form"
+									sx={{
+										'& .MuiTextField-root': { mb: 2 },
+										margin: '30px', // Centra el formulario en la pantalla
+
+									}}
+									noValidate
+									autoComplete="off"
+								>
+									
+									<TextField
+										id="outlined-number"
+										label={<FormattedMessage id="project.statistics.fields.totalThreePointShots"/>}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+                                        inputProps={{min:0}}
+                                        type="number"
+										sx={{
+											border: '2px solid grey',
+											borderRadius: "20px",
+                                            borderColor:"black",
+                                            boxShadow:"0 10px 10px rgb(0, 0, 0)"
+
+										}}
+                                        value={totalThreePointShotsRival}
+										onChange={(e) => setTotalThreePointShotsRival(e.target.value)}
+									/>
+								</Box>
+							</Grid>
+                            <Grid item xs={3}>
+								<Box
+									component="form"
+									sx={{
+										'& .MuiTextField-root': { mb: 2 },
+										margin: '30px', // Centra el formulario en la pantalla
+
+									}}
+									noValidate
+									autoComplete="off"
+								>
+									
+									<TextField
+										id="outlined-number"
+										label={<FormattedMessage id="project.statistics.fields.totalPoints"/>}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+                                        inputProps={{min:0}}
+                                        type="number"
+										sx={{
+											border: '2px solid grey',
+											borderRadius: "20px",
+                                            borderColor:"black",
+                                            boxShadow:"0 10px 10px rgb(0, 0, 0)"
+
+										}}
+                                        value={totalPointsRival}
+										onChange={(e) => setTotalPointsRival(e.target.value)}
+									/>
+								</Box>
+							</Grid>
+                            <Grid item xs={3}>
+								<Box
+									component="form"
+									sx={{
+										'& .MuiTextField-root': { mb: 2 },
+										margin: '30px', // Centra el formulario en la pantalla
+										marginTop: '0px', // Centra el formulario en la pantalla
+
+									}}
+									noValidate
+									autoComplete="off"
+								>
+									
+									<TextField
+										id="outlined-number"
+										label={<FormattedMessage id="project.statistics.fields.totalPersonalFouls"/>}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+                                        inputProps={{min:0}}
+                                        type="number"
+										sx={{
+											border: '2px solid grey',
+											borderRadius: "20px",
+                                            borderColor:"black",
+                                            boxShadow:"0 10px 10px rgb(0, 0, 0)"
+
+										}}
                                         value={totalPersonalFoulsRival}
-                                        onChange={e => setTotalPersonalFoulsRival(e.target.value)}
-                                        autoFocus
-                                        required/>
-                                    <div className="invalid-feedback">
-                                        <FormattedMessage id='project.global.validator.required'/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label htmlFor="firstName" className="col-md-6 col-form-label">
-                                <FormattedMessage id="project.statistics.fields.totalTechnicalFoulsRival"/>
-                                </label>
-                                <div className="col-md-6">
-                                    <input  type="text" id="totalTechnicalFoulsRival" className="form-control"
+										onChange={(e) => setTotalPersonalFoulsRival(e.target.value)}
+									/>
+								</Box>
+							</Grid>
+                            <Grid item xs={3}>
+								<Box
+									component="form"
+									sx={{
+										'& .MuiTextField-root': { mb: 2 },
+										margin: '30px', // Centra el formulario en la pantalla
+										marginTop: '0px', // Centra el formulario en la pantalla
+
+									}}
+									noValidate
+									autoComplete="off"
+								>
+									
+									<TextField
+										id="outlined-number"
+										label={<FormattedMessage id="project.statistics.fields.totalTechnicalFouls"/>}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+                                        inputProps={{min:0}}
+                                        type="number"
+										sx={{
+											border: '2px solid grey',
+											borderRadius: "20px",
+                                            borderColor:"black",
+                                            boxShadow:"0 10px 10px rgb(0, 0, 0)"
+
+										}}
                                         value={totalTechnicalFoulsRival}
-                                        onChange={e => setTotalTechnicalFoulsRival(e.target.value)}
-                                        autoFocus
-                                        required/>
-                                    <div className="invalid-feedback">
-                                        <FormattedMessage id='project.global.validator.required'/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label htmlFor="firstName" className="col-md-6 col-form-label">
-                                <FormattedMessage id="project.statistics.fields.totalUnsportsmanlikeFoulsRival"/>
-                                </label>
-                                <div className="col-md-6">
-                                    <input  type="text" id="totalUnsportsmanlikeFoulsRival" className="form-control"
+										onChange={(e) => setTotalTechnicalFoulsRival(e.target.value)}
+									/>
+								</Box>
+							</Grid>
+                            <Grid item xs={3}>
+								<Box
+									component="form"
+									sx={{
+										'& .MuiTextField-root': { mb: 2 },
+										margin: '30px', // Centra el formulario en la pantalla
+										marginTop: '0px', // Centra el formulario en la pantalla
+
+									}}
+									noValidate
+									autoComplete="off"
+								>
+									
+									<TextField
+										id="outlined-number"
+										label={<FormattedMessage id="project.statistics.fields.totalUnsportsmanlikeFouls"/>}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+                                        inputProps={{min:0}}
+                                        type="number"
+										sx={{
+											border: '2px solid grey',
+											borderRadius: "20px",
+                                            borderColor:"black",
+                                            boxShadow:"0 10px 10px rgb(0, 0, 0)"
+
+										}}
                                         value={totalUnsportsmanlikeFoulsRival}
-                                        onChange={e => setTotalUnsportsmanlikeFoulsRival(e.target.value)}
-                                        autoFocus
-                                        required/>
-                                    <div className="invalid-feedback">
-                                        <FormattedMessage id='project.global.validator.required'/>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            
-                            <div className="form-group row">
-                                <div className="offset-md-5 col-md-1">
-                                    <button type="submit" className="btn btn-primary">
-                                        <FormattedMessage id="project.global.buttons.save"/>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-			<button className="post_game" type='submit' onClick={(e) => handleSubmit(e)}><FormattedMessage id="project.global.buttons.save" /></button>
+										onChange={(e) => setTotalUnsportsmanlikeFoulsRival(e.target.value)}
+									/>
+								</Box>
+							</Grid>
+                            <Grid item xs={3}>
+								<Box
+									component="form"
+									sx={{
+										'& .MuiTextField-root': { mb: 2 },
+										margin: '30px', // Centra el formulario en la pantalla
+										marginTop: '0px', // Centra el formulario en la pantalla
+
+									}}
+									noValidate
+									autoComplete="off"
+								>
+									
+									<TextField
+										id="outlined-number"
+										label={<FormattedMessage id="project.statistics.fields.totalFouls"/>}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+                                        inputProps={{min:0}}
+                                        type="number"
+										sx={{
+											border: '2px solid grey',
+											borderRadius: "20px",
+                                            borderColor:"black",
+                                            boxShadow:"0 10px 10px rgb(0, 0, 0)"
+
+										}}
+                                        value={totalFoulsRival}
+										onChange={(e) => setTotalFoulsRival(e.target.value)}
+									/>
+								</Box>
+							</Grid>
+                            <Grid item xs={4}>
+								<Box
+									component="form"
+									sx={{
+										'& .MuiTextField-root': { mb: 2 },
+										margin: '30px', // Centra el formulario en la pantalla
+										marginTop: '0px', // Centra el formulario en la pantalla
+
+									}}
+									noValidate
+									autoComplete="off"
+								>
+									
+									<TextField
+										id="outlined-number"
+										label={<FormattedMessage id="project.statistics.fields.totalRebounds"/>}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+                                        inputProps={{min:0}}
+                                        type="number"
+										sx={{
+											border: '2px solid grey',
+											borderRadius: "20px",
+                                            borderColor:"black",
+                                            boxShadow:"0 10px 10px rgb(0, 0, 0)"
+
+										}}
+                                        value={totalReboundsRival}
+										onChange={(e) => setTotalReboundsRival(e.target.value)}
+									/>
+								</Box>
+							</Grid>
+                            <Grid item xs={4}>
+								<Box
+									component="form"
+									sx={{
+										'& .MuiTextField-root': { mb: 2 },
+										margin: '30px', // Centra el formulario en la pantalla
+										marginTop: '0px', // Centra el formulario en la pantalla
+
+									}}
+									noValidate
+									autoComplete="off"
+								>
+									
+									<TextField
+										id="outlined-number"
+										label={<FormattedMessage id="project.statistics.fields.totalBlockedShot"/>}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+                                        inputProps={{min:0}}
+                                        type="number"
+										sx={{
+											border: '2px solid grey',
+											borderRadius: "20px",
+                                            borderColor:"black",
+                                            boxShadow:"0 10px 10px rgb(0, 0, 0)"
+
+										}}
+                                        value={totalBlockedShotsRival}
+										onChange={(e) => setTotalBlockedShotsRival(e.target.value)}
+									/>
+								</Box>
+							</Grid>
+                            <Grid item xs={4}>
+								<Box
+									component="form"
+									sx={{
+										'& .MuiTextField-root': { mb: 2 },
+										margin: '30px', // Centra el formulario en la pantalla
+										marginTop: '0px', // Centra el formulario en la pantalla
+
+									}}
+									noValidate
+									autoComplete="off"
+								>
+									
+									<TextField
+										id="outlined-number"
+										label={<FormattedMessage id="project.statistics.fields.totalAssists"/>}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+                                        inputProps={{min:0}}
+                                        type="number"
+										sx={{
+											border: '2px solid grey',
+											borderRadius: "20px",
+                                            borderColor:"black",
+                                            boxShadow:"0 10px 10px rgb(0, 0, 0)"
+
+										}}
+                                        value={totalAssistsRival}
+										onChange={(e) => setTotalAssistsRival(e.target.value)}
+									/>
+								</Box>
+							</Grid>
+
+						</Grid>
+					</Box>  
+                </Grid>
+
+
+
+
+
+
+
+
+			</Grid>
+            <button className="post_gamestatistics" onClick={(e) => handleSubmit(e)}><FormattedMessage id="project.global.buttons.save" /></button>
 
 		</Box>
 )}

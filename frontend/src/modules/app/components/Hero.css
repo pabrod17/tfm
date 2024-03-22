@@ -737,6 +737,19 @@ max-height: 360px;
   margin-right: 50px;
 }
 
+.post_gamestatistics {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 11px;
+  font-size: 22px;
+  font-family: Sans-serif;
+  color: #fff;
+  background-size: 200% 100%;
+  background: linear-gradient(180deg,#0004ff,#000000);
+  transition: 0.3s ease-out;
+}
+
 .post_game {
   width: 100%;
   padding: 10px;

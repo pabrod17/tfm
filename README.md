@@ -160,3 +160,8 @@ Games form design:
 Games home final design:
 
 ![ToolBare](gamesHome.png)
+
+Game Statistics Form:
+
+![ToolBare](UpdateGameStatisticsForm.png)
+
