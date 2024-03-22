@@ -81,7 +81,7 @@ const UpdateGameStretching = () => {
                         params.row.type === 'Gluteos' ? '#FF512F' : // Verde esmeralda
                         params.row.type === 'Gemelos' ? '#FF0000' : // Amarillo
                         params.row.type === 'Adductores' ? '#0f9b0f' : // Blanco
-                        params.row.type === 'Hombro' ? '#DDDDDD' : // Gris claro
+                        params.row.type === 'Hombro' ? '#000000' : // Gris claro
                         params.row.type === 'Cuadriceps' ? '#FF6B6B' : // Rosa
                         params.row.type === 'Espalda' ? '#8E2DE2' : // Morado oscuro
                         params.row.type === 'Pectoral' ? '#00FFF3' : // Negro
@@ -242,10 +242,11 @@ const UpdateGameStretching = () => {
 						<div style={{ width: '100%', }}>
 							<DataGrid
 								sx={{
-									background: "linear-gradient(-45deg, #f12711 0%, #f5af19 100% )",
+									background: "linear-gradient(-45deg, #0E24A0 0%, #AD1010 100% )",
 									borderRadius: "20px",
 									boxShadow: 12,
 									m:2,
+                                    color:"white",
                                     borderColor:"black",
                                     boxShadow:"0 10px 50px rgb(0, 0, 0)"
 								}}
