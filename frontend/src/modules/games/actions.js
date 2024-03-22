@@ -154,8 +154,8 @@ const updateGameCompleted = game => ({
     game
 });
 
-export const updateGame = (gameId, gameDate, rival, onSuccess, onErrors) => dispatch => {
-    backend.gameService.updateGame(gameId, gameDate, rival,
+export const updateGame = (gameId, gameDate, rival, description, onSuccess, onErrors) => dispatch => {
+    backend.gameService.updateGame(gameId, gameDate, rival, description,
         game => {
             dispatch(updateGameCompleted(game));
             onSuccess();

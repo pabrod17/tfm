@@ -11,3 +11,6 @@ export const getExercisesSearch = state =>
 
 export const getExercisesByTrainingId = state =>
     getModuleState(state).exercisesByTrainingId;
+    
+export const getExercisesByGameId = state =>
+    getModuleState(state).exercisesByGameId;

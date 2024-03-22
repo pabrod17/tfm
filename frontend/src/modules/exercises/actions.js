@@ -108,9 +108,9 @@ export const findExercisesByTrainingId = (trainingId, onSuccess, onErrors) => di
         onErrors);
 }
 
-const findExercisesByGameIdCompleted = exercises => ({
+const findExercisesByGameIdCompleted = exercisesByGameId => ({
     type: actionTypes.FIND_EXERCISES_BY_GAME_ID_COMPLETED,
-    exercises
+    exercisesByGameId
 });
 
 export const findExercisesByGameId = (gameId, onSuccess, onErrors) => dispatch => {

@@ -13,16 +13,8 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 
 const handleRemoveExerciseToTraining = (id, trainingId, dispatch, history) => {
-    dispatch(actions.removeExerciseToTraining(trainingId, id, () => history(`/trainings/update/${trainingId}`)));
+    dispatch(actions.removeExerciseToTraining(trainingId, id, () => window.location.reload()));
 }
-
-// const handleUpdateExercise = (id, dispatch, history) => {
-//     dispatch(actions.findExerciseById(id, () => history(`/exercises/update/${id}`)));
-// }
-
-// const handleViewExercise = (id, dispatch, history) => {
-//     dispatch(actions.findExerciseById(id, () => history(`/exercises/view/${id}`)));
-// }
 
 const style = {
   position: 'absolute',

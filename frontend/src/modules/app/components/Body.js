@@ -75,7 +75,8 @@ import StretchingsHomeByType from '../../stretchings/components/StretchingsHomeB
 import Topbar from './TopBar';
 import UpdateTrainingExercise from '../../trainings/components/UpdateTrainingExercise';
 import UpdateTrainingStretching from '../../trainings/components/UpdateTrainingStretching';
-
+import UpdateGameExercise from '../../games/components/UpdateGameExercise';
+import UpdateGameStretching from '../../games/components/UpdateGameStretching';
 
 const Body = ({ isDark, setIsDark}) => {
 
@@ -141,6 +142,9 @@ const Body = ({ isDark, setIsDark}) => {
                 {loggedIn && <Route exact path="/trainings/update/:id/exercise/:tabValue" element={<UpdateTrainingExercise/>}></Route>}
                 {loggedIn && <Route exact path="/trainings/update/:id/stretching/:tabValue" element={<UpdateTrainingStretching/>}></Route>}
 
+                {loggedIn && <Route exact path="/games/update/:id/exercise/:tabValue" element={<UpdateGameExercise/>}></Route>}
+                {loggedIn && <Route exact path="/games/update/:id/stretching/:tabValue" element={<UpdateGameStretching/>}></Route>}
+                {loggedIn && <Route exact path="/games/update/:id/statistics/:tabValue" element={<UpdateGameStatistics/>}></Route>}
 
                 {loggedIn && <Route exact path="/games/home" element={<GamesHome/>}></Route>}
                 {loggedIn && <Route exact path="/games/addGame" element={<AddGame/>}></Route>}

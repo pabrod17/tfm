@@ -13,7 +13,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 
 const handleRemoveStretchingToTraining = (id, trainingId, dispatch, history) => {
-    dispatch(actions.removeStretchingToTraining(trainingId, id, () => history(`/trainings/update/${trainingId}`)));
+    dispatch(actions.removeStretchingToTraining(trainingId, id, () => window.location.reload()));
 }
 
 // const handleUpdateStretching = (id, dispatch, history) => {

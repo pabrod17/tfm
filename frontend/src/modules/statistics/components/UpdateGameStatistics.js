@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useEffect, useState, createContext } from 'react';
 import {useDispatch} from 'react-redux';
 import {FormattedMessage} from 'react-intl';
 import {useNavigate} from 'react-router-dom';
@@ -8,46 +8,86 @@ import {useParams} from 'react-router-dom';
 import {Errors} from '../../common';
 import * as actions from '../actions';
 import * as selectors from '../selectors';
-
+import * as actionsGames from '../../games/actions';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Box from '@mui/material/Box';
 
 const UpdateGameStatistics = () => {
     const dispatch = useDispatch();
     const history = useNavigate();
     const gameStatistics = useSelector(selectors.getGameStatistics);
+    const {id} = useParams();
+    const [showTable, setShowTable] = useState(true);
+    const { stretchingType, tabValue } = useParams();
+    const [value, setValue] = useState(parseInt(tabValue, 10) || 0);
 
-    const {gameId} = useParams();
-    const [totalPoints, setTotalPoints] = useState(gameStatistics.totalPoints);
-    const [durationMinutes, setDurationMinutes] = useState(gameStatistics.durationMinutes);
-    const [totalThreePointShots, setTotalThreePointShots] = useState(gameStatistics.totalThreePointShots);
-    const [totalSetShots, setTotalSetShots] = useState(gameStatistics.totalSetShots);
-    const [totalFreeShots, setTotalFreeShots] = useState(gameStatistics.totalFreeShots);
-    const [totalRebounds, setTotalRebounds] = useState(gameStatistics.totalRebounds);
-    const [totalBlockedShot, setTotalBlockedShot] = useState(gameStatistics.totalBlockedShot);
-    const [totalAssists, setTotalAssists] = useState(gameStatistics.totalAssists);
-    const [totalPersonalFouls, setTotalPersonalFouls] = useState(gameStatistics.totalPersonalFouls);
-    const [totalTechnicalFouls, setTotalTechnicalFouls] = useState(gameStatistics.totalTechnicalFouls);
-    const [totalUnsportsmanlikeFouls, setTotalUnsportsmanlikeFouls] = useState(gameStatistics.totalUnsportsmanlikeFouls);
+    const [totalPoints, setTotalPoints] = useState(null);
+    const [durationMinutes, setDurationMinutes] = useState(null);
+    const [totalThreePointShots, setTotalThreePointShots] = useState(null);
+    const [totalSetShots, setTotalSetShots] = useState(null);
+    const [totalFreeShots, setTotalFreeShots] = useState(null);
+    const [totalRebounds, setTotalRebounds] = useState(null);
+    const [totalBlockedShot, setTotalBlockedShot] = useState(null);
+    const [totalAssists, setTotalAssists] = useState(null);
+    const [totalPersonalFouls, setTotalPersonalFouls] = useState(null);
+    const [totalTechnicalFouls, setTotalTechnicalFouls] = useState(null);
+    const [totalUnsportsmanlikeFouls, setTotalUnsportsmanlikeFouls] = useState(null);
 
-    const [totalPointsRival, setTotalPointsRival] = useState(gameStatistics.totalPointsRival);
-    const [totalThreePointShotsRival, setTotalThreePointShotsRival] = useState(gameStatistics.totalThreePointShotsRival);
-    const [totalSetShotsRival, setTotalSetShotsRival] = useState(gameStatistics.totalSetShotsRival);
-    const [totalFreeShotsRival, setTotalFreeShotsRival] = useState(gameStatistics.totalFreeShotsRival);
-    const [totalReboundsRival, setTotalReboundsRival] = useState(gameStatistics.totalReboundsRival);
-    const [totalBlockedShotsRival, setTotalBlockedShotsRival] = useState(gameStatistics.totalBlockedShotsRival);
-    const [totalAssistsRival, setTotalAssistsRival] = useState(gameStatistics.totalAssistsRival);
-    const [totalPersonalFoulsRival, setTotalPersonalFoulsRival] = useState(gameStatistics.totalPersonalFoulsRival);
-    const [totalTechnicalFoulsRival, setTotalTechnicalFoulsRival] = useState(gameStatistics.totalTechnicalFoulsRival);
-    const [totalUnsportsmanlikeFoulsRival, setTotalUnsportsmanlikeFoulsRival] = useState(gameStatistics.totalUnsportsmanlikeFoulsRival);
+    const [totalPointsRival, setTotalPointsRival] = useState(null);
+    const [totalThreePointShotsRival, setTotalThreePointShotsRival] = useState(null);
+    const [totalSetShotsRival, setTotalSetShotsRival] = useState(null);
+    const [totalFreeShotsRival, setTotalFreeShotsRival] = useState(null);
+    const [totalReboundsRival, setTotalReboundsRival] = useState(null);
+    const [totalBlockedShotsRival, setTotalBlockedShotsRival] = useState(null);
+    const [totalAssistsRival, setTotalAssistsRival] = useState(null);
+    const [totalPersonalFoulsRival, setTotalPersonalFoulsRival] = useState(null);
+    const [totalTechnicalFoulsRival, setTotalTechnicalFoulsRival] = useState(null);
+    const [totalUnsportsmanlikeFoulsRival, setTotalUnsportsmanlikeFoulsRival] = useState(null);
     const [backendErrors, setBackendErrors] = useState(null);
     let form;
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
+
+    useEffect(() => {
+        if (!gameStatistics) {
+            dispatch(actions.findStatisticsByGame(id, () => history(`/games/update/${id}/statistics/${3}`)));
+            dispatch(actionsGames.findGameById(id, () => history(`/games/update/${id}/statistics/${3}`)));
+        } else {
+            setTotalPoints(gameStatistics.totalPoints);
+            setDurationMinutes(gameStatistics.durationMinutes);
+            setTotalThreePointShots(gameStatistics.totalThreePointShots);
+            setTotalSetShots(gameStatistics.totalSetShots);
+            setTotalFreeShots(gameStatistics.totalFreeShots);
+            setTotalRebounds(gameStatistics.totalRebounds);
+            setTotalBlockedShot(gameStatistics.totalBlockedShot);
+            setTotalAssists(gameStatistics.totalAssists);
+            setTotalPersonalFouls(gameStatistics.totalPersonalFouls);
+            setTotalTechnicalFouls(gameStatistics.totalTechnicalFouls);
+            setTotalUnsportsmanlikeFouls(gameStatistics.totalUnsportsmanlikeFouls);
+
+            setTotalPointsRival(gameStatistics.totalPointsRival);
+            setTotalThreePointShotsRival(gameStatistics.totalThreePointShotsRival);
+            setTotalSetShotsRival(gameStatistics.totalSetShotsRival);
+            setTotalFreeShotsRival(gameStatistics.totalFreeShotsRival);
+            setTotalReboundsRival(gameStatistics.totalReboundsRival);
+            setTotalBlockedShotsRival(gameStatistics.totalBlockedShotsRival);
+            setTotalAssistsRival(gameStatistics.totalAssistsRival);
+            setTotalPersonalFoulsRival(gameStatistics.totalPersonalFoulsRival);
+            setTotalTechnicalFoulsRival(gameStatistics.totalTechnicalFoulsRival);
+            setTotalUnsportsmanlikeFoulsRival(gameStatistics.totalUnsportsmanlikeFoulsRival);
+
+
+        }
+    }, [dispatch, gameStatistics, history, id]);
 
     const handleSubmit = event => {
 
         event.preventDefault();
     
-        if (form.checkValidity()) {
-            
-            dispatch(actions.updateGameStatistics(gameId, gameStatistics.id, totalPoints, durationMinutes, 
+            dispatch(actions.updateGameStatistics(id, gameStatistics.id, totalPoints, durationMinutes, 
                 totalThreePointShots,totalSetShots,totalFreeShots,totalRebounds,
                 totalBlockedShot,totalAssists,totalPersonalFouls,totalTechnicalFouls,
                 totalUnsportsmanlikeFouls,totalPointsRival,totalThreePointShotsRival,
@@ -57,16 +97,95 @@ const UpdateGameStatistics = () => {
             () => reloadWindow(),
             errors => setBackendErrors(errors),
             ));
-        } else {
-            setBackendErrors(null);
-            form.classList.add('was-validated');
-            }
+        }
+        const handleUpdateGame = (tabValue, dispatch) => {
+            setValue(tabValue);
+            dispatch(actionsGames.findGameById(id, () => history(`/games/update/${id}`)));
+        }
+        const handleUpdateGameExercise = (tabValue, dispatch) => {
+            setValue(tabValue);
+            dispatch(actionsGames.findGameById(id, () => history(`/games/update/${id}/exercise/${tabValue}`)));
+        }
+        const handleUpdateGameStretching = (tabValue, dispatch) => {
+            setValue(tabValue);
+            dispatch(actionsGames.findGameById(id, () => history(`/games/update/${id}/stretching/${tabValue}`)));
+        }
+
+        const handleUpdateGameStatistics = (tabValue, dispatch) => {
+            setValue(tabValue);
+            dispatch(actionsGames.findGameById(id, () => {
+                // dispatch(actionsStretchings.findStretchingsByGameId(id, () => history(`/games/update/${id}/statistics/${tabValue}`)));
+            }));
+            history(`/games/update/${id}/stretching/${tabValue}`);
         }
         const reloadWindow = () =>{
-            history(`/statistics/game/${gameId}`)
+            history(`/statistics/game/${id}`)
         }
 
         return(
+
+<div className=''>
+<Box
+    sx={{
+        maxWidth: { xs: 320, sm: 835 },
+        bgcolor: 'background.dark',
+        boxShadow: 1,
+        borderRadius: 4,
+        margin: 'auto',  // Centra horizontalmente
+        marginTop: '100px', // Ajusta la distancia desde la parte superior según sea necesario
+        textAlign: 'center', // Centra el contenido dentro del Box
+    }}>
+
+<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" 
+                        sx={{
+                            background: "linear-gradient(-35deg, #081971 30%, #7C0C0C 80% )",
+                            bgcolor:"red",
+                            boxShadow: 6,
+                            borderRadius: 3,
+                            mb:2,
+                            borderColor:"black",
+                            boxShadow:"0 10px 50px rgb(0, 0, 0)"
+                        }}
+        >
+          <Tab value={0} sx={{ color: '#40FF00', fontSize: "30px", padding:"20px"}} onClick={() => handleUpdateGame(0, dispatch)} label="General"  />
+          <Tab value={1} sx={{ color: '#f5af19', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateGameExercise(1, dispatch)} label="Exercises"  />
+          <Tab value={2} sx={{ color: 'rgb(255, 0, 247)', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateGameStretching(2, dispatch)} label="Stretchings"  />
+          <Tab value={3} sx={{ color: 'rgb(0, 217, 255)', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateGameStatistics(3, dispatch)} label="Statistics"/>
+        </Tabs>
+      </Box>
+      <input type="checkbox" class="theme-checkbox" onClick={() => setShowTable(!showTable)}/>
+
+</Box>
+<Box
+			display="flex"
+			alignItems="center"
+			p={1}
+			sx={{
+				flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
+			}}
+		>
+{showTable && (
+
+
+
+
+<Box
+			display="flex"
+			alignItems="center"
+			p={1}
+			sx={{
+                maxWidth: { xs: 300, sm: 920 },
+				border: '2px solid grey',
+                background: "linear-gradient(-35deg, #081971 30%, #7C0C0C 80% )",
+				borderRadius: "20px",
+				flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
+				flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
+                borderColor:"black",
+				boxShadow:"0 10px 50px rgb(0, 0, 0)"
+			}}
+		>
+            <Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
 
             <div>
                 <Errors errors={backendErrors} onClose={() => setBackendErrors(null)}/>
@@ -415,6 +534,26 @@ const UpdateGameStatistics = () => {
                     </div>
                 </div>
             </div>
+			<button className="post_game" type='submit' onClick={(e) => handleSubmit(e)}><FormattedMessage id="project.global.buttons.save" /></button>
+
+		</Box>
+)}
+
+
+
+
+
+            </Box>
+
+
+
+
+
+
+            
+
+            </div>
+
         );
 }
 

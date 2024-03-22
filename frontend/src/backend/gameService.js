@@ -40,8 +40,8 @@ export const addGameWithSeason = (seasonId, gameDate, rival, description, onSucc
 export const addPlayerToGame = (playerId, gameId, onSuccess, onErrors) =>
     appFetch(`/games/${playerId}/addPlayerToGame?gameId=${gameId}`, config('POST'), onSuccess, onErrors);
 
-export const updateGame = (gameId, gameDate, rival, onSuccess, onErrors) =>
-    appFetch(`/games/${gameId}?gameDate=${gameDate}&rival=${rival}`, config('PUT'), onSuccess, onErrors);
+export const updateGame = (gameId, gameDate, rival, description, onSuccess, onErrors) =>
+    appFetch(`/games/${gameId}?gameDate=${gameDate}&rival=${rival}&description=${description}`, config('PUT'), onSuccess, onErrors);
 
 export const removeGame = (gameId, onSuccess, onErrors) =>
     appFetch(`/games/${gameId}`, config('DELETE'), onSuccess, onErrors);

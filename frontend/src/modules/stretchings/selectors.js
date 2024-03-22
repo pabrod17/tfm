@@ -11,3 +11,6 @@ export const getStretchingsSearch = state =>
     
 export const getStretchingsByTrainingId = state =>
     getModuleState(state).stretchingsByTrainingId;
+
+export const getStretchingsByGameId = state =>
+    getModuleState(state).stretchingsByGameId;
