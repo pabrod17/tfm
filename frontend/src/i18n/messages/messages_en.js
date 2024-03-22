@@ -167,21 +167,21 @@ export default {
     'project.statistics.fields.statistics' : 'Statistics',
 
     'project.statistics.fields.totalPoints' : 'Total Points',
-    'project.statistics.fields.totalThreePointShots' : 'Total Three Point Shots',
-    'project.statistics.fields.totalSetShots' : 'Total Set Shots',
-    'project.statistics.fields.totalFreeShots' : 'Total Free Shots',
+    'project.statistics.fields.totalThreePointShots' : 'Three Point Shots',
+    'project.statistics.fields.totalSetShots' : 'Set Shots',
+    'project.statistics.fields.totalFreeShots' : 'Free Shots',
 
     'project.statistics.fields.totalFailThreePointShots' : 'Total Fail Three Point Shots',
     'project.statistics.fields.totalfailSetShots' : 'Total fail Set Shots',
     'project.statistics.fields.totalfailFreeShots' : 'Total fail Free Shots',
 
-    'project.statistics.fields.totalRebounds' : 'Total Rebounds',
-    'project.statistics.fields.totalBlockedShot' : 'Total Blocked Shot',
-    'project.statistics.fields.totalAssists' : 'Total Assists',
+    'project.statistics.fields.totalRebounds' : 'Rebounds',
+    'project.statistics.fields.totalBlockedShot' : 'Blocked Shot',
+    'project.statistics.fields.totalAssists' : 'Assists',
 
-    'project.statistics.fields.totalPersonalFouls' : 'Total Personal Fouls',
-    'project.statistics.fields.totalTechnicalFouls' : 'Total Technical Fouls',
-    'project.statistics.fields.totalUnsportsmanlikeFouls' : 'Total Unsportsmanlike Fouls',
+    'project.statistics.fields.totalPersonalFouls' : 'Personal Fouls',
+    'project.statistics.fields.totalTechnicalFouls' : 'Technical Fouls',
+    'project.statistics.fields.totalUnsportsmanlikeFouls' : 'Unsportsmanlike Fouls',
 
 
 

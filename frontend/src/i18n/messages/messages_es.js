@@ -156,29 +156,29 @@ export default {
     'project.statistics.fields.statistics' : 'Estadísticas',
 
     'project.statistics.fields.totalPoints' : 'Total Puntos',
-    'project.statistics.fields.totalThreePointShots' : 'Total tiros de 3',
-    'project.statistics.fields.totalSetShots' : 'Total tiros de campo',
-    'project.statistics.fields.totalFreeShots' : 'Total tiros libres',
+    'project.statistics.fields.totalThreePointShots' : 'Tiros de 3',
+    'project.statistics.fields.totalSetShots' : 'Tiros de campo',
+    'project.statistics.fields.totalFreeShots' : 'Tros libres',
 
     'project.statistics.fields.totalFailThreePointShots' : 'Total tiros de 3 fallados',
     'project.statistics.fields.totalfailSetShots' : 'Total tiros de campo fallados',
     'project.statistics.fields.totalfailFreeShots' : 'Total tiros libres fallados',
 
-    'project.statistics.fields.totalRebounds' : 'Total Rebotes',
-    'project.statistics.fields.totalBlockedShot' : 'Total Tapones',
-    'project.statistics.fields.totalAssists' : 'Total Asistencias',
+    'project.statistics.fields.totalRebounds' : 'Rebotes',
+    'project.statistics.fields.totalBlockedShot' : 'Tapones',
+    'project.statistics.fields.totalAssists' : 'Asistencias',
 
-    'project.statistics.fields.totalPersonalFouls' : 'Total Faltas Personales',
-    'project.statistics.fields.totalTechnicalFouls' : 'Total Faltas Técnicas',
-    'project.statistics.fields.totalUnsportsmanlikeFouls' : 'Total Faltas Antideportivas',
-
+    'project.statistics.fields.totalPersonalFouls' : 'Faltas Personales',
+    'project.statistics.fields.totalTechnicalFouls' : 'Faltas Técnicas',
+    'project.statistics.fields.totalUnsportsmanlikeFouls' : 'Faltas Antideportivas',
+    'project.statistics.fields.totalFouls' : 'Total Faltas',
 
 
 
     'project.statistics.fields.addGameStatistics' : 'Añadir Estadísticas Partido',
     'project.statistics.fields.addPlayerGameStatistics' : 'Añadir Estadísticas Jugador Partido',
 
-    'project.statistics.fields.duration' : 'Duración',
+    'project.statistics.fields.duration' : 'Duración (min)',
     'project.statistics.fields.minutes' : 'Minutos',
 
     'project.statistics.fields.totalPointsRival' : 'Total Puntos Rival',
