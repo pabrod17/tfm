@@ -158,7 +158,7 @@ export default {
     'project.statistics.fields.totalPoints' : 'Total Puntos',
     'project.statistics.fields.totalThreePointShots' : 'Tiros de 3',
     'project.statistics.fields.totalSetShots' : 'Tiros de campo',
-    'project.statistics.fields.totalFreeShots' : 'Tros libres',
+    'project.statistics.fields.totalFreeShots' : 'Tiros libres',
 
     'project.statistics.fields.totalFailThreePointShots' : 'Total tiros de 3 fallados',
     'project.statistics.fields.totalfailSetShots' : 'Total tiros de campo fallados',

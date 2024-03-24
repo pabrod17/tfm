@@ -200,7 +200,7 @@ const UpdateGameStatistics = () => {
 				flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
 			}}
 		>
-{showTable && (
+  {showTable ? (
 
 
 
@@ -264,8 +264,8 @@ const UpdateGameStatistics = () => {
 									<TextField
 										id="outlined-number"
 										label={<FormattedMessage id="project.statistics.fields.totalFreeShots"/>}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' }}}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
                                         inputProps={{min:0}}
                                         type="number"
 										sx={{
@@ -295,8 +295,8 @@ const UpdateGameStatistics = () => {
 									<TextField
 										id="outlined-number"
 										label={<FormattedMessage id="project.statistics.fields.totalSetShots"/>}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
                                         inputProps={{min:0}}
                                         type="number"
 										sx={{
@@ -326,8 +326,8 @@ const UpdateGameStatistics = () => {
 									<TextField
 										id="outlined-number"
 										label={<FormattedMessage id="project.statistics.fields.totalThreePointShots"/>}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
                                         inputProps={{min:0}}
                                         type="number"
 										sx={{
@@ -357,8 +357,8 @@ const UpdateGameStatistics = () => {
 									<TextField
 										id="outlined-number"
 										label={<FormattedMessage id="project.statistics.fields.totalPoints"/>}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
                                         inputProps={{min:0}}
                                         type="number"
 										sx={{
@@ -389,8 +389,8 @@ const UpdateGameStatistics = () => {
 									<TextField
 										id="outlined-number"
 										label={<FormattedMessage id="project.statistics.fields.totalPersonalFouls"/>}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
                                         inputProps={{min:0}}
                                         type="number"
 										sx={{
@@ -421,8 +421,8 @@ const UpdateGameStatistics = () => {
 									<TextField
 										id="outlined-number"
 										label={<FormattedMessage id="project.statistics.fields.totalTechnicalFouls"/>}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
                                         inputProps={{min:0}}
                                         type="number"
 										sx={{
@@ -453,8 +453,8 @@ const UpdateGameStatistics = () => {
 									<TextField
 										id="outlined-number"
 										label={<FormattedMessage id="project.statistics.fields.totalUnsportsmanlikeFouls"/>}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
                                         inputProps={{min:0}}
                                         type="number"
 										sx={{
@@ -485,8 +485,8 @@ const UpdateGameStatistics = () => {
 									<TextField
 										id="outlined-number"
 										label={<FormattedMessage id="project.statistics.fields.totalFouls"/>}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
                                         inputProps={{min:0}}
                                         type="number"
 										sx={{
@@ -517,8 +517,8 @@ const UpdateGameStatistics = () => {
 									<TextField
 										id="outlined-number"
 										label={<FormattedMessage id="project.statistics.fields.totalRebounds"/>}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
                                         inputProps={{min:0}}
                                         type="number"
 										sx={{
@@ -549,8 +549,8 @@ const UpdateGameStatistics = () => {
 									<TextField
 										id="outlined-number"
 										label={<FormattedMessage id="project.statistics.fields.totalBlockedShot"/>}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
                                         inputProps={{min:0}}
                                         type="number"
 										sx={{
@@ -581,8 +581,8 @@ const UpdateGameStatistics = () => {
 									<TextField
 										id="outlined-number"
 										label={<FormattedMessage id="project.statistics.fields.totalAssists"/>}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
                                         inputProps={{min:0}}
                                         type="number"
 										sx={{
@@ -613,8 +613,8 @@ const UpdateGameStatistics = () => {
 									<TextField
 										id="outlined-number"
 										label={<FormattedMessage id="project.statistics.fields.duration"/>}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
                                         inputProps={{min:0}}
                                         type="number"
 										sx={{
@@ -672,8 +672,8 @@ const UpdateGameStatistics = () => {
 									<TextField
 										id="outlined-number"
 										label={<FormattedMessage id="project.statistics.fields.totalFreeShots"/>}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
                                         inputProps={{min:0}}
                                         type="number"
 										sx={{
@@ -703,8 +703,8 @@ const UpdateGameStatistics = () => {
 									<TextField
 										id="outlined-number"
 										label={<FormattedMessage id="project.statistics.fields.totalSetShots"/>}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
                                         inputProps={{min:0}}
                                         type="number"
 										sx={{
@@ -734,8 +734,8 @@ const UpdateGameStatistics = () => {
 									<TextField
 										id="outlined-number"
 										label={<FormattedMessage id="project.statistics.fields.totalThreePointShots"/>}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
                                         inputProps={{min:0}}
                                         type="number"
 										sx={{
@@ -765,8 +765,8 @@ const UpdateGameStatistics = () => {
 									<TextField
 										id="outlined-number"
 										label={<FormattedMessage id="project.statistics.fields.totalPoints"/>}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
                                         inputProps={{min:0}}
                                         type="number"
 										sx={{
@@ -797,8 +797,8 @@ const UpdateGameStatistics = () => {
 									<TextField
 										id="outlined-number"
 										label={<FormattedMessage id="project.statistics.fields.totalPersonalFouls"/>}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
                                         inputProps={{min:0}}
                                         type="number"
 										sx={{
@@ -829,8 +829,8 @@ const UpdateGameStatistics = () => {
 									<TextField
 										id="outlined-number"
 										label={<FormattedMessage id="project.statistics.fields.totalTechnicalFouls"/>}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
                                         inputProps={{min:0}}
                                         type="number"
 										sx={{
@@ -861,8 +861,8 @@ const UpdateGameStatistics = () => {
 									<TextField
 										id="outlined-number"
 										label={<FormattedMessage id="project.statistics.fields.totalUnsportsmanlikeFouls"/>}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
                                         inputProps={{min:0}}
                                         type="number"
 										sx={{
@@ -893,8 +893,8 @@ const UpdateGameStatistics = () => {
 									<TextField
 										id="outlined-number"
 										label={<FormattedMessage id="project.statistics.fields.totalFouls"/>}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
                                         inputProps={{min:0}}
                                         type="number"
 										sx={{
@@ -925,8 +925,8 @@ const UpdateGameStatistics = () => {
 									<TextField
 										id="outlined-number"
 										label={<FormattedMessage id="project.statistics.fields.totalRebounds"/>}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
                                         inputProps={{min:0}}
                                         type="number"
 										sx={{
@@ -957,8 +957,8 @@ const UpdateGameStatistics = () => {
 									<TextField
 										id="outlined-number"
 										label={<FormattedMessage id="project.statistics.fields.totalBlockedShot"/>}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
                                         inputProps={{min:0}}
                                         type="number"
 										sx={{
@@ -989,8 +989,8 @@ const UpdateGameStatistics = () => {
 									<TextField
 										id="outlined-number"
 										label={<FormattedMessage id="project.statistics.fields.totalAssists"/>}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' }}}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
+										InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' }}}
                                         inputProps={{min:0}}
                                         type="number"
 										sx={{
@@ -1021,7 +1021,36 @@ const UpdateGameStatistics = () => {
             <button className="post_gamestatistics" onClick={(e) => handleSubmit(e)}><FormattedMessage id="project.global.buttons.save" /></button>
 
 		</Box>
-)}
+  ) : (
+
+
+<Box
+			display="flex"
+			alignItems="center"
+			p={5}
+            pt={0}
+            
+			sx={{
+
+				border: '2px solid grey',
+                background: "linear-gradient(-35deg, #081971 30%, #7C0C0C 80% )",
+				borderRadius: "20px",
+				flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
+				flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
+                boxShadow:"0 10px 50px rgb(0, 8, 255)",
+                borderColor:"black"
+			}}
+		>
+
+
+</Box>
+
+
+
+
+
+    
+    )}
 
 
 
