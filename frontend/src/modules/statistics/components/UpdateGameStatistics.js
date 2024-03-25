@@ -91,49 +91,49 @@ const UpdateGameStatistics = () => {
 	const [seriesNb, setSeriesNb] = React.useState(2);
 	const [itemNb, setItemNb] = React.useState(5);
 	const [skipAnimation, setSkipAnimation] = React.useState(false);
-  
+
 	const handleItemNbChange = (event: Event, newValue: number | number[]) => {
-	  if (typeof newValue !== 'number') {
-		return;
-	  }
-	  setItemNb(newValue);
+		if (typeof newValue !== 'number') {
+			return;
+		}
+		setItemNb(newValue);
 	};
 	const handleSeriesNbChange = (event: Event, newValue: number | number[]) => {
-	  if (typeof newValue !== 'number') {
-		return;
-	  }
-	  setSeriesNb(newValue);
+		if (typeof newValue !== 'number') {
+			return;
+		}
+		setSeriesNb(newValue);
 	};
 
 
 	const highlightScope = {
 		highlighted: 'series',
 		faded: 'global',
-	  };
-	  
-	  const series = [
+	};
+
+	const series = [
 		{
-		  label: 'project.statistics.fields.totalTechnicalFouls',
-		  data: [
-			2423, 2210
-		  ],
-		  color:"#FF4600"
+			label: 'project.statistics.fields.totalTechnicalFouls',
+			data: [
+				2423, 2210
+			],
+			color: "#FF4600"
 		},
 		{
-		  label: 'project.statistics.fields.totalUnsportsmanlikeFouls',
-		  data: [
-			2362, 2254
-		  ],
-		  color:"#FF7800"
+			label: 'project.statistics.fields.totalUnsportsmanlikeFouls',
+			data: [
+				2362, 2254
+			],
+			color: "#FF7800"
 		},
 		{
-		  label: 'project.statistics.fields.totalPersonalFouls',
-		  data: [
-			1145, 1214
-		  ],
-		  color:"#FFF000"
+			label: 'project.statistics.fields.totalPersonalFouls',
+			data: [
+				1145, 1214
+			],
+			color: "#FFF000"
 		},
-	  ].map((s) => ({ ...s, highlightScope }));
+	].map((s) => ({ ...s, highlightScope }));
 	let form;
 
 	const handleChange = (event, newValue) => {
@@ -1118,9 +1118,11 @@ const UpdateGameStatistics = () => {
 								>
 
 									<BarChart
-										xAxis={[{ scaleType: 'band', data: [
-											intl.formatMessage({ id: 'project.statistics.fields.totalRebounds' }),
-										] }]}
+										xAxis={[{
+											scaleType: 'band', data: [
+												intl.formatMessage({ id: 'project.statistics.fields.totalRebounds' }),
+											]
+										}]}
 
 
 										series={[
@@ -1189,10 +1191,12 @@ const UpdateGameStatistics = () => {
 									}}
 								>
 
-<BarChart
-										xAxis={[{ scaleType: 'band', data: [
-											intl.formatMessage({ id: 'project.statistics.fields.totalBlockedShot' }),
-										] }]}
+									<BarChart
+										xAxis={[{
+											scaleType: 'band', data: [
+												intl.formatMessage({ id: 'project.statistics.fields.totalBlockedShot' }),
+											]
+										}]}
 
 										series={[
 											{ data: [totalBlockedShot], color: "blue", stack: '2', label: 'Team' },
@@ -1259,10 +1263,12 @@ const UpdateGameStatistics = () => {
 									}}
 								>
 
-<BarChart
-										xAxis={[{ scaleType: 'band', data: [
-											intl.formatMessage({ id: 'project.statistics.fields.totalAssists' }),
-										] }]}
+									<BarChart
+										xAxis={[{
+											scaleType: 'band', data: [
+												intl.formatMessage({ id: 'project.statistics.fields.totalAssists' }),
+											]
+										}]}
 
 										series={[
 											{ data: [totalAssists], color: "blue", stack: '2', label: 'Team' },
@@ -1330,12 +1336,12 @@ const UpdateGameStatistics = () => {
 									}}
 								>
 
-<div class="cardstatistics">
-<p class="time-text"><span>{durationMinutes}</span></p>
-<p class="day-text">
-<FormattedMessage id="project.statistics.fields.duration" />
-</p>
-</div>
+									<div class="cardstatistics">
+										<p class="time-text"><span>{durationMinutes}</span></p>
+										<p class="day-text">
+											<FormattedMessage id="project.statistics.fields.duration" />
+										</p>
+									</div>
 
 
 
@@ -1364,54 +1370,54 @@ const UpdateGameStatistics = () => {
 									}}
 								>
 
-<Box sx={{ width: '98%' }}>
-      <BarChart
-		tooltip={{ trigger: 'item' }}
-        height={380}
-		series={[
-			{
-			  label: intl.formatMessage({ id: 'project.statistics.fields.totalPersonalFouls' }),
-			  data: [totalPersonalFouls, totalPersonalFoulsRival],
-			  color: "#FF4600"
-			},
-			{
-				label: intl.formatMessage({ id: 'project.statistics.fields.totalTechnicalFouls' }),
-				data: [totalTechnicalFouls, totalTechnicalFoulsRival],
-			  color: "#FF7800"
-			},
-			{
-				label: intl.formatMessage({ id: 'project.statistics.fields.totalUnsportsmanlikeFouls' }),
-				data: [totalUnsportsmanlikeFouls, totalUnsportsmanlikeFoulsRival],
-			  color: "#FFF000"
-			},
-		  ]
-		  .slice(0, seriesNb)
-		  .map((s) => ({ ...s, data: s.data.slice(0, itemNb) }))}
-		/>
-	  
-      <Typography id="input-item-number" gutterBottom>
-        Teams
-      </Typography>
-      <Slider
-        value={itemNb}
-        onChange={handleItemNbChange}
-        valueLabelDisplay="auto"
-        min={1}
-        max={2}
-        aria-labelledby="input-item-number"
-      />
-      <Typography id="input-series-number" gutterBottom>
-        Faltas
-      </Typography>
-      <Slider
-        value={seriesNb}
-        onChange={handleSeriesNbChange}
-        valueLabelDisplay="auto"
-        min={1}
-        max={3}
-        aria-labelledby="input-series-number"
-      />
-    </Box>
+									<Box sx={{ width: '98%' }}>
+										<BarChart
+											tooltip={{ trigger: 'item' }}
+											height={380}
+											series={[
+												{
+													label: intl.formatMessage({ id: 'project.statistics.fields.totalPersonalFouls' }),
+													data: [totalPersonalFouls, totalPersonalFoulsRival],
+													color: "#FF4600"
+												},
+												{
+													label: intl.formatMessage({ id: 'project.statistics.fields.totalTechnicalFouls' }),
+													data: [totalTechnicalFouls, totalTechnicalFoulsRival],
+													color: "#FF7800"
+												},
+												{
+													label: intl.formatMessage({ id: 'project.statistics.fields.totalUnsportsmanlikeFouls' }),
+													data: [totalUnsportsmanlikeFouls, totalUnsportsmanlikeFoulsRival],
+													color: "#FFF000"
+												},
+											]
+												.slice(0, seriesNb)
+												.map((s) => ({ ...s, data: s.data.slice(0, itemNb) }))}
+										/>
+
+										<Typography id="input-item-number" gutterBottom>
+											Teams
+										</Typography>
+										<Slider
+											value={itemNb}
+											onChange={handleItemNbChange}
+											valueLabelDisplay="auto"
+											min={1}
+											max={2}
+											aria-labelledby="input-item-number"
+										/>
+										<Typography id="input-series-number" gutterBottom>
+											Faltas
+										</Typography>
+										<Slider
+											value={seriesNb}
+											onChange={handleSeriesNbChange}
+											valueLabelDisplay="auto"
+											min={1}
+											max={3}
+											aria-labelledby="input-series-number"
+										/>
+									</Box>
 
 
 
@@ -1437,46 +1443,48 @@ const UpdateGameStatistics = () => {
 									}}
 								>
 
-<Stack direction="row" width="100%" textAlign="center" spacing={1}>
-      <Box flexGrow={1}>
-        <Typography
-		sx={{m: 0, color: "black", fontSize:"20px"}}
+									<Stack direction="row" width="100%" textAlign="center" spacing={1}>
+										<Box flexGrow={1}>
+											<Typography
+												sx={{ m: 0, color: "black", fontSize: "20px" }}
 
-		><FormattedMessage id="project.statistics.fields.totalPointsTeam1" /></Typography>
-        <PieChart
-          colors={palette}
-          series={[{ data: [{ value: totalFreeShots }, { value: totalSetShots }, { value: totalThreePointShots }],
-		  faded: { innerRadius: 30, additionalRadius: -30, color: 'gray' },
-		  highlightScope: { faded: 'global', highlighted: 'item' },
-		}]}
-          {...pieParams}
-		  height={470}
+											><FormattedMessage id="project.statistics.fields.totalPointsTeam1" /></Typography>
+											<PieChart
+												colors={palette}
+												series={[{
+													data: [{ value: totalFreeShots }, { value: totalSetShots }, { value: totalThreePointShots }],
+													faded: { innerRadius: 30, additionalRadius: -30, color: 'gray' },
+													highlightScope: { faded: 'global', highlighted: 'item' },
+												}]}
+												{...pieParams}
+												height={470}
 
-        />
-		        <Typography
-		sx={{m:0.1, color: "white", fontSize:"20px"}}
-		><FormattedMessage id="project.statistics.fields.totalPoints" />:  {totalPoints}</Typography>
-      </Box>
-      <Box flexGrow={1}>
-        <Typography
-		sx={{m: 0, color: "black", fontSize:"20px"}}
-		><FormattedMessage id="project.statistics.fields.totalPointsRival1" /></Typography>
-        <PieChart
-          series={[
-            { data: [{ value: totalFreeShotsRival, color: 'orange' }, { value: totalSetShotsRival }, { value: totalThreePointShotsRival }], 
-			faded: { innerRadius: 30, additionalRadius: -30, color: 'gray' },
-			highlightScope: { faded: 'global', highlighted: 'item' },
-			},
-			
-          ]}
-          {...pieParams}
-		  height={470}
-        />
-		        <Typography
-		sx={{m:0.1, color: "white", fontSize:"20px"}}
-		><FormattedMessage id="project.statistics.fields.totalPointsRival" /> {totalPointsRival}</Typography>
-      </Box>
-    </Stack>
+											/>
+											<Typography
+												sx={{ m: 0.1, color: "white", fontSize: "20px" }}
+											><FormattedMessage id="project.statistics.fields.totalPoints" />:  {totalPoints}</Typography>
+										</Box>
+										<Box flexGrow={1}>
+											<Typography
+												sx={{ m: 0, color: "black", fontSize: "20px" }}
+											><FormattedMessage id="project.statistics.fields.totalPointsRival1" /></Typography>
+											<PieChart
+												series={[
+													{
+														data: [{ value: totalFreeShotsRival, color: 'orange' }, { value: totalSetShotsRival }, { value: totalThreePointShotsRival }],
+														faded: { innerRadius: 30, additionalRadius: -30, color: 'gray' },
+														highlightScope: { faded: 'global', highlighted: 'item' },
+													},
+
+												]}
+												{...pieParams}
+												height={470}
+											/>
+											<Typography
+												sx={{ m: 0.1, color: "white", fontSize: "20px" }}
+											><FormattedMessage id="project.statistics.fields.totalPointsRival" /> {totalPointsRival}</Typography>
+										</Box>
+									</Stack>
 
 
 
