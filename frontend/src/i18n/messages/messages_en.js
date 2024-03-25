@@ -186,7 +186,7 @@ export default {
     'project.statistics.fields.totalTechnicalFouls' : 'Technical Fouls',
     'project.statistics.fields.totalUnsportsmanlikeFouls' : 'Unsportsmanlike Fouls',
 
-
+    'project.statistics.fields.team_rival' : '(My Team - Rival)',
 
 
 

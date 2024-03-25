@@ -222,7 +222,7 @@ const UpdateGameStatistics = () => {
 					boxShadow: 1,
 					borderRadius: 4,
 					margin: 'auto',  // Centra horizontalmente
-					marginTop: '100px', // Ajusta la distancia desde la parte superior según sea necesario
+					marginTop: '80px', // Ajusta la distancia desde la parte superior según sea necesario
 					textAlign: 'center', // Centra el contenido dentro del Box
 				}}>
 
@@ -1396,7 +1396,7 @@ const UpdateGameStatistics = () => {
 										/>
 
 										<Typography id="input-item-number" gutterBottom>
-											Teams
+										<FormattedMessage id="project.statistics.fields.team_rival" />
 										</Typography>
 										<Slider
 											value={itemNb}
@@ -1407,7 +1407,7 @@ const UpdateGameStatistics = () => {
 											aria-labelledby="input-item-number"
 										/>
 										<Typography id="input-series-number" gutterBottom>
-											Faltas
+										<FormattedMessage id="project.statistics.fields.totalFouls" />
 										</Typography>
 										<Slider
 											value={seriesNb}

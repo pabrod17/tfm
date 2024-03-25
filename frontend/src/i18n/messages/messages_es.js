@@ -174,8 +174,9 @@ export default {
     'project.statistics.fields.totalPersonalFouls' : 'Faltas Personales',
     'project.statistics.fields.totalTechnicalFouls' : 'Faltas Técnicas',
     'project.statistics.fields.totalUnsportsmanlikeFouls' : 'Faltas Antideportivas',
-    'project.statistics.fields.totalFouls' : 'Total Faltas',
+    'project.statistics.fields.totalFouls' : 'Faltas',
 
+    'project.statistics.fields.team_rival' : '(Mi Equipo - Rival)',
 
 
     'project.statistics.fields.addGameStatistics' : 'Añadir Estadísticas Partido',

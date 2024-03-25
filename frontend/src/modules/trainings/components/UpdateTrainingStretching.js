@@ -166,7 +166,7 @@ const UpdateTrainingStretching = () => {
         boxShadow: 1,
         borderRadius: 4,
         margin: 'auto',  // Centra horizontalmente
-        marginTop: '100px', // Ajusta la distancia desde la parte superior según sea necesario
+        marginTop: '80px', // Ajusta la distancia desde la parte superior según sea necesario
         textAlign: 'center', // Centra el contenido dentro del Box
     }}>
 
