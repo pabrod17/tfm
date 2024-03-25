@@ -185,9 +185,9 @@ export default {
     'project.statistics.fields.minutes' : 'Minutos',
 
     'project.statistics.fields.totalPointsRival' : 'Total Puntos Rival: ',
-    'project.statistics.fields.totalThreePointShotsRival' : 'Total tiros de 3 Rival',
-    'project.statistics.fields.totalSetShotsRival' : 'Total tiros de campo Rival',
-    'project.statistics.fields.totalFreeShotsRival' : 'Total tiros libres Rival',
+    'project.statistics.fields.totalThreePointShotsRival' : 'Tiros de 3 Rival',
+    'project.statistics.fields.totalSetShotsRival' : 'Tiros de campo Rival',
+    'project.statistics.fields.totalFreeShotsRival' : 'Tiros libres Rival',
 
     'project.statistics.fields.totalReboundsRival' : 'Total Rebotes Rival',
     'project.statistics.fields.totalBlockedShotRival' : 'Total Tapones Rival',

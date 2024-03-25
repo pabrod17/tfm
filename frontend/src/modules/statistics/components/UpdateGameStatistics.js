@@ -1373,7 +1373,7 @@ const UpdateGameStatistics = () => {
 									<Box sx={{ width: '98%' }}>
 										<BarChart
 											tooltip={{ trigger: 'item' }}
-											height={380}
+											height={400}
 											series={[
 												{
 													label: intl.formatMessage({ id: 'project.statistics.fields.totalPersonalFouls' }),
@@ -1452,17 +1452,18 @@ const UpdateGameStatistics = () => {
 											<PieChart
 												colors={palette}
 												series={[{
-													data: [{ value: totalFreeShots }, { value: totalSetShots }, { value: totalThreePointShots }],
+													data: [{ value: totalFreeShots, label: intl.formatMessage({ id: 'project.statistics.fields.totalFreeShots' }) }, { value: totalSetShots, label: intl.formatMessage({ id: 'project.statistics.fields.totalSetShots' }) }, { value: totalThreePointShots, label: intl.formatMessage({ id: 'project.statistics.fields.totalThreePointShots' }) }],
 													faded: { innerRadius: 30, additionalRadius: -30, color: 'gray' },
 													highlightScope: { faded: 'global', highlighted: 'item' },
 												}]}
+												slotProps={{ legend: { hidden: true } }}
 												{...pieParams}
 												height={470}
 
 											/>
 											<Typography
 												sx={{ m: 0.1, color: "white", fontSize: "20px" }}
-											><FormattedMessage id="project.statistics.fields.totalPoints" />:  {totalPoints}</Typography>
+											><FormattedMessage id="project.statistics.fields.totalPoints" />  {totalPoints}</Typography>
 										</Box>
 										<Box flexGrow={1}>
 											<Typography
@@ -1471,12 +1472,13 @@ const UpdateGameStatistics = () => {
 											<PieChart
 												series={[
 													{
-														data: [{ value: totalFreeShotsRival, color: 'orange' }, { value: totalSetShotsRival }, { value: totalThreePointShotsRival }],
+														data: [{ value: totalFreeShotsRival, label: intl.formatMessage({ id: 'project.statistics.fields.totalFreeShotsRival' }), color: 'orange' }, { value: totalSetShotsRival, label: intl.formatMessage({ id: 'project.statistics.fields.totalSetShotsRival' }) }, { value: totalThreePointShotsRival, label: intl.formatMessage({ id: 'project.statistics.fields.totalThreePointShotsRival' }) }],
 														faded: { innerRadius: 30, additionalRadius: -30, color: 'gray' },
 														highlightScope: { faded: 'global', highlighted: 'item' },
 													},
 
 												]}
+												slotProps={{ legend: { hidden: true } }}
 												{...pieParams}
 												height={470}
 											/>
