@@ -165,3 +165,6 @@ Game Statistics Form:
 
 ![ToolBare](UpdateGameStatisticsForm.png)
 
+Game Statistics layout:
+
+![ToolBare](gameStatistics.png)

@@ -167,6 +167,9 @@ export default {
     'project.statistics.fields.statistics' : 'Statistics',
 
     'project.statistics.fields.totalPoints' : 'Total Points',
+    'project.statistics.fields.totalPointsTeam1' : 'Team Points',
+    'project.statistics.fields.totalPointsRival1' : 'Rival Points',
+
     'project.statistics.fields.totalThreePointShots' : 'Three Point Shots',
     'project.statistics.fields.totalSetShots' : 'Set Shots',
     'project.statistics.fields.totalFreeShots' : 'Free Shots',
