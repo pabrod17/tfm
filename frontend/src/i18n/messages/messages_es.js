@@ -155,7 +155,7 @@ export default {
     'project.statistics.fields.playerGameStatistics' : 'Estadísticas Jugador Partido',
     'project.statistics.fields.statistics' : 'Estadísticas',
 
-    'project.statistics.fields.totalPoints' : 'Total Puntos',
+    'project.statistics.fields.totalPoints' : 'Total Puntos: ',
     'project.statistics.fields.totalPointsTeam1' : 'Puntos Equipo',
     'project.statistics.fields.totalPointsRival1' : 'Puntos Rival',
 
@@ -184,7 +184,7 @@ export default {
     'project.statistics.fields.duration' : 'Duración (min)',
     'project.statistics.fields.minutes' : 'Minutos',
 
-    'project.statistics.fields.totalPointsRival' : 'Total Puntos Rival',
+    'project.statistics.fields.totalPointsRival' : 'Total Puntos Rival: ',
     'project.statistics.fields.totalThreePointShotsRival' : 'Total tiros de 3 Rival',
     'project.statistics.fields.totalSetShotsRival' : 'Total tiros de campo Rival',
     'project.statistics.fields.totalFreeShotsRival' : 'Total tiros libres Rival',

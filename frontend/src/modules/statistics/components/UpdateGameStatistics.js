@@ -205,7 +205,7 @@ const UpdateGameStatistics = () => {
 		dispatch(actionsGames.findGameById(id, () => {
 			// dispatch(actionsStretchings.findStretchingsByGameId(id, () => history(`/games/update/${id}/statistics/${tabValue}`)));
 		}));
-		history(`/games/update/${id}/stretching/${tabValue}`);
+		history(`/games/update/${id}/statistics/${tabValue}`);
 	}
 	const reloadWindow = () => {
 		history(`/statistics/game/${id}`)
@@ -1124,8 +1124,8 @@ const UpdateGameStatistics = () => {
 
 
 										series={[
-											{ data: [5], color: "blue", stack: '2', label: 'Team' },
-											{ data: [9], color: "red", stack: '1', label: 'Rival' },
+											{ data: [totalRebounds], color: "blue", stack: '2', label: 'Team' },
+											{ data: [totalReboundsRival], color: "red", stack: '1', label: 'Rival' },
 										]}
 										tooltip={{ trigger: 'axis' }}
 										width={500}
@@ -1195,8 +1195,8 @@ const UpdateGameStatistics = () => {
 										] }]}
 
 										series={[
-											{ data: [5], color: "blue", stack: '2', label: 'Team' },
-											{ data: [9], color: "red", stack: '1', label: 'Rival' },
+											{ data: [totalBlockedShot], color: "blue", stack: '2', label: 'Team' },
+											{ data: [totalBlockedShotsRival], color: "red", stack: '1', label: 'Rival' },
 										]}
 										tooltip={{ trigger: 'axis' }}
 										width={500}
@@ -1265,8 +1265,8 @@ const UpdateGameStatistics = () => {
 										] }]}
 
 										series={[
-											{ data: [5], color: "blue", stack: '2', label: 'Team' },
-											{ data: [9], color: "red", stack: '1', label: 'Rival' },
+											{ data: [totalAssists], color: "blue", stack: '2', label: 'Team' },
+											{ data: [totalAssistsRival], color: "red", stack: '1', label: 'Rival' },
 										]}
 										tooltip={{ trigger: 'axis' }}
 										width={500}
@@ -1331,7 +1331,7 @@ const UpdateGameStatistics = () => {
 								>
 
 <div class="cardstatistics">
-<p class="time-text"><span>11:11</span></p>
+<p class="time-text"><span>{durationMinutes}</span></p>
 <p class="day-text">
 <FormattedMessage id="project.statistics.fields.duration" />
 </p>
@@ -1367,21 +1367,21 @@ const UpdateGameStatistics = () => {
 <Box sx={{ width: '98%' }}>
       <BarChart
 		tooltip={{ trigger: 'item' }}
-        height={360}
+        height={380}
 		series={[
 			{
-			  label: intl.formatMessage({ id: 'project.statistics.fields.totalTechnicalFouls' }),
-			  data: [2423, 2210],
+			  label: intl.formatMessage({ id: 'project.statistics.fields.totalPersonalFouls' }),
+			  data: [totalPersonalFouls, totalPersonalFoulsRival],
 			  color: "#FF4600"
 			},
 			{
-				label: intl.formatMessage({ id: 'project.statistics.fields.totalUnsportsmanlikeFouls' }),
-				data: [2362, 2254],
+				label: intl.formatMessage({ id: 'project.statistics.fields.totalTechnicalFouls' }),
+				data: [totalTechnicalFouls, totalTechnicalFoulsRival],
 			  color: "#FF7800"
 			},
 			{
-				label: intl.formatMessage({ id: 'project.statistics.fields.totalPersonalFouls' }),
-				data: [1145, 1214],
+				label: intl.formatMessage({ id: 'project.statistics.fields.totalUnsportsmanlikeFouls' }),
+				data: [totalUnsportsmanlikeFouls, totalUnsportsmanlikeFoulsRival],
 			  color: "#FFF000"
 			},
 		  ]
@@ -1440,12 +1440,12 @@ const UpdateGameStatistics = () => {
 <Stack direction="row" width="100%" textAlign="center" spacing={1}>
       <Box flexGrow={1}>
         <Typography
-		sx={{mt: 1, mb: -2, color: "black", fontSize:"20px"}}
+		sx={{m: 0, color: "black", fontSize:"20px"}}
 
 		><FormattedMessage id="project.statistics.fields.totalPointsTeam1" /></Typography>
         <PieChart
           colors={palette}
-          series={[{ data: [{ value: 10 }, { value: 15 }, { value: 20 }],
+          series={[{ data: [{ value: totalFreeShots }, { value: totalSetShots }, { value: totalThreePointShots }],
 		  faded: { innerRadius: 30, additionalRadius: -30, color: 'gray' },
 		  highlightScope: { faded: 'global', highlighted: 'item' },
 		}]}
@@ -1453,14 +1453,17 @@ const UpdateGameStatistics = () => {
 		  height={470}
 
         />
+		        <Typography
+		sx={{m:0.1, color: "white", fontSize:"20px"}}
+		><FormattedMessage id="project.statistics.fields.totalPoints" />:  {totalPoints}</Typography>
       </Box>
       <Box flexGrow={1}>
         <Typography
-		sx={{mt: 1, mb: -2, color: "black", fontSize:"20px"}}
+		sx={{m: 0, color: "black", fontSize:"20px"}}
 		><FormattedMessage id="project.statistics.fields.totalPointsRival1" /></Typography>
         <PieChart
           series={[
-            { data: [{ value: 10, color: 'orange' }, { value: 15 }, { value: 20 }], 
+            { data: [{ value: totalFreeShotsRival, color: 'orange' }, { value: totalSetShotsRival }, { value: totalThreePointShotsRival }], 
 			faded: { innerRadius: 30, additionalRadius: -30, color: 'gray' },
 			highlightScope: { faded: 'global', highlighted: 'item' },
 			},
@@ -1469,6 +1472,9 @@ const UpdateGameStatistics = () => {
           {...pieParams}
 		  height={470}
         />
+		        <Typography
+		sx={{m:0.1, color: "white", fontSize:"20px"}}
+		><FormattedMessage id="project.statistics.fields.totalPointsRival" /> {totalPointsRival}</Typography>
       </Box>
     </Stack>
 
