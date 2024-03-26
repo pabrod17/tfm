@@ -7,10 +7,13 @@ const findAllSeaonsCompleted = seasons => ({
     seasons
 });
 
-export const findAllSeasons = () => dispatch => {
+export const findAllSeasons = (onSuccess, onErrors) => dispatch => {
     backend.seasonService.findAllSeasons(
-        seasons => dispatch(findAllSeaonsCompleted(seasons))
-    );
+        seasons => {
+            dispatch(findAllSeaonsCompleted(seasons));
+            onSuccess();
+        },
+        onErrors);
 }
 
 const findSeasonByIdCompleted = season => ({
@@ -58,8 +61,8 @@ const addSeasonCompleted = season => ({
     season
 });
 
-export const addSeason =  (startDate, endDate, calendario, onSuccess, onErrors) => dispatch =>{
-    backend.seasonService.addSeason(startDate, endDate, calendario,
+export const addSeason =  (startDate, endDate, seasonName, description, onSuccess, onErrors) => dispatch =>{
+    backend.seasonService.addSeason(startDate, endDate, seasonName, description,
         season => {
             dispatch(addSeasonCompleted(season));
             onSuccess();

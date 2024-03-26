@@ -1,81 +1,69 @@
-import React from 'react';
+import React, { useEffect, useState, createContext } from 'react';
 import PropTypes from 'prop-types';
 import {useDispatch} from 'react-redux';
 import * as actions from '../actions';
 import { useNavigate } from 'react-router';
 import Card from "react-bootstrap/Card";
-import logo22 from './logo22.png';
+//Imagen para TEAMS
+// import logo22 from './red5.jpeg';
 import {FormattedDate} from 'react-intl';
 import {FormattedMessage} from 'react-intl';
+import logo22 from '../../seasons/components/red3.jpeg';
 
-function List({ items, fallback, dispatch, history}) {
-    if (!items || items.length === 0) {
-        dispatch(actions.findAllSeasons());
-        return fallback;
-
-    } else {
-      return items.map(item => {
-        return <div className="images-teams" key={item.id}>
-            <Card className="images-teams" style={{ width: '20rem' }}>
-            <img class="card-img-top" src={logo22} alt="Card image cap"/>
-                <Card.Body>
-            <Card.Title className="link-color"><FormattedMessage id='project.seasons.fields.season'/>: {" "}
-                <span> 
-                <FormattedDate
-                    value={ item.startDate }
-                    year="numeric"
-                    // format='year-only'
-                />
-                / 
-                <FormattedDate
-                    value={ item.endDate }
-                    year="numeric"
-                    // format='year-only'
-                /> 
-                </span>
-                <div>
-                <FormattedMessage id='project.seasons.fields.name'/>: {item.calendario}
+const CardSeason = ({ dispatch, history, item, handleOpenDescriptionModal }) => {
+  const formattedStartDate = new Date(item.startDate).getFullYear();
+  const formattedEndDate = new Date(item.endDate).getFullYear();
+  return (
+    <div key={item.id}>
+      <div>
+        <div className="flip-card">
+          <div className="flip-card-inner">
+            <div className="flip-card-front">
+              <div className="card_season">
+                <img src={logo22} alt="Person" className="card__image_season"></img>
+                <span class="title">{item.seasonName}</span>
+                <div className="buttons">
+                <button class="post">
+                    {formattedStartDate} / {formattedEndDate}
+                  </button>
+               </div>
+                  </div>
                 </div>
-            </Card.Title>
-
-            </Card.Body>
-            {/* <ListGroup className="list-group-flush">
-                <ListGroupItem>Cras justo odio</ListGroupItem>
-                <ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
-                <ListGroupItem>Vestibulum at eros</ListGroupItem>
-              </ListGroup> */}
-            <Card.Body>
-                <button className="btn btn-primary" type="button" 
-                    onClick={() => handleRemoveItem(item.id, dispatch, history)}>
-                    <span className="fas fa-trash-alt"></span>
-                </button>
-                <button className="btn btn-secondary" type="button" 
-                    onClick={() => handleUpdateItem(item.id, dispatch, history)}>
-                    <span className="fas fa-pencil-alt"></span>
-                </button>
-                <button className="btn btn-info" type="button" 
-                    onClick={() => handleViewSeason(item.id, dispatch, history)}>
-                    {"View"}
-                </button>
-              </Card.Body>
-            </Card>
-        </div>;
-      });
-    }
+                <div class="flip-card-back">
+            <div class="card_season">
+          <a onClick={() => handleOpenDescriptionModal(item.description)} class="button_apple">
+            <span class="desc desc3 scroll_efect_stretching">{item.description}</span>
+          </a>
+          <hr></hr>
+            </div>
+                  <ul class="social-icons trashgrande trash_position">
+                  <li><a type="button" onClick={() => handleRemoveSeason(item.id, dispatch, history)}>
+                    <i class="fa fa-trash"></i></a></li>
+                  </ul>
+                  <ul class="social-icons configgrande config_position">
+                      <li><a type="button" onClick={() => handleUpdateSeason(item.id, dispatch, history)}>
+                      <i class="fa fa-wrench"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  );
   }
 
-const handleRemoveItem = (id, dispatch, history) => {
-  dispatch(actions.removeSeason(id, () => history('/seasons/all/result')));
+const handleRemoveSeason = (id, dispatch, history) => {
+  dispatch(actions.removeSeason(id, () => history('/seasons/home')));
   window.location.reload('true');
 }
 
-const handleUpdateItem = (id, dispatch, history) => {
-    dispatch(actions.findSeasonById(id, () => history('/seasons/update')));
+const handleUpdateSeason = (id, dispatch, history) => {
+    dispatch(actions.findSeasonById(id, () => history(`/seasons/update/${id}`)));
   }
 
-const handleViewSeason = (id, dispatch, history) => {
-    dispatch(actions.findSeasonById(id, () => history(`/seasons/view/${id}`)));
-  }
+// const handleViewSeason = (id, dispatch, history) => {
+//     dispatch(actions.findSeasonById(id, () => history(`/seasons/view/${id}`)));
+//   }
 
 // const handleViewSeason = (id, dispatch, history) => {
 //     dispatch(actions.findSeasonById(id, () => handleFindTeamsToSeason(id, dispatch, history)));
@@ -85,13 +73,31 @@ const handleViewSeason = (id, dispatch, history) => {
 //   dispatch(actionsTeams.findTeamsToSeason(id, () => history(`/seasons/view/${id}`)));
 // }
 
+function SeasonsList({ items, fallback, dispatch, history, handleOpenDescription }) {
+  if (!items || items.length === 0) {
+    dispatch(actions.findAllSeasons(() => history('/seasons/home')));
+    return fallback;
+  } else {
+    return items.map(item => (
+      <CardSeason dispatch={dispatch} history={history} key={item.id} item={item} handleOpenDescriptionModal={handleOpenDescription} />
+    ));
+  }
+}
+
 const Seasons = ({seasons}) => {
     const dispatch = useDispatch();
     const history = useNavigate();
+    const [modalDescription, setModalDescription] = useState('');
+    const [openDescription, setOpenDescription] = React.useState(false);
+
+    const handleOpenDescription = (description) => {
+      setModalDescription(description);
+      setOpenDescription(true);
+    };
 
     return(
-        <div class="card-group">
-            <List items={seasons} fallback={"Loading..."} dispatch = {dispatch} history={history} />
+        <div class="card-group lesions_contaner">
+            <SeasonsList items={seasons} fallback={"Loading..."} dispatch = {dispatch} history={history} handleOpenDescription={handleOpenDescription} />
         </div>
     )
 

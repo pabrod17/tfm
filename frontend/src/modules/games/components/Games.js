@@ -97,7 +97,7 @@ const GameCardUser = ({ dispatch, history, item, handleOpenDescriptionModal }) =
                 <div className="buttons">
                 <button class="post">{
                 <FormattedDate
-                   value={ item.trainingDate }
+                   value={ item.gameDate }
                    year="numeric"
                    month="long"
                    day="numeric"

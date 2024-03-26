@@ -22,6 +22,7 @@ import {useDispatch} from 'react-redux';
 import * as actionsLesion from '../../lesion/actions';
 import * as actionTraining from '../..//trainings/actions';
 import * as actionGames from '../..//games/actions';
+import * as actionSeasons from '../..//seasons/actions';
 import * as actionStretchings from '../..//stretchings/actions';
 import * as actionExercises from '../..//exercises/actions';
 import * as actionsTeams from '../../teams/actions';
@@ -83,8 +84,9 @@ const Sidebar = () => {
       history('/teams/all');
     }
     else
-    if(to === "/seasons/all") {
-      history('/seasons/all');
+    if(to === "/seasons/home") {
+      dispatch(actionSeasons.findAllSeasons(() => history('/seasons/home')));
+      history('/seasons/home');
     }
     //Hacer algo con los teams y seasons!!!!!!
 
@@ -210,7 +212,7 @@ const Sidebar = () => {
 
             <Item
               title="Seasons"
-              to="/seasons/all"
+              to="/seasons/home"
               icon={<ContactsOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}

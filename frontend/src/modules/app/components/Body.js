@@ -77,6 +77,7 @@ import UpdateTrainingExercise from '../../trainings/components/UpdateTrainingExe
 import UpdateTrainingStretching from '../../trainings/components/UpdateTrainingStretching';
 import UpdateGameExercise from '../../games/components/UpdateGameExercise';
 import UpdateGameStretching from '../../games/components/UpdateGameStretching';
+import SeasonsHome from '../../seasons/components/SeasonsHome';
 
 const Body = ({ isDark, setIsDark}) => {
 
@@ -99,6 +100,7 @@ const Body = ({ isDark, setIsDark}) => {
                 {loggedIn && <Route exact path="/teams/all/result" element={<FindTeamsResult/>}></Route>}
                 {loggedIn && <Route exact path="/teams/all/name" element={<FindTeamByName/>}></Route>}
                 {loggedIn && <Route exact path="/teams/all/name/result/:teamName" element={<FindTeamByNameResult/>}></Route>}
+                
                 {loggedIn && <Route exact path="/seasons/all" element={<FindSeasons/>}></Route>}
                 {loggedIn && <Route exact path="/seasons/new" element={<AddSeason/>}></Route>}
                 {loggedIn && <Route exact path="/seasons/update" element={<UpdateSeason/>}></Route>}
@@ -106,6 +108,11 @@ const Body = ({ isDark, setIsDark}) => {
                 {loggedIn && <Route exact path="/seasons/betweenDates" element={<FindSeasonsBetweenTwoDates/>}></Route>}
                 {loggedIn && <Route exact path="/seasons/betweenDates/result/:startDate/:endDate" element={<FindSeasonsBetweenTwoDatesResult/>}></Route>}
                 {loggedIn && <Route exact path="/seasons/view/:id" element={<SeasonView/>}></Route>}
+                
+                {loggedIn && <Route exact path="/seasons/home" element={<SeasonsHome/>}></Route>}
+                {loggedIn && <Route exact path="/seasons/addSeason" element={<AddSeason/>}></Route>}
+                {loggedIn && <Route exact path="/seasons/update/:id" element={<UpdateSeason/>}></Route>}
+
                 {loggedIn && <Route exact path="/players/home/training/:id:trainingId" element={<FindPlayersByTraining/>}></Route>}
                 {loggedIn && <Route exact path="/players/home/game/:id:gameId" element={<FindPlayersByGame/>}></Route>}
                 {loggedIn && <Route exact path="/players/home/game/:id" element={<FindPlayersByGame/>}></Route>}

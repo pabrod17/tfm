@@ -69,10 +69,10 @@ const AddGame = () => {
 
     const seasonsList = seasons.seasons;
 
-    if(!seasonsList) {
-        dispatch(actionsSeasons.findAllSeasons());
-        return "Loading...";
-    }
+	if (!seasonsList) {
+		dispatch(actionsSeasons.findAllSeasons(() => history(`/trainings/addTraining`)));
+		return "Loading...";
+	}
 
     const columnsSeasons = [
 		{ field: 'id', headerName: 'ID', width: 70 },
@@ -94,7 +94,7 @@ const AddGame = () => {
         const formattedEndDate = `${endDate.getDate()}/${endDate.getMonth() + 1}/${endDate.getFullYear()}`;
 			rowsSeasons.push({
 				id: season.id,
-				name: season.calendario,
+				name: season.seasonName,
 				startDate: formattedStartDate,
 				endDate: formattedEndDate
 			});

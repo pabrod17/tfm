@@ -45,24 +45,24 @@ const GamesHome = () => {
             if(team == null) {
                 if(season == null){
                     dispatch(actions.findGamesByTwoDates(
-                        startDate, endDate,
+                        formattedStartDate, formattedEndDate,
                         errors => setBackendErrors(errors),
                     ));
                 } else{
                     dispatch(actions.findGamesByTwoDatesAndSeasonId(
-                        season.id, startDate, endDate,
+                        season.id, formattedStartDate, formattedEndDate,
                         errors => setBackendErrors(errors),
                     ));
                 }
             } else{
                 if(season == null){
                     dispatch(actions.findGamesByTwoDatesAndTeamId(
-                        team.id,startDate, endDate,
+                        team.id,formattedStartDate, formattedEndDate,
                         errors => setBackendErrors(errors),
                     ));
                 } else{
                     dispatch(actions.findGamesByTwoDatesAndTeamIdOrSeasonId(
-                        team.id, season.id, startDate, endDate,
+                        team.id, season.id, formattedStartDate, formattedEndDate,
                         errors => setBackendErrors(errors),
                     ));
                 }
@@ -70,7 +70,7 @@ const GamesHome = () => {
     }
 
     const handleSetAllGames = (dispatch) => {
-        dispatch(actions.findGamesByPlayerId(() => history('/games/home')));
+        dispatch(actions.findGamesByUserId(() => history('/games/home')));
     }
 
     return(

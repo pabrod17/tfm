@@ -103,7 +103,7 @@ const AddTraining = () => {
 	const seasonsList = seasons.seasons;
 
 	if (!seasonsList) {
-		dispatch(actionsSeasons.findAllSeasons());
+		dispatch(actionsSeasons.findAllSeasons(() => history(`/trainings/addTraining`)));
 		return "Loading...";
 	}
 
@@ -127,7 +127,7 @@ const AddTraining = () => {
         const formattedEndDate = `${endDate.getDate()}/${endDate.getMonth() + 1}/${endDate.getFullYear()}`;
 			rowsSeasons.push({
 				id: season.id,
-				name: season.calendario,
+				name: season.seasonName,
 				startDate: formattedStartDate,
 				endDate: formattedEndDate
 			});
@@ -213,7 +213,7 @@ const AddTraining = () => {
             <Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
 			<Grid container margin={5} spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
 			>
-				<Grid item xs={12} md={12} >
+				<Grid item md={12} >
 					<img src={bigBall} alt="Person" class="card__image_training_update_create"></img>
 
 					<Box
@@ -229,7 +229,7 @@ const AddTraining = () => {
 						autoComplete="off"
 					>
 						<Grid container spacing={2}>
-							<Grid item xs={6}>
+							<Grid item xs={12} md={6}>
 
 								{/* <div className='form_add_training_general'> */}
 								<Box
@@ -302,7 +302,7 @@ const AddTraining = () => {
 
 								</Box>
 							</Grid>
-							<Grid item xs={6}>
+							<Grid item xs={12} md={6}>
 
 								{/* <div className='form_add_training_general'> */}
 								<Box
@@ -357,7 +357,7 @@ const AddTraining = () => {
 						</Grid>
 					</Box>  </Grid>
 				<Grid container spacing={2}>
-				<Grid item xs={12} md={6}>
+							<Grid item xs={12} md={6}>
 						<Typography
 							sx={{ flex: '1 1 100%', mt: 3.5, color: "#00bfff", m:2 }}
 							variant="h6"
