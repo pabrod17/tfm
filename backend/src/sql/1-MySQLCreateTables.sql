@@ -50,7 +50,8 @@ CREATE TABLE Season (
     id BIGINT NOT NULL AUTO_INCREMENT,
     startDate DATE NOT NULL,
     endDate DATE NOT NULL, 
-    Calendario VARCHAR(60) NOT NULL,
+    seasonName VARCHAR(60) NOT NULL,
+    description VARCHAR(500) NOT NULL,
     CONSTRAINT SeasonPK PRIMARY KEY (id)
 ) ENGINE = InnoDB;
 
@@ -61,6 +62,7 @@ CREATE TABLE Team (
     teamName VARCHAR(60) COLLATE latin1_bin NOT NULL,
     arenaName VARCHAR(60) COLLATE latin1_bin NOT NULL,
     ownerName VARCHAR(60) COLLATE latin1_bin NOT NULL,
+    description VARCHAR(500) NOT NULL,
     CONSTRAINT TeamPK PRIMARY KEY (id),
     CONSTRAINT TeamNameUniqueKey UNIQUE (teamName)
 ) ENGINE = InnoDB;

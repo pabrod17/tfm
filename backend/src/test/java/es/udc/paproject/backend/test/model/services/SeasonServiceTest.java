@@ -69,7 +69,7 @@ public class SeasonServiceTest {
         User user = createUser("usuario");
         userService.signUp(user);
 
-        Season season = seasonService.addSeason(user.getId(), startDate1, endDate1, "Calendario");
+        Season season = seasonService.addSeason(user.getId(), startDate1, endDate1, "Calendario", "");
 
         Long seasonId = season.getId();
         Season foundSeason = seasonService.findSeasonById(user.getId(), seasonId);
@@ -87,11 +87,11 @@ public class SeasonServiceTest {
         User user = createUser("usuario");
         userService.signUp(user);
 
-        seasonService.addSeason(user.getId(), startDate1, endDate1, "Calendario");
-        seasonService.addSeason(user.getId(), startDate2, endDate2, "Calendario");
-        seasonService.addSeason(user.getId(), startDate3, endDate3, "Calendario");
+        seasonService.addSeason(user.getId(), startDate1, endDate1, "Calendario","");
+        seasonService.addSeason(user.getId(), startDate2, endDate2, "Calendario","");
+        seasonService.addSeason(user.getId(), startDate3, endDate3, "Calendario","");
 
-        seasonService.addSeason(user.getId(), startDateOut, endDateOut,"Calendario");
+        seasonService.addSeason(user.getId(), startDateOut, endDateOut,"Calendario","");
 
         List<Season> seasons = seasonService.findSeasonsBetweenTwoDates(user.getId(), startDate, endDate);
         assertEquals(3, seasons.size());
@@ -112,7 +112,7 @@ public class SeasonServiceTest {
         User user = createUser("usuario");
         userService.signUp(user);
 
-        assertThrows(StartDateAfterEndDateException.class, () -> seasonService.addSeason(user.getId(), endDateBad, startDateBad, "Calendario"));
+        assertThrows(StartDateAfterEndDateException.class, () -> seasonService.addSeason(user.getId(), endDateBad, startDateBad, "Calendario",""));
     }
 
     @Test
@@ -120,8 +120,8 @@ public class SeasonServiceTest {
             StartDateAfterEndDateException {
         User user = createUser("usuario");
         userService.signUp(user);
-        seasonService.addSeason(user.getId(), startDate1, endDate1, "Calendario");
-        seasonService.addSeason(user.getId(), startDate2, endDate2, "Calendario");
+        seasonService.addSeason(user.getId(), startDate1, endDate1, "Calendario","");
+        seasonService.addSeason(user.getId(), startDate2, endDate2, "Calendario","");
 
         assertThrows(StartDateAfterEndDateException.class, () -> seasonService.findSeasonsBetweenTwoDates(user.getId(),endDate, startDate));
     }
@@ -132,14 +132,14 @@ public class SeasonServiceTest {
 
         User user = createUser("usuario");
         userService.signUp(user);
-        Season season1 = seasonService.addSeason(user.getId(), startDate1, endDate1, "Calendario");
-        Season season2 = seasonService.addSeason(user.getId(), startDate2, endDate2, "Calendario");
-        Season season3 = seasonService.addSeason(user.getId(), startDate3, endDate3, "Calendario");
+        Season season1 = seasonService.addSeason(user.getId(), startDate1, endDate1, "Calendario","");
+        Season season2 = seasonService.addSeason(user.getId(), startDate2, endDate2, "Calendario","");
+        Season season3 = seasonService.addSeason(user.getId(), startDate3, endDate3, "Calendario","");
 
         User user2 = createUser("usuario2");
         userService.signUp(user2);
-        seasonService.addSeason(user2.getId(), startDate1, endDate1, "Calendario");
-        seasonService.addSeason(user2.getId(), startDate2, endDate2, "Calendario");
+        seasonService.addSeason(user2.getId(), startDate1, endDate1, "Calendario","");
+        seasonService.addSeason(user2.getId(), startDate2, endDate2, "Calendario","");
         List<Season> seasons = new ArrayList<>();
         seasons.add(season1);
         seasons.add(season2);
@@ -160,9 +160,9 @@ public class SeasonServiceTest {
 
 		User user = createUser("usuario");
 		userService.signUp(user);
-        seasonService.addSeason(user.getId(), startDate1, endDate1, "Calendario");
-        Season season2 = seasonService.addSeason(user.getId(), startDate2, endDate2, "Calendario");
-        seasonService.addSeason(user.getId(), startDate3, endDate3, "Calendario");
+        seasonService.addSeason(user.getId(), startDate1, endDate1, "Calendario","");
+        Season season2 = seasonService.addSeason(user.getId(), startDate2, endDate2, "Calendario","");
+        seasonService.addSeason(user.getId(), startDate3, endDate3, "Calendario","");
 
 
         seasonService.removeSeason(user.getId(),season2.getId());
@@ -184,16 +184,16 @@ public class SeasonServiceTest {
 		User user = createUser("usuario");
 		userService.signUp(user);
 
-        Season season = seasonService.addSeason(user.getId(),startDate1, endDate2, "Calendario");
-        seasonService.updateSeason(user.getId(),season.getId(), startDateUpdated, endDateUpdated, "cambio");
+        Season season = seasonService.addSeason(user.getId(),startDate1, endDate2, "Calendario","");
+        seasonService.updateSeason(user.getId(),season.getId(), startDateUpdated, endDateUpdated, "cambio","");
 
         assertEquals(startDateUpdated, seasonService.findSeasonById(user.getId(),season.getId()).getStartDate());
         assertEquals(endDateUpdated, seasonService.findSeasonById(user.getId(),season.getId()).getEndDate());
-        assertEquals("cambio", seasonService.findSeasonById(user.getId(),season.getId()).getCalendario());
+        assertEquals("cambio", seasonService.findSeasonById(user.getId(),season.getId()).getSeasonName());
 
         assertEquals(startDateUpdated, seasonTeamDao.findByUserId(user.getId()).get(0).getSeason().getStartDate());
         assertEquals(endDateUpdated, seasonTeamDao.findByUserId(user.getId()).get(0).getSeason().getEndDate());
-        assertEquals("cambio", seasonTeamDao.findByUserId(user.getId()).get(0).getSeason().getCalendario());
+        assertEquals("cambio", seasonTeamDao.findByUserId(user.getId()).get(0).getSeason().getSeasonName());
     }
 
 	@Test
@@ -203,11 +203,11 @@ public class SeasonServiceTest {
 		User user = createUser("usuario");
 		userService.signUp(user);
 		
-		Team team = teamService.addTeam(user.getId(),"equipo", "arenaName", "ownerName");
-		Team team2 = teamService.addTeam(user.getId(),"dos", "arenaName", "ownerName");
+		Team team = teamService.addTeam(user.getId(),"equipo", "arenaName", "ownerName","");
+		Team team2 = teamService.addTeam(user.getId(),"dos", "arenaName", "ownerName","");
 
-		Season season = seasonService.addSeason(user.getId(), startDate1, endDate1, "Calendario");
-		Season season2 = seasonService.addSeason(user.getId(), startDate2, endDate2, "Calendario");
+		Season season = seasonService.addSeason(user.getId(), startDate1, endDate1, "Calendario","");
+		Season season2 = seasonService.addSeason(user.getId(), startDate2, endDate2, "Calendario","");
 
 		teamService.addTeamToSeason(season.getId(),team.getId(), user.getId());
 		teamService.addTeamToSeason(season.getId(), team2.getId(), user.getId());

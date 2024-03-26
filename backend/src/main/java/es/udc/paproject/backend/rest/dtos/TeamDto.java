@@ -9,14 +9,17 @@ public class TeamDto {
 
     private String ownerName;
 
+    private String description;
+
     public TeamDto() {
     }
 
-    public TeamDto(Long id, String teamName, String arenaName, String ownerName) {
+    public TeamDto(Long id, String teamName, String arenaName, String ownerName, String description) {
         this.id = id;
         this.teamName = teamName;
         this.arenaName = arenaName;
         this.ownerName = ownerName;
+        this.description = description;
     }
 
     public Long getId() {
@@ -49,5 +52,13 @@ public class TeamDto {
 
     public void setOwnerName(String ownerName) {
         this.ownerName = ownerName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

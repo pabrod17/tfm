@@ -63,12 +63,12 @@ public class GameServiceTest {
     }
 
     private Team createTeam(Long userId, String teamName, String arenaName, String ownerName) throws InstanceNotFoundException, DuplicateInstanceException {
-        return teamService.addTeam(userId, teamName, arenaName, ownerName);
+        return teamService.addTeam(userId, teamName, arenaName, ownerName,"description");
     }
 
-    private Season createSeason(Long userId, String calendario) throws InstanceNotFoundException, DuplicateInstanceException,
+    private Season createSeason(Long userId, String seasonName) throws InstanceNotFoundException, DuplicateInstanceException,
             StartDateAfterEndDateException {
-        return seasonService.addSeason(userId, startDate, endDate, calendario);
+        return seasonService.addSeason(userId, startDate, endDate, seasonName, "description");
     }
 
     private Player createPlayer(Long teamId) throws InstanceNotFoundException, IncorrectDniException,

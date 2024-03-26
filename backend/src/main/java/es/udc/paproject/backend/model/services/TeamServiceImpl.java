@@ -38,14 +38,14 @@ public class TeamServiceImpl implements TeamService {
     private UserService userService;
 
     @Override
-    public Team addTeam(Long userId, String teamName, String arenaName, String ownerName) throws InstanceNotFoundException, DuplicateInstanceException {
+    public Team addTeam(Long userId, String teamName, String arenaName, String ownerName, String description) throws InstanceNotFoundException, DuplicateInstanceException {
         
         if(teamDao.existsByTeamName(teamName)){
             throw new DuplicateInstanceException("project.entities.team", teamName);
         }
 
         User user = userService.loginFromId(userId);
-        Team team = new Team(teamName, arenaName, ownerName);
+        Team team = new Team(teamName, arenaName, ownerName, description);
         teamDao.save(team);
         SeasonTeam seasonTeam = new SeasonTeam(null, team, user);
         seasonTeamDao.save(seasonTeam);
@@ -219,7 +219,7 @@ public class TeamServiceImpl implements TeamService {
     }
 
     @Override
-    public Team updateTeam(Long userId, Long teamId, String teamName, String arenaName, String ownerName) throws InstanceNotFoundException {
+    public Team updateTeam(Long userId, Long teamId, String teamName, String arenaName, String ownerName, String description) throws InstanceNotFoundException {
 
         Optional<Team> existingTeam = teamDao.findById(teamId);
         if (!existingTeam.isPresent()) {
@@ -236,12 +236,14 @@ public class TeamServiceImpl implements TeamService {
                 existingTeam2.setTeamName(teamName);
                 existingTeam2.setArenaName(arenaName);
                 existingTeam2.setOwnerName(ownerName);
+                existingTeam2.setDescription(description);
                 teamDao.save(existingTeam2);
 
                 Optional<SeasonTeam> seasonTeam2 = seasonTeamDao.findById(seasonTeam.getId());
                 seasonTeam2.get().getTeam().setTeamName(teamName);
                 seasonTeam2.get().getTeam().setArenaName(arenaName);
                 seasonTeam2.get().getTeam().setOwnerName(ownerName);
+                seasonTeam2.get().getTeam().setDescription(description);
                 seasonTeamDao.save(seasonTeam2.get());
             }
         }

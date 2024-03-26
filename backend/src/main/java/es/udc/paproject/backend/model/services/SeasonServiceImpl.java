@@ -32,14 +32,14 @@ public class SeasonServiceImpl implements SeasonService {
     private UserService userService;
     
     @Override
-    public Season addSeason(Long userId, LocalDateTime startDate, LocalDateTime endDate, String calendario) throws InstanceNotFoundException,
+    public Season addSeason(Long userId, LocalDateTime startDate, LocalDateTime endDate, String seasonName, String description) throws InstanceNotFoundException,
             StartDateAfterEndDateException {
 
         if(startDate.isAfter(endDate)){
             throw new StartDateAfterEndDateException(startDate, endDate);
         }
 
-        Season season = new Season(startDate, endDate, calendario);
+        Season season = new Season(startDate, endDate, seasonName, description);
         User user = userService.loginFromId(userId);
         seasonDao.save(season);
         SeasonTeam seasonTeam = new SeasonTeam(season, null, user);
@@ -184,7 +184,7 @@ public class SeasonServiceImpl implements SeasonService {
     }
 
     @Override
-    public Season updateSeason(Long userId, Long seasonId, LocalDateTime startDate, LocalDateTime endDate, String calendario)
+    public Season updateSeason(Long userId, Long seasonId, LocalDateTime startDate, LocalDateTime endDate, String seasonName, String description)
             throws InstanceNotFoundException {
 
         Optional<Season> existingSeason = seasonDao.findById(seasonId);
@@ -201,13 +201,15 @@ public class SeasonServiceImpl implements SeasonService {
                 existingSeason2 = seasonTeam.getSeason();
                 existingSeason2.setStartDate(startDate);
                 existingSeason2.setEndDate(endDate);
-                existingSeason2.setCalendario(calendario);
+                existingSeason2.setSeasonName(seasonName);
+                existingSeason2.setDescription(description);
                 seasonDao.save(existingSeason2);
 
                 Optional<SeasonTeam> seasonTeam2 = seasonTeamDao.findById(seasonTeam.getId());
                 seasonTeam2.get().getSeason().setStartDate(startDate);
                 seasonTeam2.get().getSeason().setEndDate(endDate);
-                seasonTeam2.get().getSeason().setCalendario(calendario);
+                seasonTeam2.get().getSeason().setSeasonName(seasonName);
+                seasonTeam2.get().getSeason().setDescription(description);
                 seasonTeamDao.save(seasonTeam2.get());
             }
         }

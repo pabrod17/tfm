@@ -9,7 +9,7 @@ import es.udc.paproject.backend.model.exceptions.StartDateAfterEndDateException;
 
 public interface SeasonService {
 
-    Season addSeason(Long userId, LocalDateTime startDate, LocalDateTime endDate, String calendario) throws InstanceNotFoundException, StartDateAfterEndDateException;
+    Season addSeason(Long userId, LocalDateTime startDate, LocalDateTime endDate, String seasonName, String description) throws InstanceNotFoundException, StartDateAfterEndDateException;
 
     Season findSeasonById(Long userId, Long seasonId) throws InstanceNotFoundException;
 
@@ -23,5 +23,5 @@ public interface SeasonService {
     
     void clearSeasonTeamTable(Long userId) throws InstanceNotFoundException;
 
-    Season updateSeason(Long userId, Long seasonId, LocalDateTime startDate, LocalDateTime endDate, String calendario) throws InstanceNotFoundException;
+    Season updateSeason(Long userId, Long seasonId, LocalDateTime startDate, LocalDateTime endDate, String seasonName, String description) throws InstanceNotFoundException;
 }

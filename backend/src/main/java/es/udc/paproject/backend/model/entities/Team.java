@@ -15,11 +15,13 @@ public class Team {
 
     private String ownerName;
 
+    private String description;
+
     public Team() {
     }
 
-    public Team(String teamName, String arenaName, String ownerName) {
-        this.teamName = teamName; this.arenaName = arenaName; this.ownerName = ownerName;
+    public Team(String teamName, String arenaName, String ownerName, String description) {
+        this.teamName = teamName; this.arenaName = arenaName; this.ownerName = ownerName; this.description = description;
     }
 
     @Id
@@ -54,5 +56,13 @@ public class Team {
 
     public void setOwnerName(String ownerName) {
         this.ownerName = ownerName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

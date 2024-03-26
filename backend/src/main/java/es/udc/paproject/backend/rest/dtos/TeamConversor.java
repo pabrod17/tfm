@@ -11,7 +11,7 @@ public class TeamConversor {
     }
     
     public final static TeamDto toTeamDto(Team team){
-        return new TeamDto(team.getId(), team.getTeamName(), team.getArenaName(), team.getOwnerName());
+        return new TeamDto(team.getId(), team.getTeamName(), team.getArenaName(), team.getOwnerName(), team.getDescription());
     }
 
     public final static List<TeamDto> toTeamDtos(List<Team> teams){
@@ -19,11 +19,11 @@ public class TeamConversor {
     }
 
     public final static Team toTeam(TeamDto teamDto) {
-		return new Team(teamDto.getTeamName(), teamDto.getArenaName(), teamDto.getOwnerName());
+		return new Team(teamDto.getTeamName(), teamDto.getArenaName(), teamDto.getOwnerName(), teamDto.getDescription());
     }
 
     public final static Team toTeamUpdate(TeamDto teamDto) {
-        Team team = new Team(teamDto.getTeamName(), teamDto.getArenaName(), teamDto.getOwnerName());
+        Team team = new Team(teamDto.getTeamName(), teamDto.getArenaName(), teamDto.getOwnerName(), teamDto.getDescription());
         team.setId(teamDto.getId());
 		return team;
     }

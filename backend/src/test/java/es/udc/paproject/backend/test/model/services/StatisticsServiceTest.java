@@ -60,7 +60,7 @@ public class StatisticsServiceTest {
     }
 
     private Team createTeam(Long userId, String teamName) throws InstanceNotFoundException, DuplicateInstanceException {
-        return teamService.addTeam(userId, teamName, "arenaName", "ownerName");
+        return teamService.addTeam(userId, teamName, "arenaName", "ownerName","");
     }
 
     private Player createPlayer(Long teamId) throws InstanceNotFoundException, IncorrectDniException,

@@ -7,16 +7,19 @@ public class SeasonDto {
     private Long id;
     private Date startDate;
     private Date endDate;
-    private String calendario;
+    private String seasonName;
+
+    private String description;
 
     public SeasonDto() {
     }
 
-    public SeasonDto(Long id, Date startDate, Date endDate, String calendario) {
+    public SeasonDto(Long id, Date startDate, Date endDate, String seasonName, String description) {
         this.id = id;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.calendario = calendario;
+        this.seasonName = seasonName;
+        this.description = description;
     }
 
     public Long getId() {
@@ -43,11 +46,19 @@ public class SeasonDto {
         this.endDate = endDate;
     }
 
-    public String getCalendario() {
-        return calendario;
+    public String getSeasonName() {
+        return seasonName;
     }
 
-    public void setCalendario(String calendario) {
-        this.calendario = calendario;
+    public void setSeasonName(String seasonName) {
+        this.seasonName = seasonName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

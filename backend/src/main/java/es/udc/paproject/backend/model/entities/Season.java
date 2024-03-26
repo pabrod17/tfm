@@ -13,15 +13,18 @@ public class Season {
     private Long id;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
-    private String calendario;
+    private String seasonName;
+
+    private String description;
 
     public Season() {
     }
 
-    public Season(LocalDateTime startDate, LocalDateTime endDate, String calendario) {
+    public Season(LocalDateTime startDate, LocalDateTime endDate, String seasonName, String description) {
         this.startDate = startDate;
         this.endDate = endDate;
-        this.calendario = calendario;
+        this.seasonName = seasonName;
+        this.description = description;
     }
 
     @Id
@@ -50,11 +53,19 @@ public class Season {
         this.endDate = endDate;
     }
 
-    public String getCalendario() {
-        return calendario;
+    public String getSeasonName() {
+        return seasonName;
     }
 
-    public void setCalendario(String calendario) {
-        this.calendario = calendario;
+    public void setSeasonName(String seasonName) {
+        this.seasonName = seasonName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

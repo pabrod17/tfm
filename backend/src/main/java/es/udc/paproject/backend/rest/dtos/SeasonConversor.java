@@ -16,7 +16,7 @@ public class SeasonConversor {
 
     public final static SeasonDto toSeasonDto(Season season) {
       return new SeasonDto(season.getId(), toDate(season.getStartDate()), toDate(season.getEndDate()),
-      season.getCalendario());
+      season.getSeasonName(), season.getDescription());
     }
 
     public final static List<SeasonDto> toSeasonDtos(List<Season> seasons) {
@@ -34,11 +34,11 @@ public class SeasonConversor {
     }
 
     public final static Season toSeason(SeasonDto seasonDto){
-      return new Season(toLocalDateTime(seasonDto.getStartDate()), toLocalDateTime(seasonDto.getEndDate()), seasonDto.getCalendario());
+      return new Season(toLocalDateTime(seasonDto.getStartDate()), toLocalDateTime(seasonDto.getEndDate()), seasonDto.getSeasonName(), seasonDto.getDescription());
     }
 
     public final static Season toSeasonUpdate(SeasonDto seasonDto){
-      Season season = new Season(toLocalDateTime(seasonDto.getStartDate()), toLocalDateTime(seasonDto.getEndDate()), seasonDto.getCalendario());
+      Season season = new Season(toLocalDateTime(seasonDto.getStartDate()), toLocalDateTime(seasonDto.getEndDate()), seasonDto.getSeasonName(), seasonDto.getDescription());
       season.setId(seasonDto.getId());
       return season;
     }

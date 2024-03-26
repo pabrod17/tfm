@@ -93,15 +93,15 @@ public class SeasonController {
 
     @PostMapping("")
     public SeasonDto addSeason(@RequestAttribute Long userId, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date startDate, 
-    @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date endDate, @RequestParam String calendario)
+    @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date endDate, @RequestParam String seasonName, @RequestParam String description)
             throws InstanceNotFoundException, StartDateAfterEndDateException {
-        return toSeasonDto(seasonService.addSeason(userId, toLocalDateTime(startDate), toLocalDateTime(endDate), calendario));
+        return toSeasonDto(seasonService.addSeason(userId, toLocalDateTime(startDate), toLocalDateTime(endDate), seasonName, description));
     }
 
     @PutMapping("/{id}")
     public SeasonDto updateSeason(@RequestAttribute Long userId, @PathVariable Long id, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date startDate, 
-    @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date endDate, @RequestParam String calendario) throws InstanceNotFoundException {
-        return toSeasonDto(seasonService.updateSeason(userId, id, toLocalDateTime(startDate), toLocalDateTime(endDate), calendario));
+    @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date endDate, @RequestParam String seasonName, @RequestParam String description) throws InstanceNotFoundException {
+        return toSeasonDto(seasonService.updateSeason(userId, id, toLocalDateTime(startDate), toLocalDateTime(endDate), seasonName, description));
     }
 
     @DeleteMapping("/{id}")

@@ -64,12 +64,12 @@ public class TrainingServiceTest {
     }
 
     private Team createTeam(Long userId, String teamName) throws InstanceNotFoundException, DuplicateInstanceException {
-        return teamService.addTeam(userId, teamName, "arenaName", "ownerName");
+        return teamService.addTeam(userId, teamName, "arenaName", "ownerName","");
     }
 
     private Season createSeason(Long userId, String calendario)
             throws InstanceNotFoundException, DuplicateInstanceException, StartDateAfterEndDateException {
-        return seasonService.addSeason(userId, startDate, endDate, calendario);
+        return seasonService.addSeason(userId, startDate, endDate, calendario, "description");
     }
 
     private Player createPlayer(Long teamId) throws InstanceNotFoundException, IncorrectDniException,
