@@ -92,13 +92,13 @@ const UpdateGameStatistics = () => {
 	const [itemNb, setItemNb] = React.useState(5);
 	const [skipAnimation, setSkipAnimation] = React.useState(false);
 
-	const handleItemNbChange = (event: Event, newValue: number | number[]) => {
+	const handleItemNbChange = (event, newValue) => {
 		if (typeof newValue !== 'number') {
 			return;
 		}
 		setItemNb(newValue);
 	};
-	const handleSeriesNbChange = (event: Event, newValue: number | number[]) => {
+	const handleSeriesNbChange = (event, newValue) => {
 		if (typeof newValue !== 'number') {
 			return;
 		}
@@ -274,7 +274,7 @@ const UpdateGameStatistics = () => {
 							borderRadius: "20px",
 							flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 							flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
-							boxShadow: "0 10px 50px rgb(0, 8, 255)",
+							boxShadow: "0 10px 50px rgb(0, 0, 0)",
 							borderColor: "black"
 						}}
 					>
@@ -1093,7 +1093,7 @@ const UpdateGameStatistics = () => {
 							borderRadius: "20px",
 							flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 							flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
-							boxShadow: "0 10px 50px rgb(0, 8, 255)",
+							boxShadow: "0 10px 50px rgb(0, 0, 0)",
 							borderColor: "black"
 						}}
 					>
