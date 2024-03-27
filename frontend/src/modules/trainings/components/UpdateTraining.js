@@ -98,11 +98,16 @@ const UpdateTraining = () => {
         }
 
     return(
-<div className=''>
-
+        <Box
+            display="flex"
+            alignItems="center"
+            p={1}
+            sx={{
+                flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
+            }}
+        >
 <Box
     sx={{
-        maxWidth: { xs: 320, sm: 620 },
         bgcolor: 'background.dark',
         boxShadow: 1,
         borderRadius: 4,
@@ -119,7 +124,9 @@ const UpdateTraining = () => {
                             background: "linear-gradient(-45deg, #41295a 0%, #2F0743 70% )",
                             bgcolor:"red",
                             boxShadow: 6,
-                            borderRadius: 3
+                            borderRadius: 3,
+                            borderColor: "black",
+							boxShadow: "0 10px 50px rgb(0, 0, 0)"
                         }}
         >
           <Tab sx={{ color: '#40FF00', fontSize: "30px", padding:"20px"}} onClick={() => handleUpdateTraining(dispatch)} label="General"  />
@@ -136,7 +143,6 @@ const UpdateTraining = () => {
 			alignItems="center"
 			gap={4}
 			p={5}
-			m={10}
 			sx={{
 				border: '2px solid grey',
 				background: "linear-gradient(-45deg, #41295a 0%, #2F0743 70% )",
@@ -144,7 +150,8 @@ const UpdateTraining = () => {
 				flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 				flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
                 borderColor:"black",
-                boxShadow:"0 10px 50px rgb(0, 0, 0)"
+                boxShadow:"0 10px 50px rgb(0, 0, 0)",
+                width:"1000px"
             }}
 		>
             <Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
@@ -158,15 +165,15 @@ const UpdateTraining = () => {
 						sx={{
 							background: "linear-gradient(-45deg, #f5af19 0%, #f12711 100% )",
 							borderRadius: "20px",
-							boxShadow: 12,
                             borderColor:"black",
                             boxShadow:"0 10px 50px rgb(0, 0, 0)"
 						}}
+                        autoHeight={true} // Permitir que la tabla determine su propio tamaño si los datos no se han cargado
 						noValidate
 						autoComplete="off"
 					>
 						<Grid container spacing={2}>
-							<Grid item xs={12}>
+                        <Grid item xs={12} md={12}>
 
 								{/* <div className='form_add_training_general'> */}
 								<Box
@@ -282,111 +289,7 @@ const UpdateTraining = () => {
 			<button className="post_training" onClick={(e) => handleSubmit(e)}><FormattedMessage id="project.global.buttons.save" /></button>
                   
 		</Box>
-
-
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //     <div>
-    //     <Errors errors={backendErrors} onClose={() => setBackendErrors(null)}/>
-    //     <div className="card bg-light border-dark centrado-update-add">
-    //         <h5 className="card-header">
-    //         <FormattedMessage id="project.trainings.fields.updateTraining"/>
-    //         </h5>
-    //         <div className="card-body">
-    //             <form ref={node => form = node} 
-    //                 className="needs-validation" noValidate onSubmit={e => handleSubmit(e)}>
-    //                 <div className="form-group row">
-    //                 <label htmlFor="trainingDate" className="col-md-4 col-form-label">
-    //                 <FormattedMessage id="project.global.fields.date"/>
-    //                 </label>
-    //                 <div className="col-md-8">
-    //                     <input type="date" id="trainingDate" className="form-control"
-    //                         value={trainingDate}
-    //                         onChange={e => setTrainingDate(e.target.value)}
-    //                         autoFocus
-    //                         required/>
-    //                     <div className="invalid-feedback">
-    //                         <FormattedMessage id='project.global.validator.required'/>
-    //                     </div>
-    //                 </div>
-    //             </div>
-    //                 <div className="form-group row">
-    //                     <label htmlFor="firstName" className="col-md-12 col-form-label">
-    //                     <FormattedMessage id="project.statistics.fields.duration"/>
-    //                     </label>
-    //                     <div className="col-md-12">
-    //                         <textarea  type="text" id="durationMinutes" className="form-control"
-    //                             value={durationMinutes}
-    //                             onChange={e => setDurationMinutes(e.target.value)}
-    //                             autoFocus
-    //                             required/>
-    //                         <div className="invalid-feedback">
-    //                             <FormattedMessage id='project.global.validator.required'/>
-    //                         </div>
-    //                     </div>
-    //                 </div>
-    //                 <div className="form-group row">
-    //                     <label htmlFor="firstName" className="col-md-12 col-form-label">
-    //                     <FormattedMessage id="project.exercises.fields.description"/>
-    //                     </label>
-    //                     <div className="col-md-12">
-    //                         <textarea  type="text" id="description" className="form-control"
-    //                             value={description}
-    //                             onChange={e => setDescription(e.target.value)}
-    //                             autoFocus
-    //                             required/>
-    //                         <div className="invalid-feedback">
-    //                             <FormattedMessage id='project.global.validator.required'/>
-    //                         </div>
-    //                     </div>
-    //                 </div>
-    //                 <div className="form-group row">
-    //                     <label htmlFor="firstName" className="col-md-12 col-form-label">
-    //                     <FormattedMessage id="project.trainings.fields.objective"/>
-    //                     </label>
-    //                     <div className="col-md-12">
-    //                         <textarea type="text" id="objective" className="form-control"
-    //                             value={objective}
-    //                             onChange={e => setObjective(e.target.value)}
-    //                             autoFocus
-    //                             required/>
-    //                         <div className="invalid-feedback">
-    //                             <FormattedMessage id='project.global.validator.required'/>
-    //                         </div>
-    //                     </div>
-    //                 </div>
-    //                 <div className="form-group row">
-    //                     <div className="offset-md-8 col-md-1">
-    //                         <button type="submit" className="btn btn-primary">
-    //                             <FormattedMessage id="project.global.buttons.save"/>
-    //                         </button>
-    //                     </div>
-    //                 </div>
-    //             </form>
-    //         </div>
-    //     </div>
-    // </div>
+</Box>
 );
 }
 

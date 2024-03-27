@@ -214,10 +214,17 @@ const UpdateGameStatistics = () => {
 	const palette = ['red', 'blue', 'green'];
 	return (
 
-		<div className=''>
-			<Box
+
+        <Box
+            display="flex"
+            alignItems="center"
+            p={1}
+            sx={{
+                flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
+            }}
+        >
+<Box
 				sx={{
-					maxWidth: { xs: 320, sm: 835 },
 					bgcolor: 'background.dark',
 					boxShadow: 1,
 					borderRadius: 4,
@@ -1519,7 +1526,7 @@ const UpdateGameStatistics = () => {
 
 
 
-		</div>
+		</Box>
 
 	);
 }

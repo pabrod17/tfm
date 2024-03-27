@@ -11,5 +11,6 @@ export {default as UpdateSeason} from './components/UpdateSeason';
 export {default as FindSeasonsBetweenTwoDates} from './components/FindSeasonsBetweenTwoDates';
 export {default as FindSeasonsBetweenTwoDatesResult} from './components/FindSeasonsBetweenTwoDatesResult';
 export {default as SeasonsHome} from './components/SeasonsHome';
+export {default as UpdateSeasonTeam} from './components/UpdateSeasonTeam';
 
 export default {actions, actionsTypes, reducer, selectors};

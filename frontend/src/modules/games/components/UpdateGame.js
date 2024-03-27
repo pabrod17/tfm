@@ -77,7 +77,7 @@ const UpdateGame = () => {
         const handleUpdateGameStretching = (tabValue, dispatch) => {
             setValue(tabValue);
             dispatch(actions.findGameById(id, () => {
-                dispatch(actionsStatistics.findStatisticsByGame(id, () => history(`/games/update/${id}/statistics/${tabValue}`)));
+                dispatch(actionsStatistics.findStatisticsByGame(id, () => history(`/games/update/${id}/stretching/${tabValue}`)));
             }));
             history(`/games/update/${id}/stretching/${tabValue}`);
         }
@@ -102,11 +102,16 @@ const UpdateGame = () => {
 
 
         return(
-<div className=''>
-
+            <Box
+            display="flex"
+            alignItems="center"
+            p={1}
+            sx={{
+                flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
+            }}
+        >
 <Box
     sx={{
-        maxWidth: { xs: 320, sm: 835 },
         bgcolor: 'background.dark',
         boxShadow: 1,
         borderRadius: 4,
@@ -123,7 +128,9 @@ const UpdateGame = () => {
                             background: "linear-gradient(-35deg, #081971 30%, #7C0C0C 80% )",
                             bgcolor:"red",
                             boxShadow: 6,
-                            borderRadius: 3
+                            borderRadius: 3,
+                            borderColor:"black",
+                            boxShadow:"0 10px 50px rgb(0, 0, 0)"
                         }}
         >
           <Tab sx={{ color: '#40FF00', fontSize: "30px", padding:"20px"}} onClick={() => handleUpdateGame(dispatch)} label="General"  />
@@ -149,7 +156,8 @@ const UpdateGame = () => {
 				flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 				flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
                 borderColor:"black",
-                boxShadow:"0 10px 50px rgb(0, 0, 0)"
+                boxShadow:"0 10px 50px rgb(0, 0, 0)",
+                width:"1000px"
             }}
 		>
             <Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
@@ -258,7 +266,7 @@ const UpdateGame = () => {
 			<button className="post_game" onClick={(e) => handleSubmit(e)}><FormattedMessage id="project.global.buttons.save" /></button>
                   
 		</Box>
-</div>
+</Box>
 );
 }
 

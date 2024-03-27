@@ -9,6 +9,22 @@ import Card from "react-bootstrap/Card";
 import {FormattedDate} from 'react-intl';
 import {FormattedMessage} from 'react-intl';
 import logo22 from '../../seasons/components/red3.jpeg';
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 900,
+  background: 'linear-gradient(-45deg, #711ce0 0%, #000046 60% )',  // Cambiado a background
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+  borderRadius: "20px",
+
+};
 
 const CardSeason = ({ dispatch, history, item, handleOpenDescriptionModal }) => {
   const formattedStartDate = new Date(item.startDate).getFullYear();
@@ -94,11 +110,34 @@ const Seasons = ({seasons}) => {
       setModalDescription(description);
       setOpenDescription(true);
     };
+  
+    const handleClose = () => {
+      setModalDescription('');
+      setOpenDescription(false);
+    };
 
     return(
         <div class="card-group lesions_contaner">
             <SeasonsList items={seasons} fallback={"Loading..."} dispatch = {dispatch} history={history} handleOpenDescription={handleOpenDescription} />
-        </div>
+            {(openDescription) && (
+        <div className="modal-backdrop" onClick={handleClose}></div>
+      )}
+      {openDescription && (
+        <Modal
+          open={openDescription}
+          onClose={handleClose}
+          aria-labelledby="child-modal-title"
+          aria-describedby="child-modal-description"
+        >
+          <Box sx={{ ...style, width: "auto" }}>
+            <h2 id="child-modal-title" className="color_modal_title_game" sx={{ mb: '100px' }} ><FormattedMessage id="project.exercises.fields.description" />:</h2>
+            <p id="child-modal-description">
+              {modalDescription}
+            </p>
+          </Box>
+        </Modal>
+      )}
+          </div>
     )
 
 };

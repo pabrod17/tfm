@@ -65,7 +65,7 @@ const AddSeason = () => {
 			m={10}
 			sx={{
 				border: '2px solid grey',
-				background: "linear-gradient(300deg,rgb(0, 191, 255),rgb(148, 0, 211),rgb(0, 0, 255))",
+				background: "linear-gradient(-45deg, #711ce0 0%, #000046 60% )",
 				borderRadius: "20px",
 				flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 				flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
@@ -82,7 +82,7 @@ const AddSeason = () => {
 					<Box
 						component="form"
 						sx={{
-                            background: "linear-gradient(300deg,rgb(0, 191, 255),rgb(148, 0, 211),rgb(0, 0, 255))",
+							background: "linear-gradient(-45deg, #711ce0 0%, #000046 60% )",
 							borderRadius: "20px",
 							borderColor:"black",
                             boxShadow:"0 10px 50px rgb(0, 0, 0)"

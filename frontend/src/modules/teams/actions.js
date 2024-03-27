@@ -75,9 +75,9 @@ export const addTeamToSeason = (seasonId, teamId, onSuccess, onErrors) => {
     return {type: actionTypes.ADD_TEAM_TO_SEASON_COMPLETED};
 }
 
-const findTeamsToSeasonCompleted = teams => ({
+const findTeamsToSeasonCompleted =teamsBySeasonId => ({
     type: actionTypes.FIND_TEAMS_TO_SEASON_COMPLETED,
-    teams
+    teamsBySeasonId
 });
 
 export const findTeamsToSeason = (seasonId, onSuccess, onErrors) => dispatch => {
@@ -86,4 +86,9 @@ export const findTeamsToSeason = (seasonId, onSuccess, onErrors) => dispatch => 
             onSuccess();
         },
         onErrors);
+}
+
+export const removeTeamToSeason = (seasonId, teamId, onSuccess, onErrors) => {
+    backend.teamService.removeTeamToSeason(seasonId, teamId, onSuccess(), onErrors);
+    return {type: actionTypes.REMOVE_TEAM_TO_SEASON_COMPLETED};
 }

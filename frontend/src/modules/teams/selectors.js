@@ -19,5 +19,7 @@ export const getTeamName = (teams, id) => {
     }
 
     return team.teamName;
-
 }
+
+export const getTeamsBySeasonId = state =>
+    getModuleState(state).teamsBySeasonId;

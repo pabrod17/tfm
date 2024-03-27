@@ -26,3 +26,5 @@ export const addTeamToSeason = (seasonId, teamId, onSuccess, onErrors) =>
 export const findTeamsToSeason = (seasonId, onSuccess, onErrors) => 
     appFetch(`/teams/${seasonId}/season`, config('GET'), onSuccess, onErrors);
 
+export const removeTeamToSeason = (seasonId, teamId, onSuccess, onErrors) =>
+    appFetch(`/teams/${seasonId}/season?teamId=${teamId}`, config('DELETE'), onSuccess, onErrors);

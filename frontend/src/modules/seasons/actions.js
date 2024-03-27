@@ -47,8 +47,8 @@ const updateSeasonCompleted = season => ({
     season
 });
 
-export const updateSeason =  (id, startDate, endDate, calendario, onSuccess, onErrors) => dispatch =>{
-    backend.seasonService.updateSeason(id, startDate, endDate, calendario,
+export const updateSeason =  (id, startDate, endDate, seasonName, description, onSuccess, onErrors) => dispatch =>{
+    backend.seasonService.updateSeason(id, startDate, endDate, seasonName, description,
         season => {
             dispatch(updateSeasonCompleted(season));
             onSuccess();

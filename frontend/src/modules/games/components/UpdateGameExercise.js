@@ -162,11 +162,16 @@ const UpdateGameExercise = () => {
         }
 
     return(
-<div className=''>
-
+        <Box
+            display="flex"
+            alignItems="center"
+            p={1}
+            sx={{
+                flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
+            }}
+        >
 <Box
     sx={{
-        maxWidth: { xs: 320, sm: 835 },
         bgcolor: 'background.dark',
         boxShadow: 1,
         borderRadius: 4,
@@ -214,7 +219,6 @@ const UpdateGameExercise = () => {
 			alignItems="center"
 			p={1}
 			sx={{
-                maxWidth: { xs: 300, sm: 920 },
 				border: '2px solid grey',
                 background: "linear-gradient(-35deg, #081971 30%, #7C0C0C 80% )",
 				borderRadius: "20px",
@@ -281,7 +285,7 @@ const UpdateGameExercise = () => {
 
 
 
-</div>
+</Box>
 );
 }
 

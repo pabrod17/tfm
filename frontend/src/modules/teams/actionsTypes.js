@@ -6,3 +6,5 @@ export const ADD_TEAM_COMPLETED = "project/teams/addTeamCompleted";
 export const REMOVE_TEAM_COMPLETED = "project/teams/removeTeamCompleted";
 export const ADD_TEAM_TO_SEASON_COMPLETED = "project/teams/addTeamToSeasonCompleted";
 export const FIND_TEAMS_TO_SEASON_COMPLETED = "project/teams/findTeamsToSeasonCompleted";
+export const REMOVE_TEAM_TO_SEASON_COMPLETED = "project/teams/removeTeamToSeasonCompleted";
+
