@@ -3,6 +3,7 @@ package es.udc.paproject.backend.rest.controllers;
 import java.util.List;
 import java.util.Locale;
 
+import es.udc.paproject.backend.model.exceptions.UsedTrainingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -92,8 +93,16 @@ public class TeamController {
         teamService.removeTeam(userId, id);
     }
 
+    @DeleteMapping("/{seasonId}/season")
+    public void removeTeamToSeason(@PathVariable Long seasonId, @RequestParam Long teamId) throws InstanceNotFoundException,
+            UsedTrainingException {
+        teamService.removeTeamToSeason(teamId, seasonId);
+    }
+
     @PostMapping("/{seasonId}/addTeamtoSeason")
-    public void addTeamToSeason(@RequestAttribute Long userId, @PathVariable Long seasonId, @RequestParam Long teamId) throws InstanceNotFoundException {
-        teamService.addTeamToSeason(seasonId, teamId, userId);
+    public void addTeamToSeason(@RequestAttribute Long userId, @PathVariable Long seasonId, @RequestParam List<Long> teamId) throws InstanceNotFoundException {
+        for (Long id : teamId) {
+            teamService.addTeamToSeason(seasonId, id, userId);
+        }
     }
 }

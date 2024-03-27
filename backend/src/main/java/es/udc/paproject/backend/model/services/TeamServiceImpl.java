@@ -5,16 +5,12 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import es.udc.paproject.backend.model.entities.*;
+import es.udc.paproject.backend.model.exceptions.UsedTrainingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import es.udc.paproject.backend.model.entities.Season;
-import es.udc.paproject.backend.model.entities.SeasonTeam;
-import es.udc.paproject.backend.model.entities.SeasonTeamDao;
-import es.udc.paproject.backend.model.entities.Team;
-import es.udc.paproject.backend.model.entities.TeamDao;
-import es.udc.paproject.backend.model.entities.User;
 import es.udc.paproject.backend.model.exceptions.DuplicateInstanceException;
 import es.udc.paproject.backend.model.exceptions.InstanceNotFoundException;
 
@@ -24,6 +20,9 @@ public class TeamServiceImpl implements TeamService {
 
     @Autowired
     private TeamDao teamDao;
+
+    @Autowired
+    private SeasonDao seasonDao;
 
     @Autowired
     private SeasonTeamDao seasonTeamDao;
@@ -215,6 +214,26 @@ public class TeamServiceImpl implements TeamService {
         }
         if(id == -1) {
             throw new InstanceNotFoundException("project.entities.team", teamId);
+        }
+    }
+
+    @Override
+    public void removeTeamToSeason(Long teamId, Long seasonId)
+            throws InstanceNotFoundException, UsedTrainingException {
+
+        if (!seasonDao.existsById(seasonId)) {
+            throw new InstanceNotFoundException("project.entities.training");
+        }
+        if (!teamDao.existsById(teamId)) {
+            throw new InstanceNotFoundException("project.entities.player");
+        }
+
+        List<SeasonTeam> seasonTeams = (List<SeasonTeam>) seasonTeamDao.findAll();
+
+        for (SeasonTeam seasonTeam : seasonTeams) {
+            if(seasonTeam.getSeason() != null && seasonTeam.getSeason().getId() == seasonId && seasonTeam.getTeam().getId() == teamId){
+                seasonTeamDao.delete(seasonTeam);
+            }
         }
     }
 
