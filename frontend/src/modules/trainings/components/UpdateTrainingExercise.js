@@ -23,6 +23,7 @@ import dayjs from 'dayjs';
 import { DataGrid } from '@mui/x-data-grid';
 import * as selectorsExercises from '../../exercises/selectors';
 import * as actionsExercises from '../../exercises/actions';
+import * as actionsStretchings from '../../stretchings/actions';
 import Exercises from '../../exercises/components/Exercises';
 import { Button, IconButton, Pagination, Stack, Toolbar } from '@mui/material';
 import ToggleOffIcon from '@mui/icons-material/ToggleOff';
@@ -135,11 +136,19 @@ const UpdateTrainingExercise = () => {
         }
         const handleUpdateTrainingExercise = (tabValue, dispatch) => {
             setValue(tabValue);
-            dispatch(actions.findTrainingById(id, () => history(`/trainings/update/${id}/exercise/${tabValue}`)));
+            console.log("PRIMERO PARA exercises: ", tabValue)
+            dispatch(actions.findTrainingById(id, () => {
+                dispatch(actionsExercises.findExercisesByTrainingId(id, () => history(`/trainings/update/${id}/exercise/${tabValue}`)));
+            }));
+            history(`/trainings/update/${id}/exercise/${tabValue}`);
         }
         const handleUpdateTrainingStretching = (tabValue, dispatch) => {
             setValue(tabValue);
-            dispatch(actions.findTrainingById(id, () => history(`/trainings/update/${id}/stretching/${tabValue}`)));
+            console.log("PRIMERO PARA STRETCHINGS: ", tabValue)
+            dispatch(actions.findTrainingById(id, () => {
+                dispatch(actionsStretchings.findStretchingsByTrainingId(id, () => history(`/trainings/update/${id}/stretching/${tabValue}`)));
+            }));
+            history(`/trainings/update/${id}/stretching/${tabValue}`);
         }
 
         const handleAddExerciseToTraining = (dispatch, history) => {

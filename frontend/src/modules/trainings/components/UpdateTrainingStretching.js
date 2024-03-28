@@ -23,6 +23,7 @@ import dayjs from 'dayjs';
 import { DataGrid } from '@mui/x-data-grid';
 import * as selectorsStretchings from '../../stretchings/selectors';
 import * as actionsStretchings from '../../stretchings/actions';
+import * as actionsExercises from '../../exercises/actions';
 import ExercisesByTraining from '../../exercises/components/ExercisesByTraining';
 import StretchingsByTraining from '../../stretchings/components/StretchingsByTraining';
 
@@ -140,11 +141,19 @@ const UpdateTrainingStretching = () => {
         }
         const handleUpdateTrainingExercise = (tabValue, dispatch) => {
             setValue(tabValue);
-            dispatch(actions.findTrainingById(id, () => history(`/trainings/update/${id}/exercise/${tabValue}`)));
+            console.log("PRIMERO PARA exercises: ", tabValue)
+            dispatch(actions.findTrainingById(id, () => {
+                dispatch(actionsExercises.findExercisesByTrainingId(id, () => history(`/trainings/update/${id}/exercise/${tabValue}`)));
+            }));
+            history(`/trainings/update/${id}/exercise/${tabValue}`);
         }
         const handleUpdateTrainingStretching = (tabValue, dispatch) => {
             setValue(tabValue);
-            dispatch(actions.findTrainingById(id, () => history(`/trainings/update/${id}/stretching/${tabValue}`)));
+            console.log("PRIMERO PARA STRETCHINGS: ", tabValue)
+            dispatch(actions.findTrainingById(id, () => {
+                dispatch(actionsStretchings.findStretchingsByTrainingId(id, () => history(`/trainings/update/${id}/stretching/${tabValue}`)));
+            }));
+            history(`/trainings/update/${id}/stretching/${tabValue}`);
         }
 
         function dateConversor(trainingDate) {
