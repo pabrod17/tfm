@@ -23,6 +23,8 @@ import dayjs from 'dayjs';
 import { DataGrid } from '@mui/x-data-grid';
 import * as selectorsTeams from '../../teams/selectors';
 import * as actionsTeams from '../../teams/actions';
+import * as actionsTrainings from '../../trainings/actions';
+import * as actionsGames from '../../games/actions';
 import * as actionsStatistics from '../../statistics/actions';
 import Exercises from '../../exercises/components/Exercises';
 import { Button, IconButton, Pagination, Stack, Toolbar } from '@mui/material';
@@ -69,6 +71,9 @@ const UpdateSeasonTeam = () => {
         if (!teamssListAll.teams) {
             dispatch(actionsTeams.findAllTeams(() => history(`/seasons/update/${id}/team/${1}`)));
         } else {
+
+            console.log("AQUIIII: ", teamsList)
+            console.log("AQUIIII 222: ", teamssListAll)
             filteredTeams = teamssListAll.teams;
             filteredTeams = teamssListAll.teams.filter(team => {
                 return !teamsList || !teamsList.some(ex => ex.id === team.id);
@@ -125,11 +130,17 @@ const UpdateSeasonTeam = () => {
     }
     const handleUpdateSeasonTrainings = (tabValue, dispatch) => {
         setValue(tabValue);
-        dispatch(actions.findSeasonById(id, () => history(`/seasons/update/${id}/training/${tabValue}`)));
+        dispatch(actions.findSeasonById(id, () => {
+            dispatch(actionsTrainings.findTrainingsBySeasonId(id, () => history(`/seasons/update/${id}/training/${tabValue}`)));
+        }));
+        history(`/seasons/update/${id}/training/${tabValue}`);
     }
     const handleUpdateSeasonGames = (tabValue, dispatch) => {
         setValue(tabValue);
-        dispatch(actions.findSeasonById(id, () => history(`/seasons/update/${id}/game/${tabValue}`)));
+        dispatch(actions.findSeasonById(id, () => {
+            dispatch(actionsGames.findGamesBySeasonId(id, () => history(`/seasons/update/${id}/game/${tabValue}`)));
+        }));
+        history(`/seasons/update/${id}/game/${tabValue}`);
     }
 
     return (
@@ -151,7 +162,7 @@ const UpdateSeasonTeam = () => {
                     textAlign: 'center', // Centra el contenido dentro del Box
                 }}>
 
-                <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                <Box sx={{boxShadow:"0 10px 50px rgb(0, 0, 0)" }}>
                     <Tabs value={value} onChange={handleChange} aria-label="basic tabs example"
                         sx={{
                             background: "linear-gradient(-45deg, #711ce0 0%, #000046 60% )",

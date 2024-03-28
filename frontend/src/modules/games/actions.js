@@ -98,9 +98,9 @@ export const findGamesByTeamId = (teamId, onSuccess, onErrors) => dispatch => {
         onErrors);
 }
 
-const findGamesBySeasonIdCompleted = games => ({
+const findGamesBySeasonIdCompleted = gamesBySeasonId => ({
     type: actionTypes.FIND_GAMES_BY_SEASON_ID_COMPLETED,
-    games
+    gamesBySeasonId
 });
 
 export const findGamesBySeasonId = (seasonId, onSuccess, onErrors) => dispatch => {

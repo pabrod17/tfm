@@ -78,7 +78,8 @@ import UpdateTrainingStretching from '../../trainings/components/UpdateTrainingS
 import UpdateGameExercise from '../../games/components/UpdateGameExercise';
 import UpdateGameStretching from '../../games/components/UpdateGameStretching';
 import SeasonsHome from '../../seasons/components/SeasonsHome';
-import { UpdateSeasonTeam } from '../../seasons';
+import { UpdateSeasonTeam, UpdateSeasonTraining } from '../../seasons';
+import UpdateSeasonGame from '../../seasons/components/UpdateSeasonGame.js';
 
 const Body = ({ isDark, setIsDark}) => {
 
@@ -114,8 +115,8 @@ const Body = ({ isDark, setIsDark}) => {
                 {loggedIn && <Route exact path="/seasons/addSeason" element={<AddSeason/>}></Route>}
                 {loggedIn && <Route exact path="/seasons/update/:id" element={<UpdateSeason/>}></Route>}
                 {loggedIn && <Route exact path="/seasons/update/:id/team/:tabValue" element={<UpdateSeasonTeam/>}></Route>}
-                {/* {loggedIn && <Route exact path="/seasons/update/:id/training/:tabValue" element={<UpdateSeasonTraining/>}></Route>}
-                {loggedIn && <Route exact path="/seasons/update/:id/game/:tabValue" element={<UpdateSeasonGame/>}></Route>} */}
+                {loggedIn && <Route exact path="/seasons/update/:id/training/:tabValue" element={<UpdateSeasonTraining/>}></Route>}
+                {loggedIn && <Route exact path="/seasons/update/:id/game/:tabValue" element={<UpdateSeasonGame/>}></Route>}
 
                 {loggedIn && <Route exact path="/players/home/training/:id:trainingId" element={<FindPlayersByTraining/>}></Route>}
                 {loggedIn && <Route exact path="/players/home/game/:id:gameId" element={<FindPlayersByGame/>}></Route>}

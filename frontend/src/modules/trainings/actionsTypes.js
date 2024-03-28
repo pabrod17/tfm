@@ -6,6 +6,7 @@ export const FIND_TRAININGS_BY_TEAM_ID_COMPLETED = "project/trainings/findTraini
 export const FIND_TRAININGS_BY_SEASON_ID_COMPLETED = "project/trainings/findTrainingsBySeasonIdCompleted";
 export const ADD_TRAINING_COMPLETED = "project/trainings/addTrainingCompleted";
 export const ADD_PLAYER_TO_TRAINING_COMPLETED = "project/trainings/addPlayerToTrainingCompleted";
+export const ADD_TRAINING_TO_SEASON_COMPLETED = "project/trainings/addTrainingToSeasonCompleted";
 export const UPDATE_TRAINING_COMPLETED = "project/trainings/updateTrainingCompleted";
 export const REMOVE_TRAINING_COMPLETED = "project/trainings/removeTrainingCompleted";
 export const REMOVE_PLAYER_TO_TRAINING_COMPLETED = "project/trainings/removePlayerToTrainingCompleted";

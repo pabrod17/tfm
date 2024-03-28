@@ -100,9 +100,9 @@ export const findTrainingsByTeamId = (teamId, onSuccess, onErrors) => dispatch =
         onErrors);
 }
 
-const findTrainingsBySeasonIdCompleted = trainings => ({
+const findTrainingsBySeasonIdCompleted = trainingsBySeasonId => ({
     type: actionTypes.FIND_TRAININGS_BY_SEASON_ID_COMPLETED,
-    trainings
+    trainingsBySeasonId
 });
 
 export const findTrainingsBySeasonId = (seasonId, onSuccess, onErrors) => dispatch => {

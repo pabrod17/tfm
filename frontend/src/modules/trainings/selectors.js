@@ -5,3 +5,6 @@ export const getOneTraining = state =>
 
 export const getAllTrainings = state =>
     getModuleState(state);
+
+export const getTrainingsBySeasonId = state =>
+    getModuleState(state).trainingsBySeasonId;

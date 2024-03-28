@@ -233,7 +233,7 @@ const UpdateGameStatistics = () => {
 					textAlign: 'center', // Centra el contenido dentro del Box
 				}}>
 
-				<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                <Box sx={{boxShadow:"0 10px 50px rgb(0, 0, 0)" }}>
 					<Tabs value={value} onChange={handleChange} aria-label="basic tabs example"
 						sx={{
 							background: "linear-gradient(-35deg, #081971 30%, #7C0C0C 80% )",

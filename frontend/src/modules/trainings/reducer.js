@@ -4,7 +4,8 @@ import * as actionTypes from './actionsTypes';
 
 const initialState = {
     training: null,
-    trainings:null
+    trainings:null,
+    trainingsBySeasonId:null
 };
 
 const training = (state = initialState.training, action) => {
@@ -39,8 +40,17 @@ const trainings = (state = initialState.trainings, action) => {
             return action.trainings;
         case actionTypes.FIND_TRAININGS_BY_TEAM_ID_COMPLETED:
             return action.trainings;
+        default:
+            return state;
+    }
+}
+
+const trainingsBySeasonId = (state = initialState.trainingsBySeasonId, action) => {
+
+    switch (action.type) {
+        
         case actionTypes.FIND_TRAININGS_BY_SEASON_ID_COMPLETED:
-            return action.trainings;
+            return action.trainingsBySeasonId;
         default:
             return state;
     }
@@ -48,7 +58,8 @@ const trainings = (state = initialState.trainings, action) => {
 
 const reducer = combineReducers({
     training,
-    trainings
+    trainings,
+    trainingsBySeasonId
 });
 
 export default reducer;

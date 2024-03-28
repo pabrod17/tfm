@@ -5,3 +5,6 @@ export const getOneGame = state =>
 
 export const getAllGames = state =>
     getModuleState(state);
+
+export const getGamesBySeasonId = state =>
+    getModuleState(state).gamesBySeasonId;

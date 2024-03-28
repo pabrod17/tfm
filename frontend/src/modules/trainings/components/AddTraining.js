@@ -274,7 +274,7 @@ const AddTraining = () => {
 										</DemoContainer>
 									</LocalizationProvider>
 									<h4 class="margin_training_form"
-									>Time</h4>
+									><FormattedMessage id="project.statistics.fields.duration" /></h4>
 									<LocalizationProvider dateAdapter={AdapterDayjs}>
 										<DemoContainer components={['TimePicker']}>
 											<TimePicker
