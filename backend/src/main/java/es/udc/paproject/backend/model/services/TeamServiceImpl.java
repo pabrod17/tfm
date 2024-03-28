@@ -172,7 +172,7 @@ public class TeamServiceImpl implements TeamService {
         List<Team> teams = new ArrayList<>();
 
         if (seasonTeams.isEmpty()) {
-            throw new InstanceNotFoundException("project.entities.seasonTeam");
+            return teams;
         }
 
         for (SeasonTeam seasonTeam : seasonTeams) {
@@ -182,7 +182,7 @@ public class TeamServiceImpl implements TeamService {
         }
 
         if (teams.isEmpty()) {
-            throw new InstanceNotFoundException("project.entities.team");
+            return teams;
         }
 
         return teams;

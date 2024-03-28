@@ -5,22 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import es.udc.paproject.backend.model.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import es.udc.paproject.backend.model.entities.Player;
-import es.udc.paproject.backend.model.entities.PlayerDao;
-import es.udc.paproject.backend.model.entities.PlayerTraining;
-import es.udc.paproject.backend.model.entities.PlayerTrainingDao;
-import es.udc.paproject.backend.model.entities.SeasonDao;
-import es.udc.paproject.backend.model.entities.SeasonTeam;
-import es.udc.paproject.backend.model.entities.SeasonTeamDao;
-import es.udc.paproject.backend.model.entities.TeamDao;
-import es.udc.paproject.backend.model.entities.Training;
-import es.udc.paproject.backend.model.entities.TrainingDao;
-import es.udc.paproject.backend.model.entities.UserDao;
 import es.udc.paproject.backend.model.exceptions.InstanceNotFoundException;
 import es.udc.paproject.backend.model.exceptions.StartDateAfterEndDateException;
 import es.udc.paproject.backend.model.exceptions.UsedTrainingException;
@@ -137,7 +127,7 @@ public class TrainingServiceImpl implements TrainingService {
         }
 
         if (trainings.isEmpty()) {
-            throw new InstanceNotFoundException("project.entities.training");
+            return trainings;
         }
         return trainings;
     }
@@ -208,7 +198,7 @@ public class TrainingServiceImpl implements TrainingService {
             }
 
             if (trainings.isEmpty()) {
-                throw new InstanceNotFoundException("project.entities.training");
+                return trainings;
             }
 
             trainings = trainings.stream().distinct().collect(Collectors.toList());
@@ -234,7 +224,7 @@ public class TrainingServiceImpl implements TrainingService {
         }
 
         if (trainings.isEmpty()) {
-            throw new InstanceNotFoundException("project.entities.training");
+            return trainings;
         }
 
         trainings = trainings.stream().distinct().collect(Collectors.toList());
@@ -261,7 +251,7 @@ public class TrainingServiceImpl implements TrainingService {
             }
 
             if (trainings.isEmpty()) {
-                throw new InstanceNotFoundException("project.entities.training");
+                return trainings;
             }
 
             trainings = trainings.stream().distinct().collect(Collectors.toList());
@@ -275,9 +265,9 @@ public class TrainingServiceImpl implements TrainingService {
         if (!seasonDao.existsById(seasonId)) {
             throw new InstanceNotFoundException("project.entities.season");
         }
+        List<Training> trainings = new ArrayList<>();
 
         List<SeasonTeam> seasonTeams = seasonTeamDao.findSeasonTeamsBySeasonId(seasonId);
-        List<Training> trainings = new ArrayList<>();
         List<Training> trainings2 = new ArrayList<>();
 
         for(SeasonTeam seasonTeam : seasonTeams){
@@ -288,7 +278,7 @@ public class TrainingServiceImpl implements TrainingService {
         }
 
         if (trainings.isEmpty()) {
-            throw new InstanceNotFoundException("project.entities.training");
+            return trainings;
         }
 
         trainings = trainings.stream().distinct().collect(Collectors.toList());

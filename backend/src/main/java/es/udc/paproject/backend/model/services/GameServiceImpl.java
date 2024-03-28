@@ -130,7 +130,7 @@ public class GameServiceImpl implements GameService {
         }
 
         if (games.isEmpty()) {
-            throw new InstanceNotFoundException("project.entities.game");
+            return games;
         }
 
         return games;
@@ -198,7 +198,7 @@ public class GameServiceImpl implements GameService {
             }
 
             if (games.isEmpty()) {
-                throw new InstanceNotFoundException("project.entities.game");
+                return games;
             }
 
             games = games.stream().distinct().collect(Collectors.toList());
@@ -225,7 +225,7 @@ public class GameServiceImpl implements GameService {
         }
 
         if (games.isEmpty()) {
-            throw new InstanceNotFoundException("project.entities.game");
+            return games;
         }
 
         games = games.stream().distinct().collect(Collectors.toList());
@@ -252,7 +252,7 @@ public class GameServiceImpl implements GameService {
         }
 
         if (games.isEmpty()) {
-            throw new InstanceNotFoundException("project.entities.game");
+            return games;
         }
 
         games = games.stream().distinct().collect(Collectors.toList());
@@ -278,7 +278,7 @@ public class GameServiceImpl implements GameService {
         }
 
         if (games.isEmpty()) {
-            throw new InstanceNotFoundException("project.entities.training");
+            return games;
         }
 
         games = games.stream().distinct().collect(Collectors.toList());
