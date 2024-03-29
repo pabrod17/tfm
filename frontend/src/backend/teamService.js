@@ -9,7 +9,15 @@ export const findTeamById = (id, onSuccess) =>
 export const findTeamByName = (name, onSuccess) =>{
     appFetch(`/teams/?name=${name}`, config('GET'), onSuccess);
 }
-
+export const findTeamsByName = (name, onSuccess) =>{
+    appFetch(`/teams/name?name=${name}`, config('GET'), onSuccess);
+}
+export const findTeamsByArena = (arena, onSuccess, onErrors) =>{
+    appFetch(`/teams/arena?arena=${arena}`, config('GET'), onSuccess, onErrors);
+}
+export const findTeamsByOwner = (owner, onSuccess) =>{
+    appFetch(`/teams/owner?owner=${owner}`, config('GET'), onSuccess);
+}
 export const addTeam = (name, onSuccess, onErrors) =>
     appFetch(`/teams?name=${name}`, config('POST'), onSuccess, onErrors);
 

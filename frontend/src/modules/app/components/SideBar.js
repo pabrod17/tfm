@@ -81,7 +81,8 @@ const Sidebar = () => {
     }
     else
     if(to === "/teams/all") {
-      history('/teams/all');
+      dispatch(actionsTeams.findAllTeams(() => history('/teams/home')));
+      history('/teams/home');
     }
     else
     if(to === "/seasons/home") {

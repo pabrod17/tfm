@@ -6,7 +6,7 @@ import AppGlobalComponents from './AppGlobalComponents';
 import Home from './Home';
 import {Login, SignUp, UpdateProfile, ChangePassword, Logout} from '../../users';
 import users from '../../users';
-import {FindTeamsResult, FindTeams, RemoveTeam, AddTeam, UpdateTeam, TeamView} from '../../teams';
+import {FindTeamsResult, FindTeams, RemoveTeam, AddTeam, UpdateTeam, TeamView, TeamsHome} from '../../teams';
 import video from './video-2.mp4';
 import fondoCanasta from './fondoCanasta.jpg';
 import FindTeamByName from '../../teams/components/FindTeamByName';
@@ -103,6 +103,17 @@ const Body = ({ isDark, setIsDark}) => {
                 {loggedIn && <Route exact path="/teams/all/name" element={<FindTeamByName/>}></Route>}
                 {loggedIn && <Route exact path="/teams/all/name/result/:teamName" element={<FindTeamByNameResult/>}></Route>}
                 
+                {loggedIn && <Route exact path="/teams/home" element={<TeamsHome/>}></Route>}
+                {/* {loggedIn && <Route exact path="/teams/addTeam" element={<AddTeam/>}></Route>}
+                {loggedIn && <Route exact path="/teams/update/:id" element={<UpdateTeam/>}></Route>}
+
+                {loggedIn && <Route exact path="/teams/update/:id/season/:tabValue" element={<UpdateTeamSeason/>}></Route>}
+                {loggedIn && <Route exact path="/teams/update/:id/training/:tabValue" element={<UpdateTeamTraining/>}></Route>}
+                {loggedIn && <Route exact path="/teams/update/:id/game/:tabValue" element={<UpdateTeamGame/>}></Route>}
+                {loggedIn && <Route exact path="/teams/update/:id/player/:tabValue" element={<UpdateTeamPlayer/>}></Route>}
+                {loggedIn && <Route exact path="/teams/update/:id/play/:tabValue" element={<UpdateTeamPlay/>}></Route>} */}
+
+
                 {loggedIn && <Route exact path="/seasons/all" element={<FindSeasons/>}></Route>}
                 {loggedIn && <Route exact path="/seasons/new" element={<AddSeason/>}></Route>}
                 {loggedIn && <Route exact path="/seasons/update" element={<UpdateSeason/>}></Route>}

@@ -36,6 +36,63 @@ export const findTeamByName = teamName => dispatch => {
         team => dispatch(findTeamtByNameCompleted(team)));
 }
 
+
+
+
+
+const findTeamsByNameCompleted = teams => ({
+    type: actionTypes.FIND_TEAMS_BY_NAME_COMPLETED,
+    teams
+});
+
+export const findTeamsByName = (name, onSuccess, onErrors) => dispatch => {
+    backend.teamService.findTeamsByName(name,
+        teams => {
+            dispatch(findTeamsByNameCompleted(teams));
+        },
+        onSuccess,
+        onErrors
+    );
+};
+
+const findTeamsByArenaCompleted = teams => ({
+    type: actionTypes.FIND_TEAMS_BY_ARENA_COMPLETED,
+    teams
+});
+
+export const findTeamsByArena = (arena, onSuccess, onErrors) => dispatch => {
+    backend.teamService.findTeamsByArena(arena,
+        teams => {
+            dispatch(findTeamsByArenaCompleted(teams));
+        },
+        onSuccess,
+        onErrors
+    );
+};
+
+const findTeamsByOwnerCompleted = teams => ({
+    type: actionTypes.FIND_TEAMS_BY_OWNER_COMPLETED,
+    teams
+});
+
+
+export const findTeamsByOwner = (owner, onSuccess, onErrors) => dispatch => {
+    backend.teamService.findTeamsByOwner(owner,
+        teams => {
+            dispatch(findTeamsByOwnerCompleted(teams));
+        },
+        onSuccess,
+        onErrors
+    );
+};
+
+
+
+
+
+
+
+
 const updateTeamCompleted = team => ({
     type: actionTypes.UPDATE_TEAM_COMPLETED,
     team

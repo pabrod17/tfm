@@ -56,12 +56,11 @@ const TeamCard = ({ dispatch, seasonId, history, item, handleOpenDescriptionModa
             </div>
             <div className="flip-card-back">
               <div className="card_team">
-                <a onClick={() => handleOpenDescriptionModal(item.description)} class="without_underline">
-                  <span className="desc scroll_efect">{item.description}</span>
-                </a>
-                <hr></hr>
-                <a onClick={() => handleOpenOwnerNameModal(item.ownerName)} class="button_apple" >
-                  <span class="desc scroll_efect_objective">{item.ownerName}</span>
+              <span class="title">{item.ownerName} &nbsp;
+            </span>
+            <hr></hr>
+                <a onClick={() => handleOpenDescriptionModal(item.description)} class="button_apple">
+                  <span className="desc desc3 scroll_efect_team">{item.description}</span>
                 </a>
                 <hr></hr>
               </div>

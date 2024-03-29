@@ -1,51 +1,69 @@
-import React from 'react';
+import React, { useEffect, useState, createContext } from 'react';
 import PropTypes from 'prop-types';
 import {useDispatch} from 'react-redux';
 import * as actions from '../actions';
 import { useNavigate } from 'react-router';
 import Card from "react-bootstrap/Card";
-import logo22 from './logo22.png';
+import logo22 from './red5.jpeg';
 import {FormattedMessage} from 'react-intl';
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
 
-function List({ items, fallback, dispatch, history}) {
-    if (!items || items.length === 0) {
-        dispatch(actions.findAllTeams());
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 900,
+  background: 'linear-gradient(-45deg, #0816dd 0%, #000046 60% )',  // Cambiado a background
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+  borderRadius: "20px",
 
-        return fallback;
-    } else {
-      return items.map(item => {
-        return <div className="images-teams" key={item.id}>
-          
-            <Card className="images-teams" style={{ width: '20rem' }}>
-            <img class="card-img-top" src={logo22} alt="Card image cap"/>
-              <Card.Body>
-                <Card.Title className="link-color"><FormattedMessage id='project.seasons.fields.name'/>: {item.teamName}</Card.Title>
+};
 
-              </Card.Body>
-              {/* <ListGroup className="list-group-flush">
-                <ListGroupItem>Cras justo odio</ListGroupItem>
-                <ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
-                <ListGroupItem>Vestibulum at eros</ListGroupItem>
-              </ListGroup> */}
-              <Card.Body>
-                        <button className="btn btn-primary" type="button" 
-                          onClick={() => handleRemoveItem(item.id, dispatch, history)}>
-                          <span className="fas fa-trash-alt"></span>
-                        </button>
-                        <button className="btn btn-secondary" type="button" 
-                          onClick={() => handleUpdateItem(item.id, dispatch, history)}>
-                          <span className="fas fa-pencil-alt"></span>
-                        </button>
-                        <button className="btn btn-info" type="button" 
-                          onClick={() => handleViewTeam(item.id, dispatch, history)}>
-                          {"View"}
-                        </button>
-
-              </Card.Body>
-            </Card>
-        </div>;
-      });
-    }
+const CardTeam = ({ dispatch, history, item, handleOpenDescriptionModal }) => {
+  return (
+    <div key={item.id}>
+      <div>
+        <div className="flip-card">
+          <div className="flip-card-inner">
+            <div className="flip-card-front">
+              <div className="card_team">
+                <img src={logo22} alt="Person" className="card__image_team"></img>
+                <span class="title">{item.teamName}</span>
+                <div className="buttons">
+                <button class="post">
+                    {item.arenaName}
+                  </button>
+               </div>
+                  </div>
+                </div>
+                <div class="flip-card-back">
+            <div class="card_team">
+            <span class="title">{item.ownerName} &nbsp;
+            </span>
+            <hr></hr>
+          <a onClick={() => handleOpenDescriptionModal(item.description)} class="button_apple">
+            <span class="desc desc3 scroll_efect_team">{item.description}</span>
+          </a>
+          <hr></hr>
+            </div>
+                  <ul class="social-icons trashgrande trash_position">
+                  <li><a type="button" onClick={() => handleRemoveItem(item.id, dispatch, history)}>
+                    <i class="fa fa-trash"></i></a></li>
+                  </ul>
+                  <ul class="social-icons configgrande config_position">
+                      <li><a type="button" onClick={() => handleUpdateItem(item.id, dispatch, history)}>
+                      <i class="fa fa-wrench"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  );
   }
 
 const handleRemoveItem = (id, dispatch, history) => {
@@ -57,21 +75,59 @@ const handleUpdateItem = (id, dispatch, history) => {
   dispatch(actions.findTeamById(id, () => history('/teams/update')));
 }
 
-const handleViewTeam = (id, dispatch, history) => {
-  dispatch(actions.findTeamById(id, () => history(`/teams/view/${id}`)));
+function TeamList({ items, fallback, dispatch, history, handleOpenDescription }) {
+  if (!items || items.length === 0) {
+    dispatch(actions.findAllTeams(() => history('/teams/home')));
+    return fallback;
+  } else {
+    return items.map(item => (
+      <CardTeam dispatch={dispatch} history={history} key={item.id} item={item} handleOpenDescriptionModal={handleOpenDescription} />
+    ));
+  }
 }
-
 
 
 const Teams = ({teams}) => {
     const dispatch = useDispatch();
     const history = useNavigate();
 
+    const [modalDescription, setModalDescription] = useState('');
+    const [openDescription, setOpenDescription] = React.useState(false);
+
+    const handleOpenDescription = (description) => {
+      setModalDescription(description);
+      setOpenDescription(true);
+    };
+  
+    const handleClose = () => {
+      setModalDescription('');
+      setOpenDescription(false);
+    };
+
     return(
-      <div className="card-group">
-          <List items={teams} fallback={"Loading..."} dispatch = {dispatch} history={history} />
-      </div>
-        )
+      <div className="card-group lesions_contaner">
+          <TeamList items={teams} fallback={"Loading..."} dispatch = {dispatch} history={history} handleOpenDescription={handleOpenDescription} />
+          {(openDescription) && (
+        <div className="modal-backdrop" onClick={handleClose}></div>
+      )}
+      {openDescription && (
+        <Modal
+          open={openDescription}
+          onClose={handleClose}
+          aria-labelledby="child-modal-title"
+          aria-describedby="child-modal-description"
+        >
+          <Box sx={{ ...style, width: "auto" }}>
+            <h2 id="child-modal-title" className="color_modal_title_game" sx={{ mb: '100px' }} ><FormattedMessage id="project.exercises.fields.description" />:</h2>
+            <p id="child-modal-description">
+              {modalDescription}
+            </p>
+          </Box>
+        </Modal>
+      )}
+          </div>
+    )
+
 };
 
 Teams.propTypes = {

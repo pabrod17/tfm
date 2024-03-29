@@ -5,7 +5,8 @@ import * as actionTypes from './actionsTypes';
 const initialState = {
     team: null,
     teams: null,
-    teamsBySeasonId: null
+    teamsBySeasonId: null,
+    teamsSearch:null
 };
 
 const team = (state = initialState.team, action) => {
@@ -47,16 +48,36 @@ const teams = (state = initialState.teams, action) => {
 
         case actionTypes.FIND_ALL_TEAMS_COMPLETED:
             return action.teams;
+        case actionTypes.FIND_TEAMS_BY_NAME_COMPLETED:
+            return action.teams;
+        case actionTypes.FIND_TEAMS_BY_ARENA_COMPLETED:
+            return action.teams;
+        case actionTypes.FIND_TEAMS_BY_OWNER_COMPLETED:
+            return action.teams;
         default:
             return state;
 
     }
 }
 
+const teamsSearch = (state = initialState.teamsSearch, action) => {
+
+    switch (action.type) {
+
+
+
+        default:
+            return state;
+
+    }
+
+}
+
 const reducer = combineReducers({
     team,
     teams,
-    teamsBySeasonId
+    teamsBySeasonId,
+    teamsSearch
 });
 
 export default reducer;

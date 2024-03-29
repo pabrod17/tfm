@@ -155,7 +155,6 @@ const UpdateSeasonTeam = () => {
             <Box
                 sx={{
                     bgcolor: 'background.dark',
-                    boxShadow: 1,
                     borderRadius: 4,
                     margin: 'auto',  // Centra horizontalmente
                     marginTop: '80px', // Ajusta la distancia desde la parte superior según sea necesario
