@@ -1,8 +1,6 @@
 package es.udc.paproject.backend.model.services;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import es.udc.paproject.backend.model.entities.*;
@@ -139,6 +137,66 @@ public class TeamServiceImpl implements TeamService {
         }
 
         return team;
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Team> findTeamsByName(Long userId, String teamName) throws InstanceNotFoundException {
+
+        User user = userService.loginFromId(userId);
+        List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(user.getId());
+        List<Team> teams = new ArrayList<>();
+        Set<Team> teamSet = new HashSet<>();
+
+        for (SeasonTeam seasonTeam : seasonTeams) {
+            if(seasonTeam.getTeam() != null && seasonTeam.getTeam().getTeamName().equals(teamName)){
+                teamSet.add(seasonTeam.getTeam());
+            }
+        }
+        if (teamSet.isEmpty()) {
+            return teams;
+        }
+        return new ArrayList<>(teamSet);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Team> findTeamsByArena(Long userId, String arena) throws InstanceNotFoundException {
+
+        User user = userService.loginFromId(userId);
+        List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(user.getId());
+        Set<Team> teamSet = new HashSet<>();
+        List<Team> teams = new ArrayList<>();
+
+        for (SeasonTeam seasonTeam : seasonTeams) {
+            if(seasonTeam.getTeam() != null && seasonTeam.getTeam().getArenaName().equals(arena)){
+                teamSet.add(seasonTeam.getTeam());
+            }
+        }
+        if (teamSet.isEmpty()) {
+            return teams;
+        }
+        return new ArrayList<>(teamSet);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Team> findTeamsByOwner(Long userId, String owner) throws InstanceNotFoundException {
+
+        User user = userService.loginFromId(userId);
+        List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(user.getId());
+        List<Team> teams = new ArrayList<>();
+        Set<Team> teamSet = new HashSet<>();
+
+        for (SeasonTeam seasonTeam : seasonTeams) {
+            if(seasonTeam.getTeam() != null && seasonTeam.getTeam().getOwnerName().equals(owner)){
+                teamSet.add(seasonTeam.getTeam());
+            }
+        }
+        if (teamSet.isEmpty()) {
+            return teams;
+        }
+        return new ArrayList<>(teamSet);
     }
 
     @Override

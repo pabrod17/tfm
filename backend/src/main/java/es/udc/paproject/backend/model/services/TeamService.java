@@ -19,6 +19,12 @@ public interface TeamService {
 
     List<Team> findAllTeams(Long userId) throws InstanceNotFoundException;
 
+    List<Team> findTeamsByName(Long userId,  String teamName) throws InstanceNotFoundException;
+
+    List<Team> findTeamsByArena(Long userId,  String arena) throws InstanceNotFoundException;
+
+    List<Team> findTeamsByOwner(Long userId,  String owner) throws InstanceNotFoundException;
+
     List<Team> findTeamsToSeason(Long userId, Long seasonId) throws InstanceNotFoundException;
 
     void removeTeam(Long userId, Long teamId) throws InstanceNotFoundException;
