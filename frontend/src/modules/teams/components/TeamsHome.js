@@ -57,7 +57,7 @@ const TeamsHome = () => {
         console.log("holaa1 22222: ", teamName)
 
         event.preventDefault();
-        if(selectedOption && selectedOption.label === 'Name') {
+        if(selectedOption && selectedOption.label === 'Nombre') {
             dispatch(actions.findTeamsByName(
                 teamName.trim(),
                 errors => setBackendErrors(errors),
@@ -65,10 +65,10 @@ const TeamsHome = () => {
 
 
         }
-        if(selectedOption && selectedOption.label === 'Arena') {
+        if(selectedOption && selectedOption.label === 'Estadio') {
             dispatch(actions.findTeamsByArena(arenaName.trim()));
         }
-        if(selectedOption && selectedOption.label === 'Owner') {
+        if(selectedOption && selectedOption.label === 'Propietario') {
             dispatch(actions.findTeamsByOwner(ownerName.trim()));
 
         }
@@ -128,9 +128,9 @@ const TeamsHome = () => {
     );
 
     const options = [
-        { label: 'Name' },
-        { label: 'Arena' },
-        { label: 'Owner' }]
+        { label: 'Nombre' },
+        { label: 'Estadio' },
+        { label: 'Propietario' }]
 
     const handleTeamName = (event, value) => {
         if (value) {
@@ -189,7 +189,9 @@ const TeamsHome = () => {
                             getOptionLabel={(option) => option.label}
                             renderInput={(params) => <TextField {...params}
                                 InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular' } }}
-                                label="TYPE"
+                                label={
+                                    <FormattedMessage id="project.global.buttons.filter" />
+                                }
                                 sx={{
                                     boxShadow: 1,
                                     border: '2px solid grey',
@@ -202,13 +204,12 @@ const TeamsHome = () => {
                             />}
                             PaperComponent={CustomPaperComponentOption} // Usar el componente personalizado para las opciones
                             onChange={handleOptionSelect}
-
                         />
                     </Box>
 
                     {selectedOption && (
                         <div>
-                            {selectedOption.label === 'Name' && (
+                            {selectedOption.label === 'Nombre' && (
                                 <Box
                                     sx={{
                                         display: 'flex', // Mostrar los Autocompletados en fila
@@ -221,7 +222,9 @@ const TeamsHome = () => {
                                         getOptionLabel={(team) => team.teamName}
                                         renderInput={(params) => <TextField {...params}
                                             InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular' } }}
-                                            label="Name"
+                                            label={
+                                                <FormattedMessage id="project.teams.fields.name" />
+                                            }
                                             sx={{
                                                 background: 'linear-gradient(-45deg, #0816dd 0%, #000046 60% )',
                                                 boxShadow: 1,
@@ -242,7 +245,7 @@ const TeamsHome = () => {
                                     </button>
                                 </Box>
                             )}
-                            {selectedOption.label === 'Arena' && (
+                            {selectedOption.label === 'Estadio' && (
                                 <Box
                                     sx={{
                                         display: 'flex', // Mostrar los Autocompletados en fila
@@ -255,8 +258,9 @@ const TeamsHome = () => {
                                         getOptionLabel={(team) => team.arenaName}
                                         renderInput={(params) => <TextField {...params}
                                             InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular' } }}
-                                            label="Arena"
-                                            sx={{
+                                            label={
+                                                <FormattedMessage id="project.teams.fields.arena" />
+                                            }                                            sx={{
                                                 background: 'linear-gradient(-45deg, #0816dd 0%, #000046 60% )',
                                                 boxShadow: 1,
                                                 border: '2px solid grey',
@@ -276,7 +280,7 @@ const TeamsHome = () => {
                                     </button>
                                 </Box>
                             )}
-                            {selectedOption.label === 'Owner' && (
+                            {selectedOption.label === 'Propietario' && (
                                 <Box
                                     sx={{
                                         display: 'flex', // Mostrar los Autocompletados en fila
@@ -289,8 +293,9 @@ const TeamsHome = () => {
                                         getOptionLabel={(team) => team.ownerName}
                                         renderInput={(params) => <TextField {...params}
                                             InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular' } }}
-                                            label="Owner"
-                                            sx={{
+                                            label={
+                                                <FormattedMessage id="project.teams.fields.owner" />
+                                            }                                                         sx={{
                                                 background: 'linear-gradient(-45deg, #0816dd 0%, #000046 60% )',
                                                 boxShadow: 1,
                                                 border: '2px solid grey',

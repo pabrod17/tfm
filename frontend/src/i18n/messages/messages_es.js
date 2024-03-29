@@ -7,6 +7,8 @@ export default {
     
     'project.common.ErrorDialog.title': 'Error',
 
+    'project.global.buttons.filter': 'Filtro',
+
     'project.global.buttons.find': 'Buscar',
     'project.global.buttons.cancel': 'Cancelar',
     'project.global.buttons.close': 'Cerrar',
@@ -244,7 +246,7 @@ export default {
 
     'project.teams.fields.name' : 'Nombre',
     'project.teams.fields.arena' : 'Estadio',
-    'project.teams.fields.owner' : 'Propiedad',
+    'project.teams.fields.owner' : 'Propietario',
 
     'project.teams.fields.addTeamToSeason' : 'Añadir Equipo a Temporada',
 

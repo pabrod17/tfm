@@ -7,6 +7,8 @@ export default {
 
     'project.common.ErrorDialog.title': 'Error',
 
+    'project.global.buttons.filter': 'Filter',
+
     'project.global.buttons.find': 'Search',
     'project.global.buttons.cancel': 'Cancel',
     'project.global.buttons.close': 'Close',
