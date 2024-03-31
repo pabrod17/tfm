@@ -112,7 +112,7 @@ export default {
     'project.players.fields.addPlayer' : 'Añadir Jugador',
     'project.players.fields.updatePlayer' : 'Actualizar Jugador',
     'project.players.fields.name' : 'Nombre',
-    'project.players.fields.playerName' : 'Nombre Jugador',
+    'project.players.fields.playerName' : 'Nombre',
     'project.players.fields.primaryLastName' : 'Primer Apellido',
     'project.players.fields.secondLastName' : 'Segundo Apellido',
     'project.players.fields.position' : 'Posición',

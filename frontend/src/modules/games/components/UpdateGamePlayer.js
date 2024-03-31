@@ -21,17 +21,20 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import dayjs from 'dayjs';
 import { DataGrid } from '@mui/x-data-grid';
-import * as selectorsExercises from '../../exercises/selectors';
-import * as actionsExercises from '../../exercises/actions';
-import * as actionsStatistics from '../../statistics/actions';
-import Exercises from '../../exercises/components/Exercises';
-import { Button, IconButton, Pagination, Stack, Toolbar } from '@mui/material';
-import ToggleOffIcon from '@mui/icons-material/ToggleOff';
-import ExercisesByTraining from '../../exercises/components/ExercisesByTraining';
-import ExercisesByGame from '../../exercises/components/ExercisesByGame';
+import * as selectorsPlayers from '../../players/selectors';
 import * as actionsPlayers from '../../players/actions';
+import ExercisesByTraining from '../../exercises/components/ExercisesByTraining';
+import StretchingsByTraining from '../../stretchings/components/StretchingsByTraining';
+import * as actionsGames from '../../games/actions';
+import StretchingsByGame from '../../stretchings/components/StretchingsByGame';
+import * as actionsStatistics from '../../statistics/actions';
+import PlayersByGame from '../../players/components/PlayersByGame';
 
-const UpdateGameExercise = () => {
+import * as actionsTeams from '../../teams/actions';
+import * as selectorsTeams from '../../teams/selectors';
+
+
+const UpdateGamePlayer = () => {
     const game = useSelector(selectors.getOneGame);
 
     const {id} = useParams();
@@ -39,82 +42,102 @@ const UpdateGameExercise = () => {
     const dispatch = useDispatch();
     const history = useNavigate();
     const [backendErrors, setBackendErrors] = useState(null);
-    const { exerciseType, tabValue } = useParams();
+    const { stretchingType, tabValue } = useParams();
     const [value, setValue] = useState(parseInt(tabValue, 10) || 0);
     const [showTable, setShowTable] = useState(true);
-	const [exerciseIds, setExerciseIds] = useState(null);
-    const [rowsExercises, setRowsExercises] = useState([]);
-    const [columnsExercises, setColumnsExercises] = useState([]);
-
-    console.log("dentro PARA exercises: ", tabValue)
-
+	const [playerIds, setPlayerIds] = useState(null);
+    const [rowsPlayers, setRowsPlayers] = useState([]);
+    const [columnsStretchings, setColumnsPlayers] = useState([]);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-
-    let filteredExercises = [];
+    let filteredPlayers = [];
     let form;
 
-    const exercisesList = useSelector(selectorsExercises.getExercisesByGameId);
-    const exercisesListAll = useSelector(selectorsExercises.getAllExercises);
+    const playerList = useSelector(selectorsPlayers.getPlayersByGameId);
+    const playerListAll = useSelector(selectorsPlayers.getAllPlayers);
+    const teamssListAll = useSelector(selectorsTeams.getAllTeams);
 
     useEffect(() => {
-        if (!exercisesList) {
-            dispatch(actionsExercises.findExercisesByGameId(id, () => history(`/games/update/${id}/exercise/${1}`)));
-            dispatch(actions.findGameById(id, () => history(`/games/update/${id}/exercise/${1}`)));
+        console.log("PRIMEROOOOOO, ", playerList)
+        if (!playerList) {
+            console.log("PRIMEROOOOOO 111111, ", playerList)
+            dispatch(actionsPlayers.findPlayersByGame(id, () => history(`/games/update/${id}/player/${4}`)));
+            dispatch(actions.findGameById(id, () => history(`/games/update/${id}/player/${4}`)));
+            dispatch(actionsTeams.findAllTeams());
         }
-    }, [dispatch, exercisesList, history, id]);
+    }, [dispatch, playerList, history, id]);
 
     useEffect(() => {
-        if (!exercisesListAll.exercises) {
-            dispatch(actionsExercises.findAllExercises(() => history(`/games/update/${id}/exercise/${1}`)));
+        if (!teamssListAll.teams) {
+            dispatch(actionsTeams.findAllTeams(() => history(`/games/update/${id}/player/${4}`)));
         } else {
-            filteredExercises = exercisesListAll.exercises;
-            filteredExercises = exercisesListAll.exercises.filter(exercise => {
-                    return !exercisesList || !exercisesList.some(ex => ex.id === exercise.id);
+        if (!playerListAll.players) {
+            dispatch(actionsPlayers.findPlayersByUserId(() => history(`/games/update/${id}/player/${4}`)));
+        } else {
+            filteredPlayers = playerListAll.players;
+                filteredPlayers = playerListAll.players.filter(player => {
+                    return !playerList || !playerList.some(ex => ex.id === player.id);
                 });
-
-            const columnsExercises2 = [
+        
+        
+            const columnsPlayers2 = [
                 { field: 'id', headerName: 'ID', width: 70 },
-                { field: 'name', headerName: <FormattedMessage id="project.exercises.fields.name"/>, width: 160 },
-                { field: 'type', headerName: <FormattedMessage id="project.exercises.fields.typeOnly" />, width: 160,
+                { field: 'name', headerName: <FormattedMessage id="project.players.fields.playerName"/>, width: 160 },
+                { field: 'primaryLastName', headerName: <FormattedMessage id="project.players.fields.primaryLastName" />, width: 160},
+                { field: 'position', headerName: <FormattedMessage id="project.players.fields.position" />, width: 160,
                 renderCell: (params) => (
                     <div style={{ backgroundColor: 
-                        params.row.type === 'Tactico' ? '#DD2476' : // Azul oscuro
-                        params.row.type === 'Tecnica' ? '#FF512F' : // Verde esmeralda
-                        params.row.type === 'Fisico' ? '#FFD166' : // Amarillo
-                        params.row.type === 'Global' ? '#0f9b0f' : // Blanco
-                        params.row.type === 'Especifico' ? '#000000' : // Gris claro
-                        params.row.type === 'Psicologico' ? '#FF6B6B' : // Rosa
-                        params.row.type === 'Estrategia' ? '#8E2DE2' : // Morado oscuro
-                        params.row.type === 'PrePartido' ? '#00FFF3' : // Negro
+                        params.row.position === 'Base' ? '#DD2476' : // Azul oscuro
+                        params.row.position === 'Escolta' ? '#FF512F' : // Verde esmeralda
+                        params.row.position === 'Alero' ? '#8E2DE2' : // Amarillo
+                        params.row.position === 'AlaPivot' ? '#FF6B6B' : // Blanco
+                        params.row.position === 'Pivot' ? '#000000' : // Gris claro
                         'green', // Por defecto
                         borderRadius: '5px',
-                        padding: '5px'                    }}>
+                        padding: '5px'
+                    }}>
                     {params.value}
                     </div>
                 ), },
-                { field: 'description', headerName: <FormattedMessage id="project.exercises.fields.description" />, width: 160 },
-                { field: 'objective', headerName: <FormattedMessage id="project.exercises.fields.objective" />, width: 160 },
+                { field: 'injured', headerName: <FormattedMessage id="project.lesion.fields.injured" />, width: 160,
+                renderCell: (params) => (
+                    <div style={{ backgroundColor: 
+                        params.row.injured ? '#0f9b0f' : // Azul oscuro
+                        !params.row.injured ? '#FF0000' : // Verde esmeralda
+                        'green', // Por defecto
+                        borderRadius: '5px',
+                        padding: '5px'
+                    }}>
+                    {params.value}
+                    </div>
+                ), },
+                { field: 'teamName', headerName: <FormattedMessage id="project.teams.fields.team" />, width: 160},
+                { field: 'email', headerName: <FormattedMessage id="project.players.fields.email" />, width: 160},
+
             ];
-            setColumnsExercises(columnsExercises2);
+            setColumnsPlayers(columnsPlayers2);
 
-            if (filteredExercises) {
-                const newRowsExercises = filteredExercises.map(exercise => ({
-                    id: exercise.id,
-                    name: exercise.exerciseName,
-                    type: exercise.exerciseType,
-                    description: exercise.description,
-                    objective: exercise.objective
+        
+            if (filteredPlayers) {
+                const newRowsPlayers = filteredPlayers.map(player => ({
+                    id: player.id,
+                    name: player.playerName,
+                    primaryLastName: player.primaryLastName,
+                    position: player.position,
+                    injured: player.injured,
+                    teamName: teamssListAll.teams.find(team => team.id === player.teamId)?.teamName || '',
+                    email: player.email,
+
                 }));
-                setRowsExercises(newRowsExercises);
+                // Actualizar el estado de rowsStretchings
+                setRowsPlayers(newRowsPlayers);
             }
-
+        
         }
-    }, [dispatch, exercisesListAll, history]);
-
-
+    }
+}   , [dispatch, playerListAll, teamssListAll, history]);
 
 
 
@@ -127,11 +150,12 @@ const UpdateGameExercise = () => {
 
         event.preventDefault();
     
-        dispatch(actionsExercises.addExerciseToGame(id, exerciseIds,
+        dispatch(actionsGames.addPlayerToGame(id, playerIds,
             errors => setBackendErrors(errors),
             ));
             window.location.reload();
         }
+
         const handleUpdateGame = (tabValue, dispatch) => {
             setValue(tabValue);
             dispatch(actions.findGameById(id, () => history(`/games/update/${id}`)));
@@ -261,8 +285,8 @@ const UpdateGameExercise = () => {
                                     borderColor:"black",
                                     boxShadow:"0 10px 50px rgb(0, 0, 0)"
 								}}
-								rows={rowsExercises}
-								columns={columnsExercises}
+								rows={rowsPlayers}
+								columns={columnsStretchings}
 								initialState={{
 									pagination: {
 										paginationModel: { page: 0, pageSize: 5 },
@@ -272,7 +296,7 @@ const UpdateGameExercise = () => {
 								pageSizeOptions={[5, 10]}
 								checkboxSelection
 								onRowSelectionModelChange={(newRowSelectionModelTeam) => {
-                                        setExerciseIds((prevExerciseId) => {
+                                        setPlayerIds((prevStretchingId) => {
 										console.log(" seasonnnn PRIMEROOOOO: ", newRowSelectionModelTeam);
 										return newRowSelectionModelTeam;
 										 });
@@ -289,7 +313,7 @@ const UpdateGameExercise = () => {
 		</Box>
 )}
 
-            <ExercisesByGame exercises={exercisesList} gameId={id} />
+            <PlayersByGame players={playerList} gameId={id} />
 
             </Box>
 
@@ -299,4 +323,4 @@ const UpdateGameExercise = () => {
 );
 }
 
-export default UpdateGameExercise;
+export default UpdateGamePlayer;

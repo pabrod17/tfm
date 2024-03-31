@@ -80,6 +80,7 @@ import UpdateGameStretching from '../../games/components/UpdateGameStretching';
 import SeasonsHome from '../../seasons/components/SeasonsHome';
 import { UpdateSeasonTeam, UpdateSeasonTraining } from '../../seasons';
 import UpdateSeasonGame from '../../seasons/components/UpdateSeasonGame.js';
+import { UpdateGamePlayer } from '../../games';
 
 const Body = ({ isDark, setIsDark}) => {
 
@@ -168,6 +169,7 @@ const Body = ({ isDark, setIsDark}) => {
                 {loggedIn && <Route exact path="/games/update/:id/exercise/:tabValue" element={<UpdateGameExercise/>}></Route>}
                 {loggedIn && <Route exact path="/games/update/:id/stretching/:tabValue" element={<UpdateGameStretching/>}></Route>}
                 {loggedIn && <Route exact path="/games/update/:id/statistics/:tabValue" element={<UpdateGameStatistics/>}></Route>}
+                {loggedIn && <Route exact path="/games/update/:id/player/:tabValue" element={<UpdateGamePlayer/>}></Route>}
 
                 {loggedIn && <Route exact path="/games/home" element={<GamesHome/>}></Route>}
                 {loggedIn && <Route exact path="/games/addGame" element={<AddGame/>}></Route>}

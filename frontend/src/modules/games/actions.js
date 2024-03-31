@@ -144,8 +144,8 @@ export const addGameWithSeason = (seasonId, gameDate, rival, description, onSucc
         onErrors);
 }
 
-export const addPlayerToGame = (playerId, gameId, onSuccess, onErrors) => {
-    backend.gameService.addPlayerToGame(playerId, gameId, onSuccess, onErrors);
+export const addPlayerToGame = (gameId, playerId, onSuccess, onErrors) => {
+    backend.gameService.addPlayerToGame(gameId, playerId, onSuccess, onErrors);
     return {type: actionTypes.ADD_PLAYER_TO_GAME_COMPLETED};
 }
 

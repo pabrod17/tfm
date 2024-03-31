@@ -27,6 +27,7 @@ import ExercisesByTraining from '../../exercises/components/ExercisesByTraining'
 import StretchingsByTraining from '../../stretchings/components/StretchingsByTraining';
 import * as actionsStatistics from '../../statistics/actions';
 import StretchingsByGame from '../../stretchings/components/StretchingsByGame';
+import * as actionsPlayers from '../../players/actions';
 
 const UpdateGameStretching = () => {
     const game = useSelector(selectors.getOneGame);
@@ -63,7 +64,7 @@ const UpdateGameStretching = () => {
 
     useEffect(() => {
         if (!stretchingListAll.stretchings) {
-            dispatch(actionsStretchings.findAllStretchings(() => history(`/trainings/update/${id}/stretching/${2}`)));
+            dispatch(actionsStretchings.findAllStretchings(() => history(`/games/update/${id}/stretching/${2}`)));
         } else {
             filteredStretchings = stretchingListAll.stretchings;
                 filteredStretchings = stretchingListAll.stretchings.filter(stretching => {
@@ -155,6 +156,14 @@ const UpdateGameStretching = () => {
             history(`/games/update/${id}/statistics/${tabValue}`);
         }
 
+        const handleUpdateGamePlayer = (tabValue, dispatch) => {
+            setValue(tabValue);
+            dispatch(actions.findGameById(id, () => {
+                dispatch(actionsPlayers.findPlayersByGame(id, () => history(`/games/update/${id}/player/${tabValue}`)));
+            }));
+            history(`/games/update/${id}/player/${tabValue}`);
+        }
+
         function dateConversor(trainingDate) {
             const dateObj2 = new Date(trainingDate);
             dateObj2.setDate(dateObj2.getDate() + 1);
@@ -199,6 +208,7 @@ const UpdateGameStretching = () => {
           <Tab value={1} sx={{ color: '#f5af19', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateGameExercise(1, dispatch)} label="Exercises"  />
           <Tab value={2} sx={{ color: 'rgb(255, 0, 247)', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateGameStretching(2, dispatch)} label="Stretchings"  />
           <Tab value={3} sx={{ color: 'rgb(0, 217, 255)', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateGameStatistics(3, dispatch)} label="Statistics"/>
+          <Tab value={4} sx={{ color: '#ff0000', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateGamePlayer(4, dispatch)} label="Players"/>
         </Tabs>
       </Box>
       <input type="checkbox" class="theme-checkbox" onClick={() => setShowTable(!showTable)}/>

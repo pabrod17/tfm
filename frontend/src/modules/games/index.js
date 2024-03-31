@@ -9,4 +9,6 @@ export {default as GameView} from './components/GameView';
 export {default as UpdateGame} from './components/UpdateGame';
 export {default as UpdateGameStretching} from './components/UpdateGameStretching';
 export {default as UpdateGameExercise} from './components/UpdateGameExercise';
+export {default as UpdateGamePlayer} from './components/UpdateGamePlayer';
+
 export default {actions, actionsTypes, reducer, selectors};

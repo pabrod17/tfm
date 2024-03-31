@@ -17,6 +17,7 @@ import dayjs from 'dayjs';
 import * as actionsExercises from '../../exercises/actions';
 import * as actionsStretchings from '../../stretchings/actions';
 import * as actionsStatistics from '../../statistics/actions';
+import * as actionsPlayers from '../../players/actions';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
@@ -90,6 +91,17 @@ const UpdateGame = () => {
             history(`/games/update/${id}/statistics/${tabValue}`);
         }
 
+        const handleUpdateGamePlayer = (tabValue, dispatch) => {
+            setValue(tabValue);
+            dispatch(actions.findGameById(id, () => {
+                dispatch(actionsPlayers.findPlayersByGame(id, () => history(`/games/update/${id}/player/${tabValue}`)));
+            }));
+            history(`/games/update/${id}/player/${tabValue}`);
+        }
+
+
+
+        
         function dateConversor(gameDate) {
             const dateObj2 = new Date(gameDate);
             dateObj2.setDate(dateObj2.getDate() + 1);
@@ -137,6 +149,7 @@ const UpdateGame = () => {
           <Tab sx={{ color: '#f5af19', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateGameExercise(1, dispatch)} label="Exercises"  />
           <Tab sx={{ color: 'rgb(255, 0, 247)', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateGameStretching(2, dispatch)} label="Stretchings"/>
           <Tab sx={{ color: 'rgb(0, 217, 255)', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateGameStatistics(3, dispatch)} label="Statistics"/>
+          <Tab sx={{ color: '#ff0000', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateGamePlayer(4, dispatch)} label="Players"/>
         </Tabs>
       </Box>
 </Box>

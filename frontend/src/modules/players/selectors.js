@@ -5,3 +5,9 @@ export const getPlayer = state =>
 
 export const getAllPlayers = state =>
     getModuleState(state);
+
+export const getPlayersByGameId = state =>
+    getModuleState(state).playersByGameId;
+
+export const getPlayersByTrainingId = state =>
+    getModuleState(state).playersByTrainingId;

@@ -4,7 +4,9 @@ import * as actionTypes from './actionsTypes';
 
 const initialState = {
     player: null,
-    players: null
+    players: null,
+    playersByGameId: null,
+    playersByTrainingId: null
 };
 
 const player = (state = initialState.player, action) => {
@@ -37,6 +39,8 @@ const players = (state = initialState.players, action) => {
 
         case actionTypes.FIND_PLAYERS_BY_COMPLETED_NAME_OF_TEAM_COMPLETED:
             return action.players;
+        case actionTypes.FIND_PLAYERS_BY_USER_ID_COMPLETED:
+            return action.players;
         case actionTypes.FIND_PLAYERS_OF_TEAM_COMPLETED:
             return action.players;
         case actionTypes.FIND_PLAYERS_BY_POSITION_AND_TEAM_COMPLETED:
@@ -45,10 +49,28 @@ const players = (state = initialState.players, action) => {
             return action.players;
         case actionTypes.FIND_PLAYERS_WITH_ONE_TYPE_LESION_COMPLETED:
             return action.players;
+        default:
+            return state;
+    }
+}
+
+const playersByGameId = (state = initialState.playersByGameId, action) => {
+
+    switch (action.type) {
+
         case actionTypes.FIND_PLAYERS_BY_GAME_COMPLETED:
-            return action.players;
+            return action.playersByGameId;
+        default:
+            return state;
+    }
+}
+
+const playersByTrainingId = (state = initialState.playersByTrainingId, action) => {
+
+    switch (action.type) {
+
         case actionTypes.FIND_PLAYERS_BY_TRAINING_COMPLETED:
-            return action.players;
+            return action.playersByTrainingId;
         default:
             return state;
     }
@@ -56,7 +78,9 @@ const players = (state = initialState.players, action) => {
 
 const reducer = combineReducers({
     player,
-    players
+    players,
+    playersByGameId,
+    playersByTrainingId
 });
 
 export default reducer;

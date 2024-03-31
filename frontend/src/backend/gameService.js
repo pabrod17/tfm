@@ -37,8 +37,8 @@ export const addGameWithSeason = (seasonId, gameDate, rival, description, onSucc
     appFetch(`/games?seasonId=${seasonId}&gameDate=${gameDate}&rival=${rival}&description=${description}`, config('POST'), onSuccess, onErrors);
 
 
-export const addPlayerToGame = (playerId, gameId, onSuccess, onErrors) =>
-    appFetch(`/games/${playerId}/addPlayerToGame?gameId=${gameId}`, config('POST'), onSuccess, onErrors);
+export const addPlayerToGame = (gameId, playerId, onSuccess, onErrors) =>
+    appFetch(`/games/${gameId}/addPlayerToGame?playerId=${playerId}`, config('POST'), onSuccess, onErrors);
 
 export const updateGame = (gameId, gameDate, rival, description, onSuccess, onErrors) =>
     appFetch(`/games/${gameId}?gameDate=${gameDate}&rival=${rival}&description=${description}`, config('PUT'), onSuccess, onErrors);

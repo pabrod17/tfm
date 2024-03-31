@@ -785,6 +785,24 @@ max-height: 360px;
   box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
 }
 
+.card_player {
+  width: 360px;
+  height: 360px;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 20px;
+  background: linear-gradient(#00ffff, #ff02ff );
+  background: linear-gradient(300deg,rgb(66, 0, 197),rgb(136,0,55),rgb(47, 0, 255));
+  
+  background: linear-gradient(300deg,rgb(66, 0, 197),rgb(136,0,55),rgb(47, 0, 255));
+  /* background: linear-gradient(90deg,rgb(66, 0, 197),darkviolet); */
+  background: linear-gradient(90deg, rgb(136,0,55),rgb(47, 0, 255));
+
+  box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
+}
+
 .card_team {
   width: 360px;
   height: 360px;
@@ -794,7 +812,13 @@ max-height: 360px;
   padding: 20px;
   border-radius: 20px;
   background: linear-gradient(-45deg, #1CB5E0 0%, #000046 60% );
-  background: linear-gradient(-45deg, #0816dd 0%, #000046 60% );
+  background: linear-gradient(-45deg, #ff4800 0%, #000000 60% );
+  background: linear-gradient(48deg,#000000,#070b79,#0400ff,#070b79,#000000);
+
+  background: linear-gradient(48deg,#000000,#ff0000,#ff9900,#ff0000,#000000);
+
+
+
   box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
 }
 

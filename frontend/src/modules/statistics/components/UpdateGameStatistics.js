@@ -22,6 +22,7 @@ import Slider from '@mui/material/Slider';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { useIntl } from 'react-intl';
+import * as actionsPlayers from '../../players/actions';
 
 const UpdateGameStatistics = () => {
 	const dispatch = useDispatch();
@@ -207,6 +208,15 @@ const UpdateGameStatistics = () => {
 		}));
 		history(`/games/update/${id}/statistics/${tabValue}`);
 	}
+
+	const handleUpdateGamePlayer = (tabValue, dispatch) => {
+		setValue(tabValue);
+		dispatch(actionsGames.findGameById(id, () => {
+			dispatch(actionsPlayers.findPlayersByGame(id, () => history(`/games/update/${id}/player/${tabValue}`)));
+		}));
+		history(`/games/update/${id}/player/${tabValue}`);
+	}
+
 	const reloadWindow = () => {
 		history(`/statistics/game/${id}`)
 	}
@@ -249,6 +259,7 @@ const UpdateGameStatistics = () => {
 						<Tab value={1} sx={{ color: '#f5af19', fontSize: "30px", padding: "20px" }} onClick={() => handleUpdateGameExercise(1, dispatch)} label="Exercises" />
 						<Tab value={2} sx={{ color: 'rgb(255, 0, 247)', fontSize: "30px", padding: "20px" }} onClick={() => handleUpdateGameStretching(2, dispatch)} label="Stretchings" />
 						<Tab value={3} sx={{ color: 'rgb(0, 217, 255)', fontSize: "30px", padding: "20px" }} onClick={() => handleUpdateGameStatistics(3, dispatch)} label="Statistics" />
+						<Tab value={4} sx={{ color: '#ff0000', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateGamePlayer(4, dispatch)} label="Players"/>
 					</Tabs>
 				</Box>
 				<input type="checkbox" class="theme-checkbox" onClick={() => setShowTable(!showTable)} />
