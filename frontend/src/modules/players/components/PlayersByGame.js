@@ -202,7 +202,7 @@ const handleFindTrainingsToPlayer = (playerId, dispatch, history) => {
       left: '50%',
       transform: 'translate(-50%, -50%)',
       width: 900,
-      bgcolor: 'rgba(255, 0, 221, 0.25)',
+      bgcolor: 'rgb(59, 4, 26)',
       border: '2px solid #000',
       boxShadow: 24,
       p: 4,
@@ -292,7 +292,7 @@ const PlayersByGame = ({players, gameId}) => {
         aria-describedby="child-modal-description"
       >
         <Box sx={{ ...style, width: "auto" }}>
-          <h2 id="child-modal-title" className="color_modal_title_stretching" sx={{ mb: '100px' }} ><FormattedMessage id="project.exercises.fields.description" />:</h2>
+          <h2 id="child-modal-title" className="color_modal_title_player" sx={{ mb: '100px' }} ><FormattedMessage id="project.exercises.fields.description" />:</h2>
           <p id="child-modal-description">
             {modalDescription}
           </p>

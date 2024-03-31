@@ -494,6 +494,10 @@ box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
   color: rgba(235, 25, 110, 1);
 }
 
+.color_modal_title_player {
+  color: rgb(25, 0, 255);
+}
+
 .color_modal_title_stretching {
   color: rgb(255, 255, 255);
 }
@@ -798,10 +802,60 @@ max-height: 360px;
   
   background: linear-gradient(300deg,rgb(66, 0, 197),rgb(136,0,55),rgb(47, 0, 255));
   /* background: linear-gradient(90deg,rgb(66, 0, 197),darkviolet); */
-  background: linear-gradient(90deg, rgb(136,0,55),rgb(47, 0, 255));
+  background: linear-gradient(180deg, rgb(136,0,55),rgb(47, 0, 255));
+
+
+
+  /* background: linear-gradient(180deg, rgb(136,0,55),rgb(47, 0, 255)); */
+  background: linear-gradient(180deg, rgb(59, 4, 26) 30%,rgb(47, 0, 255));
 
   box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
+  border-radius: 1rem;
+  box-shadow: 0px -10px 65px 0px rgba(0, 0, 0, 0.447) inset;
+
+
+  /* background-color: hsla(240, 15%, 9%, 1);
+  background-image: radial-gradient(
+      at 88% 40%,
+      hsla(240, 15%, 9%, 1) 0px,
+      transparent 85%
+    ),
+    radial-gradient(at 49% 30%, hsla(240, 15%, 9%, 1) 0px, transparent 85%),
+    radial-gradient(at 14% 26%, hsla(240, 15%, 9%, 1) 0px, transparent 85%),
+    radial-gradient(at 0% 64%, hsla(263, 93%, 56%, 1) 0px, transparent 85%),
+    radial-gradient(at 41% 94%, hsla(284, 100%, 84%, 1) 0px, transparent 85%),
+    radial-gradient(at 100% 99%, hsla(306, 100%, 57%, 1) 0px, transparent 85%);
+
+  border-radius: 1rem;
+  box-shadow: 0px -16px 24px 0px rgba(255, 255, 255, 0.25) inset; */
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .card_team {
   width: 360px;
