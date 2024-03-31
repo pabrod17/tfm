@@ -3,19 +3,10 @@ package es.udc.paproject.backend.rest.controllers;
 import java.util.List;
 import java.util.Locale;
 
+import es.udc.paproject.backend.rest.dtos.GameDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.http.HttpStatus;
 
 import es.udc.paproject.backend.model.exceptions.IncorrectDniException;
@@ -26,6 +17,8 @@ import es.udc.paproject.backend.model.exceptions.InstanceNotFoundException;
 import es.udc.paproject.backend.model.services.PlayerService;
 import es.udc.paproject.backend.rest.common.ErrorsDto;
 import es.udc.paproject.backend.rest.dtos.PlayerDto;
+
+import static es.udc.paproject.backend.rest.dtos.GameConversor.toGameDtos;
 import static es.udc.paproject.backend.rest.dtos.PlayerConversor.toPlayerDto;
 import static es.udc.paproject.backend.rest.dtos.PlayerConversor.toPlayerDtos;
 
@@ -105,6 +98,11 @@ public class PlayerController {
     public PlayerDto findPlayerByIdOfTeam(@PathVariable Long playerId, @RequestParam Long teamId)
             throws InstanceNotFoundException {
         return toPlayerDto(playerService.findPlayerByIdOfTeam(playerId, teamId));
+    }
+
+    @GetMapping("/user")
+    public List<PlayerDto> findPlayersByUserId(@RequestAttribute Long userId) throws InstanceNotFoundException {
+        return toPlayerDtos(playerService.findPlayersByUserId(userId));
     }
 
     @GetMapping("/{teamId}/dni")

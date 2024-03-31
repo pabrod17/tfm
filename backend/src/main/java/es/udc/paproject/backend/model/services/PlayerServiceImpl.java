@@ -5,23 +5,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import es.udc.paproject.backend.model.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import es.udc.paproject.backend.model.entities.GameDao;
-import es.udc.paproject.backend.model.entities.Player;
-import es.udc.paproject.backend.model.entities.PlayerDao;
-import es.udc.paproject.backend.model.entities.PlayerGameStatistics;
-import es.udc.paproject.backend.model.entities.PlayerGameStatisticsDao;
-import es.udc.paproject.backend.model.entities.PlayerLesion;
-import es.udc.paproject.backend.model.entities.PlayerLesionDao;
-import es.udc.paproject.backend.model.entities.PlayerTraining;
-import es.udc.paproject.backend.model.entities.PlayerTrainingDao;
-import es.udc.paproject.backend.model.entities.Position;
-import es.udc.paproject.backend.model.entities.Team;
-import es.udc.paproject.backend.model.entities.TeamDao;
-import es.udc.paproject.backend.model.entities.TrainingDao;
 import es.udc.paproject.backend.model.exceptions.IncorrectDniException;
 import es.udc.paproject.backend.model.exceptions.IncorrectEmailException;
 import es.udc.paproject.backend.model.exceptions.IncorrectPhoneNumberException;
@@ -52,6 +40,12 @@ public class PlayerServiceImpl implements PlayerService {
 
     @Autowired
     private PlayerLesionDao playerLesionDao;
+
+    @Autowired
+    private UserDao userDao;
+
+    @Autowired
+    private SeasonTeamDao seasonTeamDao;
 
     @Override
     public Player addPlayer(Long teamId, String playerName, String primaryLastName, String secondLastName,
@@ -142,6 +136,35 @@ public class PlayerServiceImpl implements PlayerService {
         if (players.isEmpty()) {
             throw new InstanceNotFoundException("project.entities.player");
         }
+        return players;
+    }
+
+    @Override
+    public List<Player> findPlayersByUserId(Long userId) throws InstanceNotFoundException {
+
+        if (!userDao.existsById(userId)) {
+            throw new InstanceNotFoundException("project.entities.user");
+        }
+
+        List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(userId);
+
+        List<Player> players = new ArrayList<>();
+        List<Player> players2 = new ArrayList<>();
+
+        for(SeasonTeam seasonTeam : seasonTeams){
+            if(seasonTeam.getTeam() != null) {
+                players2 = playerDao.findByTeamId(seasonTeam.getTeam().getId());
+                for(Player player : players2){
+                    players.add(player);
+                }
+            }
+        }
+
+        if (players.isEmpty()) {
+            return players;
+        }
+
+        players = players.stream().distinct().collect(Collectors.toList());
         return players;
     }
 

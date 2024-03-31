@@ -98,10 +98,12 @@ public class GameController {
         return toGameDto(gameService.addGame(teamId, seasonId, toLocalDateTime(gameDate), rival, description));
     }
 
-    @PostMapping("/{playerId}/addPlayerToGame")
-    public void addPlayerToGame(@PathVariable Long playerId, @RequestParam Long gameId)
+    @PostMapping("/{gameId}/addPlayerToGame")
+    public void addPlayerToGame(@PathVariable Long gameId, @RequestParam List<Long> playerId)
             throws InstanceNotFoundException {
-                gameService.addPlayerToGame(gameId, playerId);
+        for (Long id : playerId) {
+            gameService.addPlayerToGame(gameId, id);
+        }
     }
 
     @PutMapping("/{gameId}")

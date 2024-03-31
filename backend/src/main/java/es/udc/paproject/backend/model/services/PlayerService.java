@@ -2,6 +2,7 @@ package es.udc.paproject.backend.model.services;
 
 import java.util.List;
 
+import es.udc.paproject.backend.model.entities.Game;
 import es.udc.paproject.backend.model.entities.Player;
 import es.udc.paproject.backend.model.exceptions.IncorrectDniException;
 import es.udc.paproject.backend.model.exceptions.IncorrectEmailException;
@@ -16,6 +17,8 @@ public interface PlayerService {
     void changePlayerToTeam(Long playerId, Long teamId) throws InstanceNotFoundException;
 
     void clearTotalStatistics(Long playerId) throws InstanceNotFoundException;
+
+    List<Player> findPlayersByUserId(Long userId) throws InstanceNotFoundException;
 
     Player findPlayerByIdOfTeam(Long playerId, Long teamId) throws InstanceNotFoundException;
 
