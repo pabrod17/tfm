@@ -796,79 +796,6 @@ const UpdateStatisticsGamePlayer = () => {
 
 
 						<Grid container margin={5} spacing={{ xs: 0, md: 2 }} columns={{ xs: 4, sm: 4, md: 12 }}>
-							{/* <Grid item xs={3}>
-
-
-								<Box
-									display="fixed"
-
-									sx={{
-										border: '2px solid grey',
-										background: "linear-gradient(-35deg, #081971 30%, #7C0C0C 80% )",
-										borderRadius: "20px",
-										flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
-										flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
-										boxShadow: "0 10px 50px rgb(0, 0, 0)",
-										borderColor: "black"
-									}}
-								>
-
-									<BarChart
-										xAxis={[{
-											scaleType: 'band', data: [
-												intl.formatMessage({ id: 'project.statistics.fields.totalRebounds' }),
-											]
-										}]}
-
-
-										series={[
-											{ data: [totalRebounds], color: "blue", stack: '2', label: 'Team' },
-											{ data: [totalReboundsRival], color: "red", stack: '1', label: 'Rival' },
-										]}
-										tooltip={{ trigger: 'axis' }}
-										width={500}
-										height={300}
-										tooltip={{ trigger: 'item' }}
-
-										sx={{
-											background: "linear-gradient(-35deg, #081971 30%, #00F7FF 80% )",
-											borderRadius: "20px",
-											flexDirection: 'column',
-											//change left yAxis label styles
-											"& .MuiChartsAxis-left .MuiChartsAxis-tickLabel": {
-												strokeWidth: "0.4",
-												fill: "white"
-											},
-											// change all labels fontFamily shown on both xAxis and yAxis
-											"& .MuiChartsAxis-tickContainer .MuiChartsAxis-tickLabel": {
-												fontFamily: "Roboto",
-											},
-											// change bottom label styles
-											"& .MuiChartsAxis-bottom .MuiChartsAxis-tickLabel": {
-												strokeWidth: "0.5",
-												fill: "white"
-											},
-											// bottomAxis Line Styles
-											"& .MuiChartsAxis-bottom .MuiChartsAxis-line": {
-												stroke: "white",
-												strokeWidth: 2,
-											},
-											// leftAxis Line Styles
-											"& .MuiChartsAxis-left .MuiChartsAxis-line": {
-												stroke: "white",
-												strokeWidth: 2
-											},
-											"& .MuiChartsAxis-tickLabel tspan": { fontSize: "1.8em" },
-											"& .MuiChartsLegend-series text": { fontSize: "1.2em !important" }
-										}}
-									/>
-
-
-
-
-
-								</Box>
-							</Grid>
 							<Grid item xs={3}>
 
 
@@ -878,7 +805,7 @@ const UpdateStatisticsGamePlayer = () => {
 									sx={{
 
 										border: '2px solid grey',
-										background: "linear-gradient(-35deg, #081971 30%, #7C0C0C 80% )",
+										background: "linear-gradient(-35deg, #081971 30%, #00F7FF 80% )",
 										borderRadius: "20px",
 										flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 										flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
@@ -887,126 +814,12 @@ const UpdateStatisticsGamePlayer = () => {
 									}}
 								>
 
-									<BarChart
-										xAxis={[{
-											scaleType: 'band', data: [
-												intl.formatMessage({ id: 'project.statistics.fields.totalBlockedShot' }),
-											]
-										}]}
-
-										series={[
-											{ data: [totalBlockedShot], color: "blue", stack: '2', label: 'Team' },
-											{ data: [totalBlockedShotsRival], color: "red", stack: '1', label: 'Rival' },
-										]}
-										tooltip={{ trigger: 'axis' }}
-										width={500}
-										height={300}
-										tooltip={{ trigger: 'item' }}
-
-										sx={{
-											background: "linear-gradient(-35deg, #081971 30%, #00F7FF 80% )",
-											borderRadius: "20px",
-											flexDirection: 'column',
-											//change left yAxis label styles
-											"& .MuiChartsAxis-left .MuiChartsAxis-tickLabel": {
-												strokeWidth: "0.4",
-												fill: "white"
-											},
-											// change all labels fontFamily shown on both xAxis and yAxis
-											"& .MuiChartsAxis-tickContainer .MuiChartsAxis-tickLabel": {
-												fontFamily: "Roboto",
-											},
-											// change bottom label styles
-											"& .MuiChartsAxis-bottom .MuiChartsAxis-tickLabel": {
-												strokeWidth: "0.5",
-												fill: "white"
-											},
-											// bottomAxis Line Styles
-											"& .MuiChartsAxis-bottom .MuiChartsAxis-line": {
-												stroke: "white",
-												strokeWidth: 2,
-											},
-											// leftAxis Line Styles
-											"& .MuiChartsAxis-left .MuiChartsAxis-line": {
-												stroke: "white",
-												strokeWidth: 2
-											},
-											"& .MuiChartsAxis-tickLabel tspan": { fontSize: "1.8em" },
-											"& .MuiChartsLegend-series text": { fontSize: "1.2em !important" }
-										}}
-									/>
-
-
-
-
-								</Box>
-							</Grid>
-							<Grid item xs={3}>
-
-
-								<Box
-									display="fixed"
-
-									sx={{
-
-										border: '2px solid grey',
-										background: "linear-gradient(-35deg, #081971 30%, #7C0C0C 80% )",
-										borderRadius: "20px",
-										flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
-										flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
-										boxShadow: "0 10px 50px rgb(0, 0, 0)",
-										borderColor: "black"
-									}}
-								>
-
-									<BarChart
-										xAxis={[{
-											scaleType: 'band', data: [
-												intl.formatMessage({ id: 'project.statistics.fields.totalAssists' }),
-											]
-										}]}
-
-										series={[
-											{ data: [totalAssists], color: "blue", stack: '2', label: 'Team' },
-											{ data: [totalAssistsRival], color: "red", stack: '1', label: 'Rival' },
-										]}
-										tooltip={{ trigger: 'axis' }}
-										width={500}
-										height={300}
-										tooltip={{ trigger: 'item' }}
-
-										sx={{
-											background: "linear-gradient(-35deg, #081971 30%, #00F7FF 80% )",
-											borderRadius: "20px",
-											flexDirection: 'column',
-											//change left yAxis label styles
-											"& .MuiChartsAxis-left .MuiChartsAxis-tickLabel": {
-												strokeWidth: "0.4",
-												fill: "white"
-											},
-											// change all labels fontFamily shown on both xAxis and yAxis
-											"& .MuiChartsAxis-tickContainer .MuiChartsAxis-tickLabel": {
-												fontFamily: "Roboto",
-											},
-											// change bottom label styles
-											"& .MuiChartsAxis-bottom .MuiChartsAxis-tickLabel": {
-												strokeWidth: "0.5",
-												fill: "white"
-											},
-											// bottomAxis Line Styles
-											"& .MuiChartsAxis-bottom .MuiChartsAxis-line": {
-												stroke: "white",
-												strokeWidth: 2,
-											},
-											// leftAxis Line Styles
-											"& .MuiChartsAxis-left .MuiChartsAxis-line": {
-												stroke: "white",
-												strokeWidth: 2
-											},
-											"& .MuiChartsAxis-tickLabel tspan": { fontSize: "1.8em" },
-											"& .MuiChartsLegend-series text": { fontSize: "1.2em !important" }
-										}}
-									/>
+									<div class="cardstatistics">
+										<p class="time-text"><span>{rebounds}</span></p>
+										<p class="day-text">
+											<FormattedMessage id="project.statistics.fields.rebounds" />
+										</p>
+									</div>
 
 
 
@@ -1033,9 +846,71 @@ const UpdateStatisticsGamePlayer = () => {
 								>
 
 									<div class="cardstatistics">
-										<p class="time-text"><span>{durationMinutes}</span></p>
+										<p class="time-text"><span>{blockedShot}</span></p>
 										<p class="day-text">
-											<FormattedMessage id="project.statistics.fields.duration" />
+											<FormattedMessage id="project.statistics.fields.blockedShot" />
+										</p>
+									</div>
+
+
+
+
+
+								</Box>
+							</Grid>
+							<Grid item xs={3}>
+
+
+								<Box
+									display="fixed"
+
+									sx={{
+
+										border: '2px solid grey',
+										background: "linear-gradient(-35deg, #081971 30%, #00F7FF 80% )",
+										borderRadius: "20px",
+										flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
+										flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
+										boxShadow: "0 10px 50px rgb(0, 0, 0)",
+										borderColor: "black"
+									}}
+								>
+
+									<div class="cardstatistics">
+										<p class="time-text"><span>{assists}</span></p>
+										<p class="day-text">
+											<FormattedMessage id="project.statistics.fields.assists" />
+										</p>
+									</div>
+
+
+
+
+
+								</Box>
+							</Grid>
+							<Grid item xs={3}>
+
+
+								<Box
+									display="fixed"
+
+									sx={{
+
+										border: '2px solid grey',
+										background: "linear-gradient(-35deg, #081971 30%, #00F7FF 80% )",
+										borderRadius: "20px",
+										flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
+										flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
+										boxShadow: "0 10px 50px rgb(0, 0, 0)",
+										borderColor: "black"
+									}}
+								>
+
+									<div class="cardstatistics">
+										<p class="time-text"><span>{minutes}</span></p>
+										<p class="day-text">
+											<FormattedMessage id="project.statistics.fields.minutes" />
 										</p>
 									</div>
 
@@ -1069,21 +944,21 @@ const UpdateStatisticsGamePlayer = () => {
 									<Box sx={{ width: '98%' }}>
 										<BarChart
 											tooltip={{ trigger: 'item' }}
-											height={400}
+											height={470}
 											series={[
 												{
 													label: intl.formatMessage({ id: 'project.statistics.fields.totalPersonalFouls' }),
-													data: [totalPersonalFouls, totalPersonalFoulsRival],
+													data: [personalFouls],
 													color: "#FF4600"
 												},
 												{
 													label: intl.formatMessage({ id: 'project.statistics.fields.totalTechnicalFouls' }),
-													data: [totalTechnicalFouls, totalTechnicalFoulsRival],
+													data: [technicalFouls],
 													color: "#FF7800"
 												},
 												{
 													label: intl.formatMessage({ id: 'project.statistics.fields.totalUnsportsmanlikeFouls' }),
-													data: [totalUnsportsmanlikeFouls, totalUnsportsmanlikeFoulsRival],
+													data: [unsportsmanlikeFouls],
 													color: "#FFF000"
 												},
 											]
@@ -1091,28 +966,9 @@ const UpdateStatisticsGamePlayer = () => {
 												.map((s) => ({ ...s, data: s.data.slice(0, itemNb) }))}
 										/>
 
-										<Typography id="input-item-number" gutterBottom>
-										<FormattedMessage id="project.statistics.fields.team_rival" />
-										</Typography>
-										<Slider
-											value={itemNb}
-											onChange={handleItemNbChange}
-											valueLabelDisplay="auto"
-											min={1}
-											max={2}
-											aria-labelledby="input-item-number"
-										/>
 										<Typography id="input-series-number" gutterBottom>
 										<FormattedMessage id="project.statistics.fields.totalFouls" />
 										</Typography>
-										<Slider
-											value={seriesNb}
-											onChange={handleSeriesNbChange}
-											valueLabelDisplay="auto"
-											min={1}
-											max={3}
-											aria-labelledby="input-series-number"
-										/>
 									</Box>
 
 
@@ -1148,7 +1004,7 @@ const UpdateStatisticsGamePlayer = () => {
 											<PieChart
 												colors={palette}
 												series={[{
-													data: [{ value: totalFreeShots, label: intl.formatMessage({ id: 'project.statistics.fields.totalFreeShots' }) }, { value: totalSetShots, label: intl.formatMessage({ id: 'project.statistics.fields.totalSetShots' }) }, { value: totalThreePointShots, label: intl.formatMessage({ id: 'project.statistics.fields.totalThreePointShots' }) }],
+													data: [{ value: freeShots, label: intl.formatMessage({ id: 'project.statistics.fields.totalFreeShots' }) }, { value: setShots, label: intl.formatMessage({ id: 'project.statistics.fields.totalSetShots' }) }, { value: threePointShots, label: intl.formatMessage({ id: 'project.statistics.fields.totalThreePointShots' }) }],
 													faded: { innerRadius: 30, additionalRadius: -30, color: 'gray' },
 													highlightScope: { faded: 'global', highlighted: 'item' },
 												}]}
@@ -1168,7 +1024,7 @@ const UpdateStatisticsGamePlayer = () => {
 											<PieChart
 												series={[
 													{
-														data: [{ value: totalFreeShotsRival, label: intl.formatMessage({ id: 'project.statistics.fields.totalFreeShotsRival' }), color: 'orange' }, { value: totalSetShotsRival, label: intl.formatMessage({ id: 'project.statistics.fields.totalSetShotsRival' }) }, { value: totalThreePointShotsRival, label: intl.formatMessage({ id: 'project.statistics.fields.totalThreePointShotsRival' }) }],
+														data: [{ value: failFreeShots, label: intl.formatMessage({ id: 'project.statistics.fields.totalFreeShotsRival' }), color: 'orange' }, { value: failSetShots, label: intl.formatMessage({ id: 'project.statistics.fields.totalSetShotsRival' }) }, { value: failThreePointShots, label: intl.formatMessage({ id: 'project.statistics.fields.totalThreePointShotsRival' }) }],
 														faded: { innerRadius: 30, additionalRadius: -30, color: 'gray' },
 														highlightScope: { faded: 'global', highlighted: 'item' },
 													},
@@ -1180,7 +1036,7 @@ const UpdateStatisticsGamePlayer = () => {
 											/>
 											<Typography
 												sx={{ m: 0.1, color: "white", fontSize: "20px" }}
-											><FormattedMessage id="project.statistics.fields.totalPointsRival" /> {totalPointsRival}</Typography>
+											><FormattedMessage id="project.statistics.fields.totalPointsRival" /> {totalPoints}</Typography>
 										</Box>
 									</Stack>
 
@@ -1189,7 +1045,7 @@ const UpdateStatisticsGamePlayer = () => {
 
 
 								</Box>
-							</Grid> */}
+							</Grid>
 						</Grid>
 
 

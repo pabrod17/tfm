@@ -168,7 +168,7 @@ const UpdateStatisticsPlayers = () => {
         const handleUpdatePlayerStatistics = (tabValue, dispatch) => {
             setValue(tabValue);
             dispatch(actionsGames.findGameById(gameId, () => {
-                dispatch(actionsPlayers.findPlayersByGame(gameId, () => history(`/statistics/update/${gameId}/players/${tabValue}`)));
+                dispatch(actionsPlayers.findPlayersByGame(gameId, () => history(`/statistics/update/game/${gameId}/players/${tabValue}`)));
             }));
             history(`/statistics/update/game/${gameId}/players/${tabValue}`);
         }
