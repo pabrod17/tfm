@@ -182,7 +182,9 @@ export default {
     'project.statistics.fields.team_rival' : '(Mi Equipo - Rival)',
 
     'project.statistics.fields.failShots' : 'Fallou',
-
+    
+    'project.statistics.fields.shotsFailed' : 'Tiros faiados',
+    'project.statistics.fields.shots' : 'Tiros anotados',
 
     'project.statistics.fields.addGameStatistics' : 'Engadir Estatísticas Partido',
     'project.statistics.fields.addPlayerGameStatistics' : 'Engadir Estatísticas Jugador Partido',

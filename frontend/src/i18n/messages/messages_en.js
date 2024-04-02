@@ -192,7 +192,8 @@ export default {
 
     'project.statistics.fields.failShots' : 'Failed',
 
-
+    'project.statistics.fields.shotsFailed' : 'Fail shots',
+    'project.statistics.fields.shots' : 'Scored Shots',
 
 
     'project.statistics.fields.addGameStatistics' : 'Add Game Statistics',

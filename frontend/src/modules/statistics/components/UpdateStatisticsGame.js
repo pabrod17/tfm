@@ -1393,6 +1393,19 @@ const UpdateStatisticsGame = () => {
 											]
 												.slice(0, seriesNb)
 												.map((s) => ({ ...s, data: s.data.slice(0, itemNb) }))}
+
+												slotProps={{
+													legend: {
+													  labelStyle: {
+														fontSize: 18,
+													  },
+													},
+												  }}
+
+											sx={{
+												//change left yAxis label styles
+												"& .MuiChartsAxis-tickLabel tspan": { fontSize: "1.8em" },
+											}}
 										/>
 
 										<Typography id="input-item-number" gutterBottom>

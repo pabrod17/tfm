@@ -208,6 +208,10 @@ export default {
 
     'project.statistics.fields.failShots' : 'Fallados',
 
+    'project.statistics.fields.shotsFailed' : 'Tiros fallados',
+    'project.statistics.fields.shots' : 'Tiros anotados',
+
+
     
     'project.statistics.fields.failThreePointShots' : 'Tiros de 3 fallados',
     'project.statistics.fields.failSetShots' : 'Tiros de campo fallados',

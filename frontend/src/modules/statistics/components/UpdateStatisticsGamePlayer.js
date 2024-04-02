@@ -256,7 +256,7 @@ const UpdateStatisticsGamePlayer = () => {
 							maxWidth: { sm: 1635 },
 
 							border: '2px solid grey',
-							background: "linear-gradient(-35deg, #081971 30%, #7C0C0C 80% )",
+							background: "linear-gradient(180deg, rgb(59, 4, 26) 10%,rgb(47, 0, 255), rgb(59, 4, 26))",
 							borderRadius: "20px",
 							flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 							flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
@@ -282,7 +282,6 @@ const UpdateStatisticsGamePlayer = () => {
 								<Box
 									component="form"
 									sx={{
-										background: "linear-gradient(-45deg, #0E24A0 0%, #900C0C 100% )",
 										borderRadius: "20px",
 										borderColor: "black",
 										boxShadow: "0 10px 50px rgb(0, 0, 0)",
@@ -527,7 +526,6 @@ const UpdateStatisticsGamePlayer = () => {
 								<Box
 									component="form"
 									sx={{
-										background: "linear-gradient(-45deg, #0E24A0 0%, #900C0C 100% )",
 										borderRadius: "20px",
 										borderColor: "black",
 										boxShadow: "0 10px 50px rgb(0, 0, 0)",
@@ -785,7 +783,7 @@ const UpdateStatisticsGamePlayer = () => {
 						sx={{
 
 							border: '2px solid grey',
-							background: "linear-gradient(-35deg, #081971 30%, #7C0C0C 80% )",
+							background: "linear-gradient(180deg, rgb(59, 4, 26) 10%,rgb(47, 0, 255), rgb(59, 4, 26))",
 							borderRadius: "20px",
 							flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 							flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
@@ -805,7 +803,8 @@ const UpdateStatisticsGamePlayer = () => {
 									sx={{
 
 										border: '2px solid grey',
-										background: "linear-gradient(-35deg, #081971 30%, #00F7FF 80% )",
+										// background: "linear-gradient(-35deg, #171721 30%, #171721 80% )",
+										background: "linear-gradient(180deg, rgb(59, 4, 26) 30%,rgb(47, 0, 255))",
 										borderRadius: "20px",
 										flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 										flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
@@ -836,7 +835,7 @@ const UpdateStatisticsGamePlayer = () => {
 									sx={{
 
 										border: '2px solid grey',
-										background: "linear-gradient(-35deg, #081971 30%, #00F7FF 80% )",
+										background: "linear-gradient(180deg, rgb(59, 4, 26) 30%,rgb(47, 0, 255))",
 										borderRadius: "20px",
 										flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 										flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
@@ -867,7 +866,7 @@ const UpdateStatisticsGamePlayer = () => {
 									sx={{
 
 										border: '2px solid grey',
-										background: "linear-gradient(-35deg, #081971 30%, #00F7FF 80% )",
+										background: "linear-gradient(180deg, rgb(59, 4, 26) 30%,rgb(47, 0, 255))",
 										borderRadius: "20px",
 										flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 										flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
@@ -898,7 +897,7 @@ const UpdateStatisticsGamePlayer = () => {
 									sx={{
 
 										border: '2px solid grey',
-										background: "linear-gradient(-35deg, #081971 30%, #00F7FF 80% )",
+										background: "linear-gradient(180deg, rgb(59, 4, 26) 30%,rgb(47, 0, 255))",
 										borderRadius: "20px",
 										flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 										flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
@@ -932,49 +931,90 @@ const UpdateStatisticsGamePlayer = () => {
 									sx={{
 
 										border: '2px solid grey',
-										background: "linear-gradient(-35deg, #081971 30%, #00F7FF 80% )",
+										background: "linear-gradient(-35deg, #0A0F27 30%, #0A0F27 80% )",
+
+										background: "linear-gradient(180deg, rgb(47, 0, 255) 60%,rgb(59, 4, 26))",
+
 										borderRadius: "20px",
 										flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 										flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
 										boxShadow: "0 10px 50px rgb(0, 0, 0)",
-										borderColor: "black"
+										borderColor: "black",
+										'&:hover': {
+											boxShadow:"rgb(0,0,0) 5px 10px 50px ,rgb(0,0,0) -5px 0px 250px"
+														 
+											},
 									}}
 								>
 
-									<Box sx={{ width: '98%' }}>
-										<BarChart
+									<Box sx={{ 
+										
+
+										width: '98%' }}
+										
+										>
+										<BarChart 
 											tooltip={{ trigger: 'item' }}
-											height={470}
+											height={502}
 											series={[
 												{
-													label: intl.formatMessage({ id: 'project.statistics.fields.totalPersonalFouls' }),
+													
+													label: intl.formatMessage({ id: 'project.statistics.fields.totalPersonalFouls', color:"white" }),
 													data: [personalFouls],
-													color: "#FF4600"
+													color: "#d62828"
 												},
 												{
 													label: intl.formatMessage({ id: 'project.statistics.fields.totalTechnicalFouls' }),
 													data: [technicalFouls],
-													color: "#FF7800"
+													color: "#fff8f0"
 												},
 												{
 													label: intl.formatMessage({ id: 'project.statistics.fields.totalUnsportsmanlikeFouls' }),
 													data: [unsportsmanlikeFouls],
-													color: "#FFF000"
+													color: "#1e1e24"
 												},
-											]
-												.slice(0, seriesNb)
-												.map((s) => ({ ...s, data: s.data.slice(0, itemNb) }))}
-										/>
+											]}
+											slotProps={{
+												legend: {
+												  labelStyle: {
+													fontSize: 18,
+													fill: 'white',
+												  },
+												},
+											  }}
+											sx={{
+												//change left yAxis label styles
+												"& .MuiChartsAxis-left .MuiChartsAxis-tickLabel": {
+													strokeWidth: "0.4",
+													fill: "white"
+												},
+												// change all labels fontFamily shown on both xAxis and yAxis
+												"& .MuiChartsAxis-tickContainer .MuiChartsAxis-tickLabel": {
+													fontFamily: "Roboto",
+												},
+												// change bottom label styles
+												"& .MuiChartsAxis-bottom .MuiChartsAxis-tickLabel": {
+													strokeWidth: "0.5",
+													fill: "white"
+												},
+												// bottomAxis Line Styles
+												"& .MuiChartsAxis-bottom .MuiChartsAxis-line": {
+													stroke: "white",
+													strokeWidth: 2,
+												},
+												// leftAxis Line Styles
+												"& .MuiChartsAxis-left .MuiChartsAxis-line": {
+													stroke: "white",
+													strokeWidth: 2
+												},
+												"& .MuiChartsAxis-tickLabel tspan": { fontSize: "1.8em" },
+											}}
 
+										/>
 										<Typography id="input-series-number" gutterBottom>
 										<FormattedMessage id="project.statistics.fields.totalFouls" />
 										</Typography>
 									</Box>
-
-
-
-
-
 								</Box>
 							</Grid>
 							<Grid item xs={6}>
@@ -986,25 +1026,33 @@ const UpdateStatisticsGamePlayer = () => {
 									sx={{
 
 										border: '2px solid grey',
-										background: "linear-gradient(-35deg, #081971 30%, #00F7FF 80% )",
+										background: "linear-gradient(-35deg, ##c31432 30%, ##240b36 80% )",
+
+										background: "linear-gradient(180deg, rgb(47, 0, 255) 60%,rgb(59, 4, 26))",
 										borderRadius: "20px",
 										flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 										flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
 										boxShadow: "0 10px 50px rgb(0, 0, 0)",
-										borderColor: "black"
+										borderColor: "black",
+										'&:hover': {
+											boxShadow:"rgb(0,0,0) 5px 10px 50px ,rgb(0,0,0) -5px 0px 250px"
+														 
+											},
 									}}
 								>
 
 									<Stack direction="row" width="100%" textAlign="center" spacing={1}>
 										<Box flexGrow={1}>
 											<Typography
-												sx={{ m: 0, color: "black", fontSize: "20px" }}
+												sx={{ m: 0, color: "white", fontSize: "20px" }}
 
-											><FormattedMessage id="project.statistics.fields.totalPointsTeam1" /></Typography>
+											><FormattedMessage id="project.statistics.fields.shots" /></Typography>
 											<PieChart
 												colors={palette}
 												series={[{
-													data: [{ value: freeShots, label: intl.formatMessage({ id: 'project.statistics.fields.totalFreeShots' }) }, { value: setShots, label: intl.formatMessage({ id: 'project.statistics.fields.totalSetShots' }) }, { value: threePointShots, label: intl.formatMessage({ id: 'project.statistics.fields.totalThreePointShots' }) }],
+													data: [{ value: freeShots, label: intl.formatMessage({ id: 'project.statistics.fields.totalFreeShots' }), color:"#f77f00" },
+													 { value: setShots, label: intl.formatMessage({ id: 'project.statistics.fields.totalSetShots' }), color:"#003049" },
+													  { value: threePointShots, label: intl.formatMessage({ id: 'project.statistics.fields.totalThreePointShots' }), color:"#d62828" }],
 													faded: { innerRadius: 30, additionalRadius: -30, color: 'gray' },
 													highlightScope: { faded: 'global', highlighted: 'item' },
 												}]}
@@ -1013,18 +1061,17 @@ const UpdateStatisticsGamePlayer = () => {
 												height={470}
 
 											/>
-											<Typography
-												sx={{ m: 0.1, color: "white", fontSize: "20px" }}
-											><FormattedMessage id="project.statistics.fields.totalPoints" />  {totalPoints}</Typography>
 										</Box>
 										<Box flexGrow={1}>
 											<Typography
-												sx={{ m: 0, color: "black", fontSize: "20px" }}
-											><FormattedMessage id="project.statistics.fields.totalPointsRival1" /></Typography>
+												sx={{ m: 0, color: "white", fontSize: "20px" }}
+											><FormattedMessage id="project.statistics.fields.shotsFailed" /></Typography>
 											<PieChart
 												series={[
 													{
-														data: [{ value: failFreeShots, label: intl.formatMessage({ id: 'project.statistics.fields.totalFreeShotsRival' }), color: 'orange' }, { value: failSetShots, label: intl.formatMessage({ id: 'project.statistics.fields.totalSetShotsRival' }) }, { value: failThreePointShots, label: intl.formatMessage({ id: 'project.statistics.fields.totalThreePointShotsRival' }) }],
+														data: [{ value: failFreeShots, label: intl.formatMessage({ id: 'project.statistics.fields.totalFreeShotsRival' }), color: '#1e1e24' }, 
+														{ value: failSetShots, label: intl.formatMessage({ id: 'project.statistics.fields.totalSetShotsRival' }), color: '#92140c' },
+														 { value: failThreePointShots, label: intl.formatMessage({ id: 'project.statistics.fields.totalThreePointShotsRival' }), color: '#fff8f0' }],
 														faded: { innerRadius: 30, additionalRadius: -30, color: 'gray' },
 														highlightScope: { faded: 'global', highlighted: 'item' },
 													},
@@ -1034,16 +1081,13 @@ const UpdateStatisticsGamePlayer = () => {
 												{...pieParams}
 												height={470}
 											/>
-											<Typography
-												sx={{ m: 0.1, color: "white", fontSize: "20px" }}
-											><FormattedMessage id="project.statistics.fields.totalPointsRival" /> {totalPoints}</Typography>
 										</Box>
 									</Stack>
-
-
-
-
-
+									<Box flexGrow={1}>
+									<Typography
+												sx={{ m: 0.1, color: "white", fontSize: "20px" }}
+											><FormattedMessage id="project.statistics.fields.totalPoints" />  {totalPoints}</Typography>
+        							</Box>
 								</Box>
 							</Grid>
 						</Grid>
