@@ -194,6 +194,18 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
+    public Player findPlayerById(Long playerId) throws InstanceNotFoundException {
+
+        if (!playerDao.existsById(playerId)) {
+            throw new InstanceNotFoundException("project.entities.player");
+        }
+
+        Player player = playerDao.findById(playerId).get();
+
+        return player;
+    }
+
+    @Override
     public List<Player> findPlayersByCompletedNameOfTeam(Long teamId, String name, String primaryLastName,
             String secondLastName) throws InstanceNotFoundException {
 

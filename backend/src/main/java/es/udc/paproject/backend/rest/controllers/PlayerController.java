@@ -18,6 +18,7 @@ import es.udc.paproject.backend.model.services.PlayerService;
 import es.udc.paproject.backend.rest.common.ErrorsDto;
 import es.udc.paproject.backend.rest.dtos.PlayerDto;
 
+import static es.udc.paproject.backend.rest.dtos.GameConversor.toGameDto;
 import static es.udc.paproject.backend.rest.dtos.GameConversor.toGameDtos;
 import static es.udc.paproject.backend.rest.dtos.PlayerConversor.toPlayerDto;
 import static es.udc.paproject.backend.rest.dtos.PlayerConversor.toPlayerDtos;
@@ -94,10 +95,15 @@ public class PlayerController {
 		return new ErrorsDto(errorMessage);
 	}
 
-    @GetMapping("/{playerId}")
+    @GetMapping("/{playerId}/team")
     public PlayerDto findPlayerByIdOfTeam(@PathVariable Long playerId, @RequestParam Long teamId)
             throws InstanceNotFoundException {
         return toPlayerDto(playerService.findPlayerByIdOfTeam(playerId, teamId));
+    }
+
+    @GetMapping("/{playerId}")
+    public PlayerDto findPlayerById(@PathVariable Long playerId) throws InstanceNotFoundException {
+        return toPlayerDto(playerService.findPlayerById(playerId));
     }
 
     @GetMapping("/user")
