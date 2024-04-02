@@ -157,7 +157,7 @@ export default {
     'project.statistics.fields.playerGameStatistics' : 'Estadísticas Jugador Partido',
     'project.statistics.fields.statistics' : 'Estadísticas',
 
-    'project.statistics.fields.totalPoints' : 'Total Puntos: ',
+    'project.statistics.fields.totalPoints' : 'Total Puntos ',
     'project.statistics.fields.totalPointsTeam1' : 'Puntos Equipo',
     'project.statistics.fields.totalPointsRival1' : 'Puntos Rival',
 
@@ -206,6 +206,9 @@ export default {
     'project.statistics.fields.setShots' : 'Tiros de campo',
     'project.statistics.fields.freeShots' : 'Tiros libres',
 
+    'project.statistics.fields.failShots' : 'Fallados',
+
+    
     'project.statistics.fields.failThreePointShots' : 'Tiros de 3 fallados',
     'project.statistics.fields.failSetShots' : 'Tiros de campo fallados',
     'project.statistics.fields.failFreeShots' : 'Tiros libres fallados',

@@ -24,12 +24,12 @@ import Checkbox from '@mui/material/Checkbox';
 import { useIntl } from 'react-intl';
 import * as actionsPlayers from '../../players/actions';
 
-const UpdateGameStatistics = () => {
+const UpdateStatisticsGame = () => {
 	const dispatch = useDispatch();
 	const history = useNavigate();
 	const intl = useIntl();
 	const gameStatistics = useSelector(selectors.getGameStatistics);
-	const { id } = useParams();
+	const { gameId } = useParams();
 	const [showTable, setShowTable] = useState(true);
 	const { stretchingType, tabValue } = useParams();
 	const [value, setValue] = useState(parseInt(tabValue, 10) || 0);
@@ -143,8 +143,8 @@ const UpdateGameStatistics = () => {
 
 	useEffect(() => {
 		if (!gameStatistics) {
-			dispatch(actions.findStatisticsByGame(id, () => history(`/games/update/${id}/statistics/${3}`)));
-			dispatch(actionsGames.findGameById(id, () => history(`/games/update/${id}/statistics/${3}`)));
+			dispatch(actions.findStatisticsByGame(gameId, () => history(`/statistics/update/game/${gameId}`)));
+			dispatch(actionsGames.findGameById(gameId, () => history(`/statistics/update/game/${gameId}`)));
 		} else {
 			setTotalPoints(gameStatistics.totalPoints ? gameStatistics.totalPoints : 0);
 			setDurationMinutes(gameStatistics.durationMinutes ? gameStatistics.durationMinutes : 0);
@@ -171,13 +171,13 @@ const UpdateGameStatistics = () => {
 
 
 		}
-	}, [dispatch, gameStatistics, history, id]);
+	}, [dispatch, gameStatistics, history, gameId]);
 
 	const handleSubmit = event => {
 
 		event.preventDefault();
 
-		dispatch(actions.updateGameStatistics(id, gameStatistics ? gameStatistics.id : null, totalPoints, durationMinutes,
+		dispatch(actions.updateGameStatistics(gameId, gameStatistics ? gameStatistics.id : null, totalPoints, durationMinutes,
 			totalThreePointShots, totalSetShots, totalFreeShots, totalRebounds,
 			totalBlockedShot, totalAssists, totalPersonalFouls, totalTechnicalFouls,
 			totalUnsportsmanlikeFouls, totalPointsRival, totalThreePointShotsRival,
@@ -188,38 +188,23 @@ const UpdateGameStatistics = () => {
 			errors => setBackendErrors(errors),
 		));
 	}
-	const handleUpdateGame = (tabValue, dispatch) => {
-		setValue(tabValue);
-		dispatch(actionsGames.findGameById(id, () => history(`/games/update/${id}`)));
-	}
-	const handleUpdateGameExercise = (tabValue, dispatch) => {
-		setValue(tabValue);
-		dispatch(actionsGames.findGameById(id, () => history(`/games/update/${id}/exercise/${tabValue}`)));
-	}
-	const handleUpdateGameStretching = (tabValue, dispatch) => {
-		setValue(tabValue);
-		dispatch(actionsGames.findGameById(id, () => history(`/games/update/${id}/stretching/${tabValue}`)));
-	}
 
 	const handleUpdateGameStatistics = (tabValue, dispatch) => {
 		setValue(tabValue);
-		dispatch(actionsGames.findGameById(id, () => {
+		dispatch(actionsGames.findGameById(gameId, () => {
 			// dispatch(actionsStretchings.findStretchingsByGameId(id, () => history(`/games/update/${id}/statistics/${tabValue}`)));
 		}));
-		history(`/games/update/${id}/statistics/${tabValue}`);
+		history(`/statistics/update/game/${gameId}`);
 	}
 
-	const handleUpdateGamePlayer = (tabValue, dispatch) => {
+    const handleUpdatePlayerStatistics = (tabValue, dispatch) => {
 		setValue(tabValue);
-		dispatch(actionsGames.findGameById(id, () => {
-			dispatch(actionsPlayers.findPlayersByGame(id, () => history(`/games/update/${id}/player/${tabValue}`)));
+		dispatch(actionsGames.findGameById(gameId, () => {
+			// dispatch(actionsStretchings.findStretchingsByGameId(id, () => history(`/games/update/${id}/statistics/${tabValue}`)));
 		}));
-		history(`/games/update/${id}/player/${tabValue}`);
+		history(`/statistics/update/game/${gameId}/players/${tabValue}`);
 	}
 
-	const reloadWindow = () => {
-		history(`/statistics/game/${id}`)
-	}
 	const pieParams = { height: 200, margin: { right: 5 } };
 	const palette = ['red', 'blue', 'green'];
 	return (
@@ -255,11 +240,8 @@ const UpdateGameStatistics = () => {
 							boxShadow: "0 10px 50px rgb(0, 0, 0)"
 						}}
 					>
-						<Tab value={0} sx={{ color: '#40FF00', fontSize: "30px", padding: "20px" }} onClick={() => handleUpdateGame(0, dispatch)} label="General" />
-						<Tab value={1} sx={{ color: '#f5af19', fontSize: "30px", padding: "20px" }} onClick={() => handleUpdateGameExercise(1, dispatch)} label="Exercises" />
-						<Tab value={2} sx={{ color: 'rgb(255, 0, 247)', fontSize: "30px", padding: "20px" }} onClick={() => handleUpdateGameStretching(2, dispatch)} label="Stretchings" />
-						<Tab value={3} sx={{ color: 'rgb(0, 217, 255)', fontSize: "30px", padding: "20px" }} onClick={() => handleUpdateGameStatistics(3, dispatch)} label="Statistics" />
-						<Tab value={4} sx={{ color: '#ff0000', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateGamePlayer(4, dispatch)} label="Players"/>
+						<Tab value={0} sx={{ color: '#40FF00', fontSize: "30px", padding: "20px" }} onClick={() => handleUpdateGameStatistics(0, dispatch)} label="Game" />
+						<Tab value={1} sx={{ color: '#ff0000', fontSize: "30px", padding: "20px" }} onClick={() => handleUpdatePlayerStatistics(1, dispatch)} label="Players" />
 					</Tabs>
 				</Box>
 				<input type="checkbox" class="theme-checkbox" onClick={() => setShowTable(!showTable)} />
@@ -1542,4 +1524,4 @@ const UpdateGameStatistics = () => {
 	);
 }
 
-export default UpdateGameStatistics;
+export default UpdateStatisticsGame;

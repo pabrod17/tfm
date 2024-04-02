@@ -9,6 +9,7 @@ import { Errors } from '../../common';
 import * as actions from '../actions';
 import * as selectors from '../selectors';
 import * as actionsGames from '../../games/actions';
+import * as selectorsPlayer from '../../players/selectors';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { Box, Button, FilledInput, Grid, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material';
@@ -23,70 +24,46 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { useIntl } from 'react-intl';
 import * as actionsPlayers from '../../players/actions';
+import { textAlign } from '@mui/system';
 
-const UpdateGameStatistics = () => {
+const UpdateStatisticsGamePlayer = () => {
 	const dispatch = useDispatch();
 	const history = useNavigate();
 	const intl = useIntl();
-	const gameStatistics = useSelector(selectors.getGameStatistics);
-	const { id } = useParams();
+    const playerGameStatistics = useSelector(selectors.getPlayerGameStatistics);
+    const player = useSelector(selectorsPlayer.getPlayer);
+
+	const { gameId, playerId } = useParams();
 	const [showTable, setShowTable] = useState(true);
 	const { stretchingType, tabValue } = useParams();
 	const [value, setValue] = useState(parseInt(tabValue, 10) || 0);
 
-	//OTRA OPCION:
-	//Arriba: Card con el numero de minutos, Card con rebotes, Card con tapones, Card con asistencias
-	//Aqui habria que mirar como mirar los items del rival ( o en la misma card o en otra al lado)
-	//Abajo: Dos graficos uno para puntos y otro para faltas
-	//Aqui habria que mirar como mirar los items del rival (Pero si es un grafico se pueden meter ahi los dos tipos)
+    const [playerName , setPlayerName ] = useState(null);
+    const [primaryLastName , setPrimaryLastName ] = useState(null);
+    const [position , setPosition ] = useState(null);
+    const [dni , setDni ] = useState(null);
 
 
-	//Hacer un grafico que compare lo de mi equipo y lo del rival para cada section
-
-	//puntos -> primer grafico de barras verticales: bar chart
-	const [totalFreeShots, setTotalFreeShots] = useState(0);
-	const [totalSetShots, setTotalSetShots] = useState(0);
-	const [totalThreePointShots, setTotalThreePointShots] = useState(0);
+    const [freeShots, setFreeShots] = useState(0);
+	const [setShots, setSetShots] = useState(0);
+	const [threePointShots, setThreePointShots] = useState(0);
 	//tiros totales:
-	const [totalPoints, setTotalPoints] = useState(0);
+	    const [totalPoints, setTotalPoints] = useState(0);
+    const [failFreeShots, setFailFreeShots] = useState(0);
+    const [failSetShots, setFailSetShots] = useState(0);
+    const [failThreePointShots, setFailThreePointShots] = useState(0);
 
-	//duracion -> una card arriba a la izq con el numero en grande como vi en algun otro dashboard
-	const [durationMinutes, setDurationMinutes] = useState(0);
+    const [personalFouls, setPersonalFouls] = useState(0);
+    const [technicalFouls, setTechnicalFouls] = useState(0);
+    const [unsportsmanlikeFouls, setUnsportsmanlikeFouls] = useState(0);
 
-	//Rebotes
-	const [totalRebounds, setTotalRebounds] = useState(0);
-
-	//Tapones
-	const [totalBlockedShot, setTotalBlockedShot] = useState(0);
-	//Asistencias
-	const [totalAssists, setTotalAssists] = useState(0);
-	//Faltas -> circulo -> Charts - Pie
-	const [totalPersonalFouls, setTotalPersonalFouls] = useState(0);
-	const [totalTechnicalFouls, setTotalTechnicalFouls] = useState(0);
-	const [totalUnsportsmanlikeFouls, setTotalUnsportsmanlikeFouls] = useState(0);
-	const [totalFouls, setTotalFouls] = useState(0);
-
-	//RIVAL: puntos
-	const [totalPointsRival, setTotalPointsRival] = useState(0);
-	const [totalThreePointShotsRival, setTotalThreePointShotsRival] = useState(0);
-	const [totalSetShotsRival, setTotalSetShotsRival] = useState(0);
-	//RIVAL: total puntos
-	const [totalFreeShotsRival, setTotalFreeShotsRival] = useState(0);
-
-	//RIVAL: rebotes
-	const [totalReboundsRival, setTotalReboundsRival] = useState(0);
-
-	//RIVAL: tapones
-	const [totalBlockedShotsRival, setTotalBlockedShotsRival] = useState(0);
-
-	//RIVAL: asistencias
-	const [totalAssistsRival, setTotalAssistsRival] = useState(0);
-
-	//RIVAL: faltas
-	const [totalPersonalFoulsRival, setTotalPersonalFoulsRival] = useState(0);
-	const [totalTechnicalFoulsRival, setTotalTechnicalFoulsRival] = useState(0);
-	const [totalUnsportsmanlikeFoulsRival, setTotalUnsportsmanlikeFoulsRival] = useState(0);
-	const [totalFoulsRival, setTotalFoulsRival] = useState(0);
+    const [rebounds, setRebounds] = useState(0);
+    
+    const [blockedShot, setBlockedShot] = useState(0);
+    
+    const [assists, setAssists] = useState(0);
+    
+    const [minutes, setMinutes] = useState(0);
 
 	const [backendErrors, setBackendErrors] = useState(0);
 	const [seriesNb, setSeriesNb] = React.useState(2);
@@ -141,85 +118,79 @@ const UpdateGameStatistics = () => {
 		setValue(newValue);
 	};
 
-	useEffect(() => {
-		if (!gameStatistics) {
-			dispatch(actions.findStatisticsByGame(id, () => history(`/games/update/${id}/statistics/${3}`)));
-			dispatch(actionsGames.findGameById(id, () => history(`/games/update/${id}/statistics/${3}`)));
-		} else {
-			setTotalPoints(gameStatistics.totalPoints ? gameStatistics.totalPoints : 0);
-			setDurationMinutes(gameStatistics.durationMinutes ? gameStatistics.durationMinutes : 0);
-			setTotalThreePointShots(gameStatistics.totalThreePointShots ? gameStatistics.totalThreePointShots : 0);
-			setTotalSetShots(gameStatistics.totalSetShots ? gameStatistics.totalSetShots : 0);
-			setTotalFreeShots(gameStatistics.totalFreeShots ? gameStatistics.totalFreeShots : 0);
-			setTotalRebounds(gameStatistics.totalRebounds ? gameStatistics.totalRebounds : 0);
-			setTotalBlockedShot(gameStatistics.totalBlockedShot ? gameStatistics.totalBlockedShot : 0);
-			setTotalAssists(gameStatistics.totalAssists ? gameStatistics.totalAssists : 0);
-			setTotalPersonalFouls(gameStatistics.totalPersonalFouls ? gameStatistics.totalPersonalFouls : 0);
-			setTotalTechnicalFouls(gameStatistics.totalTechnicalFouls ? gameStatistics.totalTechnicalFouls : 0);
-			setTotalUnsportsmanlikeFouls(gameStatistics.totalUnsportsmanlikeFouls ? gameStatistics.totalUnsportsmanlikeFouls : 0);
+    useEffect(() => {
+		if (!player) {
+			dispatch(actionsPlayers.findPlayerById(playerId, () => history(`/statistics/update/game/${gameId}/players/${1}/player/${playerId}`)));
+		}
+	}, [dispatch, player, history, playerId, gameId]);
 
-			setTotalPointsRival(gameStatistics.totalPointsRival ? gameStatistics.totalPointsRival : 0);
-			setTotalThreePointShotsRival(gameStatistics.totalThreePointShotsRival ? gameStatistics.totalThreePointShotsRival : 0);
-			setTotalSetShotsRival(gameStatistics.totalSetShotsRival ? gameStatistics.totalSetShotsRival : 0);
-			setTotalFreeShotsRival(gameStatistics.totalFreeShotsRival ? gameStatistics.totalFreeShotsRival : 0);
-			setTotalReboundsRival(gameStatistics.totalReboundsRival ? gameStatistics.totalReboundsRival : 0);
-			setTotalBlockedShotsRival(gameStatistics.totalBlockedShotsRival ? gameStatistics.totalBlockedShotsRival : 0);
-			setTotalAssistsRival(gameStatistics.totalAssistsRival ? gameStatistics.totalAssistsRival : 0);
-			setTotalPersonalFoulsRival(gameStatistics.totalPersonalFoulsRival ? gameStatistics.totalPersonalFoulsRival : 0);
-			setTotalTechnicalFoulsRival(gameStatistics.totalTechnicalFoulsRival ? gameStatistics.totalTechnicalFoulsRival : 0);
-			setTotalUnsportsmanlikeFoulsRival(gameStatistics.totalUnsportsmanlikeFoulsRival ? gameStatistics.totalUnsportsmanlikeFoulsRival : 0);
+    useEffect(() => {
+        if (!player) {
+			dispatch(actionsPlayers.findPlayerById(playerId, () => history(`/statistics/update/game/${gameId}/players/${1}/player/${playerId}`)));
+        } else {
+            setPlayerName(player.playerName);
+            setPrimaryLastName(player.primaryLastName);
+            setPosition(player.position);
+            setDni(player.dni);
+        }
+	}, [dispatch, player, history, playerId, gameId]);
+
+
+	useEffect(() => {
+		if (!playerGameStatistics) {
+			dispatch(actions.findStatisticsByPlayerAndGame(playerId, gameId, () => history(`/statistics/update/game/${gameId}/players/${1}/player/${playerId}`)));
+			dispatch(actionsPlayers.findPlayerById(playerId, () => history(`/statistics/update/game/${gameId}/players/${1}/player/${playerId}`)));
+		} else {
+			setFreeShots(playerGameStatistics.freeShots ? playerGameStatistics.freeShots : 0);
+			setSetShots(playerGameStatistics.setShots ? playerGameStatistics.setShots : 0);
+			setThreePointShots(playerGameStatistics.threePointShots ? playerGameStatistics.threePointShots : 0);
+                setTotalPoints(playerGameStatistics.totalPoints ? playerGameStatistics.totalPoints : 0);
+			setFailFreeShots(playerGameStatistics.failFreeShots ? playerGameStatistics.failFreeShots : 0);
+			setFailSetShots(playerGameStatistics.failSetShots ? playerGameStatistics.failSetShots : 0);
+			setFailThreePointShots(playerGameStatistics.failThreePointShots ? playerGameStatistics.failThreePointShots : 0);
+			
+            setPersonalFouls(playerGameStatistics.personalFouls ? playerGameStatistics.personalFouls : 0);
+			setTechnicalFouls(playerGameStatistics.technicalFouls ? playerGameStatistics.technicalFouls : 0);
+			setUnsportsmanlikeFouls(playerGameStatistics.unsportsmanlikeFouls ? playerGameStatistics.unsportsmanlikeFouls : 0);
+
+			setRebounds(playerGameStatistics.rebounds ? playerGameStatistics.rebounds : 0);
+			setBlockedShot(playerGameStatistics.blockedShot ? playerGameStatistics.blockedShot : 0);
+			setAssists(playerGameStatistics.assists ? playerGameStatistics.assists : 0);
+			setMinutes(playerGameStatistics.minutes ? playerGameStatistics.minutes : 0);
 
 
 		}
-	}, [dispatch, gameStatistics, history, id]);
+	}, [dispatch, playerGameStatistics, history, gameId]);
 
 	const handleSubmit = event => {
 
 		event.preventDefault();
 
-		dispatch(actions.updateGameStatistics(id, gameStatistics ? gameStatistics.id : null, totalPoints, durationMinutes,
-			totalThreePointShots, totalSetShots, totalFreeShots, totalRebounds,
-			totalBlockedShot, totalAssists, totalPersonalFouls, totalTechnicalFouls,
-			totalUnsportsmanlikeFouls, totalPointsRival, totalThreePointShotsRival,
-			totalSetShotsRival, totalFreeShotsRival, totalReboundsRival, totalBlockedShotsRival,
-			totalAssistsRival, totalPersonalFoulsRival, totalTechnicalFoulsRival,
-			totalUnsportsmanlikeFoulsRival,
+        dispatch(actions.updatePlayerGameStatistics(playerId, gameId, totalPoints, 
+            minutes, threePointShots, setShots,freeShots,failThreePointShots,failSetShots,
+            failFreeShots,rebounds,blockedShot,assists,personalFouls,technicalFouls,
+            unsportsmanlikeFouls,
 			() => window.location.reload('true'),
 			errors => setBackendErrors(errors),
 		));
 	}
-	const handleUpdateGame = (tabValue, dispatch) => {
-		setValue(tabValue);
-		dispatch(actionsGames.findGameById(id, () => history(`/games/update/${id}`)));
-	}
-	const handleUpdateGameExercise = (tabValue, dispatch) => {
-		setValue(tabValue);
-		dispatch(actionsGames.findGameById(id, () => history(`/games/update/${id}/exercise/${tabValue}`)));
-	}
-	const handleUpdateGameStretching = (tabValue, dispatch) => {
-		setValue(tabValue);
-		dispatch(actionsGames.findGameById(id, () => history(`/games/update/${id}/stretching/${tabValue}`)));
-	}
 
 	const handleUpdateGameStatistics = (tabValue, dispatch) => {
 		setValue(tabValue);
-		dispatch(actionsGames.findGameById(id, () => {
+		dispatch(actionsGames.findGameById(gameId, () => {
 			// dispatch(actionsStretchings.findStretchingsByGameId(id, () => history(`/games/update/${id}/statistics/${tabValue}`)));
 		}));
-		history(`/games/update/${id}/statistics/${tabValue}`);
+		history(`/statistics/update/game/${gameId}`);
 	}
 
-	const handleUpdateGamePlayer = (tabValue, dispatch) => {
+    const handleUpdatePlayerStatistics = (tabValue, dispatch) => {
 		setValue(tabValue);
-		dispatch(actionsGames.findGameById(id, () => {
-			dispatch(actionsPlayers.findPlayersByGame(id, () => history(`/games/update/${id}/player/${tabValue}`)));
+		dispatch(actionsGames.findGameById(gameId, () => {
+			// dispatch(actionsStretchings.findStretchingsByGameId(id, () => history(`/games/update/${id}/statistics/${tabValue}`)));
 		}));
-		history(`/games/update/${id}/player/${tabValue}`);
+		history(`/statistics/update/game/${gameId}/players/${tabValue}`);
 	}
 
-	const reloadWindow = () => {
-		history(`/statistics/game/${id}`)
-	}
 	const pieParams = { height: 200, margin: { right: 5 } };
 	const palette = ['red', 'blue', 'green'];
 	return (
@@ -255,11 +226,8 @@ const UpdateGameStatistics = () => {
 							boxShadow: "0 10px 50px rgb(0, 0, 0)"
 						}}
 					>
-						<Tab value={0} sx={{ color: '#40FF00', fontSize: "30px", padding: "20px" }} onClick={() => handleUpdateGame(0, dispatch)} label="General" />
-						<Tab value={1} sx={{ color: '#f5af19', fontSize: "30px", padding: "20px" }} onClick={() => handleUpdateGameExercise(1, dispatch)} label="Exercises" />
-						<Tab value={2} sx={{ color: 'rgb(255, 0, 247)', fontSize: "30px", padding: "20px" }} onClick={() => handleUpdateGameStretching(2, dispatch)} label="Stretchings" />
-						<Tab value={3} sx={{ color: 'rgb(0, 217, 255)', fontSize: "30px", padding: "20px" }} onClick={() => handleUpdateGameStatistics(3, dispatch)} label="Statistics" />
-						<Tab value={4} sx={{ color: '#ff0000', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateGamePlayer(4, dispatch)} label="Players"/>
+						<Tab value={0} sx={{ color: '#40FF00', fontSize: "30px", padding: "20px" }} onClick={() => handleUpdateGameStatistics(0, dispatch)} label="Game" />
+						<Tab value={1} sx={{ color: '#ff0000', fontSize: "30px", padding: "20px" }} onClick={() => handleUpdatePlayerStatistics(1, dispatch)} label="Players" />
 					</Tabs>
 				</Box>
 				<input type="checkbox" class="theme-checkbox" onClick={() => setShowTable(!showTable)} />
@@ -285,7 +253,7 @@ const UpdateGameStatistics = () => {
 						pt={0}
 
 						sx={{
-							maxWidth: { sm: 1235 },
+							maxWidth: { sm: 1635 },
 
 							border: '2px solid grey',
 							background: "linear-gradient(-35deg, #081971 30%, #7C0C0C 80% )",
@@ -297,17 +265,20 @@ const UpdateGameStatistics = () => {
 						}}
 					>
 						<Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
-						<Grid container
-						>
-							<Grid item xs={12} md={12} >
-								<Typography
-									sx={{ flex: '1 1 100%', mt: 3.5, color: "#36FF00", m: 2, mb: 3, fontSize: 30, textAlign: 'center' }}
+                        <Grid container margin={1} spacing={{ xs: 0, md: 5 }}>
+                        <Typography
+									sx={{ flex: '1 1 100%', pt:3.5,mt: 3.5, color: "#36FF00", m: 2, mb: 1, fontSize: 30, textAlign: 'center' }}
 									variant="h6"
 									id="tableTitle"
 									component="div"
 								>
-									My Team
+									{playerName} {primaryLastName} {' '}
+                                     (<span style={{ color: '#00AEFF' }}>{position}</span>)
+                                     (<span style={{ color: '#00AEFF' }}>{dni}</span>)
 								</Typography>
+							<Grid item xs={12} md={6} >
+
+                                
 								<Box
 									component="form"
 									sx={{
@@ -321,7 +292,7 @@ const UpdateGameStatistics = () => {
 									noValidate
 									autoComplete="off"
 								>
-									<Grid container margin={5} spacing={{ xs: 0, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+									<Grid container margin={5} spacing={{ xs: 0, md: 2 }} columns={{ xs: 4, sm: 8, md: 6 }}>
 										<Grid item xs={3}>
 											<Box
 												component="form"
@@ -337,7 +308,7 @@ const UpdateGameStatistics = () => {
 												<TextField
 													id="outlined-number"
 													label={<FormattedMessage id="project.statistics.fields.totalFreeShots" />}
-													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
+													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%'} }}
 													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
 													inputProps={{ min: 0 }}
 													type="number"
@@ -348,8 +319,8 @@ const UpdateGameStatistics = () => {
 														boxShadow: "0 10px 10px rgb(0, 0, 0)"
 
 													}}
-													value={totalFreeShots}
-													onChange={(e) => setTotalFreeShots(e.target.value)}
+													value={freeShots}
+													onChange={(e) => setFreeShots(e.target.value)}
 												/>
 											</Box>
 										</Grid>
@@ -367,8 +338,8 @@ const UpdateGameStatistics = () => {
 
 												<TextField
 													id="outlined-number"
-													label={<FormattedMessage id="project.statistics.fields.totalSetShots" />}
-													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
+													label={<FormattedMessage id="project.statistics.fields.failShots" />}
+													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%'} }}
 													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
 													inputProps={{ min: 0 }}
 													type="number"
@@ -379,8 +350,39 @@ const UpdateGameStatistics = () => {
 														boxShadow: "0 10px 10px rgb(0, 0, 0)"
 
 													}}
-													value={totalSetShots}
-													onChange={(e) => setTotalSetShots(e.target.value)}
+													value={failFreeShots}
+													onChange={(e) => setFailFreeShots(e.target.value)}
+												/>
+											</Box>
+										</Grid>
+                                        <Grid item xs={3}>
+											<Box
+												component="form"
+												sx={{
+													'& .MuiTextField-root': { mb: 2 },
+													margin: '30px', // Centra el formulario en la pantalla
+
+												}}
+												noValidate
+												autoComplete="off"
+											>
+
+												<TextField
+													id="outlined-number"
+													label={<FormattedMessage id="project.statistics.fields.setShots" />}
+													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%'} }}
+													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
+													inputProps={{ min: 0 }}
+													type="number"
+													sx={{
+														border: '2px solid grey',
+														borderRadius: "20px",
+														borderColor: "black",
+														boxShadow: "0 10px 10px rgb(0, 0, 0)"
+
+													}}
+													value={setShots}
+													onChange={(e) => setSetShots(e.target.value)}
 												/>
 											</Box>
 										</Grid>
@@ -398,8 +400,8 @@ const UpdateGameStatistics = () => {
 
 												<TextField
 													id="outlined-number"
-													label={<FormattedMessage id="project.statistics.fields.totalThreePointShots" />}
-													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
+													label={<FormattedMessage id="project.statistics.fields.failShots" />}
+													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%'} }}
 													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
 													inputProps={{ min: 0 }}
 													type="number"
@@ -410,8 +412,39 @@ const UpdateGameStatistics = () => {
 														boxShadow: "0 10px 10px rgb(0, 0, 0)"
 
 													}}
-													value={totalThreePointShots}
-													onChange={(e) => setTotalThreePointShots(e.target.value)}
+													value={failSetShots}
+													onChange={(e) => setFailSetShots(e.target.value)}
+												/>
+											</Box>
+										</Grid>
+                                        <Grid item xs={3}>
+											<Box
+												component="form"
+												sx={{
+													'& .MuiTextField-root': { mb: 2 },
+													margin: '30px', // Centra el formulario en la pantalla
+
+												}}
+												noValidate
+												autoComplete="off"
+											>
+
+												<TextField
+													id="outlined-number"
+													label={<FormattedMessage id="project.statistics.fields.threePointShots" />}
+													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%'} }}
+													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
+													inputProps={{ min: 0 }}
+													type="number"
+													sx={{
+														border: '2px solid grey',
+														borderRadius: "20px",
+														borderColor: "black",
+														boxShadow: "0 10px 10px rgb(0, 0, 0)"
+
+													}}
+													value={threePointShots}
+													onChange={(e) => setThreePointShots(e.target.value)}
 												/>
 											</Box>
 										</Grid>
@@ -422,6 +455,38 @@ const UpdateGameStatistics = () => {
 													'& .MuiTextField-root': { mb: 2 },
 													margin: '30px', // Centra el formulario en la pantalla
 
+												}}
+												noValidate
+												autoComplete="off"
+											>
+
+												<TextField
+													id="outlined-number"
+													label={<FormattedMessage id="project.statistics.fields.failShots" />}
+													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%'} }}
+													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
+													inputProps={{ min: 0 }}
+													type="number"
+													sx={{
+														border: '2px solid grey',
+														borderRadius: "20px",
+														borderColor: "black",
+														boxShadow: "0 10px 10px rgb(0, 0, 0)"
+
+													}}
+													value={failThreePointShots}
+													onChange={(e) => setFailThreePointShots(e.target.value)}
+												/>
+											</Box>
+										</Grid>
+                                        <Grid item xs={6}>
+											<Box
+												component="form"
+												sx={{
+													'& .MuiTextField-root': { mb: 2 },
+													margin: '30px', // Centra el formulario en la pantalla
+                                                    alignContent:"center",
+                                                    textAlign:"center"
 												}}
 												noValidate
 												autoComplete="off"
@@ -430,7 +495,7 @@ const UpdateGameStatistics = () => {
 												<TextField
 													id="outlined-number"
 													label={<FormattedMessage id="project.statistics.fields.totalPoints" />}
-													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
+													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%'} }}
 													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
 													inputProps={{ min: 0 }}
 													type="number"
@@ -446,276 +511,19 @@ const UpdateGameStatistics = () => {
 												/>
 											</Box>
 										</Grid>
-										<Grid item xs={3}>
-											<Box
-												component="form"
-												sx={{
-													'& .MuiTextField-root': { mb: 2 },
-													margin: '30px', // Centra el formulario en la pantalla
-													marginTop: '0px', // Centra el formulario en la pantalla
-
-												}}
-												noValidate
-												autoComplete="off"
-											>
-
-												<TextField
-													id="outlined-number"
-													label={<FormattedMessage id="project.statistics.fields.totalPersonalFouls" />}
-													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
-													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
-													inputProps={{ min: 0 }}
-													type="number"
-													sx={{
-														border: '2px solid grey',
-														borderRadius: "20px",
-														borderColor: "black",
-														boxShadow: "0 10px 10px rgb(0, 0, 0)"
-
-													}}
-													value={totalPersonalFouls}
-													onChange={(e) => setTotalPersonalFouls(e.target.value)}
-												/>
-											</Box>
-										</Grid>
-										<Grid item xs={3}>
-											<Box
-												component="form"
-												sx={{
-													'& .MuiTextField-root': { mb: 2 },
-													margin: '30px', // Centra el formulario en la pantalla
-													marginTop: '0px', // Centra el formulario en la pantalla
-
-												}}
-												noValidate
-												autoComplete="off"
-											>
-
-												<TextField
-													id="outlined-number"
-													label={<FormattedMessage id="project.statistics.fields.totalTechnicalFouls" />}
-													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
-													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
-													inputProps={{ min: 0 }}
-													type="number"
-													sx={{
-														border: '2px solid grey',
-														borderRadius: "20px",
-														borderColor: "black",
-														boxShadow: "0 10px 10px rgb(0, 0, 0)"
-
-													}}
-													value={totalTechnicalFouls}
-													onChange={(e) => setTotalTechnicalFouls(e.target.value)}
-												/>
-											</Box>
-										</Grid>
-										<Grid item xs={3}>
-											<Box
-												component="form"
-												sx={{
-													'& .MuiTextField-root': { mb: 2 },
-													margin: '30px', // Centra el formulario en la pantalla
-													marginTop: '0px', // Centra el formulario en la pantalla
-
-												}}
-												noValidate
-												autoComplete="off"
-											>
-
-												<TextField
-													id="outlined-number"
-													label={<FormattedMessage id="project.statistics.fields.totalUnsportsmanlikeFouls" />}
-													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
-													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
-													inputProps={{ min: 0 }}
-													type="number"
-													sx={{
-														border: '2px solid grey',
-														borderRadius: "20px",
-														borderColor: "black",
-														boxShadow: "0 10px 10px rgb(0, 0, 0)"
-
-													}}
-													value={totalUnsportsmanlikeFouls}
-													onChange={(e) => setTotalUnsportsmanlikeFouls(e.target.value)}
-												/>
-											</Box>
-										</Grid>
-										<Grid item xs={3}>
-											<Box
-												component="form"
-												sx={{
-													'& .MuiTextField-root': { mb: 2 },
-													margin: '30px', // Centra el formulario en la pantalla
-													marginTop: '0px', // Centra el formulario en la pantalla
-
-												}}
-												noValidate
-												autoComplete="off"
-											>
-
-												<TextField
-													id="outlined-number"
-													label={<FormattedMessage id="project.statistics.fields.totalFouls" />}
-													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
-													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
-													inputProps={{ min: 0 }}
-													type="number"
-													sx={{
-														border: '2px solid grey',
-														borderRadius: "20px",
-														borderColor: "black",
-														boxShadow: "0 10px 10px rgb(0, 0, 0)"
-
-													}}
-													value={totalFouls}
-													onChange={(e) => setTotalFouls(e.target.value)}
-												/>
-											</Box>
-										</Grid>
-										<Grid item xs={3}>
-											<Box
-												component="form"
-												sx={{
-													'& .MuiTextField-root': { mb: 2 },
-													margin: '30px', // Centra el formulario en la pantalla
-													marginTop: '0px', // Centra el formulario en la pantalla
-
-												}}
-												noValidate
-												autoComplete="off"
-											>
-
-												<TextField
-													id="outlined-number"
-													label={<FormattedMessage id="project.statistics.fields.totalRebounds" />}
-													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
-													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
-													inputProps={{ min: 0 }}
-													type="number"
-													sx={{
-														border: '2px solid grey',
-														borderRadius: "20px",
-														borderColor: "black",
-														boxShadow: "0 10px 10px rgb(0, 0, 0)"
-
-													}}
-													value={totalRebounds}
-													onChange={(e) => setTotalRebounds(e.target.value)}
-												/>
-											</Box>
-										</Grid>
-										<Grid item xs={3}>
-											<Box
-												component="form"
-												sx={{
-													'& .MuiTextField-root': { mb: 2 },
-													margin: '30px', // Centra el formulario en la pantalla
-													marginTop: '0px', // Centra el formulario en la pantalla
-
-												}}
-												noValidate
-												autoComplete="off"
-											>
-
-												<TextField
-													id="outlined-number"
-													label={<FormattedMessage id="project.statistics.fields.totalBlockedShot" />}
-													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
-													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
-													inputProps={{ min: 0 }}
-													type="number"
-													sx={{
-														border: '2px solid grey',
-														borderRadius: "20px",
-														borderColor: "black",
-														boxShadow: "0 10px 10px rgb(0, 0, 0)"
-
-													}}
-													value={totalBlockedShot}
-													onChange={(e) => setTotalBlockedShot(e.target.value)}
-												/>
-											</Box>
-										</Grid>
-										<Grid item xs={3}>
-											<Box
-												component="form"
-												sx={{
-													'& .MuiTextField-root': { mb: 2 },
-													margin: '30px', // Centra el formulario en la pantalla
-													marginTop: '0px', // Centra el formulario en la pantalla
-
-												}}
-												noValidate
-												autoComplete="off"
-											>
-
-												<TextField
-													id="outlined-number"
-													label={<FormattedMessage id="project.statistics.fields.totalAssists" />}
-													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
-													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
-													inputProps={{ min: 0 }}
-													type="number"
-													sx={{
-														border: '2px solid grey',
-														borderRadius: "20px",
-														borderColor: "black",
-														boxShadow: "0 10px 10px rgb(0, 0, 0)"
-
-													}}
-													value={totalAssists}
-													onChange={(e) => setTotalAssists(e.target.value)}
-												/>
-											</Box>
-										</Grid>
-										<Grid item xs={3}>
-											<Box
-												component="form"
-												sx={{
-													'& .MuiTextField-root': { mb: 2 },
-													margin: '30px', // Centra el formulario en la pantalla
-													marginTop: '0px', // Centra el formulario en la pantalla
-
-												}}
-												noValidate
-												autoComplete="off"
-											>
-
-												<TextField
-													id="outlined-number"
-													label={<FormattedMessage id="project.statistics.fields.duration" />}
-													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
-													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
-													inputProps={{ min: 0 }}
-													type="number"
-													sx={{
-														border: '2px solid grey',
-														borderRadius: "20px",
-														borderColor: "black",
-														boxShadow: "0 10px 10px rgb(0, 0, 0)"
-
-													}}
-													value={durationMinutes}
-													onChange={(e) => setDurationMinutes(e.target.value)}
-												/>
-											</Box>
-										</Grid>
 									</Grid>
 								</Box>
 							</Grid>
 
-							<Grid item xs={12} md={12} marginTop={-2} >
-								<Typography
-									sx={{ flex: '1 1 100%', mt: 0, color: "#FF0000", mb: 3, fontSize: 30, textAlign: 'center' }}
 
-									variant="h6"
-									id="tableTitle"
-									component="div"
-								>
-									Rival
-								</Typography>
+
+
+
+
+
+							<Grid item xs={12} md={6} >
+
+                                
 								<Box
 									component="form"
 									sx={{
@@ -729,8 +537,8 @@ const UpdateGameStatistics = () => {
 									noValidate
 									autoComplete="off"
 								>
-									<Grid container margin={5} spacing={{ xs: 0, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-										<Grid item xs={3}>
+									<Grid container margin={5} spacing={{ xs: 0, md: 2 }} columns={{ xs: 4, sm: 8, md: 6 }}>
+                                    <Grid item xs={3}>
 											<Box
 												component="form"
 												sx={{
@@ -744,8 +552,8 @@ const UpdateGameStatistics = () => {
 
 												<TextField
 													id="outlined-number"
-													label={<FormattedMessage id="project.statistics.fields.totalFreeShots" />}
-													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
+													label={<FormattedMessage id="project.statistics.fields.personalFouls" />}
+													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%'} }}
 													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
 													inputProps={{ min: 0 }}
 													type="number"
@@ -756,8 +564,8 @@ const UpdateGameStatistics = () => {
 														boxShadow: "0 10px 10px rgb(0, 0, 0)"
 
 													}}
-													value={totalFreeShotsRival}
-													onChange={(e) => setTotalFreeShotsRival(e.target.value)}
+													value={personalFouls}
+													onChange={(e) => setPersonalFouls(e.target.value)}
 												/>
 											</Box>
 										</Grid>
@@ -775,8 +583,8 @@ const UpdateGameStatistics = () => {
 
 												<TextField
 													id="outlined-number"
-													label={<FormattedMessage id="project.statistics.fields.totalSetShots" />}
-													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
+													label={<FormattedMessage id="project.statistics.fields.rebounds" />}
+													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%'} }}
 													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
 													inputProps={{ min: 0 }}
 													type="number"
@@ -787,8 +595,39 @@ const UpdateGameStatistics = () => {
 														boxShadow: "0 10px 10px rgb(0, 0, 0)"
 
 													}}
-													value={totalSetShotsRival}
-													onChange={(e) => setTotalSetShotsRival(e.target.value)}
+													value={rebounds}
+													onChange={(e) => setRebounds(e.target.value)}
+												/>
+											</Box>
+										</Grid>
+                                        <Grid item xs={3}>
+											<Box
+												component="form"
+												sx={{
+													'& .MuiTextField-root': { mb: 2 },
+													margin: '30px', // Centra el formulario en la pantalla
+
+												}}
+												noValidate
+												autoComplete="off"
+											>
+
+												<TextField
+													id="outlined-number"
+													label={<FormattedMessage id="project.statistics.fields.technicalFouls" />}
+													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%'} }}
+													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
+													inputProps={{ min: 0 }}
+													type="number"
+													sx={{
+														border: '2px solid grey',
+														borderRadius: "20px",
+														borderColor: "black",
+														boxShadow: "0 10px 10px rgb(0, 0, 0)"
+
+													}}
+													value={technicalFouls}
+													onChange={(e) => setTechnicalFouls(e.target.value)}
 												/>
 											</Box>
 										</Grid>
@@ -806,8 +645,8 @@ const UpdateGameStatistics = () => {
 
 												<TextField
 													id="outlined-number"
-													label={<FormattedMessage id="project.statistics.fields.totalThreePointShots" />}
-													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
+													label={<FormattedMessage id="project.statistics.fields.blockedShot" />}
+													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%'} }}
 													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
 													inputProps={{ min: 0 }}
 													type="number"
@@ -818,8 +657,39 @@ const UpdateGameStatistics = () => {
 														boxShadow: "0 10px 10px rgb(0, 0, 0)"
 
 													}}
-													value={totalThreePointShotsRival}
-													onChange={(e) => setTotalThreePointShotsRival(e.target.value)}
+													value={blockedShot}
+													onChange={(e) => setBlockedShot(e.target.value)}
+												/>
+											</Box>
+										</Grid>
+                                        <Grid item xs={3}>
+											<Box
+												component="form"
+												sx={{
+													'& .MuiTextField-root': { mb: 2 },
+													margin: '30px', // Centra el formulario en la pantalla
+
+												}}
+												noValidate
+												autoComplete="off"
+											>
+
+												<TextField
+													id="outlined-number"
+													label={<FormattedMessage id="project.statistics.fields.unsportsmanlikeFouls" />}
+													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%'} }}
+													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
+													inputProps={{ min: 0 }}
+													type="number"
+													sx={{
+														border: '2px solid grey',
+														borderRadius: "20px",
+														borderColor: "black",
+														boxShadow: "0 10px 10px rgb(0, 0, 0)"
+
+													}}
+													value={unsportsmanlikeFouls}
+													onChange={(e) => setUnsportsmanlikeFouls(e.target.value)}
 												/>
 											</Box>
 										</Grid>
@@ -837,8 +707,8 @@ const UpdateGameStatistics = () => {
 
 												<TextField
 													id="outlined-number"
-													label={<FormattedMessage id="project.statistics.fields.totalPoints" />}
-													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
+													label={<FormattedMessage id="project.statistics.fields.assists" />}
+													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%'} }}
 													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
 													inputProps={{ min: 0 }}
 													type="number"
@@ -849,19 +719,19 @@ const UpdateGameStatistics = () => {
 														boxShadow: "0 10px 10px rgb(0, 0, 0)"
 
 													}}
-													value={totalPointsRival}
-													onChange={(e) => setTotalPointsRival(e.target.value)}
+													value={assists}
+													onChange={(e) => setAssists(e.target.value)}
 												/>
 											</Box>
 										</Grid>
-										<Grid item xs={3}>
+                                        <Grid item xs={6}>
 											<Box
 												component="form"
 												sx={{
 													'& .MuiTextField-root': { mb: 2 },
 													margin: '30px', // Centra el formulario en la pantalla
-													marginTop: '0px', // Centra el formulario en la pantalla
-
+                                                    alignContent:"center",
+                                                    textAlign:"center"
 												}}
 												noValidate
 												autoComplete="off"
@@ -869,8 +739,8 @@ const UpdateGameStatistics = () => {
 
 												<TextField
 													id="outlined-number"
-													label={<FormattedMessage id="project.statistics.fields.totalPersonalFouls" />}
-													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
+													label={<FormattedMessage id="project.statistics.fields.minutes" />}
+													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%'} }}
 													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
 													inputProps={{ min: 0 }}
 													type="number"
@@ -881,207 +751,15 @@ const UpdateGameStatistics = () => {
 														boxShadow: "0 10px 10px rgb(0, 0, 0)"
 
 													}}
-													value={totalPersonalFoulsRival}
-													onChange={(e) => setTotalPersonalFoulsRival(e.target.value)}
+													value={minutes}
+													onChange={(e) => setMinutes(e.target.value)}
 												/>
 											</Box>
 										</Grid>
-										<Grid item xs={3}>
-											<Box
-												component="form"
-												sx={{
-													'& .MuiTextField-root': { mb: 2 },
-													margin: '30px', // Centra el formulario en la pantalla
-													marginTop: '0px', // Centra el formulario en la pantalla
-
-												}}
-												noValidate
-												autoComplete="off"
-											>
-
-												<TextField
-													id="outlined-number"
-													label={<FormattedMessage id="project.statistics.fields.totalTechnicalFouls" />}
-													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
-													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
-													inputProps={{ min: 0 }}
-													type="number"
-													sx={{
-														border: '2px solid grey',
-														borderRadius: "20px",
-														borderColor: "black",
-														boxShadow: "0 10px 10px rgb(0, 0, 0)"
-
-													}}
-													value={totalTechnicalFoulsRival}
-													onChange={(e) => setTotalTechnicalFoulsRival(e.target.value)}
-												/>
-											</Box>
-										</Grid>
-										<Grid item xs={3}>
-											<Box
-												component="form"
-												sx={{
-													'& .MuiTextField-root': { mb: 2 },
-													margin: '30px', // Centra el formulario en la pantalla
-													marginTop: '0px', // Centra el formulario en la pantalla
-
-												}}
-												noValidate
-												autoComplete="off"
-											>
-
-												<TextField
-													id="outlined-number"
-													label={<FormattedMessage id="project.statistics.fields.totalUnsportsmanlikeFouls" />}
-													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
-													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
-													inputProps={{ min: 0 }}
-													type="number"
-													sx={{
-														border: '2px solid grey',
-														borderRadius: "20px",
-														borderColor: "black",
-														boxShadow: "0 10px 10px rgb(0, 0, 0)"
-
-													}}
-													value={totalUnsportsmanlikeFoulsRival}
-													onChange={(e) => setTotalUnsportsmanlikeFoulsRival(e.target.value)}
-												/>
-											</Box>
-										</Grid>
-										<Grid item xs={3}>
-											<Box
-												component="form"
-												sx={{
-													'& .MuiTextField-root': { mb: 2 },
-													margin: '30px', // Centra el formulario en la pantalla
-													marginTop: '0px', // Centra el formulario en la pantalla
-
-												}}
-												noValidate
-												autoComplete="off"
-											>
-
-												<TextField
-													id="outlined-number"
-													label={<FormattedMessage id="project.statistics.fields.totalFouls" />}
-													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
-													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
-													inputProps={{ min: 0 }}
-													type="number"
-													sx={{
-														border: '2px solid grey',
-														borderRadius: "20px",
-														borderColor: "black",
-														boxShadow: "0 10px 10px rgb(0, 0, 0)"
-
-													}}
-													value={totalFoulsRival}
-													onChange={(e) => setTotalFoulsRival(e.target.value)}
-												/>
-											</Box>
-										</Grid>
-										<Grid item xs={4}>
-											<Box
-												component="form"
-												sx={{
-													'& .MuiTextField-root': { mb: 2 },
-													margin: '30px', // Centra el formulario en la pantalla
-													marginTop: '0px', // Centra el formulario en la pantalla
-
-												}}
-												noValidate
-												autoComplete="off"
-											>
-
-												<TextField
-													id="outlined-number"
-													label={<FormattedMessage id="project.statistics.fields.totalRebounds" />}
-													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
-													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
-													inputProps={{ min: 0 }}
-													type="number"
-													sx={{
-														border: '2px solid grey',
-														borderRadius: "20px",
-														borderColor: "black",
-														boxShadow: "0 10px 10px rgb(0, 0, 0)"
-
-													}}
-													value={totalReboundsRival}
-													onChange={(e) => setTotalReboundsRival(e.target.value)}
-												/>
-											</Box>
-										</Grid>
-										<Grid item xs={4}>
-											<Box
-												component="form"
-												sx={{
-													'& .MuiTextField-root': { mb: 2 },
-													margin: '30px', // Centra el formulario en la pantalla
-													marginTop: '0px', // Centra el formulario en la pantalla
-
-												}}
-												noValidate
-												autoComplete="off"
-											>
-
-												<TextField
-													id="outlined-number"
-													label={<FormattedMessage id="project.statistics.fields.totalBlockedShot" />}
-													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
-													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
-													inputProps={{ min: 0 }}
-													type="number"
-													sx={{
-														border: '2px solid grey',
-														borderRadius: "20px",
-														borderColor: "black",
-														boxShadow: "0 10px 10px rgb(0, 0, 0)"
-
-													}}
-													value={totalBlockedShotsRival}
-													onChange={(e) => setTotalBlockedShotsRival(e.target.value)}
-												/>
-											</Box>
-										</Grid>
-										<Grid item xs={4}>
-											<Box
-												component="form"
-												sx={{
-													'& .MuiTextField-root': { mb: 2 },
-													margin: '30px', // Centra el formulario en la pantalla
-													marginTop: '0px', // Centra el formulario en la pantalla
-
-												}}
-												noValidate
-												autoComplete="off"
-											>
-
-												<TextField
-													id="outlined-number"
-													label={<FormattedMessage id="project.statistics.fields.totalAssists" />}
-													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
-													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
-													inputProps={{ min: 0 }}
-													type="number"
-													sx={{
-														border: '2px solid grey',
-														borderRadius: "20px",
-														borderColor: "black",
-														boxShadow: "0 10px 10px rgb(0, 0, 0)"
-
-													}}
-													value={totalAssistsRival}
-													onChange={(e) => setTotalAssistsRival(e.target.value)}
-												/>
-											</Box>
-										</Grid>
-
 									</Grid>
 								</Box>
 							</Grid>
+
 
 
 
@@ -1118,7 +796,7 @@ const UpdateGameStatistics = () => {
 
 
 						<Grid container margin={5} spacing={{ xs: 0, md: 2 }} columns={{ xs: 4, sm: 4, md: 12 }}>
-							<Grid item xs={3}>
+							{/* <Grid item xs={3}>
 
 
 								<Box
@@ -1511,7 +1189,7 @@ const UpdateGameStatistics = () => {
 
 
 								</Box>
-							</Grid>
+							</Grid> */}
 						</Grid>
 
 
@@ -1542,4 +1220,4 @@ const UpdateGameStatistics = () => {
 	);
 }
 
-export default UpdateGameStatistics;
+export default UpdateStatisticsGamePlayer;

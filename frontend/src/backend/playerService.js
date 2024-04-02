@@ -3,6 +3,9 @@ import {config, appFetch} from './appFetch';
 export const findPlayerByIdOfTeam = (playerId, teamId, onSuccess, onErrors) =>
     appFetch(`/players/${playerId}?teamId=${teamId}`, config('GET'), onSuccess, onErrors);
 
+export const findPlayerById = (playerId, onSuccess, onErrors) =>
+    appFetch(`/players/${playerId}`, config('GET'), onSuccess, onErrors);
+
 export const findPlayersByUserId = (onSuccess, onErrors) =>
     appFetch('/players/user', config('GET'), onSuccess, onErrors);
 

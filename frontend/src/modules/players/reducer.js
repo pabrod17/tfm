@@ -21,6 +21,8 @@ const player = (state = initialState.player, action) => {
             return action.player;
         case actionTypes.FIND_PLAYER_BY_DNI_OF_TEAM_COMPLETED:
             return action.player;
+        case actionTypes.FIND_PLAYER_BY_ID_COMPLETED:
+            return action.player;
         case actionTypes.REMOVE_PLAYER_COMPLETED:
             return state;
         case actionTypes.CHANGE_PLAYER_TO_TEAM_COMPLETED:

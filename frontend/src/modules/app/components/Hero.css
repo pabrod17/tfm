@@ -595,6 +595,15 @@ max-height: 360px;
   -webkit-box-orient: vertical;
 }
 
+.scroll_efect_game_statistics {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration: none; 
+  display: -webkit-box;
+  -webkit-line-clamp: 9; /* Ajusta el número de líneas que deseas mostrar */
+  -webkit-box-orient: vertical;
+}
+
 .scroll_efect {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -3490,6 +3499,14 @@ main {
   margin: -15px
 }
 
+.statistics_game_position {
+  position: fixed;
+  bottom: 10px;
+  right: 20px;
+  left: 20px;
+  margin: -8px
+}
+
 
 .lesiongrande a:before {
   transform: scale(1);
@@ -3514,6 +3531,19 @@ main {
   border-radius: 100%;
   display: block;
   background: radial-gradient(circle at -1% 57.5%, rgb(19, 170, 82) 0%, rgb(0, 102, 43) 90%);
+  transition: all 265ms ease-out;
+}
+
+.statisticsGamegrande a:before {
+  transform: scale(1);
+  -ms-transform: scale(1);
+  -webkit-transform: scale(1);
+  content: " ";
+  width: 55px;
+  height: 55px;
+  border-radius: 100%;
+  display: block;
+  background: radial-gradient(circle at -1% 57.5%, hsl(199, 100%, 50%) 0%, rgb(0, 60, 255) 90%);
   transition: all 265ms ease-out;
 }
 
@@ -3587,6 +3617,17 @@ main {
   -webkit-transform: scale(2.2);
   color: #ff003c;
   background: radial-gradient(circle at -1% 57.5%, rgb(19, 170, 82) 0%, rgb(0, 102, 43) 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 265ms ease-in;
+}
+
+.statisticsGamegrande a:hover i {
+  transform: scale(2.2);
+  -ms-transform: scale(2.2);
+  -webkit-transform: scale(2.2);
+  color: #00AEFF;
+  background: radial-gradient(circle at -1% 57.5%, hsl(199, 100%, 50%) 0%, rgb(0, 60, 255) 90%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   transition: all 265ms ease-in;

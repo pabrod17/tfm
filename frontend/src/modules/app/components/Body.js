@@ -81,6 +81,10 @@ import SeasonsHome from '../../seasons/components/SeasonsHome';
 import { UpdateSeasonTeam, UpdateSeasonTraining } from '../../seasons';
 import UpdateSeasonGame from '../../seasons/components/UpdateSeasonGame.js';
 import { UpdateGamePlayer } from '../../games';
+import StatisticsHome from '../../statistics/components/StatisticsHome';
+import UpdateStatisticsGame from '../../statistics/components/UpdateStatisticsGame';
+import UpdateStatisticsPlayers from '../../statistics/components/UpdateStatisticsPlayers';
+import { UpdateStatisticsGamePlayer } from '../../statistics';
 
 const Body = ({ isDark, setIsDark}) => {
 
@@ -175,6 +179,15 @@ const Body = ({ isDark, setIsDark}) => {
                 {loggedIn && <Route exact path="/games/addGame" element={<AddGame/>}></Route>}
                 {loggedIn && <Route exact path="/games/view/:id" element={<GameView/>}></Route>}
                 {loggedIn && <Route exact path="/games/update/:id" element={<UpdateGame/>}></Route>}
+
+                {loggedIn && <Route exact path="/statistics/home" element={<StatisticsHome/>}></Route>}
+                {loggedIn && <Route exact path="/statistics/update/game/:gameId" element={<UpdateStatisticsGame/>}></Route>}
+                {loggedIn && <Route exact path="/statistics/update/game/:gameId/players/:tabValue" element={<UpdateStatisticsPlayers/>}></Route>}
+                {loggedIn && <Route exact path="/statistics/update/game/:gameId/players/:tabValue/player/:playerId" element={<UpdateStatisticsGamePlayer/>}></Route>}
+                {/* {loggedIn && <Route exact path="/statistics/update/game/:gameId/player/:playerId/:tabValue" element={<UpdateStatistics/>}></Route>} */}
+
+
+
                 {loggedIn && <Route exact path="/statistics/addGameStatistics/:gameId" element={<AddGameStatistics/>}></Route>}
                 {loggedIn && <Route exact path="/statistics/addPlayerGameStatistics/:playerId:gameId"  element={<AddPlayerGameStatistics/>}></Route>}
                 {loggedIn && <Route exact path="/statistics/addPlayerGameStatistics/:gameId"  element={<AddPlayerGameStatistics/>}></Route>}

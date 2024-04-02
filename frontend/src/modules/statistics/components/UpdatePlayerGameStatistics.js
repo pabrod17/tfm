@@ -19,22 +19,35 @@ const UpdatePlayerGameStatistics = () => {
     const team = useSelector(selectorsTeams.getTeam);
     const {playerId} = useParams();
     const {gameId} = useParams();
-
-    const [totalPoints, setTotalPoints] = useState(playerGameStatistics.totalPoints);
-    const [minutes, setMinutes] = useState(playerGameStatistics.minutes);
-    const [threePointShots, setThreePointShots] = useState(playerGameStatistics.threePointShots);
-    const [setShots, setSetShots] = useState(playerGameStatistics.setShots);
+    
     const [freeShots, setFreeShots] = useState(playerGameStatistics.freeShots);
+    const [setShots, setSetShots] = useState(playerGameStatistics.setShots);
+    const [threePointShots, setThreePointShots] = useState(playerGameStatistics.threePointShots);
+        const [totalPoints, setTotalPoints] = useState(playerGameStatistics.totalPoints);
+    const [failFreeShots, setFailFreeShots] = useState(playerGameStatistics.failFreeShots);
+    const [failSetShots, setFailSetShots] = useState(playerGameStatistics.failSetShots);
     const [failThreePointShots, setFailThreePointShots] = useState(playerGameStatistics.failThreePointShots);
 
-    const [failSetShots, setFailSetShots] = useState(playerGameStatistics.failSetShots);
-    const [failFreeShots, setFailFreeShots] = useState(playerGameStatistics.failFreeShots);
-    const [rebounds, setRebounds] = useState(playerGameStatistics.rebounds);
-    const [blockedShot, setBlockedShot] = useState(playerGameStatistics.blockedShot);
-    const [assists, setAssists] = useState(playerGameStatistics.assists);
     const [personalFouls, setPersonalFouls] = useState(playerGameStatistics.personalFouls);
     const [technicalFouls, setTechnicalFouls] = useState(playerGameStatistics.technicalFouls);
     const [unsportsmanlikeFouls, setUnsportsmanlikeFouls] = useState(playerGameStatistics.unsportsmanlikeFouls);
+
+    const [rebounds, setRebounds] = useState(playerGameStatistics.rebounds);
+    
+    const [blockedShot, setBlockedShot] = useState(playerGameStatistics.blockedShot);
+    
+    const [assists, setAssists] = useState(playerGameStatistics.assists);
+    
+    const [minutes, setMinutes] = useState(playerGameStatistics.minutes);
+
+
+
+
+
+
+
+
+
     const [backendErrors, setBackendErrors] = useState(null);
     let form;
 

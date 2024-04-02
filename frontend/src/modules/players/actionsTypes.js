@@ -1,4 +1,5 @@
 export const FIND_PLAYER_BY_ID_OF_TEAM_COMPLETED = "project/players/findPlayerByIdOfTeamCompleted";
+export const FIND_PLAYER_BY_ID_COMPLETED = "project/games/findPlayerByIdCompleted";
 export const FIND_PLAYERS_BY_USER_ID_COMPLETED = "project/players/findPlayersByUserIdCompleted";
 export const FIND_PLAYER_BY_DNI_OF_TEAM_COMPLETED = "project/players/findPlayerByDniOfTeamCompleted";
 export const FIND_PLAYERS_BY_COMPLETED_NAME_OF_TEAM_COMPLETED = "project/players/findPlayersByCompletedNameOfTeamCompleted";

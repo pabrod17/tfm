@@ -190,6 +190,7 @@ export default {
 
     'project.statistics.fields.team_rival' : '(My Team - Rival)',
 
+    'project.statistics.fields.failShots' : 'Failed',
 
 
 

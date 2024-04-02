@@ -27,6 +27,7 @@ import * as actionStretchings from '../..//stretchings/actions';
 import * as actionExercises from '../..//exercises/actions';
 import * as actionsTeams from '../../teams/actions';
 import * as actionsSeasons from '../../seasons/actions';
+import * as actionStatistics from '../..//statistics/actions';
 import { FormattedMessage } from 'react-intl';
 
 
@@ -89,7 +90,10 @@ const Sidebar = () => {
       dispatch(actionSeasons.findAllSeasons(() => history('/seasons/home')));
       history('/seasons/home');
     }
-    //Hacer algo con los teams y seasons!!!!!!
+    else
+    if(to === "/statistics/home") {
+      dispatch(actionGames.findGamesByUserId(() => history('/statistics/home')));
+    }
 
 
 }
@@ -290,25 +294,31 @@ const Sidebar = () => {
               Charts
             </Typography>
             <Item
-              title="Bar Chart"
-              to="/bar"
+              title="Statistics"
+              to="/statistics/home"
               icon={<BarChartOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+              onClick={() => handleMenuOption()}
+              dispatch={dispatch}
             />
             <Item
-              title="Pie Chart"
-              to="/pie"
+              title="Plays"
+              to="/plays/home"
               icon={<PieChartOutlineOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+              onClick={() => handleMenuOption()}
+              dispatch={dispatch}
             />
             <Item
-              title="Line Chart"
-              to="/line"
+              title="Calendar"
+              to="/calendar/home"
               icon={<TimelineOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+              onClick={() => handleMenuOption()}
+              dispatch={dispatch}
             />
             <Item
               title="Geography Chart"

@@ -24,6 +24,9 @@ export const addStatisticsToPlayerAndGame = (playerId, gameId, totalPoints, minu
     
         appFetch(url, config('PUT'), onSuccess, onErrors);
     };
+//al actualizar las estadisticas de un jugador en un partido no me hace falta hacer nada
+    //porque cuando añado un jugador a un partido ya se crea la tabla de PlayerGameStatistics
+    //Entonces ahora solo se rellena y listo
 export const updatePlayerGameStatistics = (playerId, gameId, totalPoints, minutes, threePointShots, setShots,freeShots,failThreePointShots,failSetShots,failFreeShots,rebounds,blockedShot,assists,personalFouls,technicalFouls,unsportsmanlikeFouls, onSuccess, onErrors) =>
     appFetch(`/statistics/${playerId}/playerGameStatistics?gameId=${gameId}&totalPoints=${totalPoints}&minutes=${minutes}&threePointShots=${threePointShots}&setShots=${setShots}&freeShots=${freeShots}&failThreePointShots=${failThreePointShots}&failSetShots=${failSetShots}&failFreeShots=${failFreeShots}&rebounds=${rebounds}&blockedShot=${blockedShot}&assists=${assists}&personalFouls=${personalFouls}&technicalFouls=${technicalFouls}&unsportsmanlikeFouls=${unsportsmanlikeFouls}`, config('PUT'), onSuccess, onErrors);
 

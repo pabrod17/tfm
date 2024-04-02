@@ -181,6 +181,7 @@ export default {
 
     'project.statistics.fields.team_rival' : '(Mi Equipo - Rival)',
 
+    'project.statistics.fields.failShots' : 'Fallou',
 
 
     'project.statistics.fields.addGameStatistics' : 'Engadir Estatísticas Partido',
