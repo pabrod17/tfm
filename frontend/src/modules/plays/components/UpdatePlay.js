@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useEffect, useState, createContext } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 import {FormattedMessage} from 'react-intl';
@@ -7,191 +7,372 @@ import {Errors} from '../../common';
 import * as actions from '../actions';
 import * as selectors from '../selectors';
 import {useParams} from 'react-router-dom';
-
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import TextField from '@mui/material/TextField';
+import InputLabel from '@mui/material/InputLabel';
+import * as actionsTeams from '../../teams/actions';
+import notaLapiz from '../../notes/components/notaLapiz.jpg';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import FormHelperText from '@mui/material/FormHelperText';
+import FormControl from '@mui/material/FormControl';
 
 const UpdatePlay = () => {
 
     const play = useSelector(selectors.getPlay);
     const {id} = useParams();
+
     const dispatch = useDispatch();
     const history = useNavigate();
-    const [title, setTitle] = useState(play.title);
-    const [playType, setPlayType] = useState(play.playType);
-    const [gesture, setGesture] = useState(play.gesture);
-    const [pointGuardText, setPointGuardText] = useState(play.pointGuardText);
-    const [shootingGuardText, setShootingGuardText] = useState(play.shootingGuardText);
-    const [smallForwardText, setSmallForwardText] = useState(play.smallForwardText);
-    const [powerForwardText, setPowerForwardText] = useState(play.powerForwardText);
-    const [centerText, setCenterText] = useState(play.centerText);
+
+    const [title, setTitle] = useState(null);
+    const [playType, setPlayType] = useState(null);
+    const [gesture, setGesture] = useState(null);
+    const [pointGuardText, setPointGuardText] = useState(null);
+    const [shootingGuardText, setShootingGuardText] = useState(null);
+    const [smallForwardText, setSmallForwardText] = useState(null);
+    const [powerForwardText, setPowerForwardText] = useState(null);
+    const [centerText, setCenterText] = useState(null);
+    const [description, setDescription] = useState(null);
+    const [value, setValue] = useState(0);
+
     const [backendErrors, setBackendErrors] = useState(null);
     let form;
+
+    const handleChange = (event) => {
+        setPlayType(event.target.value);
+      };
 
     const attack = "Ataque";
     const defense = "Defensa";
 
+    useEffect(() => {
+        if (!play) {
+            dispatch(actions.findPlayById(id, () => history(`/plays/update/${id}`)));
+        } else {
+            setTitle(play.title);
+            setPlayType(play.playType);
+            setGesture(play.gesture);
+
+            setPointGuardText(play.pointGuardText);
+            setShootingGuardText(play.shootingGuardText);
+            setSmallForwardText(play.smallForwardText);
+            setPowerForwardText(play.powerForwardText);
+            setCenterText(play.centerText);
+
+            setDescription(play.description);
+        }
+    }, [dispatch, play, history, id]);
+
+
+
+
+
     const handleSubmit = event => {
 
         event.preventDefault();
-    
-        if (form.checkValidity()) {
-            
             dispatch(actions.updatePlay(play.id, title.trim(), playType,
-            gesture.trim(), pointGuardText.trim(), shootingGuardText.trim(), smallForwardText.trim(), powerForwardText.trim(), centerText.trim(),
-            () => reloadWindow(id),
+            gesture.trim(), pointGuardText.trim(), shootingGuardText.trim(), smallForwardText.trim(), powerForwardText.trim(), centerText.trim(), description.trim(),
+            () => reloadWindow(),
             errors => setBackendErrors(errors),
             ));
-        } else {
-            setBackendErrors(null);
-            form.classList.add('was-validated');
-            }
         }
 
-        const reloadWindow = (id) =>{
-            history(`/plays/home/${id}`);
+        const reloadWindow = () =>{
+            history(`/plays/home`);
             window.location.reload('true');
         }
 
         return(
+<Box
+			my={4}
+			display="flex"
+			alignItems="center"
+			gap={4}
+			p={5}
+			m={10}
+			sx={{
+                maxWidth: { sm: 1635 },
+				border: '2px solid grey',
+                background: "linear-gradient(-45deg, #41AF24 0%, #062C76 50% )",
+				borderRadius: "20px",
+				flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
+				flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
+				borderColor:"black",
+				boxShadow:"0 10px 50px rgb(0, 0, 0)"
+			}}
+		>
+            <Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
+			<Grid container margin={5} spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
+			>
+				<Grid item md={12}>
+                <img src={notaLapiz} alt="Person" class="card__image_training_update_create"></img>
 
-            <div>
-                <Errors errors={backendErrors} onClose={() => setBackendErrors(null)}/>
-                <div className="card bg-dark text-light border-dark">
-                    <h5 className="">
-                    <FormattedMessage id="project.plays.fields.updatePlay"/>
-                    </h5>
-                    <div className="card-body">
-                        <form ref={node => form = node} 
-                            className="needs-validation" noValidate onSubmit={e => handleSubmit(e)}>
-                            <div className="form-group row">
-                                <label htmlFor="firstName" className="col-md-6 col-form-label">
-                                <FormattedMessage id="project.notes.fields.title"/>
-                                </label>
-                                <div className="col-md-9">
-                                    <input type="text" id="title" className="form-control"
-                                        value={title}
-                                        onChange={e => setTitle(e.target.value)}
-                                        autoFocus
-                                        required/>
-                                    <div className="invalid-feedback">
-                                        <FormattedMessage id='project.global.validator.required'/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className=" row">
-                                <label htmlFor="firstName" className="col-md-5 col-form-label">
-                                <FormattedMessage id="project.exercises.fields.typeOnly"/>
-                                    </label>
-                                <div class="dropdown col-md-6">
-                                    <button class="dropbtn">{playType} 
-                                    <i class="fa fa-caret-down"></i>
-                                    </button>
-                                    <div class="dropdown-content">
-                                    <a type="button" onClick={() => setPlayType(attack)} ><FormattedMessage id="project.plays.fields.attack"/></a>
-                                    <a type="button" onClick={() => setPlayType(defense)} ><FormattedMessage id="project.plays.fields.defense"/></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label htmlFor="firstName" className="col-md-12 col-form-label">
-                                <FormattedMessage id="project.plays.fields.gesture"/>
-                                </label>
-                                <div className="col-md-12">
-                                    <textarea type="text" id="gesture" className="form-control"
-                                        value={gesture}
-                                        onChange={e => setGesture(e.target.value)}
-                                        autoFocus
-                                        required/>
-                                    <div className="invalid-feedback">
-                                        <FormattedMessage id='project.global.validator.required'/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label htmlFor="firstName" className="col-md-12 col-form-label">
-                                <FormattedMessage id="project.plays.fields.pointGuardText"/>
-                                </label>
-                                <div className="col-md-12">
-                                    <textarea  type="text" id="pointGuardText" className="form-control"
-                                        value={pointGuardText}
-                                        onChange={e => setPointGuardText(e.target.value)}
-                                        autoFocus
-                                        required/>
-                                    <div className="invalid-feedback">
-                                        <FormattedMessage id='project.global.validator.required'/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label htmlFor="firstName" className="col-md-12 col-form-label">
-                                <FormattedMessage id="project.plays.fields.shootingGuardText"/>
-                                </label>
-                                <div className="col-md-12">
-                                    <textarea  type="text" id="shootingGuardText" className="form-control"
-                                        value={shootingGuardText}
-                                        onChange={e => setShootingGuardText(e.target.value)}
-                                        autoFocus
-                                        required/>
-                                    <div className="invalid-feedback">
-                                        <FormattedMessage id='project.global.validator.required'/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label htmlFor="firstName" className="col-md-12 col-form-label">
-                                <FormattedMessage id="project.plays.fields.smallForwardText"/>
-                                </label>
-                                <div className="col-md-12">
-                                    <textarea  type="text" id="smallForwardText" className="form-control"
-                                        value={smallForwardText}
-                                        onChange={e => setSmallForwardText(e.target.value)}
-                                        autoFocus
-                                        required/>
-                                    <div className="invalid-feedback">
-                                        <FormattedMessage id='project.global.validator.required'/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label htmlFor="firstName" className="col-md-12 col-form-label">
-                                <FormattedMessage id="project.plays.fields.powerForwardText"/>
-                                </label>
-                                <div className="col-md-12">
-                                    <textarea  type="text" id="powerForwardText" className="form-control"
-                                        value={powerForwardText}
-                                        onChange={e => setPowerForwardText(e.target.value)}
-                                        autoFocus
-                                        required/>
-                                    <div className="invalid-feedback">
-                                        <FormattedMessage id='project.global.validator.required'/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label htmlFor="firstName" className="col-md-12 col-form-label">
-                                <FormattedMessage id="project.plays.fields.centerText"/>
-                                </label>
-                                <div className="col-md-12">
-                                    <textarea  type="text" id="centerText" className="form-control"
-                                        value={centerText}
-                                        onChange={e => setCenterText(e.target.value)}
-                                        autoFocus
-                                        required/>
-                                    <div className="invalid-feedback">
-                                        <FormattedMessage id='project.global.validator.required'/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <div className="offset-md-8 col-md-1">
-                                    <button type="submit" className="btn btn-primary">
-                                        <FormattedMessage id="project.global.buttons.save"/>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+                </Grid>
+
+
+				<Grid item md={12} >
+
+					<Box
+						component="form"
+						sx={{
+							borderRadius: "20px",
+							borderColor:"black",
+                            boxShadow:"0 10px 50px rgb(0, 0, 0)"
+						}}
+						autoHeight={true} // Permitir que la tabla determine su propio tamaño si los datos no se han cargado
+						noValidate
+						autoComplete="off"
+					>
+						<Grid container spacing={2}>
+                        <Grid item xs={12}>
+                        <Box
+                                
+                                component="form"
+                                sx={{
+                                    '& .MuiTextField-root': { mb: 2, width: '100%' },
+                                    margin: '50px', // Centra el formulario en la pantalla
+                                    mb:"-50px",
+                                    mt:"-3px"
+                                }}
+                                noValidate
+                                autoComplete="off"
+                            >
+    <div>
+	  <InputLabel id="demo-simple-select-label"
+              sx={{
+                color: "#00bfff",
+				fontSize:"20px",
+                marginLeft:"10px"
+              }}
+
+            ><FormattedMessage id="project.lesion.fields.lesionType" /></InputLabel>
+        <Select
+          labelId="demo-simple-select-helper-label"
+          id="demo-simple-select-helper"
+          value={playType}
+          label="Type"
+          onChange={(e) => setPlayType(e.target.value)}
+		  sx={{
+			color: "white",
+			border: '2px solid grey',
+			background: "linear-gradient(-45deg, #41AF24 0%, #062C76 50% )",
+			borderRadius: "20px",
+			borderColor:"black",
+			boxShadow:"0 10px 10px rgb(0, 0, 0)",
+            marginLeft:"10px"
+
+		  }}
+		  inputProps={{
+			MenuProps: {
+			  MenuListProps: {
+				sx: {
+				  backgroundColor: 'rgb(58 60 84)',
+				  color: "white"
+				}
+			  }
+			}
+		  }}
+
+        >
+		<MenuItem value={attack}><FormattedMessage id="project.plays.fields.attack" /></MenuItem>
+        <MenuItem value={defense}><FormattedMessage id="project.plays.fields.defense" /></MenuItem>
+        </Select>
+    </div>
+            </Box>
+          </Grid>
+                        <Grid item xs={12} md={6}>
+
+								{/* <div className='form_add_training_general'> */}
+								<Box
+                                
+									component="form"
+									sx={{
+										'& .MuiTextField-root': { mb: 2, width: '100%' },
+										margin: '50px', // Centra el formulario en la pantalla
+
+									}}
+									noValidate
+									autoComplete="off"
+								>
+									<TextField
+										id="outlined-multiline-static-1"
+										label={<FormattedMessage id="project.plays.fields.pointGuardText" />}
+										InputLabelProps={{ style: { color: '#E8FF00', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										multiline
+										rows={4}
+										sx={{
+											border: '2px solid grey',
+											background: "linear-gradient(-45deg, #41AF24 0%, #062C76 50% )",
+											borderRadius: "20px",
+											borderColor:"black",
+											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+										}}
+										value={pointGuardText}
+										onChange={(e) => setPointGuardText(e.target.value)}
+									/>
+									<TextField
+										id="outlined-multiline-static-1"
+										label={<FormattedMessage id="project.plays.fields.shootingGuardText" />}
+										InputLabelProps={{ style: { color: '#E8FF00', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										multiline
+										rows={4}
+										sx={{
+											border: '2px solid grey',
+											background: "linear-gradient(-45deg, #41AF24 0%, #062C76 50% )",
+											borderRadius: "20px",
+											borderColor:"black",
+											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+										}}
+										value={shootingGuardText}
+										onChange={(e) => setShootingGuardText(e.target.value)}
+									/>
+									<TextField
+										id="outlined-multiline-static-1"
+										label={<FormattedMessage id="project.plays.fields.smallForwardText" />}
+										InputLabelProps={{ style: { color: '#E8FF00', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										multiline
+										rows={4}
+										sx={{
+											border: '2px solid grey',
+											background: "linear-gradient(-45deg, #41AF24 0%, #062C76 50% )",
+											borderRadius: "20px",
+											borderColor:"black",
+											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+										}}
+										value={smallForwardText}
+										onChange={(e) => setSmallForwardText(e.target.value)}
+									/>
+									<TextField
+										id="outlined-multiline-static-1"
+										label={<FormattedMessage id="project.plays.fields.powerForwardText" />}
+										InputLabelProps={{ style: { color: '#E8FF00', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										multiline
+										rows={4}
+										sx={{
+											border: '2px solid grey',
+											background: "linear-gradient(-45deg, #41AF24 0%, #062C76 50% )",
+											borderRadius: "20px",
+											borderColor:"black",
+											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+										}}
+										value={powerForwardText}
+										onChange={(e) => setPowerForwardText(e.target.value)}
+									/>
+								</Box>
+							</Grid>
+                        <Grid item xs={12} md={6}>
+
+								{/* <div className='form_add_training_general'> */}
+								<Box
+                                
+									component="form"
+									sx={{
+										'& .MuiTextField-root': { mb: 2, width: '100%' },
+										margin: '50px', // Centra el formulario en la pantalla
+
+									}}
+									noValidate
+									autoComplete="off"
+								>
+									<TextField
+										id="outlined-multiline-static-1"
+										label={<FormattedMessage id="project.plays.fields.centerText" />}
+										InputLabelProps={{ style: { color: '#E8FF00', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										multiline
+										rows={4}
+										sx={{
+											border: '2px solid grey',
+											background: "linear-gradient(-45deg, #41AF24 0%, #062C76 50% )",
+											borderRadius: "20px",
+											borderColor:"black",
+											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+										}}
+										value={centerText}
+										onChange={(e) => setCenterText(e.target.value)}
+									/>
+									<TextField
+										id="outlined-multiline-static-1"
+										label={<FormattedMessage id="project.notes.fields.title" />}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										multiline
+										rows={4}
+										sx={{
+											border: '2px solid grey',
+											background: "linear-gradient(-45deg, #41AF24 0%, #062C76 50% )",
+											borderRadius: "20px",
+											borderColor:"black",
+											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+										}}
+										value={title}
+										onChange={(e) => setTitle(e.target.value)}
+									/>
+                                    									<TextField
+										id="outlined-multiline-static-1"
+										label={<FormattedMessage id="project.plays.fields.gesture" />}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										multiline
+										rows={4}
+										sx={{
+											border: '2px solid grey',
+											background: "linear-gradient(-45deg, #41AF24 0%, #062C76 50% )",
+											borderRadius: "20px",
+											borderColor:"black",
+											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+										}}
+										value={gesture}
+										onChange={(e) => setGesture(e.target.value)}
+									/>
+                                    									<TextField
+										id="outlined-multiline-static-1"
+										label={<FormattedMessage id="project.exercises.fields.description" />}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										multiline
+										rows={4}
+										sx={{
+											border: '2px solid grey',
+											background: "linear-gradient(-45deg, #41AF24 0%, #062C76 50% )",
+											borderRadius: "20px",
+											borderColor:"black",
+											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+										}}
+										value={description}
+										onChange={(e) => setDescription(e.target.value)}
+									/>
+
+								</Box>
+							</Grid>
+
+
+
+
+
+
+						</Grid>
+					</Box>  </Grid>
+			</Grid>
+			<button className="post_play" onClick={(e) => handleSubmit(e)}><FormattedMessage id="project.global.buttons.save" /></button>
+                  
+		</Box>
+
+
+
+
+
+
+
+
         );
 }
 

@@ -163,8 +163,9 @@ const Body = ({ isDark, setIsDark}) => {
                 
                 
                 
-                {loggedIn && <Route exact path="/plays/home/" element={<PlaysHome/>}></Route>}
+                {loggedIn && <Route exact path="/plays/home" element={<PlaysHome/>}></Route>}
                 {loggedIn && <Route exact path="/plays/home/type/:playType/:tabValue" element={<PlaysHomeByType/>}></Route>}
+
                 {loggedIn && <Route exact path="/plays/addPlay" element={<AddPlay/>}></Route>}
                 {loggedIn && <Route exact path="/plays/update/:id" element={<UpdatePlay/>}></Route>}
                 {loggedIn && <Route exact path="/plays/view/:playId" element={<PlayView/>}></Route>}

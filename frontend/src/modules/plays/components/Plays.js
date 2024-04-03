@@ -20,8 +20,8 @@ const handleRemovePlay = (playId, id, dispatch, history) => {
     window.location.reload('true');
 }
 
-const handleUpdatePlay = (playId, id, dispatch, history) => {
-    dispatch(actions.findPlayById(playId, () => history(`/plays/update/${id}`)));
+const handleUpdatePlay = (id, dispatch, history) => {
+    dispatch(actions.findPlayById(id, () => history(`/plays/update/${id}`)));
   }
 
   const handleAddPlayToTeam = (playId, teamId, id, dispatch, history) => {
@@ -75,10 +75,6 @@ const handleUpdatePlay = (playId, id, dispatch, history) => {
             </a>
             <hr></hr>
                     </div>
-                    <ul class="social-icons trashgrande trash_position">
-                    <li><a type="button" onClick={() => handleRemovePlay(item.id, dispatch, history)}>
-                      <i class="fa fa-trash"></i></a></li>
-                    </ul>
                     <ul class="social-icons configgrande config_position">
                         <li><a type="button" onClick={() => handleUpdatePlay(item.id, dispatch, history)}>
                         <i class="fa fa-wrench"></i></a></li>
