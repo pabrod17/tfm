@@ -15,7 +15,8 @@ import * as selectorsTeams from '../../teams/selectors';
 import * as actionsTeams from '../../teams/actions';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-
+import FormHelperText from '@mui/material/FormHelperText';
+import FormControl from '@mui/material/FormControl';
 
 const AddPlay = () => {
     const {id} = useParams();
@@ -101,7 +102,7 @@ const AddPlay = () => {
 			sx={{
                 maxWidth: { sm: 1635 },
 				border: '2px solid grey',
-                background: "linear-gradient(-45deg, #41AF24 0%, #061700 30% )",
+                background: "linear-gradient(-45deg, #41AF24 0%, #062C76 50% )",
 				borderRadius: "20px",
 				flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 				flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
@@ -145,39 +146,47 @@ const AddPlay = () => {
                                 noValidate
                                 autoComplete="off"
                             >
-            <InputLabel id="demo-simple-select-label"
+    <div>
+      <FormControl sx={{ m: 1, minWidth: 150 }}>
+	  <InputLabel id="demo-simple-select-label"
               sx={{
                 color: "#00bfff",
+				fontSize:"20px"
               }}
 
             ><FormattedMessage id="project.lesion.fields.lesionType" /></InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={playType}
-              label="Type"
-              onChange={handleChange}
-              autoWidth
-              sx={{
-                color: "white",
-                bgcolor:"#1F7308",
-                margin: "15px"
-              }}
-              inputProps={{
-                MenuProps: {
-                  MenuListProps: {
-                    sx: {
-                      backgroundColor: 'rgb(58 60 84)',
-                      color: "white"
-                    }
-                  }
-                }
-              }}
-            >
-              <MenuItem value={attack}><FormattedMessage id="project.plays.fields.attack" /></MenuItem>
-              <MenuItem value={defense}><FormattedMessage id="project.plays.fields.defense" /></MenuItem>
+        <Select
+          labelId="demo-simple-select-helper-label"
+          id="demo-simple-select-helper"
+          value={playType}
+          label="Type"
+          onChange={handleChange}
+		  sx={{
+			color: "white",
+			border: '2px solid grey',
+			background: "linear-gradient(-45deg, #41AF24 0%, #062C76 50% )",
+			borderRadius: "20px",
+			borderColor:"black",
+			boxShadow:"0 10px 10px rgb(0, 0, 0)"
 
-            </Select>
+		  }}
+		  inputProps={{
+			MenuProps: {
+			  MenuListProps: {
+				sx: {
+				  backgroundColor: 'rgb(58 60 84)',
+				  color: "white"
+				}
+			  }
+			}
+		  }}
+
+        >
+		<MenuItem value={attack}><FormattedMessage id="project.plays.fields.attack" /></MenuItem>
+        <MenuItem value={defense}><FormattedMessage id="project.plays.fields.defense" /></MenuItem>
+        </Select>
+      </FormControl>
+    </div>
             </Box>
           </Grid>
                         <Grid item xs={12} md={6}>
@@ -203,7 +212,7 @@ const AddPlay = () => {
 										rows={4}
 										sx={{
 											border: '2px solid grey',
-                                            background: "linear-gradient(-45deg, #41AF24 0%, #061700 30% )",
+											background: "linear-gradient(-45deg, #41AF24 0%, #062C76 50% )",
 											borderRadius: "20px",
 											borderColor:"black",
 											boxShadow:"0 10px 10px rgb(0, 0, 0)"
@@ -220,7 +229,7 @@ const AddPlay = () => {
 										rows={4}
 										sx={{
 											border: '2px solid grey',
-                                            background: "linear-gradient(-45deg, #41AF24 0%, #061700 30% )",
+											background: "linear-gradient(-45deg, #41AF24 0%, #062C76 50% )",
 											borderRadius: "20px",
 											borderColor:"black",
 											boxShadow:"0 10px 10px rgb(0, 0, 0)"
@@ -237,7 +246,7 @@ const AddPlay = () => {
 										rows={4}
 										sx={{
 											border: '2px solid grey',
-                                            background: "linear-gradient(-45deg, #41AF24 0%, #061700 30% )",
+											background: "linear-gradient(-45deg, #41AF24 0%, #062C76 50% )",
 											borderRadius: "20px",
 											borderColor:"black",
 											boxShadow:"0 10px 10px rgb(0, 0, 0)"
@@ -254,7 +263,7 @@ const AddPlay = () => {
 										rows={4}
 										sx={{
 											border: '2px solid grey',
-                                            background: "linear-gradient(-45deg, #41AF24 0%, #061700 30% )",
+											background: "linear-gradient(-45deg, #41AF24 0%, #062C76 50% )",
 											borderRadius: "20px",
 											borderColor:"black",
 											boxShadow:"0 10px 10px rgb(0, 0, 0)"
@@ -287,7 +296,7 @@ const AddPlay = () => {
 										rows={4}
 										sx={{
 											border: '2px solid grey',
-                                            background: "linear-gradient(-45deg, #41AF24 0%, #061700 30% )",
+											background: "linear-gradient(-45deg, #41AF24 0%, #062C76 50% )",
 											borderRadius: "20px",
 											borderColor:"black",
 											boxShadow:"0 10px 10px rgb(0, 0, 0)"
@@ -304,7 +313,7 @@ const AddPlay = () => {
 										rows={4}
 										sx={{
 											border: '2px solid grey',
-                                            background: "linear-gradient(-45deg, #41AF24 0%, #061700 30% )",
+											background: "linear-gradient(-45deg, #41AF24 0%, #062C76 50% )",
 											borderRadius: "20px",
 											borderColor:"black",
 											boxShadow:"0 10px 10px rgb(0, 0, 0)"
@@ -321,7 +330,7 @@ const AddPlay = () => {
 										rows={4}
 										sx={{
 											border: '2px solid grey',
-                                            background: "linear-gradient(-45deg, #41AF24 0%, #061700 30% )",
+											background: "linear-gradient(-45deg, #41AF24 0%, #062C76 50% )",
 											borderRadius: "20px",
 											borderColor:"black",
 											boxShadow:"0 10px 10px rgb(0, 0, 0)"
@@ -338,7 +347,7 @@ const AddPlay = () => {
 										rows={4}
 										sx={{
 											border: '2px solid grey',
-                                            background: "linear-gradient(-45deg, #41AF24 0%, #061700 30% )",
+											background: "linear-gradient(-45deg, #41AF24 0%, #062C76 50% )",
 											borderRadius: "20px",
 											borderColor:"black",
 											boxShadow:"0 10px 10px rgb(0, 0, 0)"
@@ -379,7 +388,7 @@ const AddPlay = () => {
 						<div style={{ height: 400, width: '100%', }}>
 							<DataGrid
 								sx={{
-                                    background: "linear-gradient(-45deg, #41AF24 0%, #061700 30% )",
+									background: "linear-gradient(-45deg, #41AF24 0%, #062C76 50% )",
 									borderRadius: "20px",
 									m:2,
 									borderColor:"black",

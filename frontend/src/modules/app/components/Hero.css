@@ -796,7 +796,7 @@ max-height: 360px;
   flex-direction: column;
   padding: 20px;
   border-radius: 20px;
-  background: linear-gradient(-45deg, #061700 10%, #239304 100% );
+  background: linear-gradient(-45deg, #41AF24 0%, #062C76 50% );
   box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
 }
 
@@ -987,7 +987,8 @@ max-height: 360px;
   font-family: Sans-serif;
   color: #fff;
   background-size: 200% 100%;
-  background: linear-gradient(180deg,#41AF24,#000000);
+  background: linear-gradient(180deg, #41AF24 0%, #062C76 70% );
+  box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
   transition: 0.3s ease-out;
   margin-right: 50px;
 }
