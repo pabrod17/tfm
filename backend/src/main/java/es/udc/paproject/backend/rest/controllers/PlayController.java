@@ -80,7 +80,7 @@ public class PlayController {
         return toPlayDto(playService.findPlayById(playId));
     }
     //no utilizar en el front
-    @GetMapping("/{userId}/user")
+    @GetMapping("/user")
     public List<PlayDto> findPlaysByUserId(@RequestAttribute Long userId) throws InstanceNotFoundException {
         return toPlayDtos(playService.findPlaysByUserId(userId));
     }
@@ -90,32 +90,34 @@ public class PlayController {
         return toPlayDtos(playService.findPlaysByTeamId(teamId));
     }
 
-    @GetMapping("/{teamId}/playType")
-    public List<PlayDto> findPlaysByTypeAndTeam(@PathVariable Long teamId, @RequestParam String playType) throws InstanceNotFoundException,
+    @GetMapping("/playType")
+    public List<PlayDto> findPlaysByTypeAndTeam(@RequestAttribute Long userId, @RequestParam String playType) throws InstanceNotFoundException,
             IncorrectPlayTypeException {
-        return toPlayDtos(playService.findPlaysByTypeAndTeam(teamId, playType));
+        return toPlayDtos(playService.findPlaysByType(userId, playType));
     }
 
     @PostMapping("")
     public PlayDto addPlay(@RequestParam Long teamId, @RequestParam String title, @RequestParam String playType, @RequestParam String gesture, 
     @RequestParam String pointGuardText, @RequestParam String shootingGuardText, @RequestParam String smallForwardText, 
-    @RequestParam String powerForwardText, @RequestParam String centerText)
+    @RequestParam String powerForwardText, @RequestParam String centerText, @RequestParam String description)
             throws InstanceNotFoundException, IncorrectPlayTypeException {
-        return toPlayDto(playService.addPlay(teamId, title, playType, gesture, pointGuardText, shootingGuardText, smallForwardText, powerForwardText, centerText));
+        return toPlayDto(playService.addPlay(teamId, title, playType, gesture, pointGuardText, shootingGuardText, smallForwardText, powerForwardText, centerText, description));
     }
 
     @PostMapping("/{teamId}/addPlayToTeam")
-    public void addPlayToTeam(@PathVariable Long teamId, @RequestParam Long playId)
+    public void addPlayToTeam(@PathVariable Long teamId, @RequestParam List<Long> playId)
             throws InstanceNotFoundException, IncorrectPlayTypeException, UsedPlayException {
-        playService.addPlayToTeam(teamId, playId);
+        for (Long id : playId) {
+            playService.addPlayToTeam(teamId, id);
+        }
     }
 
     @PutMapping("/{playId}")
     public PlayDto updatePlay(@PathVariable Long playId, @RequestParam String title, @RequestParam String playType, @RequestParam String gesture, 
     @RequestParam String pointGuardText, @RequestParam String shootingGuardText, @RequestParam String smallForwardText, 
-    @RequestParam String powerForwardText, @RequestParam String centerText)
+    @RequestParam String powerForwardText, @RequestParam String centerText, @RequestParam String description)
             throws InstanceNotFoundException, IncorrectPlayTypeException {
-        return toPlayDto(playService.updatePlay(playId, title, playType, gesture, pointGuardText, shootingGuardText, smallForwardText, powerForwardText, centerText));
+        return toPlayDto(playService.updatePlay(playId, title, playType, gesture, pointGuardText, shootingGuardText, smallForwardText, powerForwardText, centerText, description));
     }
 
     @DeleteMapping("/{playId}")

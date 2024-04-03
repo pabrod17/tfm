@@ -137,6 +137,7 @@ CREATE TABLE Play (
     smallForwardText VARCHAR(500),
     powerForwardText VARCHAR(500),
     centerText VARCHAR(500),
+    description VARCHAR(500) NOT NULL,
     CONSTRAINT PlayPK PRIMARY KEY (id),
     CONSTRAINT TitleUniqueKey UNIQUE (title)
 ) ENGINE = InnoDB;

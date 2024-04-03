@@ -12,11 +12,13 @@ public class PlayDto {
     private String powerForwardText;
     private String centerText;
 
+    private String description;
+
     public PlayDto() {
     }
 
     public PlayDto(Long id, String title, String playType, String gesture, String pointGuardText,
-            String shootingGuardText, String smallForwardText, String powerForwardText, String centerText) {
+            String shootingGuardText, String smallForwardText, String powerForwardText, String centerText, String description) {
         this.id = id;
         this.title = title;
         this.playType = playType;
@@ -26,6 +28,7 @@ public class PlayDto {
         this.smallForwardText = smallForwardText;
         this.powerForwardText = powerForwardText;
         this.centerText = centerText;
+        this.description = description;
     }
 
     public Long getId() {
@@ -98,5 +101,13 @@ public class PlayDto {
 
     public void setCenterText(String centerText) {
         this.centerText = centerText;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

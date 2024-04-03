@@ -13,7 +13,7 @@ public class PlayConversor {
     public final static PlayDto toPlayDto(Play play) {
         return new PlayDto(play.getId(), play.getTitle(), play.getPlayType(),
         play.getGesture(), play.getPointGuardText(), play.getShootingGuardText(),
-        play.getSmallForwardText(), play.getPowerForwardText(), play.getCenterText());
+        play.getSmallForwardText(), play.getPowerForwardText(), play.getCenterText(), play.getDescription());
     }
 
     public final static List<PlayDto> toPlayDtos(List<Play> plays) {

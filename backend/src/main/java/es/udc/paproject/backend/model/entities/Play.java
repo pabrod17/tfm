@@ -18,11 +18,13 @@ public class Play {
     private String powerForwardText;
     private String centerText;
 
+    private String description;
+
     public Play() {
     }
 
     public Play(String title, PlayType playType, String gesture, String pointGuardText, String shootingGuardText,
-            String smallForwardText, String powerForwardText, String centerText) {
+            String smallForwardText, String powerForwardText, String centerText, String description) {
         this.title = title;
         this.playType = playType;
         this.gesture = gesture;
@@ -31,6 +33,7 @@ public class Play {
         this.smallForwardText = smallForwardText;
         this.powerForwardText = powerForwardText;
         this.centerText = centerText;
+        this.description = description;
     }
 
     @Id
@@ -105,5 +108,13 @@ public class Play {
 
     public void setPlayType(String playType) {
         this.playType = PlayType.valueOf(playType);
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

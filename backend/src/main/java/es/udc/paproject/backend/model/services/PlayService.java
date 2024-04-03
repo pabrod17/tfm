@@ -10,7 +10,7 @@ import es.udc.paproject.backend.model.exceptions.UsedPlayException;
 public interface PlayService {
     
     Play addPlay(Long teamId, String title, String playType, String gesture, String pointGuardText, String shootingGuardText,
-    String smallForwardText, String powerForwardText, String centerText) throws IncorrectPlayTypeException, InstanceNotFoundException;
+    String smallForwardText, String powerForwardText, String centerText, String description) throws IncorrectPlayTypeException, InstanceNotFoundException;
 
     void addPlayToTeam(Long teamId, Long playId) throws InstanceNotFoundException, UsedPlayException;
 
@@ -20,10 +20,10 @@ public interface PlayService {
 
     List<Play> findPlaysByTeamId(Long teamId) throws InstanceNotFoundException;
 
-    List<Play> findPlaysByTypeAndTeam(Long teamId, String playType) throws InstanceNotFoundException, IncorrectPlayTypeException;
+    List<Play> findPlaysByType(Long userId, String playType) throws InstanceNotFoundException, IncorrectPlayTypeException;
 
     void removePlayToTeam(Long playId, Long teamId) throws InstanceNotFoundException;
 
     Play updatePlay(Long playId, String title, String playType, String gesture, String pointGuardText, String shootingGuardText,
-    String smallForwardText, String powerForwardText, String centerText) throws InstanceNotFoundException, IncorrectPlayTypeException;
+    String smallForwardText, String powerForwardText, String centerText, String description) throws InstanceNotFoundException, IncorrectPlayTypeException;
 }

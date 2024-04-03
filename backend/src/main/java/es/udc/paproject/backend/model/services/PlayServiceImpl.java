@@ -1,20 +1,16 @@
 package es.udc.paproject.backend.model.services;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
+import es.udc.paproject.backend.model.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import es.udc.paproject.backend.model.entities.Play;
-import es.udc.paproject.backend.model.entities.PlayDao;
-import es.udc.paproject.backend.model.entities.PlayTeam;
-import es.udc.paproject.backend.model.entities.PlayTeamDao;
-import es.udc.paproject.backend.model.entities.PlayType;
-import es.udc.paproject.backend.model.entities.Team;
-import es.udc.paproject.backend.model.entities.TeamDao;
 import es.udc.paproject.backend.model.exceptions.IncorrectPlayTypeException;
 import es.udc.paproject.backend.model.exceptions.InstanceNotFoundException;
 import es.udc.paproject.backend.model.exceptions.UsedPlayException;
@@ -37,9 +33,12 @@ public class PlayServiceImpl implements PlayService {
     @Autowired
     private TeamService teamService;
 
+    @Autowired
+    private SeasonTeamDao seasonTeamDao;
+
     @Override
     public Play addPlay(Long teamId, String title, String playType, String gesture, String pointGuardText, String shootingGuardText,
-            String smallForwardText, String powerForwardText, String centerText) throws IncorrectPlayTypeException,
+            String smallForwardText, String powerForwardText, String centerText, String description) throws IncorrectPlayTypeException,
             InstanceNotFoundException {
 
         if (!teamDao.existsById(teamId)) {
@@ -53,7 +52,7 @@ public class PlayServiceImpl implements PlayService {
         }
 
         PlayType playTypeEnum = PlayType.valueOf(playType);
-        Play play = new Play(title, playTypeEnum, gesture, pointGuardText, shootingGuardText, smallForwardText, powerForwardText, centerText);
+        Play play = new Play(title, playTypeEnum, gesture, pointGuardText, shootingGuardText, smallForwardText, powerForwardText, centerText, description);
         PlayTeam playTeam = new PlayTeam(play, team);
         playTeamDao.save(playTeam);
         return play;
@@ -67,14 +66,6 @@ public class PlayServiceImpl implements PlayService {
         }
         if (!playDao.existsById(playId)) {
             throw new InstanceNotFoundException("project.entities.play");
-        }
-
-        List<PlayTeam> playTeams = playTeamDao.findByTeamId(teamId);
-
-        for (PlayTeam playTeam : playTeams) {
-            if(playTeam.getPlay() != null && playTeam.getPlay().getId() == playId) {
-                throw new UsedPlayException(playTeam.getPlay().getTitle());
-            }
         }
 
         Play play = playDao.findById(playId).get();
@@ -113,7 +104,7 @@ public class PlayServiceImpl implements PlayService {
         }
 
         if (plays.isEmpty()) {
-            throw new InstanceNotFoundException("project.entities.play");
+            return plays;
         }
         
         plays = plays.stream().distinct().collect(Collectors.toList());
@@ -149,32 +140,30 @@ public class PlayServiceImpl implements PlayService {
     }
 
     @Override
-    public List<Play> findPlaysByTypeAndTeam(Long teamId, String playType) throws InstanceNotFoundException,
+    public List<Play> findPlaysByType(Long userId, String playType) throws InstanceNotFoundException,
             IncorrectPlayTypeException {
 
-        if (!teamDao.existsById(teamId)) {
-            throw new InstanceNotFoundException("project.entities.team");
-        }
+        User user = userService.loginFromId(userId);
+        List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(user.getId());
+        List<Play> plays = new ArrayList<>();
 
         if (!playType.equals("Ataque") && !playType.equals("Defensa")) {
             throw new IncorrectPlayTypeException(playType);
         }
 
-        List<PlayTeam> playTeams = playTeamDao.findByTeamId(teamId);
-
-        if (playTeams.isEmpty()) {
-            throw new InstanceNotFoundException("project.entities.play");
-        }
-
-        List<Play> plays = new ArrayList<>();
-        for (PlayTeam playTeam : playTeams) {
-            if(playTeam.getPlay() != null && playTeam.getPlay().getPlayType().equals(playType)) {
-                plays.add(playTeam.getPlay());
+        for (SeasonTeam seasonTeam : seasonTeams) {
+            if (seasonTeam.getTeam() != null) {
+                List<PlayTeam> playTeams = playTeamDao.findByTeamId(seasonTeam.getTeam().getId());
+                for (PlayTeam playTeam : playTeams) {
+                    if(playTeam.getPlay() != null && playTeam.getPlay().getPlayType().equals(playType)) {
+                        plays.add(playTeam.getPlay());
+                    }
+                }
             }
         }
 
         if (plays.isEmpty()) {
-            throw new InstanceNotFoundException("project.entities.play");
+            return plays;
         }
 
         plays = plays.stream().distinct().collect(Collectors.toList());
@@ -211,7 +200,7 @@ public class PlayServiceImpl implements PlayService {
     @Override
     public Play updatePlay(Long playId, String title, String playType, String gesture,
             String pointGuardText, String shootingGuardText, String smallForwardText, String powerForwardText,
-            String centerText) throws InstanceNotFoundException, IncorrectPlayTypeException {
+            String centerText, String description) throws InstanceNotFoundException, IncorrectPlayTypeException {
 
         if (!playDao.existsById(playId)) {
             throw new InstanceNotFoundException("project.entities.play");
@@ -244,6 +233,8 @@ public class PlayServiceImpl implements PlayService {
                     updatedPlay.setPowerForwardText(powerForwardText);
                 if(updatedPlay.getCenterText() != null)
                     updatedPlay.setCenterText(centerText);
+                if(updatedPlay.getDescription() != null)
+                    updatedPlay.setDescription(description);
                 playTeamDao.save(playTeam);
             }
         }
@@ -266,6 +257,8 @@ public class PlayServiceImpl implements PlayService {
                 updatedPlay.setPowerForwardText(powerForwardText);
             if(updatedPlay.getCenterText() != null)
                 updatedPlay.setCenterText(centerText);
+            if(updatedPlay.getDescription() != null)
+                updatedPlay.setDescription(description);
             playDao.save(updatedPlay);
         }
 
