@@ -26,6 +26,7 @@ import * as actionSeasons from '../..//seasons/actions';
 import * as actionStretchings from '../..//stretchings/actions';
 import * as actionExercises from '../..//exercises/actions';
 import * as actionsTeams from '../../teams/actions';
+import * as actionPlays from '../../plays/actions';
 import * as actionsSeasons from '../../seasons/actions';
 import * as actionStatistics from '../..//statistics/actions';
 import { FormattedMessage } from 'react-intl';
@@ -93,6 +94,10 @@ const Sidebar = () => {
     else
     if(to === "/statistics/home") {
       dispatch(actionGames.findGamesByUserId(() => history('/statistics/home')));
+    }
+    else
+    if(to === "/plays/home") {
+      dispatch(actionPlays.findPlaysByUserId(() => history('/plays/home')));
     }
 
 
@@ -163,7 +168,7 @@ const Sidebar = () => {
               </Box>
             )}
           </MenuItem>
-          {!isCollapsed && (
+          {/* {!isCollapsed && (
             <Box mb="30px">
               <Box display="flex" justifyContent="center" alignItems="center">
                 <img
@@ -187,7 +192,7 @@ const Sidebar = () => {
                 </Typography>
               </Box>
             </Box>
-          )}
+          )} */}
 
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
             <Item
@@ -218,6 +223,16 @@ const Sidebar = () => {
             <Item
               title="Seasons"
               to="/seasons/home"
+              icon={<ContactsOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              onClick={() => handleMenuOption()}
+              dispatch={dispatch}
+            />
+
+            <Item
+              title="Players"
+              to="/players/home"
               icon={<ContactsOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
@@ -289,6 +304,42 @@ const Sidebar = () => {
             <Typography
               variant="h6"
               sx={{ m: "15px 0 5px 20px" }}
+              color={"green"}
+              
+            >
+              Plays
+            </Typography>
+            <Item
+              title="Plays"
+              to="/plays/home"
+              icon={<PieChartOutlineOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              onClick={() => handleMenuOption()}
+              dispatch={dispatch}
+            />
+            <Item
+              title="Pizarra"
+              to="/plays/home"
+              icon={<PieChartOutlineOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              onClick={() => handleMenuOption()}
+              dispatch={dispatch}
+            />
+            <Item
+              title="Mirar lo de mover los ptos: codesandbox de todoist"
+              to="/plays/home"
+              icon={<PieChartOutlineOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              onClick={() => handleMenuOption()}
+              dispatch={dispatch}
+            />
+
+            <Typography
+              variant="h6"
+              sx={{ m: "15px 0 5px 20px" }}
               color={"orange"}
             >
               Charts
@@ -302,15 +353,14 @@ const Sidebar = () => {
               onClick={() => handleMenuOption()}
               dispatch={dispatch}
             />
-            <Item
-              title="Plays"
-              to="/plays/home"
-              icon={<PieChartOutlineOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-              onClick={() => handleMenuOption()}
-              dispatch={dispatch}
-            />
+
+            <Typography
+              variant="h6"
+              sx={{ m: "15px 0 5px 20px" }}
+              color={"yellow"}
+            >
+              Calendar
+            </Typography>
             <Item
               title="Calendar"
               to="/calendar/home"

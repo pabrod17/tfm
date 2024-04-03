@@ -498,6 +498,10 @@ box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
   color: rgb(25, 0, 255);
 }
 
+.color_modal_title_play {
+  color: #061700;
+}
+
 .color_modal_title_stretching {
   color: rgb(255, 255, 255);
 }
@@ -784,6 +788,18 @@ max-height: 360px;
   box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
 }
 
+.card_play {
+  width: 360px;
+  height: 360px;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 20px;
+  background: linear-gradient(-45deg, #061700 10%, #239304 100% );
+  box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
+}
+
 .card_season {
   width: 360px;
   height: 360px;
@@ -958,6 +974,20 @@ max-height: 360px;
   color: #fff;
   background-size: 200% 100%;
   background: linear-gradient(180deg,#10ff00,#000000);
+  transition: 0.3s ease-out;
+  margin-right: 50px;
+}
+
+.post_play {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  font-size: 22px;
+  font-family: Sans-serif;
+  color: #fff;
+  background-size: 200% 100%;
+  background: linear-gradient(180deg,#41AF24,#000000);
   transition: 0.3s ease-out;
   margin-right: 50px;
 }

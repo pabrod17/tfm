@@ -85,6 +85,7 @@ import StatisticsHome from '../../statistics/components/StatisticsHome';
 import UpdateStatisticsGame from '../../statistics/components/UpdateStatisticsGame';
 import UpdateStatisticsPlayers from '../../statistics/components/UpdateStatisticsPlayers';
 import { UpdateStatisticsGamePlayer } from '../../statistics';
+import { PlaysHomeByType } from '../../plays';
 
 const Body = ({ isDark, setIsDark}) => {
 
@@ -158,10 +159,16 @@ const Body = ({ isDark, setIsDark}) => {
                 {loggedIn && <Route exact path="/notes/update/:id:noteId" element={<UpdateNote/>}></Route>}
                 {loggedIn && <Route exact path="/notes/update/:id" element={<UpdateNote/>}></Route>}
                 {loggedIn && <Route exact path="/notes/view/:noteId" element={<NoteView/>}></Route>}
-                {loggedIn && <Route exact path="/plays/home/:id" element={<PlaysHome/>}></Route>}
+                
+                
+                
+                
+                {loggedIn && <Route exact path="/plays/home/" element={<PlaysHome/>}></Route>}
+                {loggedIn && <Route exact path="/plays/home/type/:playType/:tabValue" element={<PlaysHomeByType/>}></Route>}
+                {loggedIn && <Route exact path="/plays/addPlay" element={<AddPlay/>}></Route>}
                 {loggedIn && <Route exact path="/plays/update/:id" element={<UpdatePlay/>}></Route>}
-                {loggedIn && <Route exact path="/plays/addPlay/:id" element={<AddPlay/>}></Route>}
                 {loggedIn && <Route exact path="/plays/view/:playId" element={<PlayView/>}></Route>}
+                
                 {loggedIn && <Route exact path="/trainings/home" element={<TrainingHome/>}></Route>}
                 {loggedIn && <Route exact path="/trainings/addTraining" element={<AddTraining/>}></Route>}
                 {loggedIn && <Route exact path="/trainings/view/:id" element={<TrainingView/>}></Route>}
@@ -184,7 +191,6 @@ const Body = ({ isDark, setIsDark}) => {
                 {loggedIn && <Route exact path="/statistics/update/game/:gameId" element={<UpdateStatisticsGame/>}></Route>}
                 {loggedIn && <Route exact path="/statistics/update/game/:gameId/players/:tabValue" element={<UpdateStatisticsPlayers/>}></Route>}
                 {loggedIn && <Route exact path="/statistics/update/game/:gameId/players/:tabValue/player/:playerId" element={<UpdateStatisticsGamePlayer/>}></Route>}
-                {/* {loggedIn && <Route exact path="/statistics/update/game/:gameId/player/:playerId/:tabValue" element={<UpdateStatistics/>}></Route>} */}
 
 
 
@@ -195,6 +201,7 @@ const Body = ({ isDark, setIsDark}) => {
                 {loggedIn && <Route exact path="/statistics/playerGame/:playerId:gameId" element={<FindPlayerGameStatistics/>}></Route>}
                 {loggedIn && <Route exact path="/statistics/game/update/:gameId" element={<UpdateGameStatistics/>}></Route>}
                 {loggedIn && <Route exact path="/statistics/playerGame/update/:playerId:gameId" element={<UpdatePlayerGameStatistics/>}></Route>}
+                
                 {loggedIn && <Route exact path="/stretchings/home" element={<StretchingsHome/>}></Route>}
                 {loggedIn && <Route exact path="/stretchings/view/:id" element={<StretchingView/>}></Route>}
                 {loggedIn && <Route exact path="/stretchings/addStretching" element={<AddStretching/>}></Route>}
@@ -203,6 +210,9 @@ const Body = ({ isDark, setIsDark}) => {
                 {loggedIn && <Route exact path="/stretchings/home/game/:gameId" element={<StretchingsHomeByGame/>}></Route>}
                 {loggedIn && <Route exact path="/stretchings/home/training/:trainingId" element={<StretchingsHomeByTraining/>}></Route>}
                 {loggedIn && <Route exact path="/stretchings/home/type/:stretchingType/:tabValue" element={<StretchingsHomeByType/>}></Route>}
+
+
+
                 {loggedIn && <Route exact path="/exercises/home" element={<ExercisesHome/>}></Route>}
                 {loggedIn && <Route exact path="/exercises/addExercise" element={<AddExercise/>}></Route>}
                 {loggedIn && <Route exact path="/exercises/update/:id" element={<UpdateExercise/>}></Route>}

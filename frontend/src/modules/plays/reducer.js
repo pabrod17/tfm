@@ -32,7 +32,9 @@ const plays = (state = initialState.plays, action) => {
 
         case actionTypes.FIND_PLAYS_BY_TEAM_ID_COMPLETED:
             return action.plays;
-        case actionTypes.FIND_PLAYS_BY_TYPE_AND_TEAM_COMPLETED:
+        case actionTypes.FIND_PLAYS_BY_TYPE_COMPLETED:
+            return action.plays;
+        case actionTypes.FIND_PLAYS_BY_USER_ID_COMPLETED:
             return action.plays;
         default:
             return state;

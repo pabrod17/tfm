@@ -15,7 +15,7 @@ import Box from '@mui/material/Box';
 import { Button, IconButton, Pagination, Stack, Toolbar } from '@mui/material';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
-const PlaysHome = () => {
+const PlaysHomeByType = () => {
     const {id} = useParams();
     const plays = useSelector(selectors.getPlays);
     const dispatch = useDispatch();
@@ -94,4 +94,4 @@ const PlaysHome = () => {
 
 }
 
-export default PlaysHome;
+export default PlaysHomeByType;

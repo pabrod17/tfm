@@ -15,6 +15,20 @@ export const findPlayById = (playId, onSuccess, onErrors) => dispatch => {
         onErrors)
 };
 
+const findPlaysByUserIdCompleted = plays => ({
+    type: actionTypes.FIND_PLAYS_BY_USER_ID_COMPLETED,
+    plays
+});
+
+export const findPlaysByUserId = (onSuccess, onErrors) => dispatch => {
+    backend.playService.findPlaysByUserId(
+        plays => {
+            dispatch(findPlaysByUserIdCompleted(plays));
+            onSuccess();
+        },
+        onErrors);
+}
+
 const findPlaysByTeamIdCompleted = plays => ({
     type: actionTypes.FIND_PLAYS_BY_TEAM_ID_COMPLETED,
     plays
@@ -29,15 +43,15 @@ export const findPlaysByTeamId = (teamId, onSuccess, onErrors) => dispatch => {
         onErrors)
 };
 
-const findPlaysByTypeAndTeamCompleted = plays => ({
-    type: actionTypes.FIND_PLAYS_BY_TYPE_AND_TEAM_COMPLETED,
+const findPlaysByTypeCompleted = plays => ({
+    type: actionTypes.FIND_PLAYS_BY_TYPE_COMPLETED,
     plays
 });
 
-export const findPlaysByTypeAndTeam = (teamId, playType, onSuccess, onErrors) => dispatch => {
-    backend.playService.findPlaysByTypeAndTeam(teamId, playType,
+export const findPlaysByType = (playType, onSuccess, onErrors) => dispatch => {
+    backend.playService.findPlaysByType(playType,
         plays => {
-            dispatch(findPlaysByTypeAndTeamCompleted(plays));
+            dispatch(findPlaysByTypeCompleted(plays));
         },onSuccess,
         onErrors);
 };
@@ -47,8 +61,8 @@ const addPlayCompleted = play => ({
     play
 });
 
-export const addPlay = (teamId, title, playType, gesture, pointGuardText, shootingGuardText, smallForwardText, powerForwardText, centerText, onSuccess, onErrors) => dispatch => {
-    backend.playService.addPlay(teamId, title, playType, gesture, pointGuardText, shootingGuardText, smallForwardText, powerForwardText, centerText,
+export const addPlay = (teamId, title, playType, gesture, pointGuardText, shootingGuardText, smallForwardText, powerForwardText, centerText, description, onSuccess, onErrors) => dispatch => {
+    backend.playService.addPlay(teamId, title, playType, gesture, pointGuardText, shootingGuardText, smallForwardText, powerForwardText, centerText, description,
         play => {
             dispatch(addPlayCompleted(play));
             onSuccess();
@@ -66,8 +80,8 @@ const updatePlayCompleted = play => ({
     play
 });
 
-export const updatePlay = (playId, title, playType, gesture, pointGuardText, shootingGuardText, smallForwardText, powerForwardText, centerText, onSuccess, onErrors) => dispatch => {
-    backend.playService.updatePlay(playId, title, playType, gesture, pointGuardText, shootingGuardText, smallForwardText, powerForwardText, centerText,
+export const updatePlay = (playId, title, playType, gesture, pointGuardText, shootingGuardText, smallForwardText, powerForwardText, centerText, description, onSuccess, onErrors) => dispatch => {
+    backend.playService.updatePlay(playId, title, playType, gesture, pointGuardText, shootingGuardText, smallForwardText, powerForwardText, centerText, description,
         play => {
             dispatch(updatePlayCompleted(play));
             onSuccess();

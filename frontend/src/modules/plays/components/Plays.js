@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState, createContext } from 'react';
 import {useSelector} from 'react-redux';
 import PropTypes from 'prop-types';
 import {useDispatch} from 'react-redux';
@@ -12,6 +12,8 @@ import * as actionsPlayers from '../../players/actions';
 import {FormattedDate} from 'react-intl';
 import * as actionsTeams from '../../teams/actions';
 import * as selectorsTeams from '../../teams/selectors';
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
 
 const handleRemovePlay = (playId, id, dispatch, history) => {
     dispatch(actions.removePlayToTeam(playId, id, () => history(`/plays/home/${id}`)));
@@ -32,44 +34,72 @@ const handleUpdatePlay = (playId, id, dispatch, history) => {
     dispatch(actions.findPlayById(playId, () => history(`/plays/view/${playId}`)));
   }
 
-function PlaysList({ items, id, teamsList, fallback, dispatch, history}) {
-    if (!items || items.length === 0) {
-        dispatch(actions.findPlaysByTeamId(id, () => history(`/plays/home/${id}`)));
-        return fallback;
-    } else {
-        return items.map(item => {
-          return <div className="images-teams" key={item.id}>
-            
-            <div class="">
-              <div class="card hola pruebo">
-                <img src={notaLapiz} alt="Person" class="card__image jugando"></img>
-                <p class="card__name">{item.title}</p>
-                <div class="grid-container">
-                </div>
-                <ul class="social-icons jugadagrande">
-                <li><a type="button" onClick={() => handleRemovePlay(item.id, id, dispatch, history)}>
-                  <i class="fa fa-trash"></i></a></li>
-                  
-                  <li><a type="button" onClick={() => handleViewPlay(item.id, dispatch, history)}>
-                    <i class="fa fa-address-book"></i></a></li>
-                    <li><a type="button" onClick={() => handleUpdatePlay(item.id, id, dispatch, history)}>
-                    <i class="fa fa-wrench"></i></a></li>
-                  <li><a href="#"><i class="fa fa-codepen"></i></a></li>
-                </ul>
-                <div class="dropdown">
-                <button class="btn-player draw-border"><FormattedMessage id="project.teams.fields.changeTeam"/></button>
-                            <div class="dropdown-content">
-                            {teamsList.map(team => 
-                                        <a type="button" onClick={() => handleAddPlayToTeam(item.id, team.id, id, dispatch, history)}> 
-                                            {team.id} : {"  "}{team.teamName}
-                                        </a>)}
-                            </div>
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 900,
+    background: 'linear-gradient(-45deg, #061700 10%, #239304 100% )',  // Cambiado a background
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+    borderRadius: "20px",
+  
+  };
+
+  const PlayCard = ({ dispatch, history, item, handleOpenDescriptionModal, handleOpenMedicationModal }) => {
+    return (
+      <div key={item.id}>
+        <div>
+          <div className="flip-card">
+            <div className="flip-card-inner">
+              <div className="flip-card-front">
+                <div className="card_play">
+                  <img src={notaLapiz} alt="Person" className="card__image_game"></img>
+                  <span class="title">{item.title}</span>
+                  <div className="buttons">
+                  <button class="post">
+                  {item.playType}
+                 </button>
+                 </div>
+                    </div>
+                  </div>
+                  <div class="flip-card-back">
+            <div class="card_play">
+            <span class="title">{item.gesture} &nbsp;
+            </span>
+            <hr></hr>
+                    <a onClick={() => handleOpenDescriptionModal(item.description)} class="button_apple">
+                    <span class="desc desc2 scroll_efect_training">{item.description}</span>
+            </a>
+            <hr></hr>
+                    </div>
+                    <ul class="social-icons trashgrande trash_position">
+                    <li><a type="button" onClick={() => handleRemovePlay(item.id, dispatch, history)}>
+                      <i class="fa fa-trash"></i></a></li>
+                    </ul>
+                    <ul class="social-icons configgrande config_position">
+                        <li><a type="button" onClick={() => handleUpdatePlay(item.id, dispatch, history)}>
+                        <i class="fa fa-wrench"></i></a></li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>;
-        });
-      }
+          </div>
+    );
+  };
+
+function PlaysList({ items, fallback, dispatch, history, openDescription, handleOpenDescription, handleClose }) {
+  if (!items || items.length === 0) {
+    dispatch(actions.findPlaysByUserId( () => history(`/plays/home`)));
+    return fallback;
+  } else {
+    return items.map(item => (
+      <PlayCard dispatch={dispatch} history={history} key={item.id} item={item} handleOpenDescriptionModal={handleOpenDescription} />
+    ));
+  }
 }
 
 
@@ -79,22 +109,43 @@ function PlaysList({ items, id, teamsList, fallback, dispatch, history}) {
 const Plays = ({plays, id}) => {
     const dispatch = useDispatch();
     const history = useNavigate();
+    const [modalDescription, setModalDescription] = useState('');
+    const [openDescription, setOpenDescription] = React.useState(false);
 
-    const teams = useSelector(selectorsTeams.getAllTeams);
-
-    const teamsList = teams.teams;
-
-    if(!teamsList) {
-        dispatch(actionsTeams.findAllTeams());
-        return "Loading...";
-    }
+    const handleOpenDescription = (description) => {
+      setModalDescription(description);
+      setOpenDescription(true);
+    };
+  
+    const handleClose = () => {
+      setModalDescription('');
+      setOpenDescription(false);
+    };
 
     return(
         <div className="card-group">
-          <PlaysList items={plays} id={id} teamsList={teamsList} fallback={"Loading..."} dispatch = {dispatch} history={history} />
+          <PlaysList items={plays} fallback={"Loading..."} dispatch = {dispatch} history={history} openDescription={openDescription} handleOpenDescription={handleOpenDescription} />
+          {(openDescription) && (
+        <div className="modal-backdrop" onClick={handleClose}></div>
+      )}
+      {openDescription && (
+        <Modal
+          open={openDescription}
+          onClose={handleClose}
+          aria-labelledby="child-modal-title"
+          aria-describedby="child-modal-description"
+        >
+          <Box sx={{ ...style, width: "auto" }}>
+            <h2 id="child-modal-title" className="color_modal_title_play" sx={{ mb: '100px' }} ><FormattedMessage id="project.exercises.fields.description" />:</h2>
+            <p id="child-modal-description">
+              {modalDescription}
+            </p>
+          </Box>
+        </Modal>
+      )}
         </div>
     )
-}
+};
 
 Plays.propTypes = {
     plays: PropTypes.array
