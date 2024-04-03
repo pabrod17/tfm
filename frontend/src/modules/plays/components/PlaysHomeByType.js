@@ -20,7 +20,8 @@ const PlaysHomeByType = () => {
     const plays = useSelector(selectors.getPlays);
     const dispatch = useDispatch();
     const history = useNavigate();
-    const [value, setValue] = useState(0);
+    const { lesionType, tabValue } = useParams();
+    const [value, setValue] = useState(parseInt(tabValue, 10) || 0);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
