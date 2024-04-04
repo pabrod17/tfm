@@ -71,6 +71,7 @@ const BoardHome = () => {
             height={"80vh"} // El alto inicial es del 80% del alto de la ventana
             p={5}
             m={9}
+            ml={0}
             sx={{
                 border: '2px solid grey',
                 background: "linear-gradient(180deg, #329617 0%, #062C76 70% )",
