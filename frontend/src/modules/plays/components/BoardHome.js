@@ -66,6 +66,7 @@ const BoardHome = () => {
                         brushRadius={7}
                         brushColor={canvas}
                         catenaryColor={canvas}
+                        brushRadius={brush}
                         hideGrid={true}
                         imgSrc={drawCourt2}
                         style={{
@@ -77,7 +78,7 @@ const BoardHome = () => {
 
                 <Box display="flex" justifyContent="center" width="100%">
                     <button
-                    className="button_all_draw"
+                        className="button_all_draw"
                         onClick={() => {
                             canvasDrawRef.current.undo();
                         }}
@@ -86,7 +87,7 @@ const BoardHome = () => {
                     </button>
 
                     <input
-                        style={{ background: { canvas }, width:"60px", height:"40px" }}
+                        style={{ background: { canvas }, width: "60px", height: "40px" }}
                         type="color"
                         value={canvas}
                         onChange={(event) => {
@@ -94,13 +95,24 @@ const BoardHome = () => {
                         }}
                     />
                     <button
-                    className="button_all_buscar_draw"
+                        className="button_all_buscar_draw"
                         onClick={() => {
                             canvasDrawRef.current.clear();
                         }}
                     >
                         CLEAR
                     </button>
+                    <input
+                        min="2"
+                        max="50"
+                        type="range"
+                        onChange={(event) => {
+                            setThick(event.target.value);
+                        }}
+                        style={{
+                            width: '100%',
+                        }}
+                    />
                     {/* <button
                     className="button_all_buscar_draw"
                     style={{
