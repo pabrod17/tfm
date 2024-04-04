@@ -172,3 +172,8 @@ Game Statistics layout:
 Court board design:
 
 ![ToolBare](courtDrawHome.png)
+
+Plays animator design:
+
+![ToolBare](playsAnimatorHome.png)
+

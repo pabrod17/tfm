@@ -125,6 +125,10 @@ const Sidebar = () => {
     if(to === "/board/home") {
       history('/board/home');
     }
+    else
+    if(to === "/plays/animator/home") {
+      history('/plays/animator/home');
+    }
 
 
 }
@@ -354,8 +358,8 @@ const Sidebar = () => {
               dispatch={dispatch}
             />
             <Item
-              title="Mirar lo de mover los ptos: codesandbox de todoist"
-              to="/plays/home"
+              title="Animator"
+              to="/plays/animator/home"
               icon={<PieChartOutlineOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
