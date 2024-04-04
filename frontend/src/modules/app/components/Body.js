@@ -85,7 +85,7 @@ import StatisticsHome from '../../statistics/components/StatisticsHome';
 import UpdateStatisticsGame from '../../statistics/components/UpdateStatisticsGame';
 import UpdateStatisticsPlayers from '../../statistics/components/UpdateStatisticsPlayers';
 import { UpdateStatisticsGamePlayer } from '../../statistics';
-import { PlaysHomeByType } from '../../plays';
+import { BoardHome, PlaysHomeByType } from '../../plays';
 
 const Body = ({ isDark, setIsDark}) => {
 
@@ -161,7 +161,8 @@ const Body = ({ isDark, setIsDark}) => {
                 {loggedIn && <Route exact path="/notes/view/:noteId" element={<NoteView/>}></Route>}
                 
                 
-                
+                {loggedIn && <Route exact path="/board/home" element={<BoardHome/>}></Route>}
+
                 
                 {loggedIn && <Route exact path="/plays/home" element={<PlaysHome/>}></Route>}
                 {loggedIn && <Route exact path="/plays/home/type/:playType/:tabValue" element={<PlaysHomeByType/>}></Route>}

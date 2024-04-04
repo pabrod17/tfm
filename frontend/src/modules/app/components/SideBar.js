@@ -99,6 +99,10 @@ const Sidebar = () => {
     if(to === "/plays/home") {
       dispatch(actionPlays.findPlaysByUserId(() => history('/plays/home')));
     }
+    else
+    if(to === "/board/home") {
+      history('/board/home');
+    }
 
 
 }
@@ -319,8 +323,8 @@ const Sidebar = () => {
               dispatch={dispatch}
             />
             <Item
-              title="Pizarra"
-              to="/plays/home"
+              title="Board"
+              to="/board/home"
               icon={<PieChartOutlineOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}

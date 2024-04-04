@@ -168,3 +168,7 @@ Game Statistics Form:
 Game Statistics layout:
 
 ![ToolBare](gameStatistics.png)
+
+Court board design:
+
+![ToolBare](courtDrawHome.png)

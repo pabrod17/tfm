@@ -9,4 +9,6 @@ export {default as UpdatePlay} from './components/UpdatePlay';
 export {default as PlayView} from './components/PlayView';
 export {default as PlaysHomeByType} from './components/PlaysHomeByType';
 
+export {default as BoardHome} from './components/BoardHome';
+
 export default {actions, actionsTypes, reducer, selectors};
