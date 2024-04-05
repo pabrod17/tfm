@@ -237,15 +237,6 @@ const BoardHome = () => {
                     >
                         UNDO
                     </button>
-
-                    <input
-                        style={{ background: { canvas }, width: "60px", height: "40px" }}
-                        type="color"
-                        value={canvas}
-                        onChange={(event) => {
-                            setBrush(event.target.value);
-                        }}
-                    />
                     <button
                         className="button_all_buscar_draw"
                         onClick={() => {
@@ -254,8 +245,15 @@ const BoardHome = () => {
                     >
                         CLEAR
                     </button>
-
-                    <button onClick={saveImage}>Save Image</button>
+                    <input
+                        style={{ background: { canvas }, width: "60px", height: "40px" }}
+                        type="color"
+                        value={canvas}
+                        onChange={(event) => {
+                            setBrush(event.target.value);
+                        }}
+                    />
+                    <button className='button_download_board' onClick={saveImage}>Download</button>
                     <input
                         min="2"
                         max="50"
