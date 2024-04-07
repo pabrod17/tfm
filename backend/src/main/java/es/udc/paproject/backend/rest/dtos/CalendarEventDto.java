@@ -1,11 +1,8 @@
 package es.udc.paproject.backend.rest.dtos;
 
-import es.udc.paproject.backend.model.entities.User;
-
-import java.time.LocalDateTime;
 import java.util.Date;
 
-public class CalendarEventDato {
+public class CalendarEventDto {
 
     private Long id;
 
@@ -15,16 +12,19 @@ public class CalendarEventDato {
 
     private Date finishDate;
 
+    String eventType;
+
     private Long user;
 
-    public CalendarEventDato() {
+    public CalendarEventDto() {
     }
 
-    public CalendarEventDato(Long id, String title, Date startDate, Date finishDate, Long user) {
+    public CalendarEventDto(Long id, String title, Date startDate, Date finishDate, String eventType, Long user) {
         this.id = id;
         this.title = title;
         this.startDate = startDate;
         this.finishDate = finishDate;
+        this.eventType = eventType;
         this.user = user;
     }
 
@@ -58,6 +58,14 @@ public class CalendarEventDato {
 
     public void setFinishDate(Date finishDate) {
         this.finishDate = finishDate;
+    }
+
+    public String getEventType() {
+        return eventType;
+    }
+
+    public void setEventType(String eventType) {
+        this.eventType = eventType;
     }
 
     public Long getUser() {

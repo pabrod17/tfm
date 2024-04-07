@@ -40,6 +40,9 @@ public class TrainingServiceImpl implements TrainingService {
 
     @Autowired
     private SeasonTeamDao seasonTeamDao;
+
+    @Autowired
+    private CalendarEventDao calendarEventDao;
     
     @Override
     public Training addTraining(Long teamId, Long seasonId, LocalDateTime trainingDate, String durationMinutes,
@@ -47,10 +50,10 @@ public class TrainingServiceImpl implements TrainingService {
 
                 Training training = null;
 
-                if(teamId == null && seasonId == null){
+                /*if(teamId == null && seasonId == null){
                     training = new Training(trainingDate, durationMinutes, description, objective, null);
                     trainingDao.save(training);
-                }else{
+                }else{*/
 
                     if(teamId != null){
                         if (!teamDao.existsById(teamId)) {
@@ -77,7 +80,11 @@ public class TrainingServiceImpl implements TrainingService {
                     
                         training = new Training(trainingDate, durationMinutes, description, objective, seasonTeams.get(0));
                         trainingDao.save(training);
-                }
+
+                        CalendarEvent calendarEvent = new CalendarEvent(objective, trainingDate, trainingDate, EventType.Training, seasonTeams.get(0).getUser());
+                        training.setCalendarEvent(calendarEventDao.save(calendarEvent));
+                        trainingDao.save(training);
+                //}
                     
         return training;
     }
@@ -331,6 +338,7 @@ public class TrainingServiceImpl implements TrainingService {
         }
 
         Training training = trainingDao.findById(trainingId).get();
+        calendarEventDao.delete(training.getCalendarEvent());
         trainingDao.delete(training);
     }
     
@@ -372,6 +380,11 @@ public class TrainingServiceImpl implements TrainingService {
         if(objective != null)
             training.setObjective(objective);
 
+        if(trainingDate != null || objective != null) {
+            training.getCalendarEvent().setTitle(objective);
+            training.getCalendarEvent().setStartDate(trainingDate);
+            training.getCalendarEvent().setFinishDate(trainingDate);
+        }
         
         trainingDao.save(training);
 

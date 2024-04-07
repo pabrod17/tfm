@@ -22,6 +22,8 @@ public class Game {
     private GameStatistics gameStatistics;
 
     private String description;
+
+    private CalendarEvent calendarEvent;
     
 
     public Game() {
@@ -86,5 +88,15 @@ public class Game {
 
     public void setGameStatistics(GameStatistics gameStatistics) {
         this.gameStatistics = gameStatistics;
+    }
+
+    @OneToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name= "calendarEventId", nullable = true)
+    public CalendarEvent getCalendarEvent() {
+        return calendarEvent;
+    }
+
+    public void setCalendarEvent(CalendarEvent calendarEvent) {
+        this.calendarEvent = calendarEvent;
     }
 }

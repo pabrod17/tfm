@@ -1,5 +1,7 @@
 package es.udc.paproject.backend.rest.dtos;
 
+import es.udc.paproject.backend.model.entities.CalendarEvent;
+
 import java.util.Date;
 
 public class GameDto {
@@ -11,6 +13,9 @@ public class GameDto {
     private Long gameStatistics;
 
     private String description;
+
+    private Long calendarEvent;
+
 
     public GameDto() {
     }
@@ -71,4 +76,11 @@ public class GameDto {
         this.gameStatistics = gameStatistics;
     }
 
+    public Long getCalendarEvent() {
+        return calendarEvent;
+    }
+
+    public void setCalendarEvent(Long calendarEvent) {
+        this.calendarEvent = calendarEvent;
+    }
 }

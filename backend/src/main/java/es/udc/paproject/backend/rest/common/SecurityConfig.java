@@ -64,6 +64,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/exercises*").permitAll()
 			.antMatchers("/exercises/*").permitAll()
 
+				.antMatchers("/events*").permitAll()
+				.antMatchers("/events/*").permitAll()
+
 			.antMatchers("/users/login").permitAll()
 			.antMatchers("/users/loginFromServiceToken").permitAll()
 			.anyRequest().hasRole("USER");

@@ -12,6 +12,8 @@ public class TrainingDto {
     private String objective;
     private Long seasonTeam;
 
+    private Long calendarEvent;
+
     public TrainingDto() {
     }
 
@@ -71,5 +73,13 @@ public class TrainingDto {
 
     public void setSeasonTeam(Long seasonTeam) {
         this.seasonTeam = seasonTeam;
+    }
+
+    public Long getCalendarEvent() {
+        return calendarEvent;
+    }
+
+    public void setCalendarEvent(Long calendarEvent) {
+        this.calendarEvent = calendarEvent;
     }
 }

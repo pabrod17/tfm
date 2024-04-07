@@ -5,21 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import es.udc.paproject.backend.model.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import es.udc.paproject.backend.model.entities.Game;
-import es.udc.paproject.backend.model.entities.GameDao;
-import es.udc.paproject.backend.model.entities.Player;
-import es.udc.paproject.backend.model.entities.PlayerDao;
-import es.udc.paproject.backend.model.entities.PlayerGameStatistics;
-import es.udc.paproject.backend.model.entities.PlayerGameStatisticsDao;
-import es.udc.paproject.backend.model.entities.SeasonDao;
-import es.udc.paproject.backend.model.entities.SeasonTeam;
-import es.udc.paproject.backend.model.entities.SeasonTeamDao;
-import es.udc.paproject.backend.model.entities.TeamDao;
-import es.udc.paproject.backend.model.entities.UserDao;
 import es.udc.paproject.backend.model.exceptions.InstanceNotFoundException;
 import es.udc.paproject.backend.model.exceptions.StartDateAfterEndDateException;
 
@@ -48,15 +38,18 @@ public class GameServiceImpl implements GameService {
     @Autowired
     private UserDao userDao;
 
+    @Autowired
+    private CalendarEventDao calendarEventDao;
+
     @Override
     public Game addGame(Long teamId, Long seasonId, LocalDateTime gameDate, String rival, String description)
             throws InstanceNotFoundException {
 
         Game game = null;
-        if(teamId == null && seasonId == null){
+        /*if(teamId == null && seasonId == null){
             game = new Game(gameDate, rival,null, description);
             gameDao.save(game);
-        }else{
+        }else{*/
 
             if(teamId != null){
                 if (!teamDao.existsById(teamId)) {
@@ -81,7 +74,12 @@ public class GameServiceImpl implements GameService {
             }
             game = new Game(gameDate, rival,seasonTeams.get(0), description);
             gameDao.save(game);
-        }
+
+            CalendarEvent calendarEvent = new CalendarEvent(rival, gameDate, gameDate, EventType.Game, seasonTeams.get(0).getUser());
+            game.setCalendarEvent(calendarEventDao.save(calendarEvent));
+            gameDao.save(game);
+        //}
+
         return game;
     }
 
@@ -322,6 +320,7 @@ public class GameServiceImpl implements GameService {
         }
 
         Game game = gameDao.findById(gameId).get();
+        calendarEventDao.delete(game.getCalendarEvent());
         gameDao.delete(game);
     }
 
@@ -359,6 +358,12 @@ public class GameServiceImpl implements GameService {
             game.setRival(rival);
         if(description != null)
             game.setDescription(description);
+
+        if(gameDate != null || rival != null) {
+            game.getCalendarEvent().setTitle(rival);
+            game.getCalendarEvent().setStartDate(gameDate);
+            game.getCalendarEvent().setFinishDate(gameDate);
+        }
         gameDao.save(game);
         return game;
     }

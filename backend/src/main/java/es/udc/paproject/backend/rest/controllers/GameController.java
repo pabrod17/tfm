@@ -89,7 +89,7 @@ public class GameController {
 
     @PostMapping("")
     public GameDto addGame(@RequestParam(required=false) Long teamId, @RequestParam(required=false) Long seasonId,
-            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date gameDate,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm") Date gameDate,
             @RequestParam String rival, @RequestParam String description)
             throws InstanceNotFoundException {
                 if(seasonId == null) {
@@ -108,7 +108,7 @@ public class GameController {
 
     @PutMapping("/{gameId}")
     public GameDto updateGame(@PathVariable Long gameId,
-            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date gameDate,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm") Date gameDate,
             @RequestParam String rival, @RequestParam String description)
             throws InstanceNotFoundException {
         return toGameDto(gameService.updateGame(gameId, toLocalDateTime(gameDate), rival, description));

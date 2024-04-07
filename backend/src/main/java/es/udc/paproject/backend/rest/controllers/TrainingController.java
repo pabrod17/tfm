@@ -102,7 +102,7 @@ public class TrainingController {
 
     @PostMapping("")
     public TrainingDto addTraining(@RequestParam(required=false) Long teamId, @RequestParam(required=false) Long seasonId,
-            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date trainingDate,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm") Date trainingDate,
             @RequestParam String durationMinutes, @RequestParam String description, @RequestParam String objective)
             throws InstanceNotFoundException {
         return toTrainingDto(trainingService.addTraining(teamId, seasonId, toLocalDateTime(trainingDate),
@@ -117,7 +117,7 @@ public class TrainingController {
 
     @PutMapping("/{trainingId}")
     public TrainingDto updateTraining(@PathVariable Long trainingId,
-            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date trainingDate,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm") Date trainingDate,
             @RequestParam String durationMinutes, @RequestParam String description, @RequestParam String objective)
             throws InstanceNotFoundException {
         return toTrainingDto(trainingService.updateTraining(trainingId, toLocalDateTime(trainingDate), durationMinutes,
