@@ -24,8 +24,8 @@ const Court = ({ children, onPositionSelect }) => {
 
     const style = {
       border: "1px solid black",
-      width: "1900px",
-      height: "1000px",
+      width: "100%",
+      height: "100%",
       position: "relative",
       display: "grid",
       gridTemplateColumns: "repeat(10, 1fr)",
@@ -65,8 +65,8 @@ const Court = ({ children, onPositionSelect }) => {
   
   const Player = ({ id,color, position, onClick, isSelected }) => {
     const style = {
-      width: "120px",
-      height: "120px",
+      width: "5%",
+      height: "10%",
       backgroundColor: isSelected ? "green" : color,
       position: "absolute",
       top: position.top + "px",
@@ -100,7 +100,7 @@ const Court = ({ children, onPositionSelect }) => {
       },
       {
         id: 2,
-        position: { top: 220, left: 250 },
+        position: { top: 160, left: 0 },
         steps: [],
         color:"blue"
       },
@@ -116,23 +116,28 @@ const Court = ({ children, onPositionSelect }) => {
   
     const handlePositionSelect = (index) => {
       if (selectedPlayer !== null) {
-        // Calculate the position based on the index
-        const column = index % 10;
-        const row = Math.floor(index / 10);
-        const top = row * (1000 / 6); // Height of court divided by number of rows
-        const left = column * (1900 / 10); // Width of court divided by number of columns
-  
-        setPlayers(
-          players.map((player) =>
-            player.id === selectedPlayer
-              ? {
-                  ...player,
-                  position: { top, left },
-                }
-              : player
-          )
-        );
-        setSelectedPlayer(null); // Deselect player after setting position
+        const courtElement = document.querySelector(".court");
+        if (courtElement) {
+          const courtWidth = courtElement.clientWidth;
+          const courtHeight = courtElement.clientHeight;
+    
+          const column = index % 10;
+          const row = Math.floor(index / 10);
+          const top = (row * courtHeight) / 6; // Altura del campo dividida por el número de filas
+          const left = (column * courtWidth) / 10; // Ancho del campo dividido por el número de columnas
+    
+          setPlayers((players) =>
+            players.map((player) =>
+              player.id === selectedPlayer
+                ? {
+                    ...player,
+                    position: { top, left },
+                  }
+                : player
+            )
+          );
+          setSelectedPlayer(null);
+        }
       }
     };
   
@@ -207,11 +212,11 @@ const Court = ({ children, onPositionSelect }) => {
             display="flex"
             alignItems="center"
             gap={4}
+            width={"80vw"} // El ancho inicial es del 80% del ancho de la ventana
+            height={"80vh"} // El alto inicial es del 80% del alto de la ventana
             p={5}
-            pb={0}
-            pt={2}
             m={9}
-            ml={1}
+            ml={0}
             sx={{
                 border: '2px solid grey',
                 background: "linear-gradient(180deg, #329617 0%, #062C76 70% )",
@@ -222,8 +227,11 @@ const Court = ({ children, onPositionSelect }) => {
                 boxShadow: "0 10px 50px rgb(0, 0, 0)"
             }}
         >
-            <Grid container columns={{ xs: 4, sm: 8, md: 12 }} style={{ height: '100%' }}>
+          
+            <Grid container columns={{ xs: 12, sm: 12, md: 12 }} style={{ height: '100%' }}>
+              
                 <Grid item md={12} style={{ height: '100%' }}>
+                  
 
 
 
@@ -241,8 +249,10 @@ const Court = ({ children, onPositionSelect }) => {
           Play
         </button>
         <button onClick={stopPlaying} disabled={!isPlaying}>
-          Stop
+          Stop 
         </button>
+
+        
         <Court onPositionSelect={handlePositionSelect}>
           {players.map((player) => (
             <Player
@@ -255,8 +265,7 @@ const Court = ({ children, onPositionSelect }) => {
             />
           ))}
         </Court>
-        <p style={{ fontSize: "50px", marginBottom:"0px" }}>{currentStepIndex}</p>
-
+        <p style={{ fontSize: "50px", marginRight:"100%" }}>{currentStepIndex}</p>
                 </Grid>
 
             </Grid>
