@@ -20,6 +20,8 @@ DROP TABLE Training;
 
 DROP TABLE SeasonTeam;
 
+DROP TABLE CalendarEvent;
+
 DROP TABLE User;
 DROP TABLE Season;
 DROP TABLE PlayerLesion;
@@ -211,31 +213,49 @@ CREATE TABLE GameStatistics (
     CONSTRAINT GameStatisticsPK PRIMARY KEY (id)
 ) ENGINE = InnoDB;
 
+CREATE TABLE CalendarEvent (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    title VARCHAR(500),
+    startDate DATETIME,
+    finishDate DATETIME,
+    eventType    ENUM('General','Game', 'Training') NOT NULL,
+    userId BIGINT,
+    CONSTRAINT EventPK PRIMARY KEY (id),
+    CONSTRAINT CalendarEventUserIdFK FOREIGN KEY(userId)
+        REFERENCES User (id)
+) ENGINE = InnoDB;
+
 CREATE TABLE Game (
     id BIGINT NOT NULL AUTO_INCREMENT,
-    gameDate DATE,
+    gameDate DATETIME,
     rival VARCHAR(500),
     objective VARCHAR(500),
     description VARCHAR(500) NOT NULL,
     seasonTeamId BIGINT NOT NULL,
     gameStatisticsId BIGINT,
+    calendarEventId BIGINT,
     CONSTRAINT GamePK PRIMARY KEY (id),
     CONSTRAINT GameSeasonTeamIdFK FOREIGN KEY(seasonTeamId)
         REFERENCES SeasonTeam (id),    
     CONSTRAINT GameGameStatisticsIdIdFK FOREIGN KEY(gameStatisticsId)
-        REFERENCES GameStatistics (id)
+        REFERENCES GameStatistics (id),
+    CONSTRAINT GameCalendarEventIdFK FOREIGN KEY(calendarEventId)
+        REFERENCES CalendarEvent (id)
 ) ENGINE = InnoDB;
 
 CREATE TABLE Training (
     id BIGINT NOT NULL AUTO_INCREMENT,
-    trainingDate DATE,
+    trainingDate DATETIME,
     durationMinutes BIGINT,   
     description VARCHAR(500),
     objective VARCHAR(500),
     seasonTeamId BIGINT,
+    calendarEventId BIGINT,
     CONSTRAINT TrainingPK PRIMARY KEY (id),
     CONSTRAINT TrainingSeasonTeamIdFK FOREIGN KEY(seasonTeamId)
-        REFERENCES SeasonTeam (id)
+        REFERENCES SeasonTeam (id),
+    CONSTRAINT TrainingCalendarEventIdFK FOREIGN KEY(calendarEventId)
+        REFERENCES CalendarEvent (id)
 ) ENGINE = InnoDB;
 
 
