@@ -23,6 +23,7 @@ import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
+import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 
 const UpdateGame = () => {
     const game = useSelector(selectors.getOneGame);
@@ -45,6 +46,9 @@ const UpdateGame = () => {
         if (!game) {
             dispatch(actions.findGameById(id, () => history(`/games/update/${id}`)));
         } else {
+            console.log("CARAJOOOO;: ", game.gameDate)
+
+
             setGameDate(dayjs(game.gameDate));
             setRival(game.rival);
             setDescription(game.description);
@@ -102,13 +106,25 @@ const UpdateGame = () => {
 
 
         
+        // function dateConversor(gameDate) {
+        //     const dateObj2 = new Date(gameDate);
+        //     dateObj2.setDate(dateObj2.getDate() + 1);
+        //     // Obtener la fecha en formato ISO 8601 (UTC)
+        //     const trainingDateUpdated = dateObj2.toISOString();
+        //     return trainingDateUpdated;
+        // }
         function dateConversor(gameDate) {
-            const dateObj2 = new Date(gameDate);
-            dateObj2.setDate(dateObj2.getDate() + 1);
-            // Obtener la fecha en formato ISO 8601 (UTC)
-            const trainingDateUpdated = dateObj2.toISOString();
+            const dateObj = new Date(gameDate);
+            const year = dateObj.getFullYear();
+            const month = (dateObj.getMonth() + 1).toString().padStart(2, '0');
+            const day = dateObj.getDate().toString().padStart(2, '0');
+            const hours = dateObj.getHours().toString().padStart(2, '0');
+            const minutes = dateObj.getMinutes().toString().padStart(2, '0');
         
-            return trainingDateUpdated;
+            const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}`;
+            console.log("SANCANDOOOO FECHA:; ", formattedDate)
+
+            return formattedDate;
         }
 
 
@@ -208,8 +224,8 @@ const UpdateGame = () => {
 									<h4 class="margin_training_form"
 									><FormattedMessage id="project.global.fields.date" /></h4>
 									<LocalizationProvider dateAdapter={AdapterDayjs}>
-										<DemoContainer components={['DatePicker']}>
-											<DatePicker
+										<DemoContainer components={['DateTimePicker']}>
+											<DateTimePicker
 												sx={{
 													border: '2px solid grey',
                                                     background: "linear-gradient(-45deg, #0E24A0 0%, #900C0C 100% )",
@@ -226,8 +242,12 @@ const UpdateGame = () => {
                                                 value={gameDate}
 												onChange={(newDate) =>
 													{
-														setGameDate(newDate.toISOString())
-														console.log("formattedDate:", newDate.$d.toISOString());
+
+														console.log("AHORA: ",newDate.toISOString())
+														//console.log("formattedDate:", newDate.$d.toISOString());
+
+														setGameDate(newDate)
+														console.log("formattedDate:", newDate);
 													
 													
 													}

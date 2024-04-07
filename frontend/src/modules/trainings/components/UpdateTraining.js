@@ -22,6 +22,7 @@ import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import dayjs from 'dayjs';
 import * as actionsExercises from '../../exercises/actions';
 import * as actionsStretchings from '../../stretchings/actions';
+import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 
 const UpdateTraining = () => {
     const training = useSelector(selectors.getOneTraining);
@@ -88,13 +89,18 @@ const UpdateTraining = () => {
             history(`/trainings/update/${id}/stretching/${tabValue}`);
         }
 
-        function dateConversor(trainingDate) {
-            const dateObj2 = new Date(trainingDate);
-            dateObj2.setDate(dateObj2.getDate() + 1);
-            // Obtener la fecha en formato ISO 8601 (UTC)
-            const trainingDateUpdated = dateObj2.toISOString();
+		function dateConversor(trainingDate) {
+            const dateObj = new Date(trainingDate);
+            const year = dateObj.getFullYear();
+            const month = (dateObj.getMonth() + 1).toString().padStart(2, '0');
+            const day = dateObj.getDate().toString().padStart(2, '0');
+            const hours = dateObj.getHours().toString().padStart(2, '0');
+            const minutes = dateObj.getMinutes().toString().padStart(2, '0');
         
-            return trainingDateUpdated;
+            const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}`;
+            console.log("SANCANDOOOO FECHA:; ", formattedDate)
+
+            return formattedDate;
         }
 
     return(
@@ -187,8 +193,8 @@ const UpdateTraining = () => {
 									<h4 class="margin_training_form"
 									><FormattedMessage id="project.global.fields.date" /></h4>
 									<LocalizationProvider dateAdapter={AdapterDayjs}>
-										<DemoContainer components={['DatePicker']}>
-											<DatePicker
+										<DemoContainer components={['DateTimePicker']}>
+											<DateTimePicker
 												sx={{
 													border: '2px solid grey',
 													background: "linear-gradient(-45deg, #41295a 0%, #2F0743 100% )",
@@ -205,7 +211,7 @@ const UpdateTraining = () => {
                                                 value={trainingDate}
 												onChange={(newDate) =>
 													{
-														setTrainingDate(newDate.toISOString())
+														setTrainingDate(newDate)
 														console.log("formattedDate:", newDate.$d.toISOString());
 													
 													

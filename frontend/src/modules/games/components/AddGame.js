@@ -22,6 +22,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import naranja from '../../games/components/ballunsplash.jpeg';
+import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 
 const AddGame = () => {
     const dispatch = useDispatch();
@@ -70,7 +71,7 @@ const AddGame = () => {
     const seasonsList = seasons.seasons;
 
 	if (!seasonsList) {
-		dispatch(actionsSeasons.findAllSeasons(() => history(`/trainings/addTraining`)));
+		dispatch(actionsSeasons.findAllSeasons(() => history(`/games/addGame`)));
 		return "Loading...";
 	}
 
@@ -125,17 +126,25 @@ const AddGame = () => {
 			}
         }
         const reloadWindow = () =>{
-            history('/games/addGame');
+            history('/games/home');
             window.location.reload('true');
         }
 
         function dateConversor(gameDate) {
-            const dateObj2 = new Date(gameDate);
-            dateObj2.setDate(dateObj2.getDate() + 1);
-            // Obtener la fecha en formato ISO 8601 (UTC)
-            const gameDateUpdated = dateObj2.toISOString();
-            return gameDateUpdated;
+            const dateObj = new Date(gameDate);
+            const year = dateObj.getFullYear();
+            const month = (dateObj.getMonth() + 1).toString().padStart(2, '0');
+            const day = dateObj.getDate().toString().padStart(2, '0');
+            const hours = dateObj.getHours().toString().padStart(2, '0');
+            const minutes = dateObj.getMinutes().toString().padStart(2, '0');
+        
+            const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}`;
+            console.log("SANCANDOOOO FECHA:; ", formattedDate)
+
+            return formattedDate;
         }
+
+
         return(
 <Box
 			my={4}
@@ -190,8 +199,8 @@ const AddGame = () => {
 									<h4 class="margin_training_form"
 									><FormattedMessage id="project.global.fields.date" /></h4>
 									<LocalizationProvider dateAdapter={AdapterDayjs}>
-										<DemoContainer components={['DatePicker']}>
-											<DatePicker
+										<DemoContainer components={['DateTimePicker']}>
+											<DateTimePicker
 												sx={{
 													border: '2px solid grey',
 													borderRadius: "20px",
@@ -205,7 +214,7 @@ const AddGame = () => {
 												required
 												onChange={(newDate) =>
 													{
-														setGameDate(newDate.toISOString())
+														setGameDate(newDate)
 														console.log("formattedDate:", newDate.$d.toISOString());
 													
 													

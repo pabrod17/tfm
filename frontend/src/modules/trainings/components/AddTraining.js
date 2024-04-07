@@ -54,6 +54,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
+import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 
 const AddTraining = () => {
 	const dispatch = useDispatch();
@@ -142,13 +143,13 @@ const AddTraining = () => {
 
 		event.preventDefault();
 
-			if (teamId.length === 0) {
+			if (teamId == null) {
 				dispatch(actions.addTrainingWithSeason(seasonId[0], dateConversor(trainingDate), timeConversor(durationMinutes),
 					description.trim(), objective.trim(),
 					() => reloadWindow(),
 					errors => setBackendErrors(errors),
 				));
-			} else if (seasonId.length === 0) {
+			} else if (seasonId==null) {
 				dispatch(actions.addTrainingWithTeam(teamId[0], dateConversor(trainingDate), timeConversor(durationMinutes),
 					description.trim(), objective.trim(),
 					() => reloadWindow(),
@@ -163,17 +164,22 @@ const AddTraining = () => {
 			}
 	}
 	const reloadWindow = () => {
-		history('/trainings/addTraining');
+		history('/trainings/home');
 		window.location.reload('true');
 	}
 
 	function dateConversor(trainingDate) {
-		const dateObj2 = new Date(trainingDate);
-		dateObj2.setDate(dateObj2.getDate() + 1);
-		// Obtener la fecha en formato ISO 8601 (UTC)
-		const trainingDateUpdated = dateObj2.toISOString();
+		const dateObj = new Date(trainingDate);
+		const year = dateObj.getFullYear();
+		const month = (dateObj.getMonth() + 1).toString().padStart(2, '0');
+		const day = dateObj.getDate().toString().padStart(2, '0');
+		const hours = dateObj.getHours().toString().padStart(2, '0');
+		const minutes = dateObj.getMinutes().toString().padStart(2, '0');
 	
-		return trainingDateUpdated;
+		const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}`;
+		console.log("SANCANDOOOO FECHA:; ", formattedDate)
+
+		return formattedDate;
 	}
 	
 	//hago esta conversion para luego poder pasar el valor de la bd previo cuando se actualice: 
@@ -245,8 +251,8 @@ const AddTraining = () => {
 									<h4 class="margin_training_form"
 									><FormattedMessage id="project.global.fields.date" /></h4>
 									<LocalizationProvider dateAdapter={AdapterDayjs}>
-										<DemoContainer components={['DatePicker']}>
-											<DatePicker
+										<DemoContainer components={['DateTimePicker']}>
+											<DateTimePicker
 												sx={{
 													border: '2px solid grey',
 													background: "linear-gradient(-45deg, #41295a 0%, #2F0743 100% )",
@@ -262,7 +268,7 @@ const AddTraining = () => {
 												required
 												onChange={(newDate) =>
 													{
-														setTrainingDate(newDate.toISOString())
+														setTrainingDate(newDate)
 														console.log("formattedDate:", newDate.$d.toISOString());
 													
 													
