@@ -44,6 +44,8 @@ import { GiBasketballBall } from "react-icons/gi";
 import { daysToWeeks } from 'date-fns';
 import { FaPeopleGroup } from "react-icons/fa6";
 import { FaStar } from "react-icons/fa6";
+import { GiRoundStar } from "react-icons/gi";
+
 import Fullcalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
@@ -217,31 +219,19 @@ const CalendarHome = () => {
         event: (props) => {
             const {type} = props.event;
             if(type == "Game") {
-                return <div style={{ fontSize: "15px", textAlign: "center", background: "#a11212" }}>
-                    <span >
-                        <GiBasketballBall />
-                    </span>
-                    <div style={{ fontSize: "15px", textAlign: "center", background: "#a11212" }}>
-                        {props.title}
-                    </div>
-                </div>
+              return <div style={{textAlign: "center",background: "#a11212"}}>
+              <GiBasketballBall style={{ fontSize: "25px", marginRight: "10px" }} />
+              <span style={{ fontSize: "20px", verticalAlign: "middle" }}>{props.title}</span>
+            </div>
             } else if (type == "Training") {
-                return <div style={{ fontSize: "15px", textAlign: "center", background: "#f05c00" }}>
-                <span >
-                    <FaPeopleGroup />
-                </span>
-                <div style={{ fontSize: "15px", textAlign: "center", background: "#f05c00" }}>
-                    {props.title}
-                </div>
+              return <div style={{textAlign: "center",background: "#f05c00"}}>
+              <FaPeopleGroup style={{ fontSize: "25px", marginRight: "10px" }} />
+              <span style={{ fontSize: "20px", verticalAlign: "middle" }}>{props.title}</span>
             </div>
             } else {
-                return <div style={{ fontSize: "15px", textAlign: "center", background: "#3bc01a" }}>
-                <span >
-                    <FaStar/>
-                </span>
-                <div style={{ fontSize: "15px", textAlign: "center", background: "#3bc01a" }}>
-                    {props.title}
-                </div>
+              return <div style={{textAlign: "center",background: "#3bc01a"}}>
+              <FaStar style={{ fontSize: "25px", marginRight: "10px" }} />
+              <span style={{ fontSize: "20px", verticalAlign: "middle" }}>{props.title}</span>
             </div>
             }
         }
