@@ -51,6 +51,7 @@ import * as actionsTeams from '../../teams/actions';
 import * as actionPlays from '../../plays/actions';
 import * as actionsSeasons from '../../seasons/actions';
 import * as actionStatistics from '../..//statistics/actions';
+import * as actionEvents from '../../events/actions';
 import { FormattedMessage } from 'react-intl';
 
 
@@ -128,6 +129,10 @@ const Sidebar = () => {
     else
     if(to === "/plays/animator/home") {
       history('/plays/animator/home');
+    }
+    else
+    if(to === "/calendar/home") {
+      dispatch(actionEvents.findEventsByUserId(() => history('/calendar/home')));
     }
 
 

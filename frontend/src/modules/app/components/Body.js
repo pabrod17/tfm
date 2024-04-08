@@ -86,6 +86,7 @@ import UpdateStatisticsGame from '../../statistics/components/UpdateStatisticsGa
 import UpdateStatisticsPlayers from '../../statistics/components/UpdateStatisticsPlayers';
 import { UpdateStatisticsGamePlayer } from '../../statistics';
 import { BoardHome, PlayAnimatorHome, PlaysHomeByType } from '../../plays';
+import { CalendarHome } from '../../events';
 
 const Body = ({ isDark, setIsDark}) => {
 
@@ -163,6 +164,7 @@ const Body = ({ isDark, setIsDark}) => {
                 
                 {loggedIn && <Route exact path="/board/home" element={<BoardHome/>}></Route>}
                 {loggedIn && <Route exact path="/plays/animator/home" element={<PlayAnimatorHome/>}></Route>}
+                {loggedIn && <Route exact path="/calendar/home" element={<CalendarHome/>}></Route>}
 
                 
                 {loggedIn && <Route exact path="/plays/home" element={<PlaysHome/>}></Route>}

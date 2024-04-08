@@ -29,6 +29,46 @@
 
 
 
+/* Calendar */
+
+.modal-content {
+  background: linear-gradient(180deg, #8E2DE2 0%, #4A00E0 70% ); 
+}
+
+
+.rbc-day-bg.rbc-today {
+  background-color: #033561; 
+}
+
+.rbc-day-bg.rbc-off-range-bg {
+  background-color: #373737; 
+}
+
+.rbc-time-header {
+  background: transparent;
+}
+
+.rbc-header.rbc-today {
+  background: transparent;
+}
+
+.rbc-day-slot.rbc-time-column.rbc-now.rbc-today {
+  background: transparent;
+}
+.rbc-time-slot {
+  background-color: #a300c4; 
+}
+
+.rbc-row.rbc-month-header {
+  background-color: #a300c4; 
+}
+.rbc-toolbar {
+  /* background: rgb(138, 65, 233);
+  color: white; */
+}
+.rbc-btn-group {
+  font-size: 20px;
+}
 
 
 .button_all_draw {
