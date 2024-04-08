@@ -250,7 +250,7 @@ const AddTraining = () => {
 								>
 									<h4 class="margin_training_form"
 									><FormattedMessage id="project.global.fields.date" /></h4>
-									<LocalizationProvider dateAdapter={AdapterDayjs}>
+									<LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
 										<DemoContainer components={['DateTimePicker']}>
 											<DateTimePicker
 												sx={{
@@ -281,7 +281,7 @@ const AddTraining = () => {
 									</LocalizationProvider>
 									<h4 class="margin_training_form"
 									><FormattedMessage id="project.statistics.fields.duration" /></h4>
-									<LocalizationProvider dateAdapter={AdapterDayjs}>
+									<LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
 										<DemoContainer components={['TimePicker']}>
 											<TimePicker
 											    id="time-picker"

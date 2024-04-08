@@ -198,7 +198,7 @@ const AddGame = () => {
 								>
 									<h4 class="margin_training_form"
 									><FormattedMessage id="project.global.fields.date" /></h4>
-									<LocalizationProvider dateAdapter={AdapterDayjs}>
+									<LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
 										<DemoContainer components={['DateTimePicker']}>
 											<DateTimePicker
 												sx={{
