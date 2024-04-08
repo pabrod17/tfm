@@ -177,3 +177,7 @@ Plays animator design:
 
 ![ToolBare](playsAnimatorHome.png)
 
+Calendar Home design:
+
+![ToolBare](calendarHome.png)
+
