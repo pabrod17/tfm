@@ -372,7 +372,7 @@ const CalendarHome = () => {
                         <DateTimePicker
                           sx={{
                             border: '2px solid grey',
-                            background: "linear-gradient(-45deg, #0E24A0 0%, #900C0C 100% )",
+                            background: "linear-gradient(180deg, #8E2DE2 0%, #4A00E0 70% )",
                             borderRadius: "20px",
                             colorAdjust: "#00bfff",
                             '& label': { color: 'white' },
@@ -408,7 +408,7 @@ const CalendarHome = () => {
                         <DateTimePicker
                           sx={{
                             border: '2px solid grey',
-                            background: "linear-gradient(-45deg, #0E24A0 0%, #900C0C 100% )",
+                            background: "linear-gradient(180deg, #8E2DE2 0%, #4A00E0 70% )",
                             borderRadius: "20px",
                             colorAdjust: "#00bfff",
                             '& label': { color: 'white' },
