@@ -18,6 +18,11 @@ import Typography from '@mui/material/Typography';
 import drawCourt from './drawCourt.png';
 import drawCourt2 from './courtDraw2.png';
 import { PlayAnimatordHome } from '..';
+import image22 from './jugador2.jpeg';
+import image23 from './bolaaaa2.jpeg';
+import image1 from './47.jpeg';
+import image2 from './12negro.jpeg';
+import { borderColor } from '@mui/system';
 
 const Court = ({ children, onPositionSelect }) => {
     const [backgroundImage, setBackgroundImage] = useState(drawCourt2); // Imagen inicial
@@ -63,7 +68,7 @@ const Court = ({ children, onPositionSelect }) => {
     );
   };
   
-  const Player = ({ id,color, position, onClick, isSelected }) => {
+  const Player = ({ id,color,backgroundImage, position, onClick, isSelected }) => {
     const style = {
       width: "5%",
       height: "10%",
@@ -76,15 +81,23 @@ const Court = ({ children, onPositionSelect }) => {
       "&:hover": {
         backgroundColor: "red",
       },
+      backgroundImage: backgroundImage,
+      backgroundRepeat: 'no-repeat', // Evita la repetición de la imagen de fondo
+      backgroundSize: 'cover',
+      overflowX: 'hidden',
+      borderRadius:"50%",
+      border: "5px solid", // Agrega el borde aquí
+      borderColor: isSelected ? "#00ff00" : "blue",
+
     };
   
     return (
       <div
         style={style}
         onClick={() => onClick(id)}
-        onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "red")}
+        onMouseOver={(e) => (e.currentTarget.style.borderColor = "red")}
         onMouseOut={(e) =>
-          (e.currentTarget.style.backgroundColor = isSelected ? "green" : color)
+          (e.currentTarget.style.borderColor = isSelected ? "#00ff00" : "blue")
         }
       />
     );
@@ -96,13 +109,15 @@ const Court = ({ children, onPositionSelect }) => {
         id: 1,
         position: { top: 0, left: 0 },
         steps: [],
-        color:"orange"
+        color:"orange",
+        backgroundImage:`url(${image1})`
       },
       {
         id: 2,
         position: { top: 160, left: 0 },
         steps: [],
-        color:"blue"
+        color:"blue",
+        backgroundImage:`url(${image2})`
       },
       // Add more players as needed
     ]);
@@ -262,6 +277,7 @@ const Court = ({ children, onPositionSelect }) => {
               onClick={handlePlayerClick}
               isSelected={player.id === selectedPlayer}
               color={player.color}
+              backgroundImage={player.backgroundImage}
             />
           ))}
         </Court>
