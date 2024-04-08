@@ -62,13 +62,13 @@ public class CalendarEventController {
     }
 
     @PutMapping("/{eventId}")
-    public CalendarEventDto updateCalendarEvent(@PathVariable Long calendarEventId,
+    public CalendarEventDto updateCalendarEvent(@PathVariable Long eventId,
                                        @RequestParam String title,
                               @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm") Date startDate,
                                        @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm") Date finishDate
                                        )
             throws InstanceNotFoundException {
-        return toCalendarEventDto(calendarEventService.updateCalendarEvent(calendarEventId, title, toLocalDateTime(startDate),toLocalDateTime(finishDate)));
+        return toCalendarEventDto(calendarEventService.updateCalendarEvent(eventId, title, toLocalDateTime(startDate),toLocalDateTime(finishDate)));
     }
 
     @DeleteMapping("/{eventId}")
