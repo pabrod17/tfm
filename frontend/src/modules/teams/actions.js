@@ -112,8 +112,8 @@ const addTeamCompleted = team => ({
     team
 });
 
-export const addTeam =  (name, onSuccess, onErrors) => dispatch =>{
-    backend.teamService.addTeam(name,
+export const addTeam =  (name, arenaName, ownerName, description, onSuccess, onErrors) => dispatch =>{
+    backend.teamService.addTeam(name, arenaName, ownerName, description,
         team => {
             dispatch(addTeamCompleted(team));
             onSuccess();

@@ -332,7 +332,7 @@ const TeamsHome = () => {
                         fontSize: "70px",
                         color: "white"
                     }}
-                        onClick={() => history(`/stretchings/addStretching`)}
+                        onClick={() => history(`/teams/addTeam`)}
                     >
                     </AddCircleOutlineIcon>
                 </IconButton>

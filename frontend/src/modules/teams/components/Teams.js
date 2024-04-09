@@ -4,10 +4,11 @@ import {useDispatch} from 'react-redux';
 import * as actions from '../actions';
 import { useNavigate } from 'react-router';
 import Card from "react-bootstrap/Card";
-import logo22 from './red5.jpeg';
+import logo21 from './red5.jpeg';
 import {FormattedMessage} from 'react-intl';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
+import logo22 from './logo3.jpeg';
 
 const style = {
   position: 'absolute',
@@ -15,7 +16,7 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 900,
-  background: 'linear-gradient(-45deg, #0816dd 0%, #000046 60% )',  // Cambiado a background
+  background: 'linear-gradient(-45deg, #ff4800 0%, #000000 60% )',  // Cambiado a background
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,

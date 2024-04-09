@@ -101,7 +101,6 @@ const Body = ({ isDark, setIsDark}) => {
             <AppGlobalComponents/>
             <Routes>
                 <Route exact path="/" element={<Home/>}></Route>
-                {loggedIn && <Route exact path="/teams/new" element={<AddTeam/>}></Route>}
                 {loggedIn && <Route exact path="/teams/update" element={<UpdateTeam/>}></Route>}
                 {loggedIn && <Route exact path="/teams/addTeamToSeason" element={<AddTeamToSeason/>}></Route>}
                 {loggedIn && <Route exact path="/teams/view/:id" element={<TeamView/>}></Route>}
@@ -111,6 +110,8 @@ const Body = ({ isDark, setIsDark}) => {
                 {loggedIn && <Route exact path="/teams/all/name/result/:teamName" element={<FindTeamByNameResult/>}></Route>}
                 
                 {loggedIn && <Route exact path="/teams/home" element={<TeamsHome/>}></Route>}
+                {loggedIn && <Route exact path="/teams/addTeam" element={<AddTeam/>}></Route>}
+
                 {/* {loggedIn && <Route exact path="/teams/addTeam" element={<AddTeam/>}></Route>}
                 {loggedIn && <Route exact path="/teams/update/:id" element={<UpdateTeam/>}></Route>}
 

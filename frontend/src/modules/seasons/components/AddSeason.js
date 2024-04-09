@@ -43,7 +43,7 @@ const AddSeason = () => {
     }
 
     const reloadWindow = () =>{
-        history('/seasons/addSeason');
+        history('/seasons/home');
         window.location.reload('true');
     }
 

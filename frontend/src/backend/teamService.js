@@ -18,8 +18,8 @@ export const findTeamsByArena = (arena, onSuccess, onErrors) =>{
 export const findTeamsByOwner = (owner, onSuccess) =>{
     appFetch(`/teams/owner?owner=${owner}`, config('GET'), onSuccess);
 }
-export const addTeam = (name, onSuccess, onErrors) =>
-    appFetch(`/teams?name=${name}`, config('POST'), onSuccess, onErrors);
+export const addTeam = (name, arenaName, ownerName, description, onSuccess, onErrors) =>
+    appFetch(`/teams?name=${name}&arenaName=${arenaName}&ownerName=${ownerName}&description=${description}`, config('POST'), onSuccess, onErrors);
 
 export const updateTeam = (id, name, onSuccess, onErrors) =>
     appFetch(`/teams/${id}?name=${name}`, config('PUT'), onSuccess, onErrors);
