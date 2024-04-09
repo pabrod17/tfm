@@ -69,46 +69,16 @@ public class TeamController {
     public List<TeamDto> findTeamsByName(@RequestAttribute Long userId, @RequestParam String name) throws InstanceNotFoundException {
 
         List<Team> holas = teamService.findTeamsByName(userId, name);
-
-        System.out.println("HOLAAA 1111: ");
-        System.out.println("HOLAAA 1111: ");
-        System.out.println("HOLAAA 1111: ");
-        System.out.println("HOLAAA 1111: ");
-        System.out.println("HOLAAA 1111: ");
-        System.out.println("HOLAAA 1111: ");
-        System.out.println("HOLAAA 1111: ");
-        System.out.println("HOLAAA 1111: FINAL ");
-
-        System.out.println("HOLAAA 1111: FINAL1:  " + holas.size());
-
-        System.out.println("HOLAAA 1111: FINAL2:  " + holas);
-
-
         return toTeamDtos(holas);
     }
 
     @GetMapping("/arena")
     public List<TeamDto> findTeamsByArena(@RequestAttribute Long userId, @RequestParam String arena) throws InstanceNotFoundException {
-        System.out.println("HOLAAA 2222222: ");
-        System.out.println("HOLAAA 2222222: ");
-        System.out.println("HOLAAA 2222222: ");
-        System.out.println("HOLAAA 2222222: ");
-        System.out.println("HOLAAA 2222222: ");
-        System.out.println("HOLAAA 2222222: ");
-        System.out.println("HOLAAA 2222222: ");
-
         return toTeamDtos(teamService.findTeamsByArena(userId, arena));
     }
 
     @GetMapping("/owner")
     public List<TeamDto> findTeamsByOwner(@RequestAttribute Long userId, @RequestParam String owner) throws InstanceNotFoundException {
-        System.out.println("HOLAAA 333333333: ");
-        System.out.println("HOLAAA 333333333: ");
-        System.out.println("HOLAAA 333333333: ");
-        System.out.println("HOLAAA 333333333: ");
-        System.out.println("HOLAAA 333333333: ");
-        System.out.println("HOLAAA 333333333: ");
-
         return toTeamDtos(teamService.findTeamsByOwner(userId, owner));
     }
 
