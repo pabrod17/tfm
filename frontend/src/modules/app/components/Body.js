@@ -6,7 +6,7 @@ import AppGlobalComponents from './AppGlobalComponents';
 import Home from './Home';
 import {Login, SignUp, UpdateProfile, ChangePassword, Logout} from '../../users';
 import users from '../../users';
-import {FindTeamsResult, FindTeams, RemoveTeam, AddTeam, UpdateTeam, TeamView, TeamsHome} from '../../teams';
+import {FindTeamsResult, FindTeams, RemoveTeam, AddTeam, UpdateTeam, TeamView, TeamsHome, UpdateTeamPlay, UpdateTeamPlayer, UpdateTeamSeason, UpdateTeamTraining} from '../../teams';
 import video from './video-2.mp4';
 import fondoCanasta from './fondoCanasta.jpg';
 import FindTeamByName from '../../teams/components/FindTeamByName';
@@ -87,6 +87,7 @@ import UpdateStatisticsPlayers from '../../statistics/components/UpdateStatistic
 import { UpdateStatisticsGamePlayer } from '../../statistics';
 import { BoardHome, PlayAnimatorHome, PlaysHomeByType } from '../../plays';
 import { CalendarHome } from '../../events';
+import UpdateTeamGame from '../../teams/components/UpdateTeamGame';
 
 const Body = ({ isDark, setIsDark}) => {
 
@@ -111,6 +112,12 @@ const Body = ({ isDark, setIsDark}) => {
                 
                 {loggedIn && <Route exact path="/teams/home" element={<TeamsHome/>}></Route>}
                 {loggedIn && <Route exact path="/teams/addTeam" element={<AddTeam/>}></Route>}
+                {loggedIn && <Route exact path="/teams/update/:id" element={<UpdateTeam/>}></Route>}
+                {loggedIn && <Route exact path="/teams/update/:id/play/:tabValue" element={<UpdateTeamPlay/>}></Route>}
+                {loggedIn && <Route exact path="/teams/update/:id/player/:tabValue" element={<UpdateTeamPlayer/>}></Route>}
+                {loggedIn && <Route exact path="/teams/update/:id/season/:tabValue" element={<UpdateTeamSeason/>}></Route>}
+                {loggedIn && <Route exact path="/teams/update/:id/training/:tabValue" element={<UpdateTeamTraining/>}></Route>}
+                {loggedIn && <Route exact path="/teams/update/:id/game/:tabValue" element={<UpdateTeamGame/>}></Route>}
 
                 {/* {loggedIn && <Route exact path="/teams/addTeam" element={<AddTeam/>}></Route>}
                 {loggedIn && <Route exact path="/teams/update/:id" element={<UpdateTeam/>}></Route>}

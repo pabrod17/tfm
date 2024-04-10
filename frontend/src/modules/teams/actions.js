@@ -98,8 +98,8 @@ const updateTeamCompleted = team => ({
     team
 });
 
-export const updateTeam =  (id, name, onSuccess, onErrors) => dispatch =>{
-    backend.teamService.updateTeam(id, name,
+export const updateTeam =  (id, name, arenaName, ownerName, description, onSuccess, onErrors) => dispatch =>{
+    backend.teamService.updateTeam(id, name, arenaName, ownerName, description,
         team => {
             dispatch(updateTeamCompleted(team));
             onSuccess();

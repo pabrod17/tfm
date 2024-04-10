@@ -68,12 +68,12 @@ const CardTeam = ({ dispatch, history, item, handleOpenDescriptionModal }) => {
   }
 
 const handleRemoveItem = (id, dispatch, history) => {
-  dispatch(actions.removeTeam(id, () => history('/teams/all/result')));
+  dispatch(actions.removeTeam(id, () => history('/teams/home')));
   window.location.reload('true');
 }
 
 const handleUpdateItem = (id, dispatch, history) => {
-  dispatch(actions.findTeamById(id, () => history('/teams/update')));
+  dispatch(actions.findTeamById(id, () => history(`/teams/update/${id}`)));
 }
 
 function TeamList({ items, fallback, dispatch, history, handleOpenDescription }) {

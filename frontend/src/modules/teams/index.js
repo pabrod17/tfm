@@ -13,6 +13,9 @@ export{default as TeamView} from './components/TeamView';
 export{default as AddTeamToSeason} from './components/AddTeamToSeason';
 
 export {default as TeamsHome} from './components/TeamsHome';
-
+export {default as UpdateTeamPlay} from './components/UpdateTeamPlay';
+export {default as UpdateTeamPlayer} from './components/UpdateTeamPlayer';
+export {default as UpdateTeamSeason} from './components/UpdateTeamSeason';
+export {default as UpdateTeamTraining} from './components/UpdateTeamTraining';
 
 export default {actions, actionsTypes, reducer, selectors};
