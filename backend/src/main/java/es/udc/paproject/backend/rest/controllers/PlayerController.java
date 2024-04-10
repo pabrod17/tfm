@@ -95,7 +95,7 @@ public class PlayerController {
 		return new ErrorsDto(errorMessage);
 	}
 
-    @GetMapping("/{playerId}/team")
+    @GetMapping("/player/{playerId}/team")
     public PlayerDto findPlayerByIdOfTeam(@PathVariable Long playerId, @RequestParam Long teamId)
             throws InstanceNotFoundException {
         return toPlayerDto(playerService.findPlayerByIdOfTeam(playerId, teamId));
