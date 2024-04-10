@@ -941,7 +941,7 @@ max-height: 360px;
   padding: 20px;
   border-radius: 20px;
   background: linear-gradient(-45deg, #0f0c29 0%, #302b63 100% );
-  box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px -10px 65px 0px rgba(0, 0, 0, 0.447) inset, 0 15px 65px rgba(0, 0, 0, 0.5);
 }
 
 .card__image_game {
@@ -964,7 +964,7 @@ max-height: 360px;
   padding: 20px;
   border-radius: 20px;
   background: linear-gradient(-45deg, #120b4e 0%, #dd0808 100% );
-  box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px -10px 65px 0px rgba(0, 0, 0, 0.447) inset, 0 15px 65px rgba(0, 0, 0, 0.5);
 }
 
 .card_play {
@@ -976,7 +976,7 @@ max-height: 360px;
   padding: 20px;
   border-radius: 20px;
   background: linear-gradient(-45deg, #41AF24 0%, #062C76 50% );
-  box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px -10px 65px 0px rgba(0, 0, 0, 0.447) inset, 0 15px 65px rgba(0, 0, 0, 0.5);
 }
 
 .card_season {
@@ -990,7 +990,7 @@ max-height: 360px;
   background: linear-gradient(-45deg, #711ce0 0%, #000046 60% );
   /* background: linear-gradient(300deg,rgb(0, 191, 255),rgb(148, 0, 211),rgb(0, 0, 255)); */
 
-  box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px -10px 65px 0px rgba(0, 0, 0, 0.447) inset, 0 15px 65px rgba(0, 0, 0, 0.5);
 }
 
 .card_player {
@@ -1014,8 +1014,7 @@ max-height: 360px;
   background: linear-gradient(180deg, rgb(59, 4, 26) 30%,rgb(47, 0, 255));
 
   box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
-  border-radius: 1rem;
-  box-shadow: 0px -10px 65px 0px rgba(0, 0, 0, 0.447) inset;
+  box-shadow: 0px -10px 65px 0px rgba(0, 0, 0, 0.447) inset, 0 15px 65px rgba(0, 0, 0, 0.5);
 
 
   /* background-color: hsla(240, 15%, 9%, 1);
@@ -1077,9 +1076,7 @@ max-height: 360px;
   background: linear-gradient(180deg, #000000 50%,#ff4800);
   background: linear-gradient(-180deg, #ff4800 0%, #000000 60% );
 
-
-
-  box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px -10px 65px 0px rgba(0, 0, 0, 0.447) inset, 0 15px 65px rgba(0, 0, 0, 0.5);
 }
 
 .card__image_team {
