@@ -13,5 +13,6 @@ export {default as FindSeasonsBetweenTwoDatesResult} from './components/FindSeas
 export {default as SeasonsHome} from './components/SeasonsHome';
 export {default as UpdateSeasonTeam} from './components/UpdateSeasonTeam';
 export {default as UpdateSeasonTraining} from './components/UpdateSeasonTraining';
+export {default as SeasonsByTeam} from './components/SeasonsByTeam';
 
 export default {actions, actionsTypes, reducer, selectors};

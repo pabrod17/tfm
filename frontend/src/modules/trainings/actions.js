@@ -86,9 +86,9 @@ export const findTrainingsByTwoDatesAndSeasondId = (seasonId, startDate, endDate
 }
 
 
-const findTrainingsByTeamIdCompleted = trainings => ({
+const findTrainingsByTeamIdCompleted = trainingsByTeamId => ({
     type: actionTypes.FIND_TRAININGS_BY_TEAM_ID_COMPLETED,
-    trainings
+    trainingsByTeamId
 });
 
 export const findTrainingsByTeamId = (teamId, onSuccess, onErrors) => dispatch => {

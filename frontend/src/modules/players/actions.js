@@ -72,9 +72,9 @@ export const findPlayersByCompletedNameOfTeam = (teamId, playerName, primaryLast
         onErrors);
 }
 
-const findAPlayersOfTeamCompleted = players => ({
+const findAPlayersOfTeamCompleted = playersByTeamId => ({
     type: actionTypes.FIND_PLAYERS_OF_TEAM_COMPLETED,
-    players
+    playersByTeamId
 });
 
 export const findAPlayersOfTeam = (teamId, onSuccess, onErrors) => dispatch => {

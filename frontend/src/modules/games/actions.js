@@ -84,9 +84,9 @@ export const findGamesByTwoDatesAndSeasonId = (seasonId, startDate, endDate, onS
         onErrors);
 }
 
-const findGamesByTeamIdCompleted = games => ({
+const findGamesByTeamIdCompleted = gamesByTeamId => ({
     type: actionTypes.FIND_GAMES_BY_TEAM_ID_COMPLETED,
-    games
+    gamesByTeamId
 });
 
 export const findGamesByTeamId = (teamId, onSuccess, onErrors) => dispatch => {

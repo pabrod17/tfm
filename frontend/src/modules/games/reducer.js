@@ -5,7 +5,8 @@ import * as actionTypes from './actionsTypes';
 const initialState = {
     game: null,
     games:null,
-    gamesBySeasonId:null
+    gamesBySeasonId:null,
+    gamesByTeamId:null
 };
 
 const game = (state = initialState.game, action) => {
@@ -38,8 +39,6 @@ const games = (state = initialState.games, action) => {
             return action.games;
         case actionTypes.FIND_GAMES_BY_TWO_DATES_AND_TEAM_ID_OR_SEASON_ID_COMPLETED:
             return action.games;
-        case actionTypes.FIND_GAMES_BY_TEAM_ID_COMPLETED:
-            return action.games;
         default:
             return state;
     }
@@ -56,10 +55,22 @@ const gamesBySeasonId = (state = initialState.gamesBySeasonId, action) => {
     }
 }
 
+const gamesByTeamId = (state = initialState.gamesByTeamId, action) => {
+
+    switch (action.type) {
+        
+        case actionTypes.FIND_GAMES_BY_TEAM_ID_COMPLETED:
+            return action.gamesByTeamId;
+        default:
+            return state;
+    }
+}
+
 const reducer = combineReducers({
     game,
     games,
-    gamesBySeasonId
+    gamesBySeasonId,
+    gamesByTeamId
 });
 
 export default reducer;

@@ -51,8 +51,6 @@ const UpdateSeasonGame = () => {
         setValue(newValue);
     };
 
-    let form;
-
     const gamesList = useSelector(selectorsGames.getGamesBySeasonId);
 
     useEffect(() => {
@@ -61,10 +59,6 @@ const UpdateSeasonGame = () => {
             dispatch(actions.findSeasonById(id, () => history(`/seasons/update/${id}/game/${3}`)));
         }
     }, [dispatch, gamesList, history, id]);
-
-
-
-
 
 
     const handleUpdateSeason = (tabValue, dispatch) => {

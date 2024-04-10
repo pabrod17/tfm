@@ -6,7 +6,8 @@ const initialState = {
     player: null,
     players: null,
     playersByGameId: null,
-    playersByTrainingId: null
+    playersByTrainingId: null,
+    playersByTeamId: null
 };
 
 const player = (state = initialState.player, action) => {
@@ -43,8 +44,6 @@ const players = (state = initialState.players, action) => {
             return action.players;
         case actionTypes.FIND_PLAYERS_BY_USER_ID_COMPLETED:
             return action.players;
-        case actionTypes.FIND_PLAYERS_OF_TEAM_COMPLETED:
-            return action.players;
         case actionTypes.FIND_PLAYERS_BY_POSITION_AND_TEAM_COMPLETED:
             return action.players;
         case actionTypes.FIND_PLAYERS_WITH_LESION_OF_TEAM_COMPLETED:
@@ -78,11 +77,23 @@ const playersByTrainingId = (state = initialState.playersByTrainingId, action) =
     }
 }
 
+const playersByTeamId = (state = initialState.playersByTeamId, action) => {
+
+    switch (action.type) {
+        
+        case actionTypes.FIND_PLAYERS_OF_TEAM_COMPLETED:
+            return action.playersByTeamId;
+        default:
+            return state;
+    }
+}
+
 const reducer = combineReducers({
     player,
     players,
     playersByGameId,
-    playersByTrainingId
+    playersByTrainingId,
+    playersByTeamId
 });
 
 export default reducer;

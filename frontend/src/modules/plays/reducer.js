@@ -4,7 +4,8 @@ import * as actionTypes from './actionsTypes';
 
 const initialState = {
     play: null,
-    plays: null
+    plays: null,
+    playsByTeamId: null
 };
 
 const play = (state = initialState.play, action) => {
@@ -26,12 +27,21 @@ const play = (state = initialState.play, action) => {
     }
 }
 
+const playsByTeamId = (state = initialState.playsByTeamId, action) => {
+
+    switch (action.type) {
+        
+        case actionTypes.FIND_PLAYS_BY_TEAM_ID_COMPLETED:
+            return action.playsByTeamId;
+        default:
+            return state;
+    }
+}
+
 const plays = (state = initialState.plays, action) => {
 
     switch (action.type) {
 
-        case actionTypes.FIND_PLAYS_BY_TEAM_ID_COMPLETED:
-            return action.plays;
         case actionTypes.FIND_PLAYS_BY_TYPE_COMPLETED:
             return action.plays;
         case actionTypes.FIND_PLAYS_BY_USER_ID_COMPLETED:
@@ -43,7 +53,8 @@ const plays = (state = initialState.plays, action) => {
 
 const reducer = combineReducers({
     play,
-    plays
+    plays,
+    playsByTeamId
 });
 
 export default reducer;

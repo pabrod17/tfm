@@ -8,3 +8,6 @@ export const getAllGames = state =>
 
 export const getGamesBySeasonId = state =>
     getModuleState(state).gamesBySeasonId;
+
+export const getGamesByTeamId = state =>
+    getModuleState(state).gamesByTeamId;
