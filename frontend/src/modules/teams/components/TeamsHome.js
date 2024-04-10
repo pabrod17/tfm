@@ -80,7 +80,7 @@ const TeamsHome = () => {
 
     const CustomPaperComponentOption = (props) => (
         <Paper {...props} sx={{
-            background: 'linear-gradient(-45deg, white 0%, #0011FF 60% )', color: "white",
+            background: 'linear-gradient(-45deg, black 0%, #ff4800 60% )', color: "white",
             ".MuiOutlinedInput-root": {
                 "&:hover": {
                     background: "linear-gradient(-45deg, #711ce0 0%, #000046 60% )",
@@ -105,7 +105,7 @@ const TeamsHome = () => {
 
     const CustomPaperComponent = (props) => (
         <Paper {...props} sx={{
-            background: 'linear-gradient(-45deg, #0816dd 0%, #000046 60% )', color: "white",
+            background: 'linear-gradient(-45deg, #ff4800 0%, #000000 60% )', color: "white",
             ".MuiOutlinedInput-root": {
                 "&:hover": {
                     background: "linear-gradient(-45deg, #711ce0 0%, #000046 60% )",
@@ -226,7 +226,7 @@ const TeamsHome = () => {
                                                 <FormattedMessage id="project.teams.fields.name" />
                                             }
                                             sx={{
-                                                background: 'linear-gradient(-45deg, #0816dd 0%, #000046 60% )',
+                                                background: 'linear-gradient(-45deg, #ff4800 0%, #000000 60% )',
                                                 boxShadow: 1,
                                                 border: '2px solid grey',
                                                 borderRadius: "20px",
@@ -261,7 +261,7 @@ const TeamsHome = () => {
                                             label={
                                                 <FormattedMessage id="project.teams.fields.arena" />
                                             }                                            sx={{
-                                                background: 'linear-gradient(-45deg, #0816dd 0%, #000046 60% )',
+                                                background: 'linear-gradient(-45deg, #ff4800 0%, #000000 60% )',
                                                 boxShadow: 1,
                                                 border: '2px solid grey',
                                                 borderRadius: "20px",
@@ -296,7 +296,7 @@ const TeamsHome = () => {
                                             label={
                                                 <FormattedMessage id="project.teams.fields.owner" />
                                             }                                                         sx={{
-                                                background: 'linear-gradient(-45deg, #0816dd 0%, #000046 60% )',
+                                                background: 'linear-gradient(-45deg, #ff4800 0%, #000000 60% )',
                                                 boxShadow: 1,
                                                 border: '2px solid grey',
                                                 borderRadius: "20px",
