@@ -46,7 +46,7 @@ const AddTeam = () => {
 			sx={{
 				border: '2px solid grey',
 				background: "linear-gradient(-180deg, #111010 0%, #dd4103 70%, #111010 )",
-                background: "linear-gradient(180deg,#111010,#dd4103,#111010)",
+                background: "radial-gradient(circle, #ff4800 -10%, #000000 100%)",
 				borderRadius: "20px",
 				flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 				flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
@@ -58,7 +58,7 @@ const AddTeam = () => {
 			<Grid container margin={5} spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
 			>
 				<Grid item md={12} >
-					<img src={logo22} alt="Person" class="card__image_season_update_create"></img>
+					<img src={logo22} alt="Person" class="card__image_team_update_create"></img>
 
 					<Box
 						component="form"
