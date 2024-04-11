@@ -40,12 +40,12 @@ const handleUpdatePlay = (id, dispatch, history) => {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: 900,
-    background: 'linear-gradient(-45deg, #061700 10%, #239304 100% )',  // Cambiado a background
+    background: 'linear-gradient(-45deg, #41AF24 0%, #062C76 50% )',  // Cambiado a background
     border: '2px solid #000',
     boxShadow: 24,
     p: 4,
     borderRadius: "20px",
-  
+
   };
 
   const PlayCard = ({ dispatch, history, item, handleOpenDescriptionModal, handleOpenMedicationModal }) => {
@@ -119,7 +119,7 @@ const Plays = ({plays, id}) => {
     };
 
     return(
-        <div className="card-group">
+        <div className="card-group lesions_contaner">
           <PlaysList items={plays} fallback={"Loading..."} dispatch = {dispatch} history={history} openDescription={openDescription} handleOpenDescription={handleOpenDescription} />
           {(openDescription) && (
         <div className="modal-backdrop" onClick={handleClose}></div>
@@ -131,7 +131,7 @@ const Plays = ({plays, id}) => {
           aria-labelledby="child-modal-title"
           aria-describedby="child-modal-description"
         >
-          <Box sx={{ ...style, width: "auto" }}>
+          <Box sx={{ ...style, width: "auto", maxWidth: "40vw" }}>
             <h2 id="child-modal-title" className="color_modal_title_play" sx={{ mb: '100px' }} ><FormattedMessage id="project.exercises.fields.description" />:</h2>
             <p id="child-modal-description">
               {modalDescription}
