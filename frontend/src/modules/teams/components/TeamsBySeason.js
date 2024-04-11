@@ -125,7 +125,7 @@ const TeamsBySeason = ({teams, seasonId}) => {
           aria-labelledby="child-modal-title"
           aria-describedby="child-modal-description"
         >
-          <Box sx={{ ...style, width: "auto" }}>
+          <Box sx={{ ...style, width: "auto", maxWidth: "40vw" }}>
             <h2 id="child-modal-title" className="color_modal_title" sx={{ mb: '100px' }} >Description:</h2>
             <p id="child-modal-description">
               {modalDescription}
@@ -140,7 +140,7 @@ const TeamsBySeason = ({teams, seasonId}) => {
           aria-labelledby="child-modal-title"
           aria-describedby="child-modal-objective"
         >
-          <Box sx={{ ...style, width: "auto" }}>
+          <Box sx={{ ...style, width: "auto", maxWidth: "40vw" }}>
             <h2 id="child-modal-title" className="color_modal_title" sx={{ mb: '100px' }} >OwnerName:</h2>
             <p id="child-modal-objective">
               {modalOwnerName}
