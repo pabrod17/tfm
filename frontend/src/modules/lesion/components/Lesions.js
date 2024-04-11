@@ -67,11 +67,11 @@ const LesionCard = ({ dispatch, history, item, handleOpenDescriptionModal, handl
             <div className="flip-card-back">
               <div className="card">
                 <a onClick={() => handleOpenDescriptionModal(item.description)} class="without_underline">
-                  <span className="desc scroll_efect">{item.description}</span>
+                  <span className="desc desc25555555  scroll_efect">{item.description}</span>
                 </a>
                 <hr></hr>
                 <a onClick={() => handleOpenMedicationModal(item.medication)} class="button_apple" >
-                  <span class="desc scroll_efect_objective">{item.medication}</span>
+                  <span class="desc desc2232323  scroll_efect_lesion">{item.medication}</span>
                 </a>
                 <hr></hr>
               </div>
@@ -144,7 +144,7 @@ const Lesions = ({ lesions }) => {
           aria-labelledby="child-modal-title"
           aria-describedby="child-modal-description"
         >
-          <Box sx={{ ...style, width: "auto" }}>
+          <Box sx={{ ...style, width: "auto", maxWidth: "40vw" }}>
             <h2 id="child-modal-title" className="color_modal_title_lesion" sx={{ mb: '100px' }} ><FormattedMessage id="project.exercises.fields.description" />:</h2>
             <p id="child-modal-description">
               {modalDescription}
@@ -159,7 +159,7 @@ const Lesions = ({ lesions }) => {
           aria-labelledby="child-modal-title"
           aria-describedby="child-modal-objective"
         >
-          <Box sx={{ ...style, width: "auto" }}>
+          <Box sx={{ ...style, width: "auto", maxWidth: "40vw" }}>
             <h2 id="child-modal-title" className="color_modal_title_lesion" sx={{ mb: '100px' }} ><FormattedMessage id="project.lesion.fields.medication" />:</h2>
             <p id="child-modal-objective">
               {modalMedication}
