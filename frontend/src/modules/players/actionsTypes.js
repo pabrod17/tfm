@@ -5,6 +5,13 @@ export const FIND_PLAYER_BY_DNI_OF_TEAM_COMPLETED = "project/players/findPlayerB
 export const FIND_PLAYERS_BY_COMPLETED_NAME_OF_TEAM_COMPLETED = "project/players/findPlayersByCompletedNameOfTeamCompleted";
 export const FIND_PLAYERS_OF_TEAM_COMPLETED = "project/players/findPlayersOfTeamCompleted";
 
+export const FIND_PLAYERS_BY_USER_ID_AND_NAME_COMPLETED = "project/players/findPlayerByUserIdAndNameCompleted";
+export const FIND_PLAYERS_BY_USER_ID_AND_DNI_COMPLETED = "project/players/findPlayerByUserIdAndDniCompleted";
+export const FIND_PLAYERS_BY_USER_ID_AND_POSITION_COMPLETED = "project/players/findPlayerByUserIdAndPositionCompleted";
+export const FIND_PLAYERS_BY_USER_ID_AND_EMAIL_COMPLETED = "project/players/findPlayerByUserIdAndEmailCompleted";
+export const FIND_PLAYERS_BY_USER_ID_WITH_LESION_COMPLETED = "project/players/findPlayerByUserIdWithLesionCompleted";
+export const FIND_PLAYERS_BY_USER_ID_WITH_LESION_TYPE_COMPLETED = "project/players/findPlayerByUserIdWithLesionTypeCompleted";
+
 export const FIND_PLAYERS_BY_TRAINING_COMPLETED = "project/players/findPlayersByTrainingCompleted";
 export const FIND_PLAYERS_BY_GAME_COMPLETED = "project/players/findPlayersByGameCompleted";
 

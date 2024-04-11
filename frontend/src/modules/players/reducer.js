@@ -50,6 +50,18 @@ const players = (state = initialState.players, action) => {
             return action.players;
         case actionTypes.FIND_PLAYERS_WITH_ONE_TYPE_LESION_COMPLETED:
             return action.players;
+        case actionTypes.FIND_PLAYERS_BY_USER_ID_AND_NAME_COMPLETED:
+            return action.players;
+        case actionTypes.FIND_PLAYERS_BY_USER_ID_AND_DNI_COMPLETED:
+            return action.players;
+        case actionTypes.FIND_PLAYERS_BY_USER_ID_AND_POSITION_COMPLETED:
+            return action.players;
+        case actionTypes.FIND_PLAYERS_BY_USER_ID_AND_EMAIL_COMPLETED:
+            return action.players;
+        case actionTypes.FIND_PLAYERS_BY_USER_ID_WITH_LESION_COMPLETED:
+            return action.players;
+        case actionTypes.FIND_PLAYERS_BY_USER_ID_WITH_LESION_TYPE_COMPLETED:
+            return action.players;
         default:
             return state;
     }

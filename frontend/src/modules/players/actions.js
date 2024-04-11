@@ -72,6 +72,110 @@ export const findPlayersByCompletedNameOfTeam = (teamId, playerName, primaryLast
         onErrors);
 }
 
+
+
+
+
+
+
+
+const findPlayerByUserIdAndNameCompleted = players => ({
+    type: actionTypes.FIND_PLAYERS_BY_USER_ID_AND_NAME_COMPLETED,
+    players
+});
+
+export const findPlayerByUserIdAndName = (playerName, primaryLastName, secondLastName, onSuccess, onErrors) => dispatch => {
+    backend.playerService.findPlayerByUserIdAndName(playerName, primaryLastName, secondLastName,
+        players => {
+            dispatch(findPlayerByUserIdAndNameCompleted(players));
+        },
+        onSuccess,
+        onErrors);
+}
+const findPlayerByUserIdAndDniCompleted = players => ({
+    type: actionTypes.FIND_PLAYERS_BY_USER_ID_AND_DNI_COMPLETED,
+    players
+});
+
+export const findPlayerByUserIdAndDni = (dni, onSuccess, onErrors) => dispatch => {
+    backend.playerService.findPlayerByUserIdAndDni(dni,
+        players => {
+            dispatch(findPlayerByUserIdAndDniCompleted(players));
+        },
+        onSuccess,
+        onErrors);
+}
+const findPlayerByUserIdAndPositionCompleted = players => ({
+    type: actionTypes.FIND_PLAYERS_BY_USER_ID_AND_POSITION_COMPLETED,
+    players
+});
+
+export const findPlayerByUserIdAndPosition = (position, onSuccess, onErrors) => dispatch => {
+    backend.playerService.findPlayerByUserIdAndPosition(position,
+        players => {
+            dispatch(findPlayerByUserIdAndPositionCompleted(players));
+        },
+        onSuccess,
+        onErrors);
+}
+const findPlayerByUserIdAndEmailCompleted = players => ({
+    type: actionTypes.FIND_PLAYERS_BY_USER_ID_AND_POSITION_COMPLETED,
+    players
+});
+
+export const findPlayerByUserIdAndEmail = (email, onSuccess, onErrors) => dispatch => {
+    backend.playerService.findPlayerByUserIdAndEmail(email,
+        players => {
+            dispatch(findPlayerByUserIdAndEmailCompleted(players));
+        },
+        onSuccess,
+        onErrors);
+}
+const findPlayerByUserIdWithLesionCompleted = players => ({
+    type: actionTypes.FIND_PLAYERS_BY_USER_ID_WITH_LESION_COMPLETED,
+    players
+});
+
+export const findPlayerByUserIdWithLesion = (onSuccess, onErrors) => dispatch => {
+    backend.playerService.findPlayerByUserIdWithLesion(
+        players => {
+            dispatch(findPlayerByUserIdWithLesionCompleted(players));
+        },
+        onSuccess,
+        onErrors);
+}
+const findPlayerByUserIdWithLesionTypeCompleted = players => ({
+    type: actionTypes.FIND_PLAYERS_BY_USER_ID_WITH_LESION_TYPE_COMPLETED,
+    players
+});
+
+export const findPlayerByUserIdWithLesionType = (lesionType, onSuccess, onErrors) => dispatch => {
+    backend.playerService.findPlayerByUserIdWithLesionType(lesionType,
+        players => {
+            dispatch(findPlayerByUserIdWithLesionTypeCompleted(players));
+        },
+        onSuccess,
+        onErrors);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const findAPlayersOfTeamCompleted = playersByTeamId => ({
     type: actionTypes.FIND_PLAYERS_OF_TEAM_COMPLETED,
     playersByTeamId
@@ -192,7 +296,7 @@ export const updatePlayer = (playerId, teamId, playerName, primaryLastName, seco
         onErrors);
 }
 
-export const removePlayer = (playerId, teamId, onSuccess, onErrors) => {
-    backend.playerService.removePlayer(playerId, teamId, onSuccess, onErrors);
+export const removePlayer = (playerId, onSuccess, onErrors) => {
+    backend.playerService.removePlayer(playerId, onSuccess, onErrors);
     return {type: actionTypes.REMOVE_PLAYER_COMPLETED};
 }

@@ -119,6 +119,9 @@ const Body = ({ isDark, setIsDark}) => {
                 {loggedIn && <Route exact path="/teams/update/:id/training/:tabValue" element={<UpdateTeamTraining/>}></Route>}
                 {loggedIn && <Route exact path="/teams/update/:id/game/:tabValue" element={<UpdateTeamGame/>}></Route>}
 
+                {loggedIn && <Route exact path="/players/home" element={<PlayersHome/>}></Route>}
+
+
                 {/* {loggedIn && <Route exact path="/teams/addTeam" element={<AddTeam/>}></Route>}
                 {loggedIn && <Route exact path="/teams/update/:id" element={<UpdateTeam/>}></Route>}
 
@@ -147,7 +150,7 @@ const Body = ({ isDark, setIsDark}) => {
                 {loggedIn && <Route exact path="/players/home/training/:id:trainingId" element={<FindPlayersByTraining/>}></Route>}
                 {loggedIn && <Route exact path="/players/home/game/:id:gameId" element={<FindPlayersByGame/>}></Route>}
                 {loggedIn && <Route exact path="/players/home/game/:id" element={<FindPlayersByGame/>}></Route>}
-                {loggedIn && <Route exact path="/players/home/:id" element={<PlayersHome/>}></Route>}
+                {/* {loggedIn && <Route exact path="/players/home/:id" element={<PlayersHome/>}></Route>} */}
                 {loggedIn && <Route exact path="/players/addPlayer/:id" element={<AddPlayer/>}></Route>}
                 {loggedIn && <Route exact path="/players/update/:id" element={<UpdatePlayer/>}></Route>}
                 {loggedIn && <Route exact path="/players/dni/:id" element={<FindPlayerByDni/>}></Route>}

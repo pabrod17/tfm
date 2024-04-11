@@ -216,6 +216,15 @@ const handleFindTrainingsToPlayer = (playerId, dispatch, history) => {
             <div className="flip-card">
               <div className="flip-card-inner">
                 <div className="flip-card-front">
+                {item.injured ? (
+                <ul className="social-icons injuredhover injured_position">
+                  <li>
+                    <a type="button">
+                    <i className="fa fa-exclamation-triangle" style={{ top: '13px', left: '12px', fontSize: '20px' }}></i>
+                    </a>
+                  </li>
+                </ul>
+              ) : null}
                   <div className="card_player">
                     <img src={perfil2} alt="Person" className="card__image_season"></img>
                     <span className="title">{item.playerName} {item.primaryLastName}</span>

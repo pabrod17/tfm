@@ -3787,6 +3787,12 @@ main {
 
 }
 
+.injured_position {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
 .trash_position {
   position: fixed;
   bottom: 10px;
@@ -3903,6 +3909,29 @@ main {
 }
 
 .trashgrande a:hover i {
+  transform: scale(2.2);
+  -ms-transform: scale(2.2);
+  -webkit-transform: scale(2.2);
+  color: #ff003c;
+  background: linear-gradient(98.3deg, rgb(0, 0, 0) 10.6%, rgb(255, 0, 0) 97.7%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 265ms ease-in;
+}
+
+.injuredhover a:before {
+  transform: scale(1);
+  -ms-transform: scale(1);
+  -webkit-transform: scale(1);
+  content: " ";
+  width: 45px;
+  height: 45px;
+  border-radius: 100%;
+  display: block;
+  background: linear-gradient(98.3deg, #FF0000 10.6%, #FFF700 97.7%);
+  transition: all 265ms ease-out;
+}
+.injuredhover a:hover i {
   transform: scale(2.2);
   -ms-transform: scale(2.2);
   -webkit-transform: scale(2.2);
