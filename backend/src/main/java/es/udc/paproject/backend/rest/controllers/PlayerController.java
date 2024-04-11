@@ -153,6 +153,49 @@ public class PlayerController {
         return toPlayerDtos(playerService.findPlayersWithOneTypeLesion(typeLesion, teamId));
     }
 
+
+
+
+    @GetMapping("/name")
+    public List<PlayerDto> findPlayersByName(@RequestAttribute Long userId, @RequestParam(required=false) String name, @RequestParam(required=false) String primaryLastName, @RequestParam(required=false) String secondLastName)
+            throws InstanceNotFoundException {
+        return toPlayerDtos(playerService.findPlayersByName(userId, name, primaryLastName, secondLastName));
+    }
+
+    @GetMapping("/dni")
+    public  List<PlayerDto> findPlayerByDni(@RequestAttribute Long userId, @RequestParam String dni)
+            throws InstanceNotFoundException, IncorrectDniException {
+        return toPlayerDtos(playerService.findPlayerByDni(userId, dni));
+    }
+
+    @GetMapping("/position")
+    public List<PlayerDto> findPlayersByPosition(@RequestAttribute Long userId, @RequestParam String position) throws InstanceNotFoundException {
+        return toPlayerDtos(playerService.findPlayersByPosition(userId, position));
+    }
+
+    @GetMapping("/email")
+    public  List<PlayerDto> findPlayersByEmail(@RequestAttribute Long userId, @RequestParam String email) throws InstanceNotFoundException {
+        return toPlayerDtos(playerService.findPlayersByEmail(userId, email));
+    }
+
+    @GetMapping("/lesion")
+    public List<PlayerDto> findPlayersrWithLesion(@RequestAttribute Long userId) throws InstanceNotFoundException {
+        return toPlayerDtos(playerService.findPlayersrWithLesion(userId));
+    }
+
+    @GetMapping("/lesiontype")
+    public List<PlayerDto> findPlayersWithOneTypeLesionByUserId(@RequestAttribute Long userId, @RequestParam String lesionType) throws InstanceNotFoundException {
+        return toPlayerDtos(playerService.findPlayersWithOneTypeLesionByUserId(userId, lesionType));
+    }
+
+
+
+
+
+
+
+
+
     @PostMapping("")
     public PlayerDto addPlayer(@RequestParam Long teamId, @RequestParam String playerName, @RequestParam String primaryLastName, @RequestParam String secondLastName,
     @RequestParam String position, @RequestParam String trends, @RequestParam String phoneNumber, @RequestParam String email, @RequestParam String dni)

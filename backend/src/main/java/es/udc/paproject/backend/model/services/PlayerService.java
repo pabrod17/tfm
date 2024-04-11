@@ -31,7 +31,32 @@ public interface PlayerService {
     List<Player> findPlayersByGame(Long gameId) throws InstanceNotFoundException;
 
     List<Player> findPlayersByCompletedNameOfTeam(Long teamId, String name, String primaryLastName, String secondLastName) throws InstanceNotFoundException;
-    
+
+
+
+    List<Player> findPlayersByName(Long userId, String name, String primaryLastName, String secondLastName) throws InstanceNotFoundException;
+
+    List<Player> findPlayerByDni(Long userId, String dni) throws InstanceNotFoundException, IncorrectDniException;
+
+    List<Player> findPlayersByPosition(Long userId, String position) throws InstanceNotFoundException;
+
+    List<Player> findPlayersByEmail(Long userId, String email) throws InstanceNotFoundException;
+
+    List<Player> findPlayersrWithLesion(Long userId) throws InstanceNotFoundException;
+
+    List<Player> findPlayersWithOneTypeLesionByUserId(Long userId, String typeLesion) throws InstanceNotFoundException;
+
+
+
+
+
+
+
+
+
+
+
+
     List<Player> findAPlayersOfTeam(Long teamId) throws InstanceNotFoundException;
 
     List<Player> findPlayersByPositionAndTeam(Long teamId, String position) throws InstanceNotFoundException;

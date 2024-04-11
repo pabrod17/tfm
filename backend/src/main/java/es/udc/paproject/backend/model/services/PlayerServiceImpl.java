@@ -286,6 +286,271 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
+    public List<Player> findPlayersByName(Long userId, String name, String primaryLastName, String secondLastName) throws InstanceNotFoundException {
+        if (!userDao.existsById(userId)) {
+            throw new InstanceNotFoundException("project.entities.user");
+        }
+
+        List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(userId);
+
+        List<Player> players = new ArrayList<>();
+        List<Player> players2 = new ArrayList<>();
+
+        for(SeasonTeam seasonTeam : seasonTeams){
+            if(seasonTeam.getTeam() != null) {
+                players2 = playerDao.findByTeamId(seasonTeam.getTeam().getId());
+                for(Player player : players2){
+                    players.add(player);
+                }
+            }
+        }
+
+        List<Player> playersResult = new ArrayList<>();
+
+        for (Player player : players) {
+
+            if (!name.isEmpty() && !primaryLastName.isEmpty() && !secondLastName.isEmpty()) {
+                if (player.getPlayerName().equals(name) && player.getPrimaryLastName().equals(primaryLastName)
+                        && player.getSecondLastName().equals(secondLastName)) {
+                    playersResult.add(player);
+                }
+                continue;
+            }
+
+            if (name.isEmpty()) {
+                if (!primaryLastName.isEmpty()) {
+                    if (!secondLastName.isEmpty()) {
+                        if (player.getPrimaryLastName().equals(primaryLastName)
+                                && player.getSecondLastName().equals(secondLastName)) {
+                            playersResult.add(player);
+                            continue;
+                        }
+                    } else {
+                        if (player.getPrimaryLastName().equals(primaryLastName)) {
+                            playersResult.add(player);
+                            continue;
+                        }
+                    }
+                } else {
+                    if (player.getSecondLastName().equals(secondLastName)) {
+                        playersResult.add(player);
+                        continue;
+                    }
+                }
+            } else {
+                if (!primaryLastName.isEmpty()) {
+                    if (!secondLastName.isEmpty()) {
+                        if (player.getPrimaryLastName().equals(primaryLastName)
+                                && player.getSecondLastName().equals(secondLastName)
+                                && player.getPlayerName().equals(name)) {
+                            playersResult.add(player);
+                            continue;
+                        }
+                    } else {
+                        if (player.getPrimaryLastName().equals(primaryLastName)
+                                && player.getPlayerName().equals(name)) {
+                            playersResult.add(player);
+                            continue;
+                        }
+                    }
+                } else {
+                    if (!secondLastName.isEmpty()) {
+                        if (player.getSecondLastName().equals(secondLastName) && player.getPlayerName().equals(name)) {
+                            playersResult.add(player);
+                            continue;
+                        }
+                    } else {
+                        if (player.getPlayerName().equals(name)) {
+                            playersResult.add(player);
+                            continue;
+                        }
+                    }
+                }
+            }
+        }
+
+        if(playersResult.isEmpty()){
+            return playersResult;
+        }
+
+        playersResult = playersResult.stream().distinct().collect(Collectors.toList());
+        return playersResult;
+    }
+
+    @Override
+    public List<Player> findPlayerByDni(Long userId, String dni) throws InstanceNotFoundException, IncorrectDniException {
+        if (!Validations.isValidDni(dni)) {
+            throw new IncorrectDniException(dni);
+        }
+
+        if (!userDao.existsById(userId)) {
+            throw new InstanceNotFoundException("project.entities.user");
+        }
+
+        List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(userId);
+
+        List<Player> playerFound = new ArrayList<>();
+        List<Player> players2 = new ArrayList<>();
+
+        for(SeasonTeam seasonTeam : seasonTeams){
+            if(seasonTeam.getTeam() != null) {
+                players2 = playerDao.findByTeamId(seasonTeam.getTeam().getId());
+                for(Player player : players2){
+                    if (player.getDni().equals(dni)) {
+                        playerFound.add(player);
+                    }
+                }
+            }
+        }
+
+        if (playerFound.isEmpty()) {
+            return playerFound;
+        }
+        playerFound = playerFound.stream().distinct().collect(Collectors.toList());
+
+        return playerFound;
+    }
+
+    @Override
+    public List<Player> findPlayersByPosition(Long userId, String position) throws InstanceNotFoundException {
+
+        if (!userDao.existsById(userId)) {
+            throw new InstanceNotFoundException("project.entities.user");
+        }
+
+        if (!position.equals("Base") && !position.equals("Escolta") && !position.equals("Alero")
+                && !position.equals("AlaPivot") && !position.equals("Pivot")) {
+            throw new InstanceNotFoundException("project.entities.Position");
+        }
+
+        List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(userId);
+
+        List<Player> players = new ArrayList<>();
+        List<Player> players2 = new ArrayList<>();
+
+        for(SeasonTeam seasonTeam : seasonTeams){
+            if(seasonTeam.getTeam() != null) {
+                players2 = playerDao.findByTeamId(seasonTeam.getTeam().getId());
+                for(Player player : players2){
+                    if (player.getPosition().equals(position)) {
+                        players.add(player);
+                    }
+                }
+            }
+        }
+
+        if (players.isEmpty()) {
+            return players;
+        }
+        players = players.stream().distinct().collect(Collectors.toList());
+
+        return players;
+    }
+
+    @Override
+    public List<Player> findPlayersByEmail(Long userId, String email) throws InstanceNotFoundException {
+
+        if (!userDao.existsById(userId)) {
+            throw new InstanceNotFoundException("project.entities.user");
+        }
+
+        List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(userId);
+
+        List<Player> playerFound = new ArrayList<>();
+        List<Player> players2 = new ArrayList<>();
+
+        for(SeasonTeam seasonTeam : seasonTeams){
+            if(seasonTeam.getTeam() != null) {
+                players2 = playerDao.findByTeamId(seasonTeam.getTeam().getId());
+                for(Player player : players2){
+                    if (player.getEmail().equals(email)) {
+                        playerFound.add(player);
+                    }
+                }
+            }
+        }
+
+        if (playerFound.isEmpty()) {
+            return playerFound;
+        }
+        playerFound = playerFound.stream().distinct().collect(Collectors.toList());
+
+        return playerFound;
+    }
+
+    @Override
+    public List<Player> findPlayersrWithLesion(Long userId) throws InstanceNotFoundException {
+        if (!userDao.existsById(userId)) {
+            throw new InstanceNotFoundException("project.entities.user");
+        }
+
+        List<Player> playersResult = new ArrayList<>();
+        List<Player> players = new ArrayList<>();
+
+        List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(userId);
+
+        for(SeasonTeam seasonTeam : seasonTeams){
+            if(seasonTeam.getTeam() != null) {
+                players = playerDao.findByTeamId(seasonTeam.getTeam().getId());
+                for(Player player : players){
+                    if(Boolean.TRUE.equals(player.isInjured())) {
+                        playersResult.add(player);
+                    }
+                }
+            }
+        }
+
+
+        if (playersResult.isEmpty()) {
+            return playersResult;
+        }
+
+        playersResult = playersResult.stream().distinct().collect(Collectors.toList());
+        return playersResult;
+    }
+
+    @Override
+    public List<Player> findPlayersWithOneTypeLesionByUserId(Long userId, String typeLesion) throws InstanceNotFoundException {
+
+        if (!userDao.existsById(userId)) {
+            throw new InstanceNotFoundException("project.entities.user");
+        }
+
+        if (!typeLesion.equals("Muscular") && !typeLesion.equals("Tendinosa") && !typeLesion.equals("Articular")
+                && !typeLesion.equals("ColumnaVertebral") && !typeLesion.equals("Psicologica")) {
+            throw new InstanceNotFoundException("project.entities.LesionType");
+        }
+        // LesionType typeLesionEnum = LesionType.valueOf(typeLesion);
+        List<Player> playersResult = new ArrayList<>();
+        List<Player> players = new ArrayList<>();
+
+
+        List<PlayerLesion> playersWithLesion = (List<PlayerLesion>) playerLesionDao.findAll();
+
+        List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(userId);
+
+        for(SeasonTeam seasonTeam : seasonTeams){
+            if(seasonTeam.getTeam() != null) {
+                players = playerDao.findByTeamId(seasonTeam.getTeam().getId());
+                for(Player player : players){
+                    for (PlayerLesion playerLesion : playersWithLesion) {
+                        if (player.getId() == playerLesion.getPlayer().getId() && playerLesion.getLesion().getLesionType().equals(typeLesion)){
+                            playersResult.add(player);
+                        }
+                    }
+                }
+            }
+        }
+
+        if (playersResult.isEmpty()) {
+            return playersResult;
+        }
+
+        playersResult = playersResult.stream().distinct().collect(Collectors.toList());
+        return playersResult;
+    }
+
+    @Override
     public Player findPlayerByDniOfTeam(Long teamId, String dni) throws InstanceNotFoundException, IncorrectDniException {
 
         if (!Validations.isValidDni(dni)) {
