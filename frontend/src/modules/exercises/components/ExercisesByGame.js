@@ -55,11 +55,11 @@ const ExerciseCard = ({ dispatch, gameId, history, item, handleOpenDescriptionMo
             <div className="flip-card-back">
               <div className="card_exercise">
                 <a onClick={() => handleOpenDescriptionModal(item.description)} class="without_underline">
-                  <span className="desc scroll_efect">{item.description}</span>
+                  <span className="desc desc25555555 scroll_efect">{item.description}</span>
                 </a>
                 <hr></hr>
                 <a onClick={() => handleOpenObjectiveModal(item.objective)} class="button_apple" >
-                  <span class="desc scroll_efect_objective">{item.objective}</span>
+                  <span class="desc desc2232323 scroll_efect_lesion">{item.objective}</span>
                 </a>
                 <hr></hr>
               </div>
@@ -124,7 +124,7 @@ const ExercisesByGame = ({exercises, gameId}) => {
           aria-labelledby="child-modal-title"
           aria-describedby="child-modal-description"
         >
-          <Box sx={{ ...style, width: "auto" }}>
+          <Box sx={{ ...style, width: "auto", maxWidth: "40vw" }}>
             <h2 id="child-modal-title" className="color_modal_title" sx={{ mb: '100px' }} >Description:</h2>
             <p id="child-modal-description">
               {modalDescription}
@@ -139,7 +139,7 @@ const ExercisesByGame = ({exercises, gameId}) => {
           aria-labelledby="child-modal-title"
           aria-describedby="child-modal-objective"
         >
-          <Box sx={{ ...style, width: "auto" }}>
+          <Box sx={{ ...style, width: "auto", maxWidth: "40vw" }}>
             <h2 id="child-modal-title" className="color_modal_title" sx={{ mb: '100px' }} >Objective:</h2>
             <p id="child-modal-objective">
               {modalObjective}
