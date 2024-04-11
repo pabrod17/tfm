@@ -129,7 +129,7 @@ const Seasons = ({seasons}) => {
           aria-labelledby="child-modal-title"
           aria-describedby="child-modal-description"
         >
-          <Box sx={{ ...style, width: "auto" }}>
+          <Box sx={{ ...style, width: "auto", maxWidth: "40vw" }}>
             <h2 id="child-modal-title" className="color_modal_title_game" sx={{ mb: '100px' }} ><FormattedMessage id="project.exercises.fields.description" />:</h2>
             <p id="child-modal-description">
               {modalDescription}
