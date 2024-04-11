@@ -285,6 +285,10 @@ const CalendarHome = () => {
         background: "linear-gradient(180deg, #ed58cf 0%, #333399 70% )",
         background: "linear-gradient(180deg, #df252c 0%, #061161 70% )",
         background: "linear-gradient(360deg, transparent, #8E2DE2)",
+        background: "linear-gradient(180deg, #15141A 0%, #15141A 70% )",
+        background: "radial-gradient(circle, #15141A 70%, #df252c 100%)",
+        background: "radial-gradient(circle, #2b2931 80%, #15141A 100%)",
+        background: "linear-gradient(180deg, #2b2931 10%, #15141A 70% )",
 
         borderRadius: "20px",
         flexWrap: 'wrap',
