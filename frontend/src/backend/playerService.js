@@ -15,6 +15,38 @@ export const findPlayerByDniOfTeam = (teamId, dni, onSuccess, onErrors) =>
 export const findPlayersByCompletedNameOfTeam = (teamId, playerName, primaryLastName, secondLastName, onSuccess, onErrors) =>
     appFetch(`/players/${teamId}/name?name=${playerName}&primaryLastName=${primaryLastName}&secondLastName=${secondLastName}`, config('GET'), onSuccess, onErrors);
 
+
+
+
+
+export const findPlayerByUserIdAndDni = (dni, onSuccess, onErrors) =>
+    appFetch(`/players/dni?dni=${dni}`, config('GET'), onSuccess, onErrors);
+export const findPlayerByUserIdAndName = (playerName, primaryLastName, secondLastName, onSuccess, onErrors) =>
+    appFetch(`/players/name?name=${playerName}&primaryLastName=${primaryLastName}&secondLastName=${secondLastName}`, config('GET'), onSuccess, onErrors);
+export const findPlayerByUserIdAndPosition = (position, onSuccess, onErrors) =>
+    appFetch(`/players/position?position=${position}`, config('GET'), onSuccess, onErrors);
+export const findPlayerByUserIdAndEmail = (email, onSuccess, onErrors) =>
+    appFetch(`/players/email?email=${email}`, config('GET'), onSuccess, onErrors);
+export const findPlayerByUserIdWithLesion = (onSuccess, onErrors) =>
+    appFetch(`/players/lesion`, config('GET'), onSuccess, onErrors);
+export const findPlayerByUserIdWithLesionType = (lesionType, onSuccess, onErrors) =>
+    appFetch(`/players/lesiontype?lesionType=${lesionType}`, config('GET'), onSuccess, onErrors);
+
+export const removePlayer = (playerId, onSuccess, onErrors) =>
+    appFetch(`/players/${playerId}`, config('DELETE'), onSuccess, onErrors);
+
+
+
+
+    
+
+
+
+
+
+
+
+
 export const findAPlayersOfTeam = (teamId, onSuccess, onErrors) =>
     appFetch(`/players/${teamId}/team`, config('GET'), onSuccess, onErrors);
 
@@ -44,6 +76,3 @@ export const clearTotalStatistics = (playerId, onSuccess, onErrors) =>
 
 export const updatePlayer = (playerId, teamId, playerName, primaryLastName, secondLastName, position, trends, phoneNumber, email, dni, onSuccess, onErrors) =>
     appFetch(`/players/${playerId}?teamId=${teamId}&playerName=${playerName}&primaryLastName=${primaryLastName}&secondLastName=${secondLastName}&position=${position}&trends=${trends}&phoneNumber=${phoneNumber}&email=${email}&dni=${dni}`, config('PUT'), onSuccess, onErrors);
-
-export const removePlayer = (playerId, teamId, onSuccess, onErrors) =>
-    appFetch(`/players/${playerId}?teamId=${teamId}`, config('DELETE'), onSuccess, onErrors);
