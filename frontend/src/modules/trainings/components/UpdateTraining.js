@@ -23,6 +23,7 @@ import dayjs from 'dayjs';
 import * as actionsExercises from '../../exercises/actions';
 import * as actionsStretchings from '../../stretchings/actions';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
+import * as actionsPlayers from '../../players/actions';
 
 const UpdateTraining = () => {
     const training = useSelector(selectors.getOneTraining);
@@ -89,6 +90,14 @@ const UpdateTraining = () => {
             history(`/trainings/update/${id}/stretching/${tabValue}`);
         }
 
+		const handleUpdateTrainingPlayer = (tabValue, dispatch) => {
+            setValue(tabValue);
+            dispatch(actions.findTrainingById(id, () => {
+                dispatch(actionsPlayers.findPlayersByTraining(id, () => history(`/trainings/update/${id}/players/${tabValue}`)));
+            }));
+            history(`/trainings/update/${id}/players/${tabValue}`);
+        }
+
 		function dateConversor(trainingDate) {
             const dateObj = new Date(trainingDate);
             const year = dateObj.getFullYear();
@@ -136,6 +145,7 @@ const UpdateTraining = () => {
           <Tab sx={{ color: '#40FF00', fontSize: "30px", padding:"20px"}} onClick={() => handleUpdateTraining(dispatch)} label="General"  />
           <Tab sx={{ color: '#f5af19', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTrainingExercise(1, dispatch)} label="Exercises"  />
           <Tab sx={{ color: 'rgb(255, 0, 247)', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTrainingStretching(2, dispatch)} label="Stretchings"  />
+		  <Tab sx={{ color: '#ff0000', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTrainingPlayer(3, dispatch)} label="Players"  />
         </Tabs>
       </Box>
 </Box>

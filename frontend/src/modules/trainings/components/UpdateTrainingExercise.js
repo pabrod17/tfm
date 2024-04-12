@@ -28,6 +28,7 @@ import Exercises from '../../exercises/components/Exercises';
 import { Button, IconButton, Pagination, Stack, Toolbar } from '@mui/material';
 import ToggleOffIcon from '@mui/icons-material/ToggleOff';
 import ExercisesByTraining from '../../exercises/components/ExercisesByTraining';
+import * as actionsPlayers from '../../players/actions';
 
 const UpdateTrainingExercise = () => {
     const training = useSelector(selectors.getOneTraining);
@@ -151,6 +152,14 @@ const UpdateTrainingExercise = () => {
             history(`/trainings/update/${id}/stretching/${tabValue}`);
         }
 
+        const handleUpdateTrainingPlayer = (tabValue, dispatch) => {
+            setValue(tabValue);
+            dispatch(actions.findTrainingById(id, () => {
+                dispatch(actionsPlayers.findPlayersByTraining(id, () => history(`/trainings/update/${id}/players/${tabValue}`)));
+            }));
+            history(`/trainings/update/${id}/players/${tabValue}`);
+        }
+
         const handleAddExerciseToTraining = (dispatch, history) => {
             dispatch(actionsExercises.addExerciseToTraining(id, exerciseIds, () => history(`/trainings/update/${id}`)));
           }
@@ -176,7 +185,6 @@ const UpdateTrainingExercise = () => {
 <Box
     sx={{
         bgcolor: 'background.dark',
-        boxShadow: 1,
         borderRadius: 4,
         margin: 'auto',  // Centra horizontalmente
         marginTop: '80px', // Ajusta la distancia desde la parte superior según sea necesario
@@ -198,6 +206,7 @@ const UpdateTrainingExercise = () => {
           <Tab value={0} sx={{ color: '#40FF00', fontSize: "30px", padding:"20px"}} onClick={() => handleUpdateTraining(0, dispatch)} label="General"  />
           <Tab value={1} sx={{ color: '#f5af19', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTrainingExercise(1, dispatch)} label="Exercises"  />
           <Tab value={2} sx={{ color: 'rgb(255, 0, 247)', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTrainingStretching(2, dispatch)} label="Stretchings"  />
+          <Tab value={3} sx={{ color: '#ff0000', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTrainingPlayer(3, dispatch)} label="Players"/>
         </Tabs>
       </Box>
       <input type="checkbox" class="theme-checkbox" onClick={() => setShowTable(!showTable)}/>

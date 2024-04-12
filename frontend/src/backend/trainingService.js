@@ -36,8 +36,8 @@ export const addTrainingWithTeam = (teamId, trainingDate, durationMinutes, descr
 export const addTrainingWithSeason = (seasonId, trainingDate, durationMinutes, description, objective, onSuccess, onErrors) =>
     appFetch(`/trainings?seasonId=${seasonId}&trainingDate=${trainingDate}&durationMinutes=${durationMinutes}&description=${description}&objective=${objective}`, config('POST'), onSuccess, onErrors);
 
-export const addPlayerToTraining = (playerId, trainingId, onSuccess, onErrors) =>
-    appFetch(`/trainings/${playerId}/addPlayerToTraining?trainingId=${trainingId}`, config('POST'), onSuccess, onErrors);
+export const addPlayerToTraining = (trainingId, playerId, onSuccess, onErrors) =>
+    appFetch(`/trainings/${trainingId}/addPlayerToTraining?playerId=${playerId}`, config('POST'), onSuccess, onErrors);
 
 export const updateTraining = (trainingId, trainingDate, durationMinutes, description, objective, onSuccess, onErrors) =>
     appFetch(`/trainings/${trainingId}?trainingDate=${trainingDate}&durationMinutes=${durationMinutes}&description=${description}&objective=${objective}`, config('PUT'), onSuccess, onErrors);

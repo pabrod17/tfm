@@ -88,6 +88,7 @@ import { UpdateStatisticsGamePlayer } from '../../statistics';
 import { BoardHome, PlayAnimatorHome, PlaysHomeByType } from '../../plays';
 import { CalendarHome } from '../../events';
 import UpdateTeamGame from '../../teams/components/UpdateTeamGame';
+import { UpdateTrainingPlayer } from '../../trainings';
 
 const Body = ({ isDark, setIsDark}) => {
 
@@ -192,6 +193,7 @@ const Body = ({ isDark, setIsDark}) => {
 
                 {loggedIn && <Route exact path="/trainings/update/:id/exercise/:tabValue" element={<UpdateTrainingExercise/>}></Route>}
                 {loggedIn && <Route exact path="/trainings/update/:id/stretching/:tabValue" element={<UpdateTrainingStretching/>}></Route>}
+                {loggedIn && <Route exact path="/trainings/update/:id/players/:tabValue" element={<UpdateTrainingPlayer/>}></Route>}
 
                 {loggedIn && <Route exact path="/games/update/:id/exercise/:tabValue" element={<UpdateGameExercise/>}></Route>}
                 {loggedIn && <Route exact path="/games/update/:id/stretching/:tabValue" element={<UpdateGameStretching/>}></Route>}

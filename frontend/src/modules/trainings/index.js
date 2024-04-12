@@ -9,5 +9,6 @@ export {default as TrainingView} from './components/TrainingView';
 export {default as UpdateTraining} from './components/UpdateTraining';
 export {default as UpdateTrainingStretching} from './components/UpdateTrainingStretching';
 export {default as UpdateTrainingExercise} from './components/UpdateTrainingExercise';
+export {default as UpdateTrainingPlayer} from './components/UpdateTrainingPlayer';
 
 export default {actions, actionsTypes, reducer, selectors};

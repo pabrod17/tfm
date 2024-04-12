@@ -225,7 +225,8 @@ const handleFindTrainingsToPlayer = (playerId, dispatch, history) => {
                 <ul className="social-icons injuredhover injured_position">
                   <li>
                     <a type="button">
-                    <i className="fa fa-exclamation-triangle" style={{ top: '13px', left: '12px', fontSize: '20px' }}></i>
+                    {/* <i className="fa fa-exclamation-triangle" style={{ top: '13px', left: '12px', fontSize: '20px'}}></i> */}
+                    <i className="fa fa-exclamation-triangle" style={{ top: '10.5px', left: '10.5px', fontSize: '23px', color:"red" }}></i>
                     </a>
                   </li>
                 </ul>

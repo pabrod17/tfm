@@ -21,14 +21,22 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import dayjs from 'dayjs';
 import { DataGrid } from '@mui/x-data-grid';
-import * as selectorsStretchings from '../../stretchings/selectors';
-import * as actionsStretchings from '../../stretchings/actions';
-import * as actionsExercises from '../../exercises/actions';
+import * as selectorsPlayers from '../../players/selectors';
+import * as actionsPlayers from '../../players/actions';
 import ExercisesByTraining from '../../exercises/components/ExercisesByTraining';
 import StretchingsByTraining from '../../stretchings/components/StretchingsByTraining';
-import * as actionsPlayers from '../../players/actions';
+import * as actionsGames from '../../games/actions';
+import StretchingsByGame from '../../stretchings/components/StretchingsByGame';
+import * as actionsStatistics from '../../statistics/actions';
+import PlayersByGame from '../../players/components/PlayersByGame';
+import * as actionsExercises from '../../exercises/actions';
+import * as actionsStretchings from '../../stretchings/actions';
+import * as actionsTeams from '../../teams/actions';
+import * as selectorsTeams from '../../teams/selectors';
+import PlayersByTraining from '../../players/components/PlayersByTraining';
 
-const UpdateTrainingStretching = () => {
+
+const UpdateTrainingPlayer = () => {
     const training = useSelector(selectors.getOneTraining);
 
     const {id} = useParams();
@@ -39,55 +47,55 @@ const UpdateTrainingStretching = () => {
     const { stretchingType, tabValue } = useParams();
     const [value, setValue] = useState(parseInt(tabValue, 10) || 0);
     const [showTable, setShowTable] = useState(true);
-	const [stretchingIds, setStretchingIds] = useState(null);
-    const [rowsStretchings, setRowsStretchings] = useState([]);
-    const [columnsStretchings, setColumnsStretchings] = useState([]);
+	const [playerIds, setPlayerIds] = useState(null);
+    const [rowsPlayers, setRowsPlayers] = useState([]);
+    const [columnsStretchings, setColumnsPlayers] = useState([]);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-    let filteredStretchings = [];
+    let filteredPlayers = [];
     let form;
 
-    const stretchingList = useSelector(selectorsStretchings.getStretchingsByTrainingId);
-    const stretchingListAll = useSelector(selectorsStretchings.getAllStretchings);
+    const playerList = useSelector(selectorsPlayers.getPlayersByTrainingId);
+    const playerListAll = useSelector(selectorsPlayers.getAllPlayers);
+    const teamssListAll = useSelector(selectorsTeams.getAllTeams);
 
     useEffect(() => {
-        console.log("PRIMEROOOOOO, ", stretchingList)
-        if (!stretchingList) {
-            console.log("PRIMEROOOOOO 111111, ", stretchingList)
-            dispatch(actionsStretchings.findStretchingsByTrainingId(id, () => history(`/trainings/update/${id}/stretching/${2}`)));
-            dispatch(actions.findTrainingById(id, () => history(`/trainings/update/${id}/stretching/${2}`)));
+        console.log("PRIMEROOOOOO, ", playerList)
+        if (!playerList) {
+            console.log("PRIMEROOOOOO 111111, ", playerList)
+            dispatch(actionsPlayers.findPlayersByTraining(id, () => history(`/trainings/update/${id}/players/${3}`)));
+            dispatch(actions.findTrainingById(id, () => history(`/trainings/update/${id}/players/${3}`)));
+            dispatch(actionsTeams.findAllTeams());
         }
-    }, [dispatch, stretchingList, history, id]);
+    }, [dispatch, playerList, history, id]);
 
     useEffect(() => {
-        console.log("SEGUNDOOO: " , stretchingListAll)
-        if (!stretchingListAll.stretchings) {
-            console.log("SEGUNDOOO 2222222: ", stretchingListAll)
-            dispatch(actionsStretchings.findAllStretchings(() => history(`/trainings/update/${id}/stretching/${2}`)));
+        if (!teamssListAll.teams) {
+            dispatch(actionsTeams.findAllTeams(() => history(`/trainings/update/${id}/players/${3}`)));
         } else {
-            filteredStretchings = stretchingListAll.stretchings;
-                filteredStretchings = stretchingListAll.stretchings.filter(stretching => {
-                    return !stretchingList || !stretchingList.some(ex => ex.id === stretching.id);
+        if (!playerListAll.players) {
+            dispatch(actionsPlayers.findPlayersByUserId(() => history(`/trainings/update/${id}/players/${3}`)));
+        } else {
+            filteredPlayers = playerListAll.players;
+                filteredPlayers = playerListAll.players.filter(player => {
+                    return !playerList || !playerList.some(ex => ex.id === player.id);
                 });
         
         
-            const columnsStretchings2 = [
+            const columnsPlayers2 = [
                 { field: 'id', headerName: 'ID', width: 70 },
-                { field: 'name', headerName: <FormattedMessage id="project.stretchings.fields.stretchingName"/>, width: 160 },
-                { field: 'type', headerName: <FormattedMessage id="project.stretchings.fields.stretchingType" />, width: 160,
+                { field: 'name', headerName: <FormattedMessage id="project.players.fields.playerName"/>, width: 160 },
+                { field: 'primaryLastName', headerName: <FormattedMessage id="project.players.fields.primaryLastName" />, width: 160},
+                { field: 'position', headerName: <FormattedMessage id="project.players.fields.position" />, width: 160,
                 renderCell: (params) => (
                     <div style={{ backgroundColor: 
-                        params.row.type === 'Isquiotibiales' ? '#DD2476' : // Azul oscuro
-                        params.row.type === 'Gluteos' ? '#FF512F' : // Verde esmeralda
-                        params.row.type === 'Gemelos' ? '#FF0000' : // Amarillo
-                        params.row.type === 'Adductores' ? '#0f9b0f' : // Blanco
-                        params.row.type === 'Hombro' ? '#DDDDDD' : // Gris claro
-                        params.row.type === 'Cuadriceps' ? '#FF6B6B' : // Rosa
-                        params.row.type === 'Espalda' ? '#8E2DE2' : // Morado oscuro
-                        params.row.type === 'Pectoral' ? '#00FFF3' : // Negro
-                        params.row.type === 'Ingle' ? '#FFFF00' : // Negro
+                        params.row.position === 'Base' ? '#DD2476' : // Azul oscuro
+                        params.row.position === 'Escolta' ? '#FF512F' : // Verde esmeralda
+                        params.row.position === 'Alero' ? '#8E2DE2' : // Amarillo
+                        params.row.position === 'AlaPivot' ? '#FF6B6B' : // Blanco
+                        params.row.position === 'Pivot' ? '#d4de19' : // Gris claro
                         'green', // Por defecto
                         borderRadius: '5px',
                         padding: '5px'
@@ -95,29 +103,43 @@ const UpdateTrainingStretching = () => {
                     {params.value}
                     </div>
                 ), },
+                { field: 'injured', headerName: <FormattedMessage id="project.lesion.fields.injured" />, width: 160,
+                renderCell: (params) => (
+                    <div style={{ backgroundColor: 
+                        params.row.injured ? '#0f9b0f' : // Azul oscuro
+                        !params.row.injured ? '#FF0000' : // Verde esmeralda
+                        'green', // Por defecto
+                        borderRadius: '5px',
+                        padding: '5px'
+                    }}>
+                    {params.value}
+                    </div>
+                ), },
+                { field: 'teamName', headerName: <FormattedMessage id="project.teams.fields.team" />, width: 160},
+                { field: 'email', headerName: <FormattedMessage id="project.players.fields.email" />, width: 160},
 
-
-
-
-
-                { field: 'description', headerName: <FormattedMessage id="project.exercises.fields.description" />, width: 160 }
             ];
-            setColumnsStretchings(columnsStretchings2);
+            setColumnsPlayers(columnsPlayers2);
 
         
-            if (filteredStretchings) {
-                const newRowsStretchings = filteredStretchings.map(stretching => ({
-                    id: stretching.id,
-                    name: stretching.stretchingName,
-                    type: stretching.stretchingType,
-                    description: stretching.description
+            if (filteredPlayers) {
+                const newRowsPlayers = filteredPlayers.map(player => ({
+                    id: player.id,
+                    name: player.playerName,
+                    primaryLastName: player.primaryLastName,
+                    position: player.position,
+                    injured: player.injured,
+                    teamName: teamssListAll.teams.find(team => team.id === player.teamId)?.teamName || '',
+                    email: player.email,
+
                 }));
                 // Actualizar el estado de rowsStretchings
-                setRowsStretchings(newRowsStretchings);
+                setRowsPlayers(newRowsPlayers);
             }
         
         }
-    }, [dispatch, stretchingListAll, history]);
+    }
+}   , [dispatch, playerListAll, teamssListAll, history]);
 
 
 
@@ -130,7 +152,7 @@ const UpdateTrainingStretching = () => {
 
         event.preventDefault();
     
-        dispatch(actionsStretchings.addStretchingToTraining(id, stretchingIds,
+        dispatch(actions.addPlayerToTraining(id, playerIds,
             errors => setBackendErrors(errors),
             ));
             window.location.reload();
@@ -250,7 +272,7 @@ const UpdateTrainingStretching = () => {
 							id="tableTitle"
 							component="div"
 						>
-							Team Selection
+							Player Selection
 						</Typography>
 						<div style={{ width: '100%', }}>
 							<DataGrid
@@ -262,7 +284,7 @@ const UpdateTrainingStretching = () => {
                                     borderColor:"black",
                                     boxShadow:"0 10px 50px rgb(0, 0, 0)"
 								}}
-								rows={rowsStretchings}
+								rows={rowsPlayers}
 								columns={columnsStretchings}
 								initialState={{
 									pagination: {
@@ -273,7 +295,7 @@ const UpdateTrainingStretching = () => {
 								pageSizeOptions={[5, 10]}
 								checkboxSelection
 								onRowSelectionModelChange={(newRowSelectionModelTeam) => {
-                                        setStretchingIds((prevStretchingId) => {
+                                        setPlayerIds((prevStretchingId) => {
 										console.log(" seasonnnn PRIMEROOOOO: ", newRowSelectionModelTeam);
 										return newRowSelectionModelTeam;
 										 });
@@ -290,7 +312,7 @@ const UpdateTrainingStretching = () => {
 		</Box>
 )}
 
-            <StretchingsByTraining stretchings={stretchingList} trainingId={id} />
+            <PlayersByTraining players={playerList} trainingId={id} />
 
             </Box>
 
@@ -300,4 +322,4 @@ const UpdateTrainingStretching = () => {
 );
 }
 
-export default UpdateTrainingStretching;
+export default UpdateTrainingPlayer;

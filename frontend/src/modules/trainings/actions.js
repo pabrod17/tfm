@@ -146,8 +146,8 @@ export const addTrainingWithSeason = (seasonId, trainingDate, durationMinutes, d
         onErrors);
 }
 
-export const addPlayerToTraining = (playerId, trainingId, onSuccess, onErrors) => {
-    backend.trainingService.addPlayerToTraining(playerId, trainingId, onSuccess, onErrors);
+export const addPlayerToTraining = (trainingId, playerId, onSuccess, onErrors) => {
+    backend.trainingService.addPlayerToTraining(trainingId, playerId, onSuccess, onErrors);
     return {type: actionTypes.ADD_PLAYER_TO_TRAINING_COMPLETED};
 }
 
