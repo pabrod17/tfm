@@ -206,7 +206,6 @@ const UpdateGamePlayer = () => {
 <Box
     sx={{
         bgcolor: 'background.dark',
-        boxShadow: 1,
         borderRadius: 4,
         margin: 'auto',  // Centra horizontalmente
         marginTop: '80px', // Ajusta la distancia desde la parte superior según sea necesario
@@ -272,7 +271,7 @@ const UpdateGamePlayer = () => {
 							id="tableTitle"
 							component="div"
 						>
-							Team Selection
+							Player Selection
 						</Typography>
 						<div style={{ width: '100%', }}>
 							<DataGrid
