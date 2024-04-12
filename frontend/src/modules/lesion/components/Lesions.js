@@ -146,7 +146,7 @@ const Lesions = ({ lesions }) => {
         >
           <Box sx={{ ...style, width: "auto", maxWidth: "40vw" }}>
             <h2 id="child-modal-title" className="color_modal_title_lesion" sx={{ mb: '100px' }} ><FormattedMessage id="project.exercises.fields.description" />:</h2>
-            <p id="child-modal-description">
+            <p id="child-modal-description" style={{ overflowWrap: 'break-word' }}>
               {modalDescription}
             </p>
           </Box>
@@ -161,7 +161,7 @@ const Lesions = ({ lesions }) => {
         >
           <Box sx={{ ...style, width: "auto", maxWidth: "40vw" }}>
             <h2 id="child-modal-title" className="color_modal_title_lesion" sx={{ mb: '100px' }} ><FormattedMessage id="project.lesion.fields.medication" />:</h2>
-            <p id="child-modal-objective">
+            <p id="child-modal-objective" style={{ overflowWrap: 'break-word' }}>
               {modalMedication}
             </p>
           </Box>

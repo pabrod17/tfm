@@ -81,12 +81,12 @@ const AddPlay = () => {
             
             dispatch(actions.addPlay(teamId, title.trim(), playType,
             gesture.trim(), pointGuardText.trim(), shootingGuardText.trim(), smallForwardText.trim(), powerForwardText.trim(), centerText.trim(), description.trim(),
-            () => reloadWindow(id),
+            () => reloadWindow(),
             errors => setBackendErrors(errors),
             ));
         }
 
-        const reloadWindow = (id) =>{
+        const reloadWindow = () =>{
             history(`/plays/addPlay`);
             window.location.reload('true');
         }
@@ -114,7 +114,7 @@ const AddPlay = () => {
 			<Grid container margin={5} spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
 			>
 				<Grid item md={12}>
-                <img src={notaLapiz} alt="Person" class="card__image_training_update_create"></img>
+                <img src={notaLapiz} alt="Person" class="card__image_play_update_create"></img>
 
                 </Grid>
 

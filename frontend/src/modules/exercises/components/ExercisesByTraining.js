@@ -118,7 +118,7 @@ const ExercisesByTraining = ({exercises, trainingId}) => {
         >
           <Box sx={{ ...style, width: "auto", maxWidth: "40vw" }}>
             <h2 id="child-modal-title" className="color_modal_title" sx={{ mb: '100px' }} >Description:</h2>
-            <p id="child-modal-description">
+            <p id="child-modal-description" style={{ overflowWrap: 'break-word' }}>
               {modalDescription}
             </p>
           </Box>
@@ -133,7 +133,7 @@ const ExercisesByTraining = ({exercises, trainingId}) => {
         >
           <Box sx={{ ...style, width: "auto", maxWidth: "40vw" }}>
             <h2 id="child-modal-title" className="color_modal_title" sx={{ mb: '100px' }} >Objective:</h2>
-            <p id="child-modal-objective">
+            <p id="child-modal-objective" style={{ overflowWrap: 'break-word' }}>
               {modalObjective}
             </p>
           </Box>
