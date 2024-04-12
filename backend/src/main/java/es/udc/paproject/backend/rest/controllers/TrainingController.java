@@ -109,10 +109,12 @@ public class TrainingController {
                 durationMinutes, description, objective));
     }
 
-    @PostMapping("/{playerId}/addPlayerToTraining")
-    public void addPlayerToTraining(@PathVariable Long playerId, @RequestParam Long trainingId)
+    @PostMapping("/{trainingId}/addPlayerToTraining")
+    public void addPlayerToTraining(@PathVariable Long trainingId, @RequestParam List<Long> playerId)
             throws InstanceNotFoundException {
-        trainingService.addPlayerToTraining(trainingId, playerId);
+        for (Long id : playerId) {
+            trainingService.addPlayerToTraining(trainingId, id);
+        }
     }
 
     @PutMapping("/{trainingId}")
