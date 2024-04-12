@@ -230,7 +230,7 @@ const handleFindTrainingsToPlayer = (playerId, dispatch, history) => {
                 </ul>
               ) : null}
                   <div className="card_player">
-                    <img src={perfil2} alt="Person" className="card__image_season"></img>
+                    <img src={perfil2} alt="Person" className="card__image_player"></img>
                     <span className="title">{item.playerName} {item.primaryLastName}</span>
                     <div className="buttons">
                       <button className="post">{item.position}</button>
@@ -305,8 +305,8 @@ const PlayersByGameStatistics = ({players, gameId}) => {
         aria-describedby="child-modal-description"
       >
           <Box sx={{ ...style, width: "auto", maxWidth: "40vw" }}>
-          <h2 id="child-modal-title" className="color_modal_title_player" sx={{ mb: '100px' }} ><FormattedMessage id="project.exercises.fields.description" />:</h2>
-          <p id="child-modal-description">
+          <h2 id="child-modal-title" className="color_modal_title_player" sx={{ mb: '100px' }} ><FormattedMessage id="project.players.fields.trends" />:</h2>
+          <p id="child-modal-description" style={{ overflowWrap: 'break-word' }}>
             {modalDescription}
           </p>
         </Box>

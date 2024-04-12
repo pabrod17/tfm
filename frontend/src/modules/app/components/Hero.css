@@ -1120,7 +1120,6 @@ max-height: 360px;
   width: 160px;
   border-radius: 50%;
   margin-bottom: 50px;
-  border: 5px solid #272133;
   box-shadow: 0 10px 50px rgb(0, 0, 0);}
 
 .card__image_season {
@@ -1130,10 +1129,34 @@ max-height: 360px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 20px;
-  border: 5px solid #272133;
   margin-top: 20px;
   box-shadow: 0 10px 50px rgb(0, 0, 0);
 }
+
+.card__image_player {
+  height: 160px;
+  width: 160px;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  box-shadow: 0 10px 50px rgb(0, 0, 0);
+}
+
+.card__image_player_update_create {
+  height: 160px;
+  width: 160px;
+  border-radius: 50%;
+  margin-bottom: 50px;
+  box-shadow: 0 10px 50px rgb(0, 0, 0);}
+
+.card__image_play_update_create {
+  height: 160px;
+  width: 160px;
+  border-radius: 50%;
+  margin-bottom: 50px;
+  box-shadow: 0 10px 50px rgb(0, 0, 0);}
 
 
 .post_team {
@@ -1249,6 +1272,21 @@ max-height: 360px;
   color: #fff;
   background-size: 200% 100%;
   background: linear-gradient(180deg, #41AF24 0%, #062C76 70% );
+  box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
+  transition: 0.3s ease-out;
+  margin-right: 50px;
+}
+
+.post_player {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  font-size: 22px;
+  font-family: Sans-serif;
+  color: #fff;
+  background-size: 200% 100%;
+  background: linear-gradient(180deg, rgb(47, 0, 255) 0%, rgb(59, 4, 26) 70% );
   box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
   transition: 0.3s ease-out;
   margin-right: 50px;
