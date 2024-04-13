@@ -217,11 +217,11 @@ public class PlayerController {
     }
     
     @PutMapping("/{playerId}")
-    public PlayerDto updatePlayer(@RequestParam Long teamId, @PathVariable Long playerId, @RequestParam String playerName, @RequestParam String primaryLastName, @RequestParam String secondLastName,
+    public PlayerDto updatePlayer(@PathVariable Long playerId, @RequestParam String playerName, @RequestParam String primaryLastName, @RequestParam String secondLastName,
     @RequestParam String position, @RequestParam String trends, @RequestParam String phoneNumber, @RequestParam String email, @RequestParam String dni)
             throws InstanceNotFoundException, IncorrectDniException, IncorrectEmailException,
             IncorrectPhoneNumberException {
-        return toPlayerDto(playerService.updatePlayer(teamId, playerId, playerName, primaryLastName, secondLastName, position, trends, phoneNumber, email, dni));
+        return toPlayerDto(playerService.updatePlayer(playerId, playerName, primaryLastName, secondLastName, position, trends, phoneNumber, email, dni));
     }
 
     @DeleteMapping("/{playerId}")

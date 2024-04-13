@@ -67,7 +67,6 @@ public class TeamController {
 
     @GetMapping("/name")
     public List<TeamDto> findTeamsByName(@RequestAttribute Long userId, @RequestParam String name) throws InstanceNotFoundException {
-
         List<Team> holas = teamService.findTeamsByName(userId, name);
         return toTeamDtos(holas);
     }
@@ -75,6 +74,11 @@ public class TeamController {
     @GetMapping("/arena")
     public List<TeamDto> findTeamsByArena(@RequestAttribute Long userId, @RequestParam String arena) throws InstanceNotFoundException {
         return toTeamDtos(teamService.findTeamsByArena(userId, arena));
+    }
+
+    @GetMapping("/player/{playerId}")
+    public TeamDto findTeamByPlayer(@RequestAttribute Long userId, @PathVariable Long playerId) throws InstanceNotFoundException {
+        return toTeamDto(teamService.findTeamByPlayer(userId, playerId));
     }
 
     @GetMapping("/owner")

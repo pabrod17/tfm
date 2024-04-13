@@ -385,7 +385,7 @@ public class PlayerServiceTest {
         Player player = playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "ShootingGuard", 
         "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065", "paco@gmail.com", "87930523M");
 
-        playerService.updatePlayer(team2.getId(), player.getId(), "updated", "updated2", "updated3", "SmallForward", "Mucha tendencia de tiro de 3", "638677065", "paco3@gmail.com", "53984323B");
+        playerService.updatePlayer(player.getId(), "updated", "updated2", "updated3", "SmallForward", "Mucha tendencia de tiro de 3", "638677065", "paco3@gmail.com", "53984323B");
 
         Player playerFound = playerService.findPlayerByIdOfTeam(player.getId(), team2.getId());
         List<Player> players2 = playerService.findAPlayersOfTeam(team2.getId());
@@ -413,7 +413,7 @@ public class PlayerServiceTest {
 
         lesionService.addLesionToPlayer(player.getId(), lesion2.getId());
 
-        playerService.updatePlayer(team2.getId(), player.getId(), "updated", "updated2", "updated3", "SmallForward", "Mucha tendencia de tiro de 3", "638677065", "paco3@gmail.com", "53984323B");
+        playerService.updatePlayer(player.getId(), "updated", "updated2", "updated3", "SmallForward", "Mucha tendencia de tiro de 3", "638677065", "paco3@gmail.com", "53984323B");
 
         Player playerFound = playerService.findPlayerByIdOfTeam(player.getId(), team2.getId());
         List<Player> players2 = playerService.findAPlayersOfTeam(team2.getId());

@@ -67,6 +67,6 @@ public interface PlayerService {
 
     void removePlayer(Long teamId, Long playerId) throws InstanceNotFoundException;
 
-    Player updatePlayer(Long teamId, Long playerId, String playerName, String primaryLastName, String secondLastName,
+    Player updatePlayer(Long playerId, String playerName, String primaryLastName, String secondLastName,
     String position, String trends, String phoneNumber, String email, String dni) throws InstanceNotFoundException, IncorrectDniException, IncorrectEmailException, IncorrectPhoneNumberException;
 }

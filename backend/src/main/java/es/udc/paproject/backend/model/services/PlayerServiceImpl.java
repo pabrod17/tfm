@@ -749,7 +749,7 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
-    public Player updatePlayer(Long teamId, Long playerId, String playerName, String primaryLastName,
+    public Player updatePlayer(Long playerId, String playerName, String primaryLastName,
             String secondLastName, String position, String trends, String phoneNumber, String email, String dni)
             throws InstanceNotFoundException, IncorrectDniException, IncorrectEmailException,
             IncorrectPhoneNumberException {
@@ -757,39 +757,9 @@ public class PlayerServiceImpl implements PlayerService {
         if (!playerDao.existsById(playerId)) {
             throw new InstanceNotFoundException("project.entities.player");
         }
-        System.out.println("PIIII --> " + position);
-        System.out.println("HOLA --> " + position);
 
-        if (position != null &&!position.equals("Base") && !position.equals("Escolta") && !position.equals("Alero")
-                && !position.equals("AlaPivot") && !position.equals("Pivot")) {
-            throw new InstanceNotFoundException("project.entities.Position");
-        }
-
-        if (!Validations.isValidDni(dni)) {
-            throw new IncorrectDniException(dni);
-        }
-        if (!Validations.isValidEmail(email)) {
-            throw new IncorrectEmailException(email);
-        }
-        if (!Validations.isValidPhoneNumber(phoneNumber)) {
-            throw new IncorrectPhoneNumberException(phoneNumber);
-        }
         //No busco dentro de los player de team porque el player que actualizara ya estara dentro del team del usuario
         Player player = playerDao.findById(playerId).get();
-
-        if (player.getTeam() != null && player.getTeam().getId() != teamId){
-            if (!teamDao.existsById(teamId)) {
-                throw new InstanceNotFoundException("project.entities.team");
-            }
-            player.setTeam(teamDao.findById(teamId).get());
-        } else {
-            if(player.getTeam() == null){
-                if (!teamDao.existsById(teamId)) {
-                    throw new InstanceNotFoundException("project.entities.team");
-                }
-                player.setTeam(teamDao.findById(teamId).get());
-            }
-        }
 
         if(playerName != null)
             player.setPlayerName(playerName);
@@ -798,16 +768,35 @@ public class PlayerServiceImpl implements PlayerService {
         if(secondLastName != null)
             player.setSecondLastName(secondLastName);
         //Position positionEnum = Position.valueOf(position); // paso string a enum
-        if(position != null)
-            player.setPosition(position);
+        if(position != null){
+            if (position.equals("Base") || position.equals("Escolta") || position.equals("Alero")
+                    || position.equals("AlaPivot") || position.equals("Pivot")) {
+                player.setPosition(position);
+            }
+        }
         if(trends != null)
             player.setTrends(trends);
-        if(phoneNumber != null)
-            player.setPhoneNumber(phoneNumber);
-        if(email != null)
-            player.setEmail(email);
-        if(dni != null)
-            player.setDni(dni);
+        if(phoneNumber != null){
+            if (!Validations.isValidPhoneNumber(phoneNumber)) {
+                throw new IncorrectPhoneNumberException(phoneNumber);
+            } else {
+                player.setPhoneNumber(phoneNumber);
+            }
+        }
+        if(email != null){
+            if (!Validations.isValidEmail(email)) {
+                throw new IncorrectEmailException(email);
+            } else {
+                player.setEmail(email);
+            }
+        }
+        if(dni != null){
+            if (!Validations.isValidDni(dni)) {
+                throw new IncorrectDniException(dni);
+            }else {
+                player.setDni(dni);
+            }
+        }
         playerDao.save(player);
 
         return player;

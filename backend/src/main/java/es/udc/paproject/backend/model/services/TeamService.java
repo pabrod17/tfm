@@ -15,6 +15,8 @@ public interface TeamService {
 
     Team findTeamById(Long userId,Long teamId) throws InstanceNotFoundException;
 
+    Team findTeamByPlayer(Long userId,Long playerId) throws InstanceNotFoundException;
+
     Team findTeamByName(Long userId, String teamName) throws InstanceNotFoundException;
 
     List<Team> findAllTeams(Long userId) throws InstanceNotFoundException;

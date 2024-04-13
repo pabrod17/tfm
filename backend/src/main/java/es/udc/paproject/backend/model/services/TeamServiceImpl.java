@@ -23,6 +23,9 @@ public class TeamServiceImpl implements TeamService {
     private SeasonDao seasonDao;
 
     @Autowired
+    private PlayerDao playerDao;
+
+    @Autowired
     private SeasonTeamDao seasonTeamDao;
 
     @Autowired
@@ -112,6 +115,29 @@ public class TeamServiceImpl implements TeamService {
                 team = seasonTeam.getTeam();
             }
         }
+        if (team == null) {
+            throw new InstanceNotFoundException("project.entities.team");
+        }
+
+        return team;
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Team findTeamByPlayer(Long userId, Long playerId) throws InstanceNotFoundException {
+
+        User user = userService.loginFromId(userId);
+
+        if (!playerDao.existsById(playerId)) {
+            throw new InstanceNotFoundException("project.entities.player");
+        }
+
+        Player player = playerDao.findById(playerId).get();
+
+
+        Team team = null;
+
+        team = player.getTeam();
         if (team == null) {
             throw new InstanceNotFoundException("project.entities.team");
         }
