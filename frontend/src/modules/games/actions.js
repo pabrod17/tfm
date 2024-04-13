@@ -29,9 +29,9 @@ export const findGamesByUserId = (onSuccess, onErrors) => dispatch => {
         onErrors);
 }
 
-const findGamesByPlayerIdCompleted = games => ({
+const findGamesByPlayerIdCompleted = gamesByPlayerId => ({
     type: actionTypes.FIND_GAMES_BY_PLAYER_ID_COMPLETED,
-    games
+    gamesByPlayerId
 });
 
 export const findGamesByPlayerId = (playerId, onSuccess, onErrors) => dispatch => {

@@ -128,7 +128,7 @@ const UpdatePlayerTeam = () => {
             }));
             history(`/players/update/${id}/game/${tabValue}`);
         }
-        const handleUpdateTeamTrainings = (tabValue, dispatch) => {
+        const handleUpdatePlayerTrainings = (tabValue, dispatch) => {
             setValue(tabValue);
             dispatch(actions.findPlayerById(id, () => {
                 dispatch(actionsTrainings.findTrainingsByPlayerId(id, () => history(`/players/update/${id}/training/${tabValue}`)));
@@ -192,7 +192,7 @@ const UpdatePlayerTeam = () => {
           <Tab value={0} sx={{ color: '#fbff00', fontSize: "30px", padding:"20px"}} onClick={() => handleUpdatePlayer(dispatch)} label="General"  />
           <Tab value={1} sx={{ color: '#6024af', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerTeams(1, dispatch)} label="Teams"  />
           <Tab value={2} sx={{ color: '#760606', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerGames(2, dispatch)} label="Games"/>
-          <Tab value={3} sx={{ color: '#d17403', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTeamTrainings(3, dispatch)} label="Trainings"/>
+          <Tab value={3} sx={{ color: '#d17403', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerTrainings(3, dispatch)} label="Trainings"/>
           <Tab value={4} sx={{ color: '#01dde1', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerLesion(4, dispatch)} label="Lesion"/>
           <Tab value={5} sx={{ color: '#e900d5', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerStretchings(5, dispatch)} label="Stretchings"/>
           <Tab value={6} sx={{ color: '#39ec02', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerNotes(6, dispatch)} label="Notes"/>

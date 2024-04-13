@@ -33,16 +33,16 @@ const UpdatePlayer = () => {
     const dispatch = useDispatch();
     const history = useNavigate();
 
-    const [position, setPosition] = useState(player.position);
-    const [playerName, setPlayerName] = useState(player.playerName);
-    const [primaryLastName, setPrimaryLastName] = useState(player.primaryLastName);
-    const [secondLastName, setSecondLastName] = useState(player.secondLastName);
+    const [position, setPosition] = useState(null);
+    const [playerName, setPlayerName] = useState(null);
+    const [primaryLastName, setPrimaryLastName] = useState(null);
+    const [secondLastName, setSecondLastName] = useState(null);
 
-    const [dni, setDni] = useState(player.dni);
-    const [email, setEmail] = useState(player.email);
-    const [phoneNumber, setPhoneNumber] = useState(player.phoneNumber);
+    const [dni, setDni] = useState(null);
+    const [email, setEmail] = useState(null);
+    const [phoneNumber, setPhoneNumber] = useState(null);
 
-    const [trends, setTrends] = useState(player.trends);
+    const [trends, setTrends] = useState(null);
     const [backendErrors, setBackendErrors] = useState(null);
     const [emailError, setEmailError] = useState(false);
     const [phoneNumberError, setPhoneNumberError] = useState(false);
@@ -52,10 +52,24 @@ const UpdatePlayer = () => {
     let form;
 
     const teamUser = useSelector(selectorsTeams.getTeam);
+
+    useEffect(() => {
+        if (!player) {
+            dispatch(actions.findPlayerById(id, () => history(`/players/update/${id}`)));
+        } else {
+            setPosition(player.position);
+            setPlayerName(player.playerName);
+            setPrimaryLastName(player.primaryLastName);
+            setSecondLastName(player.secondLastName);
+            setDni(player.dni);
+            setEmail(player.email);
+            setPhoneNumber(player.phoneNumber);
+            setTrends(player.trends);
+        }
+    }, [dispatch, player, history, id]);
     useEffect(() => {
         if (!teamUser) {
             dispatch(actionsTeams.findTeamByPlayer(id, () => history(`/players/update/${id}`)));
-            dispatch(actions.findPlayerById(id, () => history(`/players/update/${id}`)));
         }
     }, [dispatch, teamUser, history, id]);
 
@@ -166,7 +180,7 @@ const UpdatePlayer = () => {
             }));
             history(`/players/update/${id}/game/${tabValue}`);
         }
-        const handleUpdateTeamTrainings = (tabValue, dispatch) => {
+        const handleUpdatePlayerTrainings = (tabValue, dispatch) => {
             setValue(tabValue);
             dispatch(actions.findPlayerById(id, () => {
                 dispatch(actionsTrainings.findTrainingsByPlayerId(id, () => history(`/players/update/${id}/training/${tabValue}`)));
@@ -233,7 +247,7 @@ const UpdatePlayer = () => {
           <Tab sx={{ color: '#fbff00', fontSize: "30px", padding:"20px"}} onClick={() => handleUpdatePlayer(dispatch)} label="General"  />
           <Tab sx={{ color: '#6024af', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerTeams(1, dispatch)} label="Teams"  />
           <Tab sx={{ color: '#760606', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerGames(2, dispatch)} label="Games"/>
-          <Tab sx={{ color: '#d17403', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTeamTrainings(3, dispatch)} label="Trainings"/>
+          <Tab sx={{ color: '#d17403', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerTrainings(3, dispatch)} label="Trainings"/>
           <Tab sx={{ color: '#01dde1', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerLesion(4, dispatch)} label="Lesion"/>
           <Tab sx={{ color: '#e900d5', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerStretchings(5, dispatch)} label="Stretchings"/>
           <Tab sx={{ color: '#39ec02', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerNotes(6, dispatch)} label="Notes"/>

@@ -29,9 +29,9 @@ export const findTrainingsByUserId = (onSuccess, onErrors) => dispatch => {
         onErrors);
 }
 
-const findTrainingsByPlayerIdCompleted = trainings => ({
+const findTrainingsByPlayerIdCompleted = trainingsByPlayerId => ({
     type: actionTypes.FIND_TRAININGS_BY_PLAYER_ID_COMPLETED,
-    trainings
+    trainingsByPlayerId
 });
 
 export const findTrainingsByPlayerId = (playerId, onSuccess, onErrors) => dispatch => {

@@ -11,3 +11,6 @@ export const getTrainingsBySeasonId = state =>
 
 export const getTrainingsByTeamId = state =>
     getModuleState(state).trainingsByTeamId;
+
+export const getTrainingsByPlayerId = state =>
+    getModuleState(state).trainingsByPlayerId;

@@ -13,5 +13,7 @@ export {default as FindPlayersByCompletedName} from './components/FindPlayersByC
 export {default as FindPlayersByTraining} from './components/FindPlayersByTraining';
 export {default as FindPlayersByGame} from './components/FindPlayersByGame';
 export {default as UpdatePlayerTeam} from './components/UpdatePlayerTeam';
+export {default as UpdatePlayerGame} from './components/UpdatePlayerGame';
+export {default as UpdatePlayerTraining} from './components/UpdatePlayerTraining';
 
 export default {actions, actionsTypes, reducer, selectors};

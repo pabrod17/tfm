@@ -6,7 +6,8 @@ const initialState = {
     training: null,
     trainings:null,
     trainingsBySeasonId:null,
-    trainingsByTeamId: null
+    trainingsByTeamId: null,
+    trainingsByPlayerId:null
 };
 
 const training = (state = initialState.training, action) => {
@@ -34,8 +35,6 @@ const trainings = (state = initialState.trainings, action) => {
     switch (action.type) {
         
         case actionTypes.FIND_TRAININGS_BY_USER_ID_COMPLETED:
-            return action.trainings;
-        case actionTypes.FIND_TRAININGS_BY_PLAYER_ID_COMPLETED:
             return action.trainings;
         case actionTypes.FIND_TRAININGS_BY_TWO_DATES_AND_TEAM_ID_OR_SEASON_ID_COMPLETED:
             return action.trainings;
@@ -66,11 +65,23 @@ const trainingsByTeamId = (state = initialState.trainingsByTeamId, action) => {
     }
 }
 
+const trainingsByPlayerId = (state = initialState.trainingsByPlayerId, action) => {
+
+    switch (action.type) {
+        
+        case actionTypes.FIND_TRAININGS_BY_PLAYER_ID_COMPLETED:
+            return action.trainingsByPlayerId;
+        default:
+            return state;
+    }
+}
+
 const reducer = combineReducers({
     training,
     trainings,
     trainingsBySeasonId,
-    trainingsByTeamId
+    trainingsByTeamId,
+    trainingsByPlayerId
 });
 
 export default reducer;

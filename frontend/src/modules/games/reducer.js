@@ -6,7 +6,8 @@ const initialState = {
     game: null,
     games:null,
     gamesBySeasonId:null,
-    gamesByTeamId:null
+    gamesByTeamId:null,
+    gamesByPlayerId:null
 };
 
 const game = (state = initialState.game, action) => {
@@ -34,8 +35,6 @@ const games = (state = initialState.games, action) => {
     switch (action.type) {
         
         case actionTypes.FIND_GAMES_BY_USER_ID_COMPLETED:
-            return action.games;
-        case actionTypes.FIND_GAMES_BY_PLAYER_ID_COMPLETED:
             return action.games;
         case actionTypes.FIND_GAMES_BY_TWO_DATES_AND_TEAM_ID_OR_SEASON_ID_COMPLETED:
             return action.games;
@@ -66,11 +65,23 @@ const gamesByTeamId = (state = initialState.gamesByTeamId, action) => {
     }
 }
 
+const gamesByPlayerId = (state = initialState.gamesByPlayerId, action) => {
+
+    switch (action.type) {
+        
+        case actionTypes.FIND_GAMES_BY_PLAYER_ID_COMPLETED:
+            return action.gamesByPlayerId;
+        default:
+            return state;
+    }
+}
+
 const reducer = combineReducers({
     game,
     games,
     gamesBySeasonId,
-    gamesByTeamId
+    gamesByTeamId,
+    gamesByPlayerId
 });
 
 export default reducer;
