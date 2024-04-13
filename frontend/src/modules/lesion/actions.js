@@ -107,9 +107,9 @@ export const findLesionByType = (lesionType, onSuccess, onErrors) => dispatch =>
 }
 
 
-const findLesionByPlayerCompleted = lesions => ({
+const findLesionByPlayerCompleted = lesionsByPlayerId => ({
     type: actionTypes.FIND_LESION_BY_PLAYER_COMPLETED,
-    lesions
+    lesionsByPlayerId
 });
 
 export const findLesionByPlayer = (playerId, onSuccess, onErrors) => dispatch => {

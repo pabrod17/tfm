@@ -1161,6 +1161,7 @@ max-height: 360px;
 
 .post_team {
   width: 100%;
+  padding: 10px;
   border: none;
   border-radius: 20px;
   font-size: 22px;
@@ -1175,6 +1176,7 @@ max-height: 360px;
 
 .post_season {
   width: 100%;
+  padding: 10px;
   border: none;
   border-radius: 20px;
   font-size: 22px;
@@ -1291,6 +1293,7 @@ max-height: 360px;
   transition: 0.3s ease-out;
   margin-right: 50px;
 }
+
 
 .post_gamestatistics {
   width: 100%;

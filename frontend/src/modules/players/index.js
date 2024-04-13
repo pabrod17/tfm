@@ -15,5 +15,7 @@ export {default as FindPlayersByGame} from './components/FindPlayersByGame';
 export {default as UpdatePlayerTeam} from './components/UpdatePlayerTeam';
 export {default as UpdatePlayerGame} from './components/UpdatePlayerGame';
 export {default as UpdatePlayerTraining} from './components/UpdatePlayerTraining';
+export {default as UpdatePlayerLesion} from './components/UpdatePlayerLesion';
+export {default as UpdatePlayerStretching} from './components/UpdatePlayerStretching';
 
 export default {actions, actionsTypes, reducer, selectors};

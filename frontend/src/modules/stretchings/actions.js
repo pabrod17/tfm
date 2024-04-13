@@ -106,9 +106,9 @@ export const findStretchingsByType = (stretchingType, onSuccess, onErrors) => di
         onErrors);
 }
 
-const findStretchingsByPlayerIdCompleted = stretchings => ({
+const findStretchingsByPlayerIdCompleted = stretchingsByPlayerId => ({
     type: actionTypes.FIND_STRETCHINGS_BY_PLAYER_ID_COMPLETED,
-    stretchings
+    stretchingsByPlayerId
 });
 
 export const findStretchingsByPlayerId = (playerId, onSuccess, onErrors) => dispatch => {

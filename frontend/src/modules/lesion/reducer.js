@@ -5,7 +5,8 @@ import * as actionTypes from './actionsTypes';
 const initialState = {
     lesion: null,
     lesions:null,
-    lesionsSearch: null
+    lesionsSearch: null,
+    lesionsByPlayerId:null
 };
 
 const lesion = (state = initialState.lesion, action) => {
@@ -34,8 +35,6 @@ const lesions = (state = initialState.lesions, action) => {
         
         case actionTypes.FIND_ALL_LESION_COMPLETED:
             return action.lesions;
-        case actionTypes.FIND_LESION_BY_PLAYER_COMPLETED:
-            return action.lesions;
         case actionTypes.FIND_LESION_BY_TYPE_COMPLETED:
             return action.lesions;
         default:
@@ -56,15 +55,25 @@ const lesionsSearch = (state = initialState.lesionsSearch, action) => {
 
         default:
             return state;
-
     }
+}
 
+const lesionsByPlayerId = (state = initialState.lesionsByPlayerId, action) => {
+
+    switch (action.type) {
+        
+        case actionTypes.FIND_LESION_BY_PLAYER_COMPLETED:
+            return action.lesionsByPlayerId;
+        default:
+            return state;
+    }
 }
 
 const reducer = combineReducers({
     lesion,
     lesions,
-    lesionsSearch
+    lesionsSearch,
+    lesionsByPlayerId
 });
 
 export default reducer;

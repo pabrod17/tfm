@@ -126,6 +126,8 @@ const Body = ({ isDark, setIsDark}) => {
                 {loggedIn && <Route exact path="/players/update/:id/team/:tabValue" element={<UpdatePlayerTeam/>}></Route>}
                 {loggedIn && <Route exact path="/players/update/:id/game/:tabValue" element={<UpdatePlayerGame/>}></Route>}
                 {loggedIn && <Route exact path="/players/update/:id/training/:tabValue" element={<UpdatePlayerTraining/>}></Route>}
+                {loggedIn && <Route exact path="/players/update/:id/lesion/:tabValue" element={<UpdatePlayerLesion/>}></Route>}
+                {loggedIn && <Route exact path="/players/update/:id/stretching/:tabValue" element={<UpdatePlayerStretching/>}></Route>}
 
 
                 {/* {loggedIn && <Route exact path="/teams/addTeam" element={<AddTeam/>}></Route>}

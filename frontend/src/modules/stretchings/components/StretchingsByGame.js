@@ -16,9 +16,9 @@ const handleRemoveStretchingToGame = (id, gameId, dispatch, history) => {
     dispatch(actions.removeStretchingToGame(gameId, id, () => window.location.reload()));
 }
 
-// const handleUpdateStretching = (id, dispatch, history) => {
-//     dispatch(actions.findStretchingById(id, () => history(`/stretchings/update/${id}`)));
-// }
+const handleUpdateStretching = (id, dispatch, history) => {
+    dispatch(actions.findStretchingById(id, () => history(`/stretchings/update/${id}`)));
+}
 
 // const handleViewStretching = (id, dispatch, history) => {
 //     dispatch(actions.findStretchingById(id, () => history(`/stretchings/view/${id}`)));

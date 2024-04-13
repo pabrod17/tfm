@@ -8,3 +8,6 @@ export const getAllLesion = state =>
 
 export const getLesionsSearch = state =>
     getModuleState(state).lesionsSearch;
+
+export const getLesionsByPlayerId = state =>
+    getModuleState(state).lesionsByPlayerId;

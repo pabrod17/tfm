@@ -230,19 +230,25 @@ const UpdatePlayer = () => {
         marginTop: '80px', // Ajusta la distancia desde la parte superior según sea necesario
         textAlign: 'center', // Centra el contenido dentro del Box
         borderColor:"black",
-        boxShadow:"0 10px 50px rgb(0, 0, 0)"
+        boxShadow:"0 10px 50px rgb(0, 0, 0)",
+
     }}>
 
-<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" 
+<Box sx={{boxShadow:"0 10px 50px rgb(0, 0, 0)" }}>
+        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example"  
                         sx={{
-                            background: "linear-gradient(-45deg, #711ce0 0%, #000046 60% )",
+                            background: "linear-gradient(45deg, rgb(59, 4, 26) 30%,rgb(47, 0, 255))",
                             bgcolor:"red",
                             boxShadow: 6,
                             borderRadius: 3,
+                            mb: 2,
 							borderColor: "black",
-							boxShadow: "0 10px 50px rgb(0, 0, 0)"
+							boxShadow: "0 10px 50px rgb(0, 0, 0)",
+                            '& .MuiTabs-flexContainer': {
+                                flexWrap: 'wrap',
+                              },
                         }}
+                        TabIndicatorProps={{ sx: { display: 'none' } }}
         >
           <Tab sx={{ color: '#fbff00', fontSize: "30px", padding:"20px"}} onClick={() => handleUpdatePlayer(dispatch)} label="General"  />
           <Tab sx={{ color: '#6024af', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerTeams(1, dispatch)} label="Teams"  />

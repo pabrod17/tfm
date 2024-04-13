@@ -75,7 +75,7 @@ const UpdatePlayerTeam = () => {
                 { field: 'name', headerName: <FormattedMessage id="project.teams.fields.name" />, width: 160 },
                 { field: 'arena', headerName: <FormattedMessage id="project.teams.fields.arena" />, width: 160 },
                 { field: 'owner', headerName: <FormattedMessage id="project.teams.fields.owner" />, width: 160 },
-                { field: 'description', headerName: <FormattedMessage id="project.exercises.fields.description" />, width: 160 },
+                { field: 'description', headerName: <FormattedMessage id="project.exercises.fields.description" />, width: 300 },
             ];
             setColumnsTeams(columnsTeams2);
 
@@ -116,8 +116,9 @@ const UpdatePlayerTeam = () => {
         }
         const handleUpdatePlayerTeams = (tabValue, dispatch) => {
             setValue(tabValue);
+            dispatch(actionsTeams.findTeamByPlayer(id, () =>  console.log("hola")));
             dispatch(actions.findPlayerById(id, () => {
-                dispatch(actionsTeams.findTeamById(player.teamId, () => history(`/players/update/${id}/team/${tabValue}`)));
+                dispatch(actionsTeams.findTeamByPlayer(id, () => history(`/players/update/${id}/team/${tabValue}`)));
             }));
             history(`/players/update/${id}/team/${tabValue}`);
         }
@@ -178,15 +179,19 @@ const UpdatePlayerTeam = () => {
         textAlign: 'center', // Centra el contenido dentro del Box
     }}>
 
-<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+<Box sx={{boxShadow:"0 10px 50px rgb(0, 0, 0)" }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" 
                         sx={{
-                            background: "linear-gradient(-45deg, #711ce0 0%, #000046 60% )",
+                            background: "linear-gradient(45deg, rgb(59, 4, 26) 30%,rgb(47, 0, 255))",
                             bgcolor:"red",
                             boxShadow: 6,
                             borderRadius: 3,
+                            mb: 2,
 							borderColor: "black",
-							boxShadow: "0 10px 50px rgb(0, 0, 0)"
+							boxShadow: "0 10px 50px rgb(0, 0, 0)",
+                            '& .MuiTabs-flexContainer': {
+                                flexWrap: 'wrap',
+                              },
                         }}
         >
           <Tab value={0} sx={{ color: '#fbff00', fontSize: "30px", padding:"20px"}} onClick={() => handleUpdatePlayer(dispatch)} label="General"  />
@@ -223,7 +228,7 @@ const UpdatePlayerTeam = () => {
                         p={1}
                         sx={{
                             border: '2px solid grey',
-                            background: "linear-gradient(-45deg, #711ce0 0%, #000046 60% )",
+                            background: "linear-gradient(45deg, rgb(59, 4, 26) 30%,rgb(47, 0, 255))",
                             borderRadius: "20px",
                             flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
                             flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
@@ -246,7 +251,7 @@ const UpdatePlayerTeam = () => {
                                 <div style={{ width: '100%', }}>
                                     <DataGrid
                                         sx={{
-                                            background: "linear-gradient(-45deg, #711ce0 0%, #000046 60% )",
+                                            background: "linear-gradient(45deg, rgb(59, 4, 26) 30%,rgb(47, 0, 255))",
                                             borderRadius: "20px",
                                             boxShadow: 12,
                                             m: 2,
@@ -290,7 +295,7 @@ const UpdatePlayerTeam = () => {
                         </Grid>
 
 
-                        <button className="post_season" type='submit' onClick={(e) => handleSubmit(e)}><FormattedMessage id="project.global.buttons.save" /></button>
+                        <button className="post_player" type='submit' onClick={(e) => handleSubmit(e)}><FormattedMessage id="project.global.buttons.save" /></button>
 
                     </Box>
                 )}
