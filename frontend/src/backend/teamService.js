@@ -6,6 +6,9 @@ export const findAllTeams = (onSuccess) =>
 export const findTeamById = (id, onSuccess) =>
     appFetch(`/teams/${id}`, config('GET'), onSuccess);
 
+export const findTeamByPlayer = (playerId, onSuccess) =>
+    appFetch(`/teams/player/${playerId}`, config('GET'), onSuccess);
+
 export const findTeamByName = (name, onSuccess) =>{
     appFetch(`/teams/?name=${name}`, config('GET'), onSuccess);
 }
