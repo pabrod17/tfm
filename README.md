@@ -175,7 +175,7 @@ Court board design:
 
 Plays animator design:
 
-![ToolBare](playsAnimatorHome.png)
+![ToolBare](playsAnimatorHome1.png)
 
 Calendar Home design:
 

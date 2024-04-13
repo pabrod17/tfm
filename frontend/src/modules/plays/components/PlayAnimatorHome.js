@@ -22,6 +22,11 @@ import image22 from './jugador2.jpeg';
 import image23 from './bolaaaa2.jpeg';
 import image1 from './47.jpeg';
 import image2 from './12negro.jpeg';
+import image3 from './numeroVerde.png';
+import image4 from './numero11.jpeg';
+import image5 from './numeroNegro1.png';
+// import image5 from './numeroAmarillo.png';
+
 import { borderColor } from '@mui/system';
 
 const Court = ({ children, onPositionSelect }) => {
@@ -118,6 +123,27 @@ const Court = ({ children, onPositionSelect }) => {
         steps: [],
         color:"blue",
         backgroundImage:`url(${image2})`
+      },
+      {
+        id: 3,
+        position: { top: 320, left: 0 },
+        steps: [],
+        color:"blue",
+        backgroundImage:`url(${image3})`
+      },
+      {
+        id: 4,
+        position: { top: 480, left: 0 },
+        steps: [],
+        color:"blue",
+        backgroundImage:`url(${image4})`
+      },
+      {
+        id: 5,
+        position: { top: 640, left: 0 },
+        steps: [],
+        color:"blue",
+        backgroundImage: `url(${image5})`,
       },
       // Add more players as needed
     ]);
