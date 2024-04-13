@@ -132,7 +132,7 @@ const UpdateTeam = () => {
 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" 
                         sx={{
-                            background: "radial-gradient(circle, #ff4800 -10%, #000000 100%)",
+                            background: "radial-gradient(circle, #cf3e05 -10%, #000000 100%)",
                             bgcolor:"red",
                             boxShadow: 6,
                             borderRadius: 3,
