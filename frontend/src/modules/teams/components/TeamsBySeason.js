@@ -17,6 +17,10 @@ const handleRemoveTeamToSeason = (id, seasonId, dispatch, history) => {
     dispatch(actions.removeTeamToSeason(seasonId, id, () => window.location.reload()));
 }
 
+const handleUpdateItem = (id, dispatch, history) => {
+  dispatch(actions.findTeamById(id, () => history(`/teams/update/${id}`)));
+}
+
 // const handleUpdateExercise = (id, dispatch, history) => {
 //     dispatch(actions.findExerciseById(id, () => history(`/exercises/update/${id}`)));
 // }
@@ -68,6 +72,10 @@ const TeamCard = ({ dispatch, seasonId, history, item, handleOpenDescriptionModa
                 <li><a type="button" onClick={() => handleRemoveTeamToSeason(item.id, seasonId, dispatch, history)}>
                   <i class="fa fa-trash"></i></a></li>
               </ul>
+              <ul class="social-icons configgrande config_position">
+                      <li><a type="button" onClick={() => handleUpdateItem(item.id, dispatch, history)}>
+                      <i class="fa fa-wrench"></i></a></li>
+                  </ul>
             </div>
           </div>
         </div>

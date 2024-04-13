@@ -16,6 +16,10 @@ const handleRemoveExerciseToTraining = (id, trainingId, dispatch, history) => {
     dispatch(actions.removeExerciseToTraining(trainingId, id, () => window.location.reload()));
 }
 
+const handleUpdateExercise = (id, dispatch, history) => {
+  dispatch(actions.findExerciseById(id, () => history(`/exercises/update/${id}`)));
+}
+
 const style = {
   position: 'absolute',
   top: '50%',
@@ -58,6 +62,10 @@ const ExerciseCard = ({ dispatch, trainingId, history, item, handleOpenDescripti
               <ul class="social-icons trashgrande trash_position">
                 <li><a type="button" onClick={() => handleRemoveExerciseToTraining(item.id, trainingId, dispatch, history)}>
                   <i class="fa fa-trash"></i></a></li>
+              </ul>
+              <ul class="social-icons configgrande config_position">
+                <li><a type="button" onClick={() => handleUpdateExercise(item.id, dispatch, history)}>
+                  <i class="fa fa-wrench"></i></a></li>
               </ul>
             </div>
           </div>

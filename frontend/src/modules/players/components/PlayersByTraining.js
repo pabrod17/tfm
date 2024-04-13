@@ -47,8 +47,8 @@ const handleFindTrainingsToPlayer = (playerId, dispatch, history) => {
     dispatch(actionsTrainings.removePlayerToTraining(playerId, trainingId, () => window.location.reload()));
   }
   
-  const handleUpdatePlayer = (playerId, id, dispatch, history) => {
-    dispatch(actions.findPlayerByIdOfTeam(playerId, id, () => history(`/players/update/${id}`)));
+  const handleUpdatePlayer = (id, dispatch, history) => {
+    dispatch(actions.findPlayerById(id, () => history(`/players/update/${id}`)));
   }
   
   const handleViewPlayer = (playerId, id, dispatch, history) => {
@@ -249,6 +249,10 @@ const handleFindTrainingsToPlayer = (playerId, dispatch, history) => {
                   <ul class="social-icons trashgrande trash_position">
                     <li><a type="button" onClick={() => handleRemovePlayerToTraining(item.id, trainingId, dispatch, history)}>
                       <i class="fa fa-trash"></i></a></li>
+                  </ul>
+                  <ul class="social-icons configgrande config_position">
+                      <li><a type="button" onClick={() => handleUpdatePlayer(item.id, dispatch, history)}>
+                      <i class="fa fa-wrench"></i></a></li>
                   </ul>
                 </div>
               </div>

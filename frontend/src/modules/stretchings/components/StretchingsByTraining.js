@@ -16,9 +16,9 @@ const handleRemoveStretchingToTraining = (id, trainingId, dispatch, history) => 
     dispatch(actions.removeStretchingToTraining(trainingId, id, () => window.location.reload()));
 }
 
-// const handleUpdateStretching = (id, dispatch, history) => {
-//     dispatch(actions.findStretchingById(id, () => history(`/stretchings/update/${id}`)));
-// }
+const handleUpdateStretching = (id, dispatch, history) => {
+    dispatch(actions.findStretchingById(id, () => history(`/stretchings/update/${id}`)));
+}
 
 // const handleViewStretching = (id, dispatch, history) => {
 //     dispatch(actions.findStretchingById(id, () => history(`/stretchings/view/${id}`)));
@@ -62,6 +62,10 @@ const StretchingCard = ({ dispatch, trainingId, history, item, handleOpenDescrip
               <ul class="social-icons trashgrande trash_position">
                 <li><a type="button" onClick={() => handleRemoveStretchingToTraining(item.id, trainingId, dispatch, history)}>
                   <i class="fa fa-trash"></i></a></li>
+              </ul>
+              <ul class="social-icons configgrande config_position">
+                <li><a type="button" onClick={() => handleUpdateStretching(item.id, dispatch, history)}>
+                  <i class="fa fa-wrench"></i></a></li>
               </ul>
             </div>
           </div>

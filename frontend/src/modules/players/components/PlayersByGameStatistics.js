@@ -47,8 +47,8 @@ const handleFindTrainingsToPlayer = (playerId, dispatch, history) => {
     dispatch(actionGames.removePlayerToGame(playerId, gameId, () => window.location.reload()));
   }
   
-  const handleUpdatePlayer = (playerId, id, dispatch, history) => {
-    dispatch(actions.findPlayerByIdOfTeam(playerId, id, () => history(`/players/update/${id}`)));
+  const handleUpdatePlayer = (id, dispatch, history) => {
+    dispatch(actions.findPlayerById(id, () => history(`/players/update/${id}`)));
   }
   
   const handleViewPlayer = (playerId, id, dispatch, history) => {

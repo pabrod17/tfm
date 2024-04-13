@@ -16,9 +16,9 @@ const handleRemoveExerciseToGame = (id, gameId, dispatch, history) => {
     dispatch(actions.removeExerciseToGame(gameId, id, () => window.location.reload()));
 }
 
-// const handleUpdateExercise = (id, dispatch, history) => {
-//     dispatch(actions.findExerciseById(id, () => history(`/exercises/update/${id}`)));
-// }
+const handleUpdateExercise = (id, dispatch, history) => {
+  dispatch(actions.findExerciseById(id, () => history(`/exercises/update/${id}`)));
+}
 
 // const handleViewExercise = (id, dispatch, history) => {
 //     dispatch(actions.findExerciseById(id, () => history(`/exercises/view/${id}`)));
@@ -66,6 +66,10 @@ const ExerciseCard = ({ dispatch, gameId, history, item, handleOpenDescriptionMo
               <ul class="social-icons trashgrande trash_position">
                 <li><a type="button" onClick={() => handleRemoveExerciseToGame(item.id, gameId, dispatch, history)}>
                   <i class="fa fa-trash"></i></a></li>
+              </ul>
+              <ul class="social-icons configgrande config_position">
+                <li><a type="button" onClick={() => handleUpdateExercise(item.id, dispatch, history)}>
+                  <i class="fa fa-wrench"></i></a></li>
               </ul>
             </div>
           </div>

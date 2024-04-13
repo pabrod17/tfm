@@ -63,6 +63,10 @@ const StretchingCard = ({ dispatch, gameId, history, item, handleOpenDescription
                 <li><a type="button" onClick={() => handleRemoveStretchingToGame(item.id, gameId, dispatch, history)}>
                   <i class="fa fa-trash"></i></a></li>
               </ul>
+              <ul class="social-icons configgrande config_position">
+                <li><a type="button" onClick={() => handleUpdateStretching(item.id, dispatch, history)}>
+                  <i class="fa fa-wrench"></i></a></li>
+              </ul>
             </div>
           </div>
         </div>
