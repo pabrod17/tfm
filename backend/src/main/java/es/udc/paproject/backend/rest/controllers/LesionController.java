@@ -110,9 +110,11 @@ public class LesionController {
     }
 
     @PostMapping("/{playerId}/addLesionToPlayer")
-    public void addLesionToPlayer(@PathVariable Long playerId, @RequestParam Long lesionId)
+    public void addLesionToPlayer(@PathVariable Long playerId, @RequestParam List<Long> lesionId)
             throws InstanceNotFoundException {
-        lesionService.addLesionToPlayer(playerId, lesionId);
+        for (Long id : lesionId) {
+            lesionService.addLesionToPlayer(playerId, id);
+        }
     }
 
     @PutMapping("/{lesionId}")
