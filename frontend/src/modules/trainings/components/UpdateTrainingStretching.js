@@ -75,7 +75,7 @@ const UpdateTrainingStretching = () => {
         
             const columnsStretchings2 = [
                 { field: 'id', headerName: 'ID', width: 70 },
-                { field: 'name', headerName: <FormattedMessage id="project.stretchings.fields.stretchingName"/>, width: 160 },
+                { field: 'name', headerName: <FormattedMessage id="project.stretchings.fields.stretchingName"/>, width: 300 },
                 { field: 'type', headerName: <FormattedMessage id="project.stretchings.fields.stretchingType" />, width: 160,
                 renderCell: (params) => (
                     <div style={{ backgroundColor: 
@@ -100,7 +100,7 @@ const UpdateTrainingStretching = () => {
 
 
 
-                { field: 'description', headerName: <FormattedMessage id="project.exercises.fields.description" />, width: 160 }
+                { field: 'description', headerName: <FormattedMessage id="project.exercises.fields.description" />, width: 300 }
             ];
             setColumnsStretchings(columnsStretchings2);
 
@@ -201,7 +201,10 @@ const UpdateTrainingStretching = () => {
                             borderRadius: 3,
                             mb:2,
                             borderColor:"black",
-                            boxShadow:"0 10px 50px rgb(0, 0, 0)"
+                            boxShadow:"0 10px 50px rgb(0, 0, 0)",
+                            '& .MuiTabs-flexContainer': {
+                                flexWrap: 'wrap',
+                              },
                         }}
         >
           <Tab value={0} sx={{ color: '#40FF00', fontSize: "30px", padding:"20px"}} onClick={() => handleUpdateTraining(0, dispatch)} label="General"  />

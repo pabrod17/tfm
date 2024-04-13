@@ -170,7 +170,10 @@ const UpdateSeasonTeam = () => {
                             borderRadius: 3,
                             mb: 2,
                             borderColor: "black",
-                            boxShadow: "0 10px 50px rgb(0, 0, 0)"
+                            boxShadow: "0 10px 50px rgb(0, 0, 0)",
+                            '& .MuiTabs-flexContainer': {
+                                flexWrap: 'wrap',
+                              },
                         }}
                     >
                         <Tab value={0} sx={{ color: '#40FF00', fontSize: "30px", padding: "20px" }} onClick={() => handleUpdateSeason(0, dispatch)} label="General" />

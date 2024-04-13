@@ -102,7 +102,7 @@ const UpdateTeamPlay = () => {
                     </div>
                 ), },
                 { field: 'gesture', headerName: <FormattedMessage id="project.plays.fields.gesture" />, width: 160 },
-                { field: 'description', headerName: <FormattedMessage id="project.exercises.fields.description" />, width: 160 },
+                { field: 'description', headerName: <FormattedMessage id="project.exercises.fields.description" />, width: 300 },
             ];
             setColumnsPlays(columnsPlays2);
 
@@ -187,7 +187,6 @@ const UpdateTeamPlay = () => {
             <Box
                 sx={{
                     bgcolor: 'background.dark',
-                    boxShadow: 1,
                     borderRadius: 4,
                     margin: 'auto',  // Centra horizontalmente
                     marginTop: '80px', // Ajusta la distancia desde la parte superior según sea necesario
@@ -203,7 +202,10 @@ const UpdateTeamPlay = () => {
                             borderRadius: 3,
                             mb: 2,
                             borderColor: "black",
-                            boxShadow: "0 10px 50px rgb(0, 0, 0)"
+                            boxShadow: "0 10px 50px rgb(0, 0, 0)",
+                            '& .MuiTabs-flexContainer': {
+                                flexWrap: 'wrap',
+                              },
                         }}
                     >
                         <Tab value={0} sx={{ color: '#fbff00', fontSize: "30px", padding: "20px" }} onClick={() => handleUpdateTeam(0, dispatch)} label="General" />

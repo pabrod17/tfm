@@ -74,7 +74,7 @@ const UpdateGameStretching = () => {
         
             const columnsStretchings2 = [
                 { field: 'id', headerName: 'ID', width: 70 },
-                { field: 'name', headerName: <FormattedMessage id="project.stretchings.fields.stretchingName"/>, width: 160 },
+                { field: 'name', headerName: <FormattedMessage id="project.stretchings.fields.stretchingName"/>, width: 300 },
                 { field: 'type', headerName: <FormattedMessage id="project.stretchings.fields.stretchingType" />, width: 160,
                 renderCell: (params) => (
                     <div style={{ backgroundColor: 
@@ -87,6 +87,7 @@ const UpdateGameStretching = () => {
                         params.row.type === 'Espalda' ? '#8E2DE2' : // Morado oscuro
                         params.row.type === 'Pectoral' ? '#00FFF3' : // Negro
                         params.row.type === 'Ingle' ? '#FFFF00' : // Negro
+                        params.row.type === 'Triceps' ? '#0c0fd4' : // Verde esmeralda
                         'green', // Por defecto
                         borderRadius: '5px',
                         padding: '5px'
@@ -99,7 +100,7 @@ const UpdateGameStretching = () => {
 
 
 
-                { field: 'description', headerName: <FormattedMessage id="project.exercises.fields.description" />, width: 160 }
+                { field: 'description', headerName: <FormattedMessage id="project.exercises.fields.description" />, width: 300 }
             ];
             setColumnsStretchings(columnsStretchings2);
 
@@ -200,7 +201,10 @@ const UpdateGameStretching = () => {
                             borderRadius: 3,
                             mb:2,
                             borderColor:"black",
-                            boxShadow:"0 10px 50px rgb(0, 0, 0)"
+                            boxShadow:"0 10px 50px rgb(0, 0, 0)",
+                            '& .MuiTabs-flexContainer': {
+                                flexWrap: 'wrap',
+                              },
                         }}
         >
           <Tab value={0} sx={{ color: '#40FF00', fontSize: "30px", padding:"20px"}} onClick={() => handleUpdateGame(0, dispatch)} label="General"  />

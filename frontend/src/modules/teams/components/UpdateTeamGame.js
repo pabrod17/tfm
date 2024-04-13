@@ -133,7 +133,10 @@ const UpdateTeamGame = () => {
                             borderRadius: 3,
                             mb: 2,
                             borderColor: "black",
-                            boxShadow: "0 10px 50px rgb(0, 0, 0)"
+                            boxShadow: "0 10px 50px rgb(0, 0, 0)",
+                            '& .MuiTabs-flexContainer': {
+                                flexWrap: 'wrap',
+                              },
                         }}
                     >
                         <Tab value={0} sx={{ color: '#fbff00', fontSize: "30px", padding: "20px" }} onClick={() => handleUpdateTeam(0, dispatch)} label="General" />

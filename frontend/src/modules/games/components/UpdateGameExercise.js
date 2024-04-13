@@ -77,7 +77,7 @@ const UpdateGameExercise = () => {
 
             const columnsExercises2 = [
                 { field: 'id', headerName: 'ID', width: 70 },
-                { field: 'name', headerName: <FormattedMessage id="project.exercises.fields.name"/>, width: 160 },
+                { field: 'name', headerName: <FormattedMessage id="project.exercises.fields.name"/>, width: 300 },
                 { field: 'type', headerName: <FormattedMessage id="project.exercises.fields.typeOnly" />, width: 160,
                 renderCell: (params) => (
                     <div style={{ backgroundColor: 
@@ -95,8 +95,8 @@ const UpdateGameExercise = () => {
                     {params.value}
                     </div>
                 ), },
-                { field: 'description', headerName: <FormattedMessage id="project.exercises.fields.description" />, width: 160 },
-                { field: 'objective', headerName: <FormattedMessage id="project.exercises.fields.objective" />, width: 160 },
+                { field: 'description', headerName: <FormattedMessage id="project.exercises.fields.description" />, width: 300 },
+                { field: 'objective', headerName: <FormattedMessage id="project.exercises.fields.objective" />, width: 300 },
             ];
             setColumnsExercises(columnsExercises2);
 
@@ -197,7 +197,10 @@ const UpdateGameExercise = () => {
                             borderRadius: 3,
                             mb:2,
                             borderColor:"black",
-                            boxShadow:"0 10px 50px rgb(0, 0, 0)"
+                            boxShadow:"0 10px 50px rgb(0, 0, 0)",
+                            '& .MuiTabs-flexContainer': {
+                                flexWrap: 'wrap',
+                              },
                         }}
         >
           <Tab value={0} sx={{ color: '#40FF00', fontSize: "30px", padding:"20px"}} onClick={() => handleUpdateGame(0, dispatch)} label="General"  />

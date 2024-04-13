@@ -85,7 +85,8 @@ const UpdateGamePlayer = () => {
             const columnsPlayers2 = [
                 { field: 'id', headerName: 'ID', width: 70 },
                 { field: 'name', headerName: <FormattedMessage id="project.players.fields.playerName"/>, width: 160 },
-                { field: 'primaryLastName', headerName: <FormattedMessage id="project.players.fields.primaryLastName" />, width: 160},
+                { field: 'primaryLastName', headerName: <FormattedMessage id="project.players.fields.primaryLastName" />, width: 200},
+                { field: 'secondLastName', headerName: <FormattedMessage id="project.players.fields.secondLastName" />, width: 200},
                 { field: 'position', headerName: <FormattedMessage id="project.players.fields.position" />, width: 160,
                 renderCell: (params) => (
                     <div style={{ backgroundColor: 
@@ -114,7 +115,7 @@ const UpdateGamePlayer = () => {
                     </div>
                 ), },
                 { field: 'teamName', headerName: <FormattedMessage id="project.teams.fields.team" />, width: 160},
-                { field: 'email', headerName: <FormattedMessage id="project.players.fields.email" />, width: 160},
+                { field: 'email', headerName: <FormattedMessage id="project.players.fields.email" />, width: 200},
 
             ];
             setColumnsPlayers(columnsPlayers2);
@@ -125,6 +126,7 @@ const UpdateGamePlayer = () => {
                     id: player.id,
                     name: player.playerName,
                     primaryLastName: player.primaryLastName,
+                    secondLastName: player.secondLastName,
                     position: player.position,
                     injured: player.injured,
                     teamName: teamssListAll.teams.find(team => team.id === player.teamId)?.teamName || '',
@@ -221,7 +223,10 @@ const UpdateGamePlayer = () => {
                             borderRadius: 3,
                             mb:2,
                             borderColor:"black",
-                            boxShadow:"0 10px 50px rgb(0, 0, 0)"
+                            boxShadow:"0 10px 50px rgb(0, 0, 0)",
+                            '& .MuiTabs-flexContainer': {
+                                flexWrap: 'wrap',
+                              },
                         }}
         >
           <Tab value={0} sx={{ color: '#40FF00', fontSize: "30px", padding:"20px"}} onClick={() => handleUpdateGame(0, dispatch)} label="General"  />

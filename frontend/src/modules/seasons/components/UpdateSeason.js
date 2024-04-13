@@ -136,7 +136,10 @@ const UpdateSeason = () => {
                             boxShadow: 6,
                             borderRadius: 3,
 							borderColor: "black",
-							boxShadow: "0 10px 50px rgb(0, 0, 0)"
+							boxShadow: "0 10px 50px rgb(0, 0, 0)",
+                            '& .MuiTabs-flexContainer': {
+                                flexWrap: 'wrap',
+                              },
                         }}
         >
           <Tab sx={{ color: '#40FF00', fontSize: "30px", padding:"20px"}} onClick={() => handleUpdateSeason(dispatch)} label="General"  />
