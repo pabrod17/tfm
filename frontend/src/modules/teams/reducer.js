@@ -18,7 +18,9 @@ const team = (state = initialState.team, action) => {
         case actionTypes.UPDATE_TEAM_COMPLETED:
             return action.team;
         case actionTypes.FIND_TEAM_BY_NAME_COMPLETED:
-            return action.team;                
+            return action.team;
+        case actionTypes.FIND_TEAM_BY_PLAYER_COMPLETED:
+            return action.team;
         case actionTypes.FIND_TEAM_BY_ID_COMPLETED:
             return action.team;
         case actionTypes.REMOVE_TEAM_COMPLETED:

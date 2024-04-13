@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useEffect, useState, createContext } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 import {FormattedMessage} from 'react-intl';
@@ -6,9 +6,25 @@ import {FormattedMessage} from 'react-intl';
 import {Errors} from '../../common';
 import * as actions from '../actions';
 import * as selectors from '../selectors';
-import * as actionsTeams from '../../teams/actions';
 import * as selectorsTeams from '../../teams/selectors';
 import {useParams} from 'react-router-dom';
+
+import * as actionsTeams from '../../teams/actions';
+import * as actionsTrainings from '../../trainings/actions';
+import * as actionsGames from '../../games/actions';
+import * as actionsLesion from '../../lesion/actions';
+import * as actionsStretching from '../../stretchings/actions';
+import * as actionsNote from '../../notes/actions';
+
+import perfil2 from './perfil2.jpeg'; //1920x1200
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import { Box, Button, FilledInput, Grid, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material';
+import { DataGrid } from '@mui/x-data-grid';
+import Typography from '@mui/material/Typography';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
 
 const UpdatePlayer = () => {
 
@@ -16,38 +32,103 @@ const UpdatePlayer = () => {
     const {id} = useParams();
     const dispatch = useDispatch();
     const history = useNavigate();
+
+    const [position, setPosition] = useState(player.position);
+    const [playerName, setPlayerName] = useState(player.playerName);
+    const [primaryLastName, setPrimaryLastName] = useState(player.primaryLastName);
+    const [secondLastName, setSecondLastName] = useState(player.secondLastName);
+
     const [dni, setDni] = useState(player.dni);
     const [email, setEmail] = useState(player.email);
     const [phoneNumber, setPhoneNumber] = useState(player.phoneNumber);
-    const [playerName, setPlayerName] = useState(player.playerName);
-    const [position, setPosition] = useState(player.position);
-    const [primaryLastName, setPrimaryLastName] = useState(player.primaryLastName);
-    const [secondLastName, setSecondLastName] = useState(player.secondLastName);
-    const [teamId, setTeamId] = useState(player.teamId);
+
     const [trends, setTrends] = useState(player.trends);
     const [backendErrors, setBackendErrors] = useState(null);
+    const [emailError, setEmailError] = useState(false);
+    const [phoneNumberError, setPhoneNumberError] = useState(false);
+    const [dniError, setDniError] = useState(false);
+
+    const [value, setValue] = useState(0);
     let form;
 
-    const handleSubmit = event => {
+    const teamUser = useSelector(selectorsTeams.getTeam);
+    useEffect(() => {
+        if (!teamUser) {
+            dispatch(actionsTeams.findTeamByPlayer(id, () => history(`/players/update/${id}`)));
+            dispatch(actions.findPlayerById(id, () => history(`/players/update/${id}`)));
+        }
+    }, [dispatch, teamUser, history, id]);
+
+    const handleChange = (event) => {
+        setPosition(event.target.value);
+      };
+
+    const handleEmailChange = (e) => {
+        const inputEmail = e.target.value;
+        setEmail(inputEmail);
+    
+        // Expresión regular para validar el formato de email
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+        // Verifica si el email cumple con el patrón
+        setEmailError(!emailPattern.test(inputEmail));
+      };
+
+    const handlePhoneNumberChange = (e) => {
+        const inputPhoneNumber = e.target.value;
+        setPhoneNumber(inputPhoneNumber);
+
+        // Expresión regular para validar un número de teléfono de 9 cifras
+        const phoneNumberPattern = /^\d{9}$/;
+
+        // Verifica si el número de teléfono cumple con el patrón
+        setPhoneNumberError(!phoneNumberPattern.test(inputPhoneNumber));
+    };
+
+    const handleDniChange = (e) => {
+        const inputDni = e.target.value.toUpperCase(); // Convertimos a mayúsculas para asegurar la letra final
+    
+        // Expresión regular para validar un número de DNI español
+        const dniPattern = /^\d{8}[A-Z]$/;
+    
+        // Verifica si el número de DNI cumple con el patrón
+        setDniError(!dniPattern.test(inputDni));
+        setDni(inputDni);
+      };
+
+
+      useEffect(() => {
+        if (!player) {
+            dispatch(actions.findPlayerById(id, () => history(`/players/update/${id}`)));
+        } else {
+            setPlayerName(player.playerName);
+            setPrimaryLastName(player.primaryLastName);
+            setSecondLastName(player.secondLastName);
+
+            setPosition(player.position);
+
+            setDni(player.dni);
+            setEmail(player.email);
+            setPhoneNumber(player.phoneNumber);
+            setTrends(player.trends);
+        }
+    }, [dispatch, player, history, id]);
+
+
+
+      const handleSubmit = event => {
 
         event.preventDefault();
-    
-        if (form.checkValidity()) {
             
-            dispatch(actions.updatePlayer(player.id, teamId, playerName.trim(), 
+            dispatch(actions.updatePlayer(player.id, playerName.trim(), 
             primaryLastName.trim(), secondLastName.trim(), position, trends.trim(),
             phoneNumber.trim(), email.trim(), dni.trim(),
-            () => reloadWindow(id),
+            () => reloadWindow(),
             errors => setBackendErrors(errors),
             ));
-        } else {
-            setBackendErrors(null);
-            form.classList.add('was-validated');
-            }
         }
-    
-        const reloadWindow = (id) =>{
-            history(`/players/home/${id}`);
+        const reloadWindow = () =>{
+            history(`/players/home`);
             window.location.reload('true');
         }
 
@@ -66,179 +147,351 @@ const UpdatePlayer = () => {
         const center = "Pivot";
 
 
+        const handleUpdatePlayer = (dispatch) => {
+            dispatch(actions.findPlayerById(id, () => history(`/players/update/${id}`)));
+        }
+        const handleUpdatePlayerTeams = (tabValue, dispatch) => {
+            setValue(tabValue);
+            dispatch(actionsTeams.findTeamByPlayer(id, () =>  console.log("hola")));
+            dispatch(actions.findPlayerById(id, () => {
+                dispatch(actionsTeams.findTeamByPlayer(id, () => history(`/players/update/${id}/team/${tabValue}`)));
+
+            }));
+            history(`/players/update/${id}/team/${tabValue}`);
+        }
+        const handleUpdatePlayerGames = (tabValue, dispatch) => {
+            setValue(tabValue);
+            dispatch(actions.findPlayerById(id, () => {
+                dispatch(actionsGames.findGamesByPlayerId(id, () => history(`/players/update/${id}/game/${tabValue}`)));
+            }));
+            history(`/players/update/${id}/game/${tabValue}`);
+        }
+        const handleUpdateTeamTrainings = (tabValue, dispatch) => {
+            setValue(tabValue);
+            dispatch(actions.findPlayerById(id, () => {
+                dispatch(actionsTrainings.findTrainingsByPlayerId(id, () => history(`/players/update/${id}/training/${tabValue}`)));
+            }));
+            history(`/players/update/${id}/training/${tabValue}`);
+        }
+        const handleUpdatePlayerLesion = (tabValue, dispatch) => {
+            setValue(tabValue);
+            dispatch(actions.findPlayerById(id, () => {
+                dispatch(actionsLesion.findLesionByPlayer(id, () => history(`/players/update/${id}/lesion/${tabValue}`)));
+            }));
+            history(`/players/update/${id}/lesion/${tabValue}`);
+        }
+        const handleUpdatePlayerStretchings = (tabValue, dispatch) => {
+            setValue(tabValue);
+            dispatch(actions.findPlayerById(id, () => {
+                dispatch(actionsStretching.findStretchingsByPlayerId(id, () => history(`/players/update/${id}/stretching/${tabValue}`)));
+            }));
+            history(`/players/update/${id}/stretching/${tabValue}`);
+        }
+        const handleUpdatePlayerNotes = (tabValue, dispatch) => {
+            setValue(tabValue);
+            dispatch(actions.findPlayerById(id, () => {
+                dispatch(actionsNote.findNotesByPlayer(id, () => history(`/players/update/${id}/note/${tabValue}`)));
+            }));
+            history(`/players/update/${id}/note/${tabValue}`);
+        }
+
+
 
     return(
 
-        <div>
-            <Errors errors={backendErrors} onClose={() => setBackendErrors(null)}/>
-            <div className="card bg-light border-dark centrado-update-add">
-                <h5 className="card-header">
-                <FormattedMessage id="project.players.fields.updatePlayer"/>
-                </h5>
-                <div className="card-body">
-                    <form ref={node => form = node} 
-                        className="needs-validation" noValidate onSubmit={e => handleSubmit(e)}>
-                        <div className="form-group row">
-                            <label htmlFor="firstName" className="col-md-5 col-form-label">
-                            <FormattedMessage id="project.players.fields.playerName"/>
-                            </label>
-                            <div className="col-md-4">
-                                <input type="text" id="playerName" className="form-control"
-                                    value={playerName}
-                                    onChange={e => setPlayerName(e.target.value)}
-                                    autoFocus
-                                    required/>
-                                <div className="invalid-feedback">
-                                    <FormattedMessage id='project.global.validator.required'/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="form-group row">
-                            <label htmlFor="firstName" className="col-md-5 col-form-label">
-                            <FormattedMessage id="project.players.fields.primaryLastName"/>
-                            </label>
-                            <div className="col-md-4">
-                                <input type="text" id="primaryLastName" className="form-control"
-                                    value={primaryLastName}
-                                    onChange={e => setPrimaryLastName(e.target.value)}
-                                    autoFocus
-                                    required/>
-                                <div className="invalid-feedback">
-                                    <FormattedMessage id='project.global.validator.required'/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="form-group row">
-                            <label htmlFor="firstName" className="col-md-5 col-form-label">
-                            <FormattedMessage id="project.players.fields.secondLastName"/>
-                            </label>
-                            <div className="col-md-4">
-                                <input type="text" id="secondLastName" className="form-control"
-                                    value={secondLastName}
-                                    onChange={e => setSecondLastName(e.target.value)}
-                                    autoFocus
-                                    required/>
-                                <div className="invalid-feedback">
-                                    <FormattedMessage id='project.global.validator.required'/>
-                                </div>
-                            </div>
-                        </div>
+<Box
+            display="flex"
+            alignItems="center"
+            p={1}
+            sx={{
+                flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
+            }}
+        >
+<Box
+    sx={{
+        bgcolor: 'background.dark',
+        boxShadow: 1,
+        borderRadius: 4,
+        margin: 'auto',  // Centra horizontalmente
+        marginTop: '80px', // Ajusta la distancia desde la parte superior según sea necesario
+        textAlign: 'center', // Centra el contenido dentro del Box
+        borderColor:"black",
+        boxShadow:"0 10px 50px rgb(0, 0, 0)"
+    }}>
 
-
-                        <div className=" row">
-                        <label htmlFor="firstName" className="col-md-5 col-form-label">
-                        <FormattedMessage id="project.players.fields.position"/>
-                            </label>
-                        <div class="dropdown">
-                            <button class="dropbtn">{position} 
-                            <i class="fa fa-caret-down"></i>
-                            </button>
-                            <div class="dropdown-content">
-                            <a type="button" onClick={() => setPosition(pointGuard)} ><FormattedMessage id="project.players.fields.pointGuard"/></a>
-                                <a type="button" onClick={() => setPosition(shootingGuard)} ><FormattedMessage id="project.players.fields.shootingGuard"/></a>
-                                <a type="button" onClick={() => setPosition(smallForward)} ><FormattedMessage id="project.players.fields.smallForward"/></a>
-                                <a type="button" onClick={() => setPosition(powerForward)} ><FormattedMessage id="project.players.fields.powerForward"/></a>
-                                <a type="button" onClick={() => setPosition(center)} ><FormattedMessage id="project.players.fields.center"/></a>
-                            </div>
-                        </div>
-                        </div>
+<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" 
+                        sx={{
+                            background: "linear-gradient(-45deg, #711ce0 0%, #000046 60% )",
+                            bgcolor:"red",
+                            boxShadow: 6,
+                            borderRadius: 3,
+							borderColor: "black",
+							boxShadow: "0 10px 50px rgb(0, 0, 0)"
+                        }}
+        >
+          <Tab sx={{ color: '#fbff00', fontSize: "30px", padding:"20px"}} onClick={() => handleUpdatePlayer(dispatch)} label="General"  />
+          <Tab sx={{ color: '#6024af', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerTeams(1, dispatch)} label="Teams"  />
+          <Tab sx={{ color: '#760606', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerGames(2, dispatch)} label="Games"/>
+          <Tab sx={{ color: '#d17403', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTeamTrainings(3, dispatch)} label="Trainings"/>
+          <Tab sx={{ color: '#01dde1', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerLesion(4, dispatch)} label="Lesion"/>
+          <Tab sx={{ color: '#e900d5', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerStretchings(5, dispatch)} label="Stretchings"/>
+          <Tab sx={{ color: '#39ec02', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerNotes(6, dispatch)} label="Notes"/>
+        </Tabs>
+      </Box>
+</Box>
 
 
 
+<Box
+			my={4}
+			display="flex"
+			alignItems="center"
+			gap={4}
+			p={5}
+			m={10}
+			sx={{
+                maxWidth: { sm: 1635 },
+				border: '2px solid grey',
+                background: "linear-gradient(45deg, rgb(59, 4, 26) 30%,rgb(47, 0, 255))",
+				borderRadius: "20px",
+				flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
+				flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
+				borderColor:"black",
+				boxShadow:"0 10px 50px rgb(0, 0, 0)"
+			}}
+		>
+            <Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
+			<Grid container margin={5} spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
+			>
+				<Grid item md={12}>
+                <img src={perfil2} alt="Person" class="card__image_player_update_create"></img>
 
-                        <div className="form-group row">
-                            <label htmlFor="firstName" className="col-md-5 col-form-label">
-                            <FormattedMessage id="project.players.fields.trends"/>
-                            </label>
-                            <div className="col-md-4">
-                                <input type="text" id="trends" className="form-control"
-                                    value={trends}
-                                    onChange={e => setTrends(e.target.value)}
-                                    autoFocus
-                                    required/>
-                                <div className="invalid-feedback">
-                                    <FormattedMessage id='project.global.validator.required'/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="form-group row">
-                            <label htmlFor="firstName" className="col-md-5 col-form-label">
-                            <FormattedMessage id="project.players.fields.phoneNumber"/>
-                            </label>
-                            <div className="col-md-4">
-                                <input type="text" id="phoneNumber" className="form-control"
-                                    value={phoneNumber}
-                                    onChange={e => setPhoneNumber(e.target.value)}
-                                    autoFocus
-                                    required/>
-                                <div className="invalid-feedback">
-                                    <FormattedMessage id='project.global.validator.required'/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="form-group row">
-                            <label htmlFor="firstName" className="col-md-5 col-form-label">
-                            <FormattedMessage id="project.players.fields.email"/>
-                            </label>
-                            <div className="col-md-4">
-                                <input type="text" id="email" className="form-control"
-                                    value={email}
-                                    onChange={e => setEmail(e.target.value)}
-                                    autoFocus
-                                    required/>
-                                <div className="invalid-feedback">
-                                    <FormattedMessage id='project.global.validator.required'/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="form-group row">
-                            <label htmlFor="firstName" className="col-md-5 col-form-label">
-                            <FormattedMessage id="project.players.fields.dni"/>
-                            </label>
-                            <div className="col-md-4">
-                                <input type="text" id="dni" className="form-control"
-                                    value={dni}
-                                    onChange={e => setDni(e.target.value)}
-                                    autoFocus
-                                    required/>
-                                <div className="invalid-feedback">
-                                    <FormattedMessage id='project.global.validator.required'/>
-                                </div>
-                            </div>
-                        </div>
+                </Grid>
 
 
-                        <div className=" row">
-                        <label htmlFor="firstName" className="col-md-5 col-form-label">
-                            <FormattedMessage id="project.teams.fields.team"/>
-                            </label>
-                        <div class="dropdown">
-                            <button class="dropbtn"><FormattedMessage id="project.teams.fields.team"/>: {teamId} 
-                            <i class="fa fa-caret-down"></i>
-                            </button>
-                            <div class="dropdown-content">
-                            {teamsList.map(team => 
-                                        <a type="button" onClick={() => setTeamId(team.id)}> 
-                                            {team.id} : {"  "}{team.teamName}
-                                        </a>)}
-                            </div>
-                        </div>
-                        </div>
+				<Grid item md={12} >
+
+					<Box
+						component="form"
+						sx={{
+							borderRadius: "20px",
+							borderColor:"black",
+                            boxShadow:"0 10px 50px rgb(0, 0, 0)"
+						}}
+						autoHeight={true} // Permitir que la tabla determine su propio tamaño si los datos no se han cargado
+						noValidate
+						autoComplete="off"
+					>
+						<Grid container spacing={2}>
+
+                        <Grid item xs={12} md={6}>
+
+								{/* <div className='form_add_training_general'> */}
+								<Box
+                                
+									component="form"
+									sx={{
+										'& .MuiTextField-root': { mb: 2, width: '100%' },
+										margin: '50px', // Centra el formulario en la pantalla
+
+									}}
+									noValidate
+									autoComplete="off"
+								>
+<FormControl sx={{ m: 1, minWidth: 150 }}>
+	  <InputLabel id="demo-simple-select-label"
+              sx={{
+                color: "#00bfff",
+				fontSize:"20px"
+              }}
+
+            ><FormattedMessage id="project.lesion.fields.lesionType" /></InputLabel>
+        <Select
+          labelId="demo-simple-select-helper-label"
+          id="demo-simple-select-helper"
+          value={position}
+          label={<FormattedMessage id="project.players.fields.position" />}
+          onChange={handleChange}
+		  sx={{
+			color: "white",
+			border: '2px solid grey',
+			borderRadius: "20px",
+			borderColor:"black",
+			boxShadow:"0 10px 10px rgb(0, 0, 0)",
+			marginBottom:"50px"
+
+		  }}
+		  inputProps={{
+			MenuProps: {
+			  MenuListProps: {
+				sx: {
+				  backgroundColor: 'rgb(58 60 84)',
+				  color: "white"
+				}
+			  }
+			}
+		  }}
+
+        >
+		<MenuItem value={pointGuard}><FormattedMessage id="project.players.fields.pointGuard" /></MenuItem>
+        <MenuItem value={shootingGuard}><FormattedMessage id="project.players.fields.shootingGuard" /></MenuItem>
+        <MenuItem value={smallForward}><FormattedMessage id="project.players.fields.smallForward" /></MenuItem>
+        <MenuItem value={powerForward}><FormattedMessage id="project.players.fields.powerForward" /></MenuItem>
+        <MenuItem value={center}><FormattedMessage id="project.players.fields.center" /></MenuItem>
+        </Select>
+      </FormControl>
+									<TextField
+										id="outlined-multiline-static-1"
+										label={<FormattedMessage id="project.players.fields.playerName" />}
+										InputLabelProps={{ style: { color: '#E8FF00', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										multiline
+										rows={4}
+										sx={{
+											border: '2px solid grey',
+											borderRadius: "20px",
+											borderColor:"black",
+											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+										}}
+										value={playerName}
+										onChange={(e) => setPlayerName(e.target.value)}
+									/>
+									<TextField
+										id="outlined-multiline-static-1"
+										label={<FormattedMessage id="project.players.fields.primaryLastName" />}
+										InputLabelProps={{ style: { color: '#E8FF00', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										multiline
+										rows={4}
+										sx={{
+											border: '2px solid grey',
+											borderRadius: "20px",
+											borderColor:"black",
+											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+										}}
+										value={primaryLastName}
+										onChange={(e) => setPrimaryLastName(e.target.value)}
+									/>
+									<TextField
+										id="outlined-multiline-static-1"
+										label={<FormattedMessage id="project.players.fields.secondLastName" />}
+										InputLabelProps={{ style: { color: '#E8FF00', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										multiline
+										rows={4}
+										sx={{
+											border: '2px solid grey',
+											borderRadius: "20px",
+											borderColor:"black",
+											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+										}}
+										value={secondLastName}
+										onChange={(e) => setSecondLastName(e.target.value)}
+									/>
+								</Box>
+							</Grid>
+                        <Grid item xs={12} md={6}>
+
+								{/* <div className='form_add_training_general'> */}
+								<Box
+                                
+									component="form"
+									sx={{
+										'& .MuiTextField-root': { mb: 2, width: '100%' },
+										margin: '50px', // Centra el formulario en la pantalla
+
+									}}
+									noValidate
+									autoComplete="off"
+								>
+									<TextField
+										id="outlined-multiline-static-1"
+										label={<FormattedMessage id="project.players.fields.email" />}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										multiline
+										rows={2}
+										sx={{
+											border: '2px solid grey',
+											borderRadius: "20px",
+											borderColor:"black",
+											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+										}}
+										value={email}
+										onChange={handleEmailChange}
+                                        error={emailError} // Activa el estado de error en TextField
+                                        helperText={emailError ? "Email no válido" : ""} // Muestra un mensaje de ayuda si hay un error
+									/>
+									<TextField
+										id="outlined-multiline-static-1"
+										label={<FormattedMessage id="project.players.fields.phoneNumber" />}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										multiline
+										rows={2}
+										sx={{
+											border: '2px solid grey',
+											borderRadius: "20px",
+											borderColor:"black",
+											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+										}}
+                                        value={phoneNumber}
+                                        onChange={handlePhoneNumberChange}
+                                        error={phoneNumberError} // Activa el estado de error en TextField
+                                        helperText={phoneNumberError ? "Número de teléfono no válido" : ""} // Muestra un mensaje de ayuda si hay un error
+                                      />
+                                    <TextField
+										id="outlined-multiline-static-1"
+										label={<FormattedMessage id="project.players.fields.dni" />}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										multiline
+										rows={2}
+										sx={{
+											border: '2px solid grey',
+											borderRadius: "20px",
+											borderColor:"black",
+											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+										}}
+										value={dni}
+                                        onChange={handleDniChange}
+                                        error={dniError} // Activa el estado de error en TextField
+                                        helperText={dniError ? "Número de DNI no válido" : ""} // Muestra un mensaje de ayuda si hay un error
+									/>
+                                    									<TextField
+										id="outlined-multiline-static-1"
+										label={<FormattedMessage id="project.players.fields.trends" />}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										multiline
+										rows={9}
+										sx={{
+											border: '2px solid grey',
+											borderRadius: "20px",
+											borderColor:"black",
+											boxShadow:"0 10px 10px rgb(0, 0, 0)",
+                                            marginTop:"22px"
+										}}
+										value={trends}
+										onChange={(e) => setTrends(e.target.value)}
+									/>
+
+								</Box>
+							</Grid>
 
 
 
 
-                        <div className="form-group row">
-                            <div className="offset-md-3 col-md-1">
-                                <button type="submit" className="btn btn-primary">
-                                    <FormattedMessage id="project.global.buttons.save"/>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+
+
+						</Grid>
+					</Box>  </Grid>
+			</Grid>
+			<button className="post_player" onClick={(e) => handleSubmit(e)}><FormattedMessage id="project.global.buttons.save" /></button>
+                  
+		</Box>
+</Box>
     );
 }
 

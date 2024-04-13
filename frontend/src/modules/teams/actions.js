@@ -25,6 +25,19 @@ export const findTeamById = (id, onSuccess) => dispatch => {
     );
 }
 
+const findTeamByPlayerCompleted = team => ({
+    type: actionTypes.FIND_TEAM_BY_PLAYER_COMPLETED,
+    team
+});
+
+export const findTeamByPlayer = (playerId, onSuccess) => dispatch => {
+    backend.teamService.findTeamByPlayer(playerId,
+        team => {dispatch(findTeamByPlayerCompleted(team));
+        onSuccess();
+        }
+    );
+}
+
 
 const findTeamtByNameCompleted = team => ({
     type: actionTypes.FIND_TEAM_BY_NAME_COMPLETED,

@@ -287,8 +287,8 @@ const updatePlayerCompleted = player => ({
     player
 });
 
-export const updatePlayer = (playerId, teamId, playerName, primaryLastName, secondLastName, position, trends, phoneNumber, email, dni, onSuccess, onErrors) => dispatch => {
-    backend.playerService.updatePlayer(playerId, teamId, playerName, primaryLastName, secondLastName, position, trends, phoneNumber, email, dni,
+export const updatePlayer = (playerId, playerName, primaryLastName, secondLastName, position, trends, phoneNumber, email, dni, onSuccess, onErrors) => dispatch => {
+    backend.playerService.updatePlayer(playerId, playerName, primaryLastName, secondLastName, position, trends, phoneNumber, email, dni,
         player => {
             dispatch(updatePlayerCompleted(player));
             onSuccess();

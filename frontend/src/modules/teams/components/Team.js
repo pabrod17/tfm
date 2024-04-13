@@ -1,73 +1,124 @@
-import React from 'react';
-import * as actions from '../actions';
+import React, { useEffect, useState, createContext } from 'react';
+import PropTypes from 'prop-types';
 import {useDispatch} from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import * as actions from '../actions';
+import { useNavigate } from 'react-router';
 import Card from "react-bootstrap/Card";
-import logo22 from './logo22.png';
+import logo21 from './red5.jpeg';
 import {FormattedMessage} from 'react-intl';
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
+import logo22 from './logo3.jpeg';
 
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 900,
+  background: 'linear-gradient(-45deg, #ff4800 0%, #000000 60% )',  // Cambiado a background
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+  borderRadius: "20px",
 
-function TeamName({team, teamName, dispatch, history}){
+};
 
-  if(team){
-
-    return(
-      <div className="images-teams centrado-update-add">
-          
-          <Card className="images-teams" style={{ width: '20rem' }}>
-          <img class="card-img-top" src={logo22} alt="Card image cap"/>
-            <Card.Body>
-              <Card.Title className="link-color"><FormattedMessage id='project.seasons.fields.name'/>: {team.teamName}</Card.Title>
-                      <button className="btn btn-primary" type="button" 
-                        onClick={() => handleRemoveItem(team.id, dispatch, history)}>
-                        <span className="fas fa-trash-alt"></span>
-                      </button>
-                       <button className="btn btn-secondary" type="button" 
-                        onClick={() => history('/teams/update')}>
-                        <span className="fas fa-pencil-alt"></span>
-                      </button>
-                      <button className="btn btn-info" type="button" 
-                        onClick={() => history(`/teams/view/${team.id}`)}>
-                        {"View"}
-                      </button>
-            </Card.Body>
-          </Card>
-      </div>
-    );
-  } else{
-      dispatch(actions.findTeamByName(teamName));
-      return(
-        <div className="centrado-update-add">
-
-          <div className="spinner-border color-byTeamName" role="status">
-          <span className="visually-hidden centrado-update-add">Loading...</span>
-          </div>  
+const CardTeam = ({ dispatch, history, item, handleOpenDescriptionModal }) => {
+  return (
+    <div key={item.id}>
+      <div>
+        <div className="flip-card">
+          <div className="flip-card-inner">
+            <div className="flip-card-front">
+              <div className="card_team">
+                <img src={logo22} alt="Person" className="card__image_team"></img>
+                <span class="title">{item.teamName}</span>
+                <div className="buttons">
+                <button class="post">
+                    {item.arenaName}
+                  </button>
+               </div>
+                  </div>
+                </div>
+                <div class="flip-card-back">
+            <div class="card_team">
+            <span class="title">{item.ownerName} &nbsp;
+            </span>
+            <hr></hr>
+          <a onClick={() => handleOpenDescriptionModal(item.description)} class="button_apple">
+            <span class="desc desc3 scroll_efect_team">{item.description}</span>
+          </a>
+          <hr></hr>
+            </div>
+                  <ul class="social-icons configgrande config_position">
+                      <li><a type="button" onClick={() => handleUpdateItem(item.id, dispatch, history)}>
+                      <i class="fa fa-wrench"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
-      );
-    }
+        </div>
+  );
+  }
+
+const handleUpdateItem = (id, dispatch, history) => {
+  dispatch(actions.findTeamById(id, () => history(`/teams/update/${id}`)));
 }
 
-const handleRemoveItem = (id, dispatch, history ) => {
-  dispatch(actions.removeTeam(id, () => history('/')));
+function TeamItem({ item, playerId, fallback, dispatch, history, handleOpenDescription }) {
+  if (!item) {
+    return fallback;
+  } else {
+    return (
+      <CardTeam dispatch={dispatch} history={history} item={item} handleOpenDescriptionModal={handleOpenDescription} />
+    );
+  }
 }
 
-  const Team = ({team, teamName}) => {
+
+const Team = ({team, playerId}) => {
     const dispatch = useDispatch();
     const history = useNavigate();
-    if(!team){
-      return (
-        <div className="alert alert-info color-alert" role="alert">
-            <FormattedMessage id='project.teams.FindTeamByName.noTeam'/>
-        </div>
-       );
-    }
 
+    const [modalDescription, setModalDescription] = useState('');
+    const [openDescription, setOpenDescription] = React.useState(false);
+
+    const handleOpenDescription = (description) => {
+      setModalDescription(description);
+      setOpenDescription(true);
+    };
+  
+    const handleClose = () => {
+      setModalDescription('');
+      setOpenDescription(false);
+    };
 
     return(
-        <div>
-          <TeamName team={team} teamName={teamName} dispatch={dispatch} history={history} />
-        </div>
+      <div className="card-group lesions_contaner">
+          <TeamItem item={team} playerId={playerId} fallback={"Loading..."} dispatch = {dispatch} history={history} handleOpenDescription={handleOpenDescription} />
+          {(openDescription) && (
+        <div className="modal-backdrop" onClick={handleClose}></div>
+      )}
+      {openDescription && (
+        <Modal
+          open={openDescription}
+          onClose={handleClose}
+          aria-labelledby="child-modal-title"
+          aria-describedby="child-modal-description"
+        >
+          <Box sx={{ ...style, width: "auto", maxWidth: "40vw" }}>
+            <h2 id="child-modal-title" className="color_modal_title_game" sx={{ mb: '100px' }} ><FormattedMessage id="project.exercises.fields.description" />:</h2>
+            <p id="child-modal-description">
+              {modalDescription}
+            </p>
+          </Box>
+        </Modal>
+      )}
+          </div>
     )
+
 };
 
 export default Team;

@@ -12,5 +12,6 @@ export {default as FindPlayerByDniResult} from './components/FindPlayerByDniResu
 export {default as FindPlayersByCompletedName} from './components/FindPlayersByCompletedName';
 export {default as FindPlayersByTraining} from './components/FindPlayersByTraining';
 export {default as FindPlayersByGame} from './components/FindPlayersByGame';
+export {default as UpdatePlayerTeam} from './components/UpdatePlayerTeam';
 
 export default {actions, actionsTypes, reducer, selectors};
