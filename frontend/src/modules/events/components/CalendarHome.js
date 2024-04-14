@@ -55,6 +55,8 @@ import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { es } from 'date-fns/locale';
+import * as actionsGames from '../../games/actions';
+import * as actionsTrainings from '../../trainings/actions';
 
 
 dayjs.locale("es");
@@ -68,6 +70,9 @@ const CalendarHome = () => {
 
   const [events, setEvents] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [isTraining, setIsTraining] = useState(false);
+  const [isGame, setIsGame] = useState(false);
+  const [isGeneral, setIsGeneral] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectEvent, setSelectEvent] = useState(null);
 
@@ -83,12 +88,31 @@ const CalendarHome = () => {
   const handleSelectedEvent = (event) => {
     if (event.type == "General") {
       setShowModal(true);
+      setIsGeneral(true);
+      console.log("GENERALLLL")
+      setSelectEvent(event);
+      setEventTitle(event.title);
+      setStartDate(dayjs(event.start));
+      setFinishDate(dayjs(event.end));
+    } else if (event.type == "Game") {
+      console.log("GAMEEEEE")
+      setShowModal(true);
+      setIsGame(true);
+      setSelectEvent(event);
+      setEventTitle(event.title);
+      setStartDate(dayjs(event.start));
+      setFinishDate(dayjs(event.end));
+    } else if (event.type == "Training") {
+      console.log("TRAININGGGGG")
+      setShowModal(true);
+      setIsTraining(true);
       setSelectEvent(event);
       setEventTitle(event.title);
       setStartDate(dayjs(event.start));
       setFinishDate(dayjs(event.end));
     }
   };
+  
 
   const saveEvent = () => {
     if (selectEvent) {
@@ -116,14 +140,60 @@ const CalendarHome = () => {
 
     }
     setShowModal(false);
+    setIsGeneral(false);
+    setIsGame(false);
+    setIsTraining(false);
     setEventTitle("");
     setSelectEvent(null);
     setStartDate(null);
     setFinishDate(null);
   };
 
+  const handleGameEvent = () => {
+    if (selectEvent) {
+      const updatedEvent = { ...selectEvent, title: eventTitle };
+      const updatedEvents = events.map((event) =>
+        event === selectEvent ? updatedEvent : event
+      );
+      setEvents(updatedEvents);
+      console.log("BUSCANDO GAMEEEE: ", selectEvent.gameId)
+      console.log("BUSCANDO GAMEEEE: ", selectEvent)
+      dispatch(actionsGames.findGameById(selectEvent.gameId, () => history(`/games/update/${selectEvent.gameId}`)));
+    }
+    setShowModal(false);
+    setIsGeneral(false);
+    setIsGame(false);
+    setIsTraining(false);
+    setEventTitle("");
+    setSelectEvent(null);
+    setStartDate(null);
+    setFinishDate(null);
+  }
+  const handleTrainingEvent = () => {
+    if (selectEvent) {
+      const updatedEvent = { ...selectEvent, title: eventTitle };
+      const updatedEvents = events.map((event) =>
+        event === selectEvent ? updatedEvent : event
+      );
+      setEvents(updatedEvents);
+      dispatch(actionsTrainings.findTrainingById(selectEvent.trainingId, () => history(`/trainings/update/${selectEvent.trainingId}`)));
+    }
+    setShowModal(false);
+    setIsGeneral(false);
+    setIsGame(false);
+    setIsTraining(false);
+    setEventTitle("");
+    setSelectEvent(null);
+    setStartDate(null);
+    setFinishDate(null);
+  }
+
+
   const reloadWindow = () => {
     setShowModal(false);
+    setIsGeneral(false);
+    setIsGame(false);
+    setIsTraining(false);
     setEventTitle("");
     setSelectEvent(null);
     setStartDate(null);
@@ -136,6 +206,9 @@ const CalendarHome = () => {
       const updatedEvents = events.filter((event) => event !== selectEvent);
       setEvents(updatedEvents);
       setShowModal(false);
+      setIsGeneral(false);
+      setIsGame(false);
+      setIsTraining(false);
       setEventTitle('');
       setSelectEvent(null);
       setStartDate(null);
@@ -192,6 +265,9 @@ const CalendarHome = () => {
     if (!eventsListAll.events) {
       dispatch(actions.findEventsByUserId(() => history(`/calendar/home`)));
       setShowModal(false);
+      setIsGeneral(false);
+      setIsGame(false);
+      setIsTraining(false);
       setEventTitle("");
       setSelectEvent(null);
       setStartDate(null);
@@ -210,7 +286,9 @@ const CalendarHome = () => {
         start: dayjs(event.startDate).toDate(),
         end: dayjs(event.finishDate).toDate(),
         allDay: false, //TRUE si el evento dura todo el dia
-        type: event.eventType
+        type: event.eventType,
+        gameId: event.gameId,
+        trainingId: event.trainingId
       });
     })
   }
@@ -373,6 +451,9 @@ const CalendarHome = () => {
                       className="btn-close"
                       onClick={() => {
                         setShowModal(false);
+                        setIsGeneral(false);
+                        setIsGame(false);
+                        setIsTraining(false);
                         setEventTitle("");
                         setSelectEvent(null);
                       }}
@@ -460,6 +541,8 @@ const CalendarHome = () => {
                       </DemoContainer>
                     </LocalizationProvider>
                   </div>
+
+                  {isGeneral && (
                   <div className="modal-footer">
                     {selectEvent && (
                       <button
@@ -478,6 +561,38 @@ const CalendarHome = () => {
                       Save
                     </button>
                   </div>
+                  )}
+                  {isGame && (
+                  <div className="modal-footer">
+                    {selectEvent && (
+                    <button
+                      type="button"
+                      className="btn btn-primary"
+                      onClick={handleGameEvent}
+                    >
+                      Update
+                    </button>
+                    )}
+                  </div>
+                  )}
+                  {isTraining && (
+                  <div className="modal-footer">
+                    {selectEvent && (
+                    <button
+                      type="button"
+                      className="btn btn-primary"
+                      onClick={handleTrainingEvent}
+                    >
+                      Update
+                    </button>
+                    )}
+                  </div>
+                  )}
+
+
+
+
+
                 </div>
               </div>
             </div>
