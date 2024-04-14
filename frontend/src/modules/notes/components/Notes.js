@@ -32,7 +32,7 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 900,
-  background: 'linear-gradient(-45deg, #c79081 0%, #070707 60% )',  // Cambiado a background
+  background: 'linear-gradient(-45deg, #92675a 0%, #070707 100% )',  // Cambiado a background
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
