@@ -75,7 +75,7 @@ public class GameServiceImpl implements GameService {
             game = new Game(gameDate, rival,seasonTeams.get(0), description);
             gameDao.save(game);
 
-            CalendarEvent calendarEvent = new CalendarEvent(rival, gameDate, gameDate, EventType.Game, seasonTeams.get(0).getUser());
+            CalendarEvent calendarEvent = new CalendarEvent(rival, gameDate, gameDate, EventType.Game, seasonTeams.get(0).getUser(), game.getId(), null);
             game.setCalendarEvent(calendarEventDao.save(calendarEvent));
             gameDao.save(game);
         //}

@@ -17,15 +17,21 @@ public class CalendarEvent {
 
     private User user;
 
+    private Long gameId;
+
+    private Long trainingId;
+
     public CalendarEvent() {
     }
 
-    public CalendarEvent(String title, LocalDateTime startDate, LocalDateTime finishDate, EventType eventType, User user) {
+    public CalendarEvent(String title, LocalDateTime startDate, LocalDateTime finishDate, EventType eventType, User user, Long gameId, Long trainingId) {
         this.title = title;
         this.startDate = startDate;
         this.finishDate = finishDate;
         this.eventType = eventType;
         this.user = user;
+        this.gameId = gameId;
+        this.trainingId = trainingId;
     }
 
     @Id
@@ -78,5 +84,21 @@ public class CalendarEvent {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Long getGameId() {
+        return gameId;
+    }
+
+    public void setGameId(Long gameId) {
+        this.gameId = gameId;
+    }
+
+    public Long getTrainingId() {
+        return trainingId;
+    }
+
+    public void setTrainingId(Long trainingId) {
+        this.trainingId = trainingId;
     }
 }

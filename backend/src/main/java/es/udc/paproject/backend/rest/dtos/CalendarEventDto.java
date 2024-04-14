@@ -16,16 +16,22 @@ public class CalendarEventDto {
 
     private Long user;
 
+    private Long gameId;
+
+    private Long trainingId;
+
     public CalendarEventDto() {
     }
 
-    public CalendarEventDto(Long id, String title, Date startDate, Date finishDate, String eventType, Long user) {
+    public CalendarEventDto(Long id, String title, Date startDate, Date finishDate, String eventType, Long user, Long gameId, Long trainingId) {
         this.id = id;
         this.title = title;
         this.startDate = startDate;
         this.finishDate = finishDate;
         this.eventType = eventType;
         this.user = user;
+        this.gameId = gameId;
+        this.trainingId = trainingId;
     }
 
     public Long getId() {
@@ -74,5 +80,21 @@ public class CalendarEventDto {
 
     public void setUser(Long user) {
         this.user = user;
+    }
+
+    public Long getGameId() {
+        return gameId;
+    }
+
+    public void setGameId(Long gameId) {
+        this.gameId = gameId;
+    }
+
+    public Long getTrainingId() {
+        return trainingId;
+    }
+
+    public void setTrainingId(Long trainingId) {
+        this.trainingId = trainingId;
     }
 }

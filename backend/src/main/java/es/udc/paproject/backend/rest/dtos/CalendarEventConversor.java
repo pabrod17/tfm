@@ -17,7 +17,7 @@ public class CalendarEventConversor {
 
     public final static CalendarEventDto toCalendarEventDto(CalendarEvent calendarEvent) {
         return new CalendarEventDto(calendarEvent.getId(), calendarEvent.getTitle(),  toDate(calendarEvent.getStartDate()), toDate(calendarEvent.getFinishDate()),
-                calendarEvent.getEventType(), calendarEvent.getUser().getId());
+                calendarEvent.getEventType(), calendarEvent.getUser().getId(), calendarEvent.getGameId(), calendarEvent.getTrainingId());
     }
 
     public final static List<CalendarEventDto> toCalendarEventDtos(List<CalendarEvent> calendarEvents) {

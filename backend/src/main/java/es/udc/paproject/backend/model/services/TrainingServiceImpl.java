@@ -81,7 +81,7 @@ public class TrainingServiceImpl implements TrainingService {
                         training = new Training(trainingDate, durationMinutes, description, objective, seasonTeams.get(0));
                         trainingDao.save(training);
 
-                        CalendarEvent calendarEvent = new CalendarEvent(objective, trainingDate, trainingDate, EventType.Training, seasonTeams.get(0).getUser());
+                        CalendarEvent calendarEvent = new CalendarEvent(objective, trainingDate, trainingDate, EventType.Training, seasonTeams.get(0).getUser(), null, training.getId());
                         training.setCalendarEvent(calendarEventDao.save(calendarEvent));
                         trainingDao.save(training);
                 //}

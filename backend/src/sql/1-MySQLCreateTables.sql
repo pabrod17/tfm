@@ -220,6 +220,8 @@ CREATE TABLE CalendarEvent (
     finishDate DATETIME,
     eventType    ENUM('General','Game', 'Training') NOT NULL,
     userId BIGINT,
+    gameId BIGINT,
+    trainingId BIGINT,
     CONSTRAINT EventPK PRIMARY KEY (id),
     CONSTRAINT CalendarEventUserIdFK FOREIGN KEY(userId)
         REFERENCES User (id)

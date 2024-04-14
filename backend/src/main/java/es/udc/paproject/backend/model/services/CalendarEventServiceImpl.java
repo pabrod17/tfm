@@ -31,7 +31,7 @@ public class CalendarEventServiceImpl implements CalendarEventService {
             throw new InstanceNotFoundException("project.entities.user", userId);
         }
 
-        return calendarEventDao.save(new CalendarEvent(title, startDate, finishDate, EventType.General, user.get()));
+        return calendarEventDao.save(new CalendarEvent(title, startDate, finishDate, EventType.General, user.get(), null, null));
     }
 
     @Override
