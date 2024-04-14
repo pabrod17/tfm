@@ -103,6 +103,7 @@ export default {
     'project.lesion.fields.injured' : 'Ferido',
 
     //notes
+    'project.notes.fields.note' : 'Nota',
     'project.notes.fields.addNote' : 'Engadir Nota',
     'project.notes.fields.updateNote' : 'Actualizar Nota',
     'project.notes.fields.title' : 'Título',

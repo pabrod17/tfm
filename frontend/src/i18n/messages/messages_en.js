@@ -109,6 +109,7 @@ export default {
 
 
     //notes
+    'project.notes.fields.note' : 'Note',
     'project.notes.fields.addNote' : 'Add Note',
     'project.notes.fields.updateNote' : 'Update Note',
     'project.notes.fields.title' : 'Title',
