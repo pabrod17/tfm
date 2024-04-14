@@ -995,6 +995,7 @@ max-height: 360px;
   background: radial-gradient(circle at -1% 57.5%, #000000 0%, #003cff 100%);
   background: radial-gradient(circle at -100% 90.5%, #000000 0%, #003cff 100%);
   background: radial-gradient(circle, #92675a 10%, #070707 100%);
+  background: radial-gradient(circle, #92675a -10%, #000000 100%);
 
   box-shadow: 0px -10px 65px 0px rgba(0, 0, 0, 0.447) inset, 0 15px 65px rgba(0, 0, 0, 0.5);
 }
