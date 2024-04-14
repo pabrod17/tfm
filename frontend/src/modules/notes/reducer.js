@@ -12,9 +12,9 @@ const note = (state = initialState.note, action) => {
     switch (action.type) {
 
         case actionTypes.ADD_NOTE_TO_PLAYER_COMPLETED:
-            return action.note;
+            return state;
         case actionTypes.UPDATE_NOTE_COMPLETED:
-            return action.note;
+            return state;
         case actionTypes.FIND_NOTE_BY_ID_COMPLETED:
             return action.note;
         case actionTypes.REMOVE_NOTE_COMPLETED:

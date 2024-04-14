@@ -43,18 +43,9 @@ export const findNotesByPlayerAndDates = (playerId, startDate, endDate, onSucces
         onErrors)
 };
 
-const addNoteToPlayerCompleted = note => ({
-    type: actionTypes.ADD_NOTE_TO_PLAYER_COMPLETED,
-    note
-});
-
-export const addNoteToPlayer = (playerId, title, description, onSuccess, onErrors) => dispatch => {
-    backend.noteService.addNoteToPlayer(playerId, title, description,
-        note => {
-            dispatch(addNoteToPlayerCompleted(note));
-            onSuccess();
-        },
-        onErrors)
+export const addNoteToPlayer = (playerId, title, description, onSuccess, onErrors) => {
+    backend.noteService.addNoteToPlayer(playerId, title, description, onSuccess, onErrors);
+    return {type: actionTypes.ADD_NOTE_TO_PLAYER_COMPLETED};
 };
 
 const updateNoteCompleted = note => ({

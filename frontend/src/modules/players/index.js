@@ -17,5 +17,6 @@ export {default as UpdatePlayerGame} from './components/UpdatePlayerGame';
 export {default as UpdatePlayerTraining} from './components/UpdatePlayerTraining';
 export {default as UpdatePlayerLesion} from './components/UpdatePlayerLesion';
 export {default as UpdatePlayerStretching} from './components/UpdatePlayerStretching';
+export {default as UpdatePlayerNote} from './components/UpdatePlayerNote';
 
 export default {actions, actionsTypes, reducer, selectors};

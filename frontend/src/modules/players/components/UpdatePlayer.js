@@ -241,7 +241,6 @@ const UpdatePlayer = () => {
                             bgcolor:"red",
                             boxShadow: 6,
                             borderRadius: 3,
-                            mb: 2,
 							borderColor: "black",
 							boxShadow: "0 10px 50px rgb(0, 0, 0)",
                             '& .MuiTabs-flexContainer': {

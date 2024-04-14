@@ -89,6 +89,8 @@ import { BoardHome, PlayAnimatorHome, PlaysHomeByType } from '../../plays';
 import { CalendarHome } from '../../events';
 import UpdateTeamGame from '../../teams/components/UpdateTeamGame';
 import { UpdateTrainingPlayer } from '../../trainings';
+import UpdatePlayerTeam from '../../players/components/UpdatePlayerTeam';
+import { UpdatePlayerGame, UpdatePlayerLesion, UpdatePlayerNote, UpdatePlayerStretching, UpdatePlayerTraining } from '../../players';
 
 const Body = ({ isDark, setIsDark}) => {
 
@@ -128,6 +130,8 @@ const Body = ({ isDark, setIsDark}) => {
                 {loggedIn && <Route exact path="/players/update/:id/training/:tabValue" element={<UpdatePlayerTraining/>}></Route>}
                 {loggedIn && <Route exact path="/players/update/:id/lesion/:tabValue" element={<UpdatePlayerLesion/>}></Route>}
                 {loggedIn && <Route exact path="/players/update/:id/stretching/:tabValue" element={<UpdatePlayerStretching/>}></Route>}
+                {loggedIn && <Route exact path="/players/update/:id/note/:tabValue" element={<UpdatePlayerNote/>}></Route>}
+                    {/* Donde iria la tabla pongo dos input(titulo, descripcion) y boton save. Debajo la lista de notas */}
 
 
                 {/* {loggedIn && <Route exact path="/teams/addTeam" element={<AddTeam/>}></Route>}
