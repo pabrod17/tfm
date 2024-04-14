@@ -48,6 +48,8 @@ const Topbar = ({toggleBackgroundImage, isDark, setIsDark}) => {
       >
         <IconButton sx={{ color: "white", size:"big" }}>
           <PersonOutlinedIcon sx={{ fontSize: 30 }} />
+          {/* Para cuando cambie los tamaños para ver la web con 100% de zoom */}
+            {/* <PersonOutlinedIcon sx={{ fontSize: '0.9375em' }} /> */}
         </IconButton>      </Button>
       <Menu
         id="basic-menu"

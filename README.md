@@ -179,5 +179,5 @@ Plays animator design:
 
 Calendar Home design:
 
-![ToolBare](calendarHome.png)
+![ToolBare](CalendarHome1.png)
 

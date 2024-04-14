@@ -32,12 +32,12 @@
 /* Calendar */
 
 .modal-content {
-  background: linear-gradient(180deg, #8E2DE2 0%, #4A00E0 70% ); 
+  background: linear-gradient(180deg, #1a163f 0%, #302b63 70% ); 
 }
 
 
 .rbc-day-bg.rbc-today {
-  background-color: #4b0361; 
+  background-color: #502259; 
 }
 
 .rbc-day-bg.rbc-off-range-bg {
@@ -57,10 +57,15 @@
 }
 .rbc-time-slot {
   background-color: #a300c4; 
+  background-color: #1c1942; 
+  background-color: #302b63; 
+  background: linear-gradient(180deg, #1a163f 0%, #302b63 100% ); 
+
 }
 
 .rbc-row.rbc-month-header {
   background-color: #a300c4; 
+  background-color: #502259; 
 }
 .rbc-toolbar {
   /* background: rgb(138, 65, 233);

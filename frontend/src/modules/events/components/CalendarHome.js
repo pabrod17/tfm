@@ -110,7 +110,7 @@ const CalendarHome = () => {
       // };
       // setEvents([...events, newEvent]);
 
-      dispatch(actions.addEvent(eventTitle, dateConversor(startDate), dateConversor(startDate),
+      dispatch(actions.addEvent(eventTitle, dateConversor(startDate), dateConversor(finishDate),
         () => reloadWindow(),
       ));
 
@@ -289,6 +289,25 @@ const CalendarHome = () => {
         background: "radial-gradient(circle, #15141A 70%, #df252c 100%)",
         background: "radial-gradient(circle, #2b2931 80%, #15141A 100%)",
         background: "linear-gradient(180deg, #2b2931 10%, #15141A 70% )",
+        background: "linear-gradient(360deg, transparent, #8E2DE2)",
+
+
+        background: "linear-gradient(180deg, #2b2931 10%, #15141A 70% )",
+        background: "linear-gradient(180deg, #15141A 0%, #15141A 70% )",
+        background: "linear-gradient(180deg, #302b63 0%, #0f0c29 70% )",
+        background: "linear-gradient(180deg, #1CB5E0 0%, #000046 15% )",
+        background: "linear-gradient(180deg, #2b2931 0%, #15141A 15% )",
+        background: "linear-gradient(180deg, #232526 0%, #414345 70% )",
+
+
+
+        background: "linear-gradient(180deg, #2b2931 10%, #15141A 70% )",
+        background: "linear-gradient(180deg, #302b63 0%, #0f0c29 70% )",
+
+        
+        
+
+
 
         borderRadius: "20px",
         flexWrap: 'wrap',
@@ -376,7 +395,7 @@ const CalendarHome = () => {
                         <DateTimePicker
                           sx={{
                             border: '2px solid grey',
-                            background: "linear-gradient(180deg, #8E2DE2 0%, #4A00E0 70% )",
+                            background: "linear-gradient(180deg, #302b63 0%, #0f0c29 70% )",
                             borderRadius: "20px",
                             colorAdjust: "#00bfff",
                             '& label': { color: 'white' },
@@ -412,7 +431,7 @@ const CalendarHome = () => {
                         <DateTimePicker
                           sx={{
                             border: '2px solid grey',
-                            background: "linear-gradient(180deg, #8E2DE2 0%, #4A00E0 70% )",
+                            background: "linear-gradient(180deg, #302b63 0%, #0f0c29 70% )",
                             borderRadius: "20px",
                             colorAdjust: "#00bfff",
                             '& label': { color: 'white' },
