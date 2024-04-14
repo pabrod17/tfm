@@ -53,7 +53,7 @@ public class NoteServiceImpl implements NoteService {
 
     @Override
     public List<Note> findNotesByPlayer(Long playerId) throws InstanceNotFoundException {
-        
+
         if (!playerDao.existsById(playerId)) {
             throw new InstanceNotFoundException("project.entities.player");
         }
@@ -62,7 +62,7 @@ public class NoteServiceImpl implements NoteService {
         notes = noteDao.findByPlayerId(playerId);
 
         if (notes.isEmpty()) {
-            throw new InstanceNotFoundException("project.entities.note");
+            return notes;
         }
 
         return notes;
