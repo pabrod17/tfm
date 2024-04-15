@@ -23,6 +23,11 @@ export default {
     'project.global.fields.lastName': 'Apelidos',
     'project.global.fields.name': 'Nome',
     'project.global.fields.password': 'Contrasinal',
+
+    'project.global.fields.currentPassword': 'Contrasinal Actual',
+    'project.global.fields.newPassword': 'Nova Contrasinal',
+    'project.global.fields.confirmPassword': 'Confirmar Contrasinal',
+
     'project.global.fields.postalAddress': 'Dirección postal',
     'project.global.fields.postalCode': 'Código postal',
     'project.global.fields.userName': 'Usuario',

@@ -6,6 +6,8 @@ import {useNavigate} from 'react-router-dom';
 import {Errors} from '../../common';
 import * as actions from '../actions';
 import * as selectors from '../selectors';
+import perfil2 from './perfil1.jpeg'; //1920x1200
+import { Alert, Box, Button, FilledInput, Grid, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material';
 
 const ChangePassword = () => {
 
@@ -16,7 +18,13 @@ const ChangePassword = () => {
     const [newPassword, setNewPassword] = useState('');
     const [confirmNewPassword, setConfirmNewPassword] = useState('');
     const [backendErrors, setBackendErrors] = useState(null);
+
+
     const [passwordsDoNotMatch, setPasswordsDoNotMatch] = useState(false);
+    const [currentPasswordOk, setCurrentPasswordOk] = useState(false);
+    const [passwordError, setPasswordError] = useState(false);
+
+
     let form;
     let confirmNewPasswordInput;
 
@@ -24,26 +32,25 @@ const ChangePassword = () => {
 
         event.preventDefault();
 
-        if (form.checkValidity() && checkConfirmNewPassword()) {
-
+        // if (form.checkValidity() && checkConfirmNewPassword()) 
+            
             dispatch(actions.changePassword(user.id, oldPassword, newPassword,
                 () => history('/'),
                 errors => setBackendErrors(errors)));
+        // } else {
 
-        } else {
-
-            setBackendErrors(null);
-            form.classList.add('was-validated');
+        //     setBackendErrors(null);
+        //     form.classList.add('was-validated');
             
-        }
+        // }
 
     }
 
-    const checkConfirmNewPassword = () => {
+    const checkConfirmNewPassword = (
+    ) => {
 
         if (newPassword !== confirmNewPassword) {
 
-            confirmNewPasswordInput.setCustomValidity('error');
             setPasswordsDoNotMatch(true);
 
             return false;
@@ -62,74 +69,171 @@ const ChangePassword = () => {
 
     }
 
+    const handleConfirmPassword = (e) => {
+        const { value } = e.target;
+        setConfirmNewPassword(value);
+        setPasswordError(newPassword !== value);
+    };
+
+
     return (
-        <div className="">
-            <Errors errors={backendErrors} onClose={() => setBackendErrors(null)}/>
-            <div className="card bg-light border-dark">
-                <h5 className="card-header">
-                    <FormattedMessage id="project.users.ChangePassword.title"/>
-                </h5>
-                <div className="card-body">
-                    <form ref={node => form = node} 
-                        className="needs-validation" noValidate onSubmit={e => handleSubmit(e)}>
-                        <div className="form-group row">
-                            <label htmlFor="oldPassword" className="col-md-3 col-form-label">
-                                <FormattedMessage id="project.users.ChangePassword.fields.oldPassword"/>
-                            </label>
-                            <div className="col-md-4">
-                                <input type="password" id="oldPassword" className="form-control"
-                                    value={oldPassword}
-                                    onChange={e => setOldPassword(e.target.value)}
-                                    autoFocus
-                                    required/>
+<Box
+            display="flex"
+            alignItems="center"
+            p={1}
+            sx={{
+                flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
+            }}
+        >
+
+<Box
+			my={4}
+			display="flex"
+			alignItems="center"
+			p={5}
+			m={10}
+			sx={{
+                maxWidth: { sm: 1635 },
+				border: '2px solid grey',
+                background: "linear-gradient(180deg, #08043b 0%,#2f00ff)",
+                background: "radial-gradient(circle, #2f00ff -10%, #08043b 110%)",
+				borderRadius: "20px",
+				flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
+				flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
+				borderColor:"black",
+				boxShadow:"0 10px 50px rgb(0, 0, 0)"
+			}}
+		>
+            <Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
+			<Grid container margin={5} spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
+			>
+				<Grid item md={12}>
+                <img src={perfil2} alt="Person" class="card__image_player_update_create"></img>
+
+                </Grid>
+				<Grid item md={12} >
+
+					<Box
+						component="form"
+						sx={{
+							borderRadius: "20px",
+							borderColor:"black",
+                            boxShadow:"0 10px 50px rgb(0, 0, 0)"
+						}}
+						autoHeight={true} // Permitir que la tabla determine su propio tamaño si los datos no se han cargado
+						noValidate
+						autoComplete="off"
+					>
+						<Grid container spacing={2}>
+
+                        <Grid item xs={12} md={12}>
+
+								{/* <div className='form_add_training_general'> */}
+								<Box
+                                
+									component="form"
+									sx={{
+										'& .MuiTextField-root': { mb: 2, width: '100%' },
+										margin: '50px', // Centra el formulario en la pantalla
+
+									}}
+									noValidate
+									autoComplete="off"
+								>
+
+									<TextField
+                                        id="outlined-password-input"
+										label={<FormattedMessage id="project.global.fields.currentPassword" />}
+										InputLabelProps={{ style: { color: '#E8FF00', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										rows={4}
+										sx={{
+											border: '2px solid grey',
+											borderRadius: "20px",
+											borderColor:"black",
+											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+										}}
+                                        type="password"
+										value={oldPassword}
+										onChange={(e) => {
+                                            setOldPassword(e.target.value);
+                                        }
+                                            
+                                            
+                                            
+                                            }
+									/>
                                 <div className="invalid-feedback">
-                                    <FormattedMessage id='project.global.validator.required'/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="form-group row">
-                            <label htmlFor="newPassword" className="col-md-3 col-form-label">
-                                <FormattedMessage id="project.users.ChangePassword.fields.newPassword"/>
-                            </label>
-                            <div className="col-md-4">
-                                <input type="password" id="newPassword" className="form-control"
-                                    value={newPassword}
-                                    onChange={e => setNewPassword(e.target.value)}
-                                    required/>
-                                <div className="invalid-feedback">
-                                    <FormattedMessage id='project.global.validator.required'/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="form-group row">
-                            <label htmlFor="confirmNewPassword" className="col-md-3 col-form-label">
-                                <FormattedMessage id="project.users.ChangePassword.fields.confirmNewPassword"/>
-                            </label>
-                            <div className="col-md-4">
-                                <input ref={node => confirmNewPasswordInput = node}
-                                    type="password" id="confirmNewPassword" className="form-control"
-                                    value={confirmNewPassword}
-                                    onChange={e => handleConfirmNewPasswordChange(e)}
-                                    required/>
-                                <div className="invalid-feedback">
-                                    {passwordsDoNotMatch ?
+                                    {!currentPasswordOk ?
                                         <FormattedMessage id='project.global.validator.passwordsDoNotMatch'/> :
                                         <FormattedMessage id='project.global.validator.required'/>}
                                     
                                 </div>
-                            </div>
-                        </div>
-                        <div className="form-group row">
-                            <div className="offset-md-3 col-md-1">
-                                <button type="submit" className="btn btn-primary">
-                                    <FormattedMessage id="project.global.buttons.save"/>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+									<TextField
+                                        id="outlined-password-input"
+										label={<FormattedMessage id="project.global.fields.newPassword" />}
+                                        type="password"
+										InputLabelProps={{ style: { color: '#E8FF00', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										rows={4}
+                                        ty
+										sx={{
+											border: '2px solid grey',
+											borderRadius: "20px",
+											borderColor:"black",
+											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+										}}
+                                        type="password"
+										value={newPassword}
+										onChange={(e) => setNewPassword(e.target.value)}
+									/>
+									<TextField
+                                        id="outlined-password-input"
+										label={<FormattedMessage id="project.global.fields.confirmPassword" />}
+										InputLabelProps={{ style: { color: '#E8FF00', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+                                        type={"password"}
+										rows={4}
+										sx={{
+											border: '2px solid grey',
+											borderRadius: "20px",
+											borderColor:"black",
+											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+										}}
+										value={confirmNewPassword}
+										onChange={handleConfirmPassword}
+                                        type="password"
+                                        error={passwordError} // Activa el estado de error en TextField
+                                        helperText={passwordError ? "Passwords do not match" : ""} // Muestra un mensaje de ayuda si hay un error
+									/>
+								</Box>
+							</Grid>
+						</Grid>
+					</Box>  </Grid>
+			</Grid>
+                              <Button
+                className="post_user"
+                onClick={(e) => handleSubmit(e)}
+                disabled={passwordError} // Deshabilitar el botón si hay un error de contraseña
+                sx={{
+                    width: '100%',
+                    padding: '10px',
+                    borderRadius: '20px',
+                    fontSize: '22px',
+                    color: '#fff',
+                    background: 'linear-gradient(180deg, rgb(47, 0, 255) 0%, #08043b 70%)',
+                    boxShadow: '0 15px 65px rgba(0, 0, 0, 0.5)',
+                    transition: '0.3s ease-out',
+                    marginRight: '50px',
+                    textTransform: 'none', // Anular la transformación del texto a mayúsculas
+                    fontFamily:"Arial"
+                }}
+            >
+                <FormattedMessage id="project.global.buttons.save" />
+            </Button>
+		</Box>
+</Box>
+
     );
 
 }

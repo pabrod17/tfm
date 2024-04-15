@@ -23,6 +23,11 @@ export default {
     'project.global.fields.lastName': 'Last name',
     'project.global.fields.name': 'Name',
     'project.global.fields.password': 'Password',
+
+    'project.global.fields.currentPassword': 'Current Password',
+    'project.global.fields.newPassword': 'New Password',
+    'project.global.fields.confirmPassword': 'Confirm Password',
+
     'project.global.fields.postalAddress': 'Postal address',
     'project.global.fields.postalCode': 'Postal code',
     'project.global.fields.userName': 'Username',

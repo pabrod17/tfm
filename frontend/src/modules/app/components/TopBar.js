@@ -35,9 +35,13 @@ const Topbar = ({toggleBackgroundImage, isDark, setIsDark}) => {
     setAnchorEl(null);
     dispatch(users.actions.logout());
   };
-  const handleProfle = () => {
+  const handleProfile = () => {
     setAnchorEl(null);
     history(`/users/update-profile`);
+  };
+  const handlePassword = () => {
+    setAnchorEl(null);
+    history(`/users/change-password`);
   };
 
   return (
@@ -66,7 +70,8 @@ const Topbar = ({toggleBackgroundImage, isDark, setIsDark}) => {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={handleProfle}>Profile</MenuItem>
+        <MenuItem onClick={handleProfile}>Profile</MenuItem>
+        <MenuItem onClick={handlePassword}>Password</MenuItem>
         <MenuItem onClick={handleLogout}>Logout</MenuItem>
       </Menu>
 
