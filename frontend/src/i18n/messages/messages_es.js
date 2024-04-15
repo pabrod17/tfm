@@ -26,6 +26,7 @@ export default {
     'project.global.fields.postalAddress': 'Dirección postal',
     'project.global.fields.postalCode': 'Código postal',
     'project.global.fields.userName': 'Usuario',
+    'project.global.fields.userName1': 'Nombre de Usuario',
     'project.global.validator.email': 'Introduzca una dirección de correo electrónico correcta',
     'project.global.validator.passwordsDoNotMatch': 'Las contraseñas no coinciden',
     'project.global.validator.required': 'Campo obligatorio',

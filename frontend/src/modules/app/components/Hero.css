@@ -1328,6 +1328,21 @@ max-height: 360px;
   margin-right: 50px;
 }
 
+.post_user {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  font-size: 22px;
+  font-family: Sans-serif;
+  color: #fff;
+  background-size: 200% 100%;
+  background: linear-gradient(180deg, rgb(47, 0, 255) 0%, #08043b 70% );
+  box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
+  transition: 0.3s ease-out;
+  margin-right: 50px;
+}
+
 
 .post_gamestatistics {
   width: 100%;

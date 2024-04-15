@@ -6,105 +6,211 @@ import { useNavigate } from 'react-router-dom';
 import {Errors} from '../../common';
 import * as actions from '../actions';
 import * as selectors from '../selectors';
+import { Box, Button, FilledInput, Grid, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material';
+import { DataGrid } from '@mui/x-data-grid';
+import Typography from '@mui/material/Typography';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import perfil from '../../players/components/perfil2.jpeg'; //1920x1200
+import perfil2 from './perfil1.jpeg'; //1920x1200
 
 const UpdateProfile = () => {
 
     const user = useSelector(selectors.getUser);
     const dispatch = useDispatch();
     const history = useNavigate();
+
     const [firstName, setFirstName] = useState(user.firstName);
     const [lastName, setLastName] = useState(user.lastName);
+
     const [email, setEmail]  = useState(user.email);
+    const [userName, setUserName] = useState(user.userName);
+
     const [backendErrors, setBackendErrors] = useState(null);
+    const [emailError, setEmailError] = useState(false);
+
     let form;
 
     const handleSubmit = event => {
 
         event.preventDefault();
-
-        if (form.checkValidity()) {
-            
             dispatch(actions.updateProfile(
                 {id: user.id,
                 firstName: firstName.trim(),
                 lastName: lastName.trim(),
                 email: email.trim()},
-                () => history('/'),
+                () => window.location.reload('true'),
                 errors => setBackendErrors(errors)));
-
-        } else {
-
-            setBackendErrors(null);
-            form.classList.add('was-validated');
-
-        }
-
     }
 
+    const handleEmailChange = (e) => {
+        const inputEmail = e.target.value;
+        setEmail(inputEmail);
+    
+        // Expresión regular para validar el formato de email
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+        // Verifica si el email cumple con el patrón
+        setEmailError(!emailPattern.test(inputEmail));
+      };
+
     return (
-        <div className="">
-            <Errors errors={backendErrors} onClose={() => setBackendErrors(null)}/>
-            <div className="card bg-light border-dark">
-                <h5 className="card-header">
-                    <FormattedMessage id="project.users.UpdateProfile.title"/>
-                </h5>
-                <div className="card-body">
-                    <form ref={node => form = node} 
-                        className="needs-validation" noValidate onSubmit={e => handleSubmit(e)}>
-                        <div className="form-group row">
-                            <label htmlFor="firstName" className="col-md-3 col-form-label">
-                                <FormattedMessage id="project.global.fields.firstName"/>
-                            </label>
-                            <div className="col-md-4">
-                                <input type="text" id="firstName" className="form-control"
-                                    value={firstName}
-                                    onChange={e => setFirstName(e.target.value)}
-                                    autoFocus
-                                    required/>
-                                <div className="invalid-feedback">
-                                    <FormattedMessage id='project.global.validator.required'/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="form-group row">
-                            <label htmlFor="lastName" className="col-md-3 col-form-label">
-                                <FormattedMessage id="project.global.fields.lastName"/>
-                            </label>
-                            <div className="col-md-4">
-                                <input type="text" id="lastName" className="form-control"
-                                    value={lastName}
-                                    onChange={e => setLastName(e.target.value)}
-                                    required/>
-                                <div className="invalid-feedback">
-                                    <FormattedMessage id='project.global.validator.required'/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="form-group row">
-                            <label htmlFor="email" className="col-md-3 col-form-label">
-                                <FormattedMessage id="project.global.fields.email"/>
-                            </label>
-                            <div className="col-md-4">
-                                <input type="email" id="email" className="form-control"
-                                    value={email}
-                                    onChange={e => setEmail(e.target.value)}
-                                    required/>
-                                <div className="invalid-feedback">
-                                    <FormattedMessage id='project.global.validator.email'/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="form-group row">
-                            <div className="offset-md-3 col-md-1">
-                                <button type="submit" className="btn btn-primary">
-                                    <FormattedMessage id="project.global.buttons.save"/>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+<Box
+            display="flex"
+            alignItems="center"
+            p={1}
+            sx={{
+                flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
+            }}
+        >
+
+<Box
+			my={4}
+			display="flex"
+			alignItems="center"
+			gap={4}
+			p={5}
+			m={10}
+			sx={{
+                maxWidth: { sm: 1635 },
+				border: '2px solid grey',
+                background: "linear-gradient(180deg, #08043b 0%,#2f00ff)",
+                background: "radial-gradient(circle, #2f00ff -10%, #08043b 110%)",
+				borderRadius: "20px",
+				flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
+				flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
+				borderColor:"black",
+				boxShadow:"0 10px 50px rgb(0, 0, 0)"
+			}}
+		>
+            <Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
+			<Grid container margin={5} spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
+			>
+				<Grid item md={12}>
+                <img src={perfil2} alt="Person" class="card__image_player_update_create"></img>
+
+                </Grid>
+				<Grid item md={12} >
+
+					<Box
+						component="form"
+						sx={{
+							borderRadius: "20px",
+							borderColor:"black",
+                            boxShadow:"0 10px 50px rgb(0, 0, 0)"
+						}}
+						autoHeight={true} // Permitir que la tabla determine su propio tamaño si los datos no se han cargado
+						noValidate
+						autoComplete="off"
+					>
+						<Grid container spacing={2}>
+
+                        <Grid item xs={12} md={6}>
+
+								{/* <div className='form_add_training_general'> */}
+								<Box
+                                
+									component="form"
+									sx={{
+										'& .MuiTextField-root': { mb: 2, width: '100%' },
+										margin: '50px', // Centra el formulario en la pantalla
+
+									}}
+									noValidate
+									autoComplete="off"
+								>
+
+									<TextField
+										id="outlined-multiline-static-1"
+										label={<FormattedMessage id="project.players.fields.playerName" />}
+										InputLabelProps={{ style: { color: '#E8FF00', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										multiline
+										rows={4}
+										sx={{
+											border: '2px solid grey',
+											borderRadius: "20px",
+											borderColor:"black",
+											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+										}}
+										value={firstName}
+										onChange={(e) => setFirstName(e.target.value)}
+									/>
+									<TextField
+										id="outlined-multiline-static-1"
+										label={<FormattedMessage id="project.players.fields.primaryLastName" />}
+										InputLabelProps={{ style: { color: '#E8FF00', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										multiline
+										rows={4}
+										sx={{
+											border: '2px solid grey',
+											borderRadius: "20px",
+											borderColor:"black",
+											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+										}}
+										value={lastName}
+										onChange={(e) => setLastName(e.target.value)}
+									/>
+								</Box>
+							</Grid>
+                        <Grid item xs={12} md={6}>
+
+								{/* <div className='form_add_training_general'> */}
+								<Box
+                                
+									component="form"
+									sx={{
+										'& .MuiTextField-root': { mb: 2, width: '100%' },
+										margin: '50px', // Centra el formulario en la pantalla
+
+									}}
+									noValidate
+									autoComplete="off"
+								>
+									<TextField
+										id="outlined-multiline-static-1"
+										label={<FormattedMessage id="project.players.fields.email" />}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										multiline
+										rows={2}
+										sx={{
+											border: '2px solid grey',
+											borderRadius: "20px",
+											borderColor:"black",
+											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+										}}
+										value={email}
+										onChange={handleEmailChange}
+                                        error={emailError} // Activa el estado de error en TextField
+                                        helperText={emailError ? "Email no válido" : ""} // Muestra un mensaje de ayuda si hay un error
+									/>
+									<TextField
+										id="outlined-multiline-static-1"
+										label={<FormattedMessage id="project.global.fields.userName1" />}
+										InputLabelProps={{ style: { color: '#00ff22', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										multiline
+										rows={2}
+										sx={{
+											border: '2px solid grey',
+											borderRadius: "20px",
+											borderColor:"black",
+											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+										}}
+                                        value={userName}
+										onChange={(e) => setUserName(e.target.value)}
+                                      />
+								</Box>
+							</Grid>
+						</Grid>
+					</Box>  </Grid>
+			</Grid>
+			<button className="post_user" onClick={(e) => handleSubmit(e)}><FormattedMessage id="project.global.buttons.save" /></button>
+                  
+		</Box>
+</Box>
     );
 
 }

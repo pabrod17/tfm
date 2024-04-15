@@ -1,5 +1,6 @@
 import { Box, IconButton, useTheme } from "@mui/material";
 import { useContext } from "react";
+import { useNavigate } from 'react-router-dom';
 import InputBase from "@mui/material/InputBase";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
@@ -20,6 +21,7 @@ import StarsIcon from '@material-ui/icons/Stars';
 
 const Topbar = ({toggleBackgroundImage, isDark, setIsDark}) => {
   const dispatch = useDispatch();
+  const history = useNavigate();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -32,6 +34,10 @@ const Topbar = ({toggleBackgroundImage, isDark, setIsDark}) => {
   const handleLogout = () => {
     setAnchorEl(null);
     dispatch(users.actions.logout());
+  };
+  const handleProfle = () => {
+    setAnchorEl(null);
+    history(`/users/update-profile`);
   };
 
   return (
@@ -60,8 +66,7 @@ const Topbar = ({toggleBackgroundImage, isDark, setIsDark}) => {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem >Profile</MenuItem>
-        <MenuItem >My account</MenuItem>
+        <MenuItem onClick={handleProfle}>Profile</MenuItem>
         <MenuItem onClick={handleLogout}>Logout</MenuItem>
       </Menu>
 
