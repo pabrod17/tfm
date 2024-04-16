@@ -4,7 +4,7 @@ import {Route, Routes} from 'react-router-dom';
 
 import AppGlobalComponents from './AppGlobalComponents';
 import Home from './Home';
-import {Login, SignUp, UpdateProfile, ChangePassword, Logout} from '../../users';
+import {Login, SignUp, UpdateProfile, ChangePassword, Logout, UsersByCoachHomeCreate} from '../../users';
 import users from '../../users';
 import {FindTeamsResult, FindTeams, RemoveTeam, AddTeam, UpdateTeam, TeamView, TeamsHome, UpdateTeamPlay, UpdateTeamPlayer, UpdateTeamSeason, UpdateTeamTraining} from '../../teams';
 import video from './video-2.mp4';
@@ -242,6 +242,7 @@ const Body = ({ isDark, setIsDark}) => {
                 {loggedIn && <Route exact path="/stretchings/home/type/:stretchingType/:tabValue" element={<StretchingsHomeByType/>}></Route>}
 
                 {loggedIn && <Route exact path="/users/coach" element={<UsersByCoachHome/>}></Route>}
+                {loggedIn && <Route exact path="/users/coach/:tabValue" element={<UsersByCoachHomeCreate/>}></Route>}
 
 
                 {loggedIn && <Route exact path="/exercises/home" element={<ExercisesHome/>}></Route>}
