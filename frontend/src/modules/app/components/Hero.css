@@ -1328,6 +1328,25 @@ max-height: 360px;
   margin-right: 50px;
 }
 
+.firstname-header1 {
+  color: #49d320;
+}
+.firstname-header2 {
+  color: #e8d90d;
+}
+.firstname-header3 {
+  color: #0dcee8;
+}
+.firstname-header4 {
+  color: #900de8;
+}
+.firstname-header5 {
+  color: #0c1345;
+}
+.firstname-header {
+  color: #d6c90b;
+}
+
 .post_user {
   width: 100%;
   padding: 10px;
@@ -1338,6 +1357,21 @@ max-height: 360px;
   color: #fff;
   background-size: 200% 100%;
   background: linear-gradient(180deg, rgb(47, 0, 255) 0%, #08043b 70% );
+  box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
+  transition: 0.3s ease-out;
+  margin-right: 50px;
+}
+
+.post_user_coach {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  font-size: 22px;
+  font-family: Sans-serif;
+  color: #fff;
+  background-size: 200% 100%;
+  background: linear-gradient(180deg, #df252c 0%, #0c1345 70% );
   box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
   transition: 0.3s ease-out;
   margin-right: 50px;

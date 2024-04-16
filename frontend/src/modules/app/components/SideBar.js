@@ -53,6 +53,7 @@ import * as actionsSeasons from '../../seasons/actions';
 import * as actionStatistics from '../..//statistics/actions';
 import * as actionEvents from '../../events/actions';
 import * as actionsPlayers from '../../players/actions';
+import * as actionsUsers from '../../users/actions';
 import { FormattedMessage } from 'react-intl';
 
 
@@ -136,6 +137,15 @@ const Sidebar = () => {
     else
     if(to === "/players/home") {
       dispatch(actionsPlayers.findPlayersByUserId(() => history('/players/home')));
+    }
+    else
+    if(to === "/users/coach") {
+      //Hacer funcion en back y front
+      console.log("SALEEEE 1222222222")
+      history('/users/coach');
+      dispatch(actionsUsers.findUsersByCoachId(() => history('/users/coach')));
+    } else {
+      console.log("SALEEEE")
     }
 
 }
@@ -408,11 +418,14 @@ const Sidebar = () => {
               dispatch={dispatch}
             />
             <Item
-              title="Geography Chart"
-              to="/geography"
+              title="Users"
+              to="/users/coach"
               icon={<MapOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+              onClick={() => handleMenuOption()}
+              dispatch={dispatch}
+            />
             />
           </Box>
         </Menu>

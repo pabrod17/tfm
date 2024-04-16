@@ -91,6 +91,7 @@ import UpdateTeamGame from '../../teams/components/UpdateTeamGame';
 import { UpdateTrainingPlayer } from '../../trainings';
 import UpdatePlayerTeam from '../../players/components/UpdatePlayerTeam';
 import { UpdatePlayerGame, UpdatePlayerLesion, UpdatePlayerNote, UpdatePlayerStretching, UpdatePlayerTraining } from '../../players';
+import UsersByCoachHome from '../../users/components/UsersByCoachHome';
 
 const Body = ({ isDark, setIsDark}) => {
 
@@ -240,6 +241,7 @@ const Body = ({ isDark, setIsDark}) => {
                 {loggedIn && <Route exact path="/stretchings/home/training/:trainingId" element={<StretchingsHomeByTraining/>}></Route>}
                 {loggedIn && <Route exact path="/stretchings/home/type/:stretchingType/:tabValue" element={<StretchingsHomeByType/>}></Route>}
 
+                {loggedIn && <Route exact path="/users/coach" element={<UsersByCoachHome/>}></Route>}
 
 
                 {loggedIn && <Route exact path="/exercises/home" element={<ExercisesHome/>}></Route>}

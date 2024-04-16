@@ -1,4 +1,9 @@
 export const SIGN_UP_COMPLETED = "project/users/signUpCompleted";
+export const SIGN_UP_BY_COACH_COMPLETED = "project/users/signUpByCoachCompleted";
 export const LOGIN_COMPLETED = "project/users/loginCompleted";
 export const LOGOUT = "project/users/logout";
 export const UPDATE_PROFILE_COMPLETED = "project/users/updateProfileCompleted";
+export const FIND_USERS_BY_COACH_ID_COMPLETED = "project/users/findUsersByCoachIdCompleted";
+export const FIND_USERS_BY_ADMIN_ID_COMPLETED = "project/users/findUsersByAdminIdCompleted";
+export const REMOVE_USER_BY_COACH_COMPLETED = "project/users/removeUserByCoachCompleted";
+export const REMOVE_USER_BY_ADMIN_COMPLETED = "project/users/removeUserByAdminCompleted";

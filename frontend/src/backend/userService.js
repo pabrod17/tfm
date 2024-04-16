@@ -50,3 +50,21 @@ export const changePassword = (id, oldPassword, newPassword, onSuccess,
     appFetch(`/users/${id}/changePassword`, 
         config('POST', {oldPassword, newPassword}),
         onSuccess, onErrors);
+
+
+
+export const signUpByCoach = (user, onSuccess, onErrors) => {
+    appFetch('/users/signUp/byCoach', config('POST', user), onSuccess, onErrors);
+}
+
+export const findUsersByCoachId = (onSuccess, onErrors) =>
+    appFetch('/users/coach', config('GET'), onSuccess, onErrors);
+
+export const findUsersByAdminId = (onSuccess, onErrors) =>
+    appFetch('/users/admin', config('GET'), onSuccess, onErrors);
+    
+export const removeUserByCoach = (userIdByCoach, onSuccess, onErrors) =>
+    appFetch(`/users/${userIdByCoach}/byCoach`, config('DELETE'), onSuccess, onErrors);
+
+export const removeUserByAdmin = (userIdByAdmin, onSuccess, onErrors) =>
+    appFetch(`/users/${userIdByAdmin}/admin`, config('DELETE'), onSuccess, onErrors);
