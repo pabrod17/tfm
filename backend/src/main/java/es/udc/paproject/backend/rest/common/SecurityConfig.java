@@ -25,7 +25,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 			.addFilter(new JwtFilter(authenticationManager(), jwtGenerator))
 			.authorizeRequests()
-			.antMatchers("/users/signUp").permitAll()
+				.antMatchers("/users/signUp/byCoach").permitAll()
+				.antMatchers("/users/signUp").permitAll()
 			.antMatchers("/teams*").permitAll()
 			.antMatchers("/teams/*").permitAll()
 			// .antMatchers("/teams/all").permitAll()
@@ -67,9 +68,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/events*").permitAll()
 				.antMatchers("/events/*").permitAll()
 
+
 			.antMatchers("/users/login").permitAll()
 			.antMatchers("/users/loginFromServiceToken").permitAll()
-			.anyRequest().hasRole("USER");
+				.anyRequest().hasAnyRole("USER", "ADMIN", "COACH");
 
 	}
 	

@@ -1,27 +1,19 @@
 package es.udc.paproject.backend.rest.controllers;
 
-import static es.udc.paproject.backend.rest.dtos.UserConversor.toAuthenticatedUserDto;
-import static es.udc.paproject.backend.rest.dtos.UserConversor.toUser;
-import static es.udc.paproject.backend.rest.dtos.UserConversor.toUserDto;
+import static es.udc.paproject.backend.rest.dtos.GameConversor.toGameDtos;
+import static es.udc.paproject.backend.rest.dtos.UserConversor.*;
 
 import java.net.URI;
+import java.util.List;
 import java.util.Locale;
 
+import es.udc.paproject.backend.rest.dtos.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import es.udc.paproject.backend.model.exceptions.DuplicateInstanceException;
@@ -34,10 +26,6 @@ import es.udc.paproject.backend.model.services.UserService;
 import es.udc.paproject.backend.rest.common.ErrorsDto;
 import es.udc.paproject.backend.rest.common.JwtGenerator;
 import es.udc.paproject.backend.rest.common.JwtInfo;
-import es.udc.paproject.backend.rest.dtos.AuthenticatedUserDto;
-import es.udc.paproject.backend.rest.dtos.ChangePasswordParamsDto;
-import es.udc.paproject.backend.rest.dtos.LoginParamsDto;
-import es.udc.paproject.backend.rest.dtos.UserDto;
 
 @RestController
 @RequestMapping("/users")
@@ -77,6 +65,24 @@ public class UserController {
 
 		return new ErrorsDto(errorMessage);
 		
+	}
+
+	@GetMapping("/admin")
+	public List<UserDto> findUsersByAdminId(@RequestAttribute Long userId) throws InstanceNotFoundException {
+		return toUserDtos(userService.findAllUsers(userId));
+	}
+
+	@GetMapping("/coach")
+	public List<UserDto> findUsersByCoachId(@RequestAttribute Long userId) throws InstanceNotFoundException {
+		return toUserDtos(userService.findUsersByCoachId(userId));
+	}
+
+	@PostMapping("/signUp/byCoach")
+	public void signUpUser(
+			@RequestAttribute Long userId,
+			@Validated({UserDto.AllValidations.class}) @RequestBody UserDto userDto) throws InstanceNotFoundException {
+		User user = toUser(userDto);
+		userService.signUpUser(userId, user);
 	}
 
 	@PostMapping("/signUp")
@@ -149,6 +155,18 @@ public class UserController {
 		
 		return jwtGenerator.generate(jwtInfo);
 		
+	}
+
+	@DeleteMapping("/{userIdByCoach}/byCoach")
+	public void removeUserByCoach(@RequestAttribute Long userId, @PathVariable Long userIdByCoach)
+			throws InstanceNotFoundException {
+		userService.removeUserByCoachId(userId, userIdByCoach);
+	}
+
+	@DeleteMapping("/{userIdByAdmin}/admin")
+	public void removeUserByAdmin(@RequestAttribute Long userId, @PathVariable Long userIdByAdmin)
+			throws InstanceNotFoundException {
+		userService.removeUserByAdminId(userId, userIdByAdmin);
 	}
 	
 }

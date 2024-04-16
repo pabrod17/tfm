@@ -8,7 +8,7 @@ import javax.persistence.Id;
 @Entity
 public class User {
 	
-	public enum RoleType {USER};
+	public enum RoleType {USER, ADMIN, COACH};
 
 	private Long id;
 	private String userName;
@@ -18,16 +18,18 @@ public class User {
 	private String email;
 	private RoleType role;
 
+	private Long createdBy;
+
 	public User() {}
 
-	public User(String userName, String password, String firstName, String lastName, String email) {
+	public User(String userName, String password, String firstName, String lastName, String email, Long createdBy) {
 
 		this.userName = userName;
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
-		
+		this.createdBy = createdBy;
 	}
 
 	@Id
@@ -88,4 +90,11 @@ public class User {
 		this.role = role;
 	}
 
+	public Long getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(Long createdBy) {
+		this.createdBy = createdBy;
+	}
 }

@@ -1,7 +1,11 @@
 package es.udc.paproject.backend.model.services;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
+import es.udc.paproject.backend.model.entities.*;
 import es.udc.paproject.backend.model.exceptions.IncorrectLoginException;
 import es.udc.paproject.backend.model.exceptions.IncorrectPasswordException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import es.udc.paproject.backend.model.exceptions.DuplicateInstanceException;
 import es.udc.paproject.backend.model.exceptions.InstanceNotFoundException;
-import es.udc.paproject.backend.model.entities.User;
-import es.udc.paproject.backend.model.entities.UserDao;
 
 @Service
 @Transactional
@@ -35,10 +37,68 @@ public class UserServiceImpl implements UserService {
 		}
 			
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
-		user.setRole(User.RoleType.USER);
+		user.setRole(User.RoleType.COACH);
 		
 		userDao.save(user);
 		
+	}
+
+	@Override
+	public void signUpUser(Long createdBy, User user) throws InstanceNotFoundException {
+		if (!userDao.existsById(createdBy)) {
+			throw new InstanceNotFoundException("project.entities.user", createdBy);
+		}
+
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		user.setRole(User.RoleType.USER);
+		user.setCreatedBy(createdBy);
+		userDao.save(user);
+
+	}
+
+	@Override
+	public List<User> findUsersByCoachId(Long userId) throws InstanceNotFoundException {
+
+		if (!userDao.existsById(userId)) {
+			throw new InstanceNotFoundException("project.entities.user");
+		}
+
+		List<User> users = new ArrayList<>();
+
+		users = userDao.findByCreatedBy(userId);
+
+		if (users.isEmpty()) {
+			return users;
+		}
+
+		return users;
+	}
+
+	@Override
+	public List<User> findAllUsers(Long userId) throws InstanceNotFoundException {
+
+		if (!userDao.existsById(userId)) {
+			throw new InstanceNotFoundException("project.entities.user");
+		}
+		User admin = userDao.findById(userId).get();
+
+		List<User> users = new ArrayList<>();
+
+		if(admin.getRole().name().equals("ADMIN")) {
+			users = (List<User>) userDao.findAll();
+
+		} else {
+			throw new InstanceNotFoundException("project.entities.user");
+		}
+
+		if (users.isEmpty()) {
+			return users;
+		}
+		List<User> usersWithoutAdmin = users.stream()
+				.filter(user -> !user.getRole().name().equals("ADMIN"))
+				.collect(Collectors.toList());
+
+		return usersWithoutAdmin;
 	}
 
 	@Override
@@ -91,5 +151,39 @@ public class UserServiceImpl implements UserService {
 		}
 		
 	}
+
+	@Override
+	public void removeUserByCoachId(Long coachId, Long userId) throws InstanceNotFoundException {
+
+		if (!userDao.existsById(coachId)) {
+			throw new InstanceNotFoundException("project.entities.team");
+		}
+		if (!userDao.existsById(userId)) {
+			throw new InstanceNotFoundException("project.entities.player");
+		}
+
+		User coach = userDao.findById(coachId).get();
+		User user = userDao.findById(userId).get();
+		if (coach.getRole().name().equals("COACH") && user.getCreatedBy().equals(coachId)) {
+			userDao.delete(user);
+		}
+	}
+	@Override
+	public void removeUserByAdminId(Long adminId, Long userId) throws InstanceNotFoundException {
+
+		if (!userDao.existsById(adminId)) {
+			throw new InstanceNotFoundException("project.entities.team");
+		}
+		if (!userDao.existsById(userId)) {
+			throw new InstanceNotFoundException("project.entities.player");
+		}
+
+		User admin = userDao.findById(adminId).get();
+		User user = userDao.findById(userId).get();
+		if (admin.getRole().name().equals("ADMIN") && user.getCreatedBy().equals(adminId)) {
+			userDao.delete(user);
+		}
+	}
+
 
 }
