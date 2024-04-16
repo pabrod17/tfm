@@ -9,6 +9,10 @@ export default {
 
     'project.global.buttons.filter': 'Filtro',
 
+    'project.global.buttons.charts': 'Gráficos',
+    'project.global.buttons.calendar': 'Calendario',
+    'project.global.buttons.users': 'Usuarios',
+
     'project.global.buttons.find': 'Buscar',
     'project.global.buttons.cancel': 'Cancelar',
     'project.global.buttons.close': 'Cerrar',

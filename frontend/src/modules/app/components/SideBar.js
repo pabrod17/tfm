@@ -37,6 +37,28 @@ import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutl
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
+
+import { PiMicrosoftTeamsLogoFill } from "react-icons/pi";
+import FolderSharedIcon from '@mui/icons-material/FolderShared';
+import SportsKabaddiIcon from '@mui/icons-material/SportsKabaddi';
+import SportsBasketballIcon from '@mui/icons-material/SportsBasketball';
+import SportsHandballIcon from '@mui/icons-material/SportsHandball';
+import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
+import HealingIcon from '@mui/icons-material/Healing';
+import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
+import { TbStretching2 } from "react-icons/tb";
+import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
+
+import VideogameAssetIcon from '@mui/icons-material/VideogameAsset';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
+import EditCalendarIcon from '@mui/icons-material/EditCalendar';
+
+import InsertInvitationIcon from '@mui/icons-material/InsertInvitation';
+
+import PeopleIcon from '@mui/icons-material/People';
+
+
 import userr from './user.png';
 import { Grid } from "@material-ui/core";
 import {useNavigate} from 'react-router-dom';
@@ -258,14 +280,14 @@ const Sidebar = () => {
             <Typography
               variant="h6"
               sx={{ m: "15px 0 5px 20px" }}
-              color={"blue"}
+              color={"#0044ff"}
             >
               <FormattedMessage id="project.sidebar.fields.club"/>
             </Typography>
             <Item
               title="Teams"
               to="/teams/all"
-              icon={<PeopleOutlinedIcon />}
+              icon={<PiMicrosoftTeamsLogoFill style={{ fontSize: "30px" }} />}
               selected={selected}
               setSelected={setSelected}
               onClick={() => handleMenuOption()}
@@ -275,7 +297,9 @@ const Sidebar = () => {
             <Item
               title="Seasons"
               to="/seasons/home"
-              icon={<ContactsOutlinedIcon />}
+              icon={<FolderSharedIcon sx={{
+                fontSize:"30px"
+              }} />}
               selected={selected}
               setSelected={setSelected}
               onClick={() => handleMenuOption()}
@@ -285,7 +309,9 @@ const Sidebar = () => {
             <Item
               title="Players"
               to="/players/home"
-              icon={<ContactsOutlinedIcon />}
+              icon={<SportsKabaddiIcon sx={{
+                fontSize:"30px"
+              }} />}
               selected={selected}
               setSelected={setSelected}
               onClick={() => handleMenuOption()}
@@ -302,7 +328,9 @@ const Sidebar = () => {
             <Item
               title="Games"
               to="/games/home"
-              icon={<ReceiptOutlinedIcon />}
+              icon={<SportsBasketballIcon sx={{
+                fontSize:"30px"
+              }} />}
               selected={selected}
               setSelected={setSelected}
               onClick={() => handleMenuOption()}
@@ -311,7 +339,9 @@ const Sidebar = () => {
             <Item
               title="Tranings"
               to="/trainings/home"
-              icon={<ReceiptOutlinedIcon />}
+              icon={<SportsHandballIcon sx={{
+                fontSize:"30px"
+              }} />}
               selected={selected}
               setSelected={setSelected}
               onClick={() => handleMenuOption()}
@@ -329,7 +359,9 @@ const Sidebar = () => {
               title="Lesion"
               to="/lesion/home"
               onClick={() => handleMenuOption()}
-              icon={<PersonOutlinedIcon />}
+              icon={<LocalHospitalIcon sx={{
+                fontSize:"30px"
+              }} />}
               selected={selected}
               setSelected={setSelected}
               dispatch={dispatch}
@@ -337,7 +369,9 @@ const Sidebar = () => {
             <Item
               title="Exercise"
               to="/exercises/home"
-              icon={<CalendarTodayOutlinedIcon />}
+              icon={<FitnessCenterIcon sx={{
+                fontSize:"30px"
+              }} />}
               onClick={() => handleMenuOption()}
               dispatch={dispatch}
               selected={selected}
@@ -346,7 +380,7 @@ const Sidebar = () => {
             <Item
               title="Stretching"
               to="/stretchings/home"
-              icon={<HelpOutlineOutlinedIcon />}
+              icon={<TbStretching2 style={{ fontSize: "30px" }} />}
               selected={selected}
               setSelected={setSelected}
               onClick={() => handleMenuOption()}
@@ -359,12 +393,14 @@ const Sidebar = () => {
               color={"green"}
               
             >
-              Plays
+              <FormattedMessage id="project.plays.fields.plays"/>
             </Typography>
             <Item
               title="Plays"
               to="/plays/home"
-              icon={<PieChartOutlineOutlinedIcon />}
+              icon={<SportsEsportsIcon sx={{
+                fontSize:"30px"
+              }} />}
               selected={selected}
               setSelected={setSelected}
               onClick={() => handleMenuOption()}
@@ -373,7 +409,9 @@ const Sidebar = () => {
             <Item
               title="Board"
               to="/board/home"
-              icon={<PieChartOutlineOutlinedIcon />}
+              icon={<DashboardIcon sx={{
+                fontSize:"30px"
+              }} />}
               selected={selected}
               setSelected={setSelected}
               onClick={() => handleMenuOption()}
@@ -382,7 +420,9 @@ const Sidebar = () => {
             <Item
               title="Animator"
               to="/plays/animator/home"
-              icon={<PieChartOutlineOutlinedIcon />}
+              icon={<TipsAndUpdatesIcon sx={{
+                fontSize:"30px"
+              }} />}
               selected={selected}
               setSelected={setSelected}
               onClick={() => handleMenuOption()}
@@ -394,12 +434,14 @@ const Sidebar = () => {
               sx={{ m: "15px 0 5px 20px" }}
               color={"orange"}
             >
-              Charts
+              <FormattedMessage id="project.global.buttons.charts"/>
             </Typography>
             <Item
               title="Statistics"
               to="/statistics/home"
-              icon={<BarChartOutlinedIcon />}
+              icon={<BarChartOutlinedIcon sx={{
+                fontSize:"30px"
+              }} />}
               selected={selected}
               setSelected={setSelected}
               onClick={() => handleMenuOption()}
@@ -411,21 +453,32 @@ const Sidebar = () => {
               sx={{ m: "15px 0 5px 20px" }}
               color={"yellow"}
             >
-              Calendar
+              <FormattedMessage id="project.global.buttons.calendar"/>
             </Typography>
             <Item
               title="Calendar"
               to="/calendar/home"
-              icon={<TimelineOutlinedIcon />}
+              icon={<InsertInvitationIcon sx={{
+                fontSize:"30px"
+              }} />}
               selected={selected}
               setSelected={setSelected}
               onClick={() => handleMenuOption()}
               dispatch={dispatch}
             />
+                        <Typography
+              variant="h6"
+              sx={{ m: "15px 0 5px 20px" }}
+              color={"#00ccff"}
+            >
+              <FormattedMessage id="project.global.buttons.users"/>
+            </Typography>
             <Item
               title="Users"
               to="/users/coach"
-              icon={<MapOutlinedIcon />}
+              icon={<PeopleIcon sx={{
+                fontSize:"30px"
+              }} />}
               selected={selected}
               setSelected={setSelected}
               onClick={() => handleMenuOption()}
@@ -434,7 +487,9 @@ const Sidebar = () => {
             <Item
               title="Users"
               to="/users/admin"
-              icon={<MapOutlinedIcon />}
+              icon={<PeopleIcon sx={{
+                fontSize:"30px"
+              }} />}
               selected={selected}
               setSelected={setSelected}
               onClick={() => handleMenuOption()}

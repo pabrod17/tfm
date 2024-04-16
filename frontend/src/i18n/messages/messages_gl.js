@@ -7,6 +7,10 @@ export default {
     
     'project.common.ErrorDialog.title': 'Erro',
 
+    'project.global.buttons.charts': 'Gráficos',
+    'project.global.buttons.calendar': 'Calendario',
+    'project.global.buttons.users': 'Usuarios',
+    
     'project.global.buttons.filter': 'Filtro',
 
     'project.global.buttons.find': 'Buscar',
