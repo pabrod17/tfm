@@ -150,8 +150,8 @@ const UsersByCoachHome = () => {
                 boxShadow: "0 10px 50px rgb(0, 0, 0)"
             }}
         >
-            <Grid container columns={{ xs: 4, sm: 8, md: 12 }} style={{ height: '100%' }}>
-            <Grid item md={12} style={{ height: '100%' }}>
+            <Grid container columns={{ xs: 12, sm: 12, md: 12 }} style={{ height: '100%' }}>
+            <Grid item md={12} xs={12} style={{ height: '100%' }}>
             <Box
 				sx={{
                     marginTop:"-30px",
@@ -160,6 +160,7 @@ const UsersByCoachHome = () => {
             <input type="checkbox" class="theme-checkbox" onClick={() => setShowTable(!showTable)} />
             </Box>
             {showTable ? (
+
 							<DataGrid
 								sx={{
                                     background: "linear-gradient(180deg,#df252c,#0c1345 10%,#0c1345 80%,#0c1345 ,#df252c)",
