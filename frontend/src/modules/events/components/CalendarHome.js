@@ -444,7 +444,7 @@ const CalendarHome = () => {
                   <div className="modal-header">
 
                     <h4 className="margin_training_form" style={{ fontSize: "20px", marginTop: "0px", marginLeft: "40%" }}>
-                      {selectEvent ? "Edit Event" : "Add Event"}
+                      {selectEvent ? <FormattedMessage id="project.calendar.buttons.editEvent"/> : <FormattedMessage id="project.calendar.buttons.addEvent"/>}
                     </h4>
                     <button
                       type="button"
@@ -550,7 +550,7 @@ const CalendarHome = () => {
                         className="btn btn-danger me-2"
                         onClick={deleteEvents}
                       >
-                        Delete Events
+                        {<FormattedMessage id="project.calendar.buttons.deleteEvent"/>}
                       </button>
                     )}
                     <button
@@ -558,7 +558,7 @@ const CalendarHome = () => {
                       className="btn btn-primary"
                       onClick={saveEvent}
                     >
-                      Save
+                        {<FormattedMessage id="project.global.buttons.save"/>}
                     </button>
                   </div>
                   )}
@@ -570,7 +570,7 @@ const CalendarHome = () => {
                       className="btn btn-primary"
                       onClick={handleGameEvent}
                     >
-                      Update
+                        {<FormattedMessage id="project.statistics.fields.update"/>}
                     </button>
                     )}
                   </div>
@@ -583,7 +583,7 @@ const CalendarHome = () => {
                       className="btn btn-primary"
                       onClick={handleTrainingEvent}
                     >
-                      Update
+                        {<FormattedMessage id="project.statistics.fields.update"/>}
                     </button>
                     )}
                   </div>

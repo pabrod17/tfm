@@ -23,7 +23,9 @@ export default {
     'project.global.buttons.lesion_selection': 'Lesion Selection',
     'project.global.buttons.play_selection': 'Plays Selection',
 
-
+    'project.calendar.buttons.editEvent': 'Edit Event',
+    'project.calendar.buttons.addEvent': 'Add Event',
+    'project.calendar.buttons.deleteEvent': 'Delete Event',
 
 
 

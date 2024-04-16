@@ -137,7 +137,7 @@ const Exercises = ({ exercises }) => {
           aria-describedby="child-modal-description"
         >
           <Box sx={{ ...style, width: "auto", maxWidth: "40vw" }}>
-            <h2 id="child-modal-title" className="color_modal_title" sx={{ mb: '100px' }} >Description:</h2>
+            <h2 id="child-modal-title" className="color_modal_title" sx={{ mb: '100px' }} ><FormattedMessage id="project.exercises.fields.description" />:</h2>
             <p id="child-modal-description" style={{ overflowWrap: 'break-word' }}>
               {modalDescription}
             </p>
@@ -152,7 +152,7 @@ const Exercises = ({ exercises }) => {
           aria-describedby="child-modal-objective"
         >
           <Box sx={{ ...style, width: "auto", maxWidth: "40vw" }}>
-            <h2 id="child-modal-title" className="color_modal_title" sx={{ mb: '100px' }} >Objective:</h2>
+          <h2 id="child-modal-title" className="color_modal_title" sx={{ mb: '100px' }} ><FormattedMessage id="project.exercises.fields.objective" />:</h2>
             <p id="child-modal-objective" style={{ overflowWrap: 'break-word' }}>
               {modalObjective}
             </p>

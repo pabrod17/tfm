@@ -24,8 +24,9 @@ export default {
     'project.global.buttons.lesion_selection': 'Selección de Lesiones',
     'project.global.buttons.play_selection': 'Selección de Jugadas',
 
-    
-
+    'project.calendar.buttons.editEvent': 'Editar Evento',
+    'project.calendar.buttons.addEvent': 'Añadir Evento',
+    'project.calendar.buttons.deleteEvent': 'Eliminar Evento',
 
 
 
