@@ -210,12 +210,12 @@ const UpdatePlayerStretching = () => {
                         }}
         >
           <Tab value={0} sx={{ color: '#fbff00', fontSize: "30px", padding:"20px"}} onClick={() => handleUpdatePlayer(dispatch)} label="General"  />
-          <Tab value={1} sx={{ color: '#6024af', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerTeams(1, dispatch)} label="Teams"  />
-          <Tab value={2} sx={{ color: '#760606', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerGames(2, dispatch)} label="Games"/>
-          <Tab value={3} sx={{ color: '#d17403', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerTrainings(3, dispatch)} label="Trainings"/>
-          <Tab value={4} sx={{ color: '#01dde1', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerLesion(4, dispatch)} label="Lesion"/>
-          <Tab value={5} sx={{ color: '#e900d5', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerStretchings(5, dispatch)} label="Stretchings"/>
-          <Tab value={6} sx={{ color: '#39ec02', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerNotes(6, dispatch)} label="Notes"/>
+          <Tab value={1} sx={{ color: '#6024af', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerTeams(1, dispatch)} label={<FormattedMessage id="project.teams.fields.teams"/>}/>
+          <Tab value={2} sx={{ color: '#760606', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerGames(2, dispatch)} label={<FormattedMessage id="project.games.fields.games"/>}/>
+          <Tab value={3} sx={{ color: '#d17403', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerTrainings(3, dispatch)} label={<FormattedMessage id="project.trainings.fields.trainings"/>}/>
+          <Tab value={4} sx={{ color: '#01dde1', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerLesion(4, dispatch)} label={<FormattedMessage id="project.lesion.fields.lesion"/>}/>
+          <Tab value={5} sx={{ color: '#e900d5', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerStretchings(5, dispatch)} label={<FormattedMessage id="project.stretchings.fields.stretchings"/>}/>
+          <Tab value={6} sx={{ color: '#39ec02', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerNotes(6, dispatch)} label={<FormattedMessage id="project.notes.fields.notes"/>}/>
         </Tabs>
       </Box>
       <input type="checkbox" class="theme-checkbox" onClick={() => setShowTable(!showTable)} />
@@ -257,7 +257,7 @@ const UpdatePlayerStretching = () => {
                         id="tableTitle"
                         component="div"
                     >
-                        Stretching Selection
+                        {<FormattedMessage id="project.global.buttons.stretching_selection"/>}
                     </Typography>
                     <div style={{ width: '100%', }}>
                         <DataGrid

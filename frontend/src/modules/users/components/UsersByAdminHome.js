@@ -178,8 +178,8 @@ const UsersByAdminHome = () => {
                               },
                         }}
         >
-          <Tab sx={{ color: '#f5af19', fontSize: "30px", padding:"20px"}} onClick={() => handleUsersByAdmin(dispatch)} label="List"  />
-          <Tab sx={{ color: '#f5af19', fontSize: "30px", padding:"20px" }} onClick={() => handleUsersByAdminCreate(1, dispatch)} label="Create Coach"/>
+          <Tab sx={{ color: '#f5af19', fontSize: "30px", padding:"20px"}} onClick={() => handleUsersByAdmin(dispatch)} label={<FormattedMessage id="project.global.list.users"/>}  />
+          <Tab sx={{ color: '#f5af19', fontSize: "30px", padding:"20px" }} onClick={() => handleUsersByAdminCreate(1, dispatch)} label={<FormattedMessage id="project.global.create.users"/>}/>
         </Tabs>
       </Box>
 </Box>

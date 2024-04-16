@@ -132,7 +132,7 @@ const UpdateTeam = () => {
 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" 
                         sx={{
-                            background: "radial-gradient(circle, #cf3e05 -10%, #000000 100%)",
+                            background: "radial-gradient(circle, #cf3e05 -50%, #000000 100%)",
                             bgcolor:"red",
                             boxShadow: 6,
                             borderRadius: 3,
@@ -144,11 +144,11 @@ const UpdateTeam = () => {
                         }}
         >
           <Tab sx={{ color: '#fbff00', fontSize: "30px", padding:"20px"}} onClick={() => handleUpdateTeam(dispatch)} label="General"  />
-          <Tab sx={{ color: '#41AF24', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTeamPlays(1, dispatch)} label="Plays"  />
-          <Tab sx={{ color: '#062C76', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTeamPlayers(2, dispatch)} label="Players"/>
-          <Tab sx={{ color: '#8203d1', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTeamSeasons(3, dispatch)} label="Seasons"/>
-          <Tab sx={{ color: '#e101e1', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTeamTrainings(4, dispatch)} label="Trainings"/>
-          <Tab sx={{ color: '#ff0000', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTeamGames(5, dispatch)} label="Games"/>
+          <Tab sx={{ color: '#41AF24', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTeamPlays(1, dispatch)} label={<FormattedMessage id="project.plays.fields.plays"/>}/>
+          <Tab sx={{ color: '#03e0e7', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTeamPlayers(2, dispatch)} label={<FormattedMessage id="project.players.fields.players"/>}/>
+          <Tab sx={{ color: '#130c0c', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTeamSeasons(3, dispatch)} label={<FormattedMessage id="project.seasons.fields.seasons"/>}/>
+          <Tab sx={{ color: '#e101e1', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTeamTrainings(4, dispatch)} label={<FormattedMessage id="project.trainings.fields.trainings"/>}/>
+          <Tab sx={{ color: '#ff0000', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTeamGames(5, dispatch)} label={<FormattedMessage id="project.games.fields.games"/>}/>
         </Tabs>
       </Box>
 </Box>

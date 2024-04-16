@@ -5,12 +5,62 @@ export default {
     'project.app.Header.logout': 'Saír',
     'project.app.Home.welcome': '¡Contido da páxina principal de PA Project!',
     
-    'project.common.ErrorDialog.title': 'Erro',
+    'project.global.buttons.addStep': 'Engadir Paso',
+    'project.global.buttons.previousStep': 'Paso Anterior',
+    'project.global.buttons.nextStep': 'Seguinte Paso',
+    'project.global.buttons.Play1': 'Reproducir',
+    'project.global.buttons.Stop': 'Parar',
 
+    'project.global.buttons.undo': 'Desfacer',
+    'project.global.buttons.clear': 'Borrar',
+    'project.global.buttons.download': 'Descargar',
+
+    'project.global.buttons.team_selection': 'Selección de Equipo',
+    'project.global.buttons.season_selection': 'Selección de Tempada',
+    'project.global.buttons.player_selection': 'Selección de Xogadores',
+    'project.global.buttons.exercises_selection': 'Selección de Exercicios',
+    'project.global.buttons.stretching_selection': 'Selección de Estiramentos',
+    'project.global.buttons.lesion_selection': 'Selección de Lesións',
+    'project.global.buttons.play_selection': 'Selección de Xogadas',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    'project.common.ErrorDialog.title': 'Erro',
+    'project.global.buttons.signin': 'Iniciar Sesión',
     'project.global.buttons.charts': 'Gráficos',
     'project.global.buttons.calendar': 'Calendario',
     'project.global.buttons.users': 'Usuarios',
+    'project.users.fields.remove' : 'Eliminar',
+
+    'project.global.list.users': 'Lista de Usuarios',
+    'project.global.create.users': 'Crear Usuario',
+    'project.global.buttons.board': 'Taboado',
+    'project.global.buttons.animation': 'Animación',
+    'project.global.buttons.general': 'Xeral',
     
+    'project.global.buttons.statistics': 'Estatísticas',
+    'project.global.buttons.home': 'Inicio',
+
     'project.global.buttons.filter': 'Filtro',
 
     'project.global.buttons.find': 'Buscar',
@@ -50,6 +100,8 @@ export default {
     'project.users.SignUp.title': 'Rexistrarse',
     'project.users.UpdateProfile.title': 'Actualizar perfil',
     
+    'project.users.profile.title': 'Perfil',
+
     'project.teams.FindTeamByName.noTeam': 'Non se encontraron equipos',
     'project.seasons.FindSeason.noSeason': 'Non se encontraron tempadas',
 
@@ -119,7 +171,7 @@ export default {
     'project.notes.fields.updateNote' : 'Actualizar Nota',
     'project.notes.fields.title' : 'Título',
     'project.notes.fields.myNotes' : 'Miñas Notas',
-
+    'project.notes.fields.notes' : 'Notas',
     //players
     'project.players.fields.addPlayer' : 'Engadir Xogador',
     'project.players.fields.updatePlayer' : 'Actualizar Xogador',
@@ -167,6 +219,9 @@ export default {
     'project.seasons.fields.seasonsBetweenTwoDates' : 'Tempadas por datas',
 
     //statistics
+    'project.statistics.fields.myteam' : 'Meu Equipo',
+    'project.statistics.fields.myrival' : 'Rival',
+
     'project.statistics.fields.playerGameStatistics' : 'Estatísticas Xogador Partido',
     'project.statistics.fields.statistics' : 'Estatísticas',
 

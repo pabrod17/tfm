@@ -165,10 +165,10 @@ const UpdateGame = () => {
                         }}
         >
           <Tab sx={{ color: '#40FF00', fontSize: "30px", padding:"20px"}} onClick={() => handleUpdateGame(dispatch)} label="General"  />
-          <Tab sx={{ color: '#f5af19', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateGameExercise(1, dispatch)} label="Exercises"  />
-          <Tab sx={{ color: 'rgb(255, 0, 247)', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateGameStretching(2, dispatch)} label="Stretchings"/>
-          <Tab sx={{ color: 'rgb(0, 217, 255)', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateGameStatistics(3, dispatch)} label="Statistics"/>
-          <Tab sx={{ color: '#ff0000', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateGamePlayer(4, dispatch)} label="Players"/>
+          <Tab sx={{ color: '#f5af19', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateGameExercise(1, dispatch)} label={<FormattedMessage id="project.exercises.fields.exercises"/>}  />
+          <Tab sx={{ color: 'rgb(255, 0, 247)', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateGameStretching(2, dispatch)} label={<FormattedMessage id="project.stretchings.fields.stretchings"/>}/>
+          {/* <Tab sx={{ color: 'rgb(0, 217, 255)', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateGameStatistics(3, dispatch)} label="Statistics"/> */}
+          <Tab sx={{ color: '#ff0000', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateGamePlayer(4, dispatch)} label={<FormattedMessage id="project.players.fields.players"/>}/>
         </Tabs>
       </Box>
 </Box>

@@ -250,12 +250,12 @@ const UpdatePlayer = () => {
                         TabIndicatorProps={{ sx: { display: 'none' } }}
         >
           <Tab sx={{ color: '#fbff00', fontSize: "30px", padding:"20px"}} onClick={() => handleUpdatePlayer(dispatch)} label="General"  />
-          <Tab sx={{ color: '#6024af', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerTeams(1, dispatch)} label="Teams"  />
-          <Tab sx={{ color: '#760606', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerGames(2, dispatch)} label="Games"/>
-          <Tab sx={{ color: '#d17403', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerTrainings(3, dispatch)} label="Trainings"/>
-          <Tab sx={{ color: '#01dde1', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerLesion(4, dispatch)} label="Lesion"/>
-          <Tab sx={{ color: '#e900d5', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerStretchings(5, dispatch)} label="Stretchings"/>
-          <Tab sx={{ color: '#39ec02', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerNotes(6, dispatch)} label="Notes"/>
+          <Tab sx={{ color: '#6024af', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerTeams(1, dispatch)} label={<FormattedMessage id="project.teams.fields.teams"/>}/>
+          <Tab sx={{ color: '#760606', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerGames(2, dispatch)} label={<FormattedMessage id="project.games.fields.games"/>}/>
+          <Tab sx={{ color: '#d17403', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerTrainings(3, dispatch)} label={<FormattedMessage id="project.trainings.fields.trainings"/>}/>
+          <Tab sx={{ color: '#01dde1', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerLesion(4, dispatch)} label={<FormattedMessage id="project.lesion.fields.lesion"/>}/>
+          <Tab sx={{ color: '#e900d5', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerStretchings(5, dispatch)} label={<FormattedMessage id="project.stretchings.fields.stretchings"/>}/>
+          <Tab sx={{ color: '#39ec02', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerNotes(6, dispatch)} label={<FormattedMessage id="project.notes.fields.notes"/>}/>
         </Tabs>
       </Box>
 </Box>
@@ -318,14 +318,15 @@ const UpdatePlayer = () => {
 									noValidate
 									autoComplete="off"
 								>
-<FormControl sx={{ m: 1, minWidth: 150 }}>
+    <div>
 	  <InputLabel id="demo-simple-select-label"
               sx={{
                 color: "#00bfff",
-				fontSize:"20px"
+				fontSize:"20px",
+                marginLeft:"10px"
               }}
 
-            ><FormattedMessage id="project.lesion.fields.lesionType" /></InputLabel>
+            ><FormattedMessage id="project.players.fields.position" /></InputLabel>
         <Select
           labelId="demo-simple-select-helper-label"
           id="demo-simple-select-helper"
@@ -359,7 +360,7 @@ const UpdatePlayer = () => {
         <MenuItem value={powerForward}><FormattedMessage id="project.players.fields.powerForward" /></MenuItem>
         <MenuItem value={center}><FormattedMessage id="project.players.fields.center" /></MenuItem>
         </Select>
-      </FormControl>
+        </div>
 									<TextField
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.players.fields.playerName" />}

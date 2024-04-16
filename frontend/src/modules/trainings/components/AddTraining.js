@@ -370,7 +370,7 @@ const AddTraining = () => {
 							id="tableTitle"
 							component="div"
 						>
-							Team Selection
+							<FormattedMessage id="project.global.buttons.team_selection" />
 						</Typography>
 						<div style={{ height: 400, width: '100%', }}>
 							<DataGrid
@@ -420,7 +420,7 @@ const AddTraining = () => {
 							id="tableTitle"
 							component="div"
 						>
-							Season Selection
+							<FormattedMessage id="project.global.buttons.season_selection" />
 						</Typography>
 						<div style={{ height: 400, width: '100%' }}>
 							<DataGrid

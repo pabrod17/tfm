@@ -8,6 +8,8 @@ import { Errors } from '../../common';
 import * as actions from '../actions';
 import Topbar from '../../app/components/TopBar';
 import logo from '../../app/components/logoBalonOscuro.jpg'
+import { useIntl } from 'react-intl';
+
 const Login = () => {
 
     const dispatch = useDispatch();
@@ -102,6 +104,18 @@ const Login = () => {
     const onButtonClick = () => {
     }
 
+    const intl = useIntl();
+    const userNamePlaceholder = intl.formatMessage({ id: 'project.global.fields.userName1' });
+    const password1 = intl.formatMessage({ id: 'project.global.fields.password' });
+    const confirmPassword1 = intl.formatMessage({ id: 'project.global.fields.confirmPassword' });
+    const firstName1 = intl.formatMessage({ id: 'project.global.fields.firstName' });
+    const lastName1 = intl.formatMessage({ id: 'project.global.fields.lastName' });
+    const email1 = intl.formatMessage({ id: 'project.global.fields.email' });
+    const signUp1 = intl.formatMessage({ id: 'project.users.SignUp.title' });
+    const login1 = intl.formatMessage({ id: 'project.users.Login.title' });
+
+    
+
     return (
         <div>
 <nav class="navbar navbar-expand-lg navbar-light border border-dark ">
@@ -122,27 +136,27 @@ const Login = () => {
     </div>
     <ul class="navbar-nav mr-auto   mt-2 mb-lg-0 justify-content-center">
         <li class="nav-item">
-          <a class="mr-sm-2 nav-link login-menu2" aria-current="page" href="#">Lesion</a>
+          <a class="mr-sm-2 nav-link login-menu2" aria-current="page" href="#"><FormattedMessage id="project.lesion.fields.lesion"/></a>
         </li>
         <li class="nav-item">
-          <a class="mr-sm-2 nav-link login-menu2" aria-current="page" href="#">Stretching</a>
+          <a class="mr-sm-2 nav-link login-menu2" aria-current="page" href="#"><FormattedMessage id="project.stretchings.fields.stretchings"/></a>
         </li>
         <li class="nav-item">
-          <a class="mr-sm-2 nav-link login-menu2" aria-current="page" href="#">Statistics</a>
+          <a class="mr-sm-2 nav-link login-menu2" aria-current="page" href="#"><FormattedMessage id="project.global.buttons.statistics"/></a>
         </li>
 
         <li class="nav-item">
-          <a class="mr-sm-2 nav-link login-menu2" aria-current="page" href="#">Teams</a>
+          <a class="mr-sm-2 nav-link login-menu2" aria-current="page" href="#"><FormattedMessage id="project.teams.fields.teams"/></a>
         </li>
         <li class="nav-item">
-          <a class="mr-sm-2 nav-link login-menu2" aria-current="page" href="#">Players</a>
+          <a class="mr-sm-2 nav-link login-menu2" aria-current="page" href="#"><FormattedMessage id="project.players.fields.players"/></a>
         </li>
         <li class="nav-item">
-          <a class="mr-sm-2 nav-link login-menu2" aria-current="page" href="#">Games</a>
+          <a class="mr-sm-2 nav-link login-menu2" aria-current="page" href="#"><FormattedMessage id="project.games.fields.games"/></a>
         </li>
       </ul>
       <form class="form-inline mt-2 mb-lg-0">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign in</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="button"><FormattedMessage id="project.global.buttons.signin"/></button>
     </form>
   </div>
 </nav>   
@@ -163,8 +177,8 @@ const Login = () => {
                         onChange={handleRadioChange}
                         value="signup"
                     />
-                    <label for="login" class="slide login">Login</label>
-                    <label for="signup" class="slide signup">Signup</label>
+                    <label for="login" class="slide login">{login1}</label>
+                    <label for="signup" class="slide signup">{signUp1}</label>
                     <div class="slider-tab"></div>
                 </div>
                 <div class="form-inner">
@@ -176,7 +190,7 @@ const Login = () => {
                             <div class="field">
                                 <input
                                     value={userName}
-                                    placeholder="Username"
+                                    placeholder={userNamePlaceholder}
                                     onChange={ev => setUserName(ev.target.value)} required
                                 />
                             </div>
@@ -184,7 +198,7 @@ const Login = () => {
                                 <input
                                     value={password}
                                     type="password"
-                                    placeholder="Password"
+                                    placeholder={password1}
                                     onChange={ev => setPassword(ev.target.value)}
                                     required />
                             </div>
@@ -195,7 +209,7 @@ const Login = () => {
                 type="button"
                 onClick={onButtonClick}
                 type="submit"
-                value={"Log in"} />
+                value={login1} />
                             </div>
                         </form>
                     ) : (
@@ -205,7 +219,7 @@ const Login = () => {
                             <div class="field">
                                 <input
                                     value={userName}
-                                    placeholder="Username"
+                                    placeholder={userNamePlaceholder}
                                     onChange={ev => setUserName(ev.target.value)} required
                                 />
                             </div>
@@ -213,7 +227,7 @@ const Login = () => {
                                 <input
                                     value={password}
                                     type="password"
-                                    placeholder="Password"
+                                    placeholder={password1}
                                     onChange={ev => setPassword(ev.target.value)}
                                     required />
                             </div>
@@ -221,7 +235,7 @@ const Login = () => {
                             <input ref={node => confirmPasswordInput = node}
                                     value={confirmPassword}
                                     type="password"
-                                    placeholder="Confirm Password"
+                                    placeholder={confirmPassword1}
                                     onChange={e => handleConfirmPasswordChange(e.target.value)}
                                     required />
                                 <div className="invalid-feedback">
@@ -233,21 +247,21 @@ const Login = () => {
                             <div class="field">
                                 <input
                                     value={firstName}
-                                    placeholder="FirstName"
+                                    placeholder={firstName1}
                                     onChange={ev => setFirstName(ev.target.value)} required
                                 />
                             </div>
                             <div class="field">
                                 <input
                                     value={lastName}
-                                    placeholder="LastName"
+                                    placeholder={lastName1}
                                     onChange={ev => setLastName(ev.target.value)} required
                                 />
                             </div>
                             <div class="field">
                                 <input
                                     value={email}
-                                    placeholder="Email"
+                                    placeholder={email1}
                                     onChange={ev => setEmail(ev.target.value)} required
                                 />
                             </div>
@@ -258,7 +272,7 @@ const Login = () => {
                 type="button"
                 onClick={onButtonClick}
                 type="submit"
-                value={"Sign up"} />
+                value={signUp1} />
                             </div>
                         </form>
                     )}

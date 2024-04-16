@@ -88,43 +88,43 @@ const Home = () => {
   <div class="homecard">
     <span></span>
     <div class="content">
-    <h2><a type='button' onClick={() => handleFindAllTeams(dispatch, history)}>Teams</a></h2>
+    <h2><a type='button' onClick={() => handleFindAllTeams(dispatch, history)}><FormattedMessage id="project.teams.fields.teams"/></a></h2>
     </div>
   </div>
   <div class="homecard">
     <span></span>
     <div class="content">
-    <h2><a type='button' onClick={() => handleFindAllPlayers(dispatch, history)}>Players</a></h2>
+    <h2><a type='button' onClick={() => handleFindAllPlayers(dispatch, history)}><FormattedMessage id="project.players.fields.players"/></a></h2>
     </div>
   </div>
   <div class="homecard">
     <span></span>
     <div class="content">
-    <h2><a type='button' onClick={() => handleFindAllGames(dispatch, history)}>Games</a></h2>
+    <h2><a type='button' onClick={() => handleFindAllGames(dispatch, history)}><FormattedMessage id="project.games.fields.games"/></a></h2>
     </div>
   </div>
   <div class="homecard">
     <span></span>
     <div class="content">
-    <h2><a type='button' onClick={() => handleFindAllTrainings(dispatch, history)}>Trainings</a></h2>
+    <h2><a type='button' onClick={() => handleFindAllTrainings(dispatch, history)}><FormattedMessage id="project.trainings.fields.trainings"/></a></h2>
     </div>
   </div>
   <div class="homecard">
     <span></span>
     <div class="content">
-    <h2><a type='button' onClick={() => handleFindAllLesions(dispatch, history)}>Lesion</a></h2>
+    <h2><a type='button' onClick={() => handleFindAllLesions(dispatch, history)}><FormattedMessage id="project.lesion.fields.lesion"/></a></h2>
     </div>
   </div>
   <div class="homecard">
     <span></span>
     <div class="content">
-    <h2><a type='button' onClick={() => handleFindAllExercises(dispatch, history)}>Exercise</a></h2>
+    <h2><a type='button' onClick={() => handleFindAllExercises(dispatch, history)}><FormattedMessage id="project.exercises.fields.exercises"/></a></h2>
     </div>
   </div>
   <div class="homecard">
     <span></span>
     <div class="content">
-    <h2><a type='button' onClick={() => handleFindAllStretchings(dispatch, history)}>Stretching</a></h2>
+    <h2><a type='button' onClick={() => handleFindAllStretchings(dispatch, history)}><FormattedMessage id="project.stretchings.fields.stretchings"/></a></h2>
     </div>
   </div>
 </div>

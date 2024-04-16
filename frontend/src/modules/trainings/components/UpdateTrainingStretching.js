@@ -208,9 +208,9 @@ const UpdateTrainingStretching = () => {
                         }}
         >
           <Tab value={0} sx={{ color: '#40FF00', fontSize: "30px", padding:"20px"}} onClick={() => handleUpdateTraining(0, dispatch)} label="General"  />
-          <Tab value={1} sx={{ color: '#f5af19', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTrainingExercise(1, dispatch)} label="Exercises"  />
-          <Tab value={2} sx={{ color: 'rgb(255, 0, 247)', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTrainingStretching(2, dispatch)} label="Stretchings"  />
-          <Tab value={3} sx={{ color: '#ff0000', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTrainingPlayer(3, dispatch)} label="Players"/>
+          <Tab value={1} sx={{ color: '#f5af19', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTrainingExercise(1, dispatch)} label={<FormattedMessage id="project.exercises.fields.exercises"/>}  />
+          <Tab value={2} sx={{ color: 'rgb(255, 0, 247)', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTrainingStretching(2, dispatch)} label={<FormattedMessage id="project.stretchings.fields.stretchings"/>}  />
+          <Tab value={3} sx={{ color: '#ff0000', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTrainingPlayer(3, dispatch)} label={<FormattedMessage id="project.players.fields.players"/>}/>
         </Tabs>
       </Box>
       <input type="checkbox" class="theme-checkbox" onClick={() => setShowTable(!showTable)}/>
@@ -253,7 +253,7 @@ const UpdateTrainingStretching = () => {
 							id="tableTitle"
 							component="div"
 						>
-							Team Selection
+							{<FormattedMessage id="project.global.buttons.stretching_selection"/>}
 						</Typography>
 						<div style={{ width: '100%', }}>
 							<DataGrid

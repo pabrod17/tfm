@@ -82,9 +82,10 @@ import { FormattedMessage } from 'react-intl';
 const Sidebar = () => {
   const theme = useTheme();
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [selected, setSelected] = useState("Dashboard");
+  const [selected, setSelected] = useState("Inicio");
   const dispatch = useDispatch();
   const history = useNavigate();
+  const [selectedItem, setSelectedItem] = useState("/");
 
   const Item = ({title, to, icon, selected, setSelected, dispatch }) => {
     const theme = useTheme();
@@ -106,70 +107,86 @@ const Sidebar = () => {
 
   const handleMenuOption = (to, dispatch) => {
     if(to ===  "/") {
+      setSelectedItem(to);
       history(`/`);
     } else
     if(to ===  "/lesion/home") {
+      setSelectedItem(to);
       dispatch(actionsLesion.findAllLesionPage({page: 0}));
       history(`/lesion/home`);
     } else
     if(to === "/trainings/home") {
+      setSelectedItem(to);
       dispatch(actionTraining.findTrainingsByUserId(() => history('/trainings/home')));
     }
     else
     if(to === "/games/home") {
+      setSelectedItem(to);
       dispatch(actionGames.findGamesByUserId(() => history('/games/home')));
     }
     else
     if(to === "/stretchings/home") {
+      setSelectedItem(to);
       dispatch(actionStretchings.findAllStretchingsPage({page: 0}));
       history(`/stretchings/home`);
     }
     else
     if(to === "/exercises/home") {
+      setSelectedItem(to);
       dispatch(actionExercises.findAllExercisesPage({page: 0}));
       history(`/exercises/home`);
     }
     else
     if(to === "/teams/all") {
+      setSelectedItem(to);
       dispatch(actionsTeams.findAllTeams(() => history('/teams/home')));
       history('/teams/home');
     }
     else
     if(to === "/seasons/home") {
+      setSelectedItem(to);
       dispatch(actionSeasons.findAllSeasons(() => history('/seasons/home')));
       history('/seasons/home');
     }
     else
     if(to === "/statistics/home") {
+      setSelectedItem(to);
       dispatch(actionGames.findGamesByUserId(() => history('/statistics/home')));
     }
     else
     if(to === "/plays/home") {
+      setSelectedItem(to);
       dispatch(actionPlays.findPlaysByUserId(() => history('/plays/home')));
     }
     else
     if(to === "/board/home") {
+      setSelectedItem(to);
       history('/board/home');
     }
     else
     if(to === "/plays/animator/home") {
+      setSelectedItem(to);
       history('/plays/animator/home');
     }
     else
     if(to === "/calendar/home") {
+      setSelectedItem(to);
       dispatch(actionEvents.findEventsByUserId(() => history('/calendar/home')));
     }
     else
     if(to === "/players/home") {
+      setSelectedItem(to);
       dispatch(actionsPlayers.findPlayersByUserId(() => history('/players/home')));
     }
     else
     if(to === "/users/coach") {
+      setSelectedItem(to);
       history('/users/coach');
       dispatch(actionsUsers.findUsersByCoachId(() => history('/users/coach')));
     }
     else
     if(to === "/users/admin") {
+      setSelectedItem(to);
       history('/users/admin');
       dispatch(actionsUsers.findUsersByAdminId(() => history('/users/admin')));
     }
@@ -231,7 +248,9 @@ const Sidebar = () => {
                 alignItems="center"
                 ml="10px"
               >
-                <Typography variant="h3" >
+                <Typography variant="h3" sx={{
+                  color: "#ff8c00"
+                }} >
                   TeamHub
                 </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
@@ -268,9 +287,10 @@ const Sidebar = () => {
 
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
             <Item
-              title="Dashboard"
+              title={<FormattedMessage id="project.global.buttons.home"/>}
               to="/"
-              icon={<HomeOutlinedIcon />}
+              icon={<HomeOutlinedIcon style={{ fontSize: "30px",
+              color: selectedItem === "/" ? "#6fa" : "" }} />}
               selected={selected}
               setSelected={setSelected}
               onClick={() => handleMenuOption()}
@@ -285,9 +305,10 @@ const Sidebar = () => {
               <FormattedMessage id="project.sidebar.fields.club"/>
             </Typography>
             <Item
-              title="Teams"
+              title={<FormattedMessage id="project.teams.fields.teams"/>}
               to="/teams/all"
-              icon={<PiMicrosoftTeamsLogoFill style={{ fontSize: "30px" }} />}
+              icon={<PiMicrosoftTeamsLogoFill style={{ fontSize: "30px",
+              color: selectedItem === "/teams/all" ? "#6fa" : "" }} />}
               selected={selected}
               setSelected={setSelected}
               onClick={() => handleMenuOption()}
@@ -295,10 +316,11 @@ const Sidebar = () => {
             />
 
             <Item
-              title="Seasons"
+              title={<FormattedMessage id="project.seasons.fields.seasons"/>}
               to="/seasons/home"
               icon={<FolderSharedIcon sx={{
-                fontSize:"30px"
+                fontSize:"30px",
+                color: selectedItem === "/seasons/home" ? "#6fa" : ""
               }} />}
               selected={selected}
               setSelected={setSelected}
@@ -307,10 +329,11 @@ const Sidebar = () => {
             />
 
             <Item
-              title="Players"
+              title={<FormattedMessage id="project.players.fields.players"/>}
               to="/players/home"
               icon={<SportsKabaddiIcon sx={{
-                fontSize:"30px"
+                fontSize:"30px",
+                color: selectedItem === "/players/home" ? "#6fa" : ""
               }} />}
               selected={selected}
               setSelected={setSelected}
@@ -326,10 +349,11 @@ const Sidebar = () => {
               <FormattedMessage id="project.sidebar.fields.events"/>
             </Typography>
             <Item
-              title="Games"
+              title={<FormattedMessage id="project.games.fields.games"/>}
               to="/games/home"
               icon={<SportsBasketballIcon sx={{
-                fontSize:"30px"
+                fontSize:"30px",
+                color: selectedItem === "/games/home" ? "#6fa" : ""
               }} />}
               selected={selected}
               setSelected={setSelected}
@@ -337,10 +361,11 @@ const Sidebar = () => {
               dispatch={dispatch}
             />
             <Item
-              title="Tranings"
+              title={<FormattedMessage id="project.trainings.fields.trainings"/>}
               to="/trainings/home"
               icon={<SportsHandballIcon sx={{
-                fontSize:"30px"
+                fontSize:"30px",
+                color: selectedItem === "/trainings/home" ? "#6fa" : ""
               }} />}
               selected={selected}
               setSelected={setSelected}
@@ -356,21 +381,23 @@ const Sidebar = () => {
               <FormattedMessage id="project.sidebar.fields.physicalHealth"/>
             </Typography>
             <Item
-              title="Lesion"
+              title={<FormattedMessage id="project.lesion.fields.lesion"/>}
               to="/lesion/home"
               onClick={() => handleMenuOption()}
               icon={<LocalHospitalIcon sx={{
-                fontSize:"30px"
+                fontSize:"30px",
+                color: selectedItem === "/lesion/home" ? "#6fa" : ""
               }} />}
               selected={selected}
               setSelected={setSelected}
               dispatch={dispatch}
-            />
+              />
             <Item
-              title="Exercise"
+              title={<FormattedMessage id="project.exercises.fields.exercises"/>}
               to="/exercises/home"
               icon={<FitnessCenterIcon sx={{
-                fontSize:"30px"
+                fontSize:"30px",
+                color: selectedItem === "/exercises/home" ? "#6fa" : ""
               }} />}
               onClick={() => handleMenuOption()}
               dispatch={dispatch}
@@ -378,9 +405,10 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
             <Item
-              title="Stretching"
+              title={<FormattedMessage id="project.stretchings.fields.stretchings"/>}
               to="/stretchings/home"
-              icon={<TbStretching2 style={{ fontSize: "30px" }} />}
+              icon={<TbStretching2 style={{ fontSize: "30px",
+              color: selectedItem === "/stretchings/home" ? "#6fa" : "" }} />}
               selected={selected}
               setSelected={setSelected}
               onClick={() => handleMenuOption()}
@@ -396,10 +424,11 @@ const Sidebar = () => {
               <FormattedMessage id="project.plays.fields.plays"/>
             </Typography>
             <Item
-              title="Plays"
+              title={<FormattedMessage id="project.global.buttons.general"/>}
               to="/plays/home"
               icon={<SportsEsportsIcon sx={{
-                fontSize:"30px"
+                fontSize:"30px",
+                color: selectedItem === "/plays/home" ? "#6fa" : ""
               }} />}
               selected={selected}
               setSelected={setSelected}
@@ -407,10 +436,11 @@ const Sidebar = () => {
               dispatch={dispatch}
             />
             <Item
-              title="Board"
+              title={<FormattedMessage id="project.global.buttons.board"/>}
               to="/board/home"
               icon={<DashboardIcon sx={{
-                fontSize:"30px"
+                fontSize:"30px",
+                color: selectedItem === "/board/home" ? "#6fa" : ""
               }} />}
               selected={selected}
               setSelected={setSelected}
@@ -418,10 +448,11 @@ const Sidebar = () => {
               dispatch={dispatch}
             />
             <Item
-              title="Animator"
+              title={<FormattedMessage id="project.global.buttons.animation"/>}
               to="/plays/animator/home"
               icon={<TipsAndUpdatesIcon sx={{
-                fontSize:"30px"
+                fontSize:"30px",
+                color: selectedItem === "/plays/animator/home" ? "#6fa" : ""
               }} />}
               selected={selected}
               setSelected={setSelected}
@@ -437,10 +468,11 @@ const Sidebar = () => {
               <FormattedMessage id="project.global.buttons.charts"/>
             </Typography>
             <Item
-              title="Statistics"
+              title={<FormattedMessage id="project.global.buttons.statistics"/>}
               to="/statistics/home"
               icon={<BarChartOutlinedIcon sx={{
-                fontSize:"30px"
+                fontSize:"30px",
+                color: selectedItem === "/statistics/home" ? "#6fa" : ""
               }} />}
               selected={selected}
               setSelected={setSelected}
@@ -456,10 +488,11 @@ const Sidebar = () => {
               <FormattedMessage id="project.global.buttons.calendar"/>
             </Typography>
             <Item
-              title="Calendar"
+              title={<FormattedMessage id="project.global.buttons.calendar"/>}
               to="/calendar/home"
               icon={<InsertInvitationIcon sx={{
-                fontSize:"30px"
+                fontSize:"30px",
+                color: selectedItem === "/calendar/home" ? "#6fa" : ""
               }} />}
               selected={selected}
               setSelected={setSelected}
@@ -474,10 +507,11 @@ const Sidebar = () => {
               <FormattedMessage id="project.global.buttons.users"/>
             </Typography>
             <Item
-              title="Users"
+              title={<FormattedMessage id="project.global.buttons.users"/>}
               to="/users/coach"
               icon={<PeopleIcon sx={{
-                fontSize:"30px"
+                fontSize:"30px",
+                color: selectedItem === "/users/coach" ? "#6fa" : ""
               }} />}
               selected={selected}
               setSelected={setSelected}
@@ -485,10 +519,11 @@ const Sidebar = () => {
               dispatch={dispatch}
             />
             <Item
-              title="Users"
+              title={<FormattedMessage id="project.global.buttons.users"/>}
               to="/users/admin"
               icon={<PeopleIcon sx={{
-                fontSize:"30px"
+                fontSize:"30px",
+                color: selectedItem === "/users/admin" ? "#6fa" : ""
               }} />}
               selected={selected}
               setSelected={setSelected}

@@ -202,7 +202,7 @@ const AddPlayer = () => {
 				fontSize:"20px"
               }}
 
-            ><FormattedMessage id="project.lesion.fields.lesionType" /></InputLabel>
+            ><FormattedMessage id="project.players.fields.position" /></InputLabel>
         <Select
           labelId="demo-simple-select-helper-label"
           id="demo-simple-select-helper"
@@ -400,7 +400,7 @@ const AddPlayer = () => {
 							id="tableTitle"
 							component="div"
 						>
-							Team Selection
+							{<FormattedMessage id="project.global.buttons.team_selection"/>}
 						</Typography>
 						<div style={{ height: 400, width: '100%', }}>
 							<DataGrid

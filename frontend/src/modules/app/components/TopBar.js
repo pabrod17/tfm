@@ -18,6 +18,7 @@ import users from '../../users';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import Sidebar from "../../app/components/SideBar";
 import StarsIcon from '@material-ui/icons/Stars';
+import { FormattedMessage } from 'react-intl';
 
 const Topbar = ({toggleBackgroundImage, isDark, setIsDark}) => {
   const dispatch = useDispatch();
@@ -70,9 +71,9 @@ const Topbar = ({toggleBackgroundImage, isDark, setIsDark}) => {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={handleProfile}>Profile</MenuItem>
-        <MenuItem onClick={handlePassword}>Password</MenuItem>
-        <MenuItem onClick={handleLogout}>Logout</MenuItem>
+        <MenuItem onClick={handleProfile}><FormattedMessage id="project.users.profile.title"/></MenuItem>
+        <MenuItem onClick={handlePassword}><FormattedMessage id="project.global.fields.password"/></MenuItem>
+        <MenuItem onClick={handleLogout}><FormattedMessage id="project.app.Header.logout"/></MenuItem>
       </Menu>
 
         {/* <IconButton sx={{ color: "white" }}>

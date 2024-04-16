@@ -235,7 +235,7 @@ const BoardHome = () => {
                             canvasDrawRef.current.undo();
                         }}
                     >
-                        UNDO
+                        <FormattedMessage id="project.global.buttons.undo"/>
                     </button>
                     <button
                         className="button_all_buscar_draw"
@@ -243,7 +243,7 @@ const BoardHome = () => {
                             canvasDrawRef.current.clear();
                         }}
                     >
-                        CLEAR
+                        <FormattedMessage id="project.global.buttons.clear"/>
                     </button>
                     <input
                         style={{ background: { canvas }, width: "60px", height: "40px" }}
@@ -253,7 +253,7 @@ const BoardHome = () => {
                             setBrush(event.target.value);
                         }}
                     />
-                    <button className='button_download_board' onClick={saveImage}>Download</button>
+                    <button className='button_download_board' onClick={saveImage}><FormattedMessage id="project.global.buttons.download"/></button>
                     <input
                         min="2"
                         max="50"

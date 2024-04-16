@@ -5,14 +5,73 @@ export default {
     'project.app.Header.logout': 'Salir',
     'project.app.Home.welcome': '¡Contenido de la página principal de PA Project!',
     
-    'project.common.ErrorDialog.title': 'Error',
 
+    'project.global.buttons.addStep': 'Añadir Paso',
+    'project.global.buttons.previousStep': 'Paso Anterior',
+    'project.global.buttons.nextStep': 'Siguiente Paso',
+    'project.global.buttons.Play1': 'Reproducir',
+    'project.global.buttons.Stop': 'Parar',
+
+    'project.global.buttons.undo': 'Deshacer',
+    'project.global.buttons.clear': 'Borrar',
+    'project.global.buttons.download': 'Descargar',
+
+    'project.global.buttons.team_selection': 'Selección de Equipo',
+    'project.global.buttons.season_selection': 'Selección de Temporada',
+    'project.global.buttons.player_selection': 'Selección de Jugadores',
+    'project.global.buttons.exercises_selection': 'Selección de Ejercicios',
+    'project.global.buttons.stretching_selection': 'Selección de Estiramientos',
+    'project.global.buttons.lesion_selection': 'Selección de Lesiones',
+    'project.global.buttons.play_selection': 'Selección de Jugadas',
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    'project.common.ErrorDialog.title': 'Error',
+    'project.global.buttons.signin': 'Iniciar Sesión',
     'project.global.buttons.filter': 'Filtro',
 
     'project.global.buttons.charts': 'Gráficos',
     'project.global.buttons.calendar': 'Calendario',
     'project.global.buttons.users': 'Usuarios',
 
+    'project.global.list.users': 'Lista de Usuarios',
+    'project.global.create.users': 'Crear Usuario',
+    'project.users.fields.remove' : 'Eliminar',
+
+    'project.global.buttons.board': 'Pizarra',
+    'project.global.buttons.animation': 'Animación',
+    'project.global.buttons.general': 'General',
+
+    'project.global.buttons.statistics': 'Estadísticas',
+    'project.global.buttons.home': 'Inicio',
+
+    
     'project.global.buttons.find': 'Buscar',
     'project.global.buttons.cancel': 'Cancelar',
     'project.global.buttons.close': 'Cerrar',
@@ -51,6 +110,9 @@ export default {
     'project.users.SignUp.title': 'Registrarse',
     'project.users.UpdateProfile.title': 'Actualizar perfil',
     
+    'project.users.profile.title': 'Perfil',
+
+
     'project.teams.FindTeamByName.noTeam': 'No se encontraron equipos',
     'project.seasons.FindSeason.noSeason': 'No se encontraron temporadas',
 
@@ -120,6 +182,7 @@ export default {
     'project.notes.fields.updateNote' : 'Actualizar Nota',
     'project.notes.fields.title' : 'Título',
     'project.notes.fields.myNotes' : 'Mis Notas',
+    'project.notes.fields.notes' : 'Notas',
 
     //players
     'project.players.fields.addPlayer' : 'Añadir Jugador',
@@ -167,6 +230,8 @@ export default {
 
 
     //statistics
+    'project.statistics.fields.myteam' : 'Mi Equipo',
+    'project.statistics.fields.myrival' : 'Rival',
     'project.statistics.fields.playerGameStatistics' : 'Estadísticas Jugador Partido',
     'project.statistics.fields.statistics' : 'Estadísticas',
 

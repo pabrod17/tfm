@@ -276,21 +276,21 @@ const Court = ({ children, onPositionSelect }) => {
 
 
 
-        <button onClick={addStep}>Add Step</button>
+        <button onClick={addStep}><FormattedMessage id="project.global.buttons.addStep"/></button>
         <button onClick={goToPreviousStep} disabled={currentStepIndex === 0}>
-          Previous Step
+        <FormattedMessage id="project.global.buttons.previousStep"/>
         </button>
         <button
           onClick={goToNextStep}
           disabled={currentStepIndex === players[0].steps.length - 1}
         >
-          Next Step
+          <FormattedMessage id="project.global.buttons.nextStep"/>
         </button>
         <button onClick={playSteps} disabled={isPlaying}>
-          Play
+        <FormattedMessage id="project.global.buttons.Play1"/>
         </button>
         <button onClick={stopPlaying} disabled={!isPlaying}>
-          Stop 
+        <FormattedMessage id="project.global.buttons.Stop"/>
         </button>
 
         

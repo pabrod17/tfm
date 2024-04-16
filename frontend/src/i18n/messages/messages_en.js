@@ -5,11 +5,65 @@ export default {
     'project.app.Header.logout': 'Logout',
     'project.app.Home.welcome': 'MiniPortal main page content!',
 
+    'project.global.buttons.addStep': 'Add Step',
+    'project.global.buttons.previousStep': 'Previous Step',
+    'project.global.buttons.nextStep': 'Next Step',
+    'project.global.buttons.Play1': 'Play',
+    'project.global.buttons.Stop': 'Stop',
+
+    'project.global.buttons.undo': 'Undo',
+    'project.global.buttons.clear': 'Clear',
+    'project.global.buttons.download': 'Download',
+
+    'project.global.buttons.team_selection': 'Team Selection',
+    'project.global.buttons.season_selection': 'Season Selection',
+    'project.global.buttons.player_selection': 'Player Selection',
+    'project.global.buttons.exercises_selection': 'Exercise Selection',
+    'project.global.buttons.stretching_selection': 'Stretching Selection',
+    'project.global.buttons.lesion_selection': 'Lesion Selection',
+    'project.global.buttons.play_selection': 'Plays Selection',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     'project.common.ErrorDialog.title': 'Error',
+
+    'project.global.buttons.signin': 'Sign In',
 
     'project.global.buttons.charts': 'Charts',
     'project.global.buttons.calendar': 'Calendar',
     'project.global.buttons.users': 'Users',
+    'project.users.fields.remove' : 'Remove',
+
+
+    'project.global.list.users': 'Users List',
+    'project.global.create.users': 'Create User',
+    'project.global.buttons.board': 'Board',
+    'project.global.buttons.animation': 'Animation',
+    'project.global.buttons.general': 'General',
+    'project.global.buttons.statistics': 'Statistics',
+    'project.global.buttons.home': 'Home',
+
+
 
     'project.global.buttons.filter': 'Filter',
 
@@ -49,6 +103,9 @@ export default {
     'project.users.SignUp.fields.confirmPassword': 'Confirm password',
     'project.users.SignUp.title': 'Sign up',
     'project.users.UpdateProfile.title': 'Update profile',
+
+    'project.users.profile.title': 'Profile',
+
 
     'project.teams.FindTeamByName.noTeam': 'No teams found',
     'project.seasons.FindSeason.noSeason': 'No seasons found',
@@ -125,7 +182,7 @@ export default {
     'project.notes.fields.updateNote' : 'Update Note',
     'project.notes.fields.title' : 'Title',
     'project.notes.fields.myNotes' : 'My Notes',
-
+    'project.notes.fields.notes' : 'Notes',
 
     //players
     'project.players.fields.addPlayer' : 'Add Player',
@@ -201,6 +258,9 @@ export default {
     'project.statistics.fields.totalUnsportsmanlikeFouls' : 'Unsportsmanlike Fouls',
 
     'project.statistics.fields.team_rival' : '(My Team - Rival)',
+
+    'project.statistics.fields.myteam' : 'My Team',
+    'project.statistics.fields.myrival' : 'Rival',
 
     'project.statistics.fields.failShots' : 'Failed',
 

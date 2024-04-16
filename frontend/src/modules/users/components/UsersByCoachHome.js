@@ -166,7 +166,7 @@ const UsersByCoachHome = () => {
 <Box sx={{boxShadow:"0 10px 50px rgb(0, 0, 0)" }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" 
                         sx={{
-                            background: "linear-gradient(180deg,#df252c,#0c1345 10%,#0c1345 80%,#0c1345 ,#df252c)",
+                            background: "linear-gradient(180deg,#df252c,#0c1345 30%,#0c1345 30%,#0c1345 ,#df252c)",
                             bgcolor:"red",
                             boxShadow: 6,
                             borderRadius: 3,
@@ -177,8 +177,8 @@ const UsersByCoachHome = () => {
                               },
                         }}
         >
-          <Tab sx={{ color: '#f5af19', fontSize: "30px", padding:"20px"}} onClick={() => handleUsersByCoach(dispatch)} label="List"  />
-          <Tab sx={{ color: '#f5af19', fontSize: "30px", padding:"20px" }} onClick={() => handleUsersByCoachCreate(1, dispatch)} label="Create User"/>
+          <Tab sx={{ color: '#f5af19', fontSize: "30px", padding:"20px"}} onClick={() => handleUsersByCoach(dispatch)} label={<FormattedMessage id="project.global.list.users"/>}  />
+          <Tab sx={{ color: '#f5af19', fontSize: "30px", padding:"20px" }} onClick={() => handleUsersByCoachCreate(1, dispatch)} label={<FormattedMessage id="project.global.create.users"/>}/>
         </Tabs>
       </Box>
 </Box>
@@ -265,7 +265,7 @@ const UsersByCoachHome = () => {
                         className="button_remove_red"
                         onClick={(e) => handleSubmit(e)}
                     >
-                        REMOVE
+                        <FormattedMessage id="project.users.fields.remove"/>
                     </button>
                 </Box>
 

@@ -205,8 +205,8 @@ const UpdateStatisticsPlayers = () => {
                             boxShadow:"0 10px 50px rgb(0, 0, 0)"
                         }}
         >
-            <Tab value={0} sx={{ color: '#40FF00', fontSize: "30px", padding: "20px" }} onClick={() => handleUpdateGameStatistics(0, dispatch)} label="Game" />
-		    <Tab value={1} sx={{ color: '#ff0000', fontSize: "30px", padding: "20px" }} onClick={() => handleUpdatePlayerStatistics(1, dispatch)} label="Players" />
+            <Tab value={0} sx={{ color: '#40FF00', fontSize: "30px", padding: "20px" }} onClick={() => handleUpdateGameStatistics(0, dispatch)} label={<FormattedMessage id="project.games.fields.game"/>} />
+		    <Tab value={1} sx={{ color: '#ff0000', fontSize: "30px", padding: "20px" }} onClick={() => handleUpdatePlayerStatistics(1, dispatch)} label={<FormattedMessage id="project.players.fields.players"/>} />
         </Tabs>
       </Box>
 
