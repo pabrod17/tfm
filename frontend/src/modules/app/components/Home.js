@@ -18,32 +18,53 @@ import * as actionTraining from '../..//trainings/actions';
 import * as actionGames from '../..//games/actions';
 import * as actionStretchings from '../..//stretchings/actions';
 import * as actionExercises from '../..//exercises/actions';
+import * as actionsPlayers from '../../players/actions';
+import * as actionsTeams from '../../teams/actions';
 
 import back from './back.jpg'; //1920x1200
 import Carousel from 'react-bootstrap/Carousel';
 import Cajita from './Cajita';
 import Topbar from './TopBar';
 
-const handleFindAllLesions = (dispatch, history) => {
-    dispatch(actionLesion.findAllLesionPage({ page: 0 }, () => history.push('/lesion/home')));
+
+
+const handleFindAllPlayers = (dispatch, history) => {
+  dispatch(actionsPlayers.findPlayersByUserId(() => history('/players/home')));
+}
+
+const handleFindAllTeams = (dispatch, history) => {
+  dispatch(actionsTeams.findAllTeams(() => history('/teams/home')));
+  history('/teams/home');
+}
+
+
+
+
+const handleFindAllGames = (dispatch, history) => {
+  dispatch(actionGames.findGamesByUserId(() => history('/games/home')));
 }
 
 const handleFindAllTrainings = (dispatch, history) => {
-    dispatch(actionTraining.findTrainingsByUserId(() => history.push('/trainings/home')));
+      dispatch(actionTraining.findTrainingsByUserId(() => history('/trainings/home')));
 }
 
-const handleFindAllGames = (dispatch, history) => {
-    dispatch(actionGames.findGamesByUserId(() => history.push('/games/home')));
-}
 
-const handleFindAllStretchings = (dispatch, history) => {
-    dispatch(actionStretchings.findAllStretchingsPage({ page: 0 }, () => history.push('/stretchings/home')));
+
+
+const handleFindAllLesions = (dispatch, history) => {
+  dispatch(actionLesion.findAllLesionPage({ page: 0 }, () => history('/lesion/home')));
+  history(`/lesion/home`);
 }
 
 const handleFindAllExercises = (dispatch, history) => {
     dispatch(actionExercises.findAllExercisesPage({ page: 0 }, () => history.push('/exercises/home')));
+    history(`/exercises/home`);
 }
 
+const handleFindAllStretchings = (dispatch, history) => {
+  dispatch(actionStretchings.findAllStretchingsPage({ page: 0 }, () => history.push('/stretchings/home')));
+  history(`/stretchings/home`);
+}
 
 const Home = () => {
     const [activeButton, setActiveButton, currentSlide, setCurrentSlide] = useState(0);
@@ -67,43 +88,43 @@ const Home = () => {
   <div class="homecard">
     <span></span>
     <div class="content">
-    <h2><a href="/teams/all">Teams</a></h2>
+    <h2><a type='button' onClick={() => handleFindAllTeams(dispatch, history)}>Teams</a></h2>
     </div>
   </div>
   <div class="homecard">
     <span></span>
     <div class="content">
-    <h2><a href="/seasons/all">Seaons</a></h2>
+    <h2><a type='button' onClick={() => handleFindAllPlayers(dispatch, history)}>Players</a></h2>
     </div>
   </div>
   <div class="homecard">
     <span></span>
     <div class="content">
-    <h2><a href="/games/home">Games</a></h2>
+    <h2><a type='button' onClick={() => handleFindAllGames(dispatch, history)}>Games</a></h2>
     </div>
   </div>
   <div class="homecard">
     <span></span>
     <div class="content">
-    <h2><a href="/trainings/home">Trainings</a></h2>
+    <h2><a type='button' onClick={() => handleFindAllTrainings(dispatch, history)}>Trainings</a></h2>
     </div>
   </div>
   <div class="homecard">
     <span></span>
     <div class="content">
-    <h2><a href="/lesion/home">Lesion</a></h2>
+    <h2><a type='button' onClick={() => handleFindAllLesions(dispatch, history)}>Lesion</a></h2>
     </div>
   </div>
   <div class="homecard">
     <span></span>
     <div class="content">
-    <h2><a href="/exercises/home">Exercise</a></h2>
+    <h2><a type='button' onClick={() => handleFindAllExercises(dispatch, history)}>Exercise</a></h2>
     </div>
   </div>
   <div class="homecard">
     <span></span>
     <div class="content">
-    <h2><a href="/stretchings/home">Stretching</a></h2>
+    <h2><a type='button' onClick={() => handleFindAllStretchings(dispatch, history)}>Stretching</a></h2>
     </div>
   </div>
 </div>

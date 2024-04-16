@@ -83,6 +83,9 @@ const Sidebar = () => {
   };
 
   const handleMenuOption = (to, dispatch) => {
+    if(to ===  "/") {
+      history(`/`);
+    } else
     if(to ===  "/lesion/home") {
       dispatch(actionsLesion.findAllLesionPage({page: 0}));
       history(`/lesion/home`);
@@ -248,6 +251,8 @@ const Sidebar = () => {
               icon={<HomeOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+              onClick={() => handleMenuOption()}
+              dispatch={dispatch}
             />
 
             <Typography

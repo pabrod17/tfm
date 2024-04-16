@@ -81,10 +81,10 @@ const Topbar = ({toggleBackgroundImage, isDark, setIsDark}) => {
         <IconButton sx={{ color: "white" }}>
           <PersonOutlinedIcon />
         </IconButton> */}
-        <IconButton sx={{ color: "white"}}>
+        {/* <IconButton sx={{ color: "white"}}>
           <LocalHospitalIcon sx={{ fontSize: 30 }} />
-        </IconButton>
-        <Switch checked={isDark} onChange={e=>setIsDark(!isDark)}/>
+        </IconButton> */}
+        {/* <Switch checked={isDark} onChange={e=>setIsDark(!isDark)}/> */}
         <IconButton sx={{ color: "white"}}>
           <StarsIcon color="primary" fontSize="large" onClick={() => toggleBackgroundImage(1)} />
         </IconButton>
