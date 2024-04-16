@@ -76,6 +76,10 @@ export const signUpByCoach = (user, onSuccess, onErrors)  =>{
 }
     
 
+export const signUpByAdmin = (user, onSuccess, onErrors)  =>{
+    backend.userService.signUpByAdmin(user, onSuccess, onErrors);
+    return {type: actionTypes.SIGN_UP_BY_ADMIN_COMPLETED};
+}
 
 
 const findUsersByCoachIdCompleted = users => ({

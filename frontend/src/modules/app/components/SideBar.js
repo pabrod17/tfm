@@ -140,14 +140,14 @@ const Sidebar = () => {
     }
     else
     if(to === "/users/coach") {
-      //Hacer funcion en back y front
-      console.log("SALEEEE 1222222222")
       history('/users/coach');
       dispatch(actionsUsers.findUsersByCoachId(() => history('/users/coach')));
-    } else {
-      console.log("SALEEEE")
     }
-
+    else
+    if(to === "/users/admin") {
+      history('/users/admin');
+      dispatch(actionsUsers.findUsersByAdminId(() => history('/users/admin')));
+    }
 }
 
   return (
@@ -426,6 +426,14 @@ const Sidebar = () => {
               onClick={() => handleMenuOption()}
               dispatch={dispatch}
             />
+            <Item
+              title="Users"
+              to="/users/admin"
+              icon={<MapOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              onClick={() => handleMenuOption()}
+              dispatch={dispatch}
             />
           </Box>
         </Menu>

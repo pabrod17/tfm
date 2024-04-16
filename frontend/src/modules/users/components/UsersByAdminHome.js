@@ -40,7 +40,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import perfil2 from './perfil1.jpeg'; //1920x1200
 
 
-const UsersByCoachHome = () => {
+const UsersByAdminHome = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
     const history = useNavigate();
@@ -69,7 +69,7 @@ const UsersByCoachHome = () => {
     const users = useSelector(selectors.getAllUser);
 
     if(!users) {
-        dispatch(actions.findUsersByCoachId( () => history(`/users/coach`)));
+        dispatch(actions.findUsersByAdminId( () => history(`/users/admin`)));
         return "Loading...";
     }
 
@@ -89,7 +89,7 @@ const UsersByCoachHome = () => {
             </div>
         ), },
 		{ field: 'lastName', headerName: <FormattedMessage id="project.global.fields.lastName"/>, width: 400, headerClassName: 'firstname-header' },
-		{ field: 'userName', headerName: <FormattedMessage id="project.global.fields.userName1"/>, width: 400 , headerClassName: 'firstname-header'},
+		{ field: 'userName', headerName: <FormattedMessage id="project.global.fields.userName1"/>, width: 370 , headerClassName: 'firstname-header'},
         { field: 'email', headerName: <FormattedMessage id="project.players.fields.email"/>, width: 400, headerClassName: 'firstname-header' },
 	];
 
@@ -100,6 +100,7 @@ const UsersByCoachHome = () => {
 		users.map(user => {
 			rowsUsers.push({
 				id: user.id,
+                role: user.role,
 				firstName: user.firstName,
 				lastName: user.lastName,
                 email: user.email,
@@ -138,11 +139,11 @@ const UsersByCoachHome = () => {
         setEmailError(!emailPattern.test(inputEmail));
       };
 
-      const handleUsersByCoach = (dispatch) => {
-        dispatch(actions.findUsersByCoachId( () => history(`/users/coach`)));
+      const handleUsersByAdmin = (dispatch) => {
+        dispatch(actions.findUsersByCoachId( () => history(`/users/admin`)));
     }
-    const handleUsersByCoachCreate = (tabValue, dispatch) => {
-        history(`/users/coach/${tabValue}`);
+    const handleUsersByAdminCreate = (tabValue, dispatch) => {
+        history(`/users/admin/${tabValue}`);
     }
     
     return (
@@ -166,7 +167,7 @@ const UsersByCoachHome = () => {
 <Box sx={{boxShadow:"0 10px 50px rgb(0, 0, 0)" }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" 
                         sx={{
-                            background: "linear-gradient(180deg,#df252c,#0c1345 10%,#0c1345 80%,#0c1345 ,#df252c)",
+                            background: "linear-gradient(180deg,#0c1345,#91171b 10%,#91171b 80%,#91171b ,#0c1345)",
                             bgcolor:"red",
                             boxShadow: 6,
                             borderRadius: 3,
@@ -177,8 +178,8 @@ const UsersByCoachHome = () => {
                               },
                         }}
         >
-          <Tab sx={{ color: '#f5af19', fontSize: "30px", padding:"20px"}} onClick={() => handleUsersByCoach(dispatch)} label="List"  />
-          <Tab sx={{ color: '#f5af19', fontSize: "30px", padding:"20px" }} onClick={() => handleUsersByCoachCreate(1, dispatch)} label="Create User"/>
+          <Tab sx={{ color: '#f5af19', fontSize: "30px", padding:"20px"}} onClick={() => handleUsersByAdmin(dispatch)} label="List"  />
+          <Tab sx={{ color: '#f5af19', fontSize: "30px", padding:"20px" }} onClick={() => handleUsersByAdminCreate(1, dispatch)} label="Create Coach"/>
         </Tabs>
       </Box>
 </Box>
@@ -208,6 +209,7 @@ const UsersByCoachHome = () => {
             sx={{
                 border: '2px solid grey',
                 background: "linear-gradient(180deg,#df252c,#0c1345 10%,#0c1345 80%,#0c1345 ,#df252c)",
+                background: "linear-gradient(180deg,#0c1345,#91171b 10%,#91171b 80%,#91171b ,#0c1345)",
                 borderRadius: "20px",
                 flexWrap: 'wrap',
                 flexDirection: 'column',
@@ -219,7 +221,7 @@ const UsersByCoachHome = () => {
             <Grid item md={12} xs={12} style={{ height: '100%' }}>
 							<DataGrid
 								sx={{
-                                    background: "linear-gradient(180deg,#df252c,#0c1345 10%,#0c1345 80%,#0c1345 ,#df252c)",
+                                    background: "linear-gradient(180deg,#0c1345,#91171b 10%,#91171b 80%,#91171b ,#0c1345)",
 									boxShadow: 12,
                                     color:"white",
                                     borderColor:"black",
@@ -291,4 +293,4 @@ const UsersByCoachHome = () => {
 
 }
 
-export default UsersByCoachHome;
+export default UsersByAdminHome;

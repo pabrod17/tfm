@@ -11,5 +11,7 @@ export {default as ChangePassword} from './components/ChangePassword';
 export {default as Logout} from './components/Logout';
 export {default as UsersByCoachHome} from './components/UsersByCoachHome';
 export {default as UsersByCoachHomeCreate} from './components/UsersByCoachHomeCreate';
+export {default as UsersByAdminHome} from './components/UsersByAdminHome';
+export {default as UsersByAdminHomeCreate} from './components/UsersByAdminHomeCreate';
 
 export default {actions, actionTypes, reducer, selectors};

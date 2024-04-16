@@ -57,6 +57,10 @@ export const signUpByCoach = (user, onSuccess, onErrors) => {
     appFetch('/users/signUp/byCoach', config('POST', user), onSuccess, onErrors);
 }
 
+export const signUpByAdmin = (user, onSuccess, onErrors) => {
+    appFetch('/users/signUp/byAdmin', config('POST', user), onSuccess, onErrors);
+}
+
 export const findUsersByCoachId = (onSuccess, onErrors) =>
     appFetch('/users/coach', config('GET'), onSuccess, onErrors);
 
