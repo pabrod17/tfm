@@ -167,7 +167,7 @@ const UsersByAdminHome = () => {
 <Box sx={{boxShadow:"0 10px 50px rgb(0, 0, 0)" }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" 
                         sx={{
-                            background: "linear-gradient(180deg,#0c1345,#91171b 10%,#91171b 80%,#91171b ,#0c1345)",
+                            background: "linear-gradient(180deg,#0c1345,#91171b 30%,#91171b 30%,#91171b ,#0c1345)",
                             bgcolor:"red",
                             boxShadow: 6,
                             borderRadius: 3,
