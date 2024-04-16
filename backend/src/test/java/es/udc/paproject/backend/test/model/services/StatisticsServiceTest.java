@@ -54,7 +54,7 @@ public class StatisticsServiceTest {
     private final LocalDateTime gameDate = LocalDateTime.of(2023, 5, 12, 15, 56);
 
     private User createUser(String userName) throws DuplicateInstanceException {
-        User user = new User(userName, "password", "firstName", "lastName", userName + "@" + userName + ".com");
+        User user = new User(userName, "password", "firstName", "lastName", userName + "@" + userName + ".com", null);
         userService.signUp(user);
         return user;
     }

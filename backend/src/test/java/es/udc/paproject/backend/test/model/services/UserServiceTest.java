@@ -26,7 +26,7 @@ public class UserServiceTest {
 	private UserService userService;
 	
 	private User createUser(String userName) {
-		return new User(userName, "password", "firstName", "lastName", userName + "@" + userName + ".com");
+		return new User(userName, "password", "firstName", "lastName", userName + "@" + userName + ".com", null);
 	}
 	
 	@Test
@@ -39,7 +39,7 @@ public class UserServiceTest {
 		User loggedInUser = userService.loginFromId(user.getId());
 		
 		assertEquals(user, loggedInUser);
-		assertEquals(User.RoleType.USER, user.getRole());
+		assertEquals(User.RoleType.COACH, user.getRole());
 		
 	}
 	

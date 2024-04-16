@@ -48,7 +48,7 @@ public class TeamServiceTest {
 	private UserService userService;
 
 	private User createUser(String userName) {
-		return new User(userName, "password", "firstName", "lastName", userName + "@" + userName + ".com");
+		return new User(userName, "password", "firstName", "lastName", userName + "@" + userName + ".com", null);
 	}
 
 	@Test

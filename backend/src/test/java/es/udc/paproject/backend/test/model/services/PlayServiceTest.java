@@ -38,7 +38,7 @@ public class PlayServiceTest {
     private PlayService playService;
 
     private User createUser(String userName) throws DuplicateInstanceException {
-        User user = new User(userName, "password", "firstName", "lastName", userName + "@" + userName + ".com");
+        User user = new User(userName, "password", "firstName", "lastName", userName + "@" + userName + ".com", null);
         userService.signUp(user);
         return user;
     }

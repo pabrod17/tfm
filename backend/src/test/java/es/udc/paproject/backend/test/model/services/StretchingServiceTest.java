@@ -56,7 +56,7 @@ public class StretchingServiceTest {
     private final LocalDateTime startDate = LocalDateTime.of(2021, 5, 12, 15, 56);
 
     private User createUser(String userName) throws DuplicateInstanceException {
-        User user = new User(userName, "password", "firstName", "lastName", userName + "@" + userName + ".com");
+        User user = new User(userName, "password", "firstName", "lastName", userName + "@" + userName + ".com", null);
         userService.signUp(user);
         return user;
     }

@@ -52,7 +52,7 @@ public class PlayerServiceTest {
     // PointGuard, ShootingGuard, SmallForward, PowerForward, Center
 
     private User createUser(String userName) throws DuplicateInstanceException {
-        User user = new User(userName, "password", "firstName", "lastName", userName + "@" + userName + ".com");
+        User user = new User(userName, "password", "firstName", "lastName", userName + "@" + userName + ".com", null);
         userService.signUp(user);
         return user;
     }

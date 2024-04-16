@@ -42,6 +42,7 @@ CREATE TABLE User (
     lastName VARCHAR(60) NOT NULL, 
     email VARCHAR(60) NOT NULL,
     role TINYINT NOT NULL,
+    createdBy BIGINT,
     CONSTRAINT UserPK PRIMARY KEY (id),
     CONSTRAINT UserNameUniqueKey UNIQUE (userName)
 ) ENGINE = InnoDB;

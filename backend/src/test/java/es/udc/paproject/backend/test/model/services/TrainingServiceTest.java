@@ -58,7 +58,7 @@ public class TrainingServiceTest {
     private final LocalDateTime endDate = LocalDateTime.of(2022, 6, 12, 15, 56);
 
     private User createUser(String userName) throws DuplicateInstanceException {
-        User user = new User(userName, "password", "firstName", "lastName", userName + "@" + userName + ".com");
+        User user = new User(userName, "password", "firstName", "lastName", userName + "@" + userName + ".com", null);
         userService.signUp(user);
         return user;
     }
