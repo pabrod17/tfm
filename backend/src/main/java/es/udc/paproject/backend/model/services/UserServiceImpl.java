@@ -57,6 +57,18 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public void signUpCoach(Long createdBy, User user) throws InstanceNotFoundException {
+		if (!userDao.existsById(createdBy)) {
+			throw new InstanceNotFoundException("project.entities.user", createdBy);
+		}
+
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		user.setRole(User.RoleType.COACH);
+		userDao.save(user);
+
+	}
+
+	@Override
 	public List<User> findUsersByCoachId(Long userId) throws InstanceNotFoundException {
 
 		if (!userDao.existsById(userId)) {

@@ -27,6 +27,8 @@ public interface UserService {
 
 	public void signUpUser(Long createdBy, User user) throws InstanceNotFoundException;
 
+	public void signUpCoach(Long createdBy, User user) throws InstanceNotFoundException;
+
 	void removeUserByCoachId(Long coachId, Long userId) throws InstanceNotFoundException;
 
 	void removeUserByAdminId(Long adminId, Long userId) throws InstanceNotFoundException;

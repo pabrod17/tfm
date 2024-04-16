@@ -85,6 +85,14 @@ public class UserController {
 		userService.signUpUser(userId, user);
 	}
 
+	@PostMapping("/signUp/byAdmin")
+	public void signUpCoach(
+			@RequestAttribute Long userId,
+			@Validated({UserDto.AllValidations.class}) @RequestBody UserDto userDto) throws InstanceNotFoundException {
+		User user = toUser(userDto);
+		userService.signUpCoach(userId, user);
+	}
+
 	@PostMapping("/signUp")
 	public ResponseEntity<AuthenticatedUserDto> signUp(
 		@Validated({UserDto.AllValidations.class}) @RequestBody UserDto userDto) throws DuplicateInstanceException {
