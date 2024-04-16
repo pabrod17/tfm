@@ -224,7 +224,7 @@ const UsersByCoachHome = () => {
 										paginationModel: { page: 0, pageSize: 16 },
 									},
 								}}
-								pageSizeOptions={[10, 20]}
+								pageSizeOptions={[8, 16]}
 								checkboxSelection
 								rowSelectionModel={rowSelectionModelUser}
 								onRowSelectionModelChange={(newRowSelectionModelTeam) => {
