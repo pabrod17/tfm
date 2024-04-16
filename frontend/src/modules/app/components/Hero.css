@@ -1909,6 +1909,8 @@ p {
   position: relative;
   width: 720px;
   height: 200px;
+  width: 32.9vw;
+  height: 16.5vh;
   display: flex;
   justify-content: center;
   align-items: center;
