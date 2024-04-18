@@ -46,10 +46,6 @@ import { FaPeopleGroup } from "react-icons/fa6";
 import { FaStar } from "react-icons/fa6";
 import { GiRoundStar } from "react-icons/gi";
 
-import Fullcalendar from "@fullcalendar/react";
-import dayGridPlugin from "@fullcalendar/daygrid";
-import timeGridPlugin from "@fullcalendar/timegrid";
-import interactionPlugin from "@fullcalendar/interaction";
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
