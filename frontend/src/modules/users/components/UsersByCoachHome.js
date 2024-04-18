@@ -208,6 +208,7 @@ const UsersByCoachHome = () => {
             ml={0}
             overflowX="auto" // Agrega desplazamiento horizontal si es necesario
             maxWidth={"1900px"}
+            maxHeight={"1040px"}
             sx={{
                 border: '2px solid grey',
                 background: "linear-gradient(180deg,#df252c,#0c1345 10%,#0c1345 80%,#0c1345 ,#df252c)",
