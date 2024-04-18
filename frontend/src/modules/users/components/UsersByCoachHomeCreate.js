@@ -160,35 +160,10 @@ const UsersByCoachHomeCreate = () => {
 
 
 
-        <Box
-            my={4}
-            display="flex"
-            alignItems="center"
-            gap={4}
-            p={5}
-            ml={0}
-            sx={{
-                border: '2px solid grey',
-                background: "linear-gradient(180deg,#df252c,#0c1345 10%,#0c1345 80%,#0c1345 ,#df252c)",
-                borderRadius: "20px",
-                flexWrap: 'wrap',
-                flexDirection: 'column',
-                borderColor: "black",
-                boxShadow: "0 10px 50px rgb(0, 0, 0)"
-            }}
-        >
             <Grid container columns={{ xs: 12, sm: 12, md: 12 }} style={{ height: '100%' }}>
             <Grid item md={12} xs={12} style={{ height: '100%' }}>
 
 
-            <Box
-                                display="flex"
-                                alignItems="center"
-                                p={1}
-                                sx={{
-                                    flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
-                                }}
-                            >
                     
                     <Box
                                 my={4}
@@ -197,7 +172,7 @@ const UsersByCoachHomeCreate = () => {
                                 gap={4}
                                 p={4}
                                 sx={{
-                                    maxWidth: { sm: 1635 },
+                                    maxWidth: { sm: 1435 },
                                     border: '2px solid grey',
                                     background: "linear-gradient(180deg, #08043b 0%,#2f00ff)",
                                     background: "linear-gradient(180deg,#df252c,#0c1345 10%,#0c1345 80%,#0c1345 ,#df252c)",
@@ -374,7 +349,6 @@ const UsersByCoachHomeCreate = () => {
                                 <button className="post_user_coach" onClick={(e) => handleSubmit(e)}><FormattedMessage id="project.global.buttons.save" /></button>
                                       
                             </Box>
-                    </Box>
 
 
 
@@ -397,7 +371,6 @@ const UsersByCoachHomeCreate = () => {
 
 
             </Grid>
-        </Box>
         </Box>
 
     );
