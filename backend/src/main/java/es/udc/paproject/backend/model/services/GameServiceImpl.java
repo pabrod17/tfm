@@ -150,7 +150,13 @@ public class GameServiceImpl implements GameService {
             List<Game> gamesBySeasonTeamId = new ArrayList<>();
 
             if(teamId == null && seasonId == null) {
-                seasonTeams = seasonTeamDao.findByUserId(userId);
+                User user = userDao.findById(userId).get();
+                if(user.getRole().name().equals("ADMIN")) {
+                    seasonTeams = (List<SeasonTeam>) seasonTeamDao.findAll();
+                } else {
+                    seasonTeams = seasonTeamDao.findByUserId(userId);
+                }
+
                     for(SeasonTeam seasonTeam : seasonTeams){
                             games2 = gameDao.findBySeasonTeamId(seasonTeam.getId());
                             for(Game game : games2){
@@ -210,7 +216,13 @@ public class GameServiceImpl implements GameService {
             throw new InstanceNotFoundException("project.entities.user");
         }
 
-        List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(userId);
+        List<SeasonTeam> seasonTeams = new ArrayList<>();
+        User user = userDao.findById(userId).get();
+        if(user.getRole().name().equals("ADMIN")) {
+            seasonTeams = (List<SeasonTeam>) seasonTeamDao.findAll();
+        } else {
+            seasonTeams = seasonTeamDao.findByUserId(userId);
+        }
 
         List<Game> games = new ArrayList<>();
         List<Game> games2 = new ArrayList<>();

@@ -6,15 +6,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import es.udc.paproject.backend.model.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import es.udc.paproject.backend.model.entities.Season;
-import es.udc.paproject.backend.model.entities.SeasonDao;
-import es.udc.paproject.backend.model.entities.SeasonTeam;
-import es.udc.paproject.backend.model.entities.SeasonTeamDao;
-import es.udc.paproject.backend.model.entities.User;
 import es.udc.paproject.backend.model.exceptions.InstanceNotFoundException;
 import es.udc.paproject.backend.model.exceptions.StartDateAfterEndDateException;
 
@@ -24,6 +20,9 @@ public class SeasonServiceImpl implements SeasonService {
 
     @Autowired
     private SeasonDao seasonDao;
+
+    @Autowired
+    private UserDao userDao;
 
     @Autowired
     private SeasonTeamDao seasonTeamDao;
@@ -51,8 +50,14 @@ public class SeasonServiceImpl implements SeasonService {
     @Override
     @Transactional(readOnly = true)
     public Season findSeasonById(Long userId, Long seasonId) throws InstanceNotFoundException {
-        User user = userService.loginFromId(userId);
-        List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(user.getId());
+        User user = userDao.findById(userId).get();
+
+        List<SeasonTeam> seasonTeams = new ArrayList<>();
+        if(user.getRole().name().equals("ADMIN")) {
+            seasonTeams = (List<SeasonTeam>) seasonTeamDao.findAll();
+        } else {
+            seasonTeams = seasonTeamDao.findByUserId(user.getId());
+        }
 
         Season season = null;
 
@@ -76,7 +81,21 @@ public class SeasonServiceImpl implements SeasonService {
                     throw new StartDateAfterEndDateException(startDate, endDate);
                 }
 
-        User user = userService.loginFromId(userId);
+        User user = userDao.findById(userId).get();
+        if(user.getRole().name().equals("ADMIN")) {
+            List<Season> seasonsResult = new ArrayList<>();
+            List<Season> seasons = (List<Season>) seasonDao.findAll();
+
+            for (Season season : seasons) {
+                if(season.getStartDate().isAfter(startDate) && season.getEndDate().isBefore(endDate)) {
+                    seasonsResult.add(season);
+                }
+            }
+            seasonsResult = seasonsResult.stream().distinct().collect(Collectors.toList());
+            return seasonsResult;
+        }
+
+
         List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(user.getId());
         List<Season> seasons = new ArrayList<>();
 
@@ -96,6 +115,17 @@ public class SeasonServiceImpl implements SeasonService {
     @Override
     public List<Season> findAllSeasons(Long userId) throws InstanceNotFoundException {
         User user = userService.loginFromId(userId);
+
+        if(user.getRole().name().equals("ADMIN")) {
+            List<Season> seasonsResult = new ArrayList<>();
+            List<Season> seasons = (List<Season>) seasonDao.findAll();
+            return seasons;
+        }
+
+
+
+
+
         List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(user.getId());
         List<Season> seasons = new ArrayList<>();
 
@@ -115,8 +145,15 @@ public class SeasonServiceImpl implements SeasonService {
     @Override
     public List<Season> findSeasonsToTeam(Long userId, Long teamId) throws InstanceNotFoundException {
 
-        User user = userService.loginFromId(userId);
-        List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(user.getId());
+        User user = userDao.findById(userId).get();
+        List<SeasonTeam> seasonTeams = new ArrayList<>();
+        if(user.getRole().name().equals("ADMIN")) {
+            seasonTeams = (List<SeasonTeam>) seasonTeamDao.findAll();
+        } else {
+            seasonTeams = seasonTeamDao.findByUserId(user.getId());
+        }
+
+
         List<Season> seasons = new ArrayList<>();
 
         if (seasonTeams.isEmpty()) {
@@ -163,7 +200,14 @@ public class SeasonServiceImpl implements SeasonService {
         }
 
         User user = userService.loginFromId(userId);
-        List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(user.getId());
+        List<SeasonTeam> seasonTeams = new ArrayList<>();
+        if(user.getRole().name().equals("ADMIN")) {
+            seasonTeams = (List<SeasonTeam>) seasonTeamDao.findAll();
+        } else {
+            seasonTeams = seasonTeamDao.findByUserId(user.getId());
+        }
+
+
         Long id = (long) -1;
 
         for (SeasonTeam seasonTeam : seasonTeams) {
@@ -193,7 +237,12 @@ public class SeasonServiceImpl implements SeasonService {
         }
 
         User user = userService.loginFromId(userId);
-        List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(user.getId());
+        List<SeasonTeam> seasonTeams = new ArrayList<>();
+        if(user.getRole().name().equals("ADMIN")) {
+            seasonTeams = (List<SeasonTeam>) seasonTeamDao.findAll();
+        } else {
+            seasonTeams = seasonTeamDao.findByUserId(user.getId());
+        }
         Season existingSeason2 = null;
 
         for (SeasonTeam seasonTeam : seasonTeams){

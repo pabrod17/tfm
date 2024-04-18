@@ -145,6 +145,10 @@ public class PlayerServiceImpl implements PlayerService {
         if (!userDao.existsById(userId)) {
             throw new InstanceNotFoundException("project.entities.user");
         }
+        User user = userDao.findById(userId).get();
+        if(user.getRole().name().equals("ADMIN")) {
+            return (List<Player>) playerDao.findAll();
+        }
 
         List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(userId);
 
@@ -291,6 +295,76 @@ public class PlayerServiceImpl implements PlayerService {
             throw new InstanceNotFoundException("project.entities.user");
         }
 
+        User user = userDao.findById(userId).get();
+        if(user.getRole().name().equals("ADMIN")) {
+            List<Player> playersResult = new ArrayList<>();
+            List<Player> players = (List<Player>) playerDao.findAll();
+            for (Player player : players) {
+
+                if (!name.isEmpty() && !primaryLastName.isEmpty() && !secondLastName.isEmpty()) {
+                    if (player.getPlayerName().equals(name) && player.getPrimaryLastName().equals(primaryLastName)
+                            && player.getSecondLastName().equals(secondLastName)) {
+                        playersResult.add(player);
+                    }
+                    continue;
+                }
+
+                if (name.isEmpty()) {
+                    if (!primaryLastName.isEmpty()) {
+                        if (!secondLastName.isEmpty()) {
+                            if (player.getPrimaryLastName().equals(primaryLastName)
+                                    && player.getSecondLastName().equals(secondLastName)) {
+                                playersResult.add(player);
+                                continue;
+                            }
+                        } else {
+                            if (player.getPrimaryLastName().equals(primaryLastName)) {
+                                playersResult.add(player);
+                                continue;
+                            }
+                        }
+                    } else {
+                        if (player.getSecondLastName().equals(secondLastName)) {
+                            playersResult.add(player);
+                            continue;
+                        }
+                    }
+                } else {
+                    if (!primaryLastName.isEmpty()) {
+                        if (!secondLastName.isEmpty()) {
+                            if (player.getPrimaryLastName().equals(primaryLastName)
+                                    && player.getSecondLastName().equals(secondLastName)
+                                    && player.getPlayerName().equals(name)) {
+                                playersResult.add(player);
+                                continue;
+                            }
+                        } else {
+                            if (player.getPrimaryLastName().equals(primaryLastName)
+                                    && player.getPlayerName().equals(name)) {
+                                playersResult.add(player);
+                                continue;
+                            }
+                        }
+                    } else {
+                        if (!secondLastName.isEmpty()) {
+                            if (player.getSecondLastName().equals(secondLastName) && player.getPlayerName().equals(name)) {
+                                playersResult.add(player);
+                                continue;
+                            }
+                        } else {
+                            if (player.getPlayerName().equals(name)) {
+                                playersResult.add(player);
+                                continue;
+                            }
+                        }
+                    }
+                }
+            }
+            playersResult = playersResult.stream().distinct().collect(Collectors.toList());
+
+            return playersResult;
+        }
+
         List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(userId);
 
         List<Player> players = new ArrayList<>();
@@ -387,6 +461,22 @@ public class PlayerServiceImpl implements PlayerService {
             throw new InstanceNotFoundException("project.entities.user");
         }
 
+        User user = userDao.findById(userId).get();
+        if(user.getRole().name().equals("ADMIN")) {
+            List<Player> playersResult = new ArrayList<>();
+            List<Player> players = (List<Player>) playerDao.findAll();
+            for(Player player : players){
+                if (player.getDni().equals(dni)) {
+                    playersResult.add(player);
+                }
+            }
+            playersResult = playersResult.stream().distinct().collect(Collectors.toList());
+
+            return playersResult;
+        }
+
+
+
         List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(userId);
 
         List<Player> playerFound = new ArrayList<>();
@@ -423,6 +513,21 @@ public class PlayerServiceImpl implements PlayerService {
             throw new InstanceNotFoundException("project.entities.Position");
         }
 
+        User user = userDao.findById(userId).get();
+        if(user.getRole().name().equals("ADMIN")) {
+            List<Player> playersResult = new ArrayList<>();
+            List<Player> players = (List<Player>) playerDao.findAll();
+            for(Player player : players){
+                if (player.getPosition().equals(position)) {
+                    playersResult.add(player);
+                }
+            }
+            playersResult = playersResult.stream().distinct().collect(Collectors.toList());
+
+            return playersResult;
+        }
+
+
         List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(userId);
 
         List<Player> players = new ArrayList<>();
@@ -454,6 +559,21 @@ public class PlayerServiceImpl implements PlayerService {
             throw new InstanceNotFoundException("project.entities.user");
         }
 
+        User user = userDao.findById(userId).get();
+        if(user.getRole().name().equals("ADMIN")) {
+            List<Player> playersResult = new ArrayList<>();
+            List<Player> players = (List<Player>) playerDao.findAll();
+            for(Player player : players){
+                if (player.getEmail().equals(email)) {
+                    playersResult.add(player);
+                }
+            }
+            playersResult = playersResult.stream().distinct().collect(Collectors.toList());
+
+            return playersResult;
+        }
+
+
         List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(userId);
 
         List<Player> playerFound = new ArrayList<>();
@@ -482,6 +602,20 @@ public class PlayerServiceImpl implements PlayerService {
     public List<Player> findPlayersrWithLesion(Long userId) throws InstanceNotFoundException {
         if (!userDao.existsById(userId)) {
             throw new InstanceNotFoundException("project.entities.user");
+        }
+
+        User user = userDao.findById(userId).get();
+        if(user.getRole().name().equals("ADMIN")) {
+            List<Player> playersResult = new ArrayList<>();
+            List<Player> players = (List<Player>) playerDao.findAll();
+            for(Player player : players){
+                if(Boolean.TRUE.equals(player.isInjured())) {
+                    playersResult.add(player);
+                }
+            }
+            playersResult = playersResult.stream().distinct().collect(Collectors.toList());
+
+            return playersResult;
         }
 
         List<Player> playersResult = new ArrayList<>();
@@ -520,12 +654,30 @@ public class PlayerServiceImpl implements PlayerService {
                 && !typeLesion.equals("ColumnaVertebral") && !typeLesion.equals("Psicologica")) {
             throw new InstanceNotFoundException("project.entities.LesionType");
         }
+        List<PlayerLesion> playersWithLesion = (List<PlayerLesion>) playerLesionDao.findAll();
+
+        User user = userDao.findById(userId).get();
+        if(user.getRole().name().equals("ADMIN")) {
+            List<Player> playersResult = new ArrayList<>();
+            List<Player> players = (List<Player>) playerDao.findAll();
+            for(Player player : players){
+                for (PlayerLesion playerLesion : playersWithLesion) {
+                    if (player.getId() == playerLesion.getPlayer().getId() && playerLesion.getLesion().getLesionType().equals(typeLesion)){
+                        playersResult.add(player);
+                    }
+                }
+            }
+            playersResult = playersResult.stream().distinct().collect(Collectors.toList());
+
+            return playersResult;
+        }
+
+
         // LesionType typeLesionEnum = LesionType.valueOf(typeLesion);
         List<Player> playersResult = new ArrayList<>();
         List<Player> players = new ArrayList<>();
 
 
-        List<PlayerLesion> playersWithLesion = (List<PlayerLesion>) playerLesionDao.findAll();
 
         List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(userId);
 

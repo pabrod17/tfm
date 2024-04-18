@@ -52,13 +52,17 @@ public class CalendarEventServiceImpl implements CalendarEventService {
 
         List<CalendarEvent> calendarEvents = new ArrayList<>();
 
-
         if (!user.isPresent()) {
             throw new InstanceNotFoundException("project.entities.user", userId);
         }
-
-        calendarEvents = calendarEventDao.findByUserId(userId).stream().distinct().collect(Collectors.toList());;
-
+        if(user.get().getRole().name().equals("ADMIN")) {
+            calendarEvents = (List<CalendarEvent>) calendarEventDao.findAll();
+            calendarEvents.stream().distinct().collect(Collectors.toList());;
+        } else if(user.get().getRole().name().equals("COACH")) {
+            calendarEvents = calendarEventDao.findByUserId(userId).stream().distinct().collect(Collectors.toList());;
+        } else if(user.get().getRole().name().equals("USER") && user.get().getCreatedBy()!= null) {
+            calendarEvents = calendarEventDao.findByUserId(user.get().getCreatedBy()).stream().distinct().collect(Collectors.toList());;
+        }
         return calendarEvents;
     }
 

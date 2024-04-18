@@ -22,6 +22,9 @@ public class PlayServiceImpl implements PlayService {
     private PlayDao playDao;
 
     @Autowired
+    private UserDao userDao;
+
+    @Autowired
     private PlayTeamDao playTeamDao;
 
     @Autowired
@@ -89,7 +92,16 @@ public class PlayServiceImpl implements PlayService {
     @Override
     public List<Play> findPlaysByUserId(Long userId) throws InstanceNotFoundException {
         
-        userService.loginFromId(userId);
+        //userService.loginFromId(userId);
+
+        User user = userDao.findById(userId).get();
+        if(user.getRole().name().equals("ADMIN")) {
+            List<Play> plays = (List<Play>) playDao.findAll();
+            plays = plays.stream().distinct().collect(Collectors.toList());
+            return plays;
+        }
+
+
 
         List<Team> teams = teamService.findAllTeams(userId);
         List<PlayTeam> playTeams = (List<PlayTeam>) playTeamDao.findAll();
@@ -143,8 +155,18 @@ public class PlayServiceImpl implements PlayService {
     public List<Play> findPlaysByType(Long userId, String playType) throws InstanceNotFoundException,
             IncorrectPlayTypeException {
 
-        User user = userService.loginFromId(userId);
-        List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(user.getId());
+
+        User user = userDao.findById(userId).get();
+        List<SeasonTeam> seasonTeams = new ArrayList<>();
+        if(user.getRole().name().equals("ADMIN")) {
+            seasonTeams = (List<SeasonTeam>) seasonTeamDao.findAll();
+        } else {
+            seasonTeams = seasonTeamDao.findByUserId(user.getId());
+        }
+
+
+
+
         List<Play> plays = new ArrayList<>();
 
         if (!playType.equals("Ataque") && !playType.equals("Defensa")) {

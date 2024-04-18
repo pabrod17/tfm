@@ -159,7 +159,16 @@ public class TrainingServiceImpl implements TrainingService {
             List<Training> trainingsBySeasonTeamId = new ArrayList<>();
 
             if(teamId == null && seasonId == null) {
-                seasonTeams = seasonTeamDao.findByUserId(userId);
+
+                User user = userDao.findById(userId).get();
+
+                if(user.getRole().name().equals("ADMIN")) {
+                    seasonTeams = (List<SeasonTeam>) seasonTeamDao.findAll();
+                } else {
+                    seasonTeams = seasonTeamDao.findByUserId(userId);
+                }
+
+
                     for(SeasonTeam seasonTeam : seasonTeams){
                             trainings2 = trainingDao.findBySeasonTeamId(seasonTeam.getId());
                             for(Training training : trainings2){
@@ -219,9 +228,26 @@ public class TrainingServiceImpl implements TrainingService {
             throw new InstanceNotFoundException("project.entities.user");
         }
 
-        List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(userId);
         List<Training> trainings = new ArrayList<>();
         List<Training> trainings2 = new ArrayList<>();
+
+        User user = userDao.findById(userId).get();
+
+        if(user.getRole().name().equals("ADMIN")) {
+
+            trainings = (List<Training>) trainingDao.findAll();
+            trainings = trainings.stream().distinct().collect(Collectors.toList());
+
+            return trainings;
+        }
+
+
+
+
+
+
+        List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(userId);
+
 
         for(SeasonTeam seasonTeam : seasonTeams){
             trainings2 = trainingDao.findBySeasonTeamId(seasonTeam.getId());

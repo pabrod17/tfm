@@ -23,6 +23,9 @@ public class TeamServiceImpl implements TeamService {
     private SeasonDao seasonDao;
 
     @Autowired
+    private UserDao userDao;
+
+    @Autowired
     private PlayerDao playerDao;
 
     @Autowired
@@ -81,7 +84,15 @@ public class TeamServiceImpl implements TeamService {
         Season season = seasonService.findSeasonById(userId, seasonId);
         Team team = teamService.findTeamById(userId, teamId);
 
-        List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(user.getId());
+
+        List<SeasonTeam> seasonTeams = new ArrayList<>();
+        if(user.getRole().name().equals("ADMIN")) {
+            seasonTeams = (List<SeasonTeam>) seasonTeamDao.findAll();
+        } else {
+            seasonTeams = seasonTeamDao.findByUserId(user.getId());
+        }
+
+
         for (SeasonTeam seasonTeam : seasonTeams) {
             if(seasonTeam.getTeam() != null && seasonTeam.getTeam().getId() == teamId){
                 if(seasonTeam.getSeason() != null && seasonTeam.getSeason().getId() != seasonId){
@@ -104,9 +115,13 @@ public class TeamServiceImpl implements TeamService {
     @Transactional(readOnly = true)
     public Team findTeamById(Long userId, Long teamId) throws InstanceNotFoundException {
 
+        List<SeasonTeam> seasonTeams = new ArrayList<>();
         User user = userService.loginFromId(userId);
-        List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(user.getId());
-
+        if(user.getRole().name().equals("ADMIN")) {
+            seasonTeams = (List<SeasonTeam>) seasonTeamDao.findAll();
+        } else {
+            seasonTeams = seasonTeamDao.findByUserId(user.getId());
+        }
 
         Team team = null;
 
@@ -150,8 +165,26 @@ public class TeamServiceImpl implements TeamService {
     public Team findTeamByName(Long userId, String teamName) throws InstanceNotFoundException {
 
         User user = userService.loginFromId(userId);
-        List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(user.getId());
         Team team = null;
+
+        if(user.getRole().name().equals("ADMIN")) {
+            List<Team> teamsResult = new ArrayList<>();
+            List<Team> teams = (List<Team>) teamDao.findAll();
+
+            for (Team team2 : teams) {
+                if(team2.getTeamName().equals(teamName)){
+                    team = team2;
+                }
+            }
+            return team;
+        }
+
+
+
+
+
+
+        List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(user.getId());
 
         for (SeasonTeam seasonTeam : seasonTeams) {
             if(seasonTeam.getTeam() != null && seasonTeam.getTeam().getTeamName().equals(teamName)){
@@ -170,9 +203,26 @@ public class TeamServiceImpl implements TeamService {
     public List<Team> findTeamsByName(Long userId, String teamName) throws InstanceNotFoundException {
 
         User user = userService.loginFromId(userId);
-        List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(user.getId());
         List<Team> teams = new ArrayList<>();
         Set<Team> teamSet = new HashSet<>();
+
+        if(user.getRole().name().equals("ADMIN")) {
+            List<Team> teamsAll = (List<Team>) teamDao.findAll();
+
+            for (Team team2 : teamsAll) {
+                if(team2.getTeamName().equals(teamName)){
+                    teamSet.add(team2);
+                }
+            }
+            return new ArrayList<>(teamSet);
+        }
+
+
+
+
+
+        List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(user.getId());
+
 
         for (SeasonTeam seasonTeam : seasonTeams) {
             if(seasonTeam.getTeam() != null && seasonTeam.getTeam().getTeamName().equals(teamName)){
@@ -190,9 +240,25 @@ public class TeamServiceImpl implements TeamService {
     public List<Team> findTeamsByArena(Long userId, String arena) throws InstanceNotFoundException {
 
         User user = userService.loginFromId(userId);
-        List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(user.getId());
-        Set<Team> teamSet = new HashSet<>();
         List<Team> teams = new ArrayList<>();
+        Set<Team> teamSet = new HashSet<>();
+
+        if(user.getRole().name().equals("ADMIN")) {
+            List<Team> teamsAll = (List<Team>) teamDao.findAll();
+
+            for (Team team2 : teamsAll) {
+                if(team2.getArenaName().equals(arena)){
+                    teamSet.add(team2);
+                }
+            }
+            return new ArrayList<>(teamSet);
+        }
+
+
+
+
+        List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(user.getId());
+
 
         for (SeasonTeam seasonTeam : seasonTeams) {
             if(seasonTeam.getTeam() != null && seasonTeam.getTeam().getArenaName().equals(arena)){
@@ -209,10 +275,25 @@ public class TeamServiceImpl implements TeamService {
     @Transactional(readOnly = true)
     public List<Team> findTeamsByOwner(Long userId, String owner) throws InstanceNotFoundException {
 
+
         User user = userService.loginFromId(userId);
-        List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(user.getId());
         List<Team> teams = new ArrayList<>();
         Set<Team> teamSet = new HashSet<>();
+
+        if(user.getRole().name().equals("ADMIN")) {
+            List<Team> teamsAll = (List<Team>) teamDao.findAll();
+
+            for (Team team2 : teamsAll) {
+                if(team2.getOwnerName().equals(owner)){
+                    teamSet.add(team2);
+                }
+            }
+            return new ArrayList<>(teamSet);
+        }
+
+
+
+        List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(user.getId());
 
         for (SeasonTeam seasonTeam : seasonTeams) {
             if(seasonTeam.getTeam() != null && seasonTeam.getTeam().getOwnerName().equals(owner)){
@@ -229,7 +310,15 @@ public class TeamServiceImpl implements TeamService {
     public List<Team> findAllTeams(Long userId) throws InstanceNotFoundException {
         
         User user = userService.loginFromId(userId);
-        List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(user.getId());
+        List<SeasonTeam> seasonTeams = new ArrayList<>();
+        if(user.getRole().name().equals("ADMIN")) {
+            seasonTeams = (List<SeasonTeam>) seasonTeamDao.findAll();
+        } else {
+            seasonTeams = seasonTeamDao.findByUserId(user.getId());
+        }
+
+
+
         List<Team> teams = new ArrayList<>();
 
         if (seasonTeams.isEmpty()) {
@@ -252,8 +341,26 @@ public class TeamServiceImpl implements TeamService {
     public List<Team> findTeamsToSeason(Long userId, Long seasonId) throws InstanceNotFoundException {
 
         User user = userService.loginFromId(userId);
-        List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(user.getId());
         List<Team> teams = new ArrayList<>();
+
+        if(user.getRole().name().equals("ADMIN")) {
+            List<SeasonTeam> seasonTeams = (List<SeasonTeam>) seasonTeamDao.findAll();
+
+            for (SeasonTeam seasonTeam : seasonTeams) {
+                if(seasonTeam.getSeason() != null && seasonTeam.getTeam() != null && seasonTeam.getSeason().getId() == seasonId){
+                    teams.add(seasonTeam.getTeam());
+                }
+            }
+            return teams;
+        }
+
+
+
+
+
+
+
+        List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(user.getId());
 
         if (seasonTeams.isEmpty()) {
             return teams;
@@ -281,7 +388,12 @@ public class TeamServiceImpl implements TeamService {
         }
 
         User user = userService.loginFromId(userId);
-        List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(user.getId());
+        List<SeasonTeam> seasonTeams = new ArrayList<>();
+        if(user.getRole().name().equals("ADMIN")) {
+            seasonTeams = (List<SeasonTeam>) seasonTeamDao.findAll();
+        } else {
+            seasonTeams = seasonTeamDao.findByUserId(user.getId());
+        }
         Long id = (long) -1;
         for (SeasonTeam seasonTeam : seasonTeams) {
             if(seasonTeam.getTeam() != null && seasonTeam.getTeam().getId() == teamId){
@@ -328,9 +440,13 @@ public class TeamServiceImpl implements TeamService {
         if (!existingTeam.isPresent()) {
             throw new InstanceNotFoundException("project.entities.team", teamId);
         }
-
+        List<SeasonTeam> seasonTeams = new ArrayList<>();
         User user = userService.loginFromId(userId);
-        List<SeasonTeam> seasonTeams = seasonTeamDao.findByUserId(user.getId());
+        if(user.getRole().name().equals("ADMIN")) {
+            seasonTeams = (List<SeasonTeam>) seasonTeamDao.findAll();
+        } else {
+            seasonTeams = seasonTeamDao.findByUserId(user.getId());
+        }
         Team existingTeam2 = null;
 
         for (SeasonTeam seasonTeam : seasonTeams) {
