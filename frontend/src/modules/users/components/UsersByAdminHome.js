@@ -140,7 +140,7 @@ const UsersByAdminHome = () => {
       };
 
       const handleUsersByAdmin = (dispatch) => {
-        dispatch(actions.findUsersByCoachId( () => history(`/users/admin`)));
+        dispatch(actions.findUsersByAdminId( () => history(`/users/admin`)));
     }
     const handleUsersByAdminCreate = (tabValue, dispatch) => {
         history(`/users/admin/${tabValue}`);

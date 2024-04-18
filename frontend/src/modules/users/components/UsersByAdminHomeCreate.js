@@ -116,8 +116,6 @@ const UsersByAdminHomeCreate = () => {
             sx={{
                 flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
             }}
-            width={"83vw"} // El ancho inicial es del 80% del ancho de la ventana
-            height={"90vh"} // El alto inicial es del 80% del alto de la ventana
         >
 <Box
     sx={{
