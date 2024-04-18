@@ -42,7 +42,7 @@ const Court = ({ children, onPositionSelect }) => {
       gridTemplateRows: "repeat(6, 1fr)",
       backgroundImage: `url(${backgroundImage})`,
       backgroundRepeat: 'no-repeat', // Evita la repetición de la imagen de fondo
-      backgroundSize: 'cover',
+      backgroundSize: '100% 100%',
       overflowX: 'hidden',
     };
   
@@ -253,11 +253,15 @@ const Court = ({ children, onPositionSelect }) => {
             display="flex"
             alignItems="center"
             gap={4}
-            width={"80vw"} // El ancho inicial es del 80% del ancho de la ventana
-            height={"80vh"} // El alto inicial es del 80% del alto de la ventana
+            width={"83vw"} // El ancho inicial es del 80% del ancho de la ventana
+            height={"90vh"} // El alto inicial es del 80% del alto de la ventana
             p={5}
             m={9}
             ml={0}
+            mr={0}
+            pt={1}
+            pl={3}
+            pr={3}
             sx={{
                 border: '2px solid grey',
                 background: "linear-gradient(180deg, #329617 0%, #062C76 70% )",
@@ -269,9 +273,9 @@ const Court = ({ children, onPositionSelect }) => {
             }}
         >
           
-            <Grid container columns={{ xs: 12, sm: 12, md: 12 }} style={{ height: '100%' }}>
+            <Grid container columns={{ xs: 12, sm: 12, md: 12 }} style={{ height: '100%', width:"100%" }}>
               
-                <Grid item md={12} style={{ height: '100%' }}>
+                <Grid item md={12} style={{ height: '100%', width:"100%" }}>
                   
 
 

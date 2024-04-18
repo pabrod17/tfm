@@ -196,11 +196,15 @@ const BoardHome = () => {
             display="flex"
             alignItems="center"
             gap={4}
-            width={"80vw"} // El ancho inicial es del 80% del ancho de la ventana
-            height={"80vh"} // El alto inicial es del 80% del alto de la ventana
+            width={"83vw"} // El ancho inicial es del 80% del ancho de la ventana
+            height={"90vh"} // El alto inicial es del 80% del alto de la ventana
             p={5}
             m={9}
             ml={0}
+            mr={0}
+            pt={3}
+            pl={3}
+            pr={3}
             sx={{
                 border: '2px solid grey',
                 background: "linear-gradient(180deg, #329617 0%, #062C76 70% )",
