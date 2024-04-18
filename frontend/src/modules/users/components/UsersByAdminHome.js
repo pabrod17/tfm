@@ -206,6 +206,7 @@ const UsersByAdminHome = () => {
             height={"80vh"} // El alto inicial es del 80% del alto de la ventana
             p={5}
             ml={0}
+            overflowX="auto" // Agrega desplazamiento horizontal si es necesario
             sx={{
                 border: '2px solid grey',
                 background: "linear-gradient(180deg,#df252c,#0c1345 10%,#0c1345 80%,#0c1345 ,#df252c)",
@@ -214,7 +215,8 @@ const UsersByAdminHome = () => {
                 flexWrap: 'wrap',
                 flexDirection: 'column',
                 borderColor: "black",
-                boxShadow: "0 10px 50px rgb(0, 0, 0)"
+                boxShadow: "0 10px 50px rgb(0, 0, 0)",
+                overflowX:"scroll",
             }}
         >
             <Grid container columns={{ xs: 12, sm: 12, md: 12 }} style={{ height: '100%' }}>
@@ -228,7 +230,8 @@ const UsersByAdminHome = () => {
                                     boxShadow:"0 10px 50px rgb(0, 0, 0)",
                                     fontSize:"30px",
                                     borderRadius: "20px",
-                                    paddingBottom:"13.2px"
+                                    paddingBottom:"13.2px",
+                                    overflowX:"scroll",
 								}}
 								rows={rowsUsers}
 								columns={columnsUsers}
