@@ -12,6 +12,7 @@ import FormControl from '@mui/material/FormControl';
 import lesionPierna from '../../lesion/components/lesionPierna.jpg';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import users, { LoginNew, Login } from '../../users';
 
 const UpdateLesion = () => {
 
@@ -25,6 +26,8 @@ const UpdateLesion = () => {
   const [lesionType, setLesionType] = useState(null);
   const [backendErrors, setBackendErrors] = useState(null);
   let form;
+
+  const userLogged = useSelector(users.selectors.getUser);
 
   useEffect(() => {
     if (!lesion) {
@@ -140,6 +143,7 @@ const UpdateLesion = () => {
 
                       }}
                       inputProps={{
+                        readOnly: userLogged.role !== "ADMIN", 
                         MenuProps: {
                           MenuListProps: {
                             sx: {
@@ -178,7 +182,7 @@ const UpdateLesion = () => {
                     id="outlined-multiline-static-1"
                     label={<FormattedMessage id="project.lesion.fields.lesionName" />}
                     InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-                    InputProps={{ style: { color: 'white', padding: '10px', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
+                    InputProps={{readOnly: userLogged.role !== "ADMIN",  style: { color: 'white', padding: '10px', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
                     multiline
                     rows={2}
                     sx={{
@@ -194,7 +198,7 @@ const UpdateLesion = () => {
                     id="outlined-multiline-static-1"
                     label={<FormattedMessage id="project.exercises.fields.description" />}
                     InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-                    InputProps={{ style: { color: 'white', padding: '10px', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
+                    InputProps={{readOnly: userLogged.role !== "ADMIN",  style: { color: 'white', padding: '10px', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
                     multiline
                     rows={4}
                     sx={{
@@ -210,7 +214,7 @@ const UpdateLesion = () => {
                     id="outlined-multiline-static-1"
                     label={<FormattedMessage id="project.lesion.fields.medication" />}
                     InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-                    InputProps={{ style: { color: 'white', padding: '10px', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
+                    InputProps={{readOnly: userLogged.role !== "ADMIN",  style: { color: 'white', padding: '10px', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
                     multiline
                     rows={4}
                     sx={{
@@ -231,9 +235,10 @@ const UpdateLesion = () => {
             </Grid>
           </Box>  </Grid>
       </Grid>
+      {(userLogged.role === "ADMIN") && (
 
       <button className="post_lesion" onClick={(e) => handleSubmit(e)}><FormattedMessage id="project.global.buttons.save" /></button>
-
+      )}
     </Box>
 
   );

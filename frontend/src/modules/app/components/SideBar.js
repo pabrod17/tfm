@@ -21,6 +21,7 @@
 // SOFTWARE.
 
 import { useState } from "react";
+import {useSelector} from 'react-redux';
 import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
@@ -77,18 +78,19 @@ import * as actionEvents from '../../events/actions';
 import * as actionsPlayers from '../../players/actions';
 import * as actionsUsers from '../../users/actions';
 import { FormattedMessage } from 'react-intl';
+import users, { LoginNew, Login } from '../../users';
 
 
 const Sidebar = () => {
-  const theme = useTheme();
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Inicio");
   const dispatch = useDispatch();
   const history = useNavigate();
   const [selectedItem, setSelectedItem] = useState("/");
 
+  const userLogged = useSelector(users.selectors.getUser);
+
   const Item = ({title, to, icon, selected, setSelected, dispatch }) => {
-    const theme = useTheme();
     return (
       <MenuItem
         active={selected === title}
@@ -104,6 +106,7 @@ const Sidebar = () => {
       </MenuItem>
     );
   };
+
 
   const handleMenuOption = (to, dispatch) => {
     if(to ===  "/") {
@@ -192,6 +195,7 @@ const Sidebar = () => {
     }
 }
 
+
   return (
     <Grid item>
 
@@ -249,7 +253,7 @@ const Sidebar = () => {
                 ml="10px"
               >
                 <Typography variant="h3" sx={{
-                  color: "#ff8c00"
+                  color: "#ce7c16"
                 }} >
                   TeamHub
                 </Typography>
@@ -286,6 +290,9 @@ const Sidebar = () => {
           )} */}
 
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
+            
+          {(userLogged.role === "COACH" || userLogged.role === "ADMIN") && (
+            <>
             <Item
               title={<FormattedMessage id="project.global.buttons.home"/>}
               to="/"
@@ -480,26 +487,35 @@ const Sidebar = () => {
               dispatch={dispatch}
             />
 
+            </>
+            )}
+            
+            {(userLogged.role === "ADMIN" ||userLogged.role === "COACH" || userLogged.role === "USER") && (
+              <>
+                <Typography
+                variant="h6"
+                sx={{ m: "15px 0 5px 20px" }}
+                color={"yellow"}
+              >
+                <FormattedMessage id="project.global.buttons.calendar"/>
+              </Typography>
+                <Item
+                title={<FormattedMessage id="project.global.buttons.calendar"/>}
+                to="/calendar/home"
+                icon={<InsertInvitationIcon sx={{
+                  fontSize:"30px",
+                  color: selectedItem === "/calendar/home" ? "#6fa" : ""
+                }} />}
+                selected={selected}
+                setSelected={setSelected}
+                onClick={() => handleMenuOption()}
+                dispatch={dispatch}
+                />
+              </>
+            )}
+            {(userLogged.role === "COACH") && (
+              <>
             <Typography
-              variant="h6"
-              sx={{ m: "15px 0 5px 20px" }}
-              color={"yellow"}
-            >
-              <FormattedMessage id="project.global.buttons.calendar"/>
-            </Typography>
-            <Item
-              title={<FormattedMessage id="project.global.buttons.calendar"/>}
-              to="/calendar/home"
-              icon={<InsertInvitationIcon sx={{
-                fontSize:"30px",
-                color: selectedItem === "/calendar/home" ? "#6fa" : ""
-              }} />}
-              selected={selected}
-              setSelected={setSelected}
-              onClick={() => handleMenuOption()}
-              dispatch={dispatch}
-            />
-                        <Typography
               variant="h6"
               sx={{ m: "15px 0 5px 20px" }}
               color={"#00ccff"}
@@ -518,18 +534,31 @@ const Sidebar = () => {
               onClick={() => handleMenuOption()}
               dispatch={dispatch}
             />
-            <Item
-              title={<FormattedMessage id="project.global.buttons.users"/>}
-              to="/users/admin"
-              icon={<PeopleIcon sx={{
-                fontSize:"30px",
-                color: selectedItem === "/users/admin" ? "#6fa" : ""
-              }} />}
-              selected={selected}
-              setSelected={setSelected}
-              onClick={() => handleMenuOption()}
-              dispatch={dispatch}
-            />
+            </>
+            )}
+        {userLogged.role === "ADMIN" && (
+          <>
+            <Typography
+            variant="h6"
+            sx={{ m: "15px 0 5px 20px" }}
+            color={"#00ccff"}
+          >
+            <FormattedMessage id="project.global.buttons.users"/>
+          </Typography>
+          <Item
+          title={<FormattedMessage id="project.global.buttons.users"/>}
+          to="/users/admin"
+          icon={<PeopleIcon sx={{
+            fontSize:"30px",
+            color: selectedItem === "/users/admin" ? "#6fa" : ""
+          }} />}
+          selected={selected}
+          setSelected={setSelected}
+          onClick={() => handleMenuOption()}
+          dispatch={dispatch}
+        />
+        </>
+        )}
           </Box>
         </Menu>
       </ProSidebar>

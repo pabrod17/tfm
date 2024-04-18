@@ -13,6 +13,7 @@ import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import { Button, IconButton, Pagination, Stack, Toolbar } from '@mui/material';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import users, { LoginNew, Login } from '../../users';
 
 const StretchingsHome = () => {
 
@@ -21,6 +22,8 @@ const StretchingsHome = () => {
     const history = useNavigate();
     const [page, setPage] = useState(0);
     const [value, setValue] = useState(0);
+
+    const userLogged = useSelector(users.selectors.getUser);
 
     const hamstrings = "Isquiotibiales";
     const buttocks = "Gluteos";
@@ -117,7 +120,11 @@ const StretchingsHome = () => {
                         bgcolor: "linear-gradient(147deg,#ffffff ,#4400f9,#000000 35% 70%,#660bd8,#ffffff)",
                         color: "white"
                     }}
-                        onClick={() => history(`/stretchings/addStretching`)}
+                    onClick={() => {
+                        if(userLogged.role === "ADMIN") {
+                            history(`/stretchings/addStretching`)
+                        }
+                        }}
                     >
                     </AddCircleOutlineIcon>
                 </IconButton>

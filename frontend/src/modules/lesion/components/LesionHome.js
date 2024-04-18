@@ -13,6 +13,7 @@ import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import { Button, IconButton, Pagination, Stack, Toolbar } from '@mui/material';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import users, { LoginNew, Login } from '../../users';
 
 const LesionHome = () => {
 
@@ -66,6 +67,9 @@ const LesionHome = () => {
         dispatch(actions.findAllLesionPage({ page: page }));
         history(`/lesion/home`);
     }
+
+    const userLogged = useSelector(users.selectors.getUser);
+
     return (
         <div className=''>
 
@@ -110,7 +114,11 @@ const LesionHome = () => {
                         bgcolor: "linear-gradient(147deg,#ffffff ,#4400f9,#000000 35% 70%,#660bd8,#ffffff)",
                         color: "white"
                     }}
-                        onClick={() => history(`/lesion/addLesion`)}
+                    onClick={() => {
+                        if(userLogged.role === "ADMIN") {
+                            history(`/lesion/addLesion`)
+                        }
+                        }}
                     >
                     </AddCircleOutlineIcon>
                 </IconButton>

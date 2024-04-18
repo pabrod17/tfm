@@ -1536,11 +1536,11 @@ max-height: 360px;
   box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
 }
 
-.small-text, .title,.desc {
+.small-text, .title,.desc,.desc3,.desc2 {
   font-weight: 600;
 }
 
-.title,.desc {
+.title,.desc,.desc3,.desc2 {
   margin: 8px 0;
 }
 
@@ -1562,7 +1562,7 @@ max-height: 360px;
 }
 
 .desc {
-  color: rgb(151 153 167);
+  color: rgb(133, 116, 116);
   font-size: 16px;
 }
 
@@ -2297,7 +2297,7 @@ form .btn input[type="submit"]{
   backdrop-filter: blur(10px);
   opacity: 0;
   transition: 0.5s;
-  animation: animate 2s ease-in-out infinite;
+  /* animation: animate 2s ease-in-out infinite; */
   animation-delay: -1s;
 }
 

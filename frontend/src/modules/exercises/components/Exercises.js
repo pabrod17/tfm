@@ -12,6 +12,8 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import users, { LoginNew, Login } from '../../users';
+
 
 const handleRemoveExercise = (id, dispatch, history) => {
   dispatch(actions.removeExercise(id, () => history(`/exercises/home`)));
@@ -40,7 +42,7 @@ const style = {
 };
 
 
-const ExerciseCard = ({ dispatch, history, item, handleOpenDescriptionModal, handleOpenObjectiveModal }) => {
+const ExerciseCard = ({userLogged, dispatch, history, item, handleOpenDescriptionModal, handleOpenObjectiveModal }) => {
   return (
     <div key={item.id}>
       <div>
@@ -66,10 +68,12 @@ const ExerciseCard = ({ dispatch, history, item, handleOpenDescriptionModal, han
                 </a>
                 <hr></hr>
               </div>
+              {userLogged.role === "ADMIN" && (
               <ul class="social-icons trashgrande trash_position">
                 <li><a type="button" onClick={() => handleRemoveExercise(item.id, dispatch, history)}>
                   <i class="fa fa-trash"></i></a></li>
               </ul>
+              )}
               <ul class="social-icons configgrande config_position">
                 <li><a type="button" onClick={() => handleUpdateExercise(item.id, dispatch, history)}>
                   <i class="fa fa-wrench"></i></a></li>
@@ -85,13 +89,13 @@ const ExerciseCard = ({ dispatch, history, item, handleOpenDescriptionModal, han
 
 
 
-function ExercisesList({ items, fallback, dispatch, history, openDescription, openObjective, handleOpenDescription, handleOpenObjective, handleClose }) {
+function ExercisesList({userLogged, items, fallback, dispatch, history, openDescription, openObjective, handleOpenDescription, handleOpenObjective, handleClose }) {
   if (!items || items.length === 0) {
     dispatch(actions.findAllExercises(() => history('/exercises/home')));
     return fallback;
   } else {
     return items.map(item => (
-      <ExerciseCard dispatch={dispatch} history={history} key={item.id} item={item} handleOpenDescriptionModal={handleOpenDescription} handleOpenObjectiveModal={handleOpenObjective} />
+      <ExerciseCard userLogged={userLogged} dispatch={dispatch} history={history} key={item.id} item={item} handleOpenDescriptionModal={handleOpenDescription} handleOpenObjectiveModal={handleOpenObjective} />
     ));
   }
 }
@@ -105,6 +109,7 @@ const Exercises = ({ exercises }) => {
   const [modalObjective, setModalObjective] = useState('');
   const [openDescription, setOpenDescription] = React.useState(false);
   const [openObjective, setOpenObjective] = React.useState(false);
+  const userLogged = useSelector(users.selectors.getUser);
 
   const handleOpenDescription = (description) => {
     setModalDescription(description);
@@ -125,7 +130,7 @@ const Exercises = ({ exercises }) => {
 
   return (
     <div className="card-group lesions_contaner">
-      <ExercisesList items={exercises} fallback={"Loading..."} dispatch={dispatch} history={history} openDescription={openDescription} openObjective={openObjective} handleOpenDescription={handleOpenDescription} handleOpenObjective={handleOpenObjective} />
+      <ExercisesList userLogged={userLogged} items={exercises} fallback={"Loading..."} dispatch={dispatch} history={history} openDescription={openDescription} openObjective={openObjective} handleOpenDescription={handleOpenDescription} handleOpenObjective={handleOpenObjective} />
       {(openDescription || openObjective) && (
         <div className="modal-backdrop" onClick={handleClose}></div>
       )}

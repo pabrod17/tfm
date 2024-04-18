@@ -25,6 +25,7 @@ import back from './back.jpg'; //1920x1200
 import Carousel from 'react-bootstrap/Carousel';
 import Cajita from './Cajita';
 import Topbar from './TopBar';
+import users, { LoginNew, Login } from '../../users';
 
 
 
@@ -78,12 +79,14 @@ const Home = () => {
         setActiveButton(index);
       };
     const buttons = Array.from({ length: 7 }, (_, index) => index);
+    
+    const userLogged = useSelector(users.selectors.getUser);
 
     return (
 <div>
 {/* <Cajita></Cajita> */}
 
-
+{(userLogged.role === "COACH" || userLogged.role === "ADMIN") && (
 <div class="holaaaaaa">
   <div class="homecard">
     <span></span>
@@ -128,6 +131,7 @@ const Home = () => {
     </div>
   </div>
 </div>
+            )}
 </div>
     );
 

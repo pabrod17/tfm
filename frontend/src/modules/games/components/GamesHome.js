@@ -79,7 +79,6 @@ const GamesHome = () => {
                 sx={{
                     maxWidth: { xs: 320, sm: 480 },
                     bgcolor: 'background.dark',
-                    boxShadow: 1,
                     borderRadius: 4,
                     margin: 'auto',  // Centra horizontalmente
                     marginTop: '50px', // Ajusta la distancia desde la parte superior según sea necesario

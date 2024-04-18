@@ -13,6 +13,7 @@ import lesionPierna from '../../lesion/components/lesionPierna.jpg';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import exerciseImage from '../../app/components/exercise.jpg';
+import users, { LoginNew, Login } from '../../users';
 
 const UpdateExercise = () => {
     const exercise = useSelector(selectors.getOneExercise);
@@ -25,6 +26,8 @@ const UpdateExercise = () => {
     const [exerciseType, setExerciseType] = useState(null);
     const [backendErrors, setBackendErrors] = useState(null);
     let form;
+
+    const userLogged = useSelector(users.selectors.getUser);
 
     useEffect(() => {
         if (!exercise) {
@@ -146,6 +149,7 @@ const UpdateExercise = () => {
 
 		  }}
 		  inputProps={{
+        readOnly: userLogged.role !== "ADMIN", 
 			MenuProps: {
 			  MenuListProps: {
 				sx: {
@@ -186,7 +190,7 @@ const UpdateExercise = () => {
 							id="outlined-multiline-static-1"
               label={<FormattedMessage id="project.exercises.fields.name" />}
               InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-              InputProps={{ style: { color: 'white', padding: '10px', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
+              InputProps={{readOnly: userLogged.role !== "ADMIN", style: { color: 'white', padding: '10px', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
               multiline
               rows={2}
               sx={{
@@ -202,7 +206,7 @@ const UpdateExercise = () => {
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.exercises.fields.description" />}
 										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{readOnly: userLogged.role !== "ADMIN",  style: { color: 'white', padding: '10px', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
 										multiline
 										rows={4}
 										sx={{
@@ -218,7 +222,7 @@ const UpdateExercise = () => {
               id="outlined-multiline-static-1"
               label={<FormattedMessage id="project.exercises.fields.objective" />}
               InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-              InputProps={{ style: { color: 'white', padding: '10px', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
+              InputProps={{readOnly: userLogged.role !== "ADMIN",  style: { color: 'white', padding: '10px', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
               multiline
               rows={4}
               sx={{
@@ -239,9 +243,10 @@ const UpdateExercise = () => {
 						</Grid>
 					</Box>  </Grid>
 			</Grid>
+      {(userLogged.role === "ADMIN") && (
 
 			<button className="post_exercise" onClick={(e) => handleSubmit(e)}><FormattedMessage id="project.global.buttons.save" /></button>
-
+      )}
           </Box>
     );
 }

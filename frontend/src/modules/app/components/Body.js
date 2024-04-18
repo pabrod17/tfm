@@ -96,6 +96,7 @@ import UsersByCoachHome from '../../users/components/UsersByCoachHome';
 const Body = ({ isDark, setIsDark}) => {
 
     const loggedIn = useSelector(users.selectors.isLoggedIn);
+    const userLogged = useSelector(users.selectors.getUser);
 
     return (
 
@@ -106,32 +107,32 @@ const Body = ({ isDark, setIsDark}) => {
             <AppGlobalComponents/>
             <Routes>
                 <Route exact path="/" element={<Home/>}></Route>
-                {loggedIn && <Route exact path="/teams/update" element={<UpdateTeam/>}></Route>}
-                {loggedIn && <Route exact path="/teams/addTeamToSeason" element={<AddTeamToSeason/>}></Route>}
-                {loggedIn && <Route exact path="/teams/view/:id" element={<TeamView/>}></Route>}
-                {loggedIn && <Route exact path="/teams/all" element={<FindTeams/>}></Route>}
-                {loggedIn && <Route exact path="/teams/all/result" element={<FindTeamsResult/>}></Route>}
-                {loggedIn && <Route exact path="/teams/all/name" element={<FindTeamByName/>}></Route>}
-                {loggedIn && <Route exact path="/teams/all/name/result/:teamName" element={<FindTeamByNameResult/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/teams/update" element={<UpdateTeam/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/teams/addTeamToSeason" element={<AddTeamToSeason/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/teams/view/:id" element={<TeamView/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/teams/all" element={<FindTeams/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/teams/all/result" element={<FindTeamsResult/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/teams/all/name" element={<FindTeamByName/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/teams/all/name/result/:teamName" element={<FindTeamByNameResult/>}></Route>}
                 
-                {loggedIn && <Route exact path="/teams/home" element={<TeamsHome/>}></Route>}
-                {loggedIn && <Route exact path="/teams/addTeam" element={<AddTeam/>}></Route>}
-                {loggedIn && <Route exact path="/teams/update/:id" element={<UpdateTeam/>}></Route>}
-                {loggedIn && <Route exact path="/teams/update/:id/play/:tabValue" element={<UpdateTeamPlay/>}></Route>}
-                {loggedIn && <Route exact path="/teams/update/:id/player/:tabValue" element={<UpdateTeamPlayer/>}></Route>}
-                {loggedIn && <Route exact path="/teams/update/:id/season/:tabValue" element={<UpdateTeamSeason/>}></Route>}
-                {loggedIn && <Route exact path="/teams/update/:id/training/:tabValue" element={<UpdateTeamTraining/>}></Route>}
-                {loggedIn && <Route exact path="/teams/update/:id/game/:tabValue" element={<UpdateTeamGame/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/teams/home" element={<TeamsHome/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/teams/addTeam" element={<AddTeam/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/teams/update/:id" element={<UpdateTeam/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/teams/update/:id/play/:tabValue" element={<UpdateTeamPlay/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/teams/update/:id/player/:tabValue" element={<UpdateTeamPlayer/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/teams/update/:id/season/:tabValue" element={<UpdateTeamSeason/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/teams/update/:id/training/:tabValue" element={<UpdateTeamTraining/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/teams/update/:id/game/:tabValue" element={<UpdateTeamGame/>}></Route>}
 
-                {loggedIn && <Route exact path="/players/home" element={<PlayersHome/>}></Route>}
-                {loggedIn && <Route exact path="/players/addPlayer" element={<AddPlayer/>}></Route>}
-                {loggedIn && <Route exact path="/players/update/:id" element={<UpdatePlayer/>}></Route>}
-                {loggedIn && <Route exact path="/players/update/:id/team/:tabValue" element={<UpdatePlayerTeam/>}></Route>}
-                {loggedIn && <Route exact path="/players/update/:id/game/:tabValue" element={<UpdatePlayerGame/>}></Route>}
-                {loggedIn && <Route exact path="/players/update/:id/training/:tabValue" element={<UpdatePlayerTraining/>}></Route>}
-                {loggedIn && <Route exact path="/players/update/:id/lesion/:tabValue" element={<UpdatePlayerLesion/>}></Route>}
-                {loggedIn && <Route exact path="/players/update/:id/stretching/:tabValue" element={<UpdatePlayerStretching/>}></Route>}
-                {loggedIn && <Route exact path="/players/update/:id/note/:tabValue" element={<UpdatePlayerNote/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/players/home" element={<PlayersHome/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/players/addPlayer" element={<AddPlayer/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/players/update/:id" element={<UpdatePlayer/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/players/update/:id/team/:tabValue" element={<UpdatePlayerTeam/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/players/update/:id/game/:tabValue" element={<UpdatePlayerGame/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/players/update/:id/training/:tabValue" element={<UpdatePlayerTraining/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/players/update/:id/lesion/:tabValue" element={<UpdatePlayerLesion/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/players/update/:id/stretching/:tabValue" element={<UpdatePlayerStretching/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/players/update/:id/note/:tabValue" element={<UpdatePlayerNote/>}></Route>}
                     {/* Donde iria la tabla pongo dos input(titulo, descripcion) y boton save. Debajo la lista de notas */}
 
 
@@ -145,119 +146,119 @@ const Body = ({ isDark, setIsDark}) => {
                 {loggedIn && <Route exact path="/teams/update/:id/play/:tabValue" element={<UpdateTeamPlay/>}></Route>} */}
 
 
-                {loggedIn && <Route exact path="/seasons/all" element={<FindSeasons/>}></Route>}
-                {loggedIn && <Route exact path="/seasons/new" element={<AddSeason/>}></Route>}
-                {loggedIn && <Route exact path="/seasons/update" element={<UpdateSeason/>}></Route>}
-                {loggedIn && <Route exact path="/seasons/all/result" element={<FindSeasonsResult/>}></Route>}
-                {loggedIn && <Route exact path="/seasons/betweenDates" element={<FindSeasonsBetweenTwoDates/>}></Route>}
-                {loggedIn && <Route exact path="/seasons/betweenDates/result/:startDate/:endDate" element={<FindSeasonsBetweenTwoDatesResult/>}></Route>}
-                {loggedIn && <Route exact path="/seasons/view/:id" element={<SeasonView/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/seasons/all" element={<FindSeasons/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/seasons/new" element={<AddSeason/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/seasons/update" element={<UpdateSeason/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/seasons/all/result" element={<FindSeasonsResult/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/seasons/betweenDates" element={<FindSeasonsBetweenTwoDates/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/seasons/betweenDates/result/:startDate/:endDate" element={<FindSeasonsBetweenTwoDatesResult/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/seasons/view/:id" element={<SeasonView/>}></Route>}
                 
-                {loggedIn && <Route exact path="/seasons/home" element={<SeasonsHome/>}></Route>}
-                {loggedIn && <Route exact path="/seasons/addSeason" element={<AddSeason/>}></Route>}
-                {loggedIn && <Route exact path="/seasons/update/:id" element={<UpdateSeason/>}></Route>}
-                {loggedIn && <Route exact path="/seasons/update/:id/team/:tabValue" element={<UpdateSeasonTeam/>}></Route>}
-                {loggedIn && <Route exact path="/seasons/update/:id/training/:tabValue" element={<UpdateSeasonTraining/>}></Route>}
-                {loggedIn && <Route exact path="/seasons/update/:id/game/:tabValue" element={<UpdateSeasonGame/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/seasons/home" element={<SeasonsHome/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/seasons/addSeason" element={<AddSeason/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/seasons/update/:id" element={<UpdateSeason/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/seasons/update/:id/team/:tabValue" element={<UpdateSeasonTeam/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/seasons/update/:id/training/:tabValue" element={<UpdateSeasonTraining/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/seasons/update/:id/game/:tabValue" element={<UpdateSeasonGame/>}></Route>}
 
-                {loggedIn && <Route exact path="/players/home/training/:id:trainingId" element={<FindPlayersByTraining/>}></Route>}
-                {loggedIn && <Route exact path="/players/home/game/:id:gameId" element={<FindPlayersByGame/>}></Route>}
-                {loggedIn && <Route exact path="/players/home/game/:id" element={<FindPlayersByGame/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/players/home/training/:id:trainingId" element={<FindPlayersByTraining/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/players/home/game/:id:gameId" element={<FindPlayersByGame/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/players/home/game/:id" element={<FindPlayersByGame/>}></Route>}
                 {/* {loggedIn && <Route exact path="/players/home/:id" element={<PlayersHome/>}></Route>} */}
-                {loggedIn && <Route exact path="/players/addPlayer/:id" element={<AddPlayer/>}></Route>}
-                {loggedIn && <Route exact path="/players/update/:id" element={<UpdatePlayer/>}></Route>}
-                {loggedIn && <Route exact path="/players/dni/:id" element={<FindPlayerByDni/>}></Route>}
-                {loggedIn && <Route exact path="/players/completedName/:id" element={<FindPlayersByCompletedName/>}></Route>}
-                {loggedIn && <Route exact path="/players/dni/result/:dni:id" element={<FindPlayerByDniResult/>}></Route>}
-                {loggedIn && <Route exact path="/players/completedName/result/:id:playerName:primaryLastName:secondLastName" element={<FindPlayersByCompletedNameResult/>}></Route>}
-                {loggedIn && <Route exact path="/players/view/:id:playerId" element={<PlayerView/>}></Route>}
-                {loggedIn && <Route exact path="/players/view/:id" element={<PlayerView/>}></Route>}
-                {loggedIn && <Route exact path="/lesion/home" element={<LesionHome/>}></Route>}
-                {loggedIn && <Route exact path="/lesion/home/type/:lesionType/:tabValue" element={<LesionHomeByType/>}></Route>}
-                {loggedIn && <Route exact path="/lesion/home/player/:playerId" element={<LesionHomeByPlayer/>}></Route>}
-                {loggedIn && <Route exact path="/lesion/addLesion" element={<AddLesion/>}></Route>}
-                {loggedIn && <Route exact path="/lesion/update/:id" element={<UpdateLesion/>}></Route>}
-                {loggedIn && <Route exact path="/lesion/view/:id" element={<LesionView/>}></Route>}
-                {loggedIn && <Route exact path="/notes/addNote/:playerId" element={<AddNote/>}></Route>}
-                {loggedIn && <Route exact path="/notes/home/:id:playerId" element={<NotesHome/>}></Route>}
-                {loggedIn && <Route exact path="/notes/home/:id" element={<NotesHome/>}></Route>}
-                {loggedIn && <Route exact path="/notes/update/:id:noteId" element={<UpdateNote/>}></Route>}
-                {loggedIn && <Route exact path="/notes/update/:id" element={<UpdateNote/>}></Route>}
-                {loggedIn && <Route exact path="/notes/view/:noteId" element={<NoteView/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/players/addPlayer/:id" element={<AddPlayer/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/players/update/:id" element={<UpdatePlayer/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/players/dni/:id" element={<FindPlayerByDni/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/players/completedName/:id" element={<FindPlayersByCompletedName/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/players/dni/result/:dni:id" element={<FindPlayerByDniResult/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/players/completedName/result/:id:playerName:primaryLastName:secondLastName" element={<FindPlayersByCompletedNameResult/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/players/view/:id:playerId" element={<PlayerView/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/players/view/:id" element={<PlayerView/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/lesion/home" element={<LesionHome/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/lesion/home/type/:lesionType/:tabValue" element={<LesionHomeByType/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/lesion/home/player/:playerId" element={<LesionHomeByPlayer/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN") && <Route exact path="/lesion/addLesion" element={<AddLesion/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/lesion/update/:id" element={<UpdateLesion/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/lesion/view/:id" element={<LesionView/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/notes/addNote/:playerId" element={<AddNote/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/notes/home/:id:playerId" element={<NotesHome/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/notes/home/:id" element={<NotesHome/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/notes/update/:id:noteId" element={<UpdateNote/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/notes/update/:id" element={<UpdateNote/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/notes/view/:noteId" element={<NoteView/>}></Route>}
                 
                 
-                {loggedIn && <Route exact path="/board/home" element={<BoardHome/>}></Route>}
-                {loggedIn && <Route exact path="/plays/animator/home" element={<PlayAnimatorHome/>}></Route>}
-                {loggedIn && <Route exact path="/calendar/home" element={<CalendarHome/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/board/home" element={<BoardHome/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/plays/animator/home" element={<PlayAnimatorHome/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH" || userLogged.role ==="USER") && <Route exact path="/calendar/home" element={<CalendarHome/>}></Route>}
 
                 
-                {loggedIn && <Route exact path="/plays/home" element={<PlaysHome/>}></Route>}
-                {loggedIn && <Route exact path="/plays/home/type/:playType/:tabValue" element={<PlaysHomeByType/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/plays/home" element={<PlaysHome/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/plays/home/type/:playType/:tabValue" element={<PlaysHomeByType/>}></Route>}
 
-                {loggedIn && <Route exact path="/plays/addPlay" element={<AddPlay/>}></Route>}
-                {loggedIn && <Route exact path="/plays/update/:id" element={<UpdatePlay/>}></Route>}
-                {loggedIn && <Route exact path="/plays/view/:playId" element={<PlayView/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/plays/addPlay" element={<AddPlay/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/plays/update/:id" element={<UpdatePlay/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/plays/view/:playId" element={<PlayView/>}></Route>}
                 
-                {loggedIn && <Route exact path="/trainings/home" element={<TrainingHome/>}></Route>}
-                {loggedIn && <Route exact path="/trainings/addTraining" element={<AddTraining/>}></Route>}
-                {loggedIn && <Route exact path="/trainings/view/:id" element={<TrainingView/>}></Route>}
-                {loggedIn && <Route exact path="/trainings/update/:id" element={<UpdateTraining/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/trainings/home" element={<TrainingHome/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/trainings/addTraining" element={<AddTraining/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/trainings/view/:id" element={<TrainingView/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/trainings/update/:id" element={<UpdateTraining/>}></Route>}
 
-                {loggedIn && <Route exact path="/trainings/update/:id/exercise/:tabValue" element={<UpdateTrainingExercise/>}></Route>}
-                {loggedIn && <Route exact path="/trainings/update/:id/stretching/:tabValue" element={<UpdateTrainingStretching/>}></Route>}
-                {loggedIn && <Route exact path="/trainings/update/:id/players/:tabValue" element={<UpdateTrainingPlayer/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/trainings/update/:id/exercise/:tabValue" element={<UpdateTrainingExercise/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/trainings/update/:id/stretching/:tabValue" element={<UpdateTrainingStretching/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/trainings/update/:id/players/:tabValue" element={<UpdateTrainingPlayer/>}></Route>}
 
-                {loggedIn && <Route exact path="/games/update/:id/exercise/:tabValue" element={<UpdateGameExercise/>}></Route>}
-                {loggedIn && <Route exact path="/games/update/:id/stretching/:tabValue" element={<UpdateGameStretching/>}></Route>}
-                {loggedIn && <Route exact path="/games/update/:id/statistics/:tabValue" element={<UpdateGameStatistics/>}></Route>}
-                {loggedIn && <Route exact path="/games/update/:id/player/:tabValue" element={<UpdateGamePlayer/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/games/update/:id/exercise/:tabValue" element={<UpdateGameExercise/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/games/update/:id/stretching/:tabValue" element={<UpdateGameStretching/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/games/update/:id/statistics/:tabValue" element={<UpdateGameStatistics/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/games/update/:id/player/:tabValue" element={<UpdateGamePlayer/>}></Route>}
 
-                {loggedIn && <Route exact path="/games/home" element={<GamesHome/>}></Route>}
-                {loggedIn && <Route exact path="/games/addGame" element={<AddGame/>}></Route>}
-                {loggedIn && <Route exact path="/games/view/:id" element={<GameView/>}></Route>}
-                {loggedIn && <Route exact path="/games/update/:id" element={<UpdateGame/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/games/home" element={<GamesHome/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/games/addGame" element={<AddGame/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/games/view/:id" element={<GameView/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/games/update/:id" element={<UpdateGame/>}></Route>}
 
-                {loggedIn && <Route exact path="/statistics/home" element={<StatisticsHome/>}></Route>}
-                {loggedIn && <Route exact path="/statistics/update/game/:gameId" element={<UpdateStatisticsGame/>}></Route>}
-                {loggedIn && <Route exact path="/statistics/update/game/:gameId/players/:tabValue" element={<UpdateStatisticsPlayers/>}></Route>}
-                {loggedIn && <Route exact path="/statistics/update/game/:gameId/players/:tabValue/player/:playerId" element={<UpdateStatisticsGamePlayer/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/statistics/home" element={<StatisticsHome/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/statistics/update/game/:gameId" element={<UpdateStatisticsGame/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/statistics/update/game/:gameId/players/:tabValue" element={<UpdateStatisticsPlayers/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/statistics/update/game/:gameId/players/:tabValue/player/:playerId" element={<UpdateStatisticsGamePlayer/>}></Route>}
 
 
 
-                {loggedIn && <Route exact path="/statistics/addGameStatistics/:gameId" element={<AddGameStatistics/>}></Route>}
-                {loggedIn && <Route exact path="/statistics/addPlayerGameStatistics/:playerId:gameId"  element={<AddPlayerGameStatistics/>}></Route>}
-                {loggedIn && <Route exact path="/statistics/addPlayerGameStatistics/:gameId"  element={<AddPlayerGameStatistics/>}></Route>}
-                {loggedIn && <Route exact path="/statistics/game/:gameId" element={<FindGameStatistics/>}></Route>}
-                {loggedIn && <Route exact path="/statistics/playerGame/:playerId:gameId" element={<FindPlayerGameStatistics/>}></Route>}
-                {loggedIn && <Route exact path="/statistics/game/update/:gameId" element={<UpdateGameStatistics/>}></Route>}
-                {loggedIn && <Route exact path="/statistics/playerGame/update/:playerId:gameId" element={<UpdatePlayerGameStatistics/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/statistics/addGameStatistics/:gameId" element={<AddGameStatistics/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/statistics/addPlayerGameStatistics/:playerId:gameId"  element={<AddPlayerGameStatistics/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/statistics/addPlayerGameStatistics/:gameId"  element={<AddPlayerGameStatistics/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/statistics/game/:gameId" element={<FindGameStatistics/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/statistics/playerGame/:playerId:gameId" element={<FindPlayerGameStatistics/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/statistics/game/update/:gameId" element={<UpdateGameStatistics/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/statistics/playerGame/update/:playerId:gameId" element={<UpdatePlayerGameStatistics/>}></Route>}
                 
-                {loggedIn && <Route exact path="/stretchings/home" element={<StretchingsHome/>}></Route>}
-                {loggedIn && <Route exact path="/stretchings/view/:id" element={<StretchingView/>}></Route>}
-                {loggedIn && <Route exact path="/stretchings/addStretching" element={<AddStretching/>}></Route>}
-                {loggedIn && <Route exact path="/stretchings/update/:id" element={<UpdateStretching/>}></Route>}
-                {loggedIn && <Route exact path="/stretchings/home/player/:playerId" element={<StretchingsHomeByPlayer/>}></Route>}
-                {loggedIn && <Route exact path="/stretchings/home/game/:gameId" element={<StretchingsHomeByGame/>}></Route>}
-                {loggedIn && <Route exact path="/stretchings/home/training/:trainingId" element={<StretchingsHomeByTraining/>}></Route>}
-                {loggedIn && <Route exact path="/stretchings/home/type/:stretchingType/:tabValue" element={<StretchingsHomeByType/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/stretchings/home" element={<StretchingsHome/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/stretchings/view/:id" element={<StretchingView/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN") && <Route exact path="/stretchings/addStretching" element={<AddStretching/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/stretchings/home/player/:playerId" element={<StretchingsHomeByPlayer/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/stretchings/update/:id" element={<UpdateStretching/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/stretchings/home/game/:gameId" element={<StretchingsHomeByGame/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/stretchings/home/training/:trainingId" element={<StretchingsHomeByTraining/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/stretchings/home/type/:stretchingType/:tabValue" element={<StretchingsHomeByType/>}></Route>}
 
-                {loggedIn && <Route exact path="/users/coach" element={<UsersByCoachHome/>}></Route>}
-                {loggedIn && <Route exact path="/users/coach/:tabValue" element={<UsersByCoachHomeCreate/>}></Route>}
-                {loggedIn && <Route exact path="/users/admin" element={<UsersByAdminHome/>}></Route>}
-                {loggedIn && <Route exact path="/users/admin/:tabValue" element={<UsersByAdminHomeCreate/>}></Route>}
+                {loggedIn && (userLogged.role ==="COACH") && <Route exact path="/users/coach" element={<UsersByCoachHome/>}></Route>}
+                {loggedIn && (userLogged.role ==="COACH") && <Route exact path="/users/coach/:tabValue" element={<UsersByCoachHomeCreate/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN") && <Route exact path="/users/admin" element={<UsersByAdminHome/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN") && <Route exact path="/users/admin/:tabValue" element={<UsersByAdminHomeCreate/>}></Route>}
 
-                {loggedIn && <Route exact path="/exercises/home" element={<ExercisesHome/>}></Route>}
-                {loggedIn && <Route exact path="/exercises/addExercise" element={<AddExercise/>}></Route>}
-                {loggedIn && <Route exact path="/exercises/update/:id" element={<UpdateExercise/>}></Route>}
-                {loggedIn && <Route exact path="/exercises/view/:id" element={<ExerciseView/>}></Route>}
-                {loggedIn && <Route exact path="/exercises/home/training/:trainingId" element={<ExercisesHomeByTraining/>}></Route>}
-                {loggedIn && <Route exact path="/exercises/home/game/:gameId" element={<ExercisesHomeByGame/>}></Route>}
-                {loggedIn && <Route exact path="/exercises/home/type/:exerciseType/:tabValue" element={<ExercisesHomeByType/>}></Route>}
-                {loggedIn && <Route exact path="/users/update-profile" element={<UpdateProfile/>}></Route>}
-                {loggedIn && <Route exact path="/users/change-password" element={<ChangePassword/>}></Route>}
-                {loggedIn && <Route exact path="/users/logout" element={<Logout/>}></Route>}
-                {!loggedIn && <Route exact path="/users/login" element={<Login/>}></Route>}
-                {!loggedIn && <Route exact path="/users/signup" element={<SignUp/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/exercises/home" element={<ExercisesHome/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN") && <Route exact path="/exercises/addExercise" element={<AddExercise/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/exercises/update/:id" element={<UpdateExercise/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/exercises/view/:id" element={<ExerciseView/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/exercises/home/training/:trainingId" element={<ExercisesHomeByTraining/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/exercises/home/game/:gameId" element={<ExercisesHomeByGame/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH") && <Route exact path="/exercises/home/type/:exerciseType/:tabValue" element={<ExercisesHomeByType/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH" || userLogged.role ==="USER") && <Route exact path="/users/update-profile" element={<UpdateProfile/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH" || userLogged.role ==="USER") && <Route exact path="/users/change-password" element={<ChangePassword/>}></Route>}
+                {loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH" || userLogged.role ==="USER") && <Route exact path="/users/logout" element={<Logout/>}></Route>}
+                {!loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH" || userLogged.role ==="USER") && <Route exact path="/users/login" element={<Login/>}></Route>}
+                {!loggedIn && (userLogged.role ==="ADMIN" || userLogged.role ==="COACH" || userLogged.role ==="USER") && <Route exact path="/users/signup" element={<SignUp/>}></Route>}
                 <Route element={<Home/>}></Route>
             </Routes>
         </div>

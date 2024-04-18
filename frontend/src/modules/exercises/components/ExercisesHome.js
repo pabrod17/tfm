@@ -13,6 +13,7 @@ import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import { Button, IconButton, Pagination, Stack, Toolbar } from '@mui/material';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import users, { LoginNew, Login } from '../../users';
 
 const ExercisesHome = () => {
     const exercisesSearch = useSelector(selectors.getExercisesSearch);
@@ -20,6 +21,8 @@ const ExercisesHome = () => {
     const history = useNavigate();
     const [page, setPage] = useState(0);
     const [value, setValue] = useState(0);
+
+    const userLogged = useSelector(users.selectors.getUser);
 
     const tactic = "Tactico";
     const technique = "Tecnica";
@@ -116,7 +119,11 @@ const ExercisesHome = () => {
                         bgcolor: "linear-gradient(147deg,#ffffff ,#4400f9,#000000 35% 70%,#660bd8,#ffffff)",
                         color: "white"
                     }}
-                        onClick={() => history(`/exercises/addExercise`)}
+                        onClick={() => {
+                            if(userLogged.role === "ADMIN") {
+                                history(`/exercises/addExercise`)
+                            }
+                            }}
                     >
                     </AddCircleOutlineIcon>
                 </IconButton>

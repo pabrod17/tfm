@@ -11,6 +11,7 @@ import estiramientos from './estiramientos.jpg'; //1920x1200
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import { Box, Button, FilledInput, Grid, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material';
+import users, { LoginNew, Login } from '../../users';
 
 const UpdateStretching = () => {
     const stretching = useSelector(selectors.getOneStretching);
@@ -22,6 +23,8 @@ const UpdateStretching = () => {
     const [stretchingType, setStretchingType] = useState(null);
     const [backendErrors, setBackendErrors] = useState(null);
     let form;
+
+    const userLogged = useSelector(users.selectors.getUser);
 
     useEffect(() => {
         if (!stretching) {
@@ -144,6 +147,7 @@ const UpdateStretching = () => {
 
 		  }}
 		  inputProps={{
+        readOnly: userLogged.role !== "ADMIN", 
 			MenuProps: {
 			  MenuListProps: {
 				sx: {
@@ -185,7 +189,7 @@ const UpdateStretching = () => {
 							id="outlined-multiline-static-1"
               label={<FormattedMessage id="project.exercises.fields.name" />}
               InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-              InputProps={{ style: { color: 'white', padding: '10px', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
+              InputProps={{readOnly: userLogged.role !== "ADMIN",  style: { color: 'white', padding: '10px', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
               multiline
               rows={2}
               sx={{
@@ -201,7 +205,7 @@ const UpdateStretching = () => {
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.exercises.fields.description" />}
 										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{readOnly: userLogged.role !== "ADMIN",  style: { color: 'white', padding: '10px', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
 										multiline
 										rows={4}
 										sx={{
@@ -219,8 +223,10 @@ const UpdateStretching = () => {
 					</Box>  </Grid>
 			</Grid>
 
-			<button className="post_stretching" onClick={(e) => handleSubmit(e)}><FormattedMessage id="project.global.buttons.save" /></button>
+      {(userLogged.role === "ADMIN") && (
 
+			<button className="post_stretching" onClick={(e) => handleSubmit(e)}><FormattedMessage id="project.global.buttons.save" /></button>
+      )}
           </Box>
     );
 }

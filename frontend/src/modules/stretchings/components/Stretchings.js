@@ -10,6 +10,7 @@ import {FormattedMessage} from 'react-intl';
 import estiramientos from './estiramientos.jpg'; //1920x1200
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
+import users, { LoginNew, Login } from '../../users';
 
 const handleRemoveStretching = (id, dispatch, history) => {
     dispatch(actions.removeStretching(id, () => history(`/stretchings/home`)));
@@ -37,7 +38,7 @@ const style = {
   borderRadius: "20px",
 };
 
-const StretchingCard = ({ dispatch, history, item, handleOpenDescriptionModal, handleOpenMedicationModal }) => {
+const StretchingCard = ({userLogged, dispatch, history, item, handleOpenDescriptionModal, handleOpenMedicationModal }) => {
   return (
     <div key={item.id}>
       <div>
@@ -59,10 +60,12 @@ const StretchingCard = ({ dispatch, history, item, handleOpenDescriptionModal, h
                 </a>
                 <hr></hr>
               </div>
+              {userLogged.role === "ADMIN" && (
               <ul class="social-icons trashgrande trash_position">
                 <li><a type="button" onClick={() => handleRemoveStretching(item.id, dispatch, history)}>
                   <i class="fa fa-trash"></i></a></li>
               </ul>
+              )}
               <ul class="social-icons configgrande config_position">
                 <li><a type="button" onClick={() => handleUpdateStretching(item.id, dispatch, history)}>
                   <i class="fa fa-wrench"></i></a></li>
@@ -76,13 +79,13 @@ const StretchingCard = ({ dispatch, history, item, handleOpenDescriptionModal, h
 };
 
 
-function StretchingsList({ items, fallback, dispatch, history, openDescription, handleOpenDescription, handleClose }) {
+function StretchingsList({userLogged, items, fallback, dispatch, history, openDescription, handleOpenDescription, handleClose }) {
   if (!items || items.length === 0) {
     dispatch(actions.findAllStretchings(() => history('/stretchings/home')));
     return fallback;
   } else {
     return items.map(item => (
-      <StretchingCard dispatch={dispatch} history={history} key={item.id} item={item} handleOpenDescriptionModal={handleOpenDescription} />
+      <StretchingCard userLogged={userLogged} dispatch={dispatch} history={history} key={item.id} item={item} handleOpenDescriptionModal={handleOpenDescription} />
     ));
   }
 }
@@ -92,6 +95,7 @@ const Stretchings = ({stretchings}) => {
     const history = useNavigate();
     const [modalDescription, setModalDescription] = useState('');
     const [openDescription, setOpenDescription] = React.useState(false);
+    const userLogged = useSelector(users.selectors.getUser);
 
     const handleOpenDescription = (description) => {
       setModalDescription(description);
@@ -105,7 +109,7 @@ const Stretchings = ({stretchings}) => {
 
     return(
         <div className="card-group lesions_contaner">
-          <StretchingsList items={stretchings} fallback={"Loading..."} dispatch = {dispatch} history={history} openDescription={openDescription} handleOpenDescription={handleOpenDescription}/>
+          <StretchingsList userLogged={userLogged} items={stretchings} fallback={"Loading..."} dispatch = {dispatch} history={history} openDescription={openDescription} handleOpenDescription={handleOpenDescription}/>
           {(openDescription) && (
         <div className="modal-backdrop" onClick={handleClose}></div>
       )}

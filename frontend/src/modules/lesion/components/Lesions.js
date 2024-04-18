@@ -20,6 +20,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { useTheme } from '@mui/material/styles';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
+import users, { LoginNew, Login } from '../../users';
 
 const handleRemoveLesion = (id, dispatch, history) => {
   dispatch(actions.removeLesion(id, () => history(`/lesion/home`)));
@@ -49,7 +50,7 @@ const style = {
 
 
 
-const LesionCard = ({ dispatch, history, item, handleOpenDescriptionModal, handleOpenMedicationModal }) => {
+const LesionCard = ({userLogged, dispatch, history, item, handleOpenDescriptionModal, handleOpenMedicationModal }) => {
   return (
     <div key={item.id}>
       <div>
@@ -75,10 +76,12 @@ const LesionCard = ({ dispatch, history, item, handleOpenDescriptionModal, handl
                 </a>
                 <hr></hr>
               </div>
+              {userLogged.role === "ADMIN" && (
               <ul class="social-icons trashgrande trash_position">
                 <li><a type="button" onClick={() => handleRemoveLesion(item.id, dispatch, history)}>
                   <i class="fa fa-trash"></i></a></li>
               </ul>
+              )}
               <ul class="social-icons configgrande config_position">
                 <li><a type="button" onClick={() => handleUpdateLesion(item.id, dispatch, history)}>
                   <i class="fa fa-wrench"></i></a></li>
@@ -91,13 +94,13 @@ const LesionCard = ({ dispatch, history, item, handleOpenDescriptionModal, handl
   );
 };
 
-function LesionsList({ items, fallback, dispatch, history, openDescription, openMedication, handleOpenDescription, handleOpenMedication, handleClose }) {
+function LesionsList({userLogged, items, fallback, dispatch, history, openDescription, openMedication, handleOpenDescription, handleOpenMedication, handleClose }) {
   if (!items || items.length === 0) {
     dispatch(actions.findAllLesion(() => history('/lesion/home')));
     return fallback;
   } else {
     return items.map(item => (
-      <LesionCard dispatch={dispatch} history={history} key={item.id} item={item} handleOpenDescriptionModal={handleOpenDescription} handleOpenMedicationModal={handleOpenMedication} />
+      <LesionCard userLogged={userLogged} dispatch={dispatch} history={history} key={item.id} item={item} handleOpenDescriptionModal={handleOpenDescription} handleOpenMedicationModal={handleOpenMedication} />
     ));
   }
 }
@@ -109,6 +112,7 @@ const Lesions = ({ lesions }) => {
   const [modalMedication, setModalMedication] = useState('');
   const [openDescription, setOpenDescription] = React.useState(false);
   const [openMedication, setOpenMedication] = React.useState(false);
+  const userLogged = useSelector(users.selectors.getUser);
 
   const handleOpenDescription = (description) => {
     setModalDescription(description);
@@ -131,7 +135,7 @@ const Lesions = ({ lesions }) => {
 
     <div className="card-group lesions_contaner">
 
-      <LesionsList items={lesions} fallback={"Loading..."} dispatch={dispatch} history={history}
+      <LesionsList userLogged={userLogged} items={lesions} fallback={"Loading..."} dispatch={dispatch} history={history}
         openDescription={openDescription} openMedication={openMedication} handleOpenDescription={handleOpenDescription} handleOpenMedication={handleOpenMedication}
       />
       {(openDescription || openMedication) && (

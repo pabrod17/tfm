@@ -57,6 +57,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { es } from 'date-fns/locale';
 import * as actionsGames from '../../games/actions';
 import * as actionsTrainings from '../../trainings/actions';
+import users, { LoginNew, Login } from '../../users';
 
 
 dayjs.locale("es");
@@ -79,6 +80,8 @@ const CalendarHome = () => {
   const [eventTitle, setEventTitle] = useState("");
   const [startDate, setStartDate] = useState(null);
   const [finishDate, setFinishDate] = useState(null);
+
+  const userLogged = useSelector(users.selectors.getUser);
 
   const handleSelectSlot = (slotInfo) => {
     setShowModal(true);
@@ -112,7 +115,7 @@ const CalendarHome = () => {
       setFinishDate(dayjs(event.end));
     }
   };
-  
+
 
   const saveEvent = () => {
     if (selectEvent) {
@@ -382,8 +385,8 @@ const CalendarHome = () => {
         background: "linear-gradient(180deg, #2b2931 10%, #15141A 70% )",
         background: "linear-gradient(180deg, #302b63 0%, #0f0c29 70% )",
 
-        
-        
+
+
 
 
 
@@ -444,7 +447,7 @@ const CalendarHome = () => {
                   <div className="modal-header">
 
                     <h4 className="margin_training_form" style={{ fontSize: "20px", marginTop: "0px", marginLeft: "40%" }}>
-                      {selectEvent ? <FormattedMessage id="project.calendar.buttons.editEvent"/> : <FormattedMessage id="project.calendar.buttons.addEvent"/>}
+                      {selectEvent ? <FormattedMessage id="project.calendar.buttons.editEvent" /> : <FormattedMessage id="project.calendar.buttons.addEvent" />}
                     </h4>
                     <button
                       type="button"
@@ -468,6 +471,7 @@ const CalendarHome = () => {
                       id="eventTitle"
                       value={eventTitle}
                       onChange={(e) => setEventTitle(e.target.value)}
+                      disabled={userLogged.role !== "ADMIN" && userLogged.role !== "COACH"} // Esto deshabilitará la edición del campo si el usuario no es ADMIN
                     />
                     <h4 class="margin_training_form" style={{ fontSize: "20px", marginTop: "10px" }}
                     ><FormattedMessage id="project.seasons.fields.startDate" /></h4>
@@ -476,7 +480,7 @@ const CalendarHome = () => {
                         <DateTimePicker
                           sx={{
                             border: '2px solid grey',
-                            background: "linear-gradient(180deg, #302b63 0%, #0f0c29 70% )",
+                            background: userLogged.role !== "ADMIN" && userLogged.role !== "COACH" ? "#ffffff" : "linear-gradient(180deg, #302b63 0%, #0f0c29 70% )",
                             borderRadius: "20px",
                             colorAdjust: "#00bfff",
                             '& label': { color: 'white' },
@@ -484,6 +488,7 @@ const CalendarHome = () => {
                             borderColor: "black",
                             boxShadow: "0 10px 10px rgb(0, 0, 0)"
                           }}
+                          disabled={userLogged.role !== "ADMIN" && userLogged.role !== "COACH"} // Esto deshabilitará la edición del campo si el usuario no es ADMIN
                           label={<FormattedMessage id="project.global.fields.date" />}
                           autoFocus
                           required
@@ -512,7 +517,7 @@ const CalendarHome = () => {
                         <DateTimePicker
                           sx={{
                             border: '2px solid grey',
-                            background: "linear-gradient(180deg, #302b63 0%, #0f0c29 70% )",
+                            background: userLogged.role !== "ADMIN" && userLogged.role !== "COACH" ? "#ffffff" : "linear-gradient(180deg, #302b63 0%, #0f0c29 70% )",
                             borderRadius: "20px",
                             colorAdjust: "#00bfff",
                             '& label': { color: 'white' },
@@ -521,6 +526,7 @@ const CalendarHome = () => {
                             boxShadow: "0 10px 10px rgb(0, 0, 0)"
                           }}
                           label={<FormattedMessage id="project.global.fields.date" />}
+                          disabled={userLogged.role !== "ADMIN" && userLogged.role !== "COACH"} // Esto deshabilitará la edición del campo si el usuario no es ADMIN
                           autoFocus
                           required
                           value={finishDate}
@@ -542,53 +548,77 @@ const CalendarHome = () => {
                     </LocalizationProvider>
                   </div>
 
+
+            {(userLogged.role === "COACH" || userLogged.role === "ADMIN") && (
+              <>
                   {isGeneral && (
-                  <div className="modal-footer">
-                    {selectEvent && (
+                    <div className="modal-footer">
+                      {selectEvent && (
+                        <button
+                          type="button"
+                          className="btn btn-danger me-2"
+                          onClick={deleteEvents}
+                        >
+                          {<FormattedMessage id="project.calendar.buttons.deleteEvent" />}
+                        </button>
+                      )}
                       <button
                         type="button"
-                        className="btn btn-danger me-2"
-                        onClick={deleteEvents}
+                        className="btn btn-primary"
+                        onClick={saveEvent}
                       >
-                        {<FormattedMessage id="project.calendar.buttons.deleteEvent"/>}
+                        {<FormattedMessage id="project.global.buttons.save" />}
                       </button>
-                    )}
-                    <button
-                      type="button"
-                      className="btn btn-primary"
-                      onClick={saveEvent}
-                    >
-                        {<FormattedMessage id="project.global.buttons.save"/>}
-                    </button>
-                  </div>
+                    </div>
+                  )}
+                  {!isGeneral && !isGame && !isTraining && (
+                    <div className="modal-footer">
+                      {selectEvent && (
+                        <button
+                          type="button"
+                          className="btn btn-danger me-2"
+                          onClick={deleteEvents}
+                        >
+                          {<FormattedMessage id="project.calendar.buttons.deleteEvent" />}
+                        </button>
+                      )}
+                      <button
+                        type="button"
+                        className="btn btn-primary"
+                        onClick={saveEvent}
+                      >
+                        {<FormattedMessage id="project.global.buttons.save" />}
+                      </button>
+                    </div>
                   )}
                   {isGame && (
-                  <div className="modal-footer">
-                    {selectEvent && (
-                    <button
-                      type="button"
-                      className="btn btn-primary"
-                      onClick={handleGameEvent}
-                    >
-                        {<FormattedMessage id="project.statistics.fields.update"/>}
-                    </button>
-                    )}
-                  </div>
+                    <div className="modal-footer">
+                      {selectEvent && (
+                        <button
+                          type="button"
+                          className="btn btn-primary"
+                          onClick={handleGameEvent}
+                        >
+                          {<FormattedMessage id="project.statistics.fields.update" />}
+                        </button>
+                      )}
+                    </div>
                   )}
                   {isTraining && (
-                  <div className="modal-footer">
-                    {selectEvent && (
-                    <button
-                      type="button"
-                      className="btn btn-primary"
-                      onClick={handleTrainingEvent}
-                    >
-                        {<FormattedMessage id="project.statistics.fields.update"/>}
-                    </button>
-                    )}
-                  </div>
+                    <div className="modal-footer">
+                      {selectEvent && (
+                        <button
+                          type="button"
+                          className="btn btn-primary"
+                          onClick={handleTrainingEvent}
+                        >
+                          {<FormattedMessage id="project.statistics.fields.update" />}
+                        </button>
+                      )}
+                    </div>
                   )}
-
+              </>
+            )}
 
 
 
