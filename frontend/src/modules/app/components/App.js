@@ -53,9 +53,9 @@ const App = () => {
 
     const theme = createMuiTheme({
         palette: {
-          type: isDark ? "dark" : "light",
+          type: "dark",
           background: {
-              paper: isDark ? "#1a2035" : "#fff",
+              paper:"#1a2035"
           },
         },
       });
