@@ -141,8 +141,8 @@ const UsersByCoachHomeCreate = () => {
                               },
                         }}
         >
-          <Tab value={0} sx={{ color: '#f5af19', fontSize: "30px", padding:"20px"}} onClick={() => handleUsersByCoach(dispatch)} label="List"  />
-          <Tab value={1} sx={{ color: '#f5af19', fontSize: "30px", padding:"20px" }} onClick={() => handleUsersByCoachCreate(1, dispatch)} label="Create User"/>
+          <Tab value={0} sx={{ color: '#f5af19', fontSize: "30px", padding:"20px"}} onClick={() => handleUsersByCoach(dispatch)} label={<FormattedMessage id="project.global.list.users"/>}  />
+          <Tab value={1} sx={{ color: '#f5af19', fontSize: "30px", padding:"20px" }} onClick={() => handleUsersByCoachCreate(1, dispatch)} label={<FormattedMessage id="project.global.create.users"/>}/>
         </Tabs>
       </Box>
 </Box>
