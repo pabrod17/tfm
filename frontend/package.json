@@ -36,6 +36,7 @@
     "@material-ui/icons": "^4.11.3",
     "@mui/icons-material": "^5.15.6",
     "@mui/material": "^5.15.6",
+    "@mui/x-charts": "^7.2.0",
     "@mui/x-data-grid": "^6.19.6",
     "@mui/x-date-pickers": "^6.19.6",
     "add": "^2.0.6",
