@@ -473,7 +473,7 @@ const CalendarHome = () => {
                       id="eventTitle"
                       value={eventTitle}
                       onChange={(e) => setEventTitle(e.target.value)}
-                      disabled={userLogged.role !== "ADMIN" && userLogged.role !== "COACH"} // Esto deshabilitará la edición del campo si el usuario no es ADMIN
+                      disabled={(userLogged.role !== "ADMIN" && userLogged.role !== "COACH") || isTraining || isGame} // Esto deshabilitará la edición del campo si el usuario no es ADMIN
                     />
                     <h4 class="margin_training_form" style={{ fontSize: "20px", marginTop: "10px" }}
                     ><FormattedMessage id="project.seasons.fields.startDate" /></h4>
@@ -482,7 +482,7 @@ const CalendarHome = () => {
                         <DateTimePicker
                           sx={{
                             border: '2px solid grey',
-                            background: userLogged.role !== "ADMIN" && userLogged.role !== "COACH" ? "#ffffff" : "linear-gradient(180deg, #302b63 0%, #0f0c29 70% )",
+                            background: (userLogged.role !== "ADMIN" && userLogged.role !== "COACH") || isTraining || isGame ? "#ffffff" : "linear-gradient(180deg, #302b63 0%, #0f0c29 70% )",
                             borderRadius: "20px",
                             colorAdjust: "#00bfff",
                             '& label': { color: 'white' },
@@ -490,7 +490,7 @@ const CalendarHome = () => {
                             borderColor: "black",
                             boxShadow: "0 10px 10px rgb(0, 0, 0)"
                           }}
-                          disabled={userLogged.role !== "ADMIN" && userLogged.role !== "COACH"} // Esto deshabilitará la edición del campo si el usuario no es ADMIN
+                          disabled={(userLogged.role !== "ADMIN" && userLogged.role !== "COACH") || isTraining || isGame} // Esto deshabilitará la edición del campo si el usuario no es ADMIN
                           label={<FormattedMessage id="project.global.fields.date" />}
                           autoFocus
                           required
@@ -519,7 +519,7 @@ const CalendarHome = () => {
                         <DateTimePicker
                           sx={{
                             border: '2px solid grey',
-                            background: userLogged.role !== "ADMIN" && userLogged.role !== "COACH" ? "#ffffff" : "linear-gradient(180deg, #302b63 0%, #0f0c29 70% )",
+                            background: (userLogged.role !== "ADMIN" && userLogged.role !== "COACH") || isTraining || isGame ? "#ffffff" : "linear-gradient(180deg, #302b63 0%, #0f0c29 70% )",
                             borderRadius: "20px",
                             colorAdjust: "#00bfff",
                             '& label': { color: 'white' },
@@ -528,7 +528,7 @@ const CalendarHome = () => {
                             boxShadow: "0 10px 10px rgb(0, 0, 0)"
                           }}
                           label={<FormattedMessage id="project.global.fields.date" />}
-                          disabled={userLogged.role !== "ADMIN" && userLogged.role !== "COACH"} // Esto deshabilitará la edición del campo si el usuario no es ADMIN
+                          disabled={(userLogged.role !== "ADMIN" && userLogged.role !== "COACH") || isTraining || isGame} // Esto deshabilitará la edición del campo si el usuario no es ADMIN
                           autoFocus
                           required
                           value={finishDate}

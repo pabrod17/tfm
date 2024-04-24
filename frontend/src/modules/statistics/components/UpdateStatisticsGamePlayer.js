@@ -183,10 +183,10 @@ const UpdateStatisticsGamePlayer = () => {
 		history(`/statistics/update/game/${gameId}`);
 	}
 
-    const handleUpdatePlayerStatistics = (tabValue, dispatch) => {
+	const handleUpdatePlayerStatistics = (tabValue, dispatch) => {
 		setValue(tabValue);
 		dispatch(actionsGames.findGameById(gameId, () => {
-			// dispatch(actionsStretchings.findStretchingsByGameId(id, () => history(`/games/update/${id}/statistics/${tabValue}`)));
+			dispatch(actionsPlayers.findPlayersByGame(gameId, () => history(`/statistics/update/game/${gameId}/players/${tabValue}`)));
 		}));
 		history(`/statistics/update/game/${gameId}/players/${tabValue}`);
 	}

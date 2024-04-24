@@ -141,7 +141,7 @@ const GameCardUser = ({ dispatch, history, item, handleOpenDescriptionModal }) =
 
   
   function GamesListUser({ items, exercisesList, stretchingsList, fallback, dispatch, history, handleOpenDescription }) {
-    if (!items || items.length === 0) {
+    if (!items) {
       dispatch(actions.findGamesByUserId(() => history('/games/home')));
       return fallback;
     } else {

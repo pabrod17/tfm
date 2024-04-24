@@ -112,7 +112,7 @@ const UsersByAdminHome = () => {
     const handleSubmit = event => {
 
         event.preventDefault();
-        dispatch(actions.removeUserByCoach(userId,
+        dispatch(actions.removeUserByAdmin(userId,
             () => errors => setBackendErrors(errors)
         ));
         window.location.reload('true')

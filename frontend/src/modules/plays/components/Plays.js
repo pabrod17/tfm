@@ -88,7 +88,7 @@ const handleUpdatePlay = (id, dispatch, history) => {
   };
 
 function PlaysList({ items, fallback, dispatch, history, openDescription, handleOpenDescription, handleClose }) {
-  if (!items || items.length === 0) {
+  if (!items) {
     dispatch(actions.findPlaysByUserId( () => history(`/plays/home`)));
     return fallback;
   } else {

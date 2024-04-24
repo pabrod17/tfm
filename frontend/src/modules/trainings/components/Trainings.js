@@ -27,6 +27,7 @@ const handleViewTraining = (id, dispatch, history) => {
 
 const handleRemoveTraining = (id, dispatch, history) => {
     dispatch(actions.removeTraining(id, () => history(`/trainings/home`)));
+    window.location.reload('true');
 }
 
 const handleUpdateTraining = (id, dispatch, history) => {
@@ -133,7 +134,7 @@ const TrainingCardUser = ({ dispatch, history, item, handleOpenDescriptionModal 
 
 
 function TrainingsListUser({ items, exercisesList, stretchingsList, fallback, dispatch, history, handleOpenDescription }) {
-  if (!items || items.length === 0) {
+  if (!items) {
     dispatch(actions.findTrainingsByUserId(() => history('/trainings/home')));
     return fallback;
   } else {

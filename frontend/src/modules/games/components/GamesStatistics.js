@@ -176,7 +176,7 @@ const GameCard = ({ dispatch, history, item, handleOpenDescriptionModal, handleO
 
 
   function GamesList({ items, exercisesList, stretchingsList, teamId, fallback, dispatch, history, handleOpenDescription }) {
-    if (!items || items.length === 0) {
+    if (!items) {
       dispatch(actions.findGamesByUserId(() => history('/statistics/home')));
       return fallback;
     } else {
@@ -187,7 +187,7 @@ const GameCard = ({ dispatch, history, item, handleOpenDescriptionModal, handleO
   }
   
   function GamesListUser({ items, exercisesList, stretchingsList, fallback, dispatch, history, handleOpenDescription }) {
-    if (!items || items.length === 0) {
+    if (!items) {
       dispatch(actions.findGamesByUserId(() => history('/statistics/home')));
       return fallback;
     } else {

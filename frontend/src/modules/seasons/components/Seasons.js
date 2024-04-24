@@ -118,7 +118,7 @@ const Seasons = ({seasons}) => {
 
     return(
         <div class="card-group lesions_contaner">
-            <SeasonsList items={seasons} fallback={"Loading..."} dispatch = {dispatch} history={history} handleOpenDescription={handleOpenDescription} />
+            <SeasonsList items={seasons} fallback={""} dispatch = {dispatch} history={history} handleOpenDescription={handleOpenDescription} />
             {(openDescription) && (
         <div className="modal-backdrop" onClick={handleClose}></div>
       )}

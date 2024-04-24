@@ -77,7 +77,7 @@ const handleUpdateItem = (id, dispatch, history) => {
 }
 
 function TeamList({ items, fallback, dispatch, history, handleOpenDescription }) {
-  if (!items || items.length === 0) {
+  if (!items) {
     dispatch(actions.findAllTeams(() => history('/teams/home')));
     return fallback;
   } else {
@@ -107,7 +107,7 @@ const Teams = ({teams}) => {
 
     return(
       <div className="card-group lesions_contaner">
-          <TeamList items={teams} fallback={"Loading..."} dispatch = {dispatch} history={history} handleOpenDescription={handleOpenDescription} />
+          <TeamList items={teams} fallback={""} dispatch = {dispatch} history={history} handleOpenDescription={handleOpenDescription} />
           {(openDescription) && (
         <div className="modal-backdrop" onClick={handleClose}></div>
       )}
