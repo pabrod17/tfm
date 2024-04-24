@@ -470,8 +470,34 @@ box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
 .theme-checkbox:checked {
   background-position: 100%;
 }
+.theme-checkbox:hover::after {
+  content: "Ocultar tabla";
+  position: absolute;
+  top: -140%;
+  right: -30%;
+  left: -50%;
 
+  transform: translateX(-50%);
+  background-color: #2a2a2a;
+  color: white;
+  padding: 0.7em ;
+  border-radius: 5em;
+  font-size: 1.5em;
+}
+.theme-checkbox:checked:hover::after {
+  content: "Mostrar tabla";
+  position: absolute;
+  top: -140%;
+  right: -30%;
+  left: -50%;
 
+  transform: translateX(-50%);
+  background-color: #2a2a2a;
+  color: white;
+  padding: 0.7em ;
+  border-radius: 5em;
+  font-size: 1.5em;
+}
 
 
 
