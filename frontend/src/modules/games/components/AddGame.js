@@ -166,24 +166,68 @@ const AddGame = () => {
             <Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
 			<Grid container margin={5} spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
 			>
-				<Grid item xs={12} md={12} >
-					<img src={naranja} alt="Person" class="card__image_game_update_create"></img>
+                <Grid item xs={12} md={12} >
+                    <img src={naranja} alt="Person" class="card__image_game_update_create"></img>
 
 					<Box
-						component="form"
-						sx={{
-                            background: "linear-gradient(-45deg, #0E24A0 0%, #900C0C 100% )",
-							borderRadius: "20px",
+                        component="form"
+                        sx={{
+                            borderRadius: "20px",
                             borderColor:"black",
                             boxShadow:"0 10px 50px rgb(0, 0, 0)"
 
-						}}
+                        }}
                         autoHeight={true} // Permitir que la tabla determine su propio tamaño si los datos no se han cargado
-						noValidate
-						autoComplete="off"
+                        noValidate
+                        autoComplete="off"
 					>
 						<Grid container spacing={2}>
-							<Grid item xs={12}>
+							<Grid item xs={12} md={6}>
+
+								{/* <div className='form_add_training_general'> */}
+								<Box
+                                    component="form"
+                                    sx={{
+                                        '& .MuiTextField-root': { mb: 2, width: '100%' },
+                                        margin: '50px', // Centra el formulario en la pantalla
+
+                                    }}
+                                    noValidate
+                                    autoComplete="off"
+								>
+									<h4 class="margin_training_form"
+									><FormattedMessage id="project.global.fields.date" /></h4>
+									<LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
+									<DemoContainer components={['DateTimePicker']}>
+                                            <DateTimePicker
+                                                sx={{
+                                                    border: '2px solid grey',
+                                                    borderRadius: "20px",
+                                                    colorAdjust: "#00bfff",
+                                                    '& label': { color: 'white' },
+                                                    '& input': { color: 'white' },
+                                                    borderColor:"black",
+                                                    boxShadow:"0 10px 10px rgb(0, 0, 0)"
+                                                }}
+                                                autoFocus
+                                                required
+                                                onChange={(newDate) =>
+                                                    {
+                                                        setGameDate(newDate)
+                                                        console.log("formattedDate:", newDate.$d.toISOString());
+                                                    
+                                                    
+                                                    }
+                                                    
+                                                
+                                                }
+                                            />
+										</DemoContainer>
+									</LocalizationProvider>
+
+								</Box>
+							</Grid>
+							<Grid item xs={12} md={6}>
 
 								{/* <div className='form_add_training_general'> */}
 								<Box
@@ -196,69 +240,40 @@ const AddGame = () => {
 									noValidate
 									autoComplete="off"
 								>
-									<h4 class="margin_training_form"
-									><FormattedMessage id="project.global.fields.date" /></h4>
-									<LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
-										<DemoContainer components={['DateTimePicker']}>
-											<DateTimePicker
-												sx={{
-													border: '2px solid grey',
-													borderRadius: "20px",
-													colorAdjust: "#00bfff",
-													'& label': { color: 'white' },
-													'& input': { color: 'white' },
-                                                    borderColor:"black",
-                                                    boxShadow:"0 10px 10px rgb(0, 0, 0)"
-												}}
-												autoFocus
-												required
-												onChange={(newDate) =>
-													{
-														setGameDate(newDate)
-														console.log("formattedDate:", newDate.$d.toISOString());
-													
-													
-													}
-													
-												
-												}
-											/>
-										</DemoContainer>
-									</LocalizationProvider>
-									<TextField
-										id="outlined-multiline-static-1"
-										label={<FormattedMessage id="project.games.fields.rival" />}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
-										multiline
-										rows={4}
-										sx={{
-											border: '2px solid grey',
-											borderRadius: "20px",
+                                    <TextField
+                                        id="outlined-multiline-static-1"
+                                        label={<FormattedMessage id="project.games.fields.rival" />}
+                                        InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
+                                        InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+                                        multiline
+                                        rows={4}
+                                        sx={{
+                                            border: '2px solid grey',
+                                            borderRadius: "20px",
                                             borderColor:"black",
                                             boxShadow:"0 10px 10px rgb(0, 0, 0)"
 
-										}}
-										value={rival}
-										onChange={(e) => setRival(e.target.value)}
-									/>
+                                        }}
+                                        value={rival}
+                                        onChange={(e) => setRival(e.target.value)}
+                                    />
 
-									<TextField
-										id="outlined-multiline-static-1"
-										label={<FormattedMessage id="project.exercises.fields.description" />}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
-										multiline
-										rows={4}
-										sx={{
-											border: '2px solid grey',
-											borderRadius: "20px",
+                                    <TextField
+                                        id="outlined-multiline-static-1"
+                                        label={<FormattedMessage id="project.exercises.fields.description" />}
+                                        InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
+                                        InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+                                        multiline
+                                        rows={4}
+                                        sx={{
+                                            border: '2px solid grey',
+                                            borderRadius: "20px",
                                             borderColor:"black",
                                             boxShadow:"0 10px 10px rgb(0, 0, 0)"
                                         }}
-										value={description}
-										onChange={(e) => setDescription(e.target.value)}
-									/>
+                                        value={description}
+                                        onChange={(e) => setDescription(e.target.value)}
+                                    />
 
 
 								</Box>
@@ -266,115 +281,114 @@ const AddGame = () => {
 						</Grid>
 					</Box>  </Grid>
 				<Grid container spacing={2}>
-				<Grid item xs={12} md={6}>
-						<Typography
-							sx={{ flex: '1 1 100%', mt: 3.5, color: "#00bfff", m:2 }}
-							variant="h6"
-							id="tableTitle"
-							component="div"
-						>
-							{<FormattedMessage id="project.global.buttons.team_selection"/>}
-						</Typography>
+							<Grid item xs={12} md={6}>
+							<Typography
+                            sx={{ flex: '1 1 100%', mt: 3.5, color: "#00bfff", m:2 }}
+                            variant="h6"
+                            id="tableTitle"
+                            component="div"
+                        >
+                            {<FormattedMessage id="project.global.buttons.team_selection"/>}
+                        </Typography>
 						<div style={{ height: 400, width: '100%', }}>
-							<DataGrid
-								sx={{
-									background: "linear-gradient(-45deg, #0E24A0 0%, #AD1010 100% )",
-									borderRadius: "20px",
-									boxShadow: 12,
-									m:2,
+						<DataGrid
+                                sx={{
+                                    background: "linear-gradient(-45deg, #0E24A0 0%, #AD1010 100% )",
+                                    borderRadius: "20px",
+                                    boxShadow: 12,
+                                    m:2,
                                     color:"white",
                                     borderColor:"black",
                                     boxShadow:"0 10px 50px rgb(0, 0, 0)"
-								}}
-								rows={rowsTeams}
-								columns={columnsTeams}
-								initialState={{
-									pagination: {
-										paginationModel: { page: 0, pageSize: 5 },
-									},
-								}}
-								pageSizeOptions={[5, 10]}
-								checkboxSelection
-								rowSelectionModel={rowSelectionModelTeam}
-								onRowSelectionModelChange={(newRowSelectionModelTeam) => {
-									if (newRowSelectionModelTeam.length <= 1) {
-										setRowSelectionModelTeam(newRowSelectionModelTeam);
-										console.log(" 111111: ", newRowSelectionModelTeam)
-										setTeamId((prevTeamId) => {
-											console.log(" seasonnnn PRIMEROOOOO: ", newRowSelectionModelTeam);
-											return newRowSelectionModelTeam;
-										});
-									} else {
-										setRowSelectionModelTeam(newRowSelectionModelTeam[newRowSelectionModelTeam.length - 1]);
-										console.log(" 22222: ", newRowSelectionModelTeam[newRowSelectionModelTeam.length - 1])
-										setTeamId((prevTeamId) => {
-											console.log(" seasonnnn SEGIMDPOPPPPP: ", newRowSelectionModelTeam[newRowSelectionModelTeam.length - 1]);
-											return newRowSelectionModelTeam[newRowSelectionModelTeam.length - 1];
-										});
-									}
+                                }}
+                                rows={rowsTeams}
+                                columns={columnsTeams}
+                                initialState={{
+                                    pagination: {
+                                        paginationModel: { page: 0, pageSize: 5 },
+                                    },
+                                }}
+                                pageSizeOptions={[5, 10]}
+                                checkboxSelection
+                                rowSelectionModel={rowSelectionModelTeam}
+                                onRowSelectionModelChange={(newRowSelectionModelTeam) => {
+                                    if (newRowSelectionModelTeam.length <= 1) {
+                                        setRowSelectionModelTeam(newRowSelectionModelTeam);
+                                        console.log(" 111111: ", newRowSelectionModelTeam)
+                                        setTeamId((prevTeamId) => {
+                                            console.log(" seasonnnn PRIMEROOOOO: ", newRowSelectionModelTeam);
+                                            return newRowSelectionModelTeam;
+                                        });
+                                    } else {
+                                        setRowSelectionModelTeam(newRowSelectionModelTeam[newRowSelectionModelTeam.length - 1]);
+                                        console.log(" 22222: ", newRowSelectionModelTeam[newRowSelectionModelTeam.length - 1])
+                                        setTeamId((prevTeamId) => {
+                                            console.log(" seasonnnn SEGIMDPOPPPPP: ", newRowSelectionModelTeam[newRowSelectionModelTeam.length - 1]);
+                                            return newRowSelectionModelTeam[newRowSelectionModelTeam.length - 1];
+                                        });
+                                    }
 
-								}}
-							/>
+                                }}
+                            />
 						</div>
 					</Grid>
 
 					<Grid item xs={12} md={6}>
-						<Typography
-							sx={{ flex: '1 1 100%', mt: 3.5, color: "#00bfff", m:2 }}
-							variant="h6"
-							id="tableTitle"
-							component="div"
-						>
-							{<FormattedMessage id="project.global.buttons.season_selection"/>}
-						</Typography>
-						<div style={{ height: 400, width: '100%' }}>
-							<DataGrid
-								sx={{
-									background: "linear-gradient(-45deg, #0E24A0 0%, #AD1010 100% )",
-									borderRadius: "20px",
-									boxShadow: 12,
-									m:2,
+                        <Typography
+                            sx={{ flex: '1 1 100%', mt: 3.5, color: "#00bfff", m:2 }}
+                            variant="h6"
+                            id="tableTitle"
+                            component="div"
+                        >
+                            {<FormattedMessage id="project.global.buttons.season_selection"/>}
+                        </Typography>
+                        <div style={{ height: 400, width: '100%' }}>
+                            <DataGrid
+                                sx={{
+                                    background: "linear-gradient(-45deg, #0E24A0 0%, #AD1010 100% )",
+                                    borderRadius: "20px",
+                                    boxShadow: 12,
+                                    m:2,
                                     color:"white",
                                     borderColor:"black",
                                     boxShadow:"0 10px 50px rgb(0, 0, 0)"
-								}}
-								rows={rowsSeasons}
-								columns={columnsSeasons}
-								initialState={{
-									pagination: {
-										paginationModel: { page: 0, pageSize: 5 },
-									},
-								}}
-								pageSizeOptions={[5, 10]}
-								checkboxSelection
-								rowSelectionModel={rowSelectionModelSeason}
-								onRowSelectionModelChange={(newRowSelectionModelSeason) => {
-									if (newRowSelectionModelSeason.length <= 1) {
-										setRowSelectionModelSeason(newRowSelectionModelSeason);
-										console.log(" 111111: ", newRowSelectionModelSeason)
-										setSeasonId((prevSeasonId) => {
-											console.log(" seasonnnn PRIMEROOOOO: ", newRowSelectionModelSeason);
-											return newRowSelectionModelSeason;
-										});
-									} else {
-										setRowSelectionModelSeason(newRowSelectionModelSeason[newRowSelectionModelSeason.length - 1]);
-										console.log(" 22222: ", newRowSelectionModelSeason[newRowSelectionModelSeason.length - 1])
-										setSeasonId((prevSeasonId) => {
-											console.log(" seasonnnn SEGIMDPOPPPPP: ", newRowSelectionModelSeason[newRowSelectionModelSeason.length - 1]);
-											return newRowSelectionModelSeason[newRowSelectionModelSeason.length - 1];
-										});
-									}
+                                }}
+                                rows={rowsSeasons}
+                                columns={columnsSeasons}
+                                initialState={{
+                                    pagination: {
+                                        paginationModel: { page: 0, pageSize: 5 },
+                                    },
+                                }}
+                                pageSizeOptions={[5, 10]}
+                                checkboxSelection
+                                rowSelectionModel={rowSelectionModelSeason}
+                                onRowSelectionModelChange={(newRowSelectionModelSeason) => {
+                                    if (newRowSelectionModelSeason.length <= 1) {
+                                        setRowSelectionModelSeason(newRowSelectionModelSeason);
+                                        console.log(" 111111: ", newRowSelectionModelSeason)
+                                        setSeasonId((prevSeasonId) => {
+                                            console.log(" seasonnnn PRIMEROOOOO: ", newRowSelectionModelSeason);
+                                            return newRowSelectionModelSeason;
+                                        });
+                                    } else {
+                                        setRowSelectionModelSeason(newRowSelectionModelSeason[newRowSelectionModelSeason.length - 1]);
+                                        console.log(" 22222: ", newRowSelectionModelSeason[newRowSelectionModelSeason.length - 1])
+                                        setSeasonId((prevSeasonId) => {
+                                            console.log(" seasonnnn SEGIMDPOPPPPP: ", newRowSelectionModelSeason[newRowSelectionModelSeason.length - 1]);
+                                            return newRowSelectionModelSeason[newRowSelectionModelSeason.length - 1];
+                                        });
+                                    }
 
-								}}
-							/>
-						</div>
-					</Grid>
+                                }}
+                            />
+                        </div>
+                    </Grid>
 
 				</Grid>
 
 			</Grid>
-			<button className="post_game" onClick={(e) => handleSubmit(e)}><FormattedMessage id="project.global.buttons.save" /></button>
-                  
+            <button className="post_game" onClick={(e) => handleSubmit(e)}><FormattedMessage id="project.global.buttons.save" /></button>                  
 		</Box>
         );
 }
