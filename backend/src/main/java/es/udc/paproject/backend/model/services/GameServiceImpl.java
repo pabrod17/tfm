@@ -225,6 +225,10 @@ public class GameServiceImpl implements GameService {
         }
 
         List<Game> games = new ArrayList<>();
+        if (seasonTeams.isEmpty()) {
+            return games;
+        }
+
         List<Game> games2 = new ArrayList<>();
 
         for(SeasonTeam seasonTeam : seasonTeams){

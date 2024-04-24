@@ -134,7 +134,7 @@ public class PlayerServiceImpl implements PlayerService {
         List<Player> players = playerDao.findByTeamId(teamId);
 
         if (players.isEmpty()) {
-            throw new InstanceNotFoundException("project.entities.player");
+            return players;
         }
         return players;
     }
@@ -191,7 +191,7 @@ public class PlayerServiceImpl implements PlayerService {
         }
 
         if(playerResult == null){
-            throw new InstanceNotFoundException("project.entities.player");
+            return playerResult;
         }
 
         return playerResult;
@@ -745,7 +745,7 @@ public class PlayerServiceImpl implements PlayerService {
         }
 
         if (players.isEmpty()) {
-            throw new InstanceNotFoundException("project.entities.player");
+            return players;
         }
         return players;
     }
@@ -766,7 +766,7 @@ public class PlayerServiceImpl implements PlayerService {
         }
 
         if (players.isEmpty()) {
-            throw new InstanceNotFoundException("project.entities.player");
+            return players;
         }
         return players;
     }
@@ -785,7 +785,7 @@ public class PlayerServiceImpl implements PlayerService {
         List<Player> players = playerDao.findByTeamIdAndPosition(teamId, position);
 
         if (players.isEmpty()) {
-            throw new InstanceNotFoundException("project.entities.player");
+            return players;
         }
         return players;
     }
@@ -815,7 +815,7 @@ public class PlayerServiceImpl implements PlayerService {
         }
 
         if (playersResult.isEmpty()) {
-            throw new InstanceNotFoundException("project.entities.player");
+            return playersResult;
         }
 
         playersResult = playersResult.stream().distinct().collect(Collectors.toList());
@@ -864,7 +864,7 @@ public class PlayerServiceImpl implements PlayerService {
         if (playersResult.isEmpty()) {
             System.out.println("HOLA3" + typeLesion);
 
-            throw new InstanceNotFoundException("project.entities.player");
+            return playersResult;
         }
 
         playersResult = playersResult.stream().distinct().collect(Collectors.toList());

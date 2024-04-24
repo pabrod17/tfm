@@ -157,7 +157,7 @@ public class SeasonServiceImpl implements SeasonService {
         List<Season> seasons = new ArrayList<>();
 
         if (seasonTeams.isEmpty()) {
-            throw new InstanceNotFoundException("project.entities.seasonTeam");
+            return seasons;
         }
         for (SeasonTeam seasonTeam : seasonTeams) {
             if(seasonTeam.getTeam() != null && seasonTeam.getSeason() != null && seasonTeam.getTeam().getId() == teamId){

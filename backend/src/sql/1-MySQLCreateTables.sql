@@ -79,7 +79,7 @@ CREATE TABLE SeasonTeam (
     userId BIGINT,    
     CONSTRAINT SeasonTeamPK PRIMARY KEY (id),
     CONSTRAINT SeasonTeamUserIdFK FOREIGN KEY(userId)
-        REFERENCES User (id),    
+        REFERENCES User (id) ON DELETE CASCADE,    
     CONSTRAINT SeasonTeamSeasonIdFK FOREIGN KEY(seasonId)
         REFERENCES Season (id),
     CONSTRAINT SeasonTeamTeamIdFK FOREIGN KEY(teamId)
@@ -112,7 +112,7 @@ CREATE TABLE Player (
     totalUnsportsmanlikeFouls BIGINT,
     injured BOOLEAN,
     CONSTRAINT PlayerTeamIdFK FOREIGN KEY(teamId)
-        REFERENCES Team (id),
+        REFERENCES Team (id) ON DELETE CASCADE,
     CONSTRAINT PlayerPK PRIMARY KEY (id),
     CONSTRAINT DniUniqueKey UNIQUE (dni),
     CONSTRAINT EmailUniqueKey UNIQUE (email)
@@ -172,7 +172,7 @@ CREATE TABLE PlayerLesion (
     lesionId BIGINT,
     CONSTRAINT PlayerLesionPK PRIMARY KEY (id),
     CONSTRAINT PlayerLesionPlayerIdFK FOREIGN KEY(playerId)
-        REFERENCES Player (id),    
+        REFERENCES Player (id) ON DELETE CASCADE,    
     CONSTRAINT PlayerLesionLesionIdFK FOREIGN KEY(lesionId)
         REFERENCES Lesion (id)
 ) ENGINE = InnoDB;
@@ -225,7 +225,7 @@ CREATE TABLE CalendarEvent (
     trainingId BIGINT,
     CONSTRAINT EventPK PRIMARY KEY (id),
     CONSTRAINT CalendarEventUserIdFK FOREIGN KEY(userId)
-        REFERENCES User (id)
+        REFERENCES User (id) ON DELETE CASCADE
 ) ENGINE = InnoDB;
 
 CREATE TABLE Game (
@@ -239,7 +239,7 @@ CREATE TABLE Game (
     calendarEventId BIGINT,
     CONSTRAINT GamePK PRIMARY KEY (id),
     CONSTRAINT GameSeasonTeamIdFK FOREIGN KEY(seasonTeamId)
-        REFERENCES SeasonTeam (id),    
+        REFERENCES SeasonTeam (id) ON DELETE CASCADE,    
     CONSTRAINT GameGameStatisticsIdIdFK FOREIGN KEY(gameStatisticsId)
         REFERENCES GameStatistics (id),
     CONSTRAINT GameCalendarEventIdFK FOREIGN KEY(calendarEventId)
@@ -256,7 +256,7 @@ CREATE TABLE Training (
     calendarEventId BIGINT,
     CONSTRAINT TrainingPK PRIMARY KEY (id),
     CONSTRAINT TrainingSeasonTeamIdFK FOREIGN KEY(seasonTeamId)
-        REFERENCES SeasonTeam (id),
+        REFERENCES SeasonTeam (id) ON DELETE CASCADE,
     CONSTRAINT TrainingCalendarEventIdFK FOREIGN KEY(calendarEventId)
         REFERENCES CalendarEvent (id)
 ) ENGINE = InnoDB;
@@ -307,7 +307,7 @@ CREATE TABLE PlayerGameStatistics (
     CONSTRAINT PlayerGameStatisticsPlayerIdFK FOREIGN KEY(playerId)
         REFERENCES Player (id),    
     CONSTRAINT PlayerGameStatisticsGameIdFK FOREIGN KEY(gameId)
-        REFERENCES Game (id)
+        REFERENCES Game (id) ON DELETE CASCADE
 ) ENGINE = InnoDB;
 
 CREATE TABLE GameExercise (
@@ -316,7 +316,7 @@ CREATE TABLE GameExercise (
     exerciseId BIGINT NOT NULL,
     CONSTRAINT GameExercisePK PRIMARY KEY (id),
     CONSTRAINT GameExerciseGameIdFK FOREIGN KEY(gameId)
-        REFERENCES Game (id),
+        REFERENCES Game (id) ON DELETE CASCADE,
     CONSTRAINT GameExerciseExerciseIdFK FOREIGN KEY(exerciseId)
         REFERENCES Exercise (id)    
 ) ENGINE = InnoDB;
@@ -327,7 +327,7 @@ CREATE TABLE GameStretching (
     stretchingId BIGINT NOT NULL,
     CONSTRAINT GameStretchingPK PRIMARY KEY (id),
     CONSTRAINT GameStretchingGameIdFK FOREIGN KEY(gameId)
-        REFERENCES Game (id),
+        REFERENCES Game (id) ON DELETE CASCADE,
     CONSTRAINT GameStretchingStretchingIdFK FOREIGN KEY(stretchingId)
         REFERENCES Stretching (id)    
 ) ENGINE = InnoDB;
@@ -338,9 +338,9 @@ CREATE TABLE TrainingExercise (
     exerciseId BIGINT NOT NULL,
     CONSTRAINT TrainingExercisePK PRIMARY KEY (id),
     CONSTRAINT TrainingExerciseTrainingIdFK FOREIGN KEY(trainingId)
-        REFERENCES Training (id),
+        REFERENCES Training (id) ON DELETE CASCADE,
     CONSTRAINT TrainingExerciseExerciseIdFK FOREIGN KEY(exerciseId)
-        REFERENCES Exercise (id)    
+        REFERENCES Exercise (id)
 ) ENGINE = InnoDB;
 
 CREATE TABLE TrainingStretching (
@@ -349,7 +349,7 @@ CREATE TABLE TrainingStretching (
     stretchingId BIGINT NOT NULL,
     CONSTRAINT TrainingStretchingPK PRIMARY KEY (id),
     CONSTRAINT TrainingStretchingTrainingIdFK FOREIGN KEY(trainingId)
-        REFERENCES Training (id),
+        REFERENCES Training (id) ON DELETE CASCADE,
     CONSTRAINT TrainingStretchingStretchingIdFK FOREIGN KEY(stretchingId)
         REFERENCES Stretching (id)    
 ) ENGINE = InnoDB;
@@ -360,7 +360,7 @@ CREATE TABLE PlayerStretching (
     stretchingId BIGINT NOT NULL,
     CONSTRAINT PlayerStretchingPK PRIMARY KEY (id),
     CONSTRAINT PlayerStretchingPlayerIdFK FOREIGN KEY(playerId)
-        REFERENCES Player (id),
+        REFERENCES Player (id) ON DELETE CASCADE,
     CONSTRAINT PlayerStretchingcccStretchingIdFK FOREIGN KEY(stretchingId)
         REFERENCES Stretching (id)    
 ) ENGINE = InnoDB;
@@ -371,7 +371,7 @@ CREATE TABLE PlayerTraining (
     trainingId BIGINT NOT NULL,
     CONSTRAINT PlayerTrainingPK PRIMARY KEY (id),
     CONSTRAINT PlayerTrainingPlayerIdFK FOREIGN KEY(playerId)
-        REFERENCES Player (id),
+        REFERENCES Player (id) ON DELETE CASCADE,
     CONSTRAINT PlayerTrainingTrainingIdFK FOREIGN KEY(trainingId)
         REFERENCES Training (id)    
 ) ENGINE = InnoDB;
