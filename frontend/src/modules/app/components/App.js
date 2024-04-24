@@ -76,8 +76,8 @@ const App = () => {
         backgroundAttachment: 'fixed', // Fija la imagen de fondo
         backgroundSize: 'cover',
         overflowX: 'hidden',
-        width: 'auto',  // Ajusta el ancho según tus necedsidades
-        height: 'auto', // Ajusta la altura según tus necesidades
+        width: '100%',  // Cambiado a un tamaño fijo, ajusta según sea necesario
+        height: '100vh',  // Cambiado a un tamaño fijo, ajusta según sea necesario
         // background: `linear-gradient(to right, #0f0c29, #302b63, #24243e)`, // Define aquí tus colores
         // background: `linear-gradient(to left, #870000, #190a05)`, // Define aquí tus colores
         // background: `linear-gradient(to right, #141e30, #243b55)`, // Define aquí tus colores
