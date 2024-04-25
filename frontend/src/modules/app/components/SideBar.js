@@ -312,7 +312,7 @@ const Sidebar = () => {
             <Item
               title={<FormattedMessage id="project.global.buttons.home"/>}
               to="/"
-              icon={<HomeOutlinedIcon style={{ fontSize: "20.1px",
+              icon={<HomeOutlinedIcon style={{ fontSize: "20.1px", marginBottom:"10px",
               color: selectedItem === "/" ? "#6fa" : "" }} />}
               selected={selected}
               setSelected={setSelected}
@@ -321,8 +321,8 @@ const Sidebar = () => {
             />
 
             <Typography
-              variant="h6"
-              sx={{ m: "0px 0 0px 20px", fontSize:"15px" }}
+              variant="h8"
+              sx={{ m: "0px 0 0px 20px"}}
               color={"#0044ff"}
             >
               <FormattedMessage id="project.sidebar.fields.club"/>
@@ -398,7 +398,7 @@ const Sidebar = () => {
 
             <Typography
               variant="h8"
-              sx={{ m: "0px 0 0px 20px", fontSize:"15px" }}
+              sx={{ m: "0px 0 0px 20px"}}
               color={"pink"}
             >
               <FormattedMessage id="project.sidebar.fields.physicalHealth"/>
@@ -440,7 +440,7 @@ const Sidebar = () => {
 
             <Typography
               variant="h8"
-              sx={{ m: "0px 0 0px 20px", fontSize:"15px" }}
+              sx={{ m: "0px 0 0px 20px"}}
               color={"green"}
               
             >
@@ -485,7 +485,7 @@ const Sidebar = () => {
 
             <Typography
               variant="h8"
-              sx={{ m: "0px 0 0px 20px", fontSize:"15px" }}
+              sx={{ m: "0px 0 0px 20px"}}
               color={"orange"}
             >
               <FormattedMessage id="project.global.buttons.charts"/>
@@ -510,7 +510,7 @@ const Sidebar = () => {
               <>
                 <Typography
                 variant="h8"
-                sx={{ m: "0px 0 0px 20px", fontSize:"15px" }}
+                sx={{ m: "0px 0 0px 20px"}}
                 color={"yellow"}
               >
                 <FormattedMessage id="project.global.buttons.calendar"/>
@@ -533,7 +533,7 @@ const Sidebar = () => {
               <>
             <Typography
               variant="h8"
-              sx={{ m: "0px 0 0px 20px", fontSize:"15px" }}
+              sx={{ m: "0px 0 0px 20px"}}
               color={"#00ccff"}
             >
               <FormattedMessage id="project.global.buttons.users"/>
@@ -556,7 +556,7 @@ const Sidebar = () => {
           <>
             <Typography
             variant="h8"
-            sx={{ m: "0px 0 0px 20px", fontSize:"15px" }}
+            sx={{ m: "0px 0 0px 20px"}}
             color={"#00ccff"}
           >
             <FormattedMessage id="project.global.buttons.users"/>
