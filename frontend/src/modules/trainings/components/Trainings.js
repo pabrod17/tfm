@@ -108,10 +108,10 @@ const TrainingCardUser = ({ dispatch, history, item, handleOpenDescriptionModal 
                 </div>
                 <div class="flip-card-back">
             <div class="card_training">
-            <span class="title">{obtenerHoraFormateada(item.durationMinutes)} &nbsp;
+            <span class="title" style={{marginBottom:"0px"}}>{obtenerHoraFormateada(item.durationMinutes)} &nbsp;
             </span>
             <hr></hr>
-          <a onClick={() => handleOpenDescriptionModal(item.description)} class="button_apple">
+          <a onClick={() => handleOpenDescriptionModal(item.description)} class="button_apple" style={{marginTop:"-5px", marginBottom:"-5px"}}>
             <span class="desc desc2 scroll_efect_training">{item.description}</span>
           </a>
           <hr></hr>
@@ -122,7 +122,7 @@ const TrainingCardUser = ({ dispatch, history, item, handleOpenDescriptionModal 
                   </ul>
                   <ul class="social-icons configgrande config_position">
                       <li><a type="button" onClick={() => handleUpdateTraining(item.id, dispatch, history)}>
-                      <i class="fa fa-wrench" style={{fontSize:"15px"}}></i></a></li>
+                      <i class="fa fa-wrench" style={{fontSize:"14.7px"}}></i></a></li>
                   </ul>
                 </div>
               </div>
@@ -193,8 +193,8 @@ const Trainings = ({trainings}) => {
           aria-describedby="child-modal-description"
         >
           <Box sx={{ ...style, width: "auto", maxWidth: "40vw" }}>
-            <h4 id="child-modal-title" className="color_modal_title_training" sx={{ mb: '67px' }} ><FormattedMessage id="project.exercises.fields.description" />:</h4>
-            <p id="child-modal-description" style={{ overflowWrap: 'break-word', fontSize:"12px" }}>
+            <h5 id="child-modal-title" className="color_modal_title_training" sx={{ mb: '67px' }} ><FormattedMessage id="project.exercises.fields.description" />:</h5>
+            <p id="child-modal-description" style={{ overflowWrap: 'break-word', fontSize:"8px" }}>
               {modalDescription}
             </p>
           </Box>

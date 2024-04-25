@@ -337,11 +337,11 @@
 
   .button_all_buscar2 {
     --green: #00ffff;
-    font-size: 25px;
+    font-size: 16.75px;
     /* margin-top: 15px; */
-    margin-right: 10px;
-    margin-top: 5px;
-    margin-left: 10px;
+    margin-right: 6.7px;
+    margin-top: 3.35px;
+    margin-left: 6.7px;
     padding: 0.2em 1.4em;
     letter-spacing: 0.06em;
     position: relative;
@@ -349,10 +349,10 @@
     overflow: hidden;
     transition: all 0.3s;
     line-height: 1.4em;
-    border: 2px solid var(--green);
+    border: 1.34px solid var(--green);
     background: linear-gradient(to right, rgba(27, 253, 156, 0.1) 1%, transparent 40%,transparent 60% , rgba(27, 253, 156, 0.1) 100%);
     color: var(--green);
-    box-shadow: inset 0 0 10px rgba(27, 253, 156, 0.4), 0 0 9px 3px rgba(27, 253, 156, 0.1);
+    box-shadow: inset 0 0 6.7px rgba(27, 253, 156, 0.4), 0 0 6.03px 2.01px rgba(27, 253, 156, 0.1);
     border-radius: 30px;
   }
   .button_all_buscar2:hover {
@@ -835,7 +835,7 @@ max-height: 241.2px;
   text-overflow: ellipsis;
   text-decoration: none; 
   display: -webkit-box;
-  -webkit-line-clamp: 9; /* Ajusta el número de líneas que deseas mostrar */
+  -webkit-line-clamp: 5; /* Ajusta el número de líneas que deseas mostrar */
   -webkit-box-orient: vertical;
 }
 
@@ -1174,15 +1174,14 @@ max-height: 241.2px;
 
 
 
-
 .card_team {
-  width: 360px;
-  height: 360px;
-  max-width: 360px;
+  width: 241.2px;
+  height: 241.2px;
+  max-width: 241.2px;
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  border-radius: 20px;
+  padding: 13.4px;
+  border-radius: 13.4px;
   background: linear-gradient(-45deg, #1CB5E0 0%, #000046 60% );
   background: linear-gradient(-45deg, #ff4800 0%, #000000 60% );
   background: linear-gradient(48deg,#000000,#070b79,#0400ff,#070b79,#000000);
@@ -1192,19 +1191,19 @@ max-height: 241.2px;
   background: linear-gradient(-180deg, #ff4800 0%, #000000 60% );
   /* background: radial-gradient(circle, #ff4800 20%, #000000 80%); */
 
-  box-shadow: 0px -10px 65px 0px rgba(0, 0, 0, 0.447) inset, 0 15px 65px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px -6.7px 43.55px 0px rgba(0, 0, 0, 0.447) inset, 0 10px 43.55px rgba(0, 0, 0, 0.5);
 }
 
 .card__image_team {
-  height: 160px;
-  width: 160px;
+  height: 107.2px;
+  width: 107.2px;
   border-radius: 50%;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 20px;
-  margin-top: 20px;
+  margin-bottom: 13.4px;
+  margin-top: 13.4px;
   /* box-shadow: 0 10px 50px rgb(255, 255, 255); */
-  box-shadow: 0 10px 50px rgb(0, 0, 0);
+  box-shadow: 0 6.7px 33.5px rgb(0, 0, 0);
 }
 
 .card__image_team_update_create {
@@ -1637,6 +1636,18 @@ max-height: 241.2px;
 
 
 .button_apple {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 6.7px;
+  padding: 4px;
+  text-decoration: none;
+  box-shadow: 0 2.68px 4px -0.67px #0b162531, 0 1.34px 2.68px -0.67px #0e192b17;
+  background-color: #fff;
+  margin-bottom: -2px;
+}
+
+.button_apple2 {
   display: flex;
   align-items: center;
   justify-content: space-between;

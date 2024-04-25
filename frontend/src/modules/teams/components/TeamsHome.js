@@ -158,7 +158,7 @@ const TeamsHome = () => {
         <Box
             display="flex"
             alignItems="center"
-            p={1}
+            p={0.67}
             sx={{
                 flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
             }}
@@ -167,28 +167,27 @@ const TeamsHome = () => {
                 sx={{
                     bgcolor: 'background.dark',
                     display: "flex",
-                    boxShadow: 1,
                     borderRadius: 4,
                     margin: 'auto',  // Centra horizontalmente
-                    marginTop: '50px', // Ajusta la distancia desde la parte superior según sea necesario
+                    marginTop: '33.5px', // Ajusta la distancia desde la parte superior según sea necesario
                     textAlign: 'center', // Centra el contenido dentro del Box
-                    marginBottom: "20px",
+                    marginBottom: "13.4px",
                 }}>
 
                 <Grid container columns={{ xs: 4, sm: 8, md: 12 }}>
                     <Box
                         sx={{
                             display: 'flex', // Mostrar los Autocompletados en fila
-                            mr: "10px"
+                            mr: "6.7px"
                         }}>
                         <Autocomplete
                             disablePortal
                             id="combo-box-demo"
                             options={options}
-                            sx={{ width: 200 }}
+                            sx={{ width: 200}}
                             getOptionLabel={(option) => option.label}
                             renderInput={(params) => <TextField {...params}
-                                InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular' } }}
+                                            InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular' } }}
                                 label={
                                     <FormattedMessage id="project.global.buttons.filter" />
                                 }
@@ -199,7 +198,7 @@ const TeamsHome = () => {
                                     '& label': { color: 'white' },
                                     '& input': { color: 'white' },
                                     borderColor: "black",
-                                    boxShadow: "0 10px 10px rgb(0, 0, 0)"
+                                    boxShadow: "0 6.7px 6.7px rgb(0, 0, 0)"
                                 }}
                             />}
                             PaperComponent={CustomPaperComponentOption} // Usar el componente personalizado para las opciones
@@ -233,7 +232,7 @@ const TeamsHome = () => {
                                                 '& label': { color: 'white' },
                                                 '& input': { color: 'white' },
                                                 borderColor: "black",
-                                                boxShadow: "0 10px 10px rgb(0, 0, 0)"
+                                                boxShadow: "0 6.7px 6.7px rgb(0, 0, 0)"
                                             }}
                                         />}
                                         PaperComponent={CustomPaperComponent} // Usar el componente personalizado para las opciones
@@ -257,8 +256,8 @@ const TeamsHome = () => {
                                         sx={{ width: 200 }}
                                         getOptionLabel={(team) => team.arenaName}
                                         renderInput={(params) => <TextField {...params}
-                                            InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular' } }}
-                                            label={
+                                        InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular' } }}
+                                        label={
                                                 <FormattedMessage id="project.teams.fields.arena" />
                                             }                                            sx={{
                                                 background: 'linear-gradient(-45deg, #ff4800 0%, #000000 60% )',
@@ -268,7 +267,7 @@ const TeamsHome = () => {
                                                 '& label': { color: 'white' },
                                                 '& input': { color: 'white' },
                                                 borderColor: "black",
-                                                boxShadow: "0 10px 10px rgb(0, 0, 0)"
+                                                boxShadow: "0 6.7px 6.7px rgb(0, 0, 0)"
                                             }}
                                         />}
                                         PaperComponent={CustomPaperComponent} // Usar el componente personalizado para las opciones
@@ -303,7 +302,7 @@ const TeamsHome = () => {
                                                 '& label': { color: 'white' },
                                                 '& input': { color: 'white' },
                                                 borderColor: "black",
-                                                boxShadow: "0 10px 10px rgb(0, 0, 0)"
+                                                boxShadow: "0 6.7px 6.7px rgb(0, 0, 0)"
                                             }}
                                         />}
                                         PaperComponent={CustomPaperComponent} // Usar el componente personalizado para las opciones
@@ -320,7 +319,7 @@ const TeamsHome = () => {
                 </Grid>
             </Box>
             <Box>
-                <button type="button" className="button_all" onClick={() => handleSetAllTeams(dispatch)}>
+                <button type="button" className="button_all" style={{marginLeft:"10px"}} onClick={() => handleSetAllTeams(dispatch)}>
                     All
                 </button>
             </Box>
@@ -329,7 +328,7 @@ const TeamsHome = () => {
                     <AddCircleOutlineIcon sx={{
                         margin: 'auto',  // Centra horizontalmente
                         textAlign: 'center', // Centra el contenido dentro del Box
-                        fontSize: "70px",
+                        fontSize: "46.9px",
                         color: "white"
                     }}
                         onClick={() => history(`/teams/addTeam`)}

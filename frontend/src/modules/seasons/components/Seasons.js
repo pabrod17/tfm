@@ -58,7 +58,7 @@ const CardSeason = ({ dispatch, history, item, handleOpenDescriptionModal }) => 
                   </ul>
                   <ul class="social-icons configgrande config_position">
                       <li><a type="button" onClick={() => handleUpdateSeason(item.id, dispatch, history)}>
-                      <i class="fa fa-wrench" style={{fontSize:"15px"}}></i></a></li>
+                      <i class="fa fa-wrench" style={{fontSize:"14.7px"}}></i></a></li>
                   </ul>
                 </div>
               </div>
@@ -130,8 +130,8 @@ const Seasons = ({seasons}) => {
           aria-describedby="child-modal-description"
         >
           <Box sx={{ ...style, width: "auto", maxWidth: "40vw" }}>
-            <h4 id="child-modal-title" className="color_modal_title_game" sx={{ mb: '67px' }} ><FormattedMessage id="project.exercises.fields.description" />:</h4>
-            <p id="child-modal-description" style={{ overflowWrap: 'break-word', fontSize:"12px" }}>
+            <h5 id="child-modal-title" className="color_modal_title_game" sx={{ mb: '67px' }} ><FormattedMessage id="project.exercises.fields.description" />:</h5>
+            <p id="child-modal-description" style={{ overflowWrap: 'break-word', fontSize:"8px" }}>
               {modalDescription}
             </p>
           </Box>
