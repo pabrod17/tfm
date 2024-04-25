@@ -147,7 +147,6 @@ const AddPlayer = () => {
 			gap={4}
 			p={3.35}
 			m={6.7}
-			ml={-4}
 			sx={{
                 maxWidth: { sm: 1095 },
 				border: '2px solid grey',

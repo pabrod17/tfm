@@ -102,9 +102,6 @@ const Sidebar = () => {
         }}      icon={icon}
       >
         <Typography
-        sx={{
-          ml:"-120px",
-        }}
         fontSize={11}
                       color={"white"}
         
@@ -211,6 +208,7 @@ const Sidebar = () => {
         "& .pro-sidebar-inner": {
         //Para poner la sidebar transparent: backgroundColor: "transparent"
           backgroundColor: "transparent",
+          
         },
         "& .pro-icon-wrapper": {
           backgroundColor: "transparent !important",
@@ -228,28 +226,27 @@ const Sidebar = () => {
         },
         "& .pro-menu-item": {
           // height:"40px",
-          width:"60%",
+          // width:"60%",
         },
         "& .pro-item-content": {
           // height:"40px",
-          marginRight:"-150%",
         },
         "& .MuiDrawer-paper": {
           backgroundColor: "#1a2035",
 
         },
+        
       }}
     >
-      <ProSidebar collapsed={isCollapsed} collapsedWidth={130}
-
-      >
+      <ProSidebar collapsed={isCollapsed} collapsedWidth={60} width={isCollapsed ? 60 : 210}>
         <Menu iconShape="square"       
         style={{
         // color: "#00FF1F",
         //Para poner la sidebar transparent, comentar la siguiente linea:
         // backgroundColor: '#000000',
         height:"100%",
-        boxShadow:"#00FF1F"
+        boxShadow:"#00FF1F",
+        paddingTop:"0px"
         }}
         >
           {/* LOGO AND MENU ICON */}
@@ -259,7 +256,6 @@ const Sidebar = () => {
             style={{
               color: "#00FF1F",
               margin: "10px 0 20px 0",
-
             }}
           >
             {!isCollapsed && (
@@ -267,13 +263,12 @@ const Sidebar = () => {
                 display="flex"
                 justifyContent="space-between"
                 alignItems="center"
-                ml="10px"
                 textAlign="center"
                 
               >
                 <Typography variant="h4" sx={{
                   color: "#ce7c16",
-                  marginBottom:"-10px"
+                  marginBottom:"-10px",
                 }} >
                   TeamHub
                 </Typography>
