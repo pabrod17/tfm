@@ -268,7 +268,7 @@ const Sidebar = () => {
                 <Typography component="h3" sx={{
                   color: "#ce7c16",
                   marginBottom:"-10px",
-                  fontSize:"29px",
+                  fontSize:"33px",
                   marginLeft:"-1.8px",
                   fontWeight:"bold"
                 }} >
