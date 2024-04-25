@@ -361,5 +361,5 @@ export default {
     //sidebar
     'project.sidebar.fields.club' : 'Club',
     'project.sidebar.fields.events' : 'Eventos',
-    'project.sidebar.fields.physicalHealth' : 'Salud Física',
+    'project.sidebar.fields.physicalHealth' : 'Bienestar',
 }

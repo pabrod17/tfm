@@ -101,7 +101,14 @@ const Sidebar = () => {
           handleMenuOption(to, dispatch);  // Llama a la función handleMenuOption
         }}      icon={icon}
       >
-        <Typography>{title}</Typography>
+        <Typography
+        sx={{
+          ml:"-120px",
+        }}
+        fontSize={11}
+                      color={"white"}
+        
+        >{title}</Typography>
         {/* <Link to={to}  */}
       </MenuItem>
     );
@@ -210,6 +217,8 @@ const Sidebar = () => {
         },
         "& .pro-inner-item": {
           padding: "5px 35px 5px 20px !important",
+          marginBottom: "-10px !important",
+
         },
         "& .pro-inner-item:hover": {
           color: "#868dfb !important",
@@ -217,13 +226,21 @@ const Sidebar = () => {
         "& .pro-menu-item.active": {
           color: "#6fa !important",
         },
+        "& .pro-menu-item": {
+          // height:"40px",
+          width:"60%",
+        },
+        "& .pro-item-content": {
+          // height:"40px",
+          marginRight:"-150%",
+        },
         "& .MuiDrawer-paper": {
           backgroundColor: "#1a2035",
 
         },
       }}
     >
-      <ProSidebar collapsed={isCollapsed} //collapsedWidth={80}
+      <ProSidebar collapsed={isCollapsed} collapsedWidth={130}
 
       >
         <Menu iconShape="square"       
@@ -231,7 +248,7 @@ const Sidebar = () => {
         // color: "#00FF1F",
         //Para poner la sidebar transparent, comentar la siguiente linea:
         // backgroundColor: '#000000',
-        height:"100vh",
+        height:"100%",
         boxShadow:"#00FF1F"
         }}
         >
@@ -240,8 +257,8 @@ const Sidebar = () => {
             onClick={() => setIsCollapsed(!isCollapsed)}
             icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
             style={{
-              margin: "10px 0 20px 0",
               color: "#00FF1F",
+              margin: "10px 0 20px 0",
 
             }}
           >
@@ -251,14 +268,16 @@ const Sidebar = () => {
                 justifyContent="space-between"
                 alignItems="center"
                 ml="10px"
+                textAlign="center"
+                
               >
-                <Typography variant="h3" sx={{
-                  color: "#ce7c16"
+                <Typography variant="h4" sx={{
+                  color: "#ce7c16",
+                  marginBottom:"-10px"
                 }} >
                   TeamHub
                 </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
-                  <MenuOutlinedIcon />
                 </IconButton>
               </Box>
             )}
@@ -289,14 +308,14 @@ const Sidebar = () => {
             </Box>
           )} */}
 
-          <Box paddingLeft={isCollapsed ? undefined : "10%"}>
+<Box paddingLeft={isCollapsed ? undefined : "2%"}>
             
           {(userLogged.role === "COACH" || userLogged.role === "ADMIN") && (
             <>
             <Item
               title={<FormattedMessage id="project.global.buttons.home"/>}
               to="/"
-              icon={<HomeOutlinedIcon style={{ fontSize: "30px",
+              icon={<HomeOutlinedIcon style={{ fontSize: "20.1px",
               color: selectedItem === "/" ? "#6fa" : "" }} />}
               selected={selected}
               setSelected={setSelected}
@@ -306,7 +325,7 @@ const Sidebar = () => {
 
             <Typography
               variant="h6"
-              sx={{ m: "15px 0 5px 20px" }}
+              sx={{ m: "0px 0 0px 20px", fontSize:"15px" }}
               color={"#0044ff"}
             >
               <FormattedMessage id="project.sidebar.fields.club"/>
@@ -314,7 +333,7 @@ const Sidebar = () => {
             <Item
               title={<FormattedMessage id="project.teams.fields.teams"/>}
               to="/teams/all"
-              icon={<PiMicrosoftTeamsLogoFill style={{ fontSize: "30px",
+              icon={<PiMicrosoftTeamsLogoFill style={{ fontSize: "20.1px",
               color: selectedItem === "/teams/all" ? "#6fa" : "" }} />}
               selected={selected}
               setSelected={setSelected}
@@ -326,7 +345,7 @@ const Sidebar = () => {
               title={<FormattedMessage id="project.seasons.fields.seasons"/>}
               to="/seasons/home"
               icon={<FolderSharedIcon sx={{
-                fontSize:"30px",
+                fontSize:"20.1px",
                 color: selectedItem === "/seasons/home" ? "#6fa" : ""
               }} />}
               selected={selected}
@@ -339,7 +358,7 @@ const Sidebar = () => {
               title={<FormattedMessage id="project.players.fields.players"/>}
               to="/players/home"
               icon={<SportsKabaddiIcon sx={{
-                fontSize:"30px",
+                fontSize:"20.1px",
                 color: selectedItem === "/players/home" ? "#6fa" : ""
               }} />}
               selected={selected}
@@ -349,8 +368,8 @@ const Sidebar = () => {
             />
 
             <Typography
-              variant="h6"
-              sx={{ m: "15px 0 5px 20px" }}
+              variant="h8"
+              sx={{ m: "0px 0 0px 20px" }}
               color={"red"}
             >
               <FormattedMessage id="project.sidebar.fields.events"/>
@@ -359,7 +378,7 @@ const Sidebar = () => {
               title={<FormattedMessage id="project.games.fields.games"/>}
               to="/games/home"
               icon={<SportsBasketballIcon sx={{
-                fontSize:"30px",
+                fontSize:"20.1px",
                 color: selectedItem === "/games/home" ? "#6fa" : ""
               }} />}
               selected={selected}
@@ -371,7 +390,7 @@ const Sidebar = () => {
               title={<FormattedMessage id="project.trainings.fields.trainings"/>}
               to="/trainings/home"
               icon={<SportsHandballIcon sx={{
-                fontSize:"30px",
+                fontSize:"20.1px",
                 color: selectedItem === "/trainings/home" ? "#6fa" : ""
               }} />}
               selected={selected}
@@ -381,8 +400,8 @@ const Sidebar = () => {
             />
 
             <Typography
-              variant="h6"
-              sx={{ m: "15px 0 5px 20px" }}
+              variant="h8"
+              sx={{ m: "0px 0 0px 20px", fontSize:"15px" }}
               color={"pink"}
             >
               <FormattedMessage id="project.sidebar.fields.physicalHealth"/>
@@ -392,7 +411,7 @@ const Sidebar = () => {
               to="/lesion/home"
               onClick={() => handleMenuOption()}
               icon={<LocalHospitalIcon sx={{
-                fontSize:"30px",
+                fontSize:"20.1px",
                 color: selectedItem === "/lesion/home" ? "#6fa" : ""
               }} />}
               selected={selected}
@@ -403,7 +422,7 @@ const Sidebar = () => {
               title={<FormattedMessage id="project.exercises.fields.exercises"/>}
               to="/exercises/home"
               icon={<FitnessCenterIcon sx={{
-                fontSize:"30px",
+                fontSize:"20.1px",
                 color: selectedItem === "/exercises/home" ? "#6fa" : ""
               }} />}
               onClick={() => handleMenuOption()}
@@ -414,7 +433,7 @@ const Sidebar = () => {
             <Item
               title={<FormattedMessage id="project.stretchings.fields.stretchings"/>}
               to="/stretchings/home"
-              icon={<TbStretching2 style={{ fontSize: "30px",
+              icon={<TbStretching2 style={{ fontSize: "20.1px",
               color: selectedItem === "/stretchings/home" ? "#6fa" : "" }} />}
               selected={selected}
               setSelected={setSelected}
@@ -423,8 +442,8 @@ const Sidebar = () => {
             />
 
             <Typography
-              variant="h6"
-              sx={{ m: "15px 0 5px 20px" }}
+              variant="h8"
+              sx={{ m: "0px 0 0px 20px", fontSize:"15px" }}
               color={"green"}
               
             >
@@ -434,7 +453,7 @@ const Sidebar = () => {
               title={<FormattedMessage id="project.global.buttons.general"/>}
               to="/plays/home"
               icon={<SportsEsportsIcon sx={{
-                fontSize:"30px",
+                fontSize:"20.1px",
                 color: selectedItem === "/plays/home" ? "#6fa" : ""
               }} />}
               selected={selected}
@@ -446,7 +465,7 @@ const Sidebar = () => {
               title={<FormattedMessage id="project.global.buttons.board"/>}
               to="/board/home"
               icon={<DashboardIcon sx={{
-                fontSize:"30px",
+                fontSize:"20.1px",
                 color: selectedItem === "/board/home" ? "#6fa" : ""
               }} />}
               selected={selected}
@@ -458,7 +477,7 @@ const Sidebar = () => {
               title={<FormattedMessage id="project.global.buttons.animation"/>}
               to="/plays/animator/home"
               icon={<TipsAndUpdatesIcon sx={{
-                fontSize:"30px",
+                fontSize:"20.1px",
                 color: selectedItem === "/plays/animator/home" ? "#6fa" : ""
               }} />}
               selected={selected}
@@ -468,8 +487,8 @@ const Sidebar = () => {
             />
 
             <Typography
-              variant="h6"
-              sx={{ m: "15px 0 5px 20px" }}
+              variant="h8"
+              sx={{ m: "0px 0 0px 20px", fontSize:"15px" }}
               color={"orange"}
             >
               <FormattedMessage id="project.global.buttons.charts"/>
@@ -478,7 +497,7 @@ const Sidebar = () => {
               title={<FormattedMessage id="project.global.buttons.statistics"/>}
               to="/statistics/home"
               icon={<BarChartOutlinedIcon sx={{
-                fontSize:"30px",
+                fontSize:"20.1px",
                 color: selectedItem === "/statistics/home" ? "#6fa" : ""
               }} />}
               selected={selected}
@@ -493,8 +512,8 @@ const Sidebar = () => {
             {(userLogged.role === "ADMIN" ||userLogged.role === "COACH" || userLogged.role === "USER") && (
               <>
                 <Typography
-                variant="h6"
-                sx={{ m: "15px 0 5px 20px" }}
+                variant="h8"
+                sx={{ m: "0px 0 0px 20px", fontSize:"15px" }}
                 color={"yellow"}
               >
                 <FormattedMessage id="project.global.buttons.calendar"/>
@@ -503,7 +522,7 @@ const Sidebar = () => {
                 title={<FormattedMessage id="project.global.buttons.calendar"/>}
                 to="/calendar/home"
                 icon={<InsertInvitationIcon sx={{
-                  fontSize:"30px",
+                  fontSize:"20.1px",
                   color: selectedItem === "/calendar/home" ? "#6fa" : ""
                 }} />}
                 selected={selected}
@@ -516,8 +535,8 @@ const Sidebar = () => {
             {(userLogged.role === "COACH") && (
               <>
             <Typography
-              variant="h6"
-              sx={{ m: "15px 0 5px 20px" }}
+              variant="h8"
+              sx={{ m: "0px 0 0px 20px", fontSize:"15px" }}
               color={"#00ccff"}
             >
               <FormattedMessage id="project.global.buttons.users"/>
@@ -526,7 +545,7 @@ const Sidebar = () => {
               title={<FormattedMessage id="project.global.buttons.users"/>}
               to="/users/coach"
               icon={<PeopleIcon sx={{
-                fontSize:"30px",
+                fontSize:"20.1px",
                 color: selectedItem === "/users/coach" ? "#6fa" : ""
               }} />}
               selected={selected}
@@ -539,8 +558,8 @@ const Sidebar = () => {
         {userLogged.role === "ADMIN" && (
           <>
             <Typography
-            variant="h6"
-            sx={{ m: "15px 0 5px 20px" }}
+            variant="h8"
+            sx={{ m: "0px 0 0px 20px", fontSize:"15px" }}
             color={"#00ccff"}
           >
             <FormattedMessage id="project.global.buttons.users"/>
@@ -549,7 +568,7 @@ const Sidebar = () => {
           title={<FormattedMessage id="project.global.buttons.users"/>}
           to="/users/admin"
           icon={<PeopleIcon sx={{
-            fontSize:"30px",
+            fontSize:"20.1px",
             color: selectedItem === "/users/admin" ? "#6fa" : ""
           }} />}
           selected={selected}
@@ -564,6 +583,7 @@ const Sidebar = () => {
       </ProSidebar>
     </Box>
     </Grid>
+
 
   );
 };

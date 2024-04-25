@@ -17,6 +17,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
 import perfil2 from './perfil2.jpeg'; //1920x1200
+import { fontSize } from '@mui/material/node_modules/@mui/system';
 
 
 const AddPlayer = () => {
@@ -144,10 +145,11 @@ const AddPlayer = () => {
 			display="flex"
 			alignItems="center"
 			gap={4}
-			p={5}
-			m={10}
+			p={3.35}
+			m={6.7}
+			ml={-4}
 			sx={{
-                maxWidth: { sm: 1635 },
+                maxWidth: { sm: 1095 },
 				border: '2px solid grey',
                 background: "linear-gradient(45deg, rgb(59, 4, 26) 30%,rgb(47, 0, 255))",
 				borderRadius: "20px",
@@ -158,7 +160,7 @@ const AddPlayer = () => {
 			}}
 		>
             <Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
-			<Grid container margin={5} spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
+			<Grid container margin={3.35} spacing={{ xs: 1.34, md: 1.34 }} columns={{ xs: 4, sm: 8, md: 12 }}
 			>
 				<Grid item md={12}>
                 <img src={perfil2} alt="Person" class="card__image_player_update_create"></img>
@@ -179,7 +181,7 @@ const AddPlayer = () => {
 						noValidate
 						autoComplete="off"
 					>
-						<Grid container spacing={2}>
+						<Grid container spacing={1.34}>
 
                         <Grid item xs={12} md={6}>
 
@@ -188,18 +190,19 @@ const AddPlayer = () => {
                                 
 									component="form"
 									sx={{
-										'& .MuiTextField-root': { mb: 2, width: '100%' },
-										margin: '50px', // Centra el formulario en la pantalla
+										'& .MuiTextField-root': { mb: 1.34, width: '100%' },
+										margin: '33.5px', // Centra el formulario en la pantalla
 
 									}}
 									noValidate
 									autoComplete="off"
 								>
-<FormControl sx={{ m: 1, minWidth: 150 }}>
+<FormControl sx={{  minWidth: 100.50 }}>
 	  <InputLabel id="demo-simple-select-label"
               sx={{
                 color: "#00bfff",
-				fontSize:"20px"
+				fontSize:"13.40px",
+				top:"-5px"
               }}
 
             ><FormattedMessage id="project.players.fields.position" /></InputLabel>
@@ -214,8 +217,9 @@ const AddPlayer = () => {
 			border: '2px solid grey',
 			borderRadius: "20px",
 			borderColor:"black",
-			boxShadow:"0 10px 10px rgb(0, 0, 0)",
-			marginBottom:"50px"
+			boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)",
+			marginBottom:"33.5px",
+			height:"40px"
 
 		  }}
 		  inputProps={{
@@ -240,15 +244,15 @@ const AddPlayer = () => {
 									<TextField
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.players.fields.playerName" />}
-										InputLabelProps={{ style: { color: '#E8FF00', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#E8FF00', fontSize: 13.40, fontWeight: 'regular', width: '100%', top:-5 } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 10.05, fontWeight: 'regular', width: '100%' } }}
 										multiline
 										rows={4}
 										sx={{
-											border: '2px solid grey',
-											borderRadius: "20px",
+											border: '1px solid grey',
+											borderRadius: "13.4px",
 											borderColor:"black",
-											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+											boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)"
 										}}
 										value={playerName}
 										onChange={(e) => setPlayerName(e.target.value)}
@@ -256,15 +260,15 @@ const AddPlayer = () => {
 									<TextField
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.players.fields.primaryLastName" />}
-										InputLabelProps={{ style: { color: '#E8FF00', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#E8FF00', fontSize: 13.40, fontWeight: 'regular', width: '100%', top:-5 } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 10.05, fontWeight: 'regular', width: '100%' } }}
 										multiline
 										rows={4}
 										sx={{
-											border: '2px solid grey',
-											borderRadius: "20px",
+											border: '1px solid grey',
+											borderRadius: "13.4px",
 											borderColor:"black",
-											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+											boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)"
 										}}
 										value={primaryLastName}
 										onChange={(e) => setPrimaryLastName(e.target.value)}
@@ -272,15 +276,15 @@ const AddPlayer = () => {
 									<TextField
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.players.fields.secondLastName" />}
-										InputLabelProps={{ style: { color: '#E8FF00', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#E8FF00', fontSize: 13.40, fontWeight: 'regular', width: '100%', top:-5 } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 10.05, fontWeight: 'regular', width: '100%' } }}
 										multiline
 										rows={4}
 										sx={{
-											border: '2px solid grey',
-											borderRadius: "20px",
+											border: '1px solid grey',
+											borderRadius: "13.4px",
 											borderColor:"black",
-											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+											boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)"
 										}}
 										value={secondLastName}
 										onChange={(e) => setSecondLastName(e.target.value)}
@@ -294,8 +298,8 @@ const AddPlayer = () => {
                                 
 									component="form"
 									sx={{
-										'& .MuiTextField-root': { mb: 2, width: '100%' },
-										margin: '50px', // Centra el formulario en la pantalla
+										'& .MuiTextField-root': { mb: 1.34, width: '100%' },
+										margin: '33.5px', // Centra el formulario en la pantalla
 
 									}}
 									noValidate
@@ -304,15 +308,15 @@ const AddPlayer = () => {
 									<TextField
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.players.fields.email" />}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 13.40, fontWeight: 'regular', width: '100%', top:-5 } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 10.05, fontWeight: 'regular', width: '100%' } }}
 										multiline
 										rows={2}
 										sx={{
-											border: '2px solid grey',
-											borderRadius: "20px",
+											border: '1px solid grey',
+											borderRadius: "13.4px",
 											borderColor:"black",
-											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+											boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)"
 										}}
 										value={email}
 										onChange={handleEmailChange}
@@ -322,15 +326,15 @@ const AddPlayer = () => {
 									<TextField
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.players.fields.phoneNumber" />}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 13.40, fontWeight: 'regular', width: '100%', top:-5 } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 10.05, fontWeight: 'regular', width: '100%' } }}
 										multiline
 										rows={2}
 										sx={{
-											border: '2px solid grey',
-											borderRadius: "20px",
+											border: '1px solid grey',
+											borderRadius: "13.4px",
 											borderColor:"black",
-											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+											boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)"
 										}}
                                         value={phoneNumber}
                                         onChange={handlePhoneNumberChange}
@@ -340,15 +344,15 @@ const AddPlayer = () => {
                                     <TextField
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.players.fields.dni" />}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 13.40, fontWeight: 'regular', width: '100%', top:-5 } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 10.05, fontWeight: 'regular', width: '100%' } }}
 										multiline
 										rows={2}
 										sx={{
-											border: '2px solid grey',
-											borderRadius: "20px",
+											border: '1px solid grey',
+											borderRadius: "13.4px",
 											borderColor:"black",
-											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+											boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)"
 										}}
 										value={dni}
                                         onChange={handleDniChange}
@@ -358,16 +362,16 @@ const AddPlayer = () => {
                                     									<TextField
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.players.fields.trends" />}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 13.40, fontWeight: 'regular', width: '100%', top:-5 } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 10.05, fontWeight: 'regular', width: '100%' } }}
 										multiline
-										rows={9}
+										rows={8.3}
 										sx={{
-											border: '2px solid grey',
-											borderRadius: "20px",
+											border: '1px solid grey',
+											borderRadius: "13.4px",
 											borderColor:"black",
-											boxShadow:"0 10px 10px rgb(0, 0, 0)",
-                                            marginTop:"22px"
+											boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)",
+                                            marginTop:"14.74px"
 										}}
 										value={trends}
 										onChange={(e) => setTrends(e.target.value)}
@@ -392,25 +396,31 @@ const AddPlayer = () => {
 				<Grid container spacing={2}>
 							<Grid item xs={12} md={12}>
                             <Box
+							sx={{
+								marginBottom:"-20px"
+							}}
 								>
 						<Typography
 							sx={{ 
-                                flex: '1 1 100%', mt: 3.5, color: "#00bfff", m:2 }}
-							variant="h6"
+                                flex: '1 1 100%', mt: 2.35, color: "#00bfff", m:1.34 }}
+							variant="h8"
 							id="tableTitle"
 							component="div"
 						>
 							{<FormattedMessage id="project.global.buttons.team_selection"/>}
 						</Typography>
-						<div style={{ height: 400, width: '100%', }}>
+						<div style={{ height: 274, width: '100%', }}>
 							<DataGrid
 								sx={{
-									borderRadius: "20px",
-									m:2,
+									borderRadius: "13.4px",
+									m:1.34,
 									borderColor:"black",
-									boxShadow:"0 10px 50px rgb(0, 0, 0)",
-                                    color:"white"
+									boxShadow:"0 6.7px 33.50px rgb(0, 0, 0)",
+                                    color:"white",
+									fontSize:"10px",
 								}}
+								density="compact"
+
 								rows={rowsTeams}
 								columns={columnsTeams}
 								initialState={{

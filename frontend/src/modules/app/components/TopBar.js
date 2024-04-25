@@ -58,7 +58,7 @@ const Topbar = ({toggleBackgroundImage, isDark, setIsDark}) => {
         onClick={handleClick}
       >
         <IconButton sx={{ color: "white", size:"big" }}>
-          <PersonOutlinedIcon sx={{ fontSize: 30 }} />
+          <PersonOutlinedIcon sx={{ fontSize: 23 }} />
           {/* Para cuando cambie los tamaños para ver la web con 100% de zoom */}
             {/* <PersonOutlinedIcon sx={{ fontSize: '0.9375em' }} /> */}
         </IconButton>      </Button>
@@ -87,19 +87,19 @@ const Topbar = ({toggleBackgroundImage, isDark, setIsDark}) => {
         </IconButton> */}
         {/* <Switch checked={isDark} onChange={e=>setIsDark(!isDark)}/> */}
         <IconButton sx={{ color: "white"}}>
-          <StarsIcon color="primary" fontSize="large" onClick={() => toggleBackgroundImage(1)} />
+          <StarsIcon color="primary" fontSize="medium" onClick={() => toggleBackgroundImage(1)} />
         </IconButton>
         <IconButton sx={{ color: "white"}}>
-          <StarsIcon color="secondary" fontSize="large" onClick={() => toggleBackgroundImage(2)} />
+          <StarsIcon color="secondary" fontSize="medium" onClick={() => toggleBackgroundImage(2)} />
         </IconButton>
         <IconButton sx={{ color: "white"}}>
-          <StarsIcon color="action" fontSize="large" onClick={() => toggleBackgroundImage(3)} />
+          <StarsIcon color="action" fontSize="medium" onClick={() => toggleBackgroundImage(3)} />
         </IconButton>
         <IconButton sx={{ color: "yellow"}}>
-          <StarsIcon color="yellow" fontSize="large" onClick={() => toggleBackgroundImage(4)} />
+          <StarsIcon color="yellow" fontSize="medium" onClick={() => toggleBackgroundImage(4)} />
         </IconButton>
         <IconButton sx={{ color: "green"}}>
-          <StarsIcon color="green" fontSize="large" onClick={() => toggleBackgroundImage(5)} />
+          <StarsIcon color="green" fontSize="medium" onClick={() => toggleBackgroundImage(5)} />
         </IconButton>
     </Container>
 
