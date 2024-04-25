@@ -81,7 +81,7 @@ const GamesHome = () => {
                     bgcolor: 'background.dark',
                     borderRadius: 4,
                     margin: 'auto',  // Centra horizontalmente
-                    marginTop: '50px', // Ajusta la distancia desde la parte superior según sea necesario
+                    marginTop: '33.5px', // Ajusta la distancia desde la parte superior según sea necesario
                     textAlign: 'center', // Centra el contenido dentro del Box
                 }}>
 <div>
@@ -112,7 +112,7 @@ const GamesHome = () => {
                     )}
                 />
             </div>
-            <div className="mt-3">
+            <div className="mt-2">
                 <button type="button" className="button_all_buscar" onClick={handleSubmit}>
                 <FormattedMessage id="project.global.buttons.find" />
                 </button>
@@ -131,9 +131,9 @@ const GamesHome = () => {
                     <AddCircleOutlineIcon sx={{
                         margin: 'auto',  // Centra horizontalmente
                         textAlign: 'center', // Centra el contenido dentro del Box
-                        fontSize: "70px",
+                        fontSize: "46.9px",
                         bgcolor: "linear-gradient(147deg,#ffffff ,#4400f9,#000000 35% 70%,#660bd8,#ffffff)",
-                        color: "white"
+                        color: "white",
                     }}
                         onClick={() => history(`/games/addGame`)}
                     >
