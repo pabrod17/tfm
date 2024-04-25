@@ -122,7 +122,7 @@ const TrainingHome = () => {
                     )}
                 />
             </div>
-            <div className="mt-3">
+            <div className="mt-2">
                 <button type="button" className="button_all_buscar" onClick={handleSubmit}>
                 <FormattedMessage id="project.global.buttons.find" />
                 </button>
