@@ -104,7 +104,6 @@ const Sidebar = () => {
         <Typography
         fontSize={11}
                       color={"white"}
-        
         >{title}</Typography>
         {/* <Link to={to}  */}
       </MenuItem>
@@ -214,7 +213,7 @@ const Sidebar = () => {
           backgroundColor: "transparent !important",
         },
         "& .pro-inner-item": {
-          padding: "5px 35px 5px 20px !important",
+          padding: "5px 15px 5px 20px !important",
           marginBottom: "-10px !important",
 
         },
