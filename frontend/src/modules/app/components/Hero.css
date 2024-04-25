@@ -835,7 +835,7 @@ max-height: 241.2px;
   text-overflow: ellipsis;
   text-decoration: none; 
   display: -webkit-box;
-  -webkit-line-clamp: 5; /* Ajusta el número de líneas que deseas mostrar */
+  -webkit-line-clamp: 9; /* Ajusta el número de líneas que deseas mostrar */
   -webkit-box-orient: vertical;
 }
 
@@ -1007,26 +1007,26 @@ max-height: 241.2px;
 }
 
 .card__image_training {
-  height: 160px;
-  width: 160px;
+  height: 107.2px;
+  width: 107.2px;
   border-radius: 50%;
   margin-left: auto;
   margin-right: auto;
-  border: 5px solid #272133;
-  margin-top: 20px;
-  box-shadow: 0 10px 50px rgb(255, 111, 0);
+  border: 3.35px solid #272133;
+  margin-top: 13.4px;
+  box-shadow: 0 6.7px 33.5px rgb(255, 111, 0);
 }
 
 .card_training {
-  width: 360px;
-  height: 360px;
-  max-width: 360px;
+  width: 241.2px;
+  height: 241.2px;
+  max-width: 241.2px;
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  border-radius: 20px;
+  padding: 13.4px;
+  border-radius: 13.4px;
   background: linear-gradient(-45deg, #0f0c29 0%, #302b63 100% );
-  box-shadow: 0px -10px 65px 0px rgba(0, 0, 0, 0.447) inset, 0 15px 65px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px -6.7px 43.55px 0px rgba(0, 0, 0, 0.447) inset, 0 10px 43.55px rgba(0, 0, 0, 0.5);
 }
 
 .card__image_game {
@@ -1596,7 +1596,7 @@ max-height: 241.2px;
 
 .desc2 {
   color: rgb(0, 0, 0);
-  font-size: 20px;
+  font-size: 13.4px;
 }
 
 .desc2232323 {
