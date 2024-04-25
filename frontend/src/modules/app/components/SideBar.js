@@ -238,7 +238,7 @@ const Sidebar = () => {
         
       }}
     >
-      <ProSidebar collapsed={isCollapsed} collapsedWidth={60} width={isCollapsed ? 60 : 210}>
+      <ProSidebar collapsed={isCollapsed} collapsedWidth={60} width={isCollapsed ? 60 : 180}>
         <Menu iconShape="square"       
         style={{
         // color: "#00FF1F",
@@ -266,9 +266,12 @@ const Sidebar = () => {
                 textAlign="center"
                 
               >
-                <Typography variant="h4" sx={{
+                <Typography component="h3" sx={{
                   color: "#ce7c16",
                   marginBottom:"-10px",
+                  fontSize:"29px",
+                  marginLeft:"-1.8px",
+                  fontWeight:"bold"
                 }} >
                   TeamHub
                 </Typography>
