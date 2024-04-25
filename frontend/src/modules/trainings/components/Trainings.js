@@ -193,7 +193,7 @@ const Trainings = ({trainings}) => {
           aria-describedby="child-modal-description"
         >
           <Box sx={{ ...style, width: "auto", maxWidth: "40vw" }}>
-            <h3 id="child-modal-title" className="color_modal_title_training" sx={{ mb: '67px' }} ><FormattedMessage id="project.exercises.fields.description" />:</h3>
+            <h4 id="child-modal-title" className="color_modal_title_training" sx={{ mb: '67px' }} ><FormattedMessage id="project.exercises.fields.description" />:</h4>
             <p id="child-modal-description" style={{ overflowWrap: 'break-word', fontSize:"12px" }}>
               {modalDescription}
             </p>
