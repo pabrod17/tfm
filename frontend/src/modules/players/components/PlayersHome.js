@@ -221,7 +221,6 @@ const PlayersHome = () => {
 <Box
             display="flex"
             alignItems="center"
-            p={0.67}
             sx={{
                 flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
             }}
@@ -460,7 +459,7 @@ const PlayersHome = () => {
                 </Grid>
             </Box>
             <Box>
-                <button type="button" className="button_all" onClick={() => handleSetAllPlayers(dispatch)}>
+                <button type="button" className="button_all" style={{marginTop:"-1px", paddingBottom:"3px"}} onClick={() => handleSetAllPlayers(dispatch)}>
                     All
                 </button>
             </Box>
@@ -470,7 +469,8 @@ const PlayersHome = () => {
                         margin: 'auto',  // Centra horizontalmente
                         textAlign: 'center', // Centra el contenido dentro del Box
                         fontSize: "46.9px",
-                        color: "white"
+                        color: "white",
+                        marginTop:"0px",
                     }}
                         onClick={() => history(`/players/addPlayer`)}
                     >

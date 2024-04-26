@@ -103,9 +103,9 @@ const SeasonsHome = () => {
     </LocalizationProvider>
             </div>
             <div className="mt-2">
-                <button type="button" className="button_all_buscar" onClick={handleSubmit}>
+                {/* <button type="button" className="button_all_buscar" onClick={handleSubmit}>
                 <FormattedMessage id="project.global.buttons.find" />
-                </button>
+                </button> */}
                 <button type="button" className="button_all" onClick={() => handleSetAllSeasons(dispatch)}>
                     All
                 </button>
@@ -123,7 +123,7 @@ const SeasonsHome = () => {
                         textAlign: 'center', // Centra el contenido dentro del Box
                         fontSize: "46.9px",
                         bgcolor: "linear-gradient(147deg,#ffffff ,#4400f9,#000000 35% 70%,#660bd8,#ffffff)",
-                        color: "white"
+                        color: "white",
                     }}
                         onClick={() => history(`/seasons/addSeason`)}
                     >
