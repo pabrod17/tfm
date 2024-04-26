@@ -982,14 +982,14 @@ max-height: 241.2px;
 }
 
 .card__image_exercise {
-  height: 160px;
-  width: 160px;
+  height: 107.2px;
+  width: 107.2px;
   border-radius: 50%;
   margin-left: auto;
   margin-right: auto;
-  border: 5px solid #272133;
-  margin-top: 20px;
-  box-shadow: 0 10px 50px rgb(255, 217, 0);
+  border: 3.35px solid #272133;
+  margin-top: 13.4px;
+  box-shadow: 0 6.7px 33.5px rgb(255, 217, 0);
 }
 
 .card__image_stretching {
@@ -1561,15 +1561,15 @@ max-height: 241.2px;
 }
 
 .card_exercise {
-  width: 360px;
-  height: 360px;
-  max-width: 360px;
+  width: 241.2px;
+  height: 241.2px;
+  max-width: 241.2px;
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  border-radius: 20px;
+  padding: 13.4px;
+  border-radius: 13.4px;
   background-color: rgba(255, 0, 0, 0.25);
-  box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10.05px 43.55px rgba(0, 0, 0, 0.5);
 }
 
 .small-text, .title,.desc,.desc3,.desc2 {

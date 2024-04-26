@@ -69,12 +69,12 @@ const ExercisesHomeByType = () => {
 
             <Box
                 sx={{
-                    maxWidth: { xs: 320, sm: 480 },
+                    maxWidth: { xs: 320, sm: 430 },
                     bgcolor: 'background.dark',
                     boxShadow: 1,
                     borderRadius: 4,
                     margin: 'auto',  // Centra horizontalmente
-                    marginTop: '50px', // Ajusta la distancia desde la parte superior según sea necesario
+                    marginTop: '33.5px', // Ajusta la distancia desde la parte superior según sea necesario
                     textAlign: 'center', // Centra el contenido dentro del Box
                 }}>
                 <Tabs
@@ -84,15 +84,15 @@ const ExercisesHomeByType = () => {
                     scrollButtons="auto"
                     aria-label="scrollable auto tabs example"
                 >
-                    <Tab value={0} sx={{ color: '#40FF00', fontSize: "20px" }} onClick={() => handleSetAllExercise(dispatch)} label="All" />
-                    <Tab value={1} sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeExercise(tactic, dispatch)} label={<FormattedMessage id="project.exercises.fields.tactic"/>} />
-                    <Tab value={2} sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeExercise(technique, dispatch)} label={<FormattedMessage id="project.exercises.fields.technique"/>} />
-                    <Tab value={3} sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeExercise(physical, dispatch)} label={<FormattedMessage id="project.exercises.fields.physical"/>} />
-                    <Tab value={4} sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeExercise(globalized, dispatch)} label={<FormattedMessage id="project.exercises.fields.globalized"/>} />
-                    <Tab value={5} sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeExercise(specific, dispatch)} label={<FormattedMessage id="project.exercises.fields.specific"/>} />
-                    <Tab value={6} sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeExercise(psychological, dispatch)} label={<FormattedMessage id="project.exercises.fields.psychological"/>} />
-                    <Tab value={7} sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeExercise(strategy, dispatch)} label={<FormattedMessage id="project.exercises.fields.strategy"/>} />
-                    <Tab value={8} sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeExercise(preMatch, dispatch)} label={<FormattedMessage id="project.exercises.fields.preMatch"/>} />
+                    <Tab value={0} sx={{ color: '#40FF00', fontSize: "17px", paddingBottom:"7px" }} onClick={() => handleSetAllExercise(dispatch)} label="All" />
+                    <Tab value={1} sx={{ color: '#ffffff', fontSize: "17px", paddingBottom:"7px" }} onClick={() => handleSetTypeExercise(tactic, dispatch)} label={<FormattedMessage id="project.exercises.fields.tactic"/>} />
+                    <Tab value={2} sx={{ color: '#ffffff', fontSize: "17px", paddingBottom:"7px" }} onClick={() => handleSetTypeExercise(technique, dispatch)} label={<FormattedMessage id="project.exercises.fields.technique"/>} />
+                    <Tab value={3} sx={{ color: '#ffffff', fontSize: "17px", paddingBottom:"7px" }} onClick={() => handleSetTypeExercise(physical, dispatch)} label={<FormattedMessage id="project.exercises.fields.physical"/>} />
+                    <Tab value={4} sx={{ color: '#ffffff', fontSize: "17px", paddingBottom:"7px" }} onClick={() => handleSetTypeExercise(globalized, dispatch)} label={<FormattedMessage id="project.exercises.fields.globalized"/>} />
+                    <Tab value={5} sx={{ color: '#ffffff', fontSize: "17px", paddingBottom:"7px" }} onClick={() => handleSetTypeExercise(specific, dispatch)} label={<FormattedMessage id="project.exercises.fields.specific"/>} />
+                    <Tab value={6} sx={{ color: '#ffffff', fontSize: "17px", paddingBottom:"7px" }} onClick={() => handleSetTypeExercise(psychological, dispatch)} label={<FormattedMessage id="project.exercises.fields.psychological"/>} />
+                    <Tab value={7} sx={{ color: '#ffffff', fontSize: "17px", paddingBottom:"7px" }} onClick={() => handleSetTypeExercise(strategy, dispatch)} label={<FormattedMessage id="project.exercises.fields.strategy"/>} />
+                    <Tab value={8} sx={{ color: '#ffffff', fontSize: "17px", paddingBottom:"7px" }} onClick={() => handleSetTypeExercise(preMatch, dispatch)} label={<FormattedMessage id="project.exercises.fields.preMatch"/>} />
                 </Tabs>
             </Box>
             <Box
@@ -105,7 +105,7 @@ const ExercisesHomeByType = () => {
                     <AddCircleOutlineIcon sx={{
                         margin: 'auto',  // Centra horizontalmente
                         textAlign: 'center', // Centra el contenido dentro del Box
-                        fontSize: "70px",
+                        fontSize: "46.9px",
                         bgcolor: "linear-gradient(147deg,#ffffff ,#4400f9,#000000 35% 70%,#660bd8,#ffffff)",
                         color: "white"
                     }}
