@@ -75,22 +75,22 @@ const UsersByCoachHome = () => {
 
 
 	const columnsUsers = [
-		{ field: 'id', headerName: 'ID', width: 70, headerClassName: 'firstname-header' },
-		{ field: 'firstName', headerName: <FormattedMessage id="project.global.fields.firstName"/>, width: 240, headerClassName: 'firstname-header'},
-        { field: 'role', headerName: <FormattedMessage id="project.global.fields.role" />, width: 160, headerClassName: 'firstname-header',
+		{ field: 'id', headerName: 'ID', width: 46.9, headerClassName: 'firstname-header' },
+		{ field: 'firstName', headerName: <FormattedMessage id="project.global.fields.firstName"/>, width: 160.8, headerClassName: 'firstname-header'},
+        { field: 'role', headerName: <FormattedMessage id="project.global.fields.role" />, width: 107.2, headerClassName: 'firstname-header',
         renderCell: (params) => (
             <div style={{ backgroundColor: 
                 params.row.role === 'COACH' ? '#0f9b0f' : // Azul oscuro
                 params.row.role === 'USER' ? '#ac6a06' : // Verde esmeralda
                 'green', // Por defecto
-                borderRadius: '20px',
+                borderRadius: '13.4px',
             }}>
             {params.value}
             </div>
         ), },
-		{ field: 'lastName', headerName: <FormattedMessage id="project.global.fields.lastName"/>, width: 400, headerClassName: 'firstname-header' },
-		{ field: 'userName', headerName: <FormattedMessage id="project.global.fields.userName1"/>, width: 400 , headerClassName: 'firstname-header'},
-        { field: 'email', headerName: <FormattedMessage id="project.players.fields.email"/>, width: 400, headerClassName: 'firstname-header' },
+		{ field: 'lastName', headerName: <FormattedMessage id="project.global.fields.lastName"/>, width: 268, headerClassName: 'firstname-header' },
+		{ field: 'userName', headerName: <FormattedMessage id="project.global.fields.userName1"/>, width: 230 , headerClassName: 'firstname-header'},
+        { field: 'email', headerName: <FormattedMessage id="project.players.fields.email"/>, width: 268, headerClassName: 'firstname-header' },
 	];
 
 	const rowsUsers = [
@@ -158,28 +158,28 @@ const UsersByCoachHome = () => {
     sx={{
         bgcolor: 'background.dark',
         boxShadow: 1,
-        borderRadius: 4,
+        borderRadius: 2.68,
         margin: 'auto',  // Centra horizontalmente
-        marginTop: '80px', // Ajusta la distancia desde la parte superior según sea necesario
+        marginTop: '53.6px', // Ajusta la distancia desde la parte superior según sea necesario
         textAlign: 'center', // Centra el contenido dentro del Box
     }}>
 
-<Box sx={{boxShadow:"0 10px 50px rgb(0, 0, 0)" }}>
+<Box sx={{boxShadow:"0 6.7px 33.5px rgb(0, 0, 0)" }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" 
                         sx={{
                             background: "linear-gradient(180deg,#df252c,#0c1345 30%,#0c1345 30%,#0c1345 ,#df252c)",
                             bgcolor:"red",
-                            boxShadow: 6,
-                            borderRadius: 3,
+                            boxShadow: 4,
+                            borderRadius: 2,
                             borderColor: "black",
-							boxShadow: "0 10px 50px rgb(0, 0, 0)",
+							boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)",
                             '& .MuiTabs-flexContainer': {
                                 flexWrap: 'wrap',
                               },
                         }}
         >
-          <Tab sx={{ color: '#f5af19', fontSize: "30px", padding:"20px"}} onClick={() => handleUsersByCoach(dispatch)} label={<FormattedMessage id="project.global.list.users"/>}  />
-          <Tab sx={{ color: '#f5af19', fontSize: "30px", padding:"20px" }} onClick={() => handleUsersByCoachCreate(1, dispatch)} label={<FormattedMessage id="project.global.create.users"/>}/>
+          <Tab sx={{ color: '#f5af19', fontSize: "20.1px", padding:"13.4px"}} onClick={() => handleUsersByCoach(dispatch)} label={<FormattedMessage id="project.global.list.users"/>}  />
+          <Tab sx={{ color: '#f5af19', fontSize: "20.1px", padding:"13.4px" }} onClick={() => handleUsersByCoachCreate(1, dispatch)} label={<FormattedMessage id="project.global.create.users"/>}/>
         </Tabs>
       </Box>
 </Box>
@@ -198,28 +198,28 @@ const UsersByCoachHome = () => {
 
 
         <Box
-            my={4}
+            my={2.68}
             display="flex"
             alignItems="center"
             gap={4}
             width={"80vw"} // El ancho inicial es del 80% del ancho de la ventana
             height={"80vh"} // El alto inicial es del 80% del alto de la ventana
-            p={5}
+            p={3.35}
             ml={0}
             overflowX="auto" // Agrega desplazamiento horizontal si es necesario
-            maxWidth={"1900px"}
-            maxHeight={"1033px"}
-            pt={4}
-            pl={4}
-            pr={4}
+            maxWidth={"1273px"}
+            maxHeight={"692.11px"}
+            pt={2.68}
+            pl={2.68}
+            pr={2.68}
             sx={{
-                border: '2px solid grey',
+                border: '1.34px solid grey',
                 background: "linear-gradient(180deg,#df252c,#0c1345 10%,#0c1345 80%,#0c1345 ,#df252c)",
-                borderRadius: "20px",
+                borderRadius: "13.4px",
                 flexWrap: 'wrap',
                 flexDirection: 'column',
                 borderColor: "black",
-                boxShadow: "0 10px 50px rgb(0, 0, 0)",
+                boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)"
             }}
         >
             <Grid container columns={{ xs: 12, sm: 12, md: 12 }} style={{ height: '100%' }}>
@@ -227,23 +227,24 @@ const UsersByCoachHome = () => {
 							<DataGrid
 								sx={{
                                     background: "linear-gradient(180deg,#df252c,#0c1345 10%,#0c1345 80%,#0c1345 ,#df252c)",
-									boxShadow: 12,
+									boxShadow: 8.04,
                                     color:"white",
                                     borderColor:"black",
-                                    boxShadow:"0 10px 50px rgb(0, 0, 0)",
-                                    fontSize:"30px",
-                                    borderRadius: "20px",
-                                    paddingBottom:"13.2px",
+                                    boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)",
+                                    fontSize:"18px",
+                                    borderRadius: "13.4px",
+                                    paddingBottom:"5.6px",
                                     overflowX:"auto",
 								}}
+                                density="compact"
 								rows={rowsUsers}
 								columns={columnsUsers}
 								initialState={{
 									pagination: {
-										paginationModel: { page: 0, pageSize: 16 },
+										paginationModel: { page: 0, pageSize: 14 },
 									},
 								}}
-								pageSizeOptions={[8, 16]}
+								pageSizeOptions={[7, 14]}
 								checkboxSelection
 								rowSelectionModel={rowSelectionModelUser}
 								onRowSelectionModelChange={(newRowSelectionModelTeam) => {
