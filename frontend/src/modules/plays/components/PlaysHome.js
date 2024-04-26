@@ -47,12 +47,12 @@ const PlaysHome = () => {
         <div>
 <Box
                 sx={{
-                    maxWidth: { xs: 320, sm: 340 },
+                    maxWidth: { xs: 320, sm: 310 },
                     bgcolor: 'background.dark',
                     boxShadow: 1,
                     borderRadius: 4,
                     margin: 'auto',  // Centra horizontalmente
-                    marginTop: '50px', // Ajusta la distancia desde la parte superior según sea necesario
+                    marginTop: '33.5px', // Ajusta la distancia desde la parte superior según sea necesario
                     textAlign: 'center', // Centra el contenido dentro del Box
                 }}>
 
@@ -63,9 +63,9 @@ const PlaysHome = () => {
                     scrollButtons="auto"
                     aria-label="scrollable auto tabs example"
                 >
-                    <Tab sx={{ color: '#40FF00', fontSize: "20px" }} onClick={() => handleSetAllPlays (dispatch)} label="All" />
-                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypePlay(1, handleChange, "Ataque", dispatch)} label={<FormattedMessage id="project.plays.fields.attack" />} />
-                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypePlay(2, handleChange, "Defensa", dispatch)} label={<FormattedMessage id="project.plays.fields.defense" />} />
+                    <Tab sx={{ color: '#40FF00', fontSize: "17px", paddingBottom:"7px" }} onClick={() => handleSetAllPlays (dispatch)} label="All" />
+                    <Tab sx={{ color: '#ffffff', fontSize: "17px", paddingBottom:"7px" }} onClick={() => handleSetTypePlay(1, handleChange, "Ataque", dispatch)} label={<FormattedMessage id="project.plays.fields.attack" />} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "17px", paddingBottom:"7px" }} onClick={() => handleSetTypePlay(2, handleChange, "Defensa", dispatch)} label={<FormattedMessage id="project.plays.fields.defense" />} />
                 </Tabs>
             </Box>
             <Box
@@ -78,7 +78,7 @@ const PlaysHome = () => {
                     <AddCircleOutlineIcon sx={{
                         margin: 'auto',  // Centra horizontalmente
                         textAlign: 'center', // Centra el contenido dentro del Box
-                        fontSize: "70px",
+                        fontSize: "46.9px",
                         bgcolor: "linear-gradient(147deg,#ffffff ,#4400f9,#000000 35% 70%,#660bd8,#ffffff)",
                         color: "white"
                     }}

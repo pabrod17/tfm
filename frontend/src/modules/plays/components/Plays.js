@@ -40,12 +40,12 @@ const handleUpdatePlay = (id, dispatch, history) => {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 900,
+    width: 603,
     background: 'linear-gradient(-45deg, #41AF24 0%, #062C76 50% )',  // Cambiado a background
     border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-    borderRadius: "20px",
+    boxShadow: 16.08,
+    p: 2.68,
+    borderRadius: "13.4px",
 
   };
 
@@ -68,23 +68,23 @@ const handleUpdatePlay = (id, dispatch, history) => {
                   </div>
                   <div class="flip-card-back">
             <div class="card_play">
-            <span class="title">{item.gesture} &nbsp;
+            <span class="title" style={{marginBottom:"0px"}}>{item.gesture} &nbsp;
             </span>
             <hr></hr>
-                    <a onClick={() => handleOpenDescriptionModal(item.description)} class="button_apple">
-                    <span class="desc desc2 scroll_efect_training">{item.description}</span>
+                    <a onClick={() => handleOpenDescriptionModal(item.description)} class="button_apple" style={{marginTop:"-5px", marginBottom:"-5px"}}>
+                    <span class="desc desc3 scroll_efect_training">{item.description}</span>
             </a>
             <hr></hr>
                     </div>
                     {userLogged.role === "ADMIN" && (
                     <ul class="social-icons trashgrande trash_position">
                         <li><a type="button" onClick={() => handleRemovePlay(item.id, dispatch, history)}>
-                        <i class="fa fa-trash"></i></a></li>
+                        <i class="fa fa-trash" style={{fontSize:"15px"}}></i></a></li>
                     </ul>
                     )}
                     <ul class="social-icons configgrande config_position">
                         <li><a type="button" onClick={() => handleUpdatePlay(item.id, dispatch, history)}>
-                        <i class="fa fa-wrench"></i></a></li>
+                        <i class="fa fa-wrench" style={{fontSize:"14.7px"}}></i></a></li>
                     </ul>
                   </div>
                 </div>
@@ -140,8 +140,8 @@ const Plays = ({plays, id}) => {
           aria-describedby="child-modal-description"
         >
           <Box sx={{ ...style, width: "auto", maxWidth: "40vw" }}>
-            <h2 id="child-modal-title" className="color_modal_title_play" sx={{ mb: '100px' }} ><FormattedMessage id="project.exercises.fields.description" />:</h2>
-            <p id="child-modal-description" style={{ overflowWrap: 'break-word' }}>
+            <h5 id="child-modal-title" className="color_modal_title_play" sx={{ mb: '67px' }} ><FormattedMessage id="project.exercises.fields.description" />:</h5>
+            <p id="child-modal-description" style={{ overflowWrap: 'break-word', fontSize:"8px" }}>
               {modalDescription}
             </p>
           </Box>
