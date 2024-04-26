@@ -353,10 +353,10 @@ const CalendarHome = () => {
       ml={0}
       mr={0}
       mr={0}
-      pt={2.68}
-      pl={2.68}
-      pr={2.68}
-      pb={2.68}
+      pt={2}
+      pl={2}
+      pr={2}
+      pb={2}
       sx={{
         border: '2px solid grey',
         background: "linear-gradient(180deg, #329617 0%, #062C76 70% )",
@@ -448,7 +448,7 @@ const CalendarHome = () => {
                 <div className="modal-content">
                   <div className="modal-header">
 
-                    <h4 className="margin_training_form" style={{ fontSize: "13.4px", marginTop: "0px", marginLeft: "40%" }}>
+                    <h4 className="margin_training_form" style={{ fontSize: "18px", marginTop: "0px", marginLeft: "36%" }}>
                       {selectEvent ? <FormattedMessage id="project.calendar.buttons.editEvent" /> : <FormattedMessage id="project.calendar.buttons.addEvent" />}
                     </h4>
                     <button
@@ -465,7 +465,7 @@ const CalendarHome = () => {
                     ></button>
                   </div>
                   <div className="modal-body">
-                    <h4 class="margin_training_form" style={{ fontSize: "13.4px", marginTop: "0px" }}
+                    <h4 class="margin_training_form" style={{ fontSize: "16px", marginTop: "0px" }}
                     ><FormattedMessage id="project.notes.fields.title" /></h4>
                     <input
                       type="text"
@@ -475,7 +475,7 @@ const CalendarHome = () => {
                       onChange={(e) => setEventTitle(e.target.value)}
                       disabled={(userLogged.role !== "ADMIN" && userLogged.role !== "COACH") || isTraining || isGame} // Esto deshabilitará la edición del campo si el usuario no es ADMIN
                     />
-                    <h4 class="margin_training_form" style={{ fontSize: "13.4px", marginTop: "10px" }}
+                    <h4 class="margin_training_form" style={{ fontSize: "16px", marginTop: "16px", marginBottom:"0px" }}
                     ><FormattedMessage id="project.seasons.fields.startDate" /></h4>
                     <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
                       <DemoContainer components={['DateTimePicker']}>
@@ -488,7 +488,7 @@ const CalendarHome = () => {
                             '& label': { color: 'white' },
                             '& input': { color: 'white' },
                             borderColor: "black",
-                            boxShadow: "0 6.7px 6.7px rgb(0, 0, 0)"
+                            boxShadow: "0 6.7px 6.7px rgb(0, 0, 0)",
                           }}
                           disabled={(userLogged.role !== "ADMIN" && userLogged.role !== "COACH") || isTraining || isGame} // Esto deshabilitará la edición del campo si el usuario no es ADMIN
                           label={<FormattedMessage id="project.global.fields.date" />}
@@ -508,11 +508,12 @@ const CalendarHome = () => {
 
 
                           }
+                          label=""
                         />
                       </DemoContainer>
                     </LocalizationProvider>
 
-                    <h4 class="margin_training_form" style={{ fontSize: "13.4px", marginTop: "10px" }}
+                    <h4 class="margin_training_form" style={{ fontSize: "16px", marginTop: "16px", marginBottom:"0px" }}
                     ><FormattedMessage id="project.seasons.fields.endDate" /></h4>
                     <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
                       <DemoContainer components={['DateTimePicker']}>
@@ -545,6 +546,7 @@ const CalendarHome = () => {
 
 
                           }
+                          label=""
                         />
                       </DemoContainer>
                     </LocalizationProvider>
