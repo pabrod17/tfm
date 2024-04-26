@@ -192,27 +192,26 @@ const BoardHome = () => {
     return (
 
         <Box
-            my={4}
             display="flex"
             alignItems="center"
             gap={4}
             width={"83vw"} // El ancho inicial es del 80% del ancho de la ventana
-            height={"90vh"} // El alto inicial es del 80% del alto de la ventana
-            p={5}
-            m={9}
+            height={"88vh"} // El alto inicial es del 80% del alto de la ventana
+            p={3.35}
+            m={6.03}
             ml={0}
             mr={0}
-            pt={3}
-            pl={3}
-            pr={3}
+            pt={2}
+            pl={2}
+            pr={2}
             sx={{
-                border: '2px solid grey',
+                border: '1.34px solid grey',
                 background: "linear-gradient(180deg, #329617 0%, #062C76 70% )",
-                borderRadius: "20px",
+                borderRadius: "13.4px",
                 flexWrap: 'wrap',
                 flexDirection: 'column',
                 borderColor: "black",
-                boxShadow: "0 10px 50px rgb(0, 0, 0)"
+                boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)"
             }}
         >
             <Grid container columns={{ xs: 4, sm: 8, md: 12 }} style={{ height: '100%' }}>
@@ -250,7 +249,7 @@ const BoardHome = () => {
                         <FormattedMessage id="project.global.buttons.clear"/>
                     </button>
                     <input
-                        style={{ background: { canvas }, width: "60px", height: "40px" }}
+                        style={{ background: { canvas }, width: "40.2px", height: "26.8px" }}
                         type="color"
                         value={canvas}
                         onChange={(event) => {
@@ -261,6 +260,7 @@ const BoardHome = () => {
                     <input
                         min="2"
                         max="50"
+                        defaultValue={50}
                         type="range"
                         onChange={(event) => {
                             setThick(event.target.value);

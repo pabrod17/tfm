@@ -297,18 +297,18 @@ const CalendarHome = () => {
       const { type } = props.event;
       if (type == "Game") {
         return <div style={{ textAlign: "center", background: "#a11212" }}>
-          <GiBasketballBall style={{ fontSize: "25px", marginRight: "10px" }} />
-          <span style={{ fontSize: "20px", verticalAlign: "middle" }}>{props.title}</span>
+          <GiBasketballBall style={{ fontSize: "16.75px", marginRight: "6.7px", marginBottom:"1px" }} />
+          <span style={{ fontSize: "13.4px", verticalAlign: "little" }}>{props.title}</span>
         </div>
       } else if (type == "Training") {
         return <div style={{ textAlign: "center", background: "#f05c00" }}>
-          <FaPeopleGroup style={{ fontSize: "25px", marginRight: "10px" }} />
-          <span style={{ fontSize: "20px", verticalAlign: "middle" }}>{props.title}</span>
+          <FaPeopleGroup style={{ fontSize: "16.75px", marginRight: "6.7px", marginBottom:"1px" }} />
+          <span style={{ fontSize: "13.4px", verticalAlign: "little" }}>{props.title}</span>
         </div>
       } else {
         return <div style={{ textAlign: "center", background: "#3bc01a" }}>
-          <FaStar style={{ fontSize: "25px", marginRight: "10px" }} />
-          <span style={{ fontSize: "20px", verticalAlign: "middle" }}>{props.title}</span>
+          <FaStar style={{ fontSize: "16.75px", marginRight: "6.7px", marginBottom:"1px" }} />
+          <span style={{ fontSize: "13.4px", verticalAlign: "bottom" }}>{props.title}</span>
         </div>
       }
     }
@@ -347,16 +347,16 @@ const CalendarHome = () => {
       alignItems="center"
       gap={4}
       width={"83vw"} // El ancho inicial es del 80% del ancho de la ventana
-      height={"90vh"} // El alto inicial es del 80% del alto de la ventana
-      p={5}
-      m={9}
+      height={"88vh"} // El alto inicial es del 80% del alto de la ventana
+      p={3.35}
+      m={6.03}
       ml={0}
       mr={0}
       mr={0}
-      pt={4}
-      pl={4}
-      pr={4}
-      pb={4}
+      pt={2.68}
+      pl={2.68}
+      pr={2.68}
+      pb={2.68}
       sx={{
         border: '2px solid grey',
         background: "linear-gradient(180deg, #329617 0%, #062C76 70% )",
@@ -392,11 +392,11 @@ const CalendarHome = () => {
 
 
 
-        borderRadius: "20px",
+        borderRadius: "13.4px",
         flexWrap: 'wrap',
         flexDirection: 'column',
         borderColor: "black",
-        boxShadow: "0 10px 50px rgb(0, 0, 0)"
+        boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)"
       }}
     >
       <Grid container columns={{ xs: 4, sm: 8, md: 12 }} style={{ height: '100%' }}>
@@ -448,7 +448,7 @@ const CalendarHome = () => {
                 <div className="modal-content">
                   <div className="modal-header">
 
-                    <h4 className="margin_training_form" style={{ fontSize: "20px", marginTop: "0px", marginLeft: "40%" }}>
+                    <h4 className="margin_training_form" style={{ fontSize: "13.4px", marginTop: "0px", marginLeft: "40%" }}>
                       {selectEvent ? <FormattedMessage id="project.calendar.buttons.editEvent" /> : <FormattedMessage id="project.calendar.buttons.addEvent" />}
                     </h4>
                     <button
@@ -465,7 +465,7 @@ const CalendarHome = () => {
                     ></button>
                   </div>
                   <div className="modal-body">
-                    <h4 class="margin_training_form" style={{ fontSize: "20px", marginTop: "0px" }}
+                    <h4 class="margin_training_form" style={{ fontSize: "13.4px", marginTop: "0px" }}
                     ><FormattedMessage id="project.notes.fields.title" /></h4>
                     <input
                       type="text"
@@ -475,20 +475,20 @@ const CalendarHome = () => {
                       onChange={(e) => setEventTitle(e.target.value)}
                       disabled={(userLogged.role !== "ADMIN" && userLogged.role !== "COACH") || isTraining || isGame} // Esto deshabilitará la edición del campo si el usuario no es ADMIN
                     />
-                    <h4 class="margin_training_form" style={{ fontSize: "20px", marginTop: "10px" }}
+                    <h4 class="margin_training_form" style={{ fontSize: "13.4px", marginTop: "10px" }}
                     ><FormattedMessage id="project.seasons.fields.startDate" /></h4>
                     <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
                       <DemoContainer components={['DateTimePicker']}>
                         <DateTimePicker
                           sx={{
-                            border: '2px solid grey',
+                            border: '1.34px solid grey',
                             background: (userLogged.role !== "ADMIN" && userLogged.role !== "COACH") || isTraining || isGame ? "#ffffff" : "linear-gradient(180deg, #302b63 0%, #0f0c29 70% )",
-                            borderRadius: "20px",
+                            borderRadius: "13.4px",
                             colorAdjust: "#00bfff",
                             '& label': { color: 'white' },
                             '& input': { color: 'white' },
                             borderColor: "black",
-                            boxShadow: "0 10px 10px rgb(0, 0, 0)"
+                            boxShadow: "0 6.7px 6.7px rgb(0, 0, 0)"
                           }}
                           disabled={(userLogged.role !== "ADMIN" && userLogged.role !== "COACH") || isTraining || isGame} // Esto deshabilitará la edición del campo si el usuario no es ADMIN
                           label={<FormattedMessage id="project.global.fields.date" />}
@@ -512,20 +512,20 @@ const CalendarHome = () => {
                       </DemoContainer>
                     </LocalizationProvider>
 
-                    <h4 class="margin_training_form" style={{ fontSize: "20px", marginTop: "10px" }}
+                    <h4 class="margin_training_form" style={{ fontSize: "13.4px", marginTop: "10px" }}
                     ><FormattedMessage id="project.seasons.fields.endDate" /></h4>
                     <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
                       <DemoContainer components={['DateTimePicker']}>
                         <DateTimePicker
                           sx={{
-                            border: '2px solid grey',
+                            border: '1.34px solid grey',
                             background: (userLogged.role !== "ADMIN" && userLogged.role !== "COACH") || isTraining || isGame ? "#ffffff" : "linear-gradient(180deg, #302b63 0%, #0f0c29 70% )",
-                            borderRadius: "20px",
+                            borderRadius: "13.4px",
                             colorAdjust: "#00bfff",
                             '& label': { color: 'white' },
                             '& input': { color: 'white' },
                             borderColor: "black",
-                            boxShadow: "0 10px 10px rgb(0, 0, 0)"
+                            boxShadow: "0 6.7px 6.7px rgb(0, 0, 0)"
                           }}
                           label={<FormattedMessage id="project.global.fields.date" />}
                           disabled={(userLogged.role !== "ADMIN" && userLogged.role !== "COACH") || isTraining || isGame} // Esto deshabilitará la edición del campo si el usuario no es ADMIN

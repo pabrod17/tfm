@@ -91,7 +91,7 @@ const Court = ({ children, onPositionSelect }) => {
       backgroundSize: 'cover',
       overflowX: 'hidden',
       borderRadius:"50%",
-      border: "5px solid", // Agrega el borde aquí
+      border: "3.35px solid", // Agrega el borde aquí
       borderColor: isSelected ? "#00ff00" : "blue",
 
     };
@@ -119,28 +119,28 @@ const Court = ({ children, onPositionSelect }) => {
       },
       {
         id: 2,
-        position: { top: 160, left: 0 },
+        position: { top: 107.2, left: 0 },
         steps: [],
         color:"blue",
         backgroundImage:`url(${image2})`
       },
       {
         id: 3,
-        position: { top: 320, left: 0 },
+        position: { top: 214.40, left: 0 },
         steps: [],
         color:"blue",
         backgroundImage:`url(${image3})`
       },
       {
         id: 4,
-        position: { top: 480, left: 0 },
+        position: { top: 321.6, left: 0 },
         steps: [],
         color:"blue",
         backgroundImage:`url(${image4})`
       },
       {
         id: 5,
-        position: { top: 640, left: 0 },
+        position: { top: 428.8, left: 0 },
         steps: [],
         color:"blue",
         backgroundImage: `url(${image5})`,
@@ -254,22 +254,23 @@ const Court = ({ children, onPositionSelect }) => {
             alignItems="center"
             gap={4}
             width={"83vw"} // El ancho inicial es del 80% del ancho de la ventana
-            height={"90vh"} // El alto inicial es del 80% del alto de la ventana
-            p={5}
-            m={9}
+            height={"88vh"} // El alto inicial es del 80% del alto de la ventana
+            p={3.35}
+            m={6.03}
             ml={0}
             mr={0}
-            pt={1}
-            pl={3}
-            pr={3}
+            pt={0}
+            pl={2}
+            pr={2}
+            pb={4.1}
             sx={{
-                border: '2px solid grey',
+                border: '1.34px solid grey',
                 background: "linear-gradient(180deg, #329617 0%, #062C76 70% )",
-                borderRadius: "20px",
+                borderRadius: "13.4px",
                 flexWrap: 'wrap',
                 flexDirection: 'column',
                 borderColor: "black",
-                boxShadow: "0 10px 50px rgb(0, 0, 0)"
+                boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)"
             }}
         >
           
@@ -280,20 +281,26 @@ const Court = ({ children, onPositionSelect }) => {
 
 
 
-        <button onClick={addStep}><FormattedMessage id="project.global.buttons.addStep"/></button>
-        <button onClick={goToPreviousStep} disabled={currentStepIndex === 0}>
+        <button onClick={addStep} style={{fontSize:"11px"}}><FormattedMessage id="project.global.buttons.addStep"/></button>
+        <button onClick={goToPreviousStep} disabled={currentStepIndex === 0}
+        style={{fontSize:"11px"}}
+        >
         <FormattedMessage id="project.global.buttons.previousStep"/>
         </button>
         <button
           onClick={goToNextStep}
+          style={{fontSize:"11px"}}
           disabled={currentStepIndex === players[0].steps.length - 1}
         >
           <FormattedMessage id="project.global.buttons.nextStep"/>
         </button>
-        <button onClick={playSteps} disabled={isPlaying}>
+        <button onClick={playSteps} disabled={isPlaying}
+        style={{fontSize:"11px"}}
+        >
         <FormattedMessage id="project.global.buttons.Play1"/>
         </button>
-        <button onClick={stopPlaying} disabled={!isPlaying}>
+        <button onClick={stopPlaying} disabled={!isPlaying}
+        style={{fontSize:"11px"}}>
         <FormattedMessage id="project.global.buttons.Stop"/>
         </button>
 
@@ -311,7 +318,7 @@ const Court = ({ children, onPositionSelect }) => {
             />
           ))}
         </Court>
-        <p style={{ fontSize: "50px", marginRight:"100%" }}>{currentStepIndex}</p>
+        <p style={{ fontSize: "33.5px", marginRight:"100%" }}>{currentStepIndex}</p>
                 </Grid>
 
             </Grid>
