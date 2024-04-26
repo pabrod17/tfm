@@ -77,12 +77,12 @@ const StretchingsHome = () => {
 
             <Box
                 sx={{
-                    maxWidth: { xs: 320, sm: 480 },
+                    maxWidth: { xs: 320, sm: 430 },
                     bgcolor: 'background.dark',
                     boxShadow: 1,
                     borderRadius: 4,
                     margin: 'auto',  // Centra horizontalmente
-                    marginTop: '50px', // Ajusta la distancia desde la parte superior según sea necesario
+                    marginTop: '33.5px', // Ajusta la distancia desde la parte superior según sea necesario
                     textAlign: 'center', // Centra el contenido dentro del Box
                 }}>
 
@@ -93,17 +93,17 @@ const StretchingsHome = () => {
                     scrollButtons="auto"
                     aria-label="scrollable auto tabs example"
                 >
-                    <Tab sx={{ color: '#40FF00', fontSize: "20px" }} onClick={() => handleSetAllStretching(dispatch)} label="All" />
-                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeStretching(1, handleChange, hamstrings, dispatch)} label={<FormattedMessage id="project.stretchings.fields.hamstrings" />} />
-                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeStretching(2, handleChange, buttocks, dispatch)} label={<FormattedMessage id="project.stretchings.fields.buttocks" />} />
-                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeStretching(3, handleChange, calf, dispatch)} label={<FormattedMessage id="project.stretchings.fields.calf" />} />
-                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeStretching(4, handleChange, adductors, dispatch)} label={<FormattedMessage id="project.stretchings.fields.adductors" />} />
-                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeStretching(5, handleChange, shoulder, dispatch)} label={<FormattedMessage id="project.stretchings.fields.shoulder" />} />
-                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeStretching(6, handleChange, quadriceps, dispatch)} label={<FormattedMessage id="project.stretchings.fields.quadriceps" />} />
-                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeStretching(7, handleChange, back, dispatch)} label={<FormattedMessage id="project.stretchings.fields.back" />} />
-                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeStretching(8, handleChange, pectoral, dispatch)} label={<FormattedMessage id="project.stretchings.fields.pectoral" />} />
-                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeStretching(9, handleChange, crotch, dispatch)} label={<FormattedMessage id="project.stretchings.fields.crotch" />} />
-                    <Tab sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeStretching(10, handleChange, triceps, dispatch)} label={<FormattedMessage id="project.stretchings.fields.triceps" />} />
+                    <Tab sx={{ color: '#40FF00', fontSize: "17px", paddingBottom:"7px" }} onClick={() => handleSetAllStretching(dispatch)} label="All" />
+                    <Tab sx={{ color: '#ffffff', fontSize: "17px", paddingBottom:"7px" }} onClick={() => handleSetTypeStretching(1, handleChange, hamstrings, dispatch)} label={<FormattedMessage id="project.stretchings.fields.hamstrings" />} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "17px", paddingBottom:"7px" }} onClick={() => handleSetTypeStretching(2, handleChange, buttocks, dispatch)} label={<FormattedMessage id="project.stretchings.fields.buttocks" />} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "17px", paddingBottom:"7px" }} onClick={() => handleSetTypeStretching(3, handleChange, calf, dispatch)} label={<FormattedMessage id="project.stretchings.fields.calf" />} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "17px", paddingBottom:"7px" }} onClick={() => handleSetTypeStretching(4, handleChange, adductors, dispatch)} label={<FormattedMessage id="project.stretchings.fields.adductors" />} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "17px", paddingBottom:"7px" }} onClick={() => handleSetTypeStretching(5, handleChange, shoulder, dispatch)} label={<FormattedMessage id="project.stretchings.fields.shoulder" />} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "17px", paddingBottom:"7px" }} onClick={() => handleSetTypeStretching(6, handleChange, quadriceps, dispatch)} label={<FormattedMessage id="project.stretchings.fields.quadriceps" />} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "17px", paddingBottom:"7px" }} onClick={() => handleSetTypeStretching(7, handleChange, back, dispatch)} label={<FormattedMessage id="project.stretchings.fields.back" />} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "17px", paddingBottom:"7px" }} onClick={() => handleSetTypeStretching(8, handleChange, pectoral, dispatch)} label={<FormattedMessage id="project.stretchings.fields.pectoral" />} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "17px", paddingBottom:"7px" }} onClick={() => handleSetTypeStretching(9, handleChange, crotch, dispatch)} label={<FormattedMessage id="project.stretchings.fields.crotch" />} />
+                    <Tab sx={{ color: '#ffffff', fontSize: "17px", paddingBottom:"7px" }} onClick={() => handleSetTypeStretching(10, handleChange, triceps, dispatch)} label={<FormattedMessage id="project.stretchings.fields.triceps" />} />
                 </Tabs>
             </Box>
             <Box
@@ -116,7 +116,7 @@ const StretchingsHome = () => {
                     <AddCircleOutlineIcon sx={{
                         margin: 'auto',  // Centra horizontalmente
                         textAlign: 'center', // Centra el contenido dentro del Box
-                        fontSize: "70px",
+                        fontSize: "46.9px",
                         bgcolor: "linear-gradient(147deg,#ffffff ,#4400f9,#000000 35% 70%,#660bd8,#ffffff)",
                         color: "white"
                     }}
@@ -136,7 +136,7 @@ const StretchingsHome = () => {
                     next={{
                         enabled: stretchingsSearch && stretchingsSearch.result && stretchingsSearch.result.existMoreItems,
 
-                        onClick: () => nextFindAllStretchingsResultPage(dispatch)
+                        onClick: () => nextFindAllStretchingsResultPage(dispatch),
                     }} />
             </Box>
             {stretchingsSearch && stretchingsSearch.result && (
