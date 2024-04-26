@@ -151,9 +151,9 @@ CREATE TABLE PlayTeam (
     teamId BIGINT NOT NULL,
     CONSTRAINT PlayTeamPK PRIMARY KEY (id),
     CONSTRAINT PlayTeamPlayIdFK FOREIGN KEY(playId)
-        REFERENCES Play (id),    
+        REFERENCES Play (id) ON DELETE CASCADE,    
     CONSTRAINT PlayTeamTeamIdFK FOREIGN KEY(teamId)
-        REFERENCES Team (id)
+        REFERENCES Team (id) ON DELETE CASCADE
 ) ENGINE = InnoDB;
 
 CREATE TABLE Lesion (

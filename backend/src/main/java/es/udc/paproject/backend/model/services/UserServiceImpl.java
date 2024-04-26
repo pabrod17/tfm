@@ -37,6 +37,12 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private SeasonDao seasonDao;
+
+	@Autowired
+	private PlayTeamDao playTeamDao;
+
+	@Autowired
+	private PlayDao playDao;
 	
 	@Override
 	public void signUp(User user) throws DuplicateInstanceException {
@@ -206,6 +212,8 @@ public class UserServiceImpl implements UserService {
 		if (admin.getRole().name().equals("ADMIN")) {
 			List<SeasonTeam> seasonTeams = new ArrayList<>();
 			seasonTeams = (List<SeasonTeam>) seasonTeamDao.findByUserId(userId);
+
+
 			for(SeasonTeam seasonTeam : seasonTeams) {
 				if(seasonTeam.getTeam() != null) {
 					teamDao.delete(seasonTeam.getTeam());
@@ -216,6 +224,9 @@ public class UserServiceImpl implements UserService {
 					seasonTeam.setSeason(null);
 				}
 			}
+
+
+
 
 			users = userDao.findByCreatedBy(userId);
 			for(User user1: users) {

@@ -220,6 +220,16 @@ public class PlayServiceImpl implements PlayService {
     }
 
     @Override
+    public void removePlay(Long playId) throws InstanceNotFoundException {
+
+        if (!playDao.existsById(playId)) {
+            throw new InstanceNotFoundException("project.entities.play");
+        }
+            Play play = playDao.findById(playId).get();
+            playDao.delete(play);
+    }
+
+    @Override
     public Play updatePlay(Long playId, String title, String playType, String gesture,
             String pointGuardText, String shootingGuardText, String smallForwardText, String powerForwardText,
             String centerText, String description) throws InstanceNotFoundException, IncorrectPlayTypeException {

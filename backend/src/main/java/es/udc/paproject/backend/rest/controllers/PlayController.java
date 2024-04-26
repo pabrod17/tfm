@@ -125,4 +125,10 @@ public class PlayController {
             throws InstanceNotFoundException {
         playService.removePlayToTeam(playId, teamId);
     }
+
+    @DeleteMapping("/play/{playId}")
+    public void removePlay(@PathVariable Long playId)
+            throws InstanceNotFoundException {
+        playService.removePlay(playId);
+    }
 }
