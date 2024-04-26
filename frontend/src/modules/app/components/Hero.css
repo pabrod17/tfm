@@ -839,6 +839,15 @@ max-height: 241.2px;
   -webkit-box-orient: vertical;
 }
 
+.scroll_efect_player_gmail {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration: none; 
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* Ajusta el número de líneas que deseas mostrar */
+  -webkit-box-orient: vertical;
+}
+
 .scroll_efect_stretching {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1109,13 +1118,13 @@ max-height: 241.2px;
 
 
 .card_player {
-  width: 360px;
-  height: 360px;
-  max-width: 360px;
+  width: 241.2px;
+  height: 241.2px;
+  max-width: 241.2px;
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  border-radius: 20px;
+  padding: 13.4px;
+  border-radius: 13.4px;
   background: linear-gradient(#00ffff, #ff02ff );
   background: linear-gradient(300deg,rgb(66, 0, 197),rgb(136,0,55),rgb(47, 0, 255));
   
@@ -1129,7 +1138,7 @@ max-height: 241.2px;
   background: linear-gradient(180deg, rgb(59, 4, 26) 30%,rgb(47, 0, 255));
 
   box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
-  box-shadow: 0px -10px 65px 0px rgba(0, 0, 0, 0.447) inset, 0 15px 65px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px -6.7px 43.55px 0px rgba(0, 0, 0, 0.447) inset, 0 10px 43.55px rgba(0, 0, 0, 0.5);
 
 
   /* background-color: hsla(240, 15%, 9%, 1);
@@ -1233,14 +1242,14 @@ max-height: 241.2px;
 }
 
 .card__image_player {
-  height: 160px;
-  width: 160px;
+  height: 107.2px;
+  width: 107.2px;
   border-radius: 50%;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 20px;
-  margin-top: 20px;
-  box-shadow: 0 10px 50px rgb(0, 0, 0);
+  margin-bottom: 13.4px;
+  margin-top: 13.4px;
+  box-shadow: 0 6.7px 33.5px rgb(0, 0, 0);
 }
 
 .card__image_player_update_create {
@@ -3993,8 +4002,8 @@ main {
 
 .injured_position {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: -7px;
+  left: -7px;
 }
 
 .trash_position {
@@ -4128,14 +4137,16 @@ main {
   -ms-transform: scale(1);
   -webkit-transform: scale(1);
   content: " ";
-  width: 45px;
-  height: 45px;
+  width: 30.15px;
+  height: 30.15px;
   border-radius: 100%;
   display: block;
   /* background: linear-gradient(98.3deg, #FF0000 10.6%, #FFF700 97.7%); */
   background: linear-gradient(98.3deg, #0064FF 10.6%, #00FFFB 97.7%);
   transition: all 265ms ease-out;
 }
+
+
 .injuredhover a:hover i {
   transform: scale(2.2);
   -ms-transform: scale(2.2);
