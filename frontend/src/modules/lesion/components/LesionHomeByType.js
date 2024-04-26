@@ -68,12 +68,12 @@ const LesionHomeByType = () => {
 
             <Box
                 sx={{
-                    maxWidth: { xs: 320, sm: 480 },
+                    maxWidth: { xs: 320, sm: 430 },
                     bgcolor: 'background.dark',
                     boxShadow: 1,
                     borderRadius: 4,
                     margin: 'auto',  // Centra horizontalmente
-                    marginTop: '50px', // Ajusta la distancia desde la parte superior según sea necesario
+                    marginTop: '33.5px', // Ajusta la distancia desde la parte superior según sea necesario
                     textAlign: 'center', // Centra el contenido dentro del Box
                 }}>
                 <Tabs
@@ -83,12 +83,12 @@ const LesionHomeByType = () => {
                     scrollButtons="auto"
                     aria-label="scrollable auto tabs example"
                 >
-                    <Tab value={0} sx={{ color: '#40FF00', fontSize: "20px" }} onClick={() => handleSetAllLesion(dispatch)} label="All" />
-                    <Tab value={1} sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeLesion(muscle, dispatch)} label={<FormattedMessage id="project.lesion.fields.muscle"/>} />
-                    <Tab value={2} sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeLesion(tendon, dispatch)} label={<FormattedMessage id="project.lesion.fields.tendon"/>} />
-                    <Tab value={3} sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeLesion(joint, dispatch)} label={<FormattedMessage id="project.lesion.fields.joint"/>} />
-                    <Tab value={4} sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeLesion(spine, dispatch)} label={<FormattedMessage id="project.lesion.fields.spine"/>} />
-                    <Tab value={5} sx={{ color: '#ffffff', fontSize: "20px" }} onClick={() => handleSetTypeLesion(psychological, dispatch)} label={<FormattedMessage id="project.lesion.fields.psychological"/>} />
+                    <Tab value={0} sx={{ color: '#40FF00', fontSize: "17px", paddingBottom:"7px" }} onClick={() => handleSetAllLesion(dispatch)} label="All" />
+                    <Tab value={1} sx={{ color: '#ffffff', fontSize: "17px", paddingBottom:"7px" }} onClick={() => handleSetTypeLesion(muscle, dispatch)} label={<FormattedMessage id="project.lesion.fields.muscle"/>} />
+                    <Tab value={2} sx={{ color: '#ffffff', fontSize: "17px", paddingBottom:"7px" }} onClick={() => handleSetTypeLesion(tendon, dispatch)} label={<FormattedMessage id="project.lesion.fields.tendon"/>} />
+                    <Tab value={3} sx={{ color: '#ffffff', fontSize: "17px", paddingBottom:"7px" }} onClick={() => handleSetTypeLesion(joint, dispatch)} label={<FormattedMessage id="project.lesion.fields.joint"/>} />
+                    <Tab value={4} sx={{ color: '#ffffff', fontSize: "17px", paddingBottom:"7px" }} onClick={() => handleSetTypeLesion(spine, dispatch)} label={<FormattedMessage id="project.lesion.fields.spine"/>} />
+                    <Tab value={5} sx={{ color: '#ffffff', fontSize: "17px", paddingBottom:"7px" }} onClick={() => handleSetTypeLesion(psychological, dispatch)} label={<FormattedMessage id="project.lesion.fields.psychological"/>} />
 
                 </Tabs>
             </Box>
@@ -102,7 +102,7 @@ const LesionHomeByType = () => {
                     <AddCircleOutlineIcon sx={{
                         margin: 'auto',  // Centra horizontalmente
                         textAlign: 'center', // Centra el contenido dentro del Box
-                        fontSize: "70px",
+                        fontSize: "46.9px",
                         bgcolor: "linear-gradient(147deg,#ffffff ,#4400f9,#000000 35% 70%,#660bd8,#ffffff)",
                         color: "white"
                     }}

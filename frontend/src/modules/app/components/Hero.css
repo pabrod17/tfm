@@ -971,14 +971,14 @@ max-height: 241.2px;
 }
 
 .card__image_lesion {
-  height: 160px;
-  width: 160px;
+  height: 107.2px;
+  width: 107.2px;
   border-radius: 50%;
   margin-left: auto;
   margin-right: auto;
-  border: 5px solid #272133;
-  margin-top: 20px;
-  box-shadow: 0 10px 50px rgba(235, 25, 110, 1);
+  border: 3.35px solid #272133;
+  margin-top: 13.4px;
+  box-shadow: 0 6.7px 33.5px rgba(235, 25, 110, 1);
 }
 
 .card__image_exercise {
@@ -1549,15 +1549,15 @@ max-height: 241.2px;
 
 
 .card {
-  width: 360px;
-  height: 360px;
-  max-width: 360px;
+  width: 241.2px;
+  height: 241.2px;
+  max-width: 241.2px;
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  border-radius: 20px;
+  padding: 13.4px;
+  border-radius: 13.4px;
   background-color: rgba(0, 89, 255, 0.25);
-  box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10.05px 43.55px rgba(0, 0, 0, 0.5);
 }
 
 .card_exercise {
@@ -1610,12 +1610,12 @@ max-height: 241.2px;
 
 .desc2232323 {
   color: rgb(0, 0, 0);
-  font-size: 20px;
+  font-size: 12.06px;
 }
 
 .desc25555555 {
   color: rgb(255, 255, 255);
-  font-size: 18px;
+  font-size: 12.06px;
 }
 
 .desc3 {
