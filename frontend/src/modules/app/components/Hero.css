@@ -1963,7 +1963,7 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 40px 30px;
+  margin: 26.8px 20.1px;
   transition: 0.5s;
 }
 
@@ -2327,8 +2327,8 @@ form .btn input[type="submit"]{
 
 .holaaaaaa .homecard:hover span::before
 {
-  top: -50px;
-  left: 50px;
+  top: -33.5px;
+  left: 33.5px;
   width: 100px;
   height: 100px;
   opacity: 1;
@@ -2352,10 +2352,10 @@ form .btn input[type="submit"]{
 
 .holaaaaaa .homecard:hover span:after
 {
-  bottom: -50px;
-  right: 50px;
-  width: 100px;
-  height: 100px;
+  bottom: -33.5px;
+  right: 33.5px;
+  width: 67px;
+  height: 67px;
   opacity: 1;
 }
 
@@ -2376,7 +2376,7 @@ form .btn input[type="submit"]{
 {
   position: relative;
   left: 0;
-  padding: 20px 40px;
+  padding: 25px 30px;
   background: rgba(255, 255, 255, 0.05);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
@@ -2388,21 +2388,21 @@ form .btn input[type="submit"]{
 .holaaaaaa .homecard:hover .content
 {
   left: -25px;
-  padding: 60px 40px;
+  padding: 53px 40px;
 }
 
 .holaaaaaa .homecard .content h2
 {
-  font-size: 2em;
+  font-size: 1.4em;
   color: #fff;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
 }
 
 .container .homecard .content p
 {
-  font-size: 10em;
+  font-size: 1.4em;
   color: #fff;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
 }
 
 .holaaaaaa .homecard .content a
@@ -2411,11 +2411,11 @@ form .btn input[type="submit"]{
   font-size: 1.1em;
   color: rgb(255, 255, 255);
   background: transparent;
-  padding: 10px;
+  padding: -50px;
   border-radius: 4px;
   text-decoration: none;
   font-weight: 700;
-  margin-top: 5px;
+  margin-bottom: 0px;
 }
 
 .holaaaaaa .homecard .content a:hover
