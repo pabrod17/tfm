@@ -93,3 +93,8 @@ export const removePlayToTeam = (playId, teamId, onSuccess, onErrors) => {
     backend.playService.removePlayToTeam(playId, teamId, onSuccess, onErrors);
     return {type: actionTypes.REMOVE_PLAY_TO_TEAM_COMPLETED};
 }
+
+export const removePlay = (playId, onSuccess, onErrors) => {
+    backend.playService.removePlay(playId, onSuccess, onErrors);
+    return {type: actionTypes.REMOVE_PLAY_COMPLETED};
+}

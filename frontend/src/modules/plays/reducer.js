@@ -22,6 +22,8 @@ const play = (state = initialState.play, action) => {
             return action.play;
         case actionTypes.REMOVE_PLAY_TO_TEAM_COMPLETED:
             return state;
+        case actionTypes.REMOVE_PLAY_COMPLETED:
+            return state;
         default:
             return state;
     }

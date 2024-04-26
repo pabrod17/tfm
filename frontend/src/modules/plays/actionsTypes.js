@@ -6,3 +6,4 @@ export const ADD_PLAY_COMPLETED = "project/plays/addPlayCompleted";
 export const ADD_PLAY_TO_TEAM_COMPLETED = "project/plays/addPlayToTeamCompleted";
 export const UPDATE_PLAY_COMPLETED = "project/plays/updatePlayCompleted";
 export const REMOVE_PLAY_TO_TEAM_COMPLETED = "project/plays/removePlayToTeamCompleted";
+export const REMOVE_PLAY_COMPLETED = "project/plays/removePlayCompleted";

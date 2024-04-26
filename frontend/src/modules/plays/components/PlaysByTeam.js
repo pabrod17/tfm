@@ -15,11 +15,6 @@ import * as selectorsTeams from '../../teams/selectors';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 
-const handleRemovePlay = (playId, id, dispatch, history) => {
-    dispatch(actions.removePlayToTeam(playId, id, () => history(`/plays/home/${id}`)));
-    window.location.reload('true');
-}
-
 const handleUpdatePlay = (id, dispatch, history) => {
     dispatch(actions.findPlayById(id, () => history(`/plays/update/${id}`)));
   }
@@ -36,6 +31,7 @@ const handleUpdatePlay = (id, dispatch, history) => {
 
   const handleRemovePlayToTeam = (id, teamId, dispatch, history) => {
     dispatch(actions.removePlayToTeam(id, teamId, () => window.location.reload()));
+    window.location.reload();
 }
 
   const style = {

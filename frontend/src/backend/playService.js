@@ -23,3 +23,5 @@ export const updatePlay = (playId, title, playType, gesture, pointGuardText, sho
 
 export const removePlayToTeam = (playId, teamId, onSuccess, onErrors) => 
     appFetch(`/plays/${playId}?teamId=${teamId}`, config('DELETE'), onSuccess, onErrors);
+export const removePlay = (playId, onSuccess, onErrors) => 
+    appFetch(`/plays/play/${playId}`, config('DELETE'), onSuccess, onErrors);

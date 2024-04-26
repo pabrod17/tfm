@@ -14,9 +14,10 @@ import * as actionsTeams from '../../teams/actions';
 import * as selectorsTeams from '../../teams/selectors';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
+import users, { LoginNew, Login } from '../../users';
 
-const handleRemovePlay = (playId, id, dispatch, history) => {
-    dispatch(actions.removePlayToTeam(playId, id, () => history(`/plays/home/${id}`)));
+const handleRemovePlay = (playId, dispatch, history) => {
+    dispatch(actions.removePlay(playId, () => history(`/plays/home/${playId}`)));
     window.location.reload('true');
 }
 
@@ -48,7 +49,7 @@ const handleUpdatePlay = (id, dispatch, history) => {
 
   };
 
-  const PlayCard = ({ dispatch, history, item, handleOpenDescriptionModal, handleOpenMedicationModal }) => {
+  const PlayCard = ({userLogged, dispatch, history, item, handleOpenDescriptionModal, handleOpenMedicationModal }) => {
     return (
       <div key={item.id}>
         <div>
@@ -75,6 +76,12 @@ const handleUpdatePlay = (id, dispatch, history) => {
             </a>
             <hr></hr>
                     </div>
+                    {userLogged.role === "ADMIN" && (
+                    <ul class="social-icons trashgrande trash_position">
+                        <li><a type="button" onClick={() => handleRemovePlay(item.id, dispatch, history)}>
+                        <i class="fa fa-trash"></i></a></li>
+                    </ul>
+                    )}
                     <ul class="social-icons configgrande config_position">
                         <li><a type="button" onClick={() => handleUpdatePlay(item.id, dispatch, history)}>
                         <i class="fa fa-wrench"></i></a></li>
@@ -87,13 +94,13 @@ const handleUpdatePlay = (id, dispatch, history) => {
     );
   };
 
-function PlaysList({ items, fallback, dispatch, history, openDescription, handleOpenDescription, handleClose }) {
+function PlaysList({userLogged, items, fallback, dispatch, history, openDescription, handleOpenDescription, handleClose }) {
   if (!items) {
     dispatch(actions.findPlaysByUserId( () => history(`/plays/home`)));
     return fallback;
   } else {
     return items.map(item => (
-      <PlayCard dispatch={dispatch} history={history} key={item.id} item={item} handleOpenDescriptionModal={handleOpenDescription} />
+      <PlayCard userLogged={userLogged} dispatch={dispatch} history={history} key={item.id} item={item} handleOpenDescriptionModal={handleOpenDescription} />
     ));
   }
 }
@@ -107,6 +114,7 @@ const Plays = ({plays, id}) => {
     const history = useNavigate();
     const [modalDescription, setModalDescription] = useState('');
     const [openDescription, setOpenDescription] = React.useState(false);
+    const userLogged = useSelector(users.selectors.getUser);
 
     const handleOpenDescription = (description) => {
       setModalDescription(description);
@@ -120,7 +128,7 @@ const Plays = ({plays, id}) => {
 
     return(
         <div className="card-group lesions_contaner">
-          <PlaysList items={plays} fallback={"Loading..."} dispatch = {dispatch} history={history} openDescription={openDescription} handleOpenDescription={handleOpenDescription} />
+          <PlaysList userLogged={userLogged} items={plays} fallback={"Loading..."} dispatch = {dispatch} history={history} openDescription={openDescription} handleOpenDescription={handleOpenDescription} />
           {(openDescription) && (
         <div className="modal-backdrop" onClick={handleClose}></div>
       )}
