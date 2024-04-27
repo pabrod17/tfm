@@ -172,9 +172,9 @@ const AddPlayer = () => {
 					<Box
 						component="form"
 						sx={{
-							borderRadius: "20px",
+							borderRadius: "13.4px",
 							borderColor:"black",
-                            boxShadow:"0 10px 50px rgb(0, 0, 0)"
+                            boxShadow:"0 6.7px 33.5px rgb(0, 0, 0)"
 						}}
 						autoHeight={true} // Permitir que la tabla determine su propio tamaño si los datos no se han cargado
 						noValidate
@@ -248,7 +248,7 @@ const AddPlayer = () => {
 										multiline
 										rows={3.4}
 										sx={{
-											border: '1px solid grey',
+											border: '1.34px solid grey',
 											borderRadius: "13.4px",
 											borderColor:"black",
 											boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)"
@@ -264,7 +264,7 @@ const AddPlayer = () => {
 										multiline
 										rows={3.4}
 										sx={{
-											border: '1px solid grey',
+											border: '1.34px solid grey',
 											borderRadius: "13.4px",
 											borderColor:"black",
 											boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)"
@@ -280,7 +280,7 @@ const AddPlayer = () => {
 										multiline
 										rows={3.4}
 										sx={{
-											border: '1px solid grey',
+											border: '1.34px solid grey',
 											borderRadius: "13.4px",
 											borderColor:"black",
 											boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)"
@@ -312,7 +312,7 @@ const AddPlayer = () => {
 										multiline
 										rows={1.8}
 										sx={{
-											border: '1px solid grey',
+											border: '1.34px solid grey',
 											borderRadius: "13.4px",
 											borderColor:"black",
 											boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)"
@@ -330,7 +330,7 @@ const AddPlayer = () => {
 										multiline
 										rows={1.8}
 										sx={{
-											border: '1px solid grey',
+											border: '1.34px solid grey',
 											borderRadius: "13.4px",
 											borderColor:"black",
 											boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)"
@@ -348,7 +348,7 @@ const AddPlayer = () => {
 										multiline
 										rows={1.8}
 										sx={{
-											border: '1px solid grey',
+											border: '1.34px solid grey',
 											borderRadius: "13.4px",
 											borderColor:"black",
 											boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)"
@@ -366,7 +366,7 @@ const AddPlayer = () => {
 										multiline
 										rows={7}
 										sx={{
-											border: '1px solid grey',
+											border: '1.34px solid grey',
 											borderRadius: "13.4px",
 											borderColor:"black",
 											boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)",
