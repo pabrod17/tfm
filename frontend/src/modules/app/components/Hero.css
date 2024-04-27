@@ -919,23 +919,23 @@ max-height: 241.2px;
 
 
 .card__image_lesion_update_create {
-  height: 160px;
-  width: 160px;
+  height: 107.2px;
+  width: 107.2px;
   border-radius: 50%;
-  margin-bottom: 50px;
-  box-shadow: 0 10px 50px rgb(0, 0, 0);
-  box-shadow: 0 10px 50px rgba(235, 25, 110, 1);
+  margin-bottom: 33.5px;
+  box-shadow: 0 6.7px 33.5px rgb(0, 0, 0);
+  box-shadow: 0 6.7px 33.5px rgba(235, 25, 110, 1);
 }
 
 .card__image_exercise_update_create {
-  height: 160px;
-  width: 160px;
+  height: 107.2px;
+  width: 107.2px;
   border-radius: 50%;
-  margin-bottom: 50px;
+  margin-bottom: 33.5px;
   box-shadow: 0 10px 50px rgb(0, 0, 0);
   margin-right: auto;
-  border: 5px solid #272133;
-  box-shadow: 0 10px 50px rgb(255, 217, 0);
+  border: 3.35px solid #272133;
+  box-shadow: 0 6.7px 33.5px rgb(255, 217, 0);
 }
 
 .card__image_training_update_create {
@@ -956,13 +956,13 @@ max-height: 241.2px;
 }
 
 .card__image_stretching_update_create {
-  height: 160px;
-  width: 160px;
+  height: 107.2px;
+  width: 107.2px;
   border-radius: 50%;
-  margin-bottom: 50px;
+  margin-bottom: 33.5px;
   margin-right: auto;
-  border: 5px solid #272133;
-  box-shadow: 0 10px 50px rgb(255, 255, 255);
+  border: 3.35px solid #272133;
+  box-shadow: 0 6.7px 33.5px rgb(0, 0, 0);
 }
 
 .form_add_training_general {
@@ -1330,47 +1330,47 @@ max-height: 241.2px;
 
 .post_lesion {
   width: 100%;
-  padding: 10px;
+  padding: 6.7px;
   border: none;
-  border-radius: 20px;
-  font-size: 22px;
+  border-radius: 13.4px;
+  font-size: 14.74px;
   font-family: Sans-serif;
   color: #fff;
   background-size: 200% 100%;
   background: linear-gradient(180deg, #00e1ff 0%, #062C76 70% );
-  box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10.05px 43.55px rgba(0, 0, 0, 0.5);
   transition: 0.3s ease-out;
-  margin-right: 50px;
+  margin-right: 33.5px;
 }
 
 .post_stretching {
   width: 100%;
-  padding: 10px;
+  padding: 6.7px;
   border: none;
-  border-radius: 20px;
-  font-size: 22px;
+  border-radius: 13.4px;
+  font-size: 14.74px;
   font-family: Sans-serif;
   color: #fff;
   background-size: 200% 100%;
   background: linear-gradient(180deg, rgba(255, 0, 221, 0.25) 0%, #22012b 70% );
-  box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 15px 43.5px rgba(0, 0, 0, 0.5);
   transition: 0.3s ease-out;
-  margin-right: 50px;
+  margin-right: 33.5px;
 }
 
 .post_exercise {
   width: 100%;
-  padding: 10px;
+  padding: 6.7px;
   border: none;
-  border-radius: 20px;
-  font-size: 22px;
+  border-radius: 13.4px;
+  font-size: 14.74px;
   font-family: Sans-serif;
   color: #fff;
   background-size: 200% 100%;
   background: linear-gradient(180deg, rgba(179, 5, 5, 0.557) 0%, #2b0101 70% );
-  box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 15px 43.5px rgba(0, 0, 0, 0.5);
   transition: 0.3s ease-out;
-  margin-right: 50px;
+  margin-right: 33.5px;
 }
 
 .post_play {
