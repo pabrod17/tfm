@@ -95,10 +95,10 @@ const AddTeam = () => {
 										multiline
 										rows={3}
 										sx={{
-											border: '2px solid grey',
-											borderRadius: "20px",
+											border: '1.34px solid grey',
+											borderRadius: "13.4px",
 											borderColor:"black",
-											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+											boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)"
 										}}
 										value={teamName}
 										onChange={(e) => setTeamName(e.target.value)}
@@ -111,10 +111,10 @@ const AddTeam = () => {
 										multiline
 										rows={3}
 										sx={{
-											border: '2px solid grey',
-											borderRadius: "20px",
+											border: '1.34px solid grey',
+											borderRadius: "13.4px",
 											borderColor:"black",
-											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+											boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)"
 										}}
 										value={arenaName}
 										onChange={(e) => setArenaName(e.target.value)}
@@ -144,10 +144,10 @@ const AddTeam = () => {
 										multiline
 										rows={3}
 										sx={{
-											border: '2px solid grey',
-											borderRadius: "20px",
+											border: '1.34px solid grey',
+											borderRadius: "13.4px",
 											borderColor:"black",
-											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+											boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)"
 										}}
 										value={ownerName}
 										onChange={(e) => setOwnerName(e.target.value)}
@@ -161,10 +161,10 @@ const AddTeam = () => {
 										multiline
 										rows={6}
 										sx={{
-											border: '2px solid grey',
-											borderRadius: "20px",
+											border: '1.34px solid grey',
+											borderRadius: "13.4px",
 											borderColor:"black",
-											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+											boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)"
 										}}
 										value={description}
 										onChange={(e) => setDescription(e.target.value)}
