@@ -263,7 +263,7 @@ const UsersByCoachHomeCreate = () => {
                                                         component="form"
                                                         sx={{
                                                             '& .MuiTextField-root': { mb: 2, width: '100%' },
-                                                            margin: '50px', // Centra el formulario en la pantalla
+                                                            margin: '33.5px', // Centra el formulario en la pantalla
                                                             mt:"30px",
                                                             mb:"30px"
                                                         }}

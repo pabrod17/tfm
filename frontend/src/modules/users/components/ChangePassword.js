@@ -80,7 +80,7 @@ const ChangePassword = () => {
 <Box
             display="flex"
             alignItems="center"
-            p={1}
+			p={3}
             sx={{
                 flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
             }}
@@ -90,22 +90,23 @@ const ChangePassword = () => {
 			my={4}
 			display="flex"
 			alignItems="center"
-			p={5}
-			m={10}
+            gap={1}
+            p={3.35}
+			m={6.7}
 			sx={{
-                maxWidth: { sm: 1635 },
-				border: '2px solid grey',
+                maxWidth: { sm: 870 },
+				border: '1.34px solid grey',
                 background: "linear-gradient(180deg, #08043b 0%,#2f00ff)",
                 background: "radial-gradient(circle, #2f00ff -10%, #08043b 110%)",
-				borderRadius: "20px",
+				borderRadius: "13.4px",
 				flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 				flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
 				borderColor:"black",
-				boxShadow:"0 10px 50px rgb(0, 0, 0)"
+				boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)",
 			}}
 		>
             <Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
-			<Grid container margin={5} spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
+			<Grid container margin={3.35} spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
 			>
 				<Grid item md={12}>
                 <img src={perfil2} alt="Person" class="card__image_player_update_create"></img>
@@ -116,9 +117,9 @@ const ChangePassword = () => {
 					<Box
 						component="form"
 						sx={{
-							borderRadius: "20px",
+							borderRadius: "13.4px",
 							borderColor:"black",
-                            boxShadow:"0 10px 50px rgb(0, 0, 0)"
+							boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)"
 						}}
 						autoHeight={true} // Permitir que la tabla determine su propio tamaño si los datos no se han cargado
 						noValidate
@@ -134,8 +135,9 @@ const ChangePassword = () => {
 									component="form"
 									sx={{
 										'& .MuiTextField-root': { mb: 2, width: '100%' },
-										margin: '50px', // Centra el formulario en la pantalla
-
+										margin: '33.5px', // Centra el formulario en la pantalla
+										mt:"30px",
+										mb:"30px"
 									}}
 									noValidate
 									autoComplete="off"
@@ -144,14 +146,14 @@ const ChangePassword = () => {
 									<TextField
                                         id="outlined-password-input"
 										label={<FormattedMessage id="project.global.fields.currentPassword" />}
-										InputLabelProps={{ style: { color: '#E8FF00', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#E8FF00', fontSize: 13.40, fontWeight: 'regular', width: '100%', top:-5 } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 12, fontWeight: 'regular', width: '100%' } }}
 										rows={4}
 										sx={{
-											border: '2px solid grey',
-											borderRadius: "20px",
+											border: '1.34px solid grey',
+											borderRadius: "13.4px",
 											borderColor:"black",
-											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+											boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)"
 										}}
                                         type="password"
 										value={oldPassword}
@@ -173,15 +175,15 @@ const ChangePassword = () => {
                                         id="outlined-password-input"
 										label={<FormattedMessage id="project.global.fields.newPassword" />}
                                         type="password"
-										InputLabelProps={{ style: { color: '#E8FF00', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#E8FF00', fontSize: 13.40, fontWeight: 'regular', width: '100%', top:-5 } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 12, fontWeight: 'regular', width: '100%' } }}
 										rows={4}
                                         ty
 										sx={{
-											border: '2px solid grey',
-											borderRadius: "20px",
+											border: '1.34px solid grey',
+											borderRadius: "13.4px",
 											borderColor:"black",
-											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+											boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)"
 										}}
                                         type="password"
 										value={newPassword}
@@ -190,15 +192,15 @@ const ChangePassword = () => {
 									<TextField
                                         id="outlined-password-input"
 										label={<FormattedMessage id="project.global.fields.confirmPassword" />}
-										InputLabelProps={{ style: { color: '#E8FF00', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
-                                        type={"password"}
+										InputLabelProps={{ style: { color: '#E8FF00', fontSize: 13.40, fontWeight: 'regular', width: '100%', top:-5 } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 12, fontWeight: 'regular', width: '100%' } }}
+										type={"password"}
 										rows={4}
 										sx={{
-											border: '2px solid grey',
-											borderRadius: "20px",
+											border: '1.34px solid grey',
+											borderRadius: "13.4px",
 											borderColor:"black",
-											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+											boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)"
 										}}
 										value={confirmNewPassword}
 										onChange={handleConfirmPassword}
@@ -217,14 +219,14 @@ const ChangePassword = () => {
                 disabled={passwordError} // Deshabilitar el botón si hay un error de contraseña
                 sx={{
                     width: '100%',
-                    padding: '10px',
-                    borderRadius: '20px',
-                    fontSize: '22px',
+                    padding: '6.7px',
+                    borderRadius: '13.4px',
+                    fontSize: '14.74px',
                     color: '#fff',
                     background: 'linear-gradient(180deg, rgb(47, 0, 255) 0%, #08043b 70%)',
-                    boxShadow: '0 15px 65px rgba(0, 0, 0, 0.5)',
+                    boxShadow: '0 10.05px 43.55px rgba(0, 0, 0, 0.5)',
                     transition: '0.3s ease-out',
-                    marginRight: '50px',
+                    marginRight: '33.5px',
                     textTransform: 'none', // Anular la transformación del texto a mayúsculas
                     fontFamily:"Arial"
                 }}
