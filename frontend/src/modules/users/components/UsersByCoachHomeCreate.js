@@ -121,28 +121,28 @@ const UsersByCoachHomeCreate = () => {
     sx={{
         bgcolor: 'background.dark',
         boxShadow: 1,
-        borderRadius: 4,
+        borderRadius: 2.68,
         margin: 'auto',  // Centra horizontalmente
-        marginTop: '80px', // Ajusta la distancia desde la parte superior según sea necesario
+        marginTop: '53.6px', // Ajusta la distancia desde la parte superior según sea necesario
         textAlign: 'center', // Centra el contenido dentro del Box
     }}>
 
-<Box sx={{boxShadow:"0 10px 50px rgb(0, 0, 0)" }}>
+<Box sx={{boxShadow:"0 6.7px 33.5px rgb(0, 0, 0)" }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" 
                         sx={{
-                            background: "linear-gradient(180deg,#df252c,#0c1345 10%,#0c1345 80%,#0c1345 ,#df252c)",
+                            background: "linear-gradient(180deg,#df252c,#0c1345 30%,#0c1345 30%,#0c1345 ,#df252c)",
                             bgcolor:"red",
-                            boxShadow: 6,
-                            borderRadius: 3,
+                            boxShadow: 4,
+                            borderRadius: 2,
                             borderColor: "black",
-							boxShadow: "0 10px 50px rgb(0, 0, 0)",
+							boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)",
                             '& .MuiTabs-flexContainer': {
                                 flexWrap: 'wrap',
                               },
                         }}
         >
-          <Tab value={0} sx={{ color: '#f5af19', fontSize: "30px", padding:"20px"}} onClick={() => handleUsersByCoach(dispatch)} label={<FormattedMessage id="project.global.list.users"/>}  />
-          <Tab value={1} sx={{ color: '#f5af19', fontSize: "30px", padding:"20px" }} onClick={() => handleUsersByCoachCreate(1, dispatch)} label={<FormattedMessage id="project.global.create.users"/>}/>
+          <Tab value={0} sx={{ color: '#f5af19', fontSize: "20.1px", padding:"13.4px"}} onClick={() => handleUsersByCoach(dispatch)} label={<FormattedMessage id="project.global.list.users"/>}  />
+          <Tab value={1} sx={{ color: '#f5af19', fontSize: "20.1px", padding:"13.4px" }} onClick={() => handleUsersByCoachCreate(1, dispatch)} label={<FormattedMessage id="project.global.create.users"/>}/>
         </Tabs>
       </Box>
 </Box>
@@ -166,26 +166,26 @@ const UsersByCoachHomeCreate = () => {
 
                     
                     <Box
-                                my={4}
+                                my={2.68}
                                 display="flex"
                                 alignItems="center"
-                                gap={4}
-                                p={4}
+                                gap={2}
+                                p={3.35}
                                 sx={{
-                                    maxWidth: { sm: 1435 },
-                                    border: '2px solid grey',
+                                    maxWidth: { sm: 971.45 },
+                                    border: '1.34px solid grey',
                                     background: "linear-gradient(180deg, #08043b 0%,#2f00ff)",
                                     background: "linear-gradient(180deg,#df252c,#0c1345 10%,#0c1345 80%,#0c1345 ,#df252c)",
-                                    borderRadius: "20px",
+                                    borderRadius: "13.4px",
                                     flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
                                     flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
                                     borderColor:"black",
-                                    boxShadow:"0 10px 50px rgb(0, 0, 0)"
+                                    boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)"
                                     
                                 }}
                             >
                                 <Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
-                                <Grid container margin={5} spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
+                                <Grid container margin={3.35} spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
                                 >
                                     <Grid item md={12}>
                                     <img src={perfil2} alt="Person" class="card__image_player_update_create"></img>
@@ -196,9 +196,9 @@ const UsersByCoachHomeCreate = () => {
                                         <Box
                                             component="form"
                                             sx={{
-                                                borderRadius: "20px",
+                                                borderRadius: "13.4px",
                                                 borderColor:"black",
-                                                boxShadow:"0 10px 50px rgb(0, 0, 0)"
+                                                boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)"
                                             }}
                                             autoHeight={true} // Permitir que la tabla determine su propio tamaño si los datos no se han cargado
                                             noValidate
@@ -214,8 +214,8 @@ const UsersByCoachHomeCreate = () => {
                                                         component="form"
                                                         sx={{
                                                             '& .MuiTextField-root': { mb: 2, width: '100%' },
-                                                            margin: '50px', // Centra el formulario en la pantalla
-                    
+                                                            margin: '33.5px', // Centra el formulario en la pantalla
+                                                            mt:"30px"
                                                         }}
                                                         noValidate
                                                         autoComplete="off"
@@ -224,31 +224,31 @@ const UsersByCoachHomeCreate = () => {
                                                         <TextField
                                                             id="outlined-multiline-static-1"
                                                             label={<FormattedMessage id="project.players.fields.playerName" />}
-                                                            InputLabelProps={{ style: { color: '#E8FF00', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-                                                            InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+                                                            InputLabelProps={{ style: { color: '#E8FF00', fontSize: 13.40, fontWeight: 'regular', width: '100%', top:-5 } }}
+                                                            InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 12, fontWeight: 'regular', width: '100%' } }}
                                                             multiline
                                                             rows={4}
                                                             sx={{
-                                                                border: '2px solid grey',
-                                                                borderRadius: "20px",
+                                                                border: '1.34px solid grey',
+                                                                borderRadius: "13.4px",
                                                                 borderColor:"black",
-                                                                boxShadow:"0 10px 10px rgb(0, 0, 0)"
+                                                                boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)"
                                                             }}
                                                             value={firstName}
                                                             onChange={(e) => setFirstName(e.target.value)}
                                                         />
                                                         <TextField
                                                             id="outlined-multiline-static-1"
-                                                            label={<FormattedMessage id="project.players.fields.primaryLastName" />}
-                                                            InputLabelProps={{ style: { color: '#E8FF00', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-                                                            InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+                                                            label={<FormattedMessage id="project.global.fields.lastName"/>}
+                                                            InputLabelProps={{ style: { color: '#E8FF00', fontSize: 13.40, fontWeight: 'regular', width: '100%', top:-5 } }}
+                                                            InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 12, fontWeight: 'regular', width: '100%' } }}
                                                             multiline
                                                             rows={4}
                                                             sx={{
-                                                                border: '2px solid grey',
-                                                                borderRadius: "20px",
+                                                                border: '1.34px solid grey',
+                                                                borderRadius: "13.4px",
                                                                 borderColor:"black",
-                                                                boxShadow:"0 10px 10px rgb(0, 0, 0)"
+                                                                boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)"
                                                             }}
                                                             value={lastName}
                                                             onChange={(e) => setLastName(e.target.value)}
@@ -264,7 +264,8 @@ const UsersByCoachHomeCreate = () => {
                                                         sx={{
                                                             '& .MuiTextField-root': { mb: 2, width: '100%' },
                                                             margin: '50px', // Centra el formulario en la pantalla
-                    
+                                                            mt:"30px",
+                                                            mb:"30px"
                                                         }}
                                                         noValidate
                                                         autoComplete="off"
@@ -272,15 +273,15 @@ const UsersByCoachHomeCreate = () => {
                                                         <TextField
                                                             id="outlined-multiline-static-1"
                                                             label={<FormattedMessage id="project.players.fields.email" />}
-                                                            InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-                                                            InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+                                                            InputLabelProps={{ style: { color: '#00bfff', fontSize: 13.40, fontWeight: 'regular', width: '100%', top:-5 } }}
+                                                            InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 12, fontWeight: 'regular', width: '100%' } }}
                                                             multiline
                                                             rows={2}
                                                             sx={{
-                                                                border: '2px solid grey',
-                                                                borderRadius: "20px",
+                                                                border: '1.34px solid grey',
+                                                                borderRadius: "13.4px",
                                                                 borderColor:"black",
-                                                                boxShadow:"0 10px 10px rgb(0, 0, 0)"
+                                                                boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)"
                                                             }}
                                                             value={email}
                                                             onChange={handleEmailChange}
@@ -290,15 +291,15 @@ const UsersByCoachHomeCreate = () => {
                                                         <TextField
                                                             id="outlined-multiline-static-1"
                                                             label={<FormattedMessage id="project.global.fields.userName1" />}
-                                                            InputLabelProps={{ style: { color: '#00ff22', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-                                                            InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+                                                            InputLabelProps={{ style: { color: '#00ff22', fontSize: 13.40, fontWeight: 'regular', width: '100%', top:-5 } }}
+                                                            InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 12, fontWeight: 'regular', width: '100%' } }}
                                                             multiline
                                                             rows={2}
                                                             sx={{
-                                                                border: '2px solid grey',
-                                                                borderRadius: "20px",
+                                                                border: '1.34px solid grey',
+                                                                borderRadius: "13.4px",
                                                                 borderColor:"black",
-                                                                boxShadow:"0 10px 10px rgb(0, 0, 0)"
+                                                                boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)"
                                                             }}
                                                             value={userName}
                                                             onChange={(e) => setUserName(e.target.value)}
@@ -307,15 +308,15 @@ const UsersByCoachHomeCreate = () => {
                                         id="outlined-password-input"
 										label={<FormattedMessage id="project.global.fields.newPassword" />}
                                         type="password"
-										InputLabelProps={{ style: { color: '#E8FF00', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
-										rows={4}
+                                        InputLabelProps={{ style: { color: '#E8FF00', fontSize: 13.40, fontWeight: 'regular', width: '100%', top:-5 } }}
+                                        InputProps={{ style: { color: 'white', fontSize: 12, fontWeight: 'regular', width: '100%' } }}
+                                        rows={4}
                                         ty
 										sx={{
-											border: '2px solid grey',
-											borderRadius: "20px",
+											border: '1.34px solid grey',
+											borderRadius: "13.4px",
 											borderColor:"black",
-											boxShadow:"0 10px 10px rgb(0, 0, 0)",
+											boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)",
                                             marginTop:"20px"
 										}}
                                         type="password"
@@ -325,15 +326,15 @@ const UsersByCoachHomeCreate = () => {
 									<TextField
                                         id="outlined-password-input"
 										label={<FormattedMessage id="project.global.fields.confirmPassword" />}
-										InputLabelProps={{ style: { color: '#E8FF00', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+                                        InputLabelProps={{ style: { color: '#E8FF00', fontSize: 13.40, fontWeight: 'regular', width: '100%', top:-5 } }}
+                                        InputProps={{ style: { color: 'white', fontSize: 12, fontWeight: 'regular', width: '100%' } }}
                                         type={"password"}
 										rows={4}
 										sx={{
-											border: '2px solid grey',
-											borderRadius: "20px",
+											border: '1.34px solid grey',
+											borderRadius: "13.4px",
 											borderColor:"black",
-											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+											boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)"
 										}}
 										value={confirmNewPassword}
 										onChange={handleConfirmPassword}
@@ -349,27 +350,7 @@ const UsersByCoachHomeCreate = () => {
                                 <button className="post_user_coach" onClick={(e) => handleSubmit(e)}><FormattedMessage id="project.global.buttons.save" /></button>
                                       
                             </Box>
-
-
-
 </Grid>
-
-
-
-                               
-
-
-
-
-
-
-
-
-
-
-
-
-
             </Grid>
         </Box>
 

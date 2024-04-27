@@ -1439,17 +1439,17 @@ max-height: 241.2px;
 
 .post_user_coach {
   width: 100%;
-  padding: 10px;
+  padding: 6.7px;
   border: none;
-  border-radius: 20px;
-  font-size: 22px;
+  border-radius: 13.4px;
+  font-size: 14.74px;
   font-family: Sans-serif;
   color: #fff;
   background-size: 200% 100%;
   background: linear-gradient(180deg, #df252c 0%, #0c1345 70% );
-  box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10.05px 53.55px rgba(0, 0, 0, 0.5);
   transition: 0.3s ease-out;
-  margin-right: 50px;
+  margin-right: 33.5px;
 }
 
 
