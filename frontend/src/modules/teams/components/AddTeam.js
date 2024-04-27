@@ -40,22 +40,22 @@ const AddTeam = () => {
 			my={4}
 			display="flex"
 			alignItems="center"
-			gap={4}
-			p={5}
-			m={10}
+			gap={2}
+			p={3.35}
+			m={6.7}
 			sx={{
-				border: '2px solid grey',
+				border: '1.34px solid grey',
 				background: "linear-gradient(-180deg, #111010 0%, #dd4103 70%, #111010 )",
                 background: "radial-gradient(circle, #ff4800 -10%, #000000 100%)",
-				borderRadius: "20px",
+				borderRadius: "13.4px",
 				flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 				flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
 				borderColor:"black",
-				boxShadow:"0 10px 50px rgb(0, 0, 0)"
+				boxShadow:"0 6.7px 33.5px rgb(0, 0, 0)"
 			}}
 		>
             <Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
-			<Grid container margin={5} spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
+			<Grid container margin={3.35} spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
 			>
 				<Grid item md={12} >
 					<img src={logo22} alt="Person" class="card__image_team_update_create"></img>
@@ -63,9 +63,9 @@ const AddTeam = () => {
 					<Box
 						component="form"
 						sx={{
-							borderRadius: "20px",
+							borderRadius: "13.4px",
 							borderColor:"black",
-                            boxShadow:"0 0px 50px rgb(0, 0, 0)"
+                            boxShadow:"0 6.7px 33.5px rgb(0, 0, 0)"
 						}}
 						autoHeight={true} // Permitir que la tabla determine su propio tamaño si los datos no se han cargado
 						noValidate
@@ -79,8 +79,10 @@ const AddTeam = () => {
 									component="form"
 									sx={{
 										'& .MuiTextField-root': { mb: 3, width: '100%' },
-										margin: '50px', // Centra el formulario en la pantalla
-                                        mb:"-70px"
+										margin: '33.5px', // Centra el formulario en la pantalla
+                                        mb:"-55px",
+										mt:"15px"
+
 									}}
 									noValidate
 									autoComplete="off"
@@ -88,10 +90,10 @@ const AddTeam = () => {
 									<TextField
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.seasons.fields.name" />}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 13.40, fontWeight: 'regular', width: '100%', top:-5 } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 12, fontWeight: 'regular', width: '100%' } }}
 										multiline
-										rows={2}
+										rows={3}
 										sx={{
 											border: '2px solid grey',
 											borderRadius: "20px",
@@ -104,10 +106,10 @@ const AddTeam = () => {
 									<TextField
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.teams.fields.arena" />}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 13.40, fontWeight: 'regular', width: '100%', top:-5 } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 12, fontWeight: 'regular', width: '100%' } }}
 										multiline
-										rows={2}
+										rows={3}
 										sx={{
 											border: '2px solid grey',
 											borderRadius: "20px",
@@ -128,7 +130,8 @@ const AddTeam = () => {
 									component="form"
 									sx={{
 										'& .MuiTextField-root': { mb: 3, width: '100%' },
-										margin: '50px', // Centra el formulario en la pantalla
+										margin: '33.5px', // Centra el formulario en la pantalla,
+										marginBottom:"5px"
 									}}
 									noValidate
 									autoComplete="off"
@@ -136,10 +139,10 @@ const AddTeam = () => {
 									<TextField
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.teams.fields.owner" />}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 13.40, fontWeight: 'regular', width: '100%', top:-5 } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 12, fontWeight: 'regular', width: '100%' } }}
 										multiline
-										rows={2}
+										rows={3}
 										sx={{
 											border: '2px solid grey',
 											borderRadius: "20px",
@@ -153,10 +156,10 @@ const AddTeam = () => {
 									<TextField
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.exercises.fields.description" />}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 13.40, fontWeight: 'regular', width: '100%', top:-5 } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 12, fontWeight: 'regular', width: '100%' } }}
 										multiline
-										rows={4}
+										rows={6}
 										sx={{
 											border: '2px solid grey',
 											borderRadius: "20px",

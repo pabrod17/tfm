@@ -1216,11 +1216,11 @@ max-height: 241.2px;
 }
 
 .card__image_team_update_create {
-  height: 160px;
-  width: 160px;
+  height: 107.2px;
+  width: 107.2px;
   border-radius: 50%;
-  margin-bottom: 50px;
-  box-shadow: 0 10px 50px rgb(0, 0, 0);
+  margin-bottom: 33.5px;
+  box-shadow: 0 6.7px 33.5px rgb(0, 0, 0);
 }
 
 .card__image_season_update_create {
@@ -1269,17 +1269,17 @@ max-height: 241.2px;
 
 .post_team {
   width: 100%;
-  padding: 10px;
+  padding: 6.7px;
   border: none;
-  border-radius: 20px;
-  font-size: 22px;
+  border-radius: 13.4px;
+  font-size: 14.74px;
   font-family: Sans-serif;
   color: #fff;
   background-size: 200% 100%;
   background: linear-gradient(180deg,#dd4103,#111010);
-  box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10.05px 43.55px rgba(0, 0, 0, 0.5);
   transition: 0.3s ease-out;
-  margin-right: 50px;
+  margin-right: 33.5px;
 }
 
 .post_season {
