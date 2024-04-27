@@ -244,9 +244,9 @@ const AddPlayer = () => {
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.players.fields.playerName" />}
 										InputLabelProps={{ style: { color: '#E8FF00', fontSize: 13.40, fontWeight: 'regular', width: '100%', top:-5 } }}
-										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 10.05, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 12, fontWeight: 'regular', width: '100%' } }}
 										multiline
-										rows={4}
+										rows={3.4}
 										sx={{
 											border: '1px solid grey',
 											borderRadius: "13.4px",
@@ -260,9 +260,9 @@ const AddPlayer = () => {
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.players.fields.primaryLastName" />}
 										InputLabelProps={{ style: { color: '#E8FF00', fontSize: 13.40, fontWeight: 'regular', width: '100%', top:-5 } }}
-										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 10.05, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 12, fontWeight: 'regular', width: '100%' } }}
 										multiline
-										rows={4}
+										rows={3.4}
 										sx={{
 											border: '1px solid grey',
 											borderRadius: "13.4px",
@@ -276,9 +276,9 @@ const AddPlayer = () => {
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.players.fields.secondLastName" />}
 										InputLabelProps={{ style: { color: '#E8FF00', fontSize: 13.40, fontWeight: 'regular', width: '100%', top:-5 } }}
-										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 10.05, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 12, fontWeight: 'regular', width: '100%' } }}
 										multiline
-										rows={4}
+										rows={3.4}
 										sx={{
 											border: '1px solid grey',
 											borderRadius: "13.4px",
@@ -308,9 +308,9 @@ const AddPlayer = () => {
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.players.fields.email" />}
 										InputLabelProps={{ style: { color: '#00bfff', fontSize: 13.40, fontWeight: 'regular', width: '100%', top:-5 } }}
-										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 10.05, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 12, fontWeight: 'regular', width: '100%' } }}
 										multiline
-										rows={2}
+										rows={1.8}
 										sx={{
 											border: '1px solid grey',
 											borderRadius: "13.4px",
@@ -326,9 +326,9 @@ const AddPlayer = () => {
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.players.fields.phoneNumber" />}
 										InputLabelProps={{ style: { color: '#00bfff', fontSize: 13.40, fontWeight: 'regular', width: '100%', top:-5 } }}
-										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 10.05, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 12, fontWeight: 'regular', width: '100%' } }}
 										multiline
-										rows={2}
+										rows={1.8}
 										sx={{
 											border: '1px solid grey',
 											borderRadius: "13.4px",
@@ -344,9 +344,9 @@ const AddPlayer = () => {
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.players.fields.dni" />}
 										InputLabelProps={{ style: { color: '#00bfff', fontSize: 13.40, fontWeight: 'regular', width: '100%', top:-5 } }}
-										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 10.05, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 12, fontWeight: 'regular', width: '100%' } }}
 										multiline
-										rows={2}
+										rows={1.8}
 										sx={{
 											border: '1px solid grey',
 											borderRadius: "13.4px",
@@ -362,9 +362,9 @@ const AddPlayer = () => {
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.players.fields.trends" />}
 										InputLabelProps={{ style: { color: '#00bfff', fontSize: 13.40, fontWeight: 'regular', width: '100%', top:-5 } }}
-										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 10.05, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 12, fontWeight: 'regular', width: '100%' } }}
 										multiline
-										rows={8.3}
+										rows={7}
 										sx={{
 											border: '1px solid grey',
 											borderRadius: "13.4px",
@@ -417,6 +417,7 @@ const AddPlayer = () => {
 									boxShadow:"0 6.7px 33.50px rgb(0, 0, 0)",
                                     color:"white",
 									fontSize:"10px",
+									mr:0,
 								}}
 								density="compact"
 

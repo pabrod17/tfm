@@ -326,16 +326,15 @@ const AddTraining = () => {
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.exercises.fields.description" />}
 										InputLabelProps={{ style: { color: '#00bfff', fontSize: 13.4, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 10.05, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 12, fontWeight: 'regular', width: '100%' } }}
 										multiline
 										rows={4}
 										sx={{
-											border: '1px solid grey',
+											border: '1.34px solid grey',
 											background: "linear-gradient(-45deg, #41295a 0%, #2F0743 100% )",
 											borderRadius: "13.4px",
 											borderColor:"black",
 											boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)",
-											paddingBottom:"20px"
 										}}
 										value={description}
 										onChange={(e) => setDescription(e.target.value)}
@@ -345,16 +344,15 @@ const AddTraining = () => {
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.trainings.fields.objective" />}//Objetivo
 										InputLabelProps={{ style: { color: '#00bfff', fontSize: 13.4, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 10.05, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 12, fontWeight: 'regular', width: '100%' } }}
 										multiline
 										rows={4}
 										sx={{
-											border: '1px solid grey',
+											border: '1.34px solid grey',
 											background: "linear-gradient(-45deg, #41295a 0%, #2F0743 100% )",
 											borderRadius: "13.4px",
 											borderColor:"black",
 											boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)",
-											paddingBottom:"20px"
 										}}
 										value={objective}
 										onChange={(e) => setObjective(e.target.value)}
