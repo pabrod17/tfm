@@ -329,7 +329,8 @@ const TeamsHome = () => {
                         textAlign: 'center', // Centra el contenido dentro del Box
                         fontSize: "46.9px",
                         color: "white",
-                        marginTop:"0px"
+                        marginTop:"0px",
+                        marginBottom:"-17px"
                     }}
                         onClick={() => history(`/teams/addTeam`)}
                     >

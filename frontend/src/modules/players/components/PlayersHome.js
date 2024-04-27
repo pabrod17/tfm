@@ -471,6 +471,7 @@ const PlayersHome = () => {
                         fontSize: "46.9px",
                         color: "white",
                         marginTop:"0px",
+                        marginBottom:"-17px"
                     }}
                         onClick={() => history(`/players/addPlayer`)}
                     >

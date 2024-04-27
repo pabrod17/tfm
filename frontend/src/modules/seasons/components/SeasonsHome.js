@@ -124,6 +124,7 @@ const SeasonsHome = () => {
                         fontSize: "46.9px",
                         bgcolor: "linear-gradient(147deg,#ffffff ,#4400f9,#000000 35% 70%,#660bd8,#ffffff)",
                         color: "white",
+                        marginBottom:"-17px"
                     }}
                         onClick={() => history(`/seasons/addSeason`)}
                     >
