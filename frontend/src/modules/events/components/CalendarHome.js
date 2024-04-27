@@ -358,7 +358,7 @@ const CalendarHome = () => {
       pr={2}
       pb={2}
       sx={{
-        border: '2px solid grey',
+        border: '1.34px solid grey',
         background: "linear-gradient(180deg, #329617 0%, #062C76 70% )",
         background: "linear-gradient(180deg, #232526 0%, #414345 70% )",
         background: "linear-gradient(180deg, #1CB5E0 0%, #000046 70% )",
