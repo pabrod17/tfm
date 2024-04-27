@@ -2512,12 +2512,16 @@ form .btn input[type="submit"]{
     color: white;
     background-color: transparent;
     border-color: white;
+    font-size: 11px;
+    margin-bottom: -4px;
   }
 
   .page-item .page-link {
     color: white;
     background-color: #6e4f2d;
     border-color: white;
+    font-size: 11px;
+    margin-bottom: -4px;
   }
 
 
