@@ -149,17 +149,17 @@ const AddPlayer = () => {
 			m={6.7}
 			sx={{
                 maxWidth: { sm: 1095 },
-				border: '2px solid grey',
+				border: '1.34px solid grey',
                 background: "linear-gradient(45deg, rgb(59, 4, 26) 30%,rgb(47, 0, 255))",
-				borderRadius: "20px",
+				borderRadius: "13.4px",
 				flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 				flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
 				borderColor:"black",
-				boxShadow:"0 10px 50px rgb(0, 0, 0)"
+				boxShadow:"0 6.7px 33.5px rgb(0, 0, 0)"
 			}}
 		>
             <Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
-			<Grid container margin={3.35} spacing={{ xs: 1.34, md: 1.34 }} columns={{ xs: 4, sm: 8, md: 12 }}
+			<Grid container margin={3.35} spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
 			>
 				<Grid item md={12}>
                 <img src={perfil2} alt="Person" class="card__image_player_update_create"></img>

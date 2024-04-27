@@ -81,10 +81,10 @@ const AddTraining = () => {
 	}
 
 	const columnsTeams = [
-		{ field: 'id', headerName: 'ID', width: 70 },
-		{ field: 'name', headerName: <FormattedMessage id="project.teams.fields.name"/>, width: 160 },
-		{ field: 'arena', headerName: <FormattedMessage id="project.teams.fields.arena"/>, width: 160 },
-		{ field: 'owner', headerName: <FormattedMessage id="project.teams.fields.owner"/>, width: 160 }
+		{ field: 'id', headerName: 'ID', width: 46.9 },
+		{ field: 'name', headerName: <FormattedMessage id="project.teams.fields.name"/>, width: 107.2 },
+		{ field: 'arena', headerName: <FormattedMessage id="project.teams.fields.arena"/>, width: 107.2 },
+		{ field: 'owner', headerName: <FormattedMessage id="project.teams.fields.owner"/>, width: 107.2 }
 	];
 
 	const rowsTeams = [
@@ -109,10 +109,10 @@ const AddTraining = () => {
 	}
 
 	const columnsSeasons = [
-		{ field: 'id', headerName: 'ID', width: 70 },
-		{ field: 'name', headerName: <FormattedMessage id="project.seasons.fields.name"/>, width: 160 },
-		{ field: 'startDate', headerName: <FormattedMessage id='project.seasons.fields.startDate'/>, width: 160 },
-		{ field: 'endDate', headerName: <FormattedMessage id='project.seasons.fields.endDate'/>, width: 160 },
+		{ field: 'id', headerName: 'ID', width: 46.9 },
+		{ field: 'name', headerName: <FormattedMessage id="project.seasons.fields.name"/>, width: 107.2 },
+		{ field: 'startDate', headerName: <FormattedMessage id='project.seasons.fields.startDate'/>, width: 107.2 },
+		{ field: 'endDate', headerName: <FormattedMessage id='project.seasons.fields.endDate'/>, width: 107.2 },
 	];
 
 	const rowsSeasons = [
@@ -203,21 +203,21 @@ const AddTraining = () => {
 			my={4}
 			display="flex"
 			alignItems="center"
-			gap={4}
-			p={5}
-			m={10}
+			p={3.35}
+			m={6.7}
 			sx={{
-				border: '2px solid grey',
+                maxWidth: { sm: 1020 },
+				border: '1.34px solid grey',
 				background: "linear-gradient(-45deg, #41295a 0%, #2F0743 70% )",
-				borderRadius: "20px",
+				borderRadius: "13.4px",
 				flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 				flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
 				borderColor:"black",
-				boxShadow:"0 10px 50px rgb(0, 0, 0)"
+				boxShadow:"0 6.7px 33.5px rgb(0, 0, 0)"
 			}}
 		>
             <Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
-			<Grid container margin={5} spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
+			<Grid container margin={3.35} spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
 			>
 				<Grid item md={12} >
 					<img src={bigBall} alt="Person" class="card__image_training_update_create"></img>
@@ -226,9 +226,9 @@ const AddTraining = () => {
 						component="form"
 						sx={{
 							background: "linear-gradient(-45deg, #f5af19 0%, #f12711 100% )",
-							borderRadius: "20px",
+							borderRadius: "13.4px",
 							borderColor:"black",
-                            boxShadow:"0 10px 50px rgb(0, 0, 0)"
+                            boxShadow:"0 6.7px 33.5px rgb(0, 0, 0)"
 						}}
 						autoHeight={true} // Permitir que la tabla determine su propio tamaño si los datos no se han cargado
 						noValidate
@@ -241,27 +241,27 @@ const AddTraining = () => {
 								<Box
 									component="form"
 									sx={{
-										'& .MuiTextField-root': { mb: 2, width: '100%' },
-										margin: '50px', // Centra el formulario en la pantalla
-
+										'& .MuiTextField-root': { mb: 1.34, width: '100%' },
+										margin: '33.5px', // Centra el formulario en la pantalla
 									}}
 									noValidate
 									autoComplete="off"
 								>
-									<h4 class="margin_training_form"
-									><FormattedMessage id="project.global.fields.date" /></h4>
+									<h6 class="margin_training_form margin_training_form_top_botton"
+									><FormattedMessage id="project.global.fields.date" /></h6>
 									<LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
 										<DemoContainer components={['DateTimePicker']}>
 											<DateTimePicker
 												sx={{
-													border: '2px solid grey',
+													border: '1.34px solid grey',
 													background: "linear-gradient(-45deg, #41295a 0%, #2F0743 100% )",
-													borderRadius: "20px",
+													borderRadius: "13.4px",
 													colorAdjust: "#00bfff",
 													'& label': { color: 'white' },
 													'& input': { color: 'white' },
 													borderColor:"black",
-                                                    boxShadow:"0 10px 10px rgb(0, 0, 0)"
+                                                    boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)",
+													height:"47px"
 
 												}}
 												autoFocus
@@ -279,21 +279,22 @@ const AddTraining = () => {
 											/>
 										</DemoContainer>
 									</LocalizationProvider>
-									<h4 class="margin_training_form"
-									><FormattedMessage id="project.statistics.fields.duration" /></h4>
+									<h6 class="margin_training_form margin_training_form_top_botton"
+									><FormattedMessage id="project.statistics.fields.duration" /></h6>
 									<LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
 										<DemoContainer components={['TimePicker']}>
 											<TimePicker
 											    id="time-picker"
 
 												sx={{
-													border: '2px solid grey',
+													border: '1.34px solid grey',
 													background: "linear-gradient(-45deg, #41295a 0%, #2F0743 100% )",
-													borderRadius: "20px",
+													borderRadius: "13.4px",
 													'& label': { color: 'white' },
 													'& input': { color: 'white' },
 													borderColor:"black",
-                                                    boxShadow:"0 10px 10px rgb(0, 0, 0)"
+                                                    boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)",
+													height:"47px",
 												}}
 
 												onChange={(durationMinutes) => {
@@ -314,8 +315,8 @@ const AddTraining = () => {
 								<Box
 									component="form"
 									sx={{
-										'& .MuiTextField-root': { mb: 2, width: '100%' },
-										margin: '50px', // Centra el formulario en la pantalla
+										'& .MuiTextField-root': { mb: 1.34, width: '100%' },
+										margin: '33.5px', // Centra el formulario en la pantalla
 
 									}}
 									noValidate
@@ -324,16 +325,17 @@ const AddTraining = () => {
 									<TextField
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.exercises.fields.description" />}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 13.4, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 10.05, fontWeight: 'regular', width: '100%' } }}
 										multiline
 										rows={4}
 										sx={{
-											border: '2px solid grey',
+											border: '1px solid grey',
 											background: "linear-gradient(-45deg, #41295a 0%, #2F0743 100% )",
-											borderRadius: "20px",
+											borderRadius: "13.4px",
 											borderColor:"black",
-											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+											boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)",
+											paddingBottom:"20px"
 										}}
 										value={description}
 										onChange={(e) => setDescription(e.target.value)}
@@ -342,16 +344,17 @@ const AddTraining = () => {
 									<TextField
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.trainings.fields.objective" />}//Objetivo
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 13.4, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 10.05, fontWeight: 'regular', width: '100%' } }}
 										multiline
 										rows={4}
 										sx={{
-											border: '2px solid grey',
+											border: '1px solid grey',
 											background: "linear-gradient(-45deg, #41295a 0%, #2F0743 100% )",
-											borderRadius: "20px",
+											borderRadius: "13.4px",
 											borderColor:"black",
-											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+											boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)",
+											paddingBottom:"20px"
 										}}
 										value={objective}
 										onChange={(e) => setObjective(e.target.value)}
@@ -365,22 +368,26 @@ const AddTraining = () => {
 				<Grid container spacing={2}>
 							<Grid item xs={12} md={6}>
 						<Typography
-							sx={{ flex: '1 1 100%', mt: 3.5, color: "#00bfff", m:2 }}
-							variant="h6"
+							sx={{ 
+                                flex: '1 1 100%', mt: 2.35, color: "#00bfff", m:1.34 }}
+							variant="h8"
 							id="tableTitle"
 							component="div"
 						>
 							<FormattedMessage id="project.global.buttons.team_selection" />
 						</Typography>
-						<div style={{ height: 400, width: '100%', }}>
+						<div style={{ height: 274, width: '100%', }}>
 							<DataGrid
 								sx={{
 									background: "linear-gradient(-45deg, #f12711 0%, #f5af19 100% )",
-									borderRadius: "20px",
-									m:2,
+									borderRadius: "13.4px",
+									m:1.34,
+									mr:0,
 									borderColor:"black",
-									boxShadow:"0 10px 50px rgb(0, 0, 0)"
+									boxShadow:"0 6.7px 33.50px rgb(0, 0, 0)",
+									fontSize:"10px",
 								}}
+								density="compact"
 								rows={rowsTeams}
 								columns={columnsTeams}
 								initialState={{
@@ -415,22 +422,26 @@ const AddTraining = () => {
 
 					<Grid item xs={12} md={6}>
 						<Typography
-							sx={{ flex: '1 1 100%', mt: 3.5, color: "#00bfff", m:2 }}
-							variant="h6"
+							sx={{ 
+                                flex: '1 1 100%', mt: 2.35, color: "#00bfff", m:1.34 }}
+							variant="h8"
 							id="tableTitle"
 							component="div"
 						>
 							<FormattedMessage id="project.global.buttons.season_selection" />
 						</Typography>
-						<div style={{ height: 400, width: '100%' }}>
+						<div style={{ height: 274, width: '100%', }}>
 							<DataGrid
 								sx={{
 									background: "linear-gradient(-45deg, #f12711 0%, #f5af19 100% )",
-									borderRadius: "20px",
-									m:2,
+									borderRadius: "13.4px",
+									m:1.34,
+									mr:0,
 									borderColor:"black",
-									boxShadow:"0 10px 50px rgb(0, 0, 0)"
+									boxShadow:"0 6.7px 33.50px rgb(0, 0, 0)",
+									fontSize:"10px",
 								}}
+								density="compact"
 								rows={rowsSeasons}
 								columns={columnsSeasons}
 								initialState={{

@@ -939,12 +939,12 @@ max-height: 241.2px;
 }
 
 .card__image_training_update_create {
-  height: 160px;
-  width: 160px;
+  height: 107.2px;
+  width: 107.2px;
   border-radius: 50%;
-  margin-bottom: 50px;
-  border: 5px solid #272133;
-  box-shadow: 0 10px 50px rgb(255, 111, 0);}
+  margin-bottom: 33.5px;
+  border: 3.35px solid #272133;
+  box-shadow: 0 6.7px 33.5px rgb(255, 111, 0);}
 
 .card__image_game_update_create {
   height: 160px;
@@ -1256,7 +1256,7 @@ max-height: 241.2px;
   height: 107.2px;
   width: 107.2px;
   border-radius: 50%;
-  margin-bottom: 33.5px;
+  margin-bottom: 31px;
   box-shadow: 0 6.7px 33.5px rgb(0, 0, 0);}
 
 .card__image_play_update_create {
@@ -1315,16 +1315,16 @@ max-height: 241.2px;
 
 .post_training {
   width: 100%;
-  padding: 10px;
+  padding: 6.7px;
   border: none;
-  border-radius: 20px;
-  font-size: 22px;
+  border-radius: 13.4px;
+  font-size: 14.74px;
   font-family: Sans-serif;
   color: #fff;
   background-size: 200% 100%;
   background: linear-gradient(180deg,#10ff00,#000000);
   transition: 0.3s ease-out;
-  margin-right: 50px;
+  margin-right: 33.5px;
 }
 
 .post_lesion {
@@ -1630,8 +1630,13 @@ max-height: 241.2px;
 }
 
 .margin_training_form {
-  margin-left: 10px;
+  margin-left: 6.7px;
   color: #00bfff;
+}
+
+.margin_training_form_top_botton {
+  margin-top: 13px;
+  margin-bottom: 0px;
 }
 
 .button {
