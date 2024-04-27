@@ -101,7 +101,7 @@ const handleFindTrainingsToPlayer = (playerId, dispatch, history) => {
   }
 
   const handleUpdateStatisticsPlayer = (id, gameId, dispatch, history) => {
-    dispatch(actions.findPlayerById(id, () => history(`/statistics/update/game/${gameId}/players/${1}/player/${id}`)));
+    dispatch(actionStatistics.findStatisticsByPlayerAndGame(id, gameId, () => dispatch(actions.findPlayerById(id, () => history(`/statistics/update/game/${gameId}/players/${1}/player/${id}`)))));
 }
 
 //   function PlayersList({ items, stretchingsList, gameId, gamesList, trainingsList, lesionList, teamsList, id, fallback, dispatch, history}) {
@@ -205,12 +205,12 @@ const handleFindTrainingsToPlayer = (playerId, dispatch, history) => {
       top: '50%',
       left: '50%',
       transform: 'translate(-50%, -50%)',
-      width: 900,
+      width: 603,
       bgcolor: 'rgb(59, 4, 26)',
       border: '2px solid #000',
-      boxShadow: 24,
-      p: 4,
-      borderRadius: "20px",
+      boxShadow: 16.08,
+      p: 2.68,
+      borderRadius: "13.4px",
     };
     
     const PlayerCard = ({ dispatch, gameId, history, item, handleOpenDescriptionModal, handleOpenMedicationModal }) => {
@@ -224,7 +224,7 @@ const handleFindTrainingsToPlayer = (playerId, dispatch, history) => {
                 <ul className="social-icons injuredhover injured_position">
                   <li>
                     <a type="button">
-                    <i className="fa fa-exclamation-triangle" style={{ top: '10.5px', left: '10.5px', fontSize: '23px', color:"red" }}></i>
+                    <i className="fa fa-exclamation-triangle" style={{ top: '7.04px', left: '7.04px', fontSize: '15.41px', color:"red" }}></i>
                     </a>
                   </li>
                 </ul>
@@ -251,7 +251,7 @@ const handleFindTrainingsToPlayer = (playerId, dispatch, history) => {
                   </div>
                   <ul class="social-icons statisticsGamegrande statistics_game_position">
                       <li><a type="button" onClick={() => handleUpdateStatisticsPlayer(item.id, gameId, dispatch, history)}>
-                      <i>{<LeaderboardIcon />} </i></a></li>
+                      <i>{<LeaderboardIcon style={{marginLeft:"-3.57px", marginTop:"-10px", fontSize:"20px"}} />} </i></a></li>
                   </ul>
                 </div>
               </div>

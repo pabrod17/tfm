@@ -82,7 +82,7 @@ const StatisticsHome = () => {
                     bgcolor: 'background.dark',
                     borderRadius: 4,
                     margin: 'auto',  // Centra horizontalmente
-                    marginTop: '50px', // Ajusta la distancia desde la parte superior según sea necesario
+                    marginTop: '33.5px', // Ajusta la distancia desde la parte superior según sea necesario
                     textAlign: 'center', // Centra el contenido dentro del Box
                 }}>
 <div>
@@ -113,7 +113,7 @@ const StatisticsHome = () => {
                     )}
                 />
             </div>
-            <div className="mt-3">
+            <div className="mt-2">
                 <button type="button" className="button_all_buscar" onClick={handleSubmit}>
                 <FormattedMessage id="project.global.buttons.find" />
                 </button>

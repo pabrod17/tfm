@@ -207,27 +207,26 @@ const UpdateStatisticsGamePlayer = () => {
 <Box
 				sx={{
 					bgcolor: 'background.dark',
-					boxShadow: 1,
-					borderRadius: 4,
+					borderRadius: 2.68,
 					margin: 'auto',  // Centra horizontalmente
-					marginTop: '80px', // Ajusta la distancia desde la parte superior según sea necesario
+					marginTop: '53.6px', // Ajusta la distancia desde la parte superior según sea necesario
 					textAlign: 'center', // Centra el contenido dentro del Box
 				}}>
 
-                <Box sx={{boxShadow:"0 10px 50px rgb(0, 0, 0)" }}>
+<Box sx={{boxShadow:"0 6.7px 33.5px rgb(0, 0, 0)" }}>
 					<Tabs value={value} onChange={handleChange} aria-label="basic tabs example"
 						sx={{
 							background: "linear-gradient(-35deg, #081971 30%, #7C0C0C 80% )",
 							bgcolor: "red",
-							boxShadow: 6,
-							borderRadius: 3,
-							mb: 2,
+							boxShadow: 4.02,
+							borderRadius: 2.01,
+							mb: 1.34,
 							borderColor: "black",
-							boxShadow: "0 10px 50px rgb(0, 0, 0)"
+							boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)"
 						}}
 					>
-						<Tab value={0} sx={{ color: '#40FF00', fontSize: "30px", padding: "20px" }} onClick={() => handleUpdateGameStatistics(0, dispatch)} label={<FormattedMessage id="project.games.fields.game"/>} />
-						<Tab value={1} sx={{ color: '#ff0000', fontSize: "30px", padding: "20px" }} onClick={() => handleUpdatePlayerStatistics(1, dispatch)} label={<FormattedMessage id="project.players.fields.players"/>} />
+						<Tab value={0} sx={{ color: '#40FF00', fontSize: "22.11px", padding: "13.4px" }} onClick={() => handleUpdateGameStatistics(0, dispatch)} label={<FormattedMessage id="project.games.fields.game"/>} />
+						<Tab value={1} sx={{ color: '#ff0000', fontSize: "22.11px", padding: "13.4px" }} onClick={() => handleUpdatePlayerStatistics(1, dispatch)} label={<FormattedMessage id="project.players.fields.players"/>} />
 					</Tabs>
 				</Box>
 				<input type="checkbox" class="theme-checkbox" onClick={() => setShowTable(!showTable)} />
@@ -249,25 +248,25 @@ const UpdateStatisticsGamePlayer = () => {
 					<Box
 						display="flex"
 						alignItems="center"
-						p={5}
+						p={3.35}
 						pt={0}
 
 						sx={{
-							maxWidth: { sm: 1635 },
+							maxWidth: { sm:1095.45 },
 
-							border: '2px solid grey',
+							border: '1.34px solid grey',
 							background: "linear-gradient(180deg, rgb(59, 4, 26) 10%,rgb(47, 0, 255), rgb(59, 4, 26))",
-							borderRadius: "20px",
+							borderRadius: "13.4px",
 							flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 							flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
-							boxShadow: "0 10px 50px rgb(0, 0, 0)",
+							boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)",
 							borderColor: "black"
 						}}
 					>
 						<Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
                         <Grid container margin={1} spacing={{ xs: 0, md: 5 }}>
                         <Typography
-									sx={{ flex: '1 1 100%', pt:3.5,mt: 3.5, color: "#36FF00", m: 2, mb: 1, fontSize: 30, textAlign: 'center' }}
+									sx={{ flex: '1 1 100%', pt:3.5,mt: 3.5, color: "#36FF00", m: 2, mb: 0, fontSize: 20.1, textAlign: 'center' }}
 									variant="h6"
 									id="tableTitle"
 									component="div"
@@ -282,22 +281,22 @@ const UpdateStatisticsGamePlayer = () => {
 								<Box
 									component="form"
 									sx={{
-										borderRadius: "20px",
+										borderRadius: "13.4px",
 										borderColor: "black",
-										boxShadow: "0 10px 50px rgb(0, 0, 0)",
+										boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)",
 
 									}}
 									autoHeight={true} // Permitir que la tabla determine su propio tamaño si los datos no se han cargado
 									noValidate
 									autoComplete="off"
 								>
-									<Grid container margin={5} spacing={{ xs: 0, md: 2 }} columns={{ xs: 4, sm: 8, md: 6 }}>
+									<Grid container margin={3.35} spacing={{ xs: 0, md: 2 }} columns={{ xs: 4, sm: 8, md: 6 }}>
 										<Grid item xs={3}>
 											<Box
 												component="form"
 												sx={{
-													'& .MuiTextField-root': { mb: 2 },
-													margin: '30px', // Centra el formulario en la pantalla
+													'& .MuiTextField-root': { mb: 1.34 },
+													margin: '20.1px', // Centra el formulario en la pantalla
 
 												}}
 												noValidate
@@ -307,15 +306,15 @@ const UpdateStatisticsGamePlayer = () => {
 												<TextField
 													id="outlined-number"
 													label={<FormattedMessage id="project.statistics.fields.totalFreeShots" />}
-													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%'} }}
-													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
+													InputLabelProps={{ style: { color: '#00bfff', fontSize: 20.1, fontWeight: 'regular', width: '100%'} }}
+													InputProps={{ style: { color: 'white', fontSize: 20.1, fontWeight: 'regular', width: '100%' } }}
 													inputProps={{ min: 0 }}
 													type="number"
 													sx={{
-														border: '2px solid grey',
-														borderRadius: "20px",
+														border: '1.34px solid grey',
+														borderRadius: "13.4px",
 														borderColor: "black",
-														boxShadow: "0 10px 10px rgb(0, 0, 0)"
+														boxShadow: "0 6.7px 6.7px rgb(0, 0, 0)",
 
 													}}
 													value={freeShots}
@@ -327,8 +326,8 @@ const UpdateStatisticsGamePlayer = () => {
 											<Box
 												component="form"
 												sx={{
-													'& .MuiTextField-root': { mb: 2 },
-													margin: '30px', // Centra el formulario en la pantalla
+													'& .MuiTextField-root': { mb: 1.34 },
+													margin: '20.1px', // Centra el formulario en la pantalla
 
 												}}
 												noValidate
@@ -338,15 +337,15 @@ const UpdateStatisticsGamePlayer = () => {
 												<TextField
 													id="outlined-number"
 													label={<FormattedMessage id="project.statistics.fields.failShots" />}
-													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%'} }}
-													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
+													InputLabelProps={{ style: { color: '#00bfff', fontSize: 20.1, fontWeight: 'regular', width: '100%'} }}
+													InputProps={{ style: { color: 'white', fontSize: 20.1, fontWeight: 'regular', width: '100%' } }}
 													inputProps={{ min: 0 }}
 													type="number"
 													sx={{
-														border: '2px solid grey',
-														borderRadius: "20px",
+														border: '1.34px solid grey',
+														borderRadius: "13.4px",
 														borderColor: "black",
-														boxShadow: "0 10px 10px rgb(0, 0, 0)"
+														boxShadow: "0 6.7px 6.7px rgb(0, 0, 0)",
 
 													}}
 													value={failFreeShots}
@@ -358,8 +357,8 @@ const UpdateStatisticsGamePlayer = () => {
 											<Box
 												component="form"
 												sx={{
-													'& .MuiTextField-root': { mb: 2 },
-													margin: '30px', // Centra el formulario en la pantalla
+													'& .MuiTextField-root': { mb: 1.34 },
+													margin: '20.1px', // Centra el formulario en la pantalla
 
 												}}
 												noValidate
@@ -369,15 +368,15 @@ const UpdateStatisticsGamePlayer = () => {
 												<TextField
 													id="outlined-number"
 													label={<FormattedMessage id="project.statistics.fields.setShots" />}
-													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%'} }}
-													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
+													InputLabelProps={{ style: { color: '#00bfff', fontSize: 20.1, fontWeight: 'regular', width: '100%'} }}
+													InputProps={{ style: { color: 'white', fontSize: 20.1, fontWeight: 'regular', width: '100%' } }}
 													inputProps={{ min: 0 }}
 													type="number"
 													sx={{
-														border: '2px solid grey',
-														borderRadius: "20px",
+														border: '1.34px solid grey',
+														borderRadius: "13.4px",
 														borderColor: "black",
-														boxShadow: "0 10px 10px rgb(0, 0, 0)"
+														boxShadow: "0 6.7px 6.7px rgb(0, 0, 0)",
 
 													}}
 													value={setShots}
@@ -389,8 +388,8 @@ const UpdateStatisticsGamePlayer = () => {
 											<Box
 												component="form"
 												sx={{
-													'& .MuiTextField-root': { mb: 2 },
-													margin: '30px', // Centra el formulario en la pantalla
+													'& .MuiTextField-root': { mb: 1.34 },
+													margin: '20.1px', // Centra el formulario en la pantalla
 
 												}}
 												noValidate
@@ -400,15 +399,15 @@ const UpdateStatisticsGamePlayer = () => {
 												<TextField
 													id="outlined-number"
 													label={<FormattedMessage id="project.statistics.fields.failShots" />}
-													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%'} }}
-													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
+													InputLabelProps={{ style: { color: '#00bfff', fontSize: 20.1, fontWeight: 'regular', width: '100%'} }}
+													InputProps={{ style: { color: 'white', fontSize: 20.1, fontWeight: 'regular', width: '100%' } }}
 													inputProps={{ min: 0 }}
 													type="number"
 													sx={{
-														border: '2px solid grey',
-														borderRadius: "20px",
+														border: '1.34px solid grey',
+														borderRadius: "13.4px",
 														borderColor: "black",
-														boxShadow: "0 10px 10px rgb(0, 0, 0)"
+														boxShadow: "0 6.7px 6.7px rgb(0, 0, 0)",
 
 													}}
 													value={failSetShots}
@@ -420,8 +419,8 @@ const UpdateStatisticsGamePlayer = () => {
 											<Box
 												component="form"
 												sx={{
-													'& .MuiTextField-root': { mb: 2 },
-													margin: '30px', // Centra el formulario en la pantalla
+													'& .MuiTextField-root': { mb: 1.34 },
+													margin: '20.1px', // Centra el formulario en la pantalla
 
 												}}
 												noValidate
@@ -431,15 +430,15 @@ const UpdateStatisticsGamePlayer = () => {
 												<TextField
 													id="outlined-number"
 													label={<FormattedMessage id="project.statistics.fields.threePointShots" />}
-													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%'} }}
-													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
+													InputLabelProps={{ style: { color: '#00bfff', fontSize: 20.1, fontWeight: 'regular', width: '100%'} }}
+													InputProps={{ style: { color: 'white', fontSize: 20.1, fontWeight: 'regular', width: '100%' } }}
 													inputProps={{ min: 0 }}
 													type="number"
 													sx={{
-														border: '2px solid grey',
-														borderRadius: "20px",
+														border: '1.34px solid grey',
+														borderRadius: "13.4px",
 														borderColor: "black",
-														boxShadow: "0 10px 10px rgb(0, 0, 0)"
+														boxShadow: "0 6.7px 6.7px rgb(0, 0, 0)",
 
 													}}
 													value={threePointShots}
@@ -451,8 +450,8 @@ const UpdateStatisticsGamePlayer = () => {
 											<Box
 												component="form"
 												sx={{
-													'& .MuiTextField-root': { mb: 2 },
-													margin: '30px', // Centra el formulario en la pantalla
+													'& .MuiTextField-root': { mb: 1.34 },
+													margin: '20.1px', // Centra el formulario en la pantalla
 
 												}}
 												noValidate
@@ -462,15 +461,15 @@ const UpdateStatisticsGamePlayer = () => {
 												<TextField
 													id="outlined-number"
 													label={<FormattedMessage id="project.statistics.fields.failShots" />}
-													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%'} }}
-													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
+													InputLabelProps={{ style: { color: '#00bfff', fontSize: 20.1, fontWeight: 'regular', width: '100%'} }}
+													InputProps={{ style: { color: 'white', fontSize: 20.1, fontWeight: 'regular', width: '100%' } }}
 													inputProps={{ min: 0 }}
 													type="number"
 													sx={{
-														border: '2px solid grey',
-														borderRadius: "20px",
+														border: '1.34px solid grey',
+														borderRadius: "13.4px",
 														borderColor: "black",
-														boxShadow: "0 10px 10px rgb(0, 0, 0)"
+														boxShadow: "0 6.7px 6.7px rgb(0, 0, 0)",
 
 													}}
 													value={failThreePointShots}
@@ -482,8 +481,8 @@ const UpdateStatisticsGamePlayer = () => {
 											<Box
 												component="form"
 												sx={{
-													'& .MuiTextField-root': { mb: 2 },
-													margin: '30px', // Centra el formulario en la pantalla
+													'& .MuiTextField-root': { mb: 1.34 },
+													margin: '20.1px', // Centra el formulario en la pantalla
                                                     alignContent:"center",
                                                     textAlign:"center"
 												}}
@@ -494,15 +493,15 @@ const UpdateStatisticsGamePlayer = () => {
 												<TextField
 													id="outlined-number"
 													label={<FormattedMessage id="project.statistics.fields.totalPoints" />}
-													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%'} }}
-													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
+													InputLabelProps={{ style: { color: '#00bfff', fontSize: 20.1, fontWeight: 'regular', width: '100%'} }}
+													InputProps={{ style: { color: 'white', fontSize: 20.1, fontWeight: 'regular', width: '100%' } }}
 													inputProps={{ min: 0 }}
 													type="number"
 													sx={{
-														border: '2px solid grey',
-														borderRadius: "20px",
+														border: '1.34px solid grey',
+														borderRadius: "13.4px",
 														borderColor: "black",
-														boxShadow: "0 10px 10px rgb(0, 0, 0)"
+														boxShadow: "0 6.7px 6.7px rgb(0, 0, 0)",
 
 													}}
 													value={totalPoints}
@@ -526,22 +525,22 @@ const UpdateStatisticsGamePlayer = () => {
 								<Box
 									component="form"
 									sx={{
-										borderRadius: "20px",
+										borderRadius: "13.4px",
 										borderColor: "black",
-										boxShadow: "0 10px 50px rgb(0, 0, 0)",
+										boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)",
 
 									}}
 									autoHeight={true} // Permitir que la tabla determine su propio tamaño si los datos no se han cargado
 									noValidate
 									autoComplete="off"
 								>
-									<Grid container margin={5} spacing={{ xs: 0, md: 2 }} columns={{ xs: 4, sm: 8, md: 6 }}>
+									<Grid container margin={3.35} spacing={{ xs: 0, md: 2 }} columns={{ xs: 4, sm: 8, md: 6 }}>
                                     <Grid item xs={3}>
 											<Box
 												component="form"
 												sx={{
-													'& .MuiTextField-root': { mb: 2 },
-													margin: '30px', // Centra el formulario en la pantalla
+													'& .MuiTextField-root': { mb: 1.34 },
+													margin: '20.1px', // Centra el formulario en la pantalla
 
 												}}
 												noValidate
@@ -551,15 +550,15 @@ const UpdateStatisticsGamePlayer = () => {
 												<TextField
 													id="outlined-number"
 													label={<FormattedMessage id="project.statistics.fields.personalFouls" />}
-													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%'} }}
-													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
+													InputLabelProps={{ style: { color: '#00bfff', fontSize: 20.1, fontWeight: 'regular', width: '100%'} }}
+													InputProps={{ style: { color: 'white', fontSize: 20.1, fontWeight: 'regular', width: '100%' } }}
 													inputProps={{ min: 0 }}
 													type="number"
 													sx={{
-														border: '2px solid grey',
-														borderRadius: "20px",
+														border: '1.34px solid grey',
+														borderRadius: "13.4px",
 														borderColor: "black",
-														boxShadow: "0 10px 10px rgb(0, 0, 0)"
+														boxShadow: "0 6.7px 6.7px rgb(0, 0, 0)",
 
 													}}
 													value={personalFouls}
@@ -571,8 +570,8 @@ const UpdateStatisticsGamePlayer = () => {
 											<Box
 												component="form"
 												sx={{
-													'& .MuiTextField-root': { mb: 2 },
-													margin: '30px', // Centra el formulario en la pantalla
+													'& .MuiTextField-root': { mb: 1.34 },
+													margin: '20.1px', // Centra el formulario en la pantalla
 
 												}}
 												noValidate
@@ -582,15 +581,15 @@ const UpdateStatisticsGamePlayer = () => {
 												<TextField
 													id="outlined-number"
 													label={<FormattedMessage id="project.statistics.fields.rebounds" />}
-													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%'} }}
-													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
+													InputLabelProps={{ style: { color: '#00bfff', fontSize: 20.1, fontWeight: 'regular', width: '100%'} }}
+													InputProps={{ style: { color: 'white', fontSize: 20.1, fontWeight: 'regular', width: '100%' } }}
 													inputProps={{ min: 0 }}
 													type="number"
 													sx={{
-														border: '2px solid grey',
-														borderRadius: "20px",
+														border: '1.34px solid grey',
+														borderRadius: "13.4px",
 														borderColor: "black",
-														boxShadow: "0 10px 10px rgb(0, 0, 0)"
+														boxShadow: "0 6.7px 6.7px rgb(0, 0, 0)",
 
 													}}
 													value={rebounds}
@@ -602,8 +601,8 @@ const UpdateStatisticsGamePlayer = () => {
 											<Box
 												component="form"
 												sx={{
-													'& .MuiTextField-root': { mb: 2 },
-													margin: '30px', // Centra el formulario en la pantalla
+													'& .MuiTextField-root': { mb: 1.34 },
+													margin: '20.1px', // Centra el formulario en la pantalla
 
 												}}
 												noValidate
@@ -613,15 +612,15 @@ const UpdateStatisticsGamePlayer = () => {
 												<TextField
 													id="outlined-number"
 													label={<FormattedMessage id="project.statistics.fields.technicalFouls" />}
-													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%'} }}
-													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
+													InputLabelProps={{ style: { color: '#00bfff', fontSize: 20.1, fontWeight: 'regular', width: '100%'} }}
+													InputProps={{ style: { color: 'white', fontSize: 20.1, fontWeight: 'regular', width: '100%' } }}
 													inputProps={{ min: 0 }}
 													type="number"
 													sx={{
-														border: '2px solid grey',
-														borderRadius: "20px",
+														border: '1.34px solid grey',
+														borderRadius: "13.4px",
 														borderColor: "black",
-														boxShadow: "0 10px 10px rgb(0, 0, 0)"
+														boxShadow: "0 6.7px 6.7px rgb(0, 0, 0)",
 
 													}}
 													value={technicalFouls}
@@ -633,8 +632,8 @@ const UpdateStatisticsGamePlayer = () => {
 											<Box
 												component="form"
 												sx={{
-													'& .MuiTextField-root': { mb: 2 },
-													margin: '30px', // Centra el formulario en la pantalla
+													'& .MuiTextField-root': { mb: 1.34 },
+													margin: '20.1px', // Centra el formulario en la pantalla
 
 												}}
 												noValidate
@@ -644,15 +643,15 @@ const UpdateStatisticsGamePlayer = () => {
 												<TextField
 													id="outlined-number"
 													label={<FormattedMessage id="project.statistics.fields.blockedShot" />}
-													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%'} }}
-													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
+													InputLabelProps={{ style: { color: '#00bfff', fontSize: 20.1, fontWeight: 'regular', width: '100%'} }}
+													InputProps={{ style: { color: 'white', fontSize: 20.1, fontWeight: 'regular', width: '100%' } }}
 													inputProps={{ min: 0 }}
 													type="number"
 													sx={{
-														border: '2px solid grey',
-														borderRadius: "20px",
+														border: '1.34px solid grey',
+														borderRadius: "13.4px",
 														borderColor: "black",
-														boxShadow: "0 10px 10px rgb(0, 0, 0)"
+														boxShadow: "0 6.7px 6.7px rgb(0, 0, 0)",
 
 													}}
 													value={blockedShot}
@@ -664,8 +663,8 @@ const UpdateStatisticsGamePlayer = () => {
 											<Box
 												component="form"
 												sx={{
-													'& .MuiTextField-root': { mb: 2 },
-													margin: '30px', // Centra el formulario en la pantalla
+													'& .MuiTextField-root': { mb: 1.34 },
+													margin: '20.1px', // Centra el formulario en la pantalla
 
 												}}
 												noValidate
@@ -675,15 +674,15 @@ const UpdateStatisticsGamePlayer = () => {
 												<TextField
 													id="outlined-number"
 													label={<FormattedMessage id="project.statistics.fields.unsportsmanlikeFouls" />}
-													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%'} }}
-													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
+													InputLabelProps={{ style: { color: '#00bfff', fontSize: 20.1, fontWeight: 'regular', width: '100%'} }}
+													InputProps={{ style: { color: 'white', fontSize: 20.1, fontWeight: 'regular', width: '100%' } }}
 													inputProps={{ min: 0 }}
 													type="number"
 													sx={{
-														border: '2px solid grey',
-														borderRadius: "20px",
+														border: '1.34px solid grey',
+														borderRadius: "13.4px",
 														borderColor: "black",
-														boxShadow: "0 10px 10px rgb(0, 0, 0)"
+														boxShadow: "0 6.7px 6.7px rgb(0, 0, 0)",
 
 													}}
 													value={unsportsmanlikeFouls}
@@ -695,8 +694,8 @@ const UpdateStatisticsGamePlayer = () => {
 											<Box
 												component="form"
 												sx={{
-													'& .MuiTextField-root': { mb: 2 },
-													margin: '30px', // Centra el formulario en la pantalla
+													'& .MuiTextField-root': { mb: 1.34 },
+													margin: '20.1px', // Centra el formulario en la pantalla
 
 												}}
 												noValidate
@@ -706,15 +705,15 @@ const UpdateStatisticsGamePlayer = () => {
 												<TextField
 													id="outlined-number"
 													label={<FormattedMessage id="project.statistics.fields.assists" />}
-													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%'} }}
-													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
+													InputLabelProps={{ style: { color: '#00bfff', fontSize: 20.1, fontWeight: 'regular', width: '100%'} }}
+													InputProps={{ style: { color: 'white', fontSize: 20.1, fontWeight: 'regular', width: '100%' } }}
 													inputProps={{ min: 0 }}
 													type="number"
 													sx={{
-														border: '2px solid grey',
-														borderRadius: "20px",
+														border: '1.34px solid grey',
+														borderRadius: "13.4px",
 														borderColor: "black",
-														boxShadow: "0 10px 10px rgb(0, 0, 0)"
+														boxShadow: "0 6.7px 6.7px rgb(0, 0, 0)",
 
 													}}
 													value={assists}
@@ -726,8 +725,8 @@ const UpdateStatisticsGamePlayer = () => {
 											<Box
 												component="form"
 												sx={{
-													'& .MuiTextField-root': { mb: 2 },
-													margin: '30px', // Centra el formulario en la pantalla
+													'& .MuiTextField-root': { mb: 1.34 },
+													margin: '20.1px', // Centra el formulario en la pantalla
                                                     alignContent:"center",
                                                     textAlign:"center"
 												}}
@@ -738,15 +737,15 @@ const UpdateStatisticsGamePlayer = () => {
 												<TextField
 													id="outlined-number"
 													label={<FormattedMessage id="project.statistics.fields.minutes" />}
-													InputLabelProps={{ style: { color: '#00bfff', fontSize: 30, fontWeight: 'regular', width: '100%'} }}
-													InputProps={{ style: { color: 'white', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
+													InputLabelProps={{ style: { color: '#00bfff', fontSize: 20.1, fontWeight: 'regular', width: '100%'} }}
+													InputProps={{ style: { color: 'white', fontSize: 20.1, fontWeight: 'regular', width: '100%' } }}
 													inputProps={{ min: 0 }}
 													type="number"
 													sx={{
-														border: '2px solid grey',
-														borderRadius: "20px",
+														border: '1.34px solid grey',
+														borderRadius: "13.4px",
 														borderColor: "black",
-														boxShadow: "0 10px 10px rgb(0, 0, 0)"
+														boxShadow: "0 6.7px 6.7px rgb(0, 0, 0)",
 
 													}}
 													value={minutes}
@@ -776,24 +775,24 @@ const UpdateStatisticsGamePlayer = () => {
 					<Box
 						display="flex"
 						alignItems="center"
-						p={5}
-						m={10}
-						my={1}
+						p={3.35}
+						m={6.7}
+						my={0.67}
 
 						sx={{
 
-							border: '2px solid grey',
+							border: '1.34px solid grey',
 							background: "linear-gradient(180deg, rgb(59, 4, 26) 10%,rgb(47, 0, 255), rgb(59, 4, 26))",
-							borderRadius: "20px",
+							borderRadius: "13.4px",
 							flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 							flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
-							boxShadow: "0 10px 50px rgb(0, 0, 0)",
+							boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)",
 							borderColor: "black"
 						}}
 					>
 
 
-						<Grid container margin={5} spacing={{ xs: 0, md: 2 }} columns={{ xs: 4, sm: 4, md: 12 }}>
+						<Grid container margin={3.35} spacing={{ xs: 0, md: 2 }} columns={{ xs: 4, sm: 4, md: 12 }}>
 							<Grid item xs={3}>
 
 
@@ -802,13 +801,13 @@ const UpdateStatisticsGamePlayer = () => {
 
 									sx={{
 
-										border: '2px solid grey',
+										border: '1.34px solid grey',
 										// background: "linear-gradient(-35deg, #171721 30%, #171721 80% )",
 										background: "linear-gradient(180deg, rgb(59, 4, 26) 30%,rgb(47, 0, 255))",
-										borderRadius: "20px",
+										borderRadius: "13.4px",
 										flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 										flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
-										boxShadow: "0 10px 50px rgb(0, 0, 0)",
+										boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)",
 										borderColor: "black"
 									}}
 								>
@@ -834,12 +833,12 @@ const UpdateStatisticsGamePlayer = () => {
 
 									sx={{
 
-										border: '2px solid grey',
+										border: '1.34px solid grey',
 										background: "linear-gradient(180deg, rgb(59, 4, 26) 30%,rgb(47, 0, 255))",
-										borderRadius: "20px",
+										borderRadius: "13.4px",
 										flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 										flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
-										boxShadow: "0 10px 50px rgb(0, 0, 0)",
+										boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)",
 										borderColor: "black"
 									}}
 								>
@@ -865,12 +864,12 @@ const UpdateStatisticsGamePlayer = () => {
 
 									sx={{
 
-										border: '2px solid grey',
+										border: '1.34px solid grey',
 										background: "linear-gradient(180deg, rgb(59, 4, 26) 30%,rgb(47, 0, 255))",
-										borderRadius: "20px",
+										borderRadius: "13.4px",
 										flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 										flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
-										boxShadow: "0 10px 50px rgb(0, 0, 0)",
+										boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)",
 										borderColor: "black"
 									}}
 								>
@@ -896,12 +895,12 @@ const UpdateStatisticsGamePlayer = () => {
 
 									sx={{
 
-										border: '2px solid grey',
+										border: '1.34px solid grey',
 										background: "linear-gradient(180deg, rgb(59, 4, 26) 30%,rgb(47, 0, 255))",
-										borderRadius: "20px",
+										borderRadius: "13.4px",
 										flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 										flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
-										boxShadow: "0 10px 50px rgb(0, 0, 0)",
+										boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)",
 										borderColor: "black"
 									}}
 								>
@@ -930,18 +929,17 @@ const UpdateStatisticsGamePlayer = () => {
 
 									sx={{
 
-										border: '2px solid grey',
+										border: '1.34px solid grey',
 										background: "linear-gradient(-35deg, #0A0F27 30%, #0A0F27 80% )",
 
 										background: "linear-gradient(180deg, rgb(47, 0, 255) 60%,rgb(59, 4, 26))",
-
-										borderRadius: "20px",
+										borderRadius: "13.4px",
 										flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 										flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
-										boxShadow: "0 10px 50px rgb(0, 0, 0)",
+										boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)",
 										borderColor: "black",
 										'&:hover': {
-											boxShadow:"rgb(0,0,0) 5px 10px 50px ,rgb(0,0,0) -5px 0px 250px"
+											boxShadow:"rgb(0,0,0) 3.35px 6.7px 33.5px ,rgb(0,0,0) -3.35px 0px 167.5px"
 														 
 											},
 									}}
@@ -955,7 +953,7 @@ const UpdateStatisticsGamePlayer = () => {
 										>
 										<BarChart 
 											tooltip={{ trigger: 'item' }}
-											height={502}
+											height={352}
 											series={[
 												{
 													
@@ -977,7 +975,7 @@ const UpdateStatisticsGamePlayer = () => {
 											slotProps={{
 												legend: {
 												  labelStyle: {
-													fontSize: 18,
+													fontSize: 12.06,
 													fill: 'white',
 												  },
 												},
@@ -1007,11 +1005,11 @@ const UpdateStatisticsGamePlayer = () => {
 													stroke: "white",
 													strokeWidth: 2
 												},
-												"& .MuiChartsAxis-tickLabel tspan": { fontSize: "1.8em" },
+												"& .MuiChartsAxis-tickLabel tspan": { fontSize: "1.21em" },
 											}}
 
 										/>
-										<Typography id="input-series-number" gutterBottom>
+										<Typography id="input-series-number" style={{fontSize:"13.4px", marginTop:"-19.7px"}} gutterBottom>
 										<FormattedMessage id="project.statistics.fields.totalFouls" />
 										</Typography>
 									</Box>
@@ -1025,17 +1023,17 @@ const UpdateStatisticsGamePlayer = () => {
 
 									sx={{
 
-										border: '2px solid grey',
+										border: '1.34px solid grey',
 										background: "linear-gradient(-35deg, ##c31432 30%, ##240b36 80% )",
 
 										background: "linear-gradient(180deg, rgb(47, 0, 255) 60%,rgb(59, 4, 26))",
-										borderRadius: "20px",
+										borderRadius: "13.4px",
 										flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 										flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
-										boxShadow: "0 10px 50px rgb(0, 0, 0)",
+										boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)",
 										borderColor: "black",
 										'&:hover': {
-											boxShadow:"rgb(0,0,0) 5px 10px 50px ,rgb(0,0,0) -5px 0px 250px"
+											boxShadow:"rgb(0,0,0) 3.35px 6.7px 33.5px ,rgb(0,0,0) -3.35px 0px 167.5px"
 														 
 											},
 									}}
@@ -1044,7 +1042,7 @@ const UpdateStatisticsGamePlayer = () => {
 									<Stack direction="row" width="100%" textAlign="center" spacing={1}>
 										<Box flexGrow={1}>
 											<Typography
-												sx={{ m: 0, color: "white", fontSize: "20px" }}
+												sx={{ m: 0, color: "white", fontSize: "13.4px" }}
 
 											><FormattedMessage id="project.statistics.fields.shots" /></Typography>
 											<PieChart
@@ -1058,13 +1056,13 @@ const UpdateStatisticsGamePlayer = () => {
 												}]}
 												slotProps={{ legend: { hidden: true } }}
 												{...pieParams}
-												height={470}
+												height={314.9}
 
 											/>
 										</Box>
 										<Box flexGrow={1}>
 											<Typography
-												sx={{ m: 0, color: "white", fontSize: "20px" }}
+												sx={{ m: 0, color: "white", fontSize: "13.4px" }}
 											><FormattedMessage id="project.statistics.fields.shotsFailed" /></Typography>
 											<PieChart
 												series={[
@@ -1079,14 +1077,13 @@ const UpdateStatisticsGamePlayer = () => {
 												]}
 												slotProps={{ legend: { hidden: true } }}
 												{...pieParams}
-												height={470}
+												height={314.9}
 											/>
 										</Box>
 									</Stack>
 									<Box flexGrow={1}>
-									<Typography
-												sx={{ m: 0.1, color: "white", fontSize: "20px" }}
-											><FormattedMessage id="project.statistics.fields.totalPoints" />  {totalPoints}</Typography>
+									<Typography id="input-series-number" style={{fontSize:"13.4px", marginTop:"-2.7px"}} gutterBottom>
+										<FormattedMessage id="project.statistics.fields.totalPoints" />:  {totalPoints}</Typography>
         							</Box>
 								</Box>
 							</Grid>

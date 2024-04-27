@@ -186,27 +186,26 @@ const UpdateStatisticsPlayers = () => {
 <Box
     sx={{
         bgcolor: 'background.dark',
-        boxShadow: 1,
-        borderRadius: 4,
+        borderRadius: 2.68,
         margin: 'auto',  // Centra horizontalmente
-        marginTop: '80px', // Ajusta la distancia desde la parte superior según sea necesario
+        marginTop: '53.6px', // Ajusta la distancia desde la parte superior según sea necesario
         textAlign: 'center', // Centra el contenido dentro del Box
     }}>
 
-<Box sx={{boxShadow:"0 10px 50px rgb(0, 0, 0)" }}>
+<Box sx={{boxShadow:"0 6.7px 33.5px rgb(0, 0, 0)" }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" 
                         sx={{
                             background: "linear-gradient(-35deg, #081971 30%, #7C0C0C 80% )",
-                            bgcolor:"red",
-                            boxShadow: 6,
-                            borderRadius: 3,
-                            mb:2,
-                            borderColor:"black",
-                            boxShadow:"0 10px 50px rgb(0, 0, 0)"
+							bgcolor: "red",
+							boxShadow: 4.02,
+							borderRadius: 2.01,
+							mb: 1.34,
+							borderColor: "black",
+							boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)"
                         }}
         >
-            <Tab value={0} sx={{ color: '#40FF00', fontSize: "30px", padding: "20px" }} onClick={() => handleUpdateGameStatistics(0, dispatch)} label={<FormattedMessage id="project.games.fields.game"/>} />
-		    <Tab value={1} sx={{ color: '#ff0000', fontSize: "30px", padding: "20px" }} onClick={() => handleUpdatePlayerStatistics(1, dispatch)} label={<FormattedMessage id="project.players.fields.players"/>} />
+            <Tab value={0} sx={{ color: '#40FF00', fontSize: "22.11px", padding: "13.4px" }} onClick={() => handleUpdateGameStatistics(0, dispatch)} label={<FormattedMessage id="project.games.fields.game"/>} />
+		    <Tab value={1} sx={{ color: '#ff0000', fontSize: "22.11px", padding: "13.4px" }} onClick={() => handleUpdatePlayerStatistics(1, dispatch)} label={<FormattedMessage id="project.players.fields.players"/>} />
         </Tabs>
       </Box>
 

@@ -425,7 +425,7 @@ box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
 
 
 .theme-checkbox {
-  --toggle-size: 10px;
+  --toggle-size: 6.67px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -481,7 +481,7 @@ box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
   transform: translateX(-50%);
   background-color: #2a2a2a;
   color: white;
-  padding: 0.7em ;
+  padding: 0.5em ;
   border-radius: 5em;
   font-size: 1.5em;
 }
@@ -495,7 +495,7 @@ box-shadow: 0 15px 65px rgba(0, 0, 0, 0.5);
   transform: translateX(-50%);
   background-color: #2a2a2a;
   color: white;
-  padding: 0.7em ;
+  padding: 0.5em ;
   border-radius: 5em;
   font-size: 1.5em;
 }
@@ -1455,10 +1455,10 @@ max-height: 241.2px;
 
 .post_gamestatistics {
   width: 100%;
-  padding: 10px;
+  padding: 6.7px;
   border: none;
-  border-radius: 11px;
-  font-size: 22px;
+  border-radius: 7.37px;
+  font-size: 14.74px;
   font-family: Sans-serif;
   color: #fff;
   background-size: 200% 100%;
@@ -1500,8 +1500,8 @@ max-height: 241.2px;
 
 .cardstatistics {
   width: 100%;
-  height: 300px;
-  border-radius: 15px;
+  height: 201px;
+  border-radius: 10.5px;
   display: flex;
   color: white;
   justify-content: center;
@@ -1518,18 +1518,18 @@ max-height: 241.2px;
 }
 
 .time-text {
-  font-size: 100px;
+  font-size: 67px;
   font-weight: 600;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .time-sub-text {
-  font-size: 15px;
-  margin-left: 5px;
+  font-size: 10.05px;
+  margin-left: 3.35px;
 }
 
 .day-text {
-  font-size: 35px;
+  font-size: 23.45px;
   margin-top: 0px;
   margin-left: 15px;
   font-weight: 500;
@@ -4032,10 +4032,10 @@ main {
 
 .statistics_game_position {
   position: fixed;
-  bottom: 10px;
-  right: 20px;
-  left: 20px;
-  margin: -8px
+  bottom: 9px;
+  right: 13.4px;
+  left: 13.4px;
+  margin: -10.05px
 }
 
 
@@ -4070,8 +4070,8 @@ main {
   -ms-transform: scale(1);
   -webkit-transform: scale(1);
   content: " ";
-  width: 55px;
-  height: 55px;
+  width: 31px;
+  height: 31px;
   border-radius: 100%;
   display: block;
   background: radial-gradient(circle at -1% 57.5%, hsl(199, 100%, 50%) 0%, rgb(0, 60, 255) 90%);

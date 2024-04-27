@@ -266,7 +266,7 @@ export default {
     'project.statistics.fields.duration' : 'Duración (min)',
     'project.statistics.fields.minutes' : 'Minutos',
 
-    'project.statistics.fields.totalPointsRival' : 'Total Puntos Rival: ',
+    'project.statistics.fields.totalPointsRival' : 'Total Puntos Rival ',
     'project.statistics.fields.totalThreePointShotsRival' : 'Tiros de 3 Rival',
     'project.statistics.fields.totalSetShotsRival' : 'Tiros de campo Rival',
     'project.statistics.fields.totalFreeShotsRival' : 'Tiros libres Rival',
