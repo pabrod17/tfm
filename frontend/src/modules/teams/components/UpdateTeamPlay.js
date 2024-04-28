@@ -88,9 +88,9 @@ const UpdateTeamPlay = () => {
             });
 
             const columnsPlays2 = [
-                { field: 'id', headerName: 'ID', width: 70 },
-                { field: 'title', headerName: <FormattedMessage id="project.notes.fields.title" />, width: 160 },
-                { field: 'type', headerName: <FormattedMessage id="project.exercises.fields.typeOnly" />, width: 160,
+                { field: 'id', headerName: 'ID', width: 46.9 },
+                { field: 'title', headerName: <FormattedMessage id="project.notes.fields.title" />, width: 107.2 },
+                { field: 'type', headerName: <FormattedMessage id="project.exercises.fields.typeOnly" />, width: 107.2,
                 renderCell: (params) => (
                     <div style={{ backgroundColor: 
                         params.row.type === 'Ataque' ? '#0011ff' : // Azul oscuro  
@@ -101,8 +101,8 @@ const UpdateTeamPlay = () => {
                     {params.value}
                     </div>
                 ), },
-                { field: 'gesture', headerName: <FormattedMessage id="project.plays.fields.gesture" />, width: 160 },
-                { field: 'description', headerName: <FormattedMessage id="project.exercises.fields.description" />, width: 300 },
+                { field: 'gesture', headerName: <FormattedMessage id="project.plays.fields.gesture" />, width: 107.2 },
+                { field: 'description', headerName: <FormattedMessage id="project.exercises.fields.description" />, width: 260 },
             ];
             setColumnsPlays(columnsPlays2);
 
@@ -185,35 +185,35 @@ const UpdateTeamPlay = () => {
             }}
         >
             <Box
-                sx={{
-                    bgcolor: 'background.dark',
-                    borderRadius: 4,
-                    margin: 'auto',  // Centra horizontalmente
-                    marginTop: '80px', // Ajusta la distancia desde la parte superior según sea necesario
-                    textAlign: 'center', // Centra el contenido dentro del Box
-                }}>
+				sx={{
+					bgcolor: 'background.dark',
+					borderRadius: 2.68,
+					margin: 'auto',  // Centra horizontalmente
+					marginTop: '53.6px', // Ajusta la distancia desde la parte superior según sea necesario
+					textAlign: 'center', // Centra el contenido dentro del Box
+				}}>
 
-                <Box sx={{boxShadow:"0 10px 50px rgb(0, 0, 0)" }}>
+                <Box sx={{boxShadow:"0 6.7px 33.5px rgb(0, 0, 0)" }}>
                     <Tabs value={value} onChange={handleChange} aria-label="basic tabs example"
                         sx={{
                             background: "radial-gradient(circle, #cf3e05 -50%, #000000 100%)",
-                            bgcolor: "red",
-                            boxShadow: 6,
-                            borderRadius: 3,
-                            mb: 2,
-                            borderColor: "black",
-                            boxShadow: "0 10px 50px rgb(0, 0, 0)",
+                            bgcolor:"red",
+							boxShadow: 4.02,
+							borderRadius: 2.01,
+                            mb:1.34,
+                            borderColor:"black",
+							boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)",
                             '& .MuiTabs-flexContainer': {
                                 flexWrap: 'wrap',
                               },
                         }}
                     >
-                        <Tab value={0} sx={{ color: '#fbff00', fontSize: "30px", padding: "20px" }} onClick={() => handleUpdateTeam(0, dispatch)} label="General" />
-                        <Tab value={1} sx={{ color: '#41AF24', fontSize: "30px", padding: "20px" }} onClick={() => handleUpdateTeamPlays(1, dispatch)} label={<FormattedMessage id="project.plays.fields.plays"/>}/>
-                        <Tab value={2} sx={{ color: '#03e0e7', fontSize: "30px", padding: "20px" }} onClick={() => handleUpdateTeamPlayers(2, dispatch)} label={<FormattedMessage id="project.players.fields.players"/>}/>
-                        <Tab value={3} sx={{ color: '#130c0c', fontSize: "30px", padding: "20px" }} onClick={() => handleUpdateTeamSeasons(3, dispatch)} label={<FormattedMessage id="project.seasons.fields.seasons"/>}/>
-                        <Tab value={4} sx={{ color: '#e101e1', fontSize: "30px", padding: "20px" }} onClick={() => handleUpdateTeamTrainings(4, dispatch)} label={<FormattedMessage id="project.trainings.fields.trainings"/>}/>
-                        <Tab value={5} sx={{ color: '#ff0000', fontSize: "30px", padding: "20px" }} onClick={() => handleUpdateTeamGames(5, dispatch)} label={<FormattedMessage id="project.games.fields.games"/>}/>
+                        <Tab value={0} sx={{ color: '#fbff00', fontSize: "22.11px", padding: "13.4px" }} onClick={() => handleUpdateTeam(0, dispatch)} label="General" />
+                        <Tab value={1} sx={{ color: '#41AF24', fontSize: "22.11px", padding: "13.4px" }} onClick={() => handleUpdateTeamPlays(1, dispatch)} label={<FormattedMessage id="project.plays.fields.plays"/>}/>
+                        <Tab value={2} sx={{ color: '#03e0e7', fontSize: "22.11px", padding: "13.4px" }} onClick={() => handleUpdateTeamPlayers(2, dispatch)} label={<FormattedMessage id="project.players.fields.players"/>}/>
+                        <Tab value={3} sx={{ color: '#130c0c', fontSize: "22.11px", padding: "13.4px" }} onClick={() => handleUpdateTeamSeasons(3, dispatch)} label={<FormattedMessage id="project.seasons.fields.seasons"/>}/>
+                        <Tab value={4} sx={{ color: '#e101e1', fontSize: "22.11px", padding: "13.4px" }} onClick={() => handleUpdateTeamTrainings(4, dispatch)} label={<FormattedMessage id="project.trainings.fields.trainings"/>}/>
+                        <Tab value={5} sx={{ color: '#ff0000', fontSize: "22.11px", padding: "13.4px" }} onClick={() => handleUpdateTeamGames(5, dispatch)} label={<FormattedMessage id="project.games.fields.games"/>}/>
                     </Tabs>
                 </Box>
 
@@ -224,6 +224,7 @@ const UpdateTeamPlay = () => {
     display="flex"
     alignItems="center"
     p={1}
+    mt={-0.5}
     sx={{
         flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
     }}
@@ -236,26 +237,27 @@ const UpdateTeamPlay = () => {
         <Box
             display="flex"
             alignItems="center"
-            p={1}
+            p={0.67}
             sx={{
-                border: '2px solid grey',
+                border: '1.34px solid grey',
                 background: "radial-gradient(circle, #ff4800 -10%, #000000 100%)",
-                borderRadius: "20px",
+                borderRadius: "13.4px",
                 flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
                 flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
-                borderColor: "black",
-                boxShadow: "0 10px 50px rgb(0, 0, 0)"
+                borderColor:"black",
+                boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)",
             }}
         >
             <Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
-            <Grid container ml={5} mr={5} mb={1} spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
+            <Grid container ml={3.35} mr={3.35} mb={1} spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
             >
                 <Grid item xs={12} md={12}>
                     <Typography
-                        sx={{ flex: '1 1 100%', mt: 3.5, color: "#00bfff", m: 2 }}
-                        variant="h6"
-                        id="tableTitle"
-                        component="div"
+							sx={{ 
+                                flex: '1 1 100%', mt: 2.35, color: "#00bfff", m:1.34, fontSize:"12px", fontWeight:"bold" }}
+							variant="h8"
+							id="tableTitle"
+							component="div"
                     >
                         {<FormattedMessage id="project.global.buttons.play_selection"/>}
                     </Typography>
@@ -264,12 +266,13 @@ const UpdateTeamPlay = () => {
                             sx={{
                                 background: "radial-gradient(circle, #ff4800 -10%, #000000 100%)",
                                 borderRadius: "20px",
-                                boxShadow: 12,
-                                m: 2,
-                                color: "white",
-                                borderColor: "black",
-                                boxShadow: "0 10px 50px rgb(0, 0, 0)"
+                                boxShadow: 13.4,
+                                m:1.34,
+                                borderColor:"black",
+                                boxShadow:"0 6.7px 33.5px rgb(0, 0, 0)",
+                                color:"white"
                             }}
+                            density="compact"
                             rows={rowsPlays}
                             columns={columnsPlays}
                             initialState={{

@@ -118,37 +118,34 @@ const UpdateTeam = () => {
             }}
         >
 <Box
-    sx={{
-        bgcolor: 'background.dark',
-        boxShadow: 1,
-        borderRadius: 4,
-        margin: 'auto',  // Centra horizontalmente
-        marginTop: '80px', // Ajusta la distancia desde la parte superior según sea necesario
-        textAlign: 'center', // Centra el contenido dentro del Box
-        borderColor:"black",
-        boxShadow:"0 10px 50px rgb(0, 0, 0)"
-    }}>
+				sx={{
+					bgcolor: 'background.dark',
+					borderRadius: 2.68,
+					margin: 'auto',  // Centra horizontalmente
+					marginTop: '53.6px', // Ajusta la distancia desde la parte superior según sea necesario
+					textAlign: 'center', // Centra el contenido dentro del Box
+				}}>
 
-<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+<Box sx={{boxShadow:"0 6.7px 33.5px rgb(0, 0, 0)" }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" 
                         sx={{
                             background: "radial-gradient(circle, #cf3e05 -50%, #000000 100%)",
                             bgcolor:"red",
-                            boxShadow: 6,
-                            borderRadius: 3,
-							borderColor: "black",
-							boxShadow: "0 10px 50px rgb(0, 0, 0)",
+							boxShadow: 4.02,
+							borderRadius: 2.01,
+                            borderColor: "black",
+							boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)",
                             '& .MuiTabs-flexContainer': {
                                 flexWrap: 'wrap',
                               },
                         }}
         >
-          <Tab sx={{ color: '#fbff00', fontSize: "30px", padding:"20px"}} onClick={() => handleUpdateTeam(dispatch)} label="General"  />
-          <Tab sx={{ color: '#41AF24', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTeamPlays(1, dispatch)} label={<FormattedMessage id="project.plays.fields.plays"/>}/>
-          <Tab sx={{ color: '#03e0e7', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTeamPlayers(2, dispatch)} label={<FormattedMessage id="project.players.fields.players"/>}/>
-          <Tab sx={{ color: '#130c0c', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTeamSeasons(3, dispatch)} label={<FormattedMessage id="project.seasons.fields.seasons"/>}/>
-          <Tab sx={{ color: '#e101e1', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTeamTrainings(4, dispatch)} label={<FormattedMessage id="project.trainings.fields.trainings"/>}/>
-          <Tab sx={{ color: '#ff0000', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTeamGames(5, dispatch)} label={<FormattedMessage id="project.games.fields.games"/>}/>
+          <Tab sx={{ color: '#fbff00', fontSize: "22.11px", padding:"13.4px"}} onClick={() => handleUpdateTeam(dispatch)} label="General"  />
+          <Tab sx={{ color: '#41AF24', fontSize: "22.11px", padding:"13.4px" }} onClick={() => handleUpdateTeamPlays(1, dispatch)} label={<FormattedMessage id="project.plays.fields.plays"/>}/>
+          <Tab sx={{ color: '#03e0e7', fontSize: "22.11px", padding:"13.4px" }} onClick={() => handleUpdateTeamPlayers(2, dispatch)} label={<FormattedMessage id="project.players.fields.players"/>}/>
+          <Tab sx={{ color: '#130c0c', fontSize: "22.11px", padding:"13.4px" }} onClick={() => handleUpdateTeamSeasons(3, dispatch)} label={<FormattedMessage id="project.seasons.fields.seasons"/>}/>
+          <Tab sx={{ color: '#e101e1', fontSize: "22.11px", padding:"13.4px" }} onClick={() => handleUpdateTeamTrainings(4, dispatch)} label={<FormattedMessage id="project.trainings.fields.trainings"/>}/>
+          <Tab sx={{ color: '#ff0000', fontSize: "22.11px", padding:"13.4px" }} onClick={() => handleUpdateTeamGames(5, dispatch)} label={<FormattedMessage id="project.games.fields.games"/>}/>
         </Tabs>
       </Box>
 </Box>
@@ -156,24 +153,24 @@ const UpdateTeam = () => {
 
 
 <Box
-			my={4}
+			my={2.68}
 			display="flex"
 			alignItems="center"
-			gap={4}
-			p={5}
+			gap={1}
+            p={3.35}
 			sx={{
-				border: '2px solid grey',
+                border: '1.34px solid grey',
                 background: "radial-gradient(circle, #ff4800 -10%, #000000 100%)",
-				borderRadius: "20px",
+                borderRadius: "13.4px",
 				flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 				flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
                 borderColor:"black",
-                boxShadow:"0 10px 50px rgb(0, 0, 0)",
-                width:"1000px"
+                boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)",
+                width:"670px"
             }}
 		>
             <Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
-			<Grid container margin={5} spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
+			<Grid container margin={3.35} spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
 			>
 				<Grid item xs={12} md={12} >
 					<img src={logo22} alt="Person" class="card__image_team_update_create"></img>
@@ -181,9 +178,9 @@ const UpdateTeam = () => {
 					<Box
 						component="form"
 						sx={{
-							borderRadius: "20px",
-							borderColor:"black",
-                            boxShadow:"0 10px 50px rgb(0, 0, 0)"
+                            borderRadius: "13.4px",
+                            borderColor:"black",
+                            boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)",
 						}}
 						autoHeight={true} // Permitir que la tabla determine su propio tamaño si los datos no se han cargado
 						noValidate
@@ -196,8 +193,9 @@ const UpdateTeam = () => {
 								<Box
 									component="form"
 									sx={{
-										'& .MuiTextField-root': { mb: 2, width: '100%' },
-										margin: '50px', // Centra el formulario en la pantalla
+										'& .MuiTextField-root': { mb: 1.34, width: '100%' },
+										margin: '33.5px', // Centra el formulario en la pantalla
+
 									}}
 									noValidate
 									autoComplete="off"
@@ -205,8 +203,8 @@ const UpdateTeam = () => {
                                     <TextField
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.seasons.fields.name" />}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 13.4, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 12, fontWeight: 'regular', width: '100%' } }}
 										multiline
 										rows={2}
 										sx={{
@@ -221,8 +219,8 @@ const UpdateTeam = () => {
 									<TextField
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.teams.fields.arena" />}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 13.4, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 12, fontWeight: 'regular', width: '100%' } }}
 										multiline
 										rows={2}
 										sx={{
@@ -238,8 +236,8 @@ const UpdateTeam = () => {
 									<TextField
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.teams.fields.owner" />}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 30, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 13.4, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 12, fontWeight: 'regular', width: '100%' } }}
 										multiline
 										rows={2}
 										sx={{
@@ -254,10 +252,10 @@ const UpdateTeam = () => {
 									<TextField
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.exercises.fields.description" />}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 13.4, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 12, fontWeight: 'regular', width: '100%' } }}
 										multiline
-										rows={4}
+										rows={6}
 										sx={{
 											border: '2px solid grey',
 											borderRadius: "20px",
