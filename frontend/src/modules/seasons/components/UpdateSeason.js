@@ -117,35 +117,32 @@ const UpdateSeason = () => {
             }}
         >
 <Box
-    sx={{
-        bgcolor: 'background.dark',
-        boxShadow: 1,
-        borderRadius: 4,
-        margin: 'auto',  // Centra horizontalmente
-        marginTop: '80px', // Ajusta la distancia desde la parte superior según sea necesario
-        textAlign: 'center', // Centra el contenido dentro del Box
-        borderColor:"black",
-        boxShadow:"0 10px 50px rgb(0, 0, 0)"
-    }}>
+				sx={{
+					bgcolor: 'background.dark',
+					borderRadius: 2.68,
+					margin: 'auto',  // Centra horizontalmente
+					marginTop: '53.6px', // Ajusta la distancia desde la parte superior según sea necesario
+					textAlign: 'center', // Centra el contenido dentro del Box
+				}}>
 
-<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+<Box sx={{boxShadow:"0 6.7px 33.5px rgb(0, 0, 0)" }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" 
                         sx={{
                             background: "linear-gradient(-45deg, #711ce0 0%, #000046 60% )",
                             bgcolor:"red",
-                            boxShadow: 6,
-                            borderRadius: 3,
-							borderColor: "black",
-							boxShadow: "0 10px 50px rgb(0, 0, 0)",
+							boxShadow: 4.02,
+							borderRadius: 2.01,
+                            borderColor: "black",
+							boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)",
                             '& .MuiTabs-flexContainer': {
                                 flexWrap: 'wrap',
                               },
                         }}
         >
-          <Tab sx={{ color: '#40FF00', fontSize: "30px", padding:"20px"}} onClick={() => handleUpdateSeason(dispatch)} label="General"  />
-          <Tab sx={{ color: '#e70707', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateSeasonTeams(1, dispatch)} label={<FormattedMessage id="project.teams.fields.teams"/>}/>
-          <Tab sx={{ color: '#FF6C00', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateSeasonTrainings(2, dispatch)} label={<FormattedMessage id="project.trainings.fields.trainings"/>}/>
-          <Tab sx={{ color: '#F7FF00', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateSeasonGames(3, dispatch)} label={<FormattedMessage id="project.games.fields.games"/>}/>
+          <Tab sx={{ color: '#40FF00', fontSize: "22.11px", padding:"13.4px"}} onClick={() => handleUpdateSeason(dispatch)} label="General"  />
+          <Tab sx={{ color: '#e70707', fontSize: "22.11px", padding:"13.4px" }} onClick={() => handleUpdateSeasonTeams(1, dispatch)} label={<FormattedMessage id="project.teams.fields.teams"/>}/>
+          <Tab sx={{ color: '#FF6C00', fontSize: "22.11px", padding:"13.4px" }} onClick={() => handleUpdateSeasonTrainings(2, dispatch)} label={<FormattedMessage id="project.trainings.fields.trainings"/>}/>
+          <Tab sx={{ color: '#F7FF00', fontSize: "22.11px", padding:"13.4px" }} onClick={() => handleUpdateSeasonGames(3, dispatch)} label={<FormattedMessage id="project.games.fields.games"/>}/>
         </Tabs>
       </Box>
 </Box>
@@ -153,24 +150,24 @@ const UpdateSeason = () => {
 
 
 <Box
-			my={4}
+			my={2.68}
 			display="flex"
 			alignItems="center"
-			gap={4}
-			p={5}
+			gap={1}
+            p={3.35}
 			sx={{
-				border: '2px solid grey',
+                border: '1.34px solid grey',
 				background: "linear-gradient(-45deg, #711ce0 0%, #000046 60% )",
-				borderRadius: "20px",
+                borderRadius: "13.4px",
 				flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 				flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
                 borderColor:"black",
-                boxShadow:"0 10px 50px rgb(0, 0, 0)",
-                width:"1000px"
+                boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)",
+                width:"670px"
             }}
 		>
             <Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
-			<Grid container margin={5} spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
+			<Grid container margin={3.35} spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
 			>
 				<Grid item xs={12} md={12} >
 					<img src={logo22} alt="Person" class="card__image_season_update_create"></img>
@@ -179,9 +176,9 @@ const UpdateSeason = () => {
 						component="form"
 						sx={{
                             background: "linear-gradient(-45deg, #711ce0 0%, #000046 60% )",
-							borderRadius: "20px",
-							borderColor:"black",
-                            boxShadow:"0 10px 50px rgb(0, 0, 0)"
+                            borderRadius: "13.4px",
+                            borderColor:"black",
+                            boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)",
 						}}
 						autoHeight={true} // Permitir que la tabla determine su propio tamaño si los datos no se han cargado
 						noValidate
@@ -194,25 +191,27 @@ const UpdateSeason = () => {
 								<Box
 									component="form"
 									sx={{
-										'& .MuiTextField-root': { mb: 2, width: '100%' },
-										margin: '50px', // Centra el formulario en la pantalla
+										'& .MuiTextField-root': { mb: 1.34, width: '100%' },
+										margin: '33.5px', // Centra el formulario en la pantalla
+                                        marginTop:"-5px",
+                                        marginBottom:"10px"
 									}}
 									noValidate
 									autoComplete="off"
 								>
-									<h4 class="margin_training_form"
-									><FormattedMessage id="project.seasons.fields.startDate" /></h4>
+									<h6 class="margin_training_form"
+									><FormattedMessage id="project.seasons.fields.startDate" /></h6>
 									<LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
 										<DemoContainer components={['DatePicker']}>
 											<DatePicker
 												sx={{
-													border: '2px solid grey',
-													borderRadius: "20px",
+													border: '1.34px solid grey',
+													borderRadius: "13.4px",
 													colorAdjust: "#00bfff",
 													'& label': { color: 'white' },
 													'& input': { color: 'white' },
                                                     borderColor:"black",
-                                                    boxShadow:"0 10px 10px rgb(0, 0, 0)"
+													boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)",
 												}}
 												label={<FormattedMessage id="project.global.fields.date" />}
 												autoFocus
@@ -231,19 +230,19 @@ const UpdateSeason = () => {
 											/>
 										</DemoContainer>
 									</LocalizationProvider>
-                                    <h4 class="margin_training_form"
-									><FormattedMessage id="project.seasons.fields.endDate" /></h4>
+                                    <h6 class="margin_training_form"
+									><FormattedMessage id="project.seasons.fields.endDate" /></h6>
 									<LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
 										<DemoContainer components={['DatePicker']}>
 											<DatePicker
 												sx={{
-													border: '2px solid grey',
-													borderRadius: "20px",
+													border: '1.34px solid grey',
+													borderRadius: "13.4px",
 													colorAdjust: "#00bfff",
 													'& label': { color: 'white' },
 													'& input': { color: 'white' },
                                                     borderColor:"black",
-                                                    boxShadow:"0 10px 10px rgb(0, 0, 0)",
+													boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)",
 												}}
 												label={<FormattedMessage id="project.global.fields.date" />}
 												autoFocus
@@ -265,16 +264,15 @@ const UpdateSeason = () => {
                                     <TextField
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.seasons.fields.name" />}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 13.4, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 12, fontWeight: 'regular', width: '100%' } }}
 										multiline
 										rows={4}
 										sx={{
-											border: '2px solid grey',
-											borderRadius: "20px",
-                                            borderColor:"black",
-                                            boxShadow:"0 10px 10px rgb(0, 0, 0)",
-                                            mb:"60px"
+											border: '1.34px solid grey',
+											borderRadius: "13.4px",
+											borderColor:"black",
+											boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)",
 										}}
 										value={seasonName}
 										onChange={(e) => setSeasonName(e.target.value)}
@@ -282,15 +280,15 @@ const UpdateSeason = () => {
 									<TextField
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.exercises.fields.description" />}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 13.4, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 12, fontWeight: 'regular', width: '100%' } }}
 										multiline
 										rows={4}
 										sx={{
-											border: '2px solid grey',
-											borderRadius: "20px",
-                                            borderColor:"black",
-                                            boxShadow:"0 10px 10px rgb(0, 0, 0)"
+											border: '1.34px solid grey',
+											borderRadius: "13.4px",
+											borderColor:"black",
+											boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)",
 										}}
 										value={description}
 										onChange={(e) => setDescription(e.target.value)}

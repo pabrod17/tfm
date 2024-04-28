@@ -94,34 +94,32 @@ const UpdateSeasonGame = () => {
             }}
         >
             <Box
-                sx={{
-                    bgcolor: 'background.dark',
-                    boxShadow: 1,
-                    borderRadius: 4,
-                    margin: 'auto',  // Centra horizontalmente
-                    marginTop: '80px', // Ajusta la distancia desde la parte superior según sea necesario
-                    textAlign: 'center', // Centra el contenido dentro del Box
-                }}>
-
-                <Box sx={{boxShadow:"0 10px 50px rgb(0, 0, 0)" }}>
+				sx={{
+					bgcolor: 'background.dark',
+					borderRadius: 2.68,
+					margin: 'auto',  // Centra horizontalmente
+					marginTop: '53.6px', // Ajusta la distancia desde la parte superior según sea necesario
+					textAlign: 'center', // Centra el contenido dentro del Box
+				}}>
+                <Box sx={{boxShadow:"0 6.7px 33.5px rgb(0, 0, 0)" }}>
                     <Tabs value={value} onChange={handleChange} aria-label="basic tabs example"
                         sx={{
                             background: "linear-gradient(-45deg, #711ce0 0%, #000046 60% )",
-                            bgcolor: "red",
-                            boxShadow: 6,
-                            borderRadius: 3,
-                            mb: 2,
-                            borderColor: "black",
-                            boxShadow: "0 10px 50px rgb(0, 0, 0)",
+                            bgcolor:"red",
+							boxShadow: 4.02,
+							borderRadius: 2.01,
+                            mb:1.34,
+                            borderColor:"black",
+							boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)",
                             '& .MuiTabs-flexContainer': {
                                 flexWrap: 'wrap',
                               },
                         }}
                     >
-                        <Tab value={0} sx={{ color: '#40FF00', fontSize: "30px", padding: "20px" }} onClick={() => handleUpdateSeason(0, dispatch)} label="General" />
-                        <Tab value={1} sx={{ color: '#e70707', fontSize: "30px", padding: "20px" }} onClick={() => handleUpdateSeasonTeams(1, dispatch)} label={<FormattedMessage id="project.teams.fields.teams"/>}/>
-                        <Tab value={2} sx={{ color: '#FF6C00', fontSize: "30px", padding: "20px" }} onClick={() => handleUpdateSeasonTrainings(2, dispatch)} label={<FormattedMessage id="project.trainings.fields.trainings"/>}/>
-                        <Tab value={3} sx={{ color: '#F7FF00', fontSize: "30px", padding: "20px" }} onClick={() => handleUpdateSeasonGames(3, dispatch)} label={<FormattedMessage id="project.games.fields.games"/>}/>
+                        <Tab value={0} sx={{ color: '#40FF00', fontSize: "22.11px", padding: "13.4px" }} onClick={() => handleUpdateSeason(0, dispatch)} label="General" />
+                        <Tab value={1} sx={{ color: '#e70707', fontSize: "22.11px", padding: "13.4px" }} onClick={() => handleUpdateSeasonTeams(1, dispatch)} label={<FormattedMessage id="project.teams.fields.teams"/>}/>
+                        <Tab value={2} sx={{ color: '#FF6C00', fontSize: "22.11px", padding: "13.4px" }} onClick={() => handleUpdateSeasonTrainings(2, dispatch)} label={<FormattedMessage id="project.trainings.fields.trainings"/>}/>
+                        <Tab value={3} sx={{ color: '#F7FF00', fontSize: "22.11px", padding: "13.4px" }} onClick={() => handleUpdateSeasonGames(3, dispatch)} label={<FormattedMessage id="project.games.fields.games"/>}/>
                     </Tabs>
                 </Box>
 
