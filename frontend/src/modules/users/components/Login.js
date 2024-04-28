@@ -157,7 +157,7 @@ const Login = () => {
       </ul>
       <form class="form-inline mt-2 mb-lg-0">
       <button class="btn btn-outline-success my-2 my-sm-0" style={{
-            height: "80px"
+            height: "45px",
       }} type="button"><FormattedMessage id="project.global.buttons.signin"/></button>
     </form>
   </div>
