@@ -96,8 +96,8 @@ const UpdateGameExercise = () => {
                     {params.value}
                     </div>
                 ), },
-                { field: 'description', headerName: <FormattedMessage id="project.exercises.fields.description" />, width: 201 },
-                { field: 'objective', headerName: <FormattedMessage id="project.exercises.fields.objective" />, width: 201 },
+                { field: 'description', headerName: <FormattedMessage id="project.exercises.fields.description" />, width: 260 },
+                { field: 'objective', headerName: <FormattedMessage id="project.exercises.fields.objective" />, width: 260 },
             ];
             setColumnsExercises(columnsExercises2);
 

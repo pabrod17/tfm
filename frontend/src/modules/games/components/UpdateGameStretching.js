@@ -99,7 +99,7 @@ const UpdateGameStretching = () => {
 
 
 
-                { field: 'description', headerName: <FormattedMessage id="project.exercises.fields.description" />, width: 201 }
+                { field: 'description', headerName: <FormattedMessage id="project.exercises.fields.description" />, width: 260 }
             ];
             setColumnsStretchings(columnsStretchings2);
 

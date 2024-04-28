@@ -224,38 +224,35 @@ const UpdatePlayer = () => {
 <Box
     sx={{
         bgcolor: 'background.dark',
-        boxShadow: 1,
-        borderRadius: 4,
+        borderRadius: 2.68,
         margin: 'auto',  // Centra horizontalmente
-        marginTop: '80px', // Ajusta la distancia desde la parte superior según sea necesario
+        marginTop: '53.6px', // Ajusta la distancia desde la parte superior según sea necesario
         textAlign: 'center', // Centra el contenido dentro del Box
-        borderColor:"black",
-        boxShadow:"0 10px 50px rgb(0, 0, 0)",
 
     }}>
 
-<Box sx={{boxShadow:"0 10px 50px rgb(0, 0, 0)" }}>
+<Box sx={{boxShadow:"0 6.7px 33.5px rgb(0, 0, 0)" }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example"  
                         sx={{
                             background: "linear-gradient(45deg, rgb(59, 4, 26) 30%,rgb(47, 0, 255))",
                             bgcolor:"red",
-                            boxShadow: 6,
-                            borderRadius: 3,
-							borderColor: "black",
-							boxShadow: "0 10px 50px rgb(0, 0, 0)",
+							boxShadow: 4.02,
+							borderRadius: 2.01,
+                            borderColor: "black",
+							boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)",
                             '& .MuiTabs-flexContainer': {
                                 flexWrap: 'wrap',
                               },
                         }}
                         TabIndicatorProps={{ sx: { display: 'none' } }}
         >
-          <Tab sx={{ color: '#fbff00', fontSize: "30px", padding:"20px"}} onClick={() => handleUpdatePlayer(dispatch)} label="General"  />
-          <Tab sx={{ color: '#6024af', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerTeams(1, dispatch)} label={<FormattedMessage id="project.teams.fields.teams"/>}/>
-          <Tab sx={{ color: '#760606', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerGames(2, dispatch)} label={<FormattedMessage id="project.games.fields.games"/>}/>
-          <Tab sx={{ color: '#d17403', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerTrainings(3, dispatch)} label={<FormattedMessage id="project.trainings.fields.trainings"/>}/>
-          <Tab sx={{ color: '#01dde1', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerLesion(4, dispatch)} label={<FormattedMessage id="project.lesion.fields.lesion"/>}/>
-          <Tab sx={{ color: '#e900d5', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerStretchings(5, dispatch)} label={<FormattedMessage id="project.stretchings.fields.stretchings"/>}/>
-          <Tab sx={{ color: '#39ec02', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerNotes(6, dispatch)} label={<FormattedMessage id="project.notes.fields.notes"/>}/>
+          <Tab sx={{ color: '#fbff00', fontSize: "22.11px", padding:"13.4px"}} onClick={() => handleUpdatePlayer(dispatch)} label="General"  />
+          <Tab sx={{ color: '#6024af', fontSize: "22.11px", padding:"13.4px" }} onClick={() => handleUpdatePlayerTeams(1, dispatch)} label={<FormattedMessage id="project.teams.fields.teams"/>}/>
+          <Tab sx={{ color: '#760606', fontSize: "22.11px", padding:"13.4px" }} onClick={() => handleUpdatePlayerGames(2, dispatch)} label={<FormattedMessage id="project.games.fields.games"/>}/>
+          <Tab sx={{ color: '#d17403', fontSize: "22.11px", padding:"13.4px" }} onClick={() => handleUpdatePlayerTrainings(3, dispatch)} label={<FormattedMessage id="project.trainings.fields.trainings"/>}/>
+          <Tab sx={{ color: '#01dde1', fontSize: "22.11px", padding:"13.4px" }} onClick={() => handleUpdatePlayerLesion(4, dispatch)} label={<FormattedMessage id="project.lesion.fields.lesion"/>}/>
+          <Tab sx={{ color: '#e900d5', fontSize: "22.11px", padding:"13.4px" }} onClick={() => handleUpdatePlayerStretchings(5, dispatch)} label={<FormattedMessage id="project.stretchings.fields.stretchings"/>}/>
+          <Tab sx={{ color: '#39ec02', fontSize: "22.11px", padding:"13.4px" }} onClick={() => handleUpdatePlayerNotes(6, dispatch)} label={<FormattedMessage id="project.notes.fields.notes"/>}/>
         </Tabs>
       </Box>
 </Box>
@@ -263,25 +260,23 @@ const UpdatePlayer = () => {
 
 
 <Box
-			my={4}
+			my={2.68}
 			display="flex"
 			alignItems="center"
-			gap={4}
-			p={5}
-			m={10}
+            p={3.35}
 			sx={{
-                maxWidth: { sm: 1635 },
+                maxWidth: { sm: 1095.45},
 				border: '2px solid grey',
                 background: "linear-gradient(45deg, rgb(59, 4, 26) 30%,rgb(47, 0, 255))",
-				borderRadius: "20px",
+                borderRadius: "13.4px",
 				flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 				flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
-				borderColor:"black",
-				boxShadow:"0 10px 50px rgb(0, 0, 0)"
+                borderColor:"black",
+                boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)",
 			}}
 		>
             <Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
-			<Grid container margin={5} spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
+			<Grid container margin={3.35} spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
 			>
 				<Grid item md={12}>
                 <img src={perfil2} alt="Person" class="card__image_player_update_create"></img>
@@ -294,9 +289,9 @@ const UpdatePlayer = () => {
 					<Box
 						component="form"
 						sx={{
-							borderRadius: "20px",
-							borderColor:"black",
-                            boxShadow:"0 10px 50px rgb(0, 0, 0)"
+                            borderRadius: "13.4px",
+                            borderColor:"black",
+                            boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)",
 						}}
 						autoHeight={true} // Permitir que la tabla determine su propio tamaño si los datos no se han cargado
 						noValidate
@@ -311,8 +306,8 @@ const UpdatePlayer = () => {
                                 
 									component="form"
 									sx={{
-										'& .MuiTextField-root': { mb: 2, width: '100%' },
-										margin: '50px', // Centra el formulario en la pantalla
+										'& .MuiTextField-root': { mb: 1.34, width: '100%' },
+										margin: '33.5px', // Centra el formulario en la pantalla
 
 									}}
 									noValidate
@@ -322,8 +317,9 @@ const UpdatePlayer = () => {
 	  <InputLabel id="demo-simple-select-label"
               sx={{
                 color: "#00bfff",
-				fontSize:"20px",
-                marginLeft:"10px"
+				fontSize:"13.4px",
+                top:"-5px",
+                marginTop:"-15px"
               }}
 
             ><FormattedMessage id="project.players.fields.position" /></InputLabel>
@@ -335,11 +331,12 @@ const UpdatePlayer = () => {
           onChange={handleChange}
 		  sx={{
 			color: "white",
-			border: '2px solid grey',
-			borderRadius: "20px",
+			border: '1.34px solid grey',
+			borderRadius: "13.4px",
 			borderColor:"black",
-			boxShadow:"0 10px 10px rgb(0, 0, 0)",
-			marginBottom:"50px"
+			boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)",
+			marginBottom:"33.5px",
+			height:"40px"
 
 		  }}
 		  inputProps={{
@@ -364,15 +361,15 @@ const UpdatePlayer = () => {
 									<TextField
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.players.fields.playerName" />}
-										InputLabelProps={{ style: { color: '#E8FF00', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#E8FF00', fontSize: 13.40, fontWeight: 'regular', width: '100%', top:-5 } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 12, fontWeight: 'regular', width: '100%' } }}
 										multiline
-										rows={4}
+										rows={3.4}
 										sx={{
-											border: '2px solid grey',
-											borderRadius: "20px",
+											border: '1.34px solid grey',
+											borderRadius: "13.4px",
 											borderColor:"black",
-											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+											boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)"
 										}}
 										value={playerName}
 										onChange={(e) => setPlayerName(e.target.value)}
@@ -380,15 +377,15 @@ const UpdatePlayer = () => {
 									<TextField
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.players.fields.primaryLastName" />}
-										InputLabelProps={{ style: { color: '#E8FF00', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#E8FF00', fontSize: 13.40, fontWeight: 'regular', width: '100%', top:-5 } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 12, fontWeight: 'regular', width: '100%' } }}
 										multiline
-										rows={4}
+										rows={3.4}
 										sx={{
-											border: '2px solid grey',
-											borderRadius: "20px",
+											border: '1.34px solid grey',
+											borderRadius: "13.4px",
 											borderColor:"black",
-											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+											boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)"
 										}}
 										value={primaryLastName}
 										onChange={(e) => setPrimaryLastName(e.target.value)}
@@ -396,15 +393,15 @@ const UpdatePlayer = () => {
 									<TextField
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.players.fields.secondLastName" />}
-										InputLabelProps={{ style: { color: '#E8FF00', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#E8FF00', fontSize: 13.40, fontWeight: 'regular', width: '100%', top:-5 } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 12, fontWeight: 'regular', width: '100%' } }}
 										multiline
-										rows={4}
+										rows={3.4}
 										sx={{
-											border: '2px solid grey',
-											borderRadius: "20px",
+											border: '1.34px solid grey',
+											borderRadius: "13.4px",
 											borderColor:"black",
-											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+											boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)"
 										}}
 										value={secondLastName}
 										onChange={(e) => setSecondLastName(e.target.value)}
@@ -418,8 +415,8 @@ const UpdatePlayer = () => {
                                 
 									component="form"
 									sx={{
-										'& .MuiTextField-root': { mb: 2, width: '100%' },
-										margin: '50px', // Centra el formulario en la pantalla
+										'& .MuiTextField-root': { mb: 1.34, width: '100%' },
+										margin: '33.5px', // Centra el formulario en la pantalla
 
 									}}
 									noValidate
@@ -428,15 +425,15 @@ const UpdatePlayer = () => {
 									<TextField
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.players.fields.email" />}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 13.40, fontWeight: 'regular', width: '100%', top:-5 } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 12, fontWeight: 'regular', width: '100%' } }}
 										multiline
-										rows={2}
+										rows={1.8}
 										sx={{
-											border: '2px solid grey',
-											borderRadius: "20px",
+											border: '1.34px solid grey',
+											borderRadius: "13.4px",
 											borderColor:"black",
-											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+											boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)"
 										}}
 										value={email}
 										onChange={handleEmailChange}
@@ -446,15 +443,15 @@ const UpdatePlayer = () => {
 									<TextField
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.players.fields.phoneNumber" />}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 13.40, fontWeight: 'regular', width: '100%', top:-5 } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 12, fontWeight: 'regular', width: '100%' } }}
 										multiline
-										rows={2}
+										rows={1.8}
 										sx={{
-											border: '2px solid grey',
-											borderRadius: "20px",
+											border: '1.34px solid grey',
+											borderRadius: "13.4px",
 											borderColor:"black",
-											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+											boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)"
 										}}
                                         value={phoneNumber}
                                         onChange={handlePhoneNumberChange}
@@ -464,15 +461,15 @@ const UpdatePlayer = () => {
                                     <TextField
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.players.fields.dni" />}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 13.40, fontWeight: 'regular', width: '100%', top:-5 } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 12, fontWeight: 'regular', width: '100%' } }}
 										multiline
-										rows={2}
+										rows={1.8}
 										sx={{
-											border: '2px solid grey',
-											borderRadius: "20px",
+											border: '1.34px solid grey',
+											borderRadius: "13.4px",
 											borderColor:"black",
-											boxShadow:"0 10px 10px rgb(0, 0, 0)"
+											boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)"
 										}}
 										value={dni}
                                         onChange={handleDniChange}
@@ -482,16 +479,16 @@ const UpdatePlayer = () => {
                                     									<TextField
 										id="outlined-multiline-static-1"
 										label={<FormattedMessage id="project.players.fields.trends" />}
-										InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-										InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 13.40, fontWeight: 'regular', width: '100%', top:-5 } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 12, fontWeight: 'regular', width: '100%' } }}
 										multiline
-										rows={9}
+										rows={7}
 										sx={{
-											border: '2px solid grey',
-											borderRadius: "20px",
+											border: '1.34px solid grey',
+											borderRadius: "13.4px",
 											borderColor:"black",
-											boxShadow:"0 10px 10px rgb(0, 0, 0)",
-                                            marginTop:"22px"
+											boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)",
+                                            marginTop:"14.74px"
 										}}
 										value={trends}
 										onChange={(e) => setTrends(e.target.value)}

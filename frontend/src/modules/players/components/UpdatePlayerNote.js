@@ -152,36 +152,35 @@ const UpdatePlayerNote = () => {
             }}
         >
             <Box
-                sx={{
-                    bgcolor: 'background.dark',
-                    borderRadius: 4,
-                    margin: 'auto',  // Centra horizontalmente
-                    marginTop: '80px', // Ajusta la distancia desde la parte superior según sea necesario
-                    textAlign: 'center', // Centra el contenido dentro del Box
-                }}>
-
-                <Box sx={{ boxShadow: "0 10px 50px rgb(0, 0, 0)" }}>
+				sx={{
+					bgcolor: 'background.dark',
+					borderRadius: 2.68,
+					margin: 'auto',  // Centra horizontalmente
+					marginTop: '53.6px', // Ajusta la distancia desde la parte superior según sea necesario
+					textAlign: 'center', // Centra el contenido dentro del Box
+				}}>
+                <Box sx={{boxShadow:"0 6.7px 33.5px rgb(0, 0, 0)" }}>
                     <Tabs value={value} onChange={handleChange} aria-label="basic tabs example"
                         sx={{
                             background: "linear-gradient(45deg, rgb(59, 4, 26) 30%,rgb(47, 0, 255))",
-                            bgcolor: "red",
-                            boxShadow: 6,
-                            borderRadius: 3,
-                            mb: 2,
-                            borderColor: "black",
-                            boxShadow: "0 10px 50px rgb(0, 0, 0)",
+                            bgcolor:"red",
+							boxShadow: 4.02,
+							borderRadius: 2.01,
+                            mb:1.34,
+                            borderColor:"black",
+							boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)",
                             '& .MuiTabs-flexContainer': {
                                 flexWrap: 'wrap',
-                            },
+                              },
                         }}
                     >
-          <Tab value={0} sx={{ color: '#fbff00', fontSize: "30px", padding:"20px"}} onClick={() => handleUpdatePlayer(dispatch)} label="General"  />
-          <Tab value={1} sx={{ color: '#6024af', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerTeams(1, dispatch)} label={<FormattedMessage id="project.teams.fields.teams"/>}/>
-          <Tab value={2} sx={{ color: '#760606', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerGames(2, dispatch)} label={<FormattedMessage id="project.games.fields.games"/>}/>
-          <Tab value={3} sx={{ color: '#d17403', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerTrainings(3, dispatch)} label={<FormattedMessage id="project.trainings.fields.trainings"/>}/>
-          <Tab value={4} sx={{ color: '#01dde1', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerLesion(4, dispatch)} label={<FormattedMessage id="project.lesion.fields.lesion"/>}/>
-          <Tab value={5} sx={{ color: '#e900d5', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerStretchings(5, dispatch)} label={<FormattedMessage id="project.stretchings.fields.stretchings"/>}/>
-          <Tab value={6} sx={{ color: '#39ec02', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdatePlayerNotes(6, dispatch)} label={<FormattedMessage id="project.notes.fields.notes"/>}/>
+          <Tab value={0} sx={{ color: '#fbff00', fontSize: "22.11px", padding:"13.4px"}} onClick={() => handleUpdatePlayer(dispatch)} label="General"  />
+          <Tab value={1} sx={{ color: '#6024af', fontSize: "22.11px", padding:"13.4px" }} onClick={() => handleUpdatePlayerTeams(1, dispatch)} label={<FormattedMessage id="project.teams.fields.teams"/>}/>
+          <Tab value={2} sx={{ color: '#760606', fontSize: "22.11px", padding:"13.4px" }} onClick={() => handleUpdatePlayerGames(2, dispatch)} label={<FormattedMessage id="project.games.fields.games"/>}/>
+          <Tab value={3} sx={{ color: '#d17403', fontSize: "22.11px", padding:"13.4px" }} onClick={() => handleUpdatePlayerTrainings(3, dispatch)} label={<FormattedMessage id="project.trainings.fields.trainings"/>}/>
+          <Tab value={4} sx={{ color: '#01dde1', fontSize: "22.11px", padding:"13.4px" }} onClick={() => handleUpdatePlayerLesion(4, dispatch)} label={<FormattedMessage id="project.lesion.fields.lesion"/>}/>
+          <Tab value={5} sx={{ color: '#e900d5', fontSize: "22.11px", padding:"13.4px" }} onClick={() => handleUpdatePlayerStretchings(5, dispatch)} label={<FormattedMessage id="project.stretchings.fields.stretchings"/>}/>
+          <Tab value={6} sx={{ color: '#39ec02', fontSize: "22.11px", padding:"13.4px" }} onClick={() => handleUpdatePlayerNotes(6, dispatch)} label={<FormattedMessage id="project.notes.fields.notes"/>}/>
                     </Tabs>
                 </Box>
                 <input type="checkbox" class="theme-checkbox" onClick={() => setShowTable(!showTable)} />
@@ -214,14 +213,15 @@ const UpdatePlayerNote = () => {
                         }}
                     >
                         <Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
-                        <Grid container ml={5} mr={5} mb={1} spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
+                        <Grid container ml={3.35} mr={3.35} mb={1} spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
                         >
                             <Grid item xs={12} md={12}>
                                 <Typography
-                                    sx={{ flex: '1 1 100%', mt: 3.5, color: "#00bfff", m: 2 }}
-                                    variant="h6"
-                                    id="tableTitle"
-                                    component="div"
+							sx={{ 
+                                color: "#00bfff", fontWeight:"bold", marginLeft:"10px" }}
+							variant="h8"
+							id="tableTitle"
+							component="div"
                                 >
                                     <FormattedMessage id="project.notes.fields.note" />
 
@@ -230,9 +230,9 @@ const UpdatePlayerNote = () => {
                                 <Box
                                     component="form"
                                     sx={{
-                                        '& .MuiTextField-root': { mb: 2, width: '100%' },
-                                        margin: '30px', // Centra el formulario en la pantalla
-                                        marginBottom: "10px"
+										'& .MuiTextField-root': { mb: 1.34, width: '100%' },
+                                        margin: '20.1px', // Centra el formulario en la pantalla
+                                        marginBottom: "6.7px"
                                     }}
                                     noValidate
                                     autoComplete="off"
@@ -240,9 +240,9 @@ const UpdatePlayerNote = () => {
                                     <TextField
                                         id="outlined-multiline-static-1"
                                         label={<FormattedMessage id="project.notes.fields.title" />}
-                                        InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-                                        InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
-                                        multiline
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 13.4, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 12, fontWeight: 'regular', width: '100%' } }}
+										multiline
                                         rows={4}
                                         sx={{
                                             border: '2px solid grey',
@@ -257,9 +257,9 @@ const UpdatePlayerNote = () => {
                                     <TextField
                                         id="outlined-multiline-static-1"
                                         label={<FormattedMessage id="project.exercises.fields.description" />}
-                                        InputLabelProps={{ style: { color: '#00bfff', fontSize: 20, fontWeight: 'regular', width: '100%' } }}
-                                        InputProps={{ style: { color: 'white', padding: '10px', fontSize: 15, fontWeight: 'regular', width: '100%' } }}
-                                        multiline
+										InputLabelProps={{ style: { color: '#00bfff', fontSize: 13.4, fontWeight: 'regular', width: '100%' } }}
+										InputProps={{ style: { color: 'white', padding: '6.7px', fontSize: 12, fontWeight: 'regular', width: '100%' } }}
+										multiline
                                         rows={4}
                                         sx={{
                                             border: '2px solid grey',

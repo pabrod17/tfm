@@ -1062,13 +1062,13 @@ max-height: 241.2px;
 }
 
 .card_note {
-  width: 360px;
-  height: 360px;
-  max-width: 360px;
+  width: 241.2px;
+  height: 241.2px;
+  max-width: 241.2px;
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  border-radius: 20px;
+  padding: 13.4px;
+  border-radius: 13.4px;
   background: linear-gradient(-45deg, #c79081 0%, #000000 100% );
   background: radial-gradient(circle at -1% 57.5%, hsl(199, 100%, 50%) 0%, rgb(0, 60, 255) 90%);
   background: radial-gradient(circle at -1% 57.5%, #000000 0%, #003cff 100%);
@@ -1076,18 +1076,18 @@ max-height: 241.2px;
   background: radial-gradient(circle, #92675a 10%, #070707 100%);
   background: radial-gradient(circle, #92675a -10%, #000000 100%);
 
-  box-shadow: 0px -10px 65px 0px rgba(0, 0, 0, 0.447) inset, 0 15px 65px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px -6.7px 43.55px 0px rgba(0, 0, 0, 0.447) inset, 0 10px 43.55px rgba(0, 0, 0, 0.5);
 }
 
 .card__image_note {
-  height: 160px;
-  width: 160px;
+  height: 107.2px;
+  width: 107.2px;
   border-radius: 50%;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 20px;
-  margin-top: 20px;
-  box-shadow: 0 10px 80px rgb(0, 0, 0);
+  margin-bottom: 13.4px;
+  margin-top: 13.4px;
+  box-shadow: 0 6.7px 53.6px rgb(0, 0, 0);
 }
 
 .card_play {
