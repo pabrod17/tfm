@@ -182,7 +182,7 @@ const UpdateTraining = () => {
 							background: "linear-gradient(-45deg, #f5af19 0%, #f12711 100% )",
                             borderRadius: "13.4px",
                             borderColor:"black",
-                            boxShadow: "0 6.7px 6.7px rgb(0, 0, 0)",
+                            boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)",
 						}}
                         autoHeight={true} // Permitir que la tabla determine su propio tamaño si los datos no se han cargado
 						noValidate
@@ -216,7 +216,7 @@ const UpdateTraining = () => {
 													'& label': { color: 'white' },
 													'& input': { color: 'white' },
                                                     borderColor:"black",
-                                                    boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)",
+													boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)",
 												}}
 												label={<FormattedMessage id="project.global.fields.date" />}
 												autoFocus
@@ -249,7 +249,7 @@ const UpdateTraining = () => {
 													'& label': { color: 'white' },
 													'& input': { color: 'white' },
                                                     borderColor:"black",
-                                                    boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)",
+													boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)",
 												}}
                                                 value={durationMinutes}
 												label={<FormattedMessage id="project.statistics.fields.duration" />} 

@@ -90,7 +90,8 @@ const UpdateTrainingExercise = () => {
                         params.row.type === 'PrePartido' ? '#00FFF3' : // Negro
                         'green', // Por defecto
                         borderRadius: '5px',
-                        padding: '5px'                    }}>
+                        padding: '1px'
+                    }}>
                     {params.value}
                     </div>
                 ), },

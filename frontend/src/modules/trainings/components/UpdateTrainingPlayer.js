@@ -99,7 +99,7 @@ const UpdateTrainingPlayer = () => {
                         params.row.position === 'Pivot' ? '#d4de19' : // Gris claro
                         'green', // Por defecto
                         borderRadius: '5px',
-                        padding: '5px'
+                        padding: '1px'
                     }}>
                     {params.value}
                     </div>
@@ -107,8 +107,8 @@ const UpdateTrainingPlayer = () => {
                 { field: 'injured', headerName: <FormattedMessage id="project.lesion.fields.injured" />, width: 107.2,
                 renderCell: (params) => (
                     <div style={{ backgroundColor: 
-                        params.row.injured ? '#0f9b0f' : // Azul oscuro
-                        !params.row.injured ? '#FF0000' : // Verde esmeralda
+                        params.row.injured ? '#FF0000' : // Azul oscuro
+                        !params.row.injured ? '#0f9b0f' : // Verde esmeralda
                         'green', // Por defecto
                         borderRadius: '5px',
                         padding: '5px'
@@ -117,7 +117,7 @@ const UpdateTrainingPlayer = () => {
                     </div>
                 ), },
                 { field: 'teamName', headerName: <FormattedMessage id="project.teams.fields.team" />, width: 160},
-                { field: 'email', headerName: <FormattedMessage id="project.players.fields.email" />, width: 134},
+                { field: 'email', headerName: <FormattedMessage id="project.players.fields.email" />, width: 180},
 
             ];
             setColumnsPlayers(columnsPlayers2);

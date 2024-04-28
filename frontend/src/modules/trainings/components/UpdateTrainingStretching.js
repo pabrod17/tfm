@@ -90,7 +90,7 @@ const UpdateTrainingStretching = () => {
                         params.row.type === 'Ingle' ? '#FFFF00' : // Negro
                         'green', // Por defecto
                         borderRadius: '5px',
-                        padding: '5px'
+                        padding: '1px'
                     }}>
                     {params.value}
                     </div>
