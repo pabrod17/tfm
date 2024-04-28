@@ -156,7 +156,9 @@ const Login = () => {
         </li>
       </ul>
       <form class="form-inline mt-2 mb-lg-0">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="button"><FormattedMessage id="project.global.buttons.signin"/></button>
+      <button class="btn btn-outline-success my-2 my-sm-0" style={{
+            height: "80px"
+      }} type="button"><FormattedMessage id="project.global.buttons.signin"/></button>
     </form>
   </div>
 </nav>   
