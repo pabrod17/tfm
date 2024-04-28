@@ -118,11 +118,11 @@ const TrainingCardUser = ({ dispatch, history, item, handleOpenDescriptionModal 
             </div>
                   <ul class="social-icons trashgrande trash_position">
                   <li><a type="button" onClick={() => handleRemoveTraining(item.id, dispatch, history)}>
-                  <i class="fa fa-trash" style={{fontSize:"15px"}}></i></a></li>
+                  <i class="fa fa-trash" style={{fontSize:"16px"}}></i></a></li>
                   </ul>
                   <ul class="social-icons configgrande config_position">
                       <li><a type="button" onClick={() => handleUpdateTraining(item.id, dispatch, history)}>
-                      <i class="fa fa-wrench" style={{fontSize:"14.7px"}}></i></a></li>
+                      <i class="fa fa-wrench" style={{fontSize:"15px"}}></i></a></li>
                   </ul>
                 </div>
               </div>

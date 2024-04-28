@@ -305,8 +305,8 @@ const PlayersByGameStatistics = ({players, gameId}) => {
         aria-describedby="child-modal-description"
       >
           <Box sx={{ ...style, width: "auto", maxWidth: "40vw" }}>
-          <h2 id="child-modal-title" className="color_modal_title_player" sx={{ mb: '100px' }} ><FormattedMessage id="project.players.fields.trends" />:</h2>
-          <p id="child-modal-description" style={{ overflowWrap: 'break-word' }}>
+          <h5 id="child-modal-title" className="color_modal_title_player" sx={{ mb: '67px' }} ><FormattedMessage id="project.players.fields.trends" />:</h5>
+          <p id="child-modal-description" style={{ overflowWrap: 'break-word', fontSize:"8px" }}>
             {modalDescription}
           </p>
         </Box>

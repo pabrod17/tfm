@@ -253,11 +253,11 @@ const handleFindTrainingsToPlayer = (playerId, dispatch, history) => {
                   </div>
                   <ul class="social-icons trashgrande trash_position">
                     <li><a type="button" onClick={() => handleRemovePlayer(item.id, dispatch, history)}>
-                      <i class="fa fa-trash"></i></a></li>
+                    <i class="fa fa-trash" style={{fontSize:"16px"}}></i></a></li>
                   </ul>
                   <ul class="social-icons configgrande config_position">
                       <li><a type="button" onClick={() => handleUpdatePlayer(item.id, dispatch, history)}>
-                      <i class="fa fa-wrench"></i></a></li>
+                      <i class="fa fa-wrench" style={{fontSize:"15px"}}></i></a></li>
                   </ul>
                 </div>
               </div>

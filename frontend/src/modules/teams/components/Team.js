@@ -43,17 +43,17 @@ const CardTeam = ({ dispatch, history, item, handleOpenDescriptionModal }) => {
                 </div>
                 <div class="flip-card-back">
             <div class="card_team">
-            <span class="title">{item.ownerName} &nbsp;
+            <span class="title" style={{marginBottom:"0px"}}>{item.ownerName} &nbsp;
             </span>
             <hr></hr>
-          <a onClick={() => handleOpenDescriptionModal(item.description)} class="button_apple">
+          <a onClick={() => handleOpenDescriptionModal(item.description)} class="button_apple" style={{marginTop:"-5px", marginBottom:"-5px"}}>
             <span class="desc desc3 scroll_efect_team">{item.description}</span>
           </a>
           <hr></hr>
             </div>
                   <ul class="social-icons configgrande config_position">
                       <li><a type="button" onClick={() => handleUpdateItem(item.id, dispatch, history)}>
-                      <i class="fa fa-wrench"></i></a></li>
+                      <i class="fa fa-wrench" style={{fontSize:"15px"}}></i></a></li>
                   </ul>
                 </div>
               </div>
@@ -109,8 +109,8 @@ const Team = ({team, playerId}) => {
           aria-describedby="child-modal-description"
         >
           <Box sx={{ ...style, width: "auto", maxWidth: "40vw" }}>
-            <h2 id="child-modal-title" className="color_modal_title_game" sx={{ mb: '100px' }} ><FormattedMessage id="project.exercises.fields.description" />:</h2>
-            <p id="child-modal-description">
+          <h5 id="child-modal-title" className="color_modal_title_game" sx={{ mb: '67px' }} ><FormattedMessage id="project.exercises.fields.description" />:</h5>
+            <p id="child-modal-description" style={{ overflowWrap: 'break-word', fontSize:"8px" }}>
               {modalDescription}
             </p>
           </Box>

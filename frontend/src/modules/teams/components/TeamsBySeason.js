@@ -12,6 +12,7 @@ import exercise from '../../app/components/exercise.jpg';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import bigBall from '../../seasons/components/red5.jpeg';
+import logo22 from './logo3.jpeg';
 
 const handleRemoveTeamToSeason = (id, seasonId, dispatch, history) => {
     dispatch(actions.removeTeamToSeason(seasonId, id, () => window.location.reload()));
@@ -30,18 +31,18 @@ const handleUpdateItem = (id, dispatch, history) => {
 // }
 
 const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 900,
-    background: 'linear-gradient(-45deg, #0816dd 0%, #000046 60% )',  // Cambiado a background
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-    borderRadius: "20px",
-  
-  };
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 603,
+  background: 'linear-gradient(-45deg, #ff4800 0%, #000000 60% )',  // Cambiado a background
+  border: '2px solid #000',
+  boxShadow: 16.08,
+  p: 2.68,
+  borderRadius: "13.4px",
+
+};
 
 const TeamCard = ({ dispatch, seasonId, history, item, handleOpenDescriptionModal, handleOpenOwnerNameModal }) => {
   return (
@@ -51,30 +52,32 @@ const TeamCard = ({ dispatch, seasonId, history, item, handleOpenDescriptionModa
           <div className="flip-card-inner">
             <div className="flip-card-front">
               <div className="card_team">
-                <img src={bigBall} alt="Person" className="card__image_team"></img>
-                <span className="title">{item.teamName}</span>
+                <img src={logo22} alt="Person" className="card__image_team"></img>
+                <span class="title">{item.teamName}</span>
                 <div className="buttons">
-                  <button className="post">{item.arenaName}</button>
+                <button class="post">
+                    {item.arenaName}
+                  </button>
+               </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div className="flip-card-back">
-              <div className="card_team">
-              <span class="title">{item.ownerName} &nbsp;
+                <div class="flip-card-back">
+            <div class="card_team">
+            <span class="title" style={{marginBottom:"0px"}}>{item.ownerName} &nbsp;
             </span>
             <hr></hr>
-                <a onClick={() => handleOpenDescriptionModal(item.description)} class="button_apple">
-                  <span className="desc desc3 scroll_efect_team">{item.description}</span>
-                </a>
+          <a onClick={() => handleOpenDescriptionModal(item.description)} class="button_apple" style={{marginTop:"-5px", marginBottom:"-5px"}}>
+            <span class="desc desc3 scroll_efect_team">{item.description}</span>
+          </a>
                 <hr></hr>
               </div>
               <ul class="social-icons trashgrande trash_position">
                 <li><a type="button" onClick={() => handleRemoveTeamToSeason(item.id, seasonId, dispatch, history)}>
-                  <i class="fa fa-trash"></i></a></li>
+                <i class="fa fa-trash" style={{fontSize:"16px"}}></i></a></li>
               </ul>
               <ul class="social-icons configgrande config_position">
                       <li><a type="button" onClick={() => handleUpdateItem(item.id, dispatch, history)}>
-                      <i class="fa fa-wrench"></i></a></li>
+                      <i class="fa fa-wrench" style={{fontSize:"15px"}}></i></a></li>
                   </ul>
             </div>
           </div>

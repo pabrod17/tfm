@@ -29,12 +29,12 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 900,
+  width: 603,
   bgcolor: 'rgba(255, 0, 221, 0.25)',
   border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-  borderRadius: "20px",
+  boxShadow: 16.08,
+  p: 2.68,
+  borderRadius: "13.4px",
 };
 
 const StretchingCard = ({ dispatch, gameId, history, item, handleOpenDescriptionModal, handleOpenMedicationModal }) => {
@@ -61,11 +61,11 @@ const StretchingCard = ({ dispatch, gameId, history, item, handleOpenDescription
               </div>
               <ul class="social-icons trashgrande trash_position">
                 <li><a type="button" onClick={() => handleRemoveStretchingToGame(item.id, gameId, dispatch, history)}>
-                  <i class="fa fa-trash"></i></a></li>
+                <i class="fa fa-trash" style={{fontSize:"16px"}}></i></a></li>
               </ul>
               <ul class="social-icons configgrande config_position">
                 <li><a type="button" onClick={() => handleUpdateStretching(item.id, dispatch, history)}>
-                  <i class="fa fa-wrench"></i></a></li>
+                <i class="fa fa-wrench" style={{fontSize:"15px"}}></i></a></li>
               </ul>
             </div>
           </div>
@@ -116,8 +116,8 @@ const StretchingsByGame = ({stretchings, gameId}) => {
         aria-describedby="child-modal-description"
       >
           <Box sx={{ ...style, width: "auto", maxWidth: "40vw" }}>
-          <h2 id="child-modal-title" className="color_modal_title_stretching" sx={{ mb: '100px' }} ><FormattedMessage id="project.exercises.fields.description" />:</h2>
-          <p id="child-modal-description" style={{ overflowWrap: 'break-word' }}>
+          <h5 id="child-modal-title" className="color_modal_title_stretching" sx={{ mb: '67px' }} ><FormattedMessage id="project.exercises.fields.description" />:</h5>
+          <p id="child-modal-description" style={{ overflowWrap: 'break-word', fontSize:"8px" }}>
             {modalDescription}
           </p>
         </Box>

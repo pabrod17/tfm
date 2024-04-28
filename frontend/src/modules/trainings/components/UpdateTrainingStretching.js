@@ -74,9 +74,9 @@ const UpdateTrainingStretching = () => {
         
         
             const columnsStretchings2 = [
-                { field: 'id', headerName: 'ID', width: 70 },
-                { field: 'name', headerName: <FormattedMessage id="project.stretchings.fields.stretchingName"/>, width: 300 },
-                { field: 'type', headerName: <FormattedMessage id="project.stretchings.fields.stretchingType" />, width: 160,
+                { field: 'id', headerName: 'ID', width: 46.9 },
+                { field: 'name', headerName: <FormattedMessage id="project.stretchings.fields.stretchingName"/>, width: 201 },
+                { field: 'type', headerName: <FormattedMessage id="project.stretchings.fields.stretchingType" />, width: 107.2,
                 renderCell: (params) => (
                     <div style={{ backgroundColor: 
                         params.row.type === 'Isquiotibiales' ? '#DD2476' : // Azul oscuro
@@ -100,7 +100,7 @@ const UpdateTrainingStretching = () => {
 
 
 
-                { field: 'description', headerName: <FormattedMessage id="project.exercises.fields.description" />, width: 300 }
+                { field: 'description', headerName: <FormattedMessage id="project.exercises.fields.description" />, width: 201 }
             ];
             setColumnsStretchings(columnsStretchings2);
 
@@ -184,33 +184,32 @@ const UpdateTrainingStretching = () => {
             }}
         >
 <Box
-    sx={{
-        bgcolor: 'background.dark',
-        borderRadius: 4,
-        margin: 'auto',  // Centra horizontalmente
-        marginTop: '80px', // Ajusta la distancia desde la parte superior según sea necesario
-        textAlign: 'center', // Centra el contenido dentro del Box
-    }}>
-
-<Box sx={{boxShadow:"0 10px 50px rgb(0, 0, 0)" }}>
+				sx={{
+					bgcolor: 'background.dark',
+					borderRadius: 2.68,
+					margin: 'auto',  // Centra horizontalmente
+					marginTop: '53.6px', // Ajusta la distancia desde la parte superior según sea necesario
+					textAlign: 'center', // Centra el contenido dentro del Box
+				}}>
+                <Box sx={{boxShadow:"0 6.7px 33.5px rgb(0, 0, 0)" }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" 
                         sx={{
                             background: "linear-gradient(-45deg, #41295a 0%, #2F0743 70% )",
                             bgcolor:"red",
-                            boxShadow: 6,
-                            borderRadius: 3,
-                            mb:2,
+							boxShadow: 4.02,
+							borderRadius: 2.01,
+                            mb:1.34,
                             borderColor:"black",
-                            boxShadow:"0 10px 50px rgb(0, 0, 0)",
+							boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)",
                             '& .MuiTabs-flexContainer': {
                                 flexWrap: 'wrap',
                               },
                         }}
         >
-          <Tab value={0} sx={{ color: '#40FF00', fontSize: "30px", padding:"20px"}} onClick={() => handleUpdateTraining(0, dispatch)} label="General"  />
-          <Tab value={1} sx={{ color: '#f5af19', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTrainingExercise(1, dispatch)} label={<FormattedMessage id="project.exercises.fields.exercises"/>}  />
-          <Tab value={2} sx={{ color: 'rgb(255, 0, 247)', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTrainingStretching(2, dispatch)} label={<FormattedMessage id="project.stretchings.fields.stretchings"/>}  />
-          <Tab value={3} sx={{ color: '#ff0000', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateTrainingPlayer(3, dispatch)} label={<FormattedMessage id="project.players.fields.players"/>}/>
+          <Tab value={0} sx={{ color: '#40FF00', fontSize: "22.11px", padding:"13.4px"}} onClick={() => handleUpdateTraining(0, dispatch)} label="General"  />
+          <Tab value={1} sx={{ color: '#f5af19', fontSize: "22.11px", padding:"13.4px" }} onClick={() => handleUpdateTrainingExercise(1, dispatch)} label={<FormattedMessage id="project.exercises.fields.exercises"/>}  />
+          <Tab value={2} sx={{ color: 'rgb(255, 0, 247)', fontSize: "22.11px", padding:"13.4px" }} onClick={() => handleUpdateTrainingStretching(2, dispatch)} label={<FormattedMessage id="project.stretchings.fields.stretchings"/>}  />
+          <Tab value={3} sx={{ color: '#ff0000', fontSize: "22.11px", padding:"13.4px" }} onClick={() => handleUpdateTrainingPlayer(3, dispatch)} label={<FormattedMessage id="project.players.fields.players"/>}/>
         </Tabs>
       </Box>
       <input type="checkbox" class="theme-checkbox" onClick={() => setShowTable(!showTable)}/>
@@ -220,6 +219,7 @@ const UpdateTrainingStretching = () => {
 			display="flex"
 			alignItems="center"
 			p={1}
+            mt={-0.5}
 			sx={{
 				flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
 			}}
@@ -232,24 +232,25 @@ const UpdateTrainingStretching = () => {
 <Box
 			display="flex"
 			alignItems="center"
-			p={1}
+			p={0.67}
 			sx={{
-				border: '2px solid grey',
+                border: '1.34px solid grey',
 				background: "linear-gradient(-45deg, #41295a 0%, #2F0743 70% )",
-				borderRadius: "20px",
+                borderRadius: "13.4px",
 				flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 				flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
                 borderColor:"black",
-				boxShadow:"0 10px 50px rgb(0, 0, 0)"
+                boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)",
 			}}
 		>
             <Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
-			<Grid container ml={5} mr={5} mb={1} spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
+			<Grid container ml={3.35} mr={3.35} mb={1} spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
 			>
 				<Grid item xs={12} md={12}>
 						<Typography
-							sx={{ flex: '1 1 100%', mt: 3.5, color: "#00bfff", m:2 }}
-							variant="h6"
+							sx={{ 
+                                flex: '1 1 100%', mt: 2.35, color: "#00bfff", m:1.34, fontSize:"12px", fontWeight:"bold" }}
+							variant="h8"
 							id="tableTitle"
 							component="div"
 						>
@@ -260,11 +261,12 @@ const UpdateTrainingStretching = () => {
 								sx={{
 									background: "linear-gradient(-45deg, #f12711 0%, #f5af19 100% )",
 									borderRadius: "20px",
-									boxShadow: 12,
-									m:2,
+									boxShadow: 13.4,
+									m:1.34,
                                     borderColor:"black",
-                                    boxShadow:"0 10px 50px rgb(0, 0, 0)"
+                                    boxShadow:"0 6.7px 33.5px rgb(0, 0, 0)",
 								}}
+                                density="compact"
 								rows={rowsStretchings}
 								columns={columnsStretchings}
 								initialState={{

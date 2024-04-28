@@ -201,12 +201,12 @@ const handleFindTrainingsToPlayer = (playerId, dispatch, history) => {
       top: '50%',
       left: '50%',
       transform: 'translate(-50%, -50%)',
-      width: 900,
+      width: 603,
       bgcolor: 'rgb(59, 4, 26)',
       border: '2px solid #000',
-      boxShadow: 24,
-      p: 4,
-      borderRadius: "20px",
+      boxShadow: 16.08,
+      p: 2.68,
+      borderRadius: "13.4px",
     };
     
     const PlayerCard = ({ dispatch, gameId, history, item, handleOpenDescriptionModal, handleOpenMedicationModal }) => {
@@ -220,7 +220,7 @@ const handleFindTrainingsToPlayer = (playerId, dispatch, history) => {
                 <ul className="social-icons injuredhover injured_position">
                   <li>
                     <a type="button">
-                    <i className="fa fa-exclamation-triangle" style={{ top: '10.5px', left: '10.5px', fontSize: '23px', color:"red" }}></i>
+                    <i className="fa fa-exclamation-triangle" style={{ top: '7.04px', left: '7.04px', fontSize: '15.41px', color:"red" }}></i>
                     </a>
                   </li>
                 </ul>
@@ -247,11 +247,11 @@ const handleFindTrainingsToPlayer = (playerId, dispatch, history) => {
                   </div>
                   <ul class="social-icons trashgrande trash_position">
                     <li><a type="button" onClick={() => handleRemovePlayerToGame(item.id, gameId, dispatch, history)}>
-                      <i class="fa fa-trash"></i></a></li>
+                    <i class="fa fa-trash" style={{fontSize:"16px"}}></i></a></li>
                   </ul>
                   <ul class="social-icons configgrande config_position">
                       <li><a type="button" onClick={() => handleUpdatePlayer(item.id, dispatch, history)}>
-                      <i class="fa fa-wrench"></i></a></li>
+                      <i class="fa fa-wrench" style={{fontSize:"15px"}}></i></a></li>
                   </ul>
                 </div>
               </div>
@@ -305,8 +305,8 @@ const PlayersByGame = ({players, gameId}) => {
         aria-describedby="child-modal-description"
       >
           <Box sx={{ ...style, width: "auto", maxWidth: "40vw" }}>
-          <h2 id="child-modal-title" className="color_modal_title_player" sx={{ mb: '100px' }} ><FormattedMessage id="project.players.fields.trends" />:</h2>
-          <p id="child-modal-description" style={{ overflowWrap: 'break-word' }}>
+          <h5 id="child-modal-title" className="color_modal_title_player" sx={{ mb: '67px' }} ><FormattedMessage id="project.players.fields.trends" />:</h5>
+          <p id="child-modal-description" style={{ overflowWrap: 'break-word', fontSize:"8px" }}>
             {modalDescription}
           </p>
         </Box>
