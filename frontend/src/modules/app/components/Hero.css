@@ -4,6 +4,20 @@
     background-position: center; /* Centra la imagen */
     background-repeat: no-repeat; /* Evita que la imagen se repita */
   }
+/* 
+Para ver si hay algo detras: otro fondo por ejemplo.
+
+  .hero-container {
+    background-image: url('./canastaSimple.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    width: 100%;
+    height: 100vh;
+    }
+ */
+
+
 .grande{
   background-size: cover;
 }

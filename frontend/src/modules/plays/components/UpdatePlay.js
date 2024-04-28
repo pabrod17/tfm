@@ -149,6 +149,7 @@ const UpdatePlay = () => {
               sx={{
                 color: "#00bfff",
 				fontSize:"13.40px",
+				
               }}
 
             ><FormattedMessage id="project.lesion.fields.lesionType" /></InputLabel>
@@ -166,7 +167,6 @@ const UpdatePlay = () => {
 			borderColor:"black",
 			boxShadow:"0 10px 10px rgb(0, 0, 0)",
 			height:"40px",
-
 		  }}
 		  inputProps={{
 			MenuProps: {

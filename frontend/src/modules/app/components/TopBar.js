@@ -34,6 +34,7 @@ const Topbar = ({toggleBackgroundImage, isDark, setIsDark}) => {
   };
   const handleLogout = () => {
     setAnchorEl(null);
+    toggleBackgroundImage(6)
     dispatch(users.actions.logout());
   };
   const handleProfile = () => {
@@ -86,7 +87,7 @@ const Topbar = ({toggleBackgroundImage, isDark, setIsDark}) => {
           <LocalHospitalIcon sx={{ fontSize: 30 }} />
         </IconButton> */}
         {/* <Switch checked={isDark} onChange={e=>setIsDark(!isDark)}/> */}
-        <IconButton sx={{ color: "white"}}>
+        <IconButton sx={{ color: "white", marginRight:"-5px"}}>
           <StarsIcon color="primary" fontSize="medium" onClick={() => toggleBackgroundImage(1)} />
         </IconButton>
         <IconButton sx={{ color: "white"}}>
@@ -100,6 +101,9 @@ const Topbar = ({toggleBackgroundImage, isDark, setIsDark}) => {
         </IconButton>
         <IconButton sx={{ color: "green"}}>
           <StarsIcon color="green" fontSize="medium" onClick={() => toggleBackgroundImage(5)} />
+        </IconButton>
+        <IconButton sx={{ color: "#803300"}}>
+          <StarsIcon color="green" fontSize="medium" onClick={() => toggleBackgroundImage(6)} />
         </IconButton>
     </Container>
 

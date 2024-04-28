@@ -26,11 +26,12 @@ import plash1 from './plash1.jpeg';
 import plash2 from './plash2.jpeg';
 import plash3 from './plash3.jpeg';
 import plash4 from './plash4.jpeg';
+import canastaSimple from "./canastaSimple.jpg";
 
 
 const App = () => {
     const [isDark, setIsDark] = useState(true);
-    const [backgroundImage, setBackgroundImage] = useState(linea_roja_grande); // Imagen inicial
+    const [backgroundImage, setBackgroundImage] = useState(canastaSimple); // Imagen inicial
 
     const toggleBackgroundImage = (count) => {
         if(count==1) {
@@ -47,6 +48,9 @@ const App = () => {
         }
         if(count==5) {
             setBackgroundImage(linea_roja_grande);
+        }
+        if(count==6) {
+            setBackgroundImage(canastaSimple);
         }
         }
 
@@ -133,7 +137,7 @@ const App = () => {
                     </Box>
 
                 </div> : 
-                <div className='hero-container'>
+                <div >
                 <Login></Login>
                 </div>
             }
