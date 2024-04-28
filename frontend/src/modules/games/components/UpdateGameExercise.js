@@ -76,27 +76,28 @@ const UpdateGameExercise = () => {
                 });
 
             const columnsExercises2 = [
-                { field: 'id', headerName: 'ID', width: 70 },
-                { field: 'name', headerName: <FormattedMessage id="project.exercises.fields.name"/>, width: 300 },
-                { field: 'type', headerName: <FormattedMessage id="project.exercises.fields.typeOnly" />, width: 160,
+                { field: 'id', headerName: 'ID', width: 46.9 },
+                { field: 'name', headerName: <FormattedMessage id="project.exercises.fields.name"/>, width: 201 },
+                { field: 'type', headerName: <FormattedMessage id="project.exercises.fields.typeOnly" />, width: 107.2,
                 renderCell: (params) => (
                     <div style={{ backgroundColor: 
                         params.row.type === 'Tactico' ? '#DD2476' : // Azul oscuro
                         params.row.type === 'Tecnica' ? '#FF512F' : // Verde esmeralda
                         params.row.type === 'Fisico' ? '#FFD166' : // Amarillo
                         params.row.type === 'Global' ? '#0f9b0f' : // Blanco
-                        params.row.type === 'Especifico' ? '#000000' : // Gris claro
+                        params.row.type === 'Especifico' ? '#DDDDDD' : // Gris claro
                         params.row.type === 'Psicologico' ? '#FF6B6B' : // Rosa
                         params.row.type === 'Estrategia' ? '#8E2DE2' : // Morado oscuro
                         params.row.type === 'PrePartido' ? '#00FFF3' : // Negro
                         'green', // Por defecto
                         borderRadius: '5px',
-                        padding: '5px'                    }}>
+                        padding: '1px'
+                    }}>
                     {params.value}
                     </div>
                 ), },
-                { field: 'description', headerName: <FormattedMessage id="project.exercises.fields.description" />, width: 300 },
-                { field: 'objective', headerName: <FormattedMessage id="project.exercises.fields.objective" />, width: 300 },
+                { field: 'description', headerName: <FormattedMessage id="project.exercises.fields.description" />, width: 201 },
+                { field: 'objective', headerName: <FormattedMessage id="project.exercises.fields.objective" />, width: 201 },
             ];
             setColumnsExercises(columnsExercises2);
 
@@ -180,34 +181,34 @@ const UpdateGameExercise = () => {
             }}
         >
 <Box
-    sx={{
-        bgcolor: 'background.dark',
-        borderRadius: 4,
-        margin: 'auto',  // Centra horizontalmente
-        marginTop: '80px', // Ajusta la distancia desde la parte superior según sea necesario
-        textAlign: 'center', // Centra el contenido dentro del Box
-    }}>
+				sx={{
+					bgcolor: 'background.dark',
+					borderRadius: 2.68,
+					margin: 'auto',  // Centra horizontalmente
+					marginTop: '53.6px', // Ajusta la distancia desde la parte superior según sea necesario
+					textAlign: 'center', // Centra el contenido dentro del Box
+				}}>
 
-<Box sx={{boxShadow:"0 10px 50px rgb(0, 0, 0)" }}>
+<Box sx={{boxShadow:"0 6.7px 33.5px rgb(0, 0, 0)" }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" 
                         sx={{
                             background: "linear-gradient(-35deg, #081971 30%, #7C0C0C 80% )",
                             bgcolor:"red",
-                            boxShadow: 6,
-                            borderRadius: 3,
-                            mb:2,
+							boxShadow: 4.02,
+							borderRadius: 2.01,
+                            mb:1.34,
                             borderColor:"black",
-                            boxShadow:"0 10px 50px rgb(0, 0, 0)",
+							boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)",
                             '& .MuiTabs-flexContainer': {
                                 flexWrap: 'wrap',
                               },
                         }}
         >
-          <Tab value={0} sx={{ color: '#40FF00', fontSize: "30px", padding:"20px"}} onClick={() => handleUpdateGame(0, dispatch)} label="General"  />
-          <Tab value={1} sx={{ color: '#f5af19', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateGameExercise(1, dispatch)} label={<FormattedMessage id="project.exercises.fields.exercises"/>}  />
-          <Tab value={2} sx={{ color: 'rgb(255, 0, 247)', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateGameStretching(2, dispatch)} label={<FormattedMessage id="project.stretchings.fields.stretchings"/>}  />
+          <Tab value={0} sx={{ color: '#40FF00', fontSize: "22.11px", padding:"13.4px"}} onClick={() => handleUpdateGame(0, dispatch)} label="General"  />
+          <Tab value={1} sx={{ color: '#f5af19', fontSize: "22.11px", padding:"13.4px" }} onClick={() => handleUpdateGameExercise(1, dispatch)} label={<FormattedMessage id="project.exercises.fields.exercises"/>}  />
+          <Tab value={2} sx={{ color: 'rgb(255, 0, 247)', fontSize: "22.11px", padding:"13.4px" }} onClick={() => handleUpdateGameStretching(2, dispatch)} label={<FormattedMessage id="project.stretchings.fields.stretchings"/>}  />
           {/* <Tab value={3} sx={{ color: 'rgb(0, 217, 255)', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateGameStatistics(3, dispatch)} label="Statistics"/> */}
-          <Tab value={4} sx={{ color: '#ff0000', fontSize: "30px", padding:"20px" }} onClick={() => handleUpdateGamePlayer(4, dispatch)} label={<FormattedMessage id="project.players.fields.players"/>}/>
+          <Tab value={4} sx={{ color: '#ff0000', fontSize: "22.11px", padding:"13.4px" }} onClick={() => handleUpdateGamePlayer(4, dispatch)} label={<FormattedMessage id="project.players.fields.players"/>}/>
         </Tabs>
       </Box>
       <input type="checkbox" class="theme-checkbox" onClick={() => setShowTable(!showTable)}/>
@@ -217,6 +218,7 @@ const UpdateGameExercise = () => {
 			display="flex"
 			alignItems="center"
 			p={1}
+            mt={-0.5}
 			sx={{
 				flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
 			}}
@@ -229,24 +231,25 @@ const UpdateGameExercise = () => {
 <Box
 			display="flex"
 			alignItems="center"
-			p={1}
+			p={0.67}
 			sx={{
-				border: '2px solid grey',
+                border: '1.34px solid grey',
                 background: "linear-gradient(-35deg, #081971 30%, #7C0C0C 80% )",
-				borderRadius: "20px",
+                borderRadius: "13.4px",
 				flexWrap: 'wrap',  // Permite que los elementos se envuelvan cuando no hay suficiente ancho
 				flexDirection: 'column',  // Coloca los elementos en una columna cuando el ancho es insuficiente
                 borderColor:"black",
-				boxShadow:"0 10px 50px rgb(0, 0, 0)"
-			}}
+                boxShadow: "0 6.7px 33.5px rgb(0, 0, 0)",
+            }}
 		>
             <Errors errors={backendErrors} onClose={() => setBackendErrors(null)} />
-			<Grid container ml={5} mr={5} mb={1} spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
+			<Grid container ml={3.35} mr={3.35} mb={1} spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
 			>
 				<Grid item xs={12} md={12}>
-						<Typography
-							sx={{ flex: '1 1 100%', mt: 3.5, color: "#00bfff", m:2 }}
-							variant="h6"
+                <Typography
+							sx={{ 
+                                flex: '1 1 100%', mt: 2.35, color: "#00bfff", m:1.34, fontSize:"12px", fontWeight:"bold" }}
+							variant="h8"
 							id="tableTitle"
 							component="div"
 						>
@@ -257,11 +260,11 @@ const UpdateGameExercise = () => {
 								sx={{
 									background: "linear-gradient(-45deg, #0E24A0 0%, #AD1010 100% )",
 									borderRadius: "20px",
-									boxShadow: 12,
-									m:2,
-                                    color:"white",
+									boxShadow: 13.4,
+									m:1.34,
                                     borderColor:"black",
-                                    boxShadow:"0 10px 50px rgb(0, 0, 0)"
+                                    boxShadow:"0 6.7px 33.5px rgb(0, 0, 0)",
+                                    color:"white"
 								}}
 								rows={rowsExercises}
 								columns={columnsExercises}
@@ -270,6 +273,7 @@ const UpdateGameExercise = () => {
 										paginationModel: { page: 0, pageSize: 5 },
 									},
 								}}
+                                density="compact"
                                 autoHeight={true} // Permitir que la tabla determine su propio tamaño si los datos no se han cargado
 								pageSizeOptions={[5, 10]}
 								checkboxSelection
