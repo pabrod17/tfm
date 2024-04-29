@@ -1426,9 +1426,9 @@ const UpdateStatisticsGame = () => {
 											min={1}
 											max={2}
 											aria-labelledby="input-item-number"
-											sx={{
-												color:"#995711",
-											}}
+											// sx={{
+											// 	color:"#995711",
+											// }}
 
 										/>
 										<Typography id="input-series-number" style={{fontSize:"11px", marginTop:"-15px", marginBottom:"-10px"}} gutterBottom>
@@ -1441,9 +1441,9 @@ const UpdateStatisticsGame = () => {
 											min={1}
 											max={3}
 											aria-labelledby="input-series-number"
-											sx={{
-												color:"#b42e10",
-											}}
+											// sx={{
+											// 	color:"#b42e10",
+											// }}
 										/>
 									</Box>
 
