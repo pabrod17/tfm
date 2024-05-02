@@ -38,6 +38,8 @@
 
     <color name="primary">#1f1f1f</color>
     <color name="primaryDark">#181818</color>
+    <!--    <color name="primary">#14213d</color>-->
+    <!--    <color name="primaryDark">#041E42</color>-->
     <color name="secondary">#B96537</color>
     <color name="accent">#FFFFFF</color>
     <color name="gold">#ff378f</color>
