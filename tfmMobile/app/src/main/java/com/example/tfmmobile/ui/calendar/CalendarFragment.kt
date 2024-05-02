@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.tfmmobile.databinding.FragmentCalendarBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CalendarFragment : Fragment() {
 
     private var _binding: FragmentCalendarBinding? = null
