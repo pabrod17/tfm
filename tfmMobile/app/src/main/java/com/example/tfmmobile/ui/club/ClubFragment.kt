@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tfmmobile.databinding.FragmentClubBinding
@@ -41,7 +42,12 @@ class ClubFragment : Fragment() {
     private fun initTeamList() {
 //        No le paso la lista porque el adaptar ya tiene la lista inicializada
         teamAdapter = TeamAdapter(onItemSelected = {
-            Toast.makeText(context, it.teamName, Toast.LENGTH_LONG).show()
+//            Toast.makeText(context, it.teamName, Toast.LENGTH_LONG).show()
+
+            findNavController().navigate(
+//                Siempre va a haber esta clase. La del maingraph
+                ClubFragmentDirections.actionClubFragmentToTeamDetailActivity(it.id, it.teamName, it.arenaName, it.ownerName, it.description)
+            )
         })
 
         binding.rvTeams.apply {

@@ -14,7 +14,11 @@
         android:id="@+id/clubFragment"
         android:name="com.example.tfmmobile.ui.club.ClubFragment"
         android:label="fragment_club"
-        tools:layout="@layout/fragment_club" />
+        tools:layout="@layout/fragment_club" >
+        <action
+            android:id="@+id/action_clubFragment_to_teamDetailActivity"
+            app:destination="@id/teamDetailActivity" />
+    </fragment>
     <fragment
         android:id="@+id/eventsFragment"
         android:name="com.example.tfmmobile.ui.events.EventsFragment"
@@ -30,4 +34,24 @@
         android:name="com.example.tfmmobile.ui.plays.PlaysFragment"
         android:label="fragment_plays"
         tools:layout="@layout/fragment_plays" />
+    <activity
+        android:id="@+id/teamDetailActivity"
+        android:name="com.example.tfmmobile.ui.detail.TeamDetailActivity"
+        android:label="activity_team_detail"
+        tools:layout="@layout/activity_team_detail" >
+        <argument
+            android:name="id"
+            app:argType="long" />
+        <argument
+            android:name="teamName"
+            app:argType="string" />
+        <argument android:name="arenaName"
+            app:argType="string" />
+        <argument
+            android:name="ownerName"
+            app:argType="string" />
+        <argument
+            android:name="description"
+            app:argType="string" />
+    </activity>
 </navigation>
