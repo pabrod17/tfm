@@ -1,5 +1,6 @@
 package com.example.tfmmobile.data.provider.network
 
+import com.example.tfmmobile.data.core.interceptors.AuthInterceptor
 import com.example.tfmmobile.data.provider.RepositoryImpl
 import com.example.tfmmobile.domain.model.Repository
 import dagger.Module
@@ -8,6 +9,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -31,22 +33,34 @@ object NetworkModule {
         .addInterceptor(object : Interceptor {
             override fun intercept(chain: Interceptor.Chain): okhttp3.Response {
                 val request = chain.request()
-                val url = request.url()
-                println("URL: $url")
+                println("URL: $request")
                 return chain.proceed(request)
             }
         })
         .build()
+
     @Provides
     @Singleton
-    fun provideRetrofit():Retrofit{
+    fun provideRetrofit(okHttpClient: OkHttpClient):Retrofit{
         return Retrofit
             .Builder()
-            .client(httpClient1)
+            .client(okHttpClient)
             .baseUrl("http://10.0.2.2:8080/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
+    @Provides
+    @Singleton
+    fun provideOkHttpClient(authInterceptor: AuthInterceptor):OkHttpClient{
+        val interceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+
+        return OkHttpClient
+            .Builder()
+            .addInterceptor(interceptor)
+            .build()
+    }
+
+
 
     @Provides
     fun provideTeamApiService(retrofit: Retrofit): TeamApiService{
