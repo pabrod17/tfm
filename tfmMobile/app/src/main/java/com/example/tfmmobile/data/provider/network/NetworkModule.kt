@@ -42,6 +42,7 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient):Retrofit{
+
         return Retrofit
             .Builder()
             .client(okHttpClient)
@@ -53,10 +54,9 @@ object NetworkModule {
     @Singleton
     fun provideOkHttpClient(authInterceptor: AuthInterceptor):OkHttpClient{
         val interceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
-
         return OkHttpClient
             .Builder()
-            .addInterceptor(interceptor)
+            .addInterceptor(authInterceptor)
             .build()
     }
 
