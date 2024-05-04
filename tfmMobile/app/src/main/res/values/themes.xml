@@ -16,4 +16,13 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">20sp</item>
     </style>
+    <style name="FormEditText" parent="Widget.AppCompat.EditText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/secondary</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="singleLine">true</item>
+        <item name="maxLines">1</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:textColorHint">@color/secondary</item>
+    </style>
 </resources>

@@ -1,8 +1,12 @@
 package com.example.tfmmobile.data.provider.network
 
+import TokenManager
 import com.example.tfmmobile.data.core.interceptors.AuthInterceptor
+import com.example.tfmmobile.data.core.interceptors.TokenManage3
 import com.example.tfmmobile.data.provider.RepositoryImpl
+import com.example.tfmmobile.data.provider.UserRepositoryImpl
 import com.example.tfmmobile.domain.model.Repository
+import com.example.tfmmobile.domain.model.user.UserRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -71,4 +75,15 @@ object NetworkModule {
     fun provideRepository(apiService: TeamApiService):Repository{
         return RepositoryImpl(apiService)
     }
+
+    @Provides
+    fun provideUserApiService(retrofit: Retrofit): UserApiService{
+        return retrofit.create(UserApiService::class.java)
+    }
+
+    @Provides
+    fun provideUserRepository(apiService: UserApiService): UserRepository {
+        return UserRepositoryImpl(apiService)
+    }
+
 }
