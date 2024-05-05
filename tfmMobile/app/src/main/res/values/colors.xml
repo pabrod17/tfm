@@ -68,6 +68,15 @@
 
     <color name="background">#232730</color>
     <color name="background_dark">#1B1D29</color>
+
+    <color name="deepblue">#1B0756</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+
+
+
     <color name="paper">#2E353F</color>
 
     <color name="error">#e84545</color>

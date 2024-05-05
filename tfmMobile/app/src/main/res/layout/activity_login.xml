@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_dark"
+    android:background="@drawable/gradient_background"
     android:id="@+id/main"
     tools:context=".ui.login.LoginActivity">
 
@@ -76,7 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
-        android:textColor="@color/red"
+        android:textColor="@color/white"
         android:text="@string/login_sign_in"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tilPassword" />
