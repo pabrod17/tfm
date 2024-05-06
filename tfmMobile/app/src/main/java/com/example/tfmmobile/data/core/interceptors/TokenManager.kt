@@ -7,6 +7,7 @@ class TokenManager @Inject constructor(val context: Context) {
     private  val TOKEN_PREFS_NAME = "TokenPrefs"
     private  val KEY_AUTH_TOKEN = "authToken"
     private  val USER_ID = "userId"
+    private  val LOGIN_STATE = "loginState"
 
     val storage = context.getSharedPreferences(TOKEN_PREFS_NAME, 0)
 
@@ -46,6 +47,19 @@ class TokenManager @Inject constructor(val context: Context) {
     fun getUserId(): String? {
 //        return sharedPreferences.getString(KEY_AUTH_TOKEN, null)
         return storage.getString(USER_ID, "")
+    }
+
+    fun saveLoginState(state: String) {
+        storage.edit().putString(LOGIN_STATE, state).apply()
+    }
+
+    fun removeLoginState() {
+        storage.edit().remove(LOGIN_STATE).apply()
+    }
+
+    fun getLoginState(): String? {
+//        return sharedPreferences.getString(KEY_AUTH_TOKEN, null)
+        return storage.getString(LOGIN_STATE, "")
     }
 
 //    fun clearAuthToken() {

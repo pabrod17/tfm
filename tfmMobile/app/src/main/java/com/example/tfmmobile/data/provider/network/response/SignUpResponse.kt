@@ -13,6 +13,7 @@ data class SignUpResponse (
     fun toDomain(): UserModel {
         prefs.saveAuthToken(serviceToken)
         prefs.saveUserId(user.id.toString())
+        prefs.saveLoginState("opened")
         return UserModel(
             id = user.id,
             userName = user.userName,

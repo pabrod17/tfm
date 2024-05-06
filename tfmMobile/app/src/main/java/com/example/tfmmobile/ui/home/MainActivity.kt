@@ -88,6 +88,7 @@ class MainActivity : AppCompatActivity() {
         if(item.itemId == R.id.logout) {
             prefs.removeAuthToken()
             prefs.removeUserId()
+            prefs.removeLoginState()
             val intent = Intent(this, LoginActivity::class.java)
             this.startActivity(intent)
         }

@@ -16,7 +16,9 @@ import androidx.lifecycle.lifecycleScope
 import com.aristidevs.nuwelogin.core.ex.dismissKeyboard
 import com.aristidevs.nuwelogin.core.ex.loseFocusAfterAction
 import com.example.tfmmobile.R
+import com.example.tfmmobile.TfmMobileApp.Companion.prefs
 import com.example.tfmmobile.databinding.ActivityLoginBinding
+import com.example.tfmmobile.ui.home.MainActivity
 import com.example.tfmmobile.ui.login.model.UserLogin
 import com.example.tfmmobile.ui.signup.SignUpActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,8 +37,16 @@ class LoginActivity : AppCompatActivity() {
     private val loginViewModel: LoginViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        if(prefs.getLoginState()?.isNotEmpty() == true) {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
 
         setContentView(R.layout.activity_login)
         binding = ActivityLoginBinding.inflate(layoutInflater)
