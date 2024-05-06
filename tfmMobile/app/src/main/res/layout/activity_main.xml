@@ -8,6 +8,9 @@
     android:background="@drawable/gradient_background"
     tools:context=".ui.home.MainActivity">
 
+<!--    color fondo: 1c252d-->
+<!--    color card: 223140-->
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         app:menu="@menu/toolbar_menu"
