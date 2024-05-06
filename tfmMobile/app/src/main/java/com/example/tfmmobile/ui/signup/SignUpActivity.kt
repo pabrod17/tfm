@@ -1,13 +1,11 @@
-package com.example.tfmmobile.ui.login
+package com.example.tfmmobile.ui.signup
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View
 import android.view.inputmethod.EditorInfo
-import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -17,37 +15,36 @@ import androidx.core.view.WindowInsetsCompat
 import com.aristidevs.nuwelogin.core.ex.dismissKeyboard
 import com.aristidevs.nuwelogin.core.ex.loseFocusAfterAction
 import com.example.tfmmobile.R
-import com.example.tfmmobile.data.core.interceptors.TokenManage3
 import com.example.tfmmobile.databinding.ActivityLoginBinding
-import com.example.tfmmobile.databinding.ActivityTeamDetailBinding
-import com.example.tfmmobile.ui.detail.TeamDetailViewModel
-import com.example.tfmmobile.ui.home.MainActivity
-import com.example.tfmmobile.ui.signup.SignUpActivity
+import com.example.tfmmobile.databinding.ActivitySignUpBinding
+import com.example.tfmmobile.ui.login.LoginActivity
+import com.example.tfmmobile.ui.login.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
-class LoginActivity : AppCompatActivity() {
+class SignUpActivity : AppCompatActivity() {
 
     companion object {
         fun create(context: Context): Intent =
-            Intent(context, LoginActivity::class.java)
+            Intent(context, SignUpActivity::class.java)
 
     }
 
-    private lateinit var binding: ActivityLoginBinding
-    private val loginViewModel: LoginViewModel by viewModels()
-
+    private lateinit var binding: ActivitySignUpBinding
+    private val signUpViewModel : SignUpViewModel  by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        setContentView(R.layout.activity_sign_up)
 
-        setContentView(R.layout.activity_login)
-        binding = ActivityLoginBinding.inflate(layoutInflater)
+        binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 //        loginViewModel.login("", "")
         initUI()
+
+
+
 
 
 
@@ -74,26 +71,30 @@ class LoginActivity : AppCompatActivity() {
 //
 //        binding.viewBottom.tvFooter.setOnClickListener { loginViewModel.onSignInSelected() }
 
-        binding.btnLogin.setOnClickListener {
+        binding.btnCreateAccount.setOnClickListener {
             it.dismissKeyboard()
-            loginViewModel.onLoginSelected(
+            signUpViewModel.onSignUpSelected(
+                binding.etNickname.text.toString(),
+                binding.etRealName.text.toString(),
+                binding.etRealName2.text.toString(),
                 binding.etEmail.text.toString(),
                 binding.etPassword.text.toString(),
                 this
             )
         }
 
-        binding.tvForgotPassword.setOnClickListener {
+        binding.tvLoginBack.setOnClickListener {
             it.dismissKeyboard()
-            val intent = Intent(this, SignUpActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             this.startActivity(intent)
         }
+
     }
 
     private fun onFieldChanged(hasFocus: Boolean = false) {
         if (!hasFocus) {
-            loginViewModel.onFieldsChanged(
-                userName = binding.etEmail.text.toString(),
+            signUpViewModel.onFieldsChanged(
+                email = binding.etEmail.text.toString(),
                 password = binding.etPassword.text.toString()
             )
         }
@@ -109,5 +110,4 @@ class LoginActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
     }
-
 }

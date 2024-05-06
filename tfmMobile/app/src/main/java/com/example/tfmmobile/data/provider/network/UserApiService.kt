@@ -1,6 +1,7 @@
 package com.example.tfmmobile.data.provider.network
 
 import com.example.tfmmobile.data.provider.network.dto.LoginDto
+import com.example.tfmmobile.data.provider.network.dto.SignUpDto
 import com.example.tfmmobile.data.provider.network.response.LoginResponse
 import com.example.tfmmobile.data.provider.network.response.TeamResponse
 import retrofit2.http.Body
@@ -11,4 +12,7 @@ interface UserApiService {
 
     @POST("users/login")
     suspend fun login(@Body loginDto: LoginDto): LoginResponse
+
+    @POST("users/signUp")
+    suspend fun signUp(@Body signUpDto: SignUpDto): LoginResponse
 }
