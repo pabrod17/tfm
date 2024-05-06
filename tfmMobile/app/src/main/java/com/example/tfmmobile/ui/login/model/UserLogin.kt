@@ -1,7 +1,7 @@
 package com.example.tfmmobile.ui.login.model
 
 data class UserLogin(
-    val email: String = "",
+    val userName: String = "",
     val password: String = "",
     val showErrorDialog: Boolean = false
 )

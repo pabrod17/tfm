@@ -5,11 +5,14 @@ import android.content.Intent
 import android.util.Log
 import android.util.Patterns
 import androidx.core.content.ContextCompat.startActivity
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.tfmmobile.TfmMobileApp.Companion.prefs
 import com.example.tfmmobile.domain.model.usecase.LoginUseCase
 import com.example.tfmmobile.ui.home.MainActivity
+import com.example.tfmmobile.ui.login.model.UserLogin
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -29,6 +32,14 @@ class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase)
     val state: StateFlow<LoginState> = _state
     private val _viewState = MutableStateFlow(LoginViewState())
 
+    val viewState: StateFlow<LoginViewState>
+        get() = _viewState
+
+    private var _showErrorDialog = MutableLiveData(UserLogin())
+
+    val showErrorDialog: LiveData<UserLogin>
+        get() = _showErrorDialog
+
     fun login(userName:String, password:String, context: Context){
         viewModelScope.launch {
 //            hilo principal
@@ -41,6 +52,8 @@ class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase)
                 val intent = Intent(context, MainActivity::class.java)
                 context.startActivity(intent)
             } else {
+                _showErrorDialog.value =
+                    UserLogin(password = password, showErrorDialog = true)
                 _state.value = LoginState.Error("Ha ocurrido un error. LOGIN.")
             }
 //            hilo principal

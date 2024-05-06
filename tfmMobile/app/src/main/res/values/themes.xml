@@ -33,6 +33,11 @@
         <item name="android:windowBackground">@drawable/view_background</item>
     </style>
 
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="colorControlNormal">@color/white</item>
+        <item name="titleTextColor">@color/white</item>
+    </style>
+
     <style name="CaptionText" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/secondary</item>

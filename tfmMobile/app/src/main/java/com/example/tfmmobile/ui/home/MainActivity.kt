@@ -1,17 +1,24 @@
 package com.example.tfmmobile.ui.home
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.FrameLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.tfmmobile.R
+import com.example.tfmmobile.TfmMobileApp.Companion.prefs
 import com.example.tfmmobile.databinding.ActivityMainBinding
+import com.example.tfmmobile.ui.login.LoginActivity
+import com.example.tfmmobile.ui.signup.SignUpActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,6 +26,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //Esta linea es para  ver a pantalla completa la app. Pero asi me como el notch
@@ -31,6 +40,10 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val toolbar : Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar);
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 //        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
 //            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
 //            v.setPadding(
@@ -64,6 +77,21 @@ class MainActivity : AppCompatActivity() {
         val navHost = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController = navHost.navController
         binding.bottomNavView.setupWithNavController(navController)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == R.id.logout) {
+            prefs.removeAuthToken()
+            prefs.removeUserId()
+            val intent = Intent(this, LoginActivity::class.java)
+            this.startActivity(intent)
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }

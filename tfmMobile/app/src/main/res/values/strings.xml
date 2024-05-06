@@ -9,6 +9,12 @@
     <string name="health">Salud</string>
     <string name="plays">Jugadas</string>
     <string name="calendar">Calendario</string>
+
+    <string name="profile">Perfil</string>
+    <string name="logout">Cerrar sesión</string>
+
+
+
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>

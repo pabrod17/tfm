@@ -15,6 +15,7 @@ data class LoginResponse(
 
     fun toDomain(): UserModel {
         prefs.saveAuthToken(serviceToken)
+        prefs.saveUserId(user.id.toString())
         return UserModel(
             id = user.id,
             userName = user.userName,
