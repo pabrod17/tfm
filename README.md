@@ -181,3 +181,10 @@ Calendar Home design:
 
 ![ToolBare](CalendarHome1.png)
 
+Mobile Gradient Home design. Option 1:
+
+![ToolBare](gradient1.png)
+
+Mobile Gradient Home design. Option 2:
+
+![ToolBare](gradient2.png)
