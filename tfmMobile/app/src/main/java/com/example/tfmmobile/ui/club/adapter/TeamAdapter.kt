@@ -5,11 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tfmmobile.R
 import com.example.tfmmobile.domain.model.Team
+import com.example.tfmmobile.domain.model.TeamModel
 
-class TeamAdapter (private var teamList: List<Team> = emptyList(),
-    private val onItemSelected:(Team) -> Unit) : RecyclerView.Adapter<TeamViewHolder>(){
+class TeamAdapter (private var teamList: List<TeamModel> = emptyList(),
+                   private val onItemSelected:(TeamModel) -> Unit) : RecyclerView.Adapter<TeamViewHolder>(){
 
-    fun updateList(list:List<Team>) {
+    fun updateList(list:List<TeamModel>) {
         teamList = list
 //        Avisamos de que la lista ha cambiado
         notifyDataSetChanged()

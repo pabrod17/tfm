@@ -16,7 +16,17 @@ class RepositoryImpl @Inject constructor(private val apiService: TeamApiService)
             .onSuccess {
                 Log.i("FUNCIONA", "${it}")
                 return it.toDomain() }
-            .onFailure { Log.i("FALLOOOOOOOO APIII", "/TEAMS FALLO: ${it}") }
+            .onFailure { Log.i("FALLOOOOOOOO APIII", "/TEAMS by id FALLO: ${it}") }
+        return null
+    }
+
+    override suspend fun getTeams(): List<TeamModel>? {
+//        Peticion Retrofit
+        runCatching { apiService.getTeams() }
+            .onSuccess {
+                Log.i("FUNCIONA", "${it}")
+                return it.map { it.toDomain() } }
+            .onFailure { Log.i("FALLOOOOOOOO APIII", "/TEAMS lista FALLO: ${it}") }
         return null
     }
 
@@ -30,7 +40,7 @@ class RepositoryImpl @Inject constructor(private val apiService: TeamApiService)
             .onSuccess {
                 Log.i("FUNCIONA", "${it}")
                 return it.toDomain() }
-            .onFailure { Log.i("FALLOOOOOOOO APIII", "/TEAMS FALLO: ${it}") }
+            .onFailure { Log.i("FALLOOOOOOOO APIII", "/TEAMS update FALLO: ${it}") }
         return null
     }
 }

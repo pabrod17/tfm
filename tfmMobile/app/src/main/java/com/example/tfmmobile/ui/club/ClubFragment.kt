@@ -15,7 +15,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tfmmobile.databinding.FragmentClubBinding
+import com.example.tfmmobile.domain.model.TeamModel
 import com.example.tfmmobile.ui.club.adapter.TeamAdapter
+import com.example.tfmmobile.ui.detail.TeamDetailState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -27,10 +29,12 @@ class ClubFragment : Fragment() {
 
     private lateinit var teamAdapter: TeamAdapter
     private var _binding: FragmentClubBinding? = null
+    lateinit var teamsList: List<TeamModel>
     private val binding get() = _binding!!
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        teamsList = clubViewModel.getTeams()
         initUi()
     }
 
@@ -40,6 +44,9 @@ class ClubFragment : Fragment() {
     }
 
     private fun initTeamList() {
+
+
+
 //        No le paso la lista porque el adaptar ya tiene la lista inicializada
         teamAdapter = TeamAdapter(onItemSelected = {
 //            Toast.makeText(context, it.teamName, Toast.LENGTH_LONG).show()
@@ -64,7 +71,7 @@ class ClubFragment : Fragment() {
 //                    CAMBIOS EN TEAMS list
                     teamAdapter.updateList(it)
 
-                    Log.i("Mostrando la lista de Teams. En el fragment de Club: ", it.get(1).teamName)
+//                    Log.i("Mostrando la lista de Teams. En el fragment de Club: ", it.get(1).teamName)
                 }
             }
         }
