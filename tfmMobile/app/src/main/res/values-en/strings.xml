@@ -16,6 +16,13 @@
     <string name="profile">Profile</string>
     <string name="logout">Logout</string>
 
+    <string name="update">Update</string>
+
+
+    <string name="teamName">Name</string>
+    <string name="arenaName">Arena</string>
+    <string name="ownerName">Owner</string>
+    <string name="description">Description</string>
 
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>

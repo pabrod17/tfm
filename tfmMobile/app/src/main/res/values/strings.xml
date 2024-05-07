@@ -13,6 +13,14 @@
     <string name="profile">Perfil</string>
     <string name="logout">Cerrar sesión</string>
 
+    <string name="update">Actualizar</string>
+
+    <string name="teamName">Nombre</string>
+    <string name="arenaName">Estadio</string>
+    <string name="ownerName">Propietario</string>
+    <string name="description">Descripción</string>
+
+
 
 
     <!-- Strings used for fragments for navigation -->
