@@ -111,7 +111,9 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilteamName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/orange">
+
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tvBodyteamName"
@@ -140,9 +142,11 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilarenaName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/orange">
 
-            <com.google.android.material.textfield.TextInputEditText
+
+        <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tvBodyarenaName"
                 style="@style/Body"
                 android:layout_width="match_parent"
@@ -169,16 +173,17 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilownerName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/orange">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tvBodyownerName"
                 style="@style/Body"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:hint="Propietario"
                 android:imeOptions="actionNext"
-                android:gravity="center"
                 tools:text="asdofia afpsoidfk aasdfasidfj asdfoiajsdf asdofijasf asldifjalsdifj asldifnm asdlfimn fasdfa alsdkfmas falskdfm laksdmf" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -198,7 +203,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilEmail"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/orange">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tvBodyTeamDetail"
@@ -249,9 +255,9 @@
         android:layout_height="wrap_content"
         android:indeterminateTint="@color/gold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/scroll" />
 
 
 
