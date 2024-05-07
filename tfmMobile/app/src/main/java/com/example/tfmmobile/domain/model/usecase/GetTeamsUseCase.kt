@@ -5,7 +5,11 @@ import javax.inject.Inject
 
 class GetTeamsUseCase @Inject constructor(private val repository: Repository) {
 
-    suspend operator fun invoke(userId:Long) = repository.getTeams(userId)
-
+    suspend operator fun invoke(id:Long) = repository.getTeamById(id)
+    suspend operator fun invoke(id: Long,
+                                teamName:String,
+                                arenaName: String,
+                                ownerName: String,
+                                description: String) = repository.updateTeam(id, teamName, arenaName, ownerName, description)
 
 }

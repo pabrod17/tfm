@@ -11,6 +11,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.navArgs
+import com.aristidevs.nuwelogin.core.ex.dismissKeyboard
 import com.example.tfmmobile.R
 import com.example.tfmmobile.databinding.ActivityTeamDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,7 +30,7 @@ class TeamDetailActivity : AppCompatActivity() {
 
         binding = ActivityTeamDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        teamDetailViewModel.getTeams(1)
+        teamDetailViewModel.getTeamById(args.id)
         initUi()
 
 
@@ -48,6 +49,18 @@ class TeamDetailActivity : AppCompatActivity() {
     private fun initListeners() {
         binding.ivBack.setOnClickListener {
             onBackPressed()
+        }
+
+        binding.btnUpdate.setOnClickListener {
+            it.dismissKeyboard()
+            teamDetailViewModel.updateTeam(
+                args.id,
+                binding.tvBodyteamName.text.toString(),
+                binding.tvBodyarenaName.text.toString(),
+                binding.tvBodyownerName.text.toString(),
+                binding.tvBodyTeamDetail.text.toString(),
+                this
+            )
         }
     }
 
@@ -75,11 +88,14 @@ class TeamDetailActivity : AppCompatActivity() {
     }
     private fun successState(state: TeamDetailState.Success) {
         binding.pb.isVisible = false
+
+
+        binding.tvBodyteamName.setText(state.teamName)
+        binding.tvBodyarenaName.setText(state.arenaName)
+        binding.tvBodyownerName.setText(state.ownerName)
+
         binding.tvBodyTeamDetail.setText(state.description)
 //        binding.cardViewText.setText(state.description)
-
-        println("saco COSASSSSS: " + binding.tvBodyTeamDetail.text)
-
     }
 
 }
