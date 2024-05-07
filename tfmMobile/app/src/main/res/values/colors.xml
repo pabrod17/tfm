@@ -12,6 +12,10 @@
     <color name="purple">#5D138B</color>
     <color name="yellow">#C7BD26</color>
 
+    <color name="back1">#571954</color>
+    <color name="back2">#2C003C</color>
+    <color name="back3">#3D0B45</color>
+
     <color name="cardExercise">#ff000040</color>
     <color name="cardLesion">#0059ff40</color>
     <color name="cardStretching">#ff00dd40</color>
