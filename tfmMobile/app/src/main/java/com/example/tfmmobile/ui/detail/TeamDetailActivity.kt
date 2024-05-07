@@ -75,8 +75,9 @@ class TeamDetailActivity : AppCompatActivity() {
     }
     private fun successState(state: TeamDetailState.Success) {
         binding.pb.isVisible = false
-        binding.tvTitleTeamDetail.text = state.data
         binding.tvBodyTeamDetail.setText(state.description)
+//        binding.cardViewText.setText(state.description)
+
         println("saco COSASSSSS: " + binding.tvBodyTeamDetail.text)
 
     }
