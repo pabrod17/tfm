@@ -228,6 +228,7 @@
                 android:text="@string/update"
                 android:textSize="@dimen/fab_margin"
                 android:textColor="@color/green"
+                app:cornerRadius="20dp"
                 android:layout_marginBottom="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
