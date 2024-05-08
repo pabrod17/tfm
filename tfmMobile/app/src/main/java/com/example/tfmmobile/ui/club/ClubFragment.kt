@@ -58,7 +58,7 @@ class ClubFragment : Fragment() {
         })
 
         binding.rvTeams.apply {
-            layoutManager = GridLayoutManager(context, 2)
+            layoutManager = GridLayoutManager(context, 1)
             adapter = teamAdapter
         }
     }

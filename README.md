@@ -188,3 +188,11 @@ Mobile Gradient Home design. Option 1:
 Mobile Gradient Home design. Option 2:
 
 ![ToolBare](gradient2.png)
+
+Mobile Gradient Home design. Option 3:
+
+![ToolBare](gradient3.png)
+
+Mobile Gradient Home design. Option 4:
+
+![ToolBare](gradient4.png)
