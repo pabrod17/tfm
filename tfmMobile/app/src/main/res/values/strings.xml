@@ -20,7 +20,48 @@
     <string name="ownerName">Propietario</string>
     <string name="description">Descripción</string>
 
+    <string name="teams">Equipos</string>
+    <string name="seasons">Temporadas</string>
+    <string name="players">Jugadores</string>
 
+    <string name="position1">Base</string>
+    <string name="position2">Escolta</string>
+    <string name="position3">Alero</string>
+    <string name="position4">Ala-Pívot</string>
+    <string name="position5">Pívot</string>
+
+    <string name="playsAttack">Ataque</string>
+    <string name="playsDefense">Defensa</string>
+
+
+    <string name="lesion">Lesiones</string>
+        <string name="lesionTypeMuscle">Muscular</string>
+        <string name="lesionTypeTendon">Tendinosa</string>
+        <string name="lesionTypeJoint">Articular</string>
+        <string name="lesionTypeSpine">Columna Vertebral</string>
+        <string name="lesionTypePhychological">Psicológica</string>
+
+    <string name="exercises">Ejercicios</string>
+        <string name="exercisesTypeTactic">Táctico</string>
+        <string name="exercisesTypeTechnique">Técnico</string>
+        <string name="exercisesTypePhysical">Físico</string>
+        <string name="exercisesTypeGlobalized">Globalizado</string>
+        <string name="exercisesTypeSpecific">Específico</string>
+        <string name="exercisesTypePsychological">Psicológico</string>
+        <string name="exercisesTypeStrategy">Estrategia</string>
+        <string name="exercisesTypePreMatch">PrePartido</string>
+
+    <string name="stretchings">Estiramientos</string>
+        <string name="stretchingsTypeHamstrings">Isquiotibiales</string>
+        <string name="stretchingsTypeButtocks">Glúteos</string>
+        <string name="stretchingsTypeCalf">Gemelos</string>
+        <string name="stretchingsTypeAbductors">Adductores</string>
+        <string name="stretchingsTypeShoulder">Hombro</string>
+        <string name="stretchingsTypeQuadriceps">Cuádriceps</string>
+        <string name="stretchingsTypeBack">Espalda</string>
+        <string name="stretchingsTypePectoral">Pectoral</string>
+        <string name="stretchingsTypeCrotch">Ingle</string>
+        <string name="stretchingsTypeTriceps">TrÍceps</string>
 
 
     <!-- Strings used for fragments for navigation -->

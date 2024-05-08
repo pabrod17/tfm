@@ -14,9 +14,11 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.tfmmobile.databinding.FragmentClubBinding
 import com.example.tfmmobile.domain.model.TeamModel
 import com.example.tfmmobile.ui.club.adapter.TeamAdapter
+import com.example.tfmmobile.ui.club.adapter.categories.CategoriesAdapter
 import com.example.tfmmobile.ui.detail.TeamDetailState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
@@ -32,6 +34,17 @@ class ClubFragment : Fragment() {
     lateinit var teamsList: List<TeamModel>
     private val binding get() = _binding!!
 
+    private lateinit var rvCategories: RecyclerView
+    private lateinit var rvTeams: RecyclerView
+
+    private lateinit var categoriesAdapter: CategoriesAdapter
+
+    private val categories = listOf(
+        ClubCategory.Seasons,
+        ClubCategory.Teams,
+        ClubCategory.Players
+    )
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         teamsList = clubViewModel.getTeams()
@@ -39,8 +52,21 @@ class ClubFragment : Fragment() {
     }
 
     private fun initUi(){
+        initComponent()
+        initCategories()
         initTeamList()
         initUiState()
+    }
+
+    private fun initComponent(){
+        rvCategories = binding.rvCategories
+        rvTeams = binding.rvTeams
+    }
+
+    private fun initCategories(){
+        categoriesAdapter= CategoriesAdapter(categories)
+        rvCategories.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        rvCategories.adapter = categoriesAdapter
     }
 
     private fun initTeamList() {
@@ -57,9 +83,9 @@ class ClubFragment : Fragment() {
             )
         })
 
-        binding.rvTeams.apply {
-            layoutManager = GridLayoutManager(context, 1)
-            adapter = teamAdapter
+        rvTeams.apply {
+            rvTeams.layoutManager = GridLayoutManager(context, 1)
+            rvTeams.adapter = teamAdapter
         }
     }
 

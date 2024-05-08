@@ -18,7 +18,9 @@ class TeamViewHolder(view: View): RecyclerView.ViewHolder(view) {
         binding.parent.setOnClickListener {
             onItemSelected(team)
         }
-        binding.ivTeam.setImageResource(R.drawable.team)
+        binding.cardImage.setImageResource(R.drawable.team)
         binding.tvTitleTeam.text = team.teamName
+        binding.tvArenaNameValue.text = team.arenaName
+        binding.tvOwnerNameValue.text = team.ownerName
     }
 }

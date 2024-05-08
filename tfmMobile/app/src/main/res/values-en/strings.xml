@@ -24,6 +24,54 @@
     <string name="ownerName">Owner</string>
     <string name="description">Description</string>
 
+
+    <string name="teams">Teams</string>
+    <string name="seasons">Seasons</string>
+    <string name="players">Players</string>
+
+    <string name="position1">PointGuard</string>
+    <string name="position2">ShootingGuard</string>
+    <string name="position3">SmallForward</string>
+    <string name="position4">PowerForward</string>
+    <string name="position5">Center</string>
+
+    <string name="playsAttack">Attack</string>
+    <string name="playsDefense">Defense</string>
+
+
+    <string name="lesion">Lesion</string>
+    <string name="lesionTypeMuscle">Muscle</string>
+    <string name="lesionTypeTendon">Tendon</string>
+    <string name="lesionTypeJoint">Joint</string>
+    <string name="lesionTypeSpine">Spine</string>
+    <string name="lesionTypePhychological">Psychological</string>
+
+    <string name="exercises">Exercises</string>
+    <string name="exercisesTypeTactic">Tactic</string>
+    <string name="exercisesTypeTechnique">Technique</string>
+    <string name="exercisesTypePhysical">Physical</string>
+    <string name="exercisesTypeGlobalized">Globalized</string>
+    <string name="exercisesTypeSpecific">Specific</string>
+    <string name="exercisesTypePsychological">Psychological</string>
+    <string name="exercisesTypeStrategy">Strategy</string>
+    <string name="exercisesTypePreMatch">PreMatch</string>
+
+    <string name="stretchings">Stretchings</string>
+    <string name="stretchingsTypeHamstrings">Hamstrings</string>
+    <string name="stretchingsTypeButtocks">Buttocks</string>
+    <string name="stretchingsTypeCalf">Calf</string>
+    <string name="stretchingsTypeAbductors">Adductors</string>
+    <string name="stretchingsTypeShoulder">Shoulder</string>
+    <string name="stretchingsTypeQuadriceps">Quadriceps</string>
+    <string name="stretchingsTypeBack">Back</string>
+    <string name="stretchingsTypePectoral">Pectoral</string>
+    <string name="stretchingsTypeCrotch">Crotch</string>
+    <string name="stretchingsTypeTriceps">Triceps</string>
+
+
+
+
+
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
