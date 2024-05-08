@@ -19,8 +19,8 @@
         android:orientation="horizontal"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:background="@drawable/gradient_background_club_category_team_card"
 
         >
@@ -32,16 +32,18 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/ivTeamDetail"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             app:cardCornerRadius="360dp"
             android:elevation="20dp"
             app:cardElevation="20dp"
+            android:layout_marginTop="3dp"
             >
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/cardImage"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:src="@drawable/team"
                 app:cardCornerRadius="360dp" />
 
@@ -74,7 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingVertical="10dp"
+        android:paddingVertical="5dp"
         >
         <TextView
             android:id="@+id/tvArenaName"
