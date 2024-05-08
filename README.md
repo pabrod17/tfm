@@ -199,4 +199,4 @@ Mobile Gradient Home design. Option 4:
 
 Main layout mockup:
 
-![ToolBare](mainLayoutMockup.png)
+![ToolBare](mainLayout2.png)
