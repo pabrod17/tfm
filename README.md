@@ -196,3 +196,7 @@ Mobile Gradient Home design. Option 3:
 Mobile Gradient Home design. Option 4:
 
 ![ToolBare](gradient4.png)
+
+Main layout mockup:
+
+![ToolBare](mainLayoutMockup.png)
