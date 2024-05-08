@@ -200,3 +200,7 @@ Mobile Gradient Home design. Option 4:
 Main layout mockup:
 
 ![ToolBare](mainLayout2.png)
+
+Club teams section:
+
+![ToolBare](clubTeamsCards.png)
