@@ -111,7 +111,7 @@
             android:id="@+id/tilteamName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:boxStrokeColor="@android:color/transparent">
+            android:background="#1D1E33">
 
 
             <com.google.android.material.textfield.TextInputEditText
@@ -120,6 +120,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/teamName"
+                android:background="#1D1E33"
+                android:backgroundTint="#1D1E33"
                 android:imeOptions="actionNext"
                 android:gravity="center"
                 tools:text="asdofia afpsoidfk aasdfasidfj asdfoiajsdf asdofijasf asldifjalsdifj asldifnm asdlfimn fasdfa alsdkfmas falskdfm laksdmf" />
@@ -135,14 +137,14 @@
         android:layout_margin="16dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="4dp"
-        app:cardBackgroundColor="@color/primaryDark"
+        app:cardBackgroundColor="#1D1E33"
         app:layout_constraintTop_toBottomOf="@+id/cardViewteamName">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilarenaName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:boxStrokeColor="@android:color/transparent">
+            app:boxStrokeColor="#1D1E33">
 
 
         <com.google.android.material.textfield.TextInputEditText
@@ -166,14 +168,14 @@
         android:layout_margin="16dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="4dp"
-        app:cardBackgroundColor="@color/primaryDark"
+        app:cardBackgroundColor="#1D1E33"
         app:layout_constraintTop_toBottomOf="@+id/cardViewarenaName">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilownerName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:boxStrokeColor="@android:color/transparent">
+            app:boxStrokeColor="#1D1E33">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tvBodyownerName"
@@ -196,14 +198,14 @@
         android:layout_margin="16dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="4dp"
-        app:cardBackgroundColor="@color/primaryDark"
+        app:cardBackgroundColor="#1D1E33"
         app:layout_constraintTop_toBottomOf="@+id/cardViewownerName">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:boxStrokeColor="@android:color/transparent">
+            app:boxStrokeColor="#1D1E33">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tvBodyTeamDetail"
@@ -228,6 +230,9 @@
                 android:text="@string/update"
                 android:textSize="@dimen/fab_margin"
                 android:textColor="@color/green"
+                android:background="#1D1E33"
+                android:backgroundTint="#1D1E33"
+
                 app:cornerRadius="20dp"
                 android:layout_marginBottom="20dp"
                 app:layout_constraintEnd_toEndOf="parent"

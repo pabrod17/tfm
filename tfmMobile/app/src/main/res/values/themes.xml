@@ -67,7 +67,7 @@
         <item name="android:insetBottom">0dp</item>
         <item name="android:textColor">@color/secondary</item>
         <item name="android:gravity">center</item>
-        <item name="backgroundTint">@color/primary</item>
+        <item name="backgroundTint">#1D1E33</item>
         <item name="android:fontFamily">@font/montserrat</item>
     </style>
 
