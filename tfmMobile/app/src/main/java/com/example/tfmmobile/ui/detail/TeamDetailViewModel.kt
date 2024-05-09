@@ -15,7 +15,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
-class TeamDetailViewModel @Inject constructor(private val getTeamsUseCase: GetTeamsUseCase): ViewModel() {
+class TeamDetailViewModel @Inject constructor(private val teamsUseCase: GetTeamsUseCase): ViewModel() {
 
     private var _state = MutableStateFlow<TeamDetailState>(TeamDetailState.Loading)
     val state:StateFlow<TeamDetailState> = _state
@@ -24,7 +24,7 @@ class TeamDetailViewModel @Inject constructor(private val getTeamsUseCase: GetTe
         viewModelScope.launch {
 //            hilo principal
             _state.value=TeamDetailState.Loading
-            val result = withContext(Dispatchers.IO) { getTeamsUseCase(id) } //hilo secundario
+            val result = withContext(Dispatchers.IO) { teamsUseCase(id) } //hilo secundario
             if (result!=null){
                 _state.value = TeamDetailState.Success(result.id, result.teamName, result.arenaName,
                     result.ownerName, result.description)
@@ -46,7 +46,7 @@ class TeamDetailViewModel @Inject constructor(private val getTeamsUseCase: GetTe
 //            hilo principal
             _state.value=TeamDetailState.Loading
             val result = withContext(Dispatchers.IO) {
-                getTeamsUseCase(id, teamName, arenaName, ownerName, description) } //hilo secundario
+                teamsUseCase(id, teamName, arenaName, ownerName, description) } //hilo secundario
             if (result!=null){
                 _state.value = TeamDetailState.Success(result.id, result.teamName, result.arenaName,
                     result.ownerName, result.description)

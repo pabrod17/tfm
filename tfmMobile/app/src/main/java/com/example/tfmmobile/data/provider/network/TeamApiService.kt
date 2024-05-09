@@ -24,4 +24,10 @@ interface TeamApiService {
         @Query("arenaName") arenaName: String,
         @Query("ownerName") ownerName: String,
         @Query("description") description: String): TeamResponse
+
+    @POST("teams")
+    suspend fun addTeam(@Query("name") name: String,
+                           @Query("arenaName") arenaName: String,
+                           @Query("ownerName") ownerName: String,
+                           @Query("description") description: String): TeamResponse
 }

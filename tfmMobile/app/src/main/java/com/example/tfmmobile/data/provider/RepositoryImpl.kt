@@ -43,4 +43,17 @@ class RepositoryImpl @Inject constructor(private val apiService: TeamApiService)
             .onFailure { Log.i("FALLOOOOOOOO APIII", "/TEAMS update FALLO: ${it}") }
         return null
     }
+
+    override suspend fun addTeam(teamName:String,
+                                    arenaName: String,
+                                    ownerName: String,
+                                    description: String): TeamModel? {
+//        Peticion Retrofit
+        runCatching { apiService.addTeam(teamName, arenaName, ownerName, description) }
+            .onSuccess {
+                Log.i("FUNCIONA", "${it}")
+                return it.toDomain() }
+            .onFailure { Log.i("FALLOOOOOOOO APIII", "/TEAMS ADD NEW FALLO: ${it}") }
+        return null
+    }
 }

@@ -33,6 +33,11 @@ class ClubViewModel @Inject constructor(private val teamsUseCase: GetTeamsUseCas
     var description =
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
 
+
+    private var _stateTeam = MutableStateFlow<TeamState>(TeamState.Loading)
+    val stateTeam:StateFlow<TeamState> = _stateTeam
+
+
     fun getTeams(): List<TeamModel> {
         viewModelScope.launch {
 //            hilo principal
@@ -50,6 +55,31 @@ class ClubViewModel @Inject constructor(private val teamsUseCase: GetTeamsUseCas
         }
 
         return _team.value
+    }
+
+    fun addTeam(teamName:String,
+                   arenaName:String,
+                   ownerName:String,
+                   description:String, context: Context
+    ){
+        viewModelScope.launch {
+//            hilo principal
+            _stateTeam.value=TeamState.Loading
+            val result = withContext(Dispatchers.IO) {
+                teamsUseCase(teamName, arenaName, ownerName, description) } //hilo secundario
+            if (result!=null){
+                _stateTeam.value = TeamState.Success(result.teamName, result.arenaName,
+                    result.ownerName, result.description)
+                println("HOLAAAAAAA ANDANDOOOOOOOOOOO")
+                val intent = Intent(context, MainActivity::class.java)
+                context.startActivity(intent)
+                println("HOLAAAAAAA ANDANDOOOOOOOOOOO 222222222222")
+            } else {
+                _stateTeam.value = TeamState.Error("Ha ocurrido un error. Inténtelo más tarde.")
+            }
+//            hilo principal
+        }
+
     }
 
     init {

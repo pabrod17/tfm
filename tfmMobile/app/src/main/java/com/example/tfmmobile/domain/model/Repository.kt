@@ -11,4 +11,9 @@ interface Repository {
                            ownerName: String,
                            description: String): TeamModel?
 
+    suspend fun addTeam(teamName:String,
+                           arenaName: String,
+                           ownerName: String,
+                           description: String): TeamModel?
+
 }

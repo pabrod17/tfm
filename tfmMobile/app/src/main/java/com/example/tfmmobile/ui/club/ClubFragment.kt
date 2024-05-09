@@ -116,7 +116,6 @@ class ClubFragment : Fragment() {
                 getString(R.string.season) -> {
                     val etName = dialog.findViewById<EditText>(R.id.etName)
                     val etDescription = dialog.findViewById<EditText>(R.id.etDescription)
-
                     println("seasonnnnnnn")
                     println("seasonnnnnnn")
                     println("seasonnnnnnn")
@@ -129,11 +128,16 @@ class ClubFragment : Fragment() {
                     val etArena = dialog.findViewById<EditText>(R.id.etArena)
                     val etOwner = dialog.findViewById<EditText>(R.id.etOwner)
                     val etDescription = dialog.findViewById<EditText>(R.id.etDescription)
+                    clubViewModel.addTeam(etName.text.toString(), etArena.text.toString(), etOwner.text.toString(), etDescription.text.toString(), requireActivity())
                     println("teammmm")
                     println("teammmm")
                     println("teammmm")
                     println("teammmm")
                     println("teammmm")
+                    println(etName)
+                    println(etArena)
+                    println(etOwner)
+                    println(etDescription)
 
                 }
                 else -> {

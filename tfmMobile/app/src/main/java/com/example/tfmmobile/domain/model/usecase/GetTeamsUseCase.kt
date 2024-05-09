@@ -14,4 +14,9 @@ class GetTeamsUseCase @Inject constructor(private val repository: Repository) {
                                 ownerName: String,
                                 description: String) = repository.updateTeam(id, teamName, arenaName, ownerName, description)
 
+    suspend operator fun invoke(teamName:String,
+                                arenaName: String,
+                                ownerName: String,
+                                description: String) = repository.addTeam(teamName, arenaName, ownerName, description)
+
 }
