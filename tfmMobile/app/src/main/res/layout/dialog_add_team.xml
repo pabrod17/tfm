@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/dialog_rounded_corners"
+    android:padding="16dp"
+
+    >
+
+    <RadioGroup
+        android:id="@+id/rgOption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/rbSeason"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="@string/season"
+            android:paddingHorizontal="10dp"
+            android:textColor="@color/cardSeason1"/>
+
+        <RadioButton
+            android:id="@+id/rbTeam"
+            android:textSize="18dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/cardTeam1"
+            android:text="@string/team"
+            android:paddingHorizontal="10dp"
+            android:textColor="@color/cardTeam1"/>
+
+        <RadioButton
+            android:id="@+id/rbPlayer"
+            android:textSize="18dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/cardPlayer2"
+            android:text="@string/player"
+            android:paddingHorizontal="10dp"
+            android:textColor="@color/cardPlayer2"
+            />
+
+
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/etName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:hint="@string/teamName"
+        android:textColorHint="@color/green"
+        android:textColor="@color/orange"
+        android:visibility="gone"
+        />
+
+    <EditText
+        android:id="@+id/etArena"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:hint="@string/arenaName"
+        android:textColorHint="@color/green"
+        android:textColor="@color/orange"
+        android:visibility="gone"
+        />
+
+    <EditText
+        android:id="@+id/etOwner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:hint="@string/ownerName"
+        android:textColorHint="@color/green"
+        android:textColor="@color/orange"
+        android:visibility="gone"
+        />
+
+    <EditText
+        android:id="@+id/etDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:hint="@string/description"
+        android:textColorHint="@color/green"
+        android:textColor="@color/orange"
+        android:visibility="gone"
+        />
+
+
+    <EditText
+        android:id="@+id/etPlayerName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:hint="@string/playerName"
+        android:textColorHint="@color/green"
+        android:textColor="@color/orange"
+        android:visibility="gone"
+        />
+
+    <EditText
+        android:id="@+id/etPrimaryLastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:hint="@string/primaryLastName"
+        android:textColorHint="@color/green"
+        android:textColor="@color/orange"
+        android:visibility="gone"
+        />
+
+    <EditText
+        android:id="@+id/etSecondLastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:hint="@string/secondLastName"
+        android:textColorHint="@color/green"
+        android:textColor="@color/orange"
+        android:visibility="gone"
+        />
+
+    <EditText
+        android:id="@+id/etTrends"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:hint="@string/trends"
+        android:textColorHint="@color/green"
+        android:textColor="@color/orange"
+        android:visibility="gone"
+        />
+
+    <EditText
+        android:id="@+id/etPhoneNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:hint="@string/phoneNumber"
+        android:textColorHint="@color/green"
+        android:textColor="@color/orange"
+        android:visibility="gone"
+        />
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:hint="@string/email"
+        android:textColorHint="@color/green"
+        android:textColor="@color/orange"
+        android:visibility="gone"
+        />
+
+    <EditText
+        android:id="@+id/etDni"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:hint="@string/dni"
+        android:textColorHint="@color/green"
+        android:textColor="@color/orange"
+        android:visibility="gone"
+        />
+
+    <Button
+        android:id="@+id/addTeamButtonDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/red"
+        />
+
+
+</LinearLayout>

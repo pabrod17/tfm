@@ -1,10 +1,17 @@
 package com.example.tfmmobile.ui.club
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -15,11 +22,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tfmmobile.R
 import com.example.tfmmobile.databinding.FragmentClubBinding
 import com.example.tfmmobile.domain.model.TeamModel
 import com.example.tfmmobile.ui.club.adapter.TeamAdapter
 import com.example.tfmmobile.ui.club.adapter.categories.CategoriesAdapter
 import com.example.tfmmobile.ui.detail.TeamDetailState
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -45,11 +54,153 @@ class ClubFragment : Fragment() {
         ClubCategory.Players
     )
 
+    private lateinit var addTeamButton : FloatingActionButton
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         teamsList = clubViewModel.getTeams()
         initUi()
+        initListeners()
     }
+
+    private fun initListeners(){
+        addTeamButton.setOnClickListener() {
+
+
+        val dialog = Dialog(requireActivity())
+                dialog.setContentView(R.layout.dialog_add_team)
+            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+            val rgOption: RadioGroup = dialog.findViewById(R.id.rgOption)
+            rgOption.setOnCheckedChangeListener { _, checkedId ->
+                when (checkedId) {
+                    R.id.rbSeason -> {
+                        val rbTeam: RadioButton = dialog.findViewById(R.id.rbTeam)
+                        val rbPlayer: RadioButton = dialog.findViewById(R.id.rbPlayer)
+                        rbTeam.visibility = View.GONE
+                        rbPlayer.visibility = View.GONE
+                        showEditTextInputsToAddSeason(dialog)
+
+                    }
+                    R.id.rbTeam -> {
+                        val rbSeason: RadioButton = dialog.findViewById(R.id.rbSeason)
+                        val rbPlayer: RadioButton = dialog.findViewById(R.id.rbPlayer)
+                        rbSeason.visibility = View.GONE
+                        rbPlayer.visibility = View.GONE
+                        showEditTextInputsToAddTeam(dialog)
+                    }
+                    R.id.rbPlayer -> {
+                        val rbTeam: RadioButton = dialog.findViewById(R.id.rbTeam)
+                        val rbSeason: RadioButton = dialog.findViewById(R.id.rbSeason)
+                        rbTeam.visibility = View.GONE
+                        rbSeason.visibility = View.GONE
+                        showEditTextInputsToAddPlayer(dialog)
+                    }
+                }
+            }
+
+        val addTeamButtonDialog: Button = dialog.findViewById(R.id.addTeamButtonDialog)
+
+        addTeamButtonDialog.setOnClickListener() {
+            val selectedId = rgOption.checkedRadioButtonId
+            val selectedRadioButton = rgOption.findViewById<RadioButton>(selectedId)
+            println("PULSO BOTON ADDDDDDDDDD DIALOGGGG")
+            println("PULSO BOTON ADDDDDDDDDD DIALOGGGG")
+            println("PULSO BOTON ADDDDDDDDDD DIALOGGGG")
+            println("PULSO BOTON ADDDDDDDDDD DIALOGGGG: " + selectedRadioButton)
+
+
+            when(selectedRadioButton.text) {
+                //Add new item: team, season or player
+
+                getString(R.string.season) -> {
+                    val etName = dialog.findViewById<EditText>(R.id.etName)
+                    val etDescription = dialog.findViewById<EditText>(R.id.etDescription)
+
+                    println("seasonnnnnnn")
+                    println("seasonnnnnnn")
+                    println("seasonnnnnnn")
+                    println("seasonnnnnnn")
+
+
+                }
+                getString(R.string.team) -> {
+                    val etName = dialog.findViewById<EditText>(R.id.etName)
+                    val etArena = dialog.findViewById<EditText>(R.id.etArena)
+                    val etOwner = dialog.findViewById<EditText>(R.id.etOwner)
+                    val etDescription = dialog.findViewById<EditText>(R.id.etDescription)
+                    println("teammmm")
+                    println("teammmm")
+                    println("teammmm")
+                    println("teammmm")
+                    println("teammmm")
+
+                }
+                else -> {
+                    val etPlayerName = dialog.findViewById<EditText>(R.id.etPlayerName)
+                    val etPrimaryLastName = dialog.findViewById<EditText>(R.id.etPrimaryLastName)
+                    val etSecondLastName = dialog.findViewById<EditText>(R.id.etSecondLastName)
+                    val etTrends = dialog.findViewById<EditText>(R.id.etTrends)
+                    val etPhoneNumber = dialog.findViewById<EditText>(R.id.etPhoneNumber)
+                    val etEmail = dialog.findViewById<EditText>(R.id.etEmail)
+                    val etDni = dialog.findViewById<EditText>(R.id.etDni)
+                    println("player")
+                    println("player")
+                    println("player")
+                    println("player")
+                    println("player")
+                }
+            }
+
+            updateTeamsList()
+            dialog.hide()
+
+        }
+            dialog.show()
+        }
+    }
+
+
+    fun showEditTextInputsToAddSeason(dialog: Dialog) {
+        val etName = dialog.findViewById<EditText>(R.id.etName)
+        val etDescription = dialog.findViewById<EditText>(R.id.etDescription)
+
+        etName.visibility = View.VISIBLE
+        etDescription.visibility = View.VISIBLE
+    }
+
+    fun showEditTextInputsToAddTeam(dialog: Dialog) {
+        val etName = dialog.findViewById<EditText>(R.id.etName)
+        val etArena = dialog.findViewById<EditText>(R.id.etArena)
+        val etOwner = dialog.findViewById<EditText>(R.id.etOwner)
+        val etDescription = dialog.findViewById<EditText>(R.id.etDescription)
+
+        etName.visibility = View.VISIBLE
+        etArena.visibility = View.VISIBLE
+        etOwner.visibility = View.VISIBLE
+        etDescription.visibility = View.VISIBLE
+    }
+
+    fun showEditTextInputsToAddPlayer(dialog: Dialog) {
+        val etPlayerName = dialog.findViewById<EditText>(R.id.etPlayerName)
+        val etPrimaryLastName = dialog.findViewById<EditText>(R.id.etPrimaryLastName)
+        val etSecondLastName = dialog.findViewById<EditText>(R.id.etSecondLastName)
+        val etTrends = dialog.findViewById<EditText>(R.id.etTrends)
+        val etPhoneNumber = dialog.findViewById<EditText>(R.id.etPhoneNumber)
+        val etEmail = dialog.findViewById<EditText>(R.id.etEmail)
+        val etDni = dialog.findViewById<EditText>(R.id.etDni)
+
+        etPlayerName.visibility = View.VISIBLE
+        etPrimaryLastName.visibility = View.VISIBLE
+        etSecondLastName.visibility = View.VISIBLE
+        etTrends.visibility = View.VISIBLE
+        etPhoneNumber.visibility = View.VISIBLE
+        etEmail.visibility = View.VISIBLE
+        etDni.visibility = View.VISIBLE
+    }
+
+
+
 
     private fun initUi(){
         initComponent()
@@ -61,6 +212,7 @@ class ClubFragment : Fragment() {
     private fun initComponent(){
         rvCategories = binding.rvCategories
         rvTeams = binding.rvTeams
+        addTeamButton = binding.addTeamButton
     }
 
     private fun initCategories(){
@@ -101,6 +253,10 @@ class ClubFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun updateTeamsList(){
+        teamAdapter.notifyDataSetChanged()
     }
 
     override fun onCreateView(

@@ -13,7 +13,22 @@
     <string name="profile">Perfil</string>
     <string name="logout">Cerrar sesión</string>
 
+    <string name="add">Añadir</string>
     <string name="update">Actualizar</string>
+
+
+    <string name="playerName">Nombre</string>
+    <string name="primaryLastName">Primer Apellido</string>
+    <string name="secondLastName">Segundo Apellido</string>
+    <string name="trends">Tendencias</string>
+    <string name="phoneNumber">Teléfono</string>
+    <string name="email">Correo Electrónico</string>
+    <string name="dni">Dni</string>
+
+    <string name="startDate">Fecha Inicio</string>
+    <string name="FinishDate">Fecha Fin</string>
+
+
 
     <string name="teamName">Nombre</string>
     <string name="arenaName">Estadio</string>
@@ -23,6 +38,10 @@
     <string name="teams">Equipos</string>
     <string name="seasons">Temporadas</string>
     <string name="players">Jugadores</string>
+
+    <string name="team">Equipo</string>
+    <string name="season">Temporada</string>
+    <string name="player">Jugador</string>
 
     <string name="position1">Base</string>
     <string name="position2">Escolta</string>

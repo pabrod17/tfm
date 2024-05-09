@@ -204,3 +204,7 @@ Main layout mockup:
 Club teams section:
 
 ![ToolBare](clubTeamsCards.png)
+
+Club section -> Add dialog:
+
+![ToolBare](addDialog.png)

@@ -16,7 +16,22 @@
     <string name="profile">Profile</string>
     <string name="logout">Logout</string>
 
+    <string name="add">Add</string>
     <string name="update">Update</string>
+
+
+    <string name="playerName">Name</string>
+    <string name="primaryLastName">Primary Last Name</string>
+    <string name="secondLastName">Second Last Name</string>
+    <string name="trends">Trends</string>
+    <string name="phoneNumber">PhoneNumber</string>
+    <string name="email">Email</string>
+    <string name="dni">Dni</string>
+
+    <string name="startDate">Start Date</string>
+    <string name="FinishDate">Finish Date</string>
+
+
 
 
     <string name="teamName">Name</string>
@@ -28,6 +43,10 @@
     <string name="teams">Teams</string>
     <string name="seasons">Seasons</string>
     <string name="players">Players</string>
+
+    <string name="team">Team</string>
+    <string name="season">Season</string>
+    <string name="player">Player</string>
 
     <string name="position1">PointGuard</string>
     <string name="position2">ShootingGuard</string>
