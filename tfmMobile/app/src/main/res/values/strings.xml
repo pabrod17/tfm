@@ -43,6 +43,9 @@
     <string name="season">Temporada</string>
     <string name="player">Jugador</string>
 
+
+    <string name="position">Posición</string>
+
     <string name="position1">Base</string>
     <string name="position2">Escolta</string>
     <string name="position3">Alero</string>

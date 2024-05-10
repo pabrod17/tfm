@@ -48,6 +48,8 @@
     <string name="season">Season</string>
     <string name="player">Player</string>
 
+    <string name="position">Position</string>
+
     <string name="position1">PointGuard</string>
     <string name="position2">ShootingGuard</string>
     <string name="position3">SmallForward</string>

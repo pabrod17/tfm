@@ -2,10 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="250dp"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@drawable/dialog_rounded_corners"
     android:padding="16dp"
-
+    android:focusableInTouchMode="true"
     >
 
     <RadioGroup
@@ -45,6 +46,30 @@
 
 
     </RadioGroup>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/positionLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        app:boxBackgroundColor="@color/cardPlayer1"
+        app:boxCornerRadiusBottomEnd="@dimen/fab_margin"
+        app:boxCornerRadiusBottomStart="@dimen/fab_margin"
+        app:boxCornerRadiusTopEnd="@dimen/fab_margin"
+        app:boxCornerRadiusTopStart="@dimen/fab_margin"
+        android:visibility="gone"
+        >
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompletePosition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/position"
+            android:inputType="none"/>
+
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <EditText
         android:id="@+id/etName"
@@ -89,6 +114,11 @@
         android:textColor="@color/orange"
         android:visibility="gone"
         />
+
+
+
+
+
 
 
     <EditText
@@ -167,6 +197,31 @@
         android:textColor="@color/orange"
         android:visibility="gone"
         />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/teamsOptionLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        app:boxBackgroundColor="@color/cardPlayer1"
+        app:boxCornerRadiusBottomEnd="@dimen/fab_margin"
+        app:boxCornerRadiusBottomStart="@dimen/fab_margin"
+        app:boxCornerRadiusTopEnd="@dimen/fab_margin"
+        app:boxCornerRadiusTopStart="@dimen/fab_margin"
+        android:visibility="gone"
+        >
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteTeam"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/team"
+            android:inputType="none"/>
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <Button
         android:id="@+id/addTeamButtonDialog"

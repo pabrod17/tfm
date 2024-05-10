@@ -4,15 +4,15 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -27,10 +27,9 @@ import com.example.tfmmobile.databinding.FragmentClubBinding
 import com.example.tfmmobile.domain.model.TeamModel
 import com.example.tfmmobile.ui.club.adapter.TeamAdapter
 import com.example.tfmmobile.ui.club.adapter.categories.CategoriesAdapter
-import com.example.tfmmobile.ui.detail.TeamDetailState
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -54,6 +53,14 @@ class ClubFragment : Fragment() {
         ClubCategory.Players
     )
 
+    val positionMap = mapOf(
+        "PointGuard" to "Base",
+        "ShootingGuard" to "Escolta",
+        "SmallForward" to "Alero",
+        "PowerForward" to "Ala-Pívot",
+        "Center" to "Pívot"
+    )
+
     private lateinit var addTeamButton : FloatingActionButton
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -70,7 +77,8 @@ class ClubFragment : Fragment() {
         val dialog = Dialog(requireActivity())
                 dialog.setContentView(R.layout.dialog_add_team)
             dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
+            initPositions(dialog)
+            initTeamsOptions(dialog)
             val rgOption: RadioGroup = dialog.findViewById(R.id.rgOption)
             rgOption.setOnCheckedChangeListener { _, checkedId ->
                 when (checkedId) {
@@ -141,6 +149,8 @@ class ClubFragment : Fragment() {
 
                 }
                 else -> {
+                    val teamSelected = dialog.findViewById<AutoCompleteTextView>(R.id.autoCompleteTeam)
+                    val positionSelected = dialog.findViewById<AutoCompleteTextView>(R.id.autoCompletePosition)
                     val etPlayerName = dialog.findViewById<EditText>(R.id.etPlayerName)
                     val etPrimaryLastName = dialog.findViewById<EditText>(R.id.etPrimaryLastName)
                     val etSecondLastName = dialog.findViewById<EditText>(R.id.etSecondLastName)
@@ -153,6 +163,19 @@ class ClubFragment : Fragment() {
                     println("player")
                     println("player")
                     println("player")
+                    clubViewModel.addPlayer(
+                        getTeamSelected(teamSelected),
+                        etPlayerName.text.toString(),
+                        etPrimaryLastName.text.toString(),
+                        etSecondLastName.text.toString(),
+                        getPlayerPosition(positionSelected),
+                        etTrends.text.toString(),
+                        etPhoneNumber.text.toString(),
+                        etEmail.text.toString(),
+                        etDni.text.toString(),
+                        requireActivity())
+
+
                 }
             }
 
@@ -163,6 +186,18 @@ class ClubFragment : Fragment() {
             dialog.show()
         }
     }
+
+    private fun getPlayerPosition(positionSelected: AutoCompleteTextView):String {
+        val positionNormal = positionSelected.text.toString()
+        val positionSelectedSpanish = positionMap[positionNormal]
+        return positionSelectedSpanish ?: positionNormal
+    }
+    private fun getTeamSelected(teamSelectd: AutoCompleteTextView): Long {
+        val teamIdsAndNames: List<Pair<String, Long>> = teamsList.map { it.teamName to it.id }
+        return teamIdsAndNames.firstOrNull { it.first == teamSelectd.text.toString() }?.second ?: 0
+
+    }
+
 
 
     fun showEditTextInputsToAddSeason(dialog: Dialog) {
@@ -186,6 +221,8 @@ class ClubFragment : Fragment() {
     }
 
     fun showEditTextInputsToAddPlayer(dialog: Dialog) {
+        val teamsLayout: TextInputLayout = dialog.findViewById(R.id.teamsOptionLayout)
+        val positionsLayout: TextInputLayout = dialog.findViewById(R.id.positionLayout)
         val etPlayerName = dialog.findViewById<EditText>(R.id.etPlayerName)
         val etPrimaryLastName = dialog.findViewById<EditText>(R.id.etPrimaryLastName)
         val etSecondLastName = dialog.findViewById<EditText>(R.id.etSecondLastName)
@@ -194,6 +231,8 @@ class ClubFragment : Fragment() {
         val etEmail = dialog.findViewById<EditText>(R.id.etEmail)
         val etDni = dialog.findViewById<EditText>(R.id.etDni)
 
+        teamsLayout.visibility = View.VISIBLE
+        positionsLayout.visibility = View.VISIBLE
         etPlayerName.visibility = View.VISIBLE
         etPrimaryLastName.visibility = View.VISIBLE
         etSecondLastName.visibility = View.VISIBLE
@@ -201,6 +240,11 @@ class ClubFragment : Fragment() {
         etPhoneNumber.visibility = View.VISIBLE
         etEmail.visibility = View.VISIBLE
         etDni.visibility = View.VISIBLE
+
+
+
+
+
     }
 
 
@@ -223,6 +267,28 @@ class ClubFragment : Fragment() {
         categoriesAdapter= CategoriesAdapter(categories)
         rvCategories.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         rvCategories.adapter = categoriesAdapter
+    }
+
+    private fun initPositions(dialog: Dialog){
+        val positions = listOf(
+            getString(R.string.position1),
+            getString(R.string.position2),
+            getString(R.string.position3),
+            getString(R.string.position4),
+            getString(R.string.position5)
+        )
+        val autoCompletePosition: AutoCompleteTextView = dialog.findViewById(R.id.autoCompletePosition)
+        val adapter = ArrayAdapter(requireActivity(), R.layout.position_item, positions)
+        autoCompletePosition.setAdapter(adapter)
+
+    }
+
+    private fun initTeamsOptions(dialog: Dialog) {
+        teamsList = clubViewModel.getTeams()
+        val teamsNames: List<String> = teamsList.map { it.teamName }
+        val autoCompleteTeam: AutoCompleteTextView = dialog.findViewById(R.id.autoCompleteTeam)
+        val adapter = ArrayAdapter(requireActivity(), R.layout.position_item, teamsNames)
+        autoCompleteTeam.setAdapter(adapter)
     }
 
     private fun initTeamList() {
