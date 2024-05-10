@@ -11,6 +11,7 @@ import com.example.tfmmobile.domain.model.Team
 import com.example.tfmmobile.domain.model.TeamModel
 import com.example.tfmmobile.domain.model.usecase.GetTeamsUseCase
 import com.example.tfmmobile.domain.model.usecase.PlayerUseCase
+import com.example.tfmmobile.domain.model.usecase.SeasonUseCase
 import com.example.tfmmobile.ui.detail.TeamDetailState
 import com.example.tfmmobile.ui.home.MainActivity
 import com.example.tfmmobile.ui.signup.SignUpState
@@ -23,7 +24,8 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
-class ClubViewModel @Inject constructor(private val teamsUseCase: GetTeamsUseCase, private val playerUseCase: PlayerUseCase) : ViewModel() {
+class ClubViewModel @Inject constructor(private val teamsUseCase: GetTeamsUseCase, private val playerUseCase: PlayerUseCase,
+                                        private val seasonUseCase: SeasonUseCase) : ViewModel() {
 
 //class ClubViewModel @Inject constructor(private val getTeamsUseCase: GetTeamsUseCase): ViewModel() {
 
@@ -42,6 +44,9 @@ class ClubViewModel @Inject constructor(private val teamsUseCase: GetTeamsUseCas
 
     private var _statePlayer = MutableStateFlow<PlayerState>(PlayerState.Loading)
     val statePlayer:StateFlow<PlayerState> = _statePlayer
+
+    private var _stateSeason = MutableStateFlow<SeasonState>(SeasonState.Loading)
+    val stateSeason:StateFlow<SeasonState> = _stateSeason
 
     fun getTeams(): List<TeamModel> {
         viewModelScope.launch {
@@ -86,6 +91,32 @@ class ClubViewModel @Inject constructor(private val teamsUseCase: GetTeamsUseCas
         }
     }
 
+    fun addSeason(startDate: String,
+                  endDate: String,
+                  seasonName: String,
+                  description: String,
+                  context: Context
+    ){
+        viewModelScope.launch {
+//            hilo principal
+            _stateSeason.value=SeasonState.Loading
+
+            val result = withContext(Dispatchers.IO) {
+                seasonUseCase(startDate, endDate, seasonName, description) } //hilo secundario
+            if (result!=null){
+                _stateSeason.value = SeasonState.Success(result.id, result.startDate,
+                    result.endDate, result.seasonName, result.description)
+                println("HOLAAAAAAA ANDANDOOOOOOOOOOO")
+                val intent = Intent(context, MainActivity::class.java)
+                context.startActivity(intent)
+                println("HOLAAAAAAA ANDANDOOOOOOOOOOO 222222222222")
+            } else {
+                _stateSeason.value = SeasonState.Error("Ha ocurrido un error. Inténtelo más tarde.")
+            }
+//            hilo principal
+        }
+    }
+
     fun addPlayer(teamId: Long,
                   playerName: String,
                   primaryLastName: String,
@@ -100,17 +131,6 @@ class ClubViewModel @Inject constructor(private val teamsUseCase: GetTeamsUseCas
         viewModelScope.launch {
 //            hilo principal
             _statePlayer.value=PlayerState.Loading
-
-            println(teamId)
-            println(playerName)
-            println(primaryLastName)
-            println(secondLastName)
-            println(position)
-            println(trends)
-            println(phoneNumber)
-            println(email)
-            println(dni)
-
             val result = withContext(Dispatchers.IO) {
                 playerUseCase(teamId, playerName, primaryLastName, secondLastName,
                     position, trends, phoneNumber, email,dni) } //hilo secundario

@@ -27,10 +27,14 @@ import com.example.tfmmobile.databinding.FragmentClubBinding
 import com.example.tfmmobile.domain.model.TeamModel
 import com.example.tfmmobile.ui.club.adapter.TeamAdapter
 import com.example.tfmmobile.ui.club.adapter.categories.CategoriesAdapter
+import com.example.tfmmobile.ui.home.DatePickerFragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Locale
+import java.util.TimeZone
 
 @AndroidEntryPoint
 class ClubFragment : Fragment() {
@@ -77,6 +81,16 @@ class ClubFragment : Fragment() {
         val dialog = Dialog(requireActivity())
                 dialog.setContentView(R.layout.dialog_add_team)
             dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+            val etStartDate = dialog.findViewById<EditText>(R.id.etStartDate)
+            etStartDate.setOnClickListener{
+                showPickerDialog(etStartDate)
+            }
+            val etFinishDate = dialog.findViewById<EditText>(R.id.etFinishDate)
+            etFinishDate.setOnClickListener{
+                showPickerDialog(etFinishDate)
+            }
+
             initPositions(dialog)
             initTeamsOptions(dialog)
             val rgOption: RadioGroup = dialog.findViewById(R.id.rgOption)
@@ -122,9 +136,15 @@ class ClubFragment : Fragment() {
                 //Add new item: team, season or player
 
                 getString(R.string.season) -> {
+                    val etStartDate = dialog.findViewById<EditText>(R.id.etStartDate)
+                    val etFinishDate = dialog.findViewById<EditText>(R.id.etFinishDate)
                     val etName = dialog.findViewById<EditText>(R.id.etName)
                     val etDescription = dialog.findViewById<EditText>(R.id.etDescription)
-                    println("seasonnnnnnn")
+                    clubViewModel.addSeason(
+                        returnDateConverter(etStartDate.text.toString()),
+                        returnDateConverter(etFinishDate.text.toString()),
+                        etName.text.toString(), etDescription.text.toString(), requireActivity())
+
                     println("seasonnnnnnn")
                     println("seasonnnnnnn")
                     println("seasonnnnnnn")
@@ -187,6 +207,35 @@ class ClubFragment : Fragment() {
         }
     }
 
+    private fun showPickerDialog(dateClicked: EditText) {
+        val datePicker = DatePickerFragment{day, month, year -> onDateSelected(dateClicked, day, month, year)}
+        datePicker.show(requireFragmentManager(), "datePicker")
+    }
+
+    fun onDateSelected(dateClicked:EditText , day:Int, month:Int, year:Int) {
+        val userFormattedDate = String.format("%04d-%02d-%02d", year, month, day)
+
+        val formattedDate = String.format("%04d-%02d-%02dT22:00:00.000Z", year, month, day)
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
+        dateFormat.timeZone = TimeZone.getTimeZone("UTC")
+        val datestring = dateFormat.format(dateFormat.parse(formattedDate))
+
+        dateClicked.setText(userFormattedDate)
+    }
+
+    fun returnDateConverter(dateToFormat:String): String {
+        val parts = dateToFormat.split("-")
+
+        val year = parts[0].toInt()
+        val month = parts[1].toInt()
+        val day = parts[2].toInt()
+
+        val formattedDate = String.format("%04d-%02d-%02dT22:00:00.000Z", year, month, day)
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
+        dateFormat.timeZone = TimeZone.getTimeZone("UTC")
+        return dateFormat.format(dateFormat.parse(formattedDate))
+    }
+
     private fun getPlayerPosition(positionSelected: AutoCompleteTextView):String {
         val positionNormal = positionSelected.text.toString()
         val positionSelectedSpanish = positionMap[positionNormal]
@@ -203,9 +252,13 @@ class ClubFragment : Fragment() {
     fun showEditTextInputsToAddSeason(dialog: Dialog) {
         val etName = dialog.findViewById<EditText>(R.id.etName)
         val etDescription = dialog.findViewById<EditText>(R.id.etDescription)
+        val etStartDate = dialog.findViewById<EditText>(R.id.etStartDate)
+        val etFinishDate = dialog.findViewById<EditText>(R.id.etFinishDate)
 
         etName.visibility = View.VISIBLE
         etDescription.visibility = View.VISIBLE
+        etStartDate.visibility = View.VISIBLE
+        etFinishDate.visibility = View.VISIBLE
     }
 
     fun showEditTextInputsToAddTeam(dialog: Dialog) {

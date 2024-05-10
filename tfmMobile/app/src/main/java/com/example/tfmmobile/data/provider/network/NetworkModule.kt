@@ -5,9 +5,11 @@ import com.example.tfmmobile.data.core.interceptors.AuthInterceptor
 import com.example.tfmmobile.data.core.interceptors.TokenManage3
 import com.example.tfmmobile.data.provider.PlayerRepositoryImpl
 import com.example.tfmmobile.data.provider.RepositoryImpl
+import com.example.tfmmobile.data.provider.SeasonRepositoryImpl
 import com.example.tfmmobile.data.provider.UserRepositoryImpl
 import com.example.tfmmobile.domain.model.Repository
 import com.example.tfmmobile.domain.model.player.PlayerRepository
+import com.example.tfmmobile.domain.model.season.SeasonRepository
 import com.example.tfmmobile.domain.model.user.UserRepository
 import dagger.Module
 import dagger.Provides
@@ -96,6 +98,16 @@ object NetworkModule {
     @Provides
     fun providePlayerRepository(apiService: PlayerApiService): PlayerRepository {
         return PlayerRepositoryImpl(apiService)
+    }
+
+    @Provides
+    fun provideSeasonApiService(retrofit: Retrofit): SeasonApiService{
+        return retrofit.create(SeasonApiService::class.java)
+    }
+
+    @Provides
+    fun provideSeasonRepository(apiService: SeasonApiService): SeasonRepository {
+        return SeasonRepositoryImpl(apiService)
     }
 
 }

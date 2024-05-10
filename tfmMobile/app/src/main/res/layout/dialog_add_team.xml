@@ -72,6 +72,31 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <EditText
+        android:id="@+id/etStartDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:hint="@string/startDate"
+        android:textColorHint="@color/green"
+        android:textColor="@color/orange"
+        android:clickable="false"
+        android:focusable="false"
+        android:visibility="gone"
+        />
+    <EditText
+        android:id="@+id/etFinishDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:hint="@string/FinishDate"
+        android:textColorHint="@color/green"
+        android:textColor="@color/orange"
+        android:clickable="false"
+        android:focusable="false"
+        android:visibility="gone"
+        />
+
+    <EditText
         android:id="@+id/etName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
