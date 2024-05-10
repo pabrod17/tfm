@@ -4,6 +4,8 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +15,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -73,6 +76,21 @@ class ClubFragment : Fragment() {
         teamsList = clubViewModel.getTeams()
         initUi()
         initListeners()
+        configSwipe()
+    }
+
+    private fun configSwipe() {
+        binding.swipe.setColorSchemeColors(ContextCompat.getColor(requireContext(),
+            R.color.cardTeam1), ContextCompat.getColor(requireContext(),
+            R.color.cardSeason1))
+        binding.swipe.setProgressBackgroundColorSchemeColor(ContextCompat.getColor(requireContext(),
+            R.color.primaryDark))
+        binding.swipe.setOnRefreshListener {
+            Handler(Looper.getMainLooper()).postDelayed({
+                binding.swipe.isRefreshing = false
+                teamsList = clubViewModel.getTeams()
+            }, 1000)
+        }
     }
 
     private fun initListeners(){
