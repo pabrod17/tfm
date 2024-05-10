@@ -51,6 +51,7 @@ class ClubFragment : Fragment() {
 
     private lateinit var categoriesAdapter: CategoriesAdapter
 
+
     private val categories = listOf(
         ClubCategory.Seasons,
         ClubCategory.Teams,
@@ -302,12 +303,48 @@ class ClubFragment : Fragment() {
 
 
 
-
     private fun initUi(){
         initComponent()
         initCategories()
         initTeamList()
         initUiState()
+        hideOrShowToolbar()
+    }
+
+    private fun hideOrShowToolbar() {
+
+        //Con esto si arrastro el dedo en la pantalla. No se oculta la toolbar (dragging)
+            //Solo se ocultara si me desplazo! (scrolling)
+        val state = intArrayOf(0)
+
+
+        rvTeams.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                // Mnajeo el cambio de estado del scroll
+                super.onScrollStateChanged(recyclerView, newState)
+                state[0] = newState
+            }
+
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                // Manejo el desplazamiento del RecyclerView
+                super.onScrolled(recyclerView, dx, dy)
+                if(dy>0 &&(state[0] == 0 || state[0] == 2)) {
+                    hideToolbar()
+                } else if(dy <-10) {
+                    showToolbar()
+                }
+            }
+        })
+    }
+
+    private fun hideToolbar() {
+        val activity = requireActivity()
+        activity.findViewById<View>(R.id.toolbar).visibility = View.GONE
+    }
+
+    private fun showToolbar() {
+        val activity = requireActivity()
+        activity.findViewById<View>(R.id.toolbar).visibility = View.VISIBLE
     }
 
     private fun initComponent(){
