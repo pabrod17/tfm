@@ -208,3 +208,15 @@ Club teams section:
 Club section -> Add dialog:
 
 ![ToolBare](addDialog.png)
+
+Club section -> Seasons List:
+
+![ToolBare](listaSeasons.png)
+
+Club section -> Teams List:
+
+![ToolBare](listaTeams.png)
+
+Club section -> Players List:
+
+![ToolBare](listaPlayers.png)
