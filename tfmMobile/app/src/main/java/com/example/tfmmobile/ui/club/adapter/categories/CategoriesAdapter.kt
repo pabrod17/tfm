@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tfmmobile.R
 import com.example.tfmmobile.ui.club.ClubCategory
 
-class CategoriesAdapter(private val categories:List<ClubCategory>) :
+class CategoriesAdapter(private val categories:List<ClubCategory>, private val onItemSelected:(Int) -> Unit) :
     RecyclerView.Adapter<CategoriesViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoriesViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_club_category, parent, false)
@@ -14,7 +14,7 @@ class CategoriesAdapter(private val categories:List<ClubCategory>) :
     }
 
     override fun onBindViewHolder(holder: CategoriesViewHolder, position: Int) {
-        holder.render(categories[position])
+        holder.render(categories[position], onItemSelected)
     }
 
     override fun getItemCount() = categories.size

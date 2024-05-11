@@ -372,9 +372,19 @@ class ClubFragment : Fragment() {
     }
 
     private fun initCategories(){
-        categoriesAdapter= CategoriesAdapter(categories)
+        categoriesAdapter= CategoriesAdapter(categories) {
+            position -> updateCategories(position)
+        }
         rvCategories.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         rvCategories.adapter = categoriesAdapter
+    }
+
+    private fun updateCategories(position:Int) {
+        for (i in categories.indices) {
+            categories[i].isSelected = (i == position)
+            categoriesAdapter.notifyItemChanged(i)
+        }
+        updateTeamsList()
     }
 
     private fun initPositions(dialog: Dialog){
