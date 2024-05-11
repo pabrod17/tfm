@@ -2,6 +2,7 @@ package com.example.tfmmobile.ui.club.adapter
 
 import android.os.Build
 import android.view.View
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tfmmobile.R
@@ -15,7 +16,6 @@ import java.util.Locale
 class SeasonViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
     private val binding = ItemSeasonBinding.bind(view)
-
     @RequiresApi(Build.VERSION_CODES.O)
     fun render(season: SeasonModel, onItemSelected: (SeasonModel) -> Unit) {
 

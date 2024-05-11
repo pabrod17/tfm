@@ -125,26 +125,26 @@
             android:textSize="15dp"
 
             />
-        <TextView
-            android:id="@+id/tvPosition"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/position"
-            android:textColor="@color/warning"
-            android:layout_marginLeft="15dp"
-            android:textSize="15sp"
-            />
+<!--        <TextView-->
+<!--            android:id="@+id/tvPosition"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/position"-->
+<!--            android:textColor="@color/warning"-->
+<!--            android:layout_marginLeft="15dp"-->
+<!--            android:textSize="15sp"-->
+<!--            />-->
         <TextView
             android:id="@+id/tvPositionValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/arenaName"
             android:textColor="@color/white"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="2dp"
-            android:textSize="13sp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:textSize="22sp"
             android:textStyle="bold"
-            android:maxHeight="20dp"
+            android:maxHeight="2530dp"
             />
     </LinearLayout>
 

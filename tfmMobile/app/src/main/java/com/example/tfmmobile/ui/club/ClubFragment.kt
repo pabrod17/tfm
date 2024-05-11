@@ -340,12 +340,12 @@ class ClubFragment : Fragment() {
     private fun initUi(){
         initComponent()
         initCategories()
+        initPlayerList()
         initTeamList()
         initSeasonList()
-        initPlayerList()
+        initUiStatePlayer()
         initUiState()
         initUiStateSeason()
-        initUiStatePlayer()
         hideOrShowToolbar()
     }
 
