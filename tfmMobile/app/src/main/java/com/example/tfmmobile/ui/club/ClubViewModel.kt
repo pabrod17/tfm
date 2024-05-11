@@ -204,6 +204,8 @@ class ClubViewModel @Inject constructor(private val teamsUseCase: GetTeamsUseCas
 
     init {
         _team.value =  getTeams()
+        _seasons.value =  getSeasons()
+        _players.value =  getPlayers()
     }
 
 

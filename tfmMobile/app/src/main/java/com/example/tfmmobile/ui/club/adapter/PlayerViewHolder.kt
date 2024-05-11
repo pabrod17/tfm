@@ -16,9 +16,11 @@ class PlayerViewHolder(view: View): RecyclerView.ViewHolder(view) {
             onItemSelected(player)
         }
 
-        binding.tvTitleTeam.text = player.playerName
-        binding.tvSurnamesValue.text = player.primaryLastName + " "+ player.secondLastName
+        binding.tvNameAndSurnamesValue.text =player.playerName + " " + player.primaryLastName + " " + player.secondLastName
         binding.tvPositionValue.text = player.position
+        if(player.injured) {
+            binding.ivPlayerDetailInjured.visibility = View.VISIBLE
+        }
         binding.cardImage.setImageResource(R.drawable.player)
     }
 }

@@ -19,6 +19,7 @@
 
     <string name="playerName">Nombre</string>
     <string name="surnames">Apellidos</string>
+    <string name="nameAndSurnames">Nombre y Apellidos</string>
 
 
     <string name="primaryLastName">Primer Apellido</string>
@@ -30,7 +31,7 @@
 
     <string name="startDate">Fecha Inicio</string>
     <string name="FinishDate">Fecha Fin</string>
-
+    <string name="dates">Fecha Inicio / Fecha Fin</string>
 
 
     <string name="teamName">Nombre</string>

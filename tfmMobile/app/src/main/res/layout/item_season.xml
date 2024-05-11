@@ -37,15 +37,15 @@
             app:cardCornerRadius="360dp"
             android:elevation="20dp"
             app:cardElevation="20dp"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="11dp"
             >
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/cardImage"
-
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:src="@drawable/season"
                 android:scaleType="centerCrop"
+
                 app:cardCornerRadius="360dp" />
 
         </androidx.cardview.widget.CardView>
@@ -59,18 +59,7 @@
 <!--            android:layout_marginHorizontal="10dp"-->
 <!--            android:textColor="@color/white"-->
 <!--            />-->
-        <TextView
-            android:id="@+id/tvTitleTeam"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/teamName"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:layout_gravity="center"
-            android:textSize="15dp"
-            android:maxWidth="80dp"
-            android:maxHeight="40dp"
-            />
+
 
     </LinearLayout>
     <LinearLayout
@@ -83,33 +72,38 @@
             android:id="@+id/tvStartDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/startDate"
+            android:text="@string/teamName"
             android:textColor="@color/warning"
             android:layout_marginLeft="15dp"
             android:textSize="15sp"
             />
+
         <TextView
-            android:id="@+id/tvStartDateValue"
+            android:id="@+id/tvTitleTeam"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/arenaName"
+            android:text="wef sdf s sd fa lskdmfvds sdf sdf laksmd fdsf sd sdf  f"
             android:textColor="@color/white"
+            android:textStyle="bold"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="2dp"
-            android:textSize="13sp"
+            android:textSize="15dp"
+            android:maxWidth="267dp"
             android:maxHeight="20dp"
+
             />
         <TextView
-            android:id="@+id/tvFinishDate"
+            android:id="@+id/tvDates"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/FinishDate"
+            android:text="@string/dates"
             android:textColor="@color/warning"
             android:layout_marginLeft="15dp"
             android:textSize="15sp"
             />
         <TextView
-            android:id="@+id/tvFinishDateValue"
+            android:textStyle="bold"
+            android:id="@+id/tvDatesValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/arenaName"

@@ -27,7 +27,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tfmmobile.R
 import com.example.tfmmobile.databinding.FragmentClubBinding
+import com.example.tfmmobile.domain.model.PlayerModel
+import com.example.tfmmobile.domain.model.SeasonModel
 import com.example.tfmmobile.domain.model.TeamModel
+import com.example.tfmmobile.ui.club.adapter.PlayerAdapter
+import com.example.tfmmobile.ui.club.adapter.SeasonAdapter
 import com.example.tfmmobile.ui.club.adapter.TeamAdapter
 import com.example.tfmmobile.ui.club.adapter.categories.CategoriesAdapter
 import com.example.tfmmobile.ui.home.DatePickerFragment
@@ -45,8 +49,14 @@ class ClubFragment : Fragment() {
     private val clubViewModel by viewModels<ClubViewModel>()
 
     private lateinit var teamAdapter: TeamAdapter
+    private lateinit var seasonAdapter: SeasonAdapter
+    private lateinit var playerAdapter: PlayerAdapter
+
     private var _binding: FragmentClubBinding? = null
     lateinit var teamsList: List<TeamModel>
+    lateinit var seasonsList: List<SeasonModel>
+    lateinit var playersList: List<PlayerModel>
+
     private val binding get() = _binding!!
 
     private lateinit var rvCategories: RecyclerView
@@ -74,6 +84,8 @@ class ClubFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         teamsList = clubViewModel.getTeams()
+        seasonsList = clubViewModel.getSeasons()
+        playersList = clubViewModel.getPlayers()
         initUi()
         initListeners()
         configSwipe()
@@ -89,6 +101,8 @@ class ClubFragment : Fragment() {
             Handler(Looper.getMainLooper()).postDelayed({
                 binding.swipe.isRefreshing = false
                 teamsList = clubViewModel.getTeams()
+                seasonsList = clubViewModel.getSeasons()
+                playersList = clubViewModel.getPlayers()
             }, 1000)
         }
     }
@@ -219,6 +233,8 @@ class ClubFragment : Fragment() {
             }
 
             updateTeamsList()
+            updateSeasonsList()
+            updatePlayersList()
             dialog.hide()
 
         }
@@ -325,7 +341,11 @@ class ClubFragment : Fragment() {
         initComponent()
         initCategories()
         initTeamList()
+        initSeasonList()
+        initPlayerList()
         initUiState()
+        initUiStateSeason()
+        initUiStatePlayer()
         hideOrShowToolbar()
     }
 
@@ -384,7 +404,26 @@ class ClubFragment : Fragment() {
             categories[i].isSelected = (i == position)
             categoriesAdapter.notifyItemChanged(i)
         }
-        updateTeamsList()
+        when (categories[position]) {
+            ClubCategory.Seasons -> {
+                seasonsList = clubViewModel.getSeasons()
+                initSeasonList()
+                updateSeasonsList()
+                initUiStateSeason()
+            }
+            ClubCategory.Teams -> {
+                teamsList = clubViewModel.getTeams()
+                initTeamList()
+                updateTeamsList()
+                initUiState()
+            }
+            ClubCategory.Players -> {
+                playersList = clubViewModel.getPlayers()
+                initPlayerList()
+                updatePlayersList()
+                initUiStatePlayer()
+            }
+        }
     }
 
     private fun initPositions(dialog: Dialog){
@@ -429,6 +468,46 @@ class ClubFragment : Fragment() {
         }
     }
 
+    private fun initSeasonList() {
+
+
+
+//        No le paso la lista porque el adaptar ya tiene la lista inicializada
+        seasonAdapter = SeasonAdapter(onItemSelected = {
+//            Toast.makeText(context, it.teamName, Toast.LENGTH_LONG).show()
+
+//            findNavController().navigate(
+////                Siempre va a haber esta clase. La del maingraph
+//                ClubFragmentDirections.actionClubFragmentToTeamDetailActivity(it.id, it.teamName, it.arenaName, it.ownerName, it.description)
+//            )
+        })
+
+        rvTeams.apply {
+            rvTeams.layoutManager = GridLayoutManager(context, 1)
+            rvTeams.adapter = seasonAdapter
+        }
+    }
+
+    private fun initPlayerList() {
+
+
+
+//        No le paso la lista porque el adaptar ya tiene la lista inicializada
+        playerAdapter = PlayerAdapter(onItemSelected = {
+//            Toast.makeText(context, it.teamName, Toast.LENGTH_LONG).show()
+
+//            findNavController().navigate(
+////                Siempre va a haber esta clase. La del maingraph
+//                ClubFragmentDirections.actionClubFragmentToTeamDetailActivity(it.id, it.teamName, it.arenaName, it.ownerName, it.description)
+//            )
+        })
+
+        rvTeams.apply {
+            rvTeams.layoutManager = GridLayoutManager(context, 1)
+            rvTeams.adapter = playerAdapter
+        }
+    }
+
     private fun initUiState() {
         //Uso esta corrutina porque se combina con el ciclo de vida de la activity o fragment en este caso
         lifecycleScope.launch {
@@ -442,9 +521,41 @@ class ClubFragment : Fragment() {
             }
         }
     }
+    private fun initUiStateSeason() {
+        //Uso esta corrutina porque se combina con el ciclo de vida de la activity o fragment en este caso
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                clubViewModel.seasons.collect{
+//                    CAMBIOS EN TEAMS list
+                    seasonAdapter.updateList(it)
+
+//                    Log.i("Mostrando la lista de Teams. En el fragment de Club: ", it.get(1).teamName)
+                }
+            }
+        }
+    }
+    private fun initUiStatePlayer() {
+        //Uso esta corrutina porque se combina con el ciclo de vida de la activity o fragment en este caso
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                clubViewModel.players.collect{
+//                    CAMBIOS EN TEAMS list
+                    playerAdapter.updateList(it)
+
+//                    Log.i("Mostrando la lista de Teams. En el fragment de Club: ", it.get(1).teamName)
+                }
+            }
+        }
+    }
 
     private fun updateTeamsList(){
         teamAdapter.notifyDataSetChanged()
+    }
+    private fun updateSeasonsList(){
+        seasonAdapter.notifyDataSetChanged()
+    }
+    private fun updatePlayersList(){
+        playerAdapter.notifyDataSetChanged()
     }
 
     override fun onCreateView(

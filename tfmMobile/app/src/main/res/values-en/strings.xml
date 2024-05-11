@@ -22,6 +22,7 @@
 
     <string name="playerName">Name</string>
     <string name="surnames">Surnames</string>
+    <string name="nameAndSurnames">Name and Surnames</string>
 
     <string name="primaryLastName">Primary Last Name</string>
     <string name="secondLastName">Second Last Name</string>
@@ -32,7 +33,7 @@
 
     <string name="startDate">Start Date</string>
     <string name="FinishDate">Finish Date</string>
-
+    <string name="dates">Start Date / Finish Date</string>
 
 
 
