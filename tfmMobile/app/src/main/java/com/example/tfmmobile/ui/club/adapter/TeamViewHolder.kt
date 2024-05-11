@@ -11,16 +11,18 @@ class TeamViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
     private val binding = ItemTeamBinding.bind(view)
 
-    fun render(team: TeamModel, onItemSelected:(TeamModel) -> Unit){
+    fun render(team: BaseModel.Team, onItemSelected: (BaseModel) -> Unit) {
 //        val context = binding.tvTitleTeam.context
 //        binding.tvTitleTeam.text = context.getString(team.teamName)
 
         binding.parent.setOnClickListener {
             onItemSelected(team)
         }
+
+        val teamModel = team.teamModel
+        binding.tvTitleTeam.text = teamModel.teamName
+        binding.tvArenaNameValue.text = teamModel.arenaName
+        binding.tvOwnerNameValue.text = teamModel.ownerName
         binding.cardImage.setImageResource(R.drawable.team)
-        binding.tvTitleTeam.text = team.teamName
-        binding.tvArenaNameValue.text = team.arenaName
-        binding.tvOwnerNameValue.text = team.ownerName
     }
 }

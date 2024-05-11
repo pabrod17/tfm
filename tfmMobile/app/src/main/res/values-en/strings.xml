@@ -21,6 +21,8 @@
 
 
     <string name="playerName">Name</string>
+    <string name="surnames">Surnames</string>
+
     <string name="primaryLastName">Primary Last Name</string>
     <string name="secondLastName">Second Last Name</string>
     <string name="trends">Trends</string>

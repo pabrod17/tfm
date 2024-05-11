@@ -7,6 +7,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.tfmmobile.data.provider.TeamProvider
+import com.example.tfmmobile.domain.model.PlayerModel
+import com.example.tfmmobile.domain.model.SeasonModel
 import com.example.tfmmobile.domain.model.Team
 import com.example.tfmmobile.domain.model.TeamModel
 import com.example.tfmmobile.domain.model.usecase.GetTeamsUseCase
@@ -34,6 +36,18 @@ class ClubViewModel @Inject constructor(private val teamsUseCase: GetTeamsUseCas
 
     private var _state = MutableStateFlow<TeamsState>(TeamsState.Loading)
     val state:StateFlow<TeamsState> = _state
+
+    private var _stateSeasons = MutableStateFlow<SeasonsState>(SeasonsState.Loading)
+    val stateSeasons:StateFlow<SeasonsState> = _stateSeasons
+    private var _seasons = MutableStateFlow<List<SeasonModel>>(emptyList())
+    val seasons: StateFlow<List<SeasonModel>> = _seasons
+    private var _statePlayers = MutableStateFlow<PlayersState>(PlayersState.Loading)
+    val statePlayers:StateFlow<PlayersState> = _statePlayers
+    private var _players = MutableStateFlow<List<PlayerModel>>(emptyList())
+    val players: StateFlow<List<PlayerModel>> = _players
+
+
+
 
     var description =
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
@@ -66,6 +80,44 @@ class ClubViewModel @Inject constructor(private val teamsUseCase: GetTeamsUseCas
 
         return _team.value
     }
+
+    fun getSeasons(): List<SeasonModel> {
+        viewModelScope.launch {
+//            hilo principal
+            _stateSeasons.value= SeasonsState.Loading
+            val result = withContext(Dispatchers.IO) { seasonUseCase() } //hilo secundario
+            if (result!=null){
+                _stateSeasons.value = SeasonsState.Success(result)
+                _seasons.value = result
+//                _team.value = result
+
+            } else {
+                _stateSeasons.value = SeasonsState.Error("Ha ocurrido un error. Inténtelo más tarde.")
+            }
+//            hilo principal
+        }
+
+        return _seasons.value
+    }
+    fun getPlayers(): List<PlayerModel> {
+        viewModelScope.launch {
+//            hilo principal
+            _statePlayers.value= PlayersState.Loading
+            val result = withContext(Dispatchers.IO) { playerUseCase() } //hilo secundario
+            if (result!=null){
+                _statePlayers.value = PlayersState.Success(result)
+                _players.value = result
+//                _team.value = result
+
+            } else {
+                _statePlayers.value = PlayersState.Error("Ha ocurrido un error. Inténtelo más tarde.")
+            }
+//            hilo principal
+        }
+
+        return _players.value
+    }
+
 
     fun addTeam(teamName:String,
                    arenaName:String,

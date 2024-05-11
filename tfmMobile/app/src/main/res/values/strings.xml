@@ -18,6 +18,9 @@
 
 
     <string name="playerName">Nombre</string>
+    <string name="surnames">Apellidos</string>
+
+
     <string name="primaryLastName">Primer Apellido</string>
     <string name="secondLastName">Segundo Apellido</string>
     <string name="trends">Tendencias</string>
