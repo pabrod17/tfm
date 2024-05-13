@@ -22,19 +22,21 @@ class PlayerViewHolder(view: View): RecyclerView.ViewHolder(view) {
         binding.tvNameAndSurnamesValue.text =player.playerName + " " + player.primaryLastName + " " + player.secondLastName
         binding.tvPositionValue.text = player.position
         if(player.position.equals("Base")) {
-            binding.tvPositionValue.setTextColor(ContextCompat.getColor(textPosition.context, R.color.green))
+            binding.tvPositionValue.setTextColor(ContextCompat.getColor(textPosition.context, R.color.position4))
+
         }
         if(player.position.equals("Escolta")) {
-            binding.tvPositionValue.setTextColor(ContextCompat.getColor(textPosition.context, R.color.blue))
+            binding.tvPositionValue.setTextColor(ContextCompat.getColor(textPosition.context, R.color.position5))
+
         }
         if(player.position.equals("Alero")) {
-            binding.tvPositionValue.setTextColor(ContextCompat.getColor(textPosition.context, R.color.yellow))
+            binding.tvPositionValue.setTextColor(ContextCompat.getColor(textPosition.context, R.color.position3))
         }
         if(player.position.equals("AlaPivot")) {
-            binding.tvPositionValue.setTextColor(ContextCompat.getColor(textPosition.context, R.color.orange))
+            binding.tvPositionValue.setTextColor(ContextCompat.getColor(textPosition.context, R.color.position2))
         }
         if(player.position.equals("Pivot")) {
-            binding.tvPositionValue.setTextColor(ContextCompat.getColor(textPosition.context, R.color.red))
+            binding.tvPositionValue.setTextColor(ContextCompat.getColor(textPosition.context, R.color.position1))
         }
         if(player.injured) {
             binding.ivPlayerDetailInjured.visibility = View.VISIBLE
