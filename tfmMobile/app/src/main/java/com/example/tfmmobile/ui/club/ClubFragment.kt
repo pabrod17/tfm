@@ -378,11 +378,15 @@ class ClubFragment : Fragment() {
     private fun hideToolbar() {
         val activity = requireActivity()
         activity.findViewById<View>(R.id.toolbar).visibility = View.GONE
+        activity.findViewById<View>(R.id.bottomNavView).visibility = View.GONE
+        activity.findViewById<View>(R.id.addTeamButton).visibility = View.GONE
     }
 
     private fun showToolbar() {
         val activity = requireActivity()
         activity.findViewById<View>(R.id.toolbar).visibility = View.VISIBLE
+        activity.findViewById<View>(R.id.bottomNavView).visibility = View.VISIBLE
+        activity.findViewById<View>(R.id.addTeamButton).visibility = View.VISIBLE
     }
 
     private fun initComponent(){
