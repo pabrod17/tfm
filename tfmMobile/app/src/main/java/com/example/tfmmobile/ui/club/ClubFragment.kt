@@ -339,13 +339,35 @@ class ClubFragment : Fragment() {
 
     private fun initUi(){
         initComponent()
+//        initPlayerList()
+//        initTeamList()
+//        initSeasonList()
         initCategories()
-        initPlayerList()
-        initTeamList()
-        initSeasonList()
-        initUiStatePlayer()
-        initUiState()
-        initUiStateSeason()
+        for (category in categories) {
+            // Verificar si la categoría está seleccionada
+            if (category.isSelected) {
+                // Realizar acciones específicas para la categoría seleccionada
+                when (category) {
+                    is ClubCategory.Teams -> {
+                        initTeamList()
+                        initUiState()
+                    }
+                    is ClubCategory.Seasons -> {
+                        initSeasonList()
+                        initUiStateSeason()
+
+                    }
+                    is ClubCategory.Players -> {
+                        initPlayerList()
+                        initUiStatePlayer()
+
+                    }
+                }
+            }
+        }
+//        initUiStatePlayer()
+//        initUiState()
+//        initUiStateSeason()
         hideOrShowToolbar()
     }
 
