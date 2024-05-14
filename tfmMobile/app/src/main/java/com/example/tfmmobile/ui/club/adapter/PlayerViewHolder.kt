@@ -8,10 +8,10 @@ import com.example.tfmmobile.R
 import com.example.tfmmobile.databinding.ItemPlayerBinding
 import com.example.tfmmobile.domain.model.PlayerModel
 
-class PlayerViewHolder(view: View): RecyclerView.ViewHolder(view) {
+class PlayerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     private val binding = ItemPlayerBinding.bind(view)
-    private val textPosition : TextView = view.findViewById(R.id.tvPositionValue)
+    private val textPosition: TextView = view.findViewById(R.id.tvPositionValue)
 
     fun render(player: PlayerModel, onItemSelected: (PlayerModel) -> Unit) {
 
@@ -19,27 +19,57 @@ class PlayerViewHolder(view: View): RecyclerView.ViewHolder(view) {
             onItemSelected(player)
         }
 
-        binding.tvNameAndSurnamesValue.text =player.playerName + " " + player.primaryLastName + " " + player.secondLastName
+        binding.tvNameAndSurnamesValue.text =
+            player.playerName + " " + player.primaryLastName + " " + player.secondLastName
         binding.tvPositionValue.text = player.position
-        if(player.position.equals("Base")) {
-            binding.tvPositionValue.setTextColor(ContextCompat.getColor(textPosition.context, R.color.position4))
+        if (player.position.equals("Base")) {
+            binding.tvPositionValue.setTextColor(
+                ContextCompat.getColor(
+                    textPosition.context,
+                    R.color.position4
+                )
+            )
 
         }
-        if(player.position.equals("Escolta")) {
-            binding.tvPositionValue.setTextColor(ContextCompat.getColor(textPosition.context, R.color.position5))
+        if (player.position.equals("Escolta")) {
+            binding.tvPositionValue.setTextColor(
+                ContextCompat.getColor(
+                    textPosition.context,
+                    R.color.position5
+                )
+            )
 
         }
-        if(player.position.equals("Alero")) {
-            binding.tvPositionValue.setTextColor(ContextCompat.getColor(textPosition.context, R.color.position3))
+        if (player.position.equals("Alero")) {
+            binding.tvPositionValue.setTextColor(
+                ContextCompat.getColor(
+                    textPosition.context,
+                    R.color.position3
+                )
+            )
         }
-        if(player.position.equals("AlaPivot")) {
-            binding.tvPositionValue.setTextColor(ContextCompat.getColor(textPosition.context, R.color.position2))
+        if (player.position.equals("AlaPivot")) {
+            binding.tvPositionValue.setTextColor(
+                ContextCompat.getColor(
+                    textPosition.context,
+                    R.color.position2
+                )
+            )
         }
-        if(player.position.equals("Pivot")) {
-            binding.tvPositionValue.setTextColor(ContextCompat.getColor(textPosition.context, R.color.position1))
+        if (player.position.equals("Pivot")) {
+            binding.tvPositionValue.setTextColor(
+                ContextCompat.getColor(
+                    textPosition.context,
+                    R.color.position1
+                )
+            )
         }
-        if(player.injured) {
+
+        if (player.injured) {
             binding.ivPlayerDetailInjured.visibility = View.VISIBLE
+        } else {
+            binding.ivPlayerDetailInjured.visibility =
+                View.GONE
         }
         binding.cardImage.setImageResource(R.drawable.player)
     }

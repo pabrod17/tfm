@@ -75,8 +75,8 @@ class ClubFragment : Fragment() {
         "PointGuard" to "Base",
         "ShootingGuard" to "Escolta",
         "SmallForward" to "Alero",
-        "PowerForward" to "Ala-Pívot",
-        "Center" to "Pívot"
+        "PowerForward" to "AlaPivot",
+        "Center" to "Pivot"
     )
 
     private lateinit var addTeamButton : FloatingActionButton
@@ -100,9 +100,15 @@ class ClubFragment : Fragment() {
         binding.swipe.setOnRefreshListener {
             Handler(Looper.getMainLooper()).postDelayed({
                 binding.swipe.isRefreshing = false
-                teamsList = clubViewModel.getTeams()
-                seasonsList = clubViewModel.getSeasons()
-                playersList = clubViewModel.getPlayers()
+//                teamsList = clubViewModel.getTeams()
+                initSeasonList()
+                initTeamList()
+                initPlayerList()
+                initUiStateSeason()
+                initUi()
+                initUiStatePlayer()
+//                seasonsList = clubViewModel.getSeasons()
+//                playersList = clubViewModel.getPlayers()
             }, 1000)
         }
     }
@@ -181,6 +187,7 @@ class ClubFragment : Fragment() {
                     println("seasonnnnnnn")
                     println("seasonnnnnnn")
                     println("seasonnnnnnn")
+                    updateSeasonsList()
 
 
                 }
@@ -199,6 +206,7 @@ class ClubFragment : Fragment() {
                     println(etArena)
                     println(etOwner)
                     println(etDescription)
+                    updateTeamsList()
 
                 }
                 else -> {
@@ -226,15 +234,14 @@ class ClubFragment : Fragment() {
                         etPhoneNumber.text.toString(),
                         etEmail.text.toString(),
                         etDni.text.toString(),
+                        false,
                         requireActivity())
 
+                    updatePlayersList()
 
                 }
             }
 
-            updateTeamsList()
-            updateSeasonsList()
-            updatePlayersList()
             dialog.hide()
 
         }
@@ -272,8 +279,20 @@ class ClubFragment : Fragment() {
     }
 
     private fun getPlayerPosition(positionSelected: AutoCompleteTextView):String {
+
+
+
         val positionNormal = positionSelected.text.toString()
+        println("ENSENO POSICION SELECTED: " + positionNormal)
+        println("ENSENO POSICION SELECTED: " + positionNormal)
+        println("ENSENO POSICION SELECTED: " + positionNormal)
         val positionSelectedSpanish = positionMap[positionNormal]
+        println("ENSENO POSICION SELECTED SPANISH: " + positionSelectedSpanish)
+        println("ENSENO POSICION SELECTED SPANISH: " + positionSelectedSpanish)
+        println("ENSENO POSICION SELECTED SPANISH: " + positionSelectedSpanish)
+        println("ENSENO POSICION SELECTED SPANISH: " + positionSelectedSpanish)
+
+        println("ENSENO POSICION SELECTED SPANISH FINALKLLLL: " + (positionSelectedSpanish ?: positionNormal))
         return positionSelectedSpanish ?: positionNormal
     }
     private fun getTeamSelected(teamSelectd: AutoCompleteTextView): Long {
