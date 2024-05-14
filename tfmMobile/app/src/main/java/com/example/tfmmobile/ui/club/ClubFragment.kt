@@ -31,9 +31,11 @@ import com.example.tfmmobile.domain.model.PlayerModel
 import com.example.tfmmobile.domain.model.SeasonModel
 import com.example.tfmmobile.domain.model.TeamModel
 import com.example.tfmmobile.ui.club.adapter.PlayerAdapter
+import com.example.tfmmobile.ui.club.adapter.PlayerCategory
 import com.example.tfmmobile.ui.club.adapter.SeasonAdapter
 import com.example.tfmmobile.ui.club.adapter.TeamAdapter
 import com.example.tfmmobile.ui.club.adapter.categories.CategoriesAdapter
+import com.example.tfmmobile.ui.club.adapter.categories.PlayerCategoriesAdapter
 import com.example.tfmmobile.ui.home.DatePickerFragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputLayout
@@ -61,14 +63,25 @@ class ClubFragment : Fragment() {
 
     private lateinit var rvCategories: RecyclerView
     private lateinit var rvTeams: RecyclerView
+    private lateinit var rvPlayerCategories: RecyclerView
+
 
     private lateinit var categoriesAdapter: CategoriesAdapter
-
+    private lateinit var playerCategoriesAdapter: PlayerCategoriesAdapter
 
     private val categories = listOf(
         ClubCategory.Seasons,
         ClubCategory.Teams,
         ClubCategory.Players
+    )
+
+    private val playerCategories = listOf(
+        PlayerCategory.Injured,
+        PlayerCategory.PointGuard,
+        PlayerCategory.ShootingGuard,
+        PlayerCategory.SmallForward,
+        PlayerCategory.PowerForward,
+        PlayerCategory.Center
     )
 
     val positionMap = mapOf(
@@ -79,7 +92,15 @@ class ClubFragment : Fragment() {
         "Center" to "Pivot"
     )
 
-    private lateinit var addTeamButton : FloatingActionButton
+    val positionMapEsToEn = mapOf(
+        "Base" to "PointGuard",
+        "Escolta" to "ShootingGuard",
+        "Alero" to "SmallForward",
+        "AlaPivot" to "PowerForward",
+        "Pivot" to "Center"
+    )
+
+    private lateinit var addTeamButton: FloatingActionButton
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -92,11 +113,21 @@ class ClubFragment : Fragment() {
     }
 
     private fun configSwipe() {
-        binding.swipe.setColorSchemeColors(ContextCompat.getColor(requireContext(),
-            R.color.cardTeam1), ContextCompat.getColor(requireContext(),
-            R.color.cardSeason1))
-        binding.swipe.setProgressBackgroundColorSchemeColor(ContextCompat.getColor(requireContext(),
-            R.color.primaryDark))
+        binding.swipe.setColorSchemeColors(
+            ContextCompat.getColor(
+                requireContext(),
+                R.color.cardTeam1
+            ), ContextCompat.getColor(
+                requireContext(),
+                R.color.cardSeason1
+            )
+        )
+        binding.swipe.setProgressBackgroundColorSchemeColor(
+            ContextCompat.getColor(
+                requireContext(),
+                R.color.primaryDark
+            )
+        )
         binding.swipe.setOnRefreshListener {
             Handler(Looper.getMainLooper()).postDelayed({
                 binding.swipe.isRefreshing = false
@@ -113,20 +144,20 @@ class ClubFragment : Fragment() {
         }
     }
 
-    private fun initListeners(){
+    private fun initListeners() {
         addTeamButton.setOnClickListener() {
 
 
-        val dialog = Dialog(requireActivity())
-                dialog.setContentView(R.layout.dialog_add_team)
+            val dialog = Dialog(requireActivity())
+            dialog.setContentView(R.layout.dialog_add_team)
             dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
             val etStartDate = dialog.findViewById<EditText>(R.id.etStartDate)
-            etStartDate.setOnClickListener{
+            etStartDate.setOnClickListener {
                 showPickerDialog(etStartDate)
             }
             val etFinishDate = dialog.findViewById<EditText>(R.id.etFinishDate)
-            etFinishDate.setOnClickListener{
+            etFinishDate.setOnClickListener {
                 showPickerDialog(etFinishDate)
             }
 
@@ -143,6 +174,7 @@ class ClubFragment : Fragment() {
                         showEditTextInputsToAddSeason(dialog)
 
                     }
+
                     R.id.rbTeam -> {
                         val rbSeason: RadioButton = dialog.findViewById(R.id.rbSeason)
                         val rbPlayer: RadioButton = dialog.findViewById(R.id.rbPlayer)
@@ -150,6 +182,7 @@ class ClubFragment : Fragment() {
                         rbPlayer.visibility = View.GONE
                         showEditTextInputsToAddTeam(dialog)
                     }
+
                     R.id.rbPlayer -> {
                         val rbTeam: RadioButton = dialog.findViewById(R.id.rbTeam)
                         val rbSeason: RadioButton = dialog.findViewById(R.id.rbSeason)
@@ -160,101 +193,115 @@ class ClubFragment : Fragment() {
                 }
             }
 
-        val addTeamButtonDialog: Button = dialog.findViewById(R.id.addTeamButtonDialog)
+            val addTeamButtonDialog: Button = dialog.findViewById(R.id.addTeamButtonDialog)
 
-        addTeamButtonDialog.setOnClickListener() {
-            val selectedId = rgOption.checkedRadioButtonId
-            val selectedRadioButton = rgOption.findViewById<RadioButton>(selectedId)
-            println("PULSO BOTON ADDDDDDDDDD DIALOGGGG")
-            println("PULSO BOTON ADDDDDDDDDD DIALOGGGG")
-            println("PULSO BOTON ADDDDDDDDDD DIALOGGGG")
-            println("PULSO BOTON ADDDDDDDDDD DIALOGGGG: " + selectedRadioButton)
-
-
-            when(selectedRadioButton.text) {
-                //Add new item: team, season or player
-
-                getString(R.string.season) -> {
-                    val etStartDate = dialog.findViewById<EditText>(R.id.etStartDate)
-                    val etFinishDate = dialog.findViewById<EditText>(R.id.etFinishDate)
-                    val etName = dialog.findViewById<EditText>(R.id.etName)
-                    val etDescription = dialog.findViewById<EditText>(R.id.etDescription)
-                    clubViewModel.addSeason(
-                        returnDateConverter(etStartDate.text.toString()),
-                        returnDateConverter(etFinishDate.text.toString()),
-                        etName.text.toString(), etDescription.text.toString(), requireActivity())
-
-                    println("seasonnnnnnn")
-                    println("seasonnnnnnn")
-                    println("seasonnnnnnn")
-                    updateSeasonsList()
+            addTeamButtonDialog.setOnClickListener() {
+                val selectedId = rgOption.checkedRadioButtonId
+                val selectedRadioButton = rgOption.findViewById<RadioButton>(selectedId)
+                println("PULSO BOTON ADDDDDDDDDD DIALOGGGG")
+                println("PULSO BOTON ADDDDDDDDDD DIALOGGGG")
+                println("PULSO BOTON ADDDDDDDDDD DIALOGGGG")
+                println("PULSO BOTON ADDDDDDDDDD DIALOGGGG: " + selectedRadioButton)
 
 
+                when (selectedRadioButton.text) {
+                    //Add new item: team, season or player
+
+                    getString(R.string.season) -> {
+                        val etStartDate = dialog.findViewById<EditText>(R.id.etStartDate)
+                        val etFinishDate = dialog.findViewById<EditText>(R.id.etFinishDate)
+                        val etName = dialog.findViewById<EditText>(R.id.etName)
+                        val etDescription = dialog.findViewById<EditText>(R.id.etDescription)
+                        clubViewModel.addSeason(
+                            returnDateConverter(etStartDate.text.toString()),
+                            returnDateConverter(etFinishDate.text.toString()),
+                            etName.text.toString(), etDescription.text.toString(), requireActivity()
+                        )
+
+                        println("seasonnnnnnn")
+                        println("seasonnnnnnn")
+                        println("seasonnnnnnn")
+                        updateSeasonsList()
+
+
+                    }
+
+                    getString(R.string.team) -> {
+                        val etName = dialog.findViewById<EditText>(R.id.etName)
+                        val etArena = dialog.findViewById<EditText>(R.id.etArena)
+                        val etOwner = dialog.findViewById<EditText>(R.id.etOwner)
+                        val etDescription = dialog.findViewById<EditText>(R.id.etDescription)
+                        clubViewModel.addTeam(
+                            etName.text.toString(),
+                            etArena.text.toString(),
+                            etOwner.text.toString(),
+                            etDescription.text.toString(),
+                            requireActivity()
+                        )
+                        println("teammmm")
+                        println("teammmm")
+                        println("teammmm")
+                        println("teammmm")
+                        println("teammmm")
+                        println(etName)
+                        println(etArena)
+                        println(etOwner)
+                        println(etDescription)
+                        updateTeamsList()
+
+                    }
+
+                    else -> {
+                        val teamSelected =
+                            dialog.findViewById<AutoCompleteTextView>(R.id.autoCompleteTeam)
+                        val positionSelected =
+                            dialog.findViewById<AutoCompleteTextView>(R.id.autoCompletePosition)
+                        val etPlayerName = dialog.findViewById<EditText>(R.id.etPlayerName)
+                        val etPrimaryLastName =
+                            dialog.findViewById<EditText>(R.id.etPrimaryLastName)
+                        val etSecondLastName = dialog.findViewById<EditText>(R.id.etSecondLastName)
+                        val etTrends = dialog.findViewById<EditText>(R.id.etTrends)
+                        val etPhoneNumber = dialog.findViewById<EditText>(R.id.etPhoneNumber)
+                        val etEmail = dialog.findViewById<EditText>(R.id.etEmail)
+                        val etDni = dialog.findViewById<EditText>(R.id.etDni)
+                        println("player")
+                        println("player")
+                        println("player")
+                        println("player")
+                        println("player")
+                        clubViewModel.addPlayer(
+                            getTeamSelected(teamSelected),
+                            etPlayerName.text.toString(),
+                            etPrimaryLastName.text.toString(),
+                            etSecondLastName.text.toString(),
+                            getPlayerPosition(positionSelected),
+                            etTrends.text.toString(),
+                            etPhoneNumber.text.toString(),
+                            etEmail.text.toString(),
+                            etDni.text.toString(),
+                            false,
+                            requireActivity()
+                        )
+
+                        updatePlayersList()
+
+                    }
                 }
-                getString(R.string.team) -> {
-                    val etName = dialog.findViewById<EditText>(R.id.etName)
-                    val etArena = dialog.findViewById<EditText>(R.id.etArena)
-                    val etOwner = dialog.findViewById<EditText>(R.id.etOwner)
-                    val etDescription = dialog.findViewById<EditText>(R.id.etDescription)
-                    clubViewModel.addTeam(etName.text.toString(), etArena.text.toString(), etOwner.text.toString(), etDescription.text.toString(), requireActivity())
-                    println("teammmm")
-                    println("teammmm")
-                    println("teammmm")
-                    println("teammmm")
-                    println("teammmm")
-                    println(etName)
-                    println(etArena)
-                    println(etOwner)
-                    println(etDescription)
-                    updateTeamsList()
 
-                }
-                else -> {
-                    val teamSelected = dialog.findViewById<AutoCompleteTextView>(R.id.autoCompleteTeam)
-                    val positionSelected = dialog.findViewById<AutoCompleteTextView>(R.id.autoCompletePosition)
-                    val etPlayerName = dialog.findViewById<EditText>(R.id.etPlayerName)
-                    val etPrimaryLastName = dialog.findViewById<EditText>(R.id.etPrimaryLastName)
-                    val etSecondLastName = dialog.findViewById<EditText>(R.id.etSecondLastName)
-                    val etTrends = dialog.findViewById<EditText>(R.id.etTrends)
-                    val etPhoneNumber = dialog.findViewById<EditText>(R.id.etPhoneNumber)
-                    val etEmail = dialog.findViewById<EditText>(R.id.etEmail)
-                    val etDni = dialog.findViewById<EditText>(R.id.etDni)
-                    println("player")
-                    println("player")
-                    println("player")
-                    println("player")
-                    println("player")
-                    clubViewModel.addPlayer(
-                        getTeamSelected(teamSelected),
-                        etPlayerName.text.toString(),
-                        etPrimaryLastName.text.toString(),
-                        etSecondLastName.text.toString(),
-                        getPlayerPosition(positionSelected),
-                        etTrends.text.toString(),
-                        etPhoneNumber.text.toString(),
-                        etEmail.text.toString(),
-                        etDni.text.toString(),
-                        false,
-                        requireActivity())
+                dialog.hide()
 
-                    updatePlayersList()
-
-                }
             }
-
-            dialog.hide()
-
-        }
             dialog.show()
         }
     }
 
     private fun showPickerDialog(dateClicked: EditText) {
-        val datePicker = DatePickerFragment{day, month, year -> onDateSelected(dateClicked, day, month, year)}
+        val datePicker =
+            DatePickerFragment { day, month, year -> onDateSelected(dateClicked, day, month, year) }
         datePicker.show(requireFragmentManager(), "datePicker")
     }
 
-    fun onDateSelected(dateClicked:EditText , day:Int, month:Int, year:Int) {
+    fun onDateSelected(dateClicked: EditText, day: Int, month: Int, year: Int) {
         val userFormattedDate = String.format("%04d-%02d-%02d", year, month, day)
 
         val formattedDate = String.format("%04d-%02d-%02dT22:00:00.000Z", year, month, day)
@@ -265,7 +312,7 @@ class ClubFragment : Fragment() {
         dateClicked.setText(userFormattedDate)
     }
 
-    fun returnDateConverter(dateToFormat:String): String {
+    fun returnDateConverter(dateToFormat: String): String {
         val parts = dateToFormat.split("-")
 
         val year = parts[0].toInt()
@@ -278,29 +325,22 @@ class ClubFragment : Fragment() {
         return dateFormat.format(dateFormat.parse(formattedDate))
     }
 
-    private fun getPlayerPosition(positionSelected: AutoCompleteTextView):String {
-
-
-
+    private fun getPlayerPosition(positionSelected: AutoCompleteTextView): String {
         val positionNormal = positionSelected.text.toString()
-        println("ENSENO POSICION SELECTED: " + positionNormal)
-        println("ENSENO POSICION SELECTED: " + positionNormal)
-        println("ENSENO POSICION SELECTED: " + positionNormal)
         val positionSelectedSpanish = positionMap[positionNormal]
-        println("ENSENO POSICION SELECTED SPANISH: " + positionSelectedSpanish)
-        println("ENSENO POSICION SELECTED SPANISH: " + positionSelectedSpanish)
-        println("ENSENO POSICION SELECTED SPANISH: " + positionSelectedSpanish)
-        println("ENSENO POSICION SELECTED SPANISH: " + positionSelectedSpanish)
-
-        println("ENSENO POSICION SELECTED SPANISH FINALKLLLL: " + (positionSelectedSpanish ?: positionNormal))
         return positionSelectedSpanish ?: positionNormal
     }
+
+    private fun getPlayerPositionEnToEs(positionSelected: String): String {
+        val positionSelectedSpanish = positionMapEsToEn[positionSelected]
+        return positionSelectedSpanish ?: positionSelected
+    }
+
     private fun getTeamSelected(teamSelectd: AutoCompleteTextView): Long {
         val teamIdsAndNames: List<Pair<String, Long>> = teamsList.map { it.teamName to it.id }
         return teamIdsAndNames.firstOrNull { it.first == teamSelectd.text.toString() }?.second ?: 0
 
     }
-
 
 
     fun showEditTextInputsToAddSeason(dialog: Dialog) {
@@ -349,14 +389,10 @@ class ClubFragment : Fragment() {
         etDni.visibility = View.VISIBLE
 
 
-
-
-
     }
 
 
-
-    private fun initUi(){
+    private fun initUi() {
         initComponent()
 //        initPlayerList()
 //        initTeamList()
@@ -371,11 +407,13 @@ class ClubFragment : Fragment() {
                         initTeamList()
                         initUiState()
                     }
+
                     is ClubCategory.Seasons -> {
                         initSeasonList()
                         initUiStateSeason()
 
                     }
+
                     is ClubCategory.Players -> {
                         initPlayerList()
                         initUiStatePlayer()
@@ -393,7 +431,7 @@ class ClubFragment : Fragment() {
     private fun hideOrShowToolbar() {
 
         //Con esto si arrastro el dedo en la pantalla. No se oculta la toolbar (dragging)
-            //Solo se ocultara si me desplazo! (scrolling)
+        //Solo se ocultara si me desplazo! (scrolling)
         val state = intArrayOf(0)
 
 
@@ -407,9 +445,9 @@ class ClubFragment : Fragment() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 // Manejo el desplazamiento del RecyclerView
                 super.onScrolled(recyclerView, dx, dy)
-                if(dy>0 &&(state[0] == 0 || state[0] == 2)) {
+                if (dy > 0 && (state[0] == 0 || state[0] == 2)) {
                     hideToolbar()
-                } else if(dy <-10) {
+                } else if (dy < -10) {
                     showToolbar()
                 }
             }
@@ -430,21 +468,31 @@ class ClubFragment : Fragment() {
         activity.findViewById<View>(R.id.addTeamButton).visibility = View.VISIBLE
     }
 
-    private fun initComponent(){
+    private fun initComponent() {
         rvCategories = binding.rvCategories
         rvTeams = binding.rvTeams
         addTeamButton = binding.addTeamButton
     }
 
-    private fun initCategories(){
-        categoriesAdapter= CategoriesAdapter(categories) {
-            position -> updateCategories(position)
+    private fun initCategories() {
+        categoriesAdapter = CategoriesAdapter(categories) { position ->
+            updateCategories(position)
         }
-        rvCategories.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        rvCategories.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         rvCategories.adapter = categoriesAdapter
     }
 
-    private fun updateCategories(position:Int) {
+    private fun iniPlayerCategories() {
+        playerCategoriesAdapter = PlayerCategoriesAdapter(playerCategories) { position ->
+            updatePlayerCategories(position)
+        }
+        rvPlayerCategories.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        rvPlayerCategories.adapter = playerCategoriesAdapter
+    }
+
+    private fun updateCategories(position: Int) {
         for (i in categories.indices) {
             categories[i].isSelected = (i == position)
             categoriesAdapter.notifyItemChanged(i)
@@ -455,23 +503,73 @@ class ClubFragment : Fragment() {
                 initSeasonList()
                 updateSeasonsList()
                 initUiStateSeason()
+                rvPlayerCategories = binding.rvPlayerCategories
+                rvPlayerCategories.visibility = View.GONE
             }
+
             ClubCategory.Teams -> {
                 teamsList = clubViewModel.getTeams()
                 initTeamList()
                 updateTeamsList()
                 initUiState()
+                rvPlayerCategories = binding.rvPlayerCategories
+                rvPlayerCategories.visibility = View.GONE
             }
+
             ClubCategory.Players -> {
                 playersList = clubViewModel.getPlayers()
                 initPlayerList()
                 updatePlayersList()
                 initUiStatePlayer()
+                rvPlayerCategories = binding.rvPlayerCategories
+                rvPlayerCategories.visibility = View.VISIBLE
+                iniPlayerCategories()
             }
         }
     }
 
-    private fun initPositions(dialog: Dialog){
+    private fun updatePlayersListByCategories() {
+        val selectedPlayerCategory: List<PlayerCategory> = playerCategories.filter { it.isSelected }
+        val newPlayers = playersList.filter { player ->
+            selectedPlayerCategory.any { it.toString().contains(getPlayerPositionEnToEs(player.position)) } ||
+                    (selectedPlayerCategory.contains(PlayerCategory.Injured) && player.injured)
+        }
+        playerAdapter.playerList = newPlayers
+        playerAdapter.notifyDataSetChanged()
+    }
+
+    private fun updatePlayerCategories(position: Int) {
+        playerCategories[position].isSelected = !playerCategories[position].isSelected
+        playerCategoriesAdapter.notifyItemChanged(position)
+        updatePlayersListByCategories()
+        when (playerCategories[position]) {
+            PlayerCategory.PointGuard -> {
+            }
+
+            PlayerCategory.ShootingGuard -> {
+
+            }
+
+            PlayerCategory.SmallForward -> {
+
+            }
+
+            PlayerCategory.PowerForward -> {
+
+            }
+
+            PlayerCategory.Center -> {
+
+            }
+
+            PlayerCategory.Injured -> {
+
+            }
+
+        }
+    }
+
+    private fun initPositions(dialog: Dialog) {
         val positions = listOf(
             getString(R.string.position1),
             getString(R.string.position2),
@@ -479,7 +577,8 @@ class ClubFragment : Fragment() {
             getString(R.string.position4),
             getString(R.string.position5)
         )
-        val autoCompletePosition: AutoCompleteTextView = dialog.findViewById(R.id.autoCompletePosition)
+        val autoCompletePosition: AutoCompleteTextView =
+            dialog.findViewById(R.id.autoCompletePosition)
         val adapter = ArrayAdapter(requireActivity(), R.layout.position_item, positions)
         autoCompletePosition.setAdapter(adapter)
 
@@ -496,14 +595,19 @@ class ClubFragment : Fragment() {
     private fun initTeamList() {
 
 
-
 //        No le paso la lista porque el adaptar ya tiene la lista inicializada
         teamAdapter = TeamAdapter(onItemSelected = {
 //            Toast.makeText(context, it.teamName, Toast.LENGTH_LONG).show()
 
             findNavController().navigate(
 //                Siempre va a haber esta clase. La del maingraph
-                ClubFragmentDirections.actionClubFragmentToTeamDetailActivity(it.id, it.teamName, it.arenaName, it.ownerName, it.description)
+                ClubFragmentDirections.actionClubFragmentToTeamDetailActivity(
+                    it.id,
+                    it.teamName,
+                    it.arenaName,
+                    it.ownerName,
+                    it.description
+                )
             )
         })
 
@@ -514,7 +618,6 @@ class ClubFragment : Fragment() {
     }
 
     private fun initSeasonList() {
-
 
 
 //        No le paso la lista porque el adaptar ya tiene la lista inicializada
@@ -534,7 +637,6 @@ class ClubFragment : Fragment() {
     }
 
     private fun initPlayerList() {
-
 
 
 //        No le paso la lista porque el adaptar ya tiene la lista inicializada
@@ -557,7 +659,7 @@ class ClubFragment : Fragment() {
         //Uso esta corrutina porque se combina con el ciclo de vida de la activity o fragment en este caso
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                clubViewModel.team.collect{
+                clubViewModel.team.collect {
 //                    CAMBIOS EN TEAMS list
                     teamAdapter.updateList(it)
 
@@ -566,11 +668,12 @@ class ClubFragment : Fragment() {
             }
         }
     }
+
     private fun initUiStateSeason() {
         //Uso esta corrutina porque se combina con el ciclo de vida de la activity o fragment en este caso
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                clubViewModel.seasons.collect{
+                clubViewModel.seasons.collect {
 //                    CAMBIOS EN TEAMS list
                     seasonAdapter.updateList(it)
 
@@ -579,11 +682,12 @@ class ClubFragment : Fragment() {
             }
         }
     }
+
     private fun initUiStatePlayer() {
         //Uso esta corrutina porque se combina con el ciclo de vida de la activity o fragment en este caso
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                clubViewModel.players.collect{
+                clubViewModel.players.collect {
 //                    CAMBIOS EN TEAMS list
                     playerAdapter.updateList(it)
 
@@ -593,13 +697,15 @@ class ClubFragment : Fragment() {
         }
     }
 
-    private fun updateTeamsList(){
+    private fun updateTeamsList() {
         teamAdapter.notifyDataSetChanged()
     }
-    private fun updateSeasonsList(){
+
+    private fun updateSeasonsList() {
         seasonAdapter.notifyDataSetChanged()
     }
-    private fun updatePlayersList(){
+
+    private fun updatePlayersList() {
         playerAdapter.notifyDataSetChanged()
     }
 

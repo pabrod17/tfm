@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tfmmobile.R
 import com.example.tfmmobile.domain.model.PlayerModel
 
-class PlayerAdapter (private var playerList: List<PlayerModel> = emptyList(),
+class PlayerAdapter (var playerList: List<PlayerModel> = emptyList(),
                      private val onItemSelected:(PlayerModel) -> Unit) : RecyclerView.Adapter<PlayerViewHolder>(){
 
     fun updateList(list:List<PlayerModel>) {

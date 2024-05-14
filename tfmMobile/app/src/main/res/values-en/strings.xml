@@ -53,6 +53,8 @@
 
     <string name="position">Position</string>
 
+    <string name="injured">Injured</string>
+
     <string name="position1">PointGuard</string>
     <string name="position2">ShootingGuard</string>
     <string name="position3">SmallForward</string>
