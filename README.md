@@ -220,3 +220,7 @@ Club section -> Teams List:
 Club section -> Players List:
 
 ![ToolBare](listaPlayers.png)
+
+Club section -> Players List with new tabs:
+
+![ToolBare](playerCategories.png)

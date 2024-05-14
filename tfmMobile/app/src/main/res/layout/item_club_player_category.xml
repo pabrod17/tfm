@@ -20,19 +20,18 @@
             >
             <androidx.cardview.widget.CardView
                 android:id="@+id/ivPlayerDetailInjuredCard"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
                 android:elevation="20dp"
                 app:cardElevation="20dp"
                 app:cardBackgroundColor="@color/injured"
-                android:visibility="gone"
                 >
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/cardInjuredPlayer"
                     android:paddingLeft="5dp"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="33dp"
+                    android:layout_height="33dp"
                     android:src="@drawable/trianglered"
                     app:cardCornerRadius="360dp" />
             </androidx.cardview.widget.CardView>
