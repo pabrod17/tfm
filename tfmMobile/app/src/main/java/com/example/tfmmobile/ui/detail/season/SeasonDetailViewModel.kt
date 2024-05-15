@@ -48,18 +48,6 @@ class SeasonDetailViewModel @Inject constructor(private val seasonUseCase: Seaso
     ){
         viewModelScope.launch {
 //            hilo principal
-            println("EN LA FUNCION: " + startDate)
-            println("EN LA FUNCION: " + endDate)
-            println("EN LA FUNCION: " + startDate)
-            println("EN LA FUNCION: " + endDate)
-            println("EN LA FUNCION: " + startDate)
-            println("EN LA FUNCION: " + endDate)
-            println("EN LA FUNCION: " + startDate)
-            println("EN LA FUNCION: " + endDate)
-            println("EN LA FUNCION: " + startDate)
-            println("EN LA FUNCION: " + endDate)
-
-
             _state.value= SeasonDetailState.Loading
             val result = withContext(Dispatchers.IO) {
                 seasonUseCase(id, startDate, endDate, seasonName, description) } //hilo secundario

@@ -21,6 +21,9 @@
         <action
             android:id="@+id/action_clubFragment_to_seasonDetailActivity2"
             app:destination="@id/seasonDetailActivity" />
+        <action
+            android:id="@+id/action_clubFragment_to_playerDetailActivity"
+            app:destination="@id/playerDetailActivity" />
     </fragment>
     <fragment
         android:id="@+id/eventsFragment"
@@ -77,5 +80,44 @@
         <argument
             android:name="description"
             app:argType="string" />
+    </activity>
+    <activity
+        android:id="@+id/playerDetailActivity"
+        android:name="com.example.tfmmobile.ui.detail.player.PlayerDetailActivity"
+        android:label="activity_player_detail"
+        tools:layout="@layout/activity_player_detail" >
+        <argument
+            android:name="id"
+            app:argType="long" />
+        <argument
+            android:name="playerName"
+            app:argType="string" />
+        <argument
+            android:name="primaryLastName"
+            app:argType="string" />
+        <argument
+            android:name="secondLastName"
+            app:argType="string" />
+        <argument
+            android:name="position"
+            app:argType="string" />
+        <argument
+            android:name="trends"
+            app:argType="string" />
+        <argument
+            android:name="phoneNumber"
+            app:argType="string" />
+        <argument
+            android:name="email"
+            app:argType="string" />
+        <argument
+            android:name="dni"
+            app:argType="string" />
+        <argument
+            android:name="injured"
+            app:argType="boolean" />
+        <argument
+            android:name="teamId"
+            app:argType="long" />
     </activity>
 </navigation>

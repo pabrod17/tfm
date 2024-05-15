@@ -649,10 +649,11 @@ class ClubFragment : Fragment() {
         playerAdapter = PlayerAdapter(onItemSelected = {
 //            Toast.makeText(context, it.teamName, Toast.LENGTH_LONG).show()
 
-//            findNavController().navigate(
-////                Siempre va a haber esta clase. La del maingraph
-//                ClubFragmentDirections.actionClubFragmentToTeamDetailActivity(it.id, it.teamName, it.arenaName, it.ownerName, it.description)
-//            )
+            findNavController().navigate(
+//                Siempre va a haber esta clase. La del maingraph
+                ClubFragmentDirections.actionClubFragmentToPlayerDetailActivity(it.id, it.playerName, it.primaryLastName, it.secondLastName,
+                    it.position, it.trends, it.phoneNumber, it.email, it.dni, it.injured, it.teamId)
+            )
         })
 
         rvTeams.apply {
