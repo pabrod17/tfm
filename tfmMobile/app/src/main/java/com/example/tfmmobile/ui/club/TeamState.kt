@@ -1,7 +1,5 @@
 package com.example.tfmmobile.ui.club
 
-import com.example.tfmmobile.ui.detail.TeamDetailState
-
 sealed class TeamState {
 
     data object Loading: TeamState()

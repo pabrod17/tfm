@@ -1,4 +1,4 @@
-package com.example.tfmmobile.ui.detail
+package com.example.tfmmobile.ui.detail.team
 
 import android.content.Context
 import android.content.Intent
@@ -23,11 +23,13 @@ class TeamDetailViewModel @Inject constructor(private val teamsUseCase: GetTeams
     fun getTeamById(id:Long){
         viewModelScope.launch {
 //            hilo principal
-            _state.value=TeamDetailState.Loading
+            _state.value= TeamDetailState.Loading
             val result = withContext(Dispatchers.IO) { teamsUseCase(id) } //hilo secundario
             if (result!=null){
-                _state.value = TeamDetailState.Success(result.id, result.teamName, result.arenaName,
-                    result.ownerName, result.description)
+                _state.value = TeamDetailState.Success(
+                    result.id, result.teamName, result.arenaName,
+                    result.ownerName, result.description
+                )
             } else {
                 _state.value = TeamDetailState.Error("Ha ocurrido un error. Inténtelo más tarde.")
             }
@@ -44,12 +46,14 @@ class TeamDetailViewModel @Inject constructor(private val teamsUseCase: GetTeams
     ){
         viewModelScope.launch {
 //            hilo principal
-            _state.value=TeamDetailState.Loading
+            _state.value= TeamDetailState.Loading
             val result = withContext(Dispatchers.IO) {
                 teamsUseCase(id, teamName, arenaName, ownerName, description) } //hilo secundario
             if (result!=null){
-                _state.value = TeamDetailState.Success(result.id, result.teamName, result.arenaName,
-                    result.ownerName, result.description)
+                _state.value = TeamDetailState.Success(
+                    result.id, result.teamName, result.arenaName,
+                    result.ownerName, result.description
+                )
                 println("HOLAAAAAAA ANDANDOOOOOOOOOOO")
                 val intent = Intent(context, MainActivity::class.java)
                 context.startActivity(intent)

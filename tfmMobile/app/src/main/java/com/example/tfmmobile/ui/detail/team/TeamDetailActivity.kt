@@ -1,4 +1,4 @@
-package com.example.tfmmobile.ui.detail
+package com.example.tfmmobile.ui.detail.team
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -21,7 +21,7 @@ import kotlinx.coroutines.launch
 class TeamDetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityTeamDetailBinding
-    private val teamDetailViewModel:TeamDetailViewModel by viewModels()
+    private val teamDetailViewModel: TeamDetailViewModel by viewModels()
 
     private val args:TeamDetailActivityArgs by navArgs()
     override fun onCreate(savedInstanceState: Bundle?) {

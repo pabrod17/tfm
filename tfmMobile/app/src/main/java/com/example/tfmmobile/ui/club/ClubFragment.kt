@@ -624,10 +624,16 @@ class ClubFragment : Fragment() {
         seasonAdapter = SeasonAdapter(onItemSelected = {
 //            Toast.makeText(context, it.teamName, Toast.LENGTH_LONG).show()
 
-//            findNavController().navigate(
-////                Siempre va a haber esta clase. La del maingraph
-//                ClubFragmentDirections.actionClubFragmentToTeamDetailActivity(it.id, it.teamName, it.arenaName, it.ownerName, it.description)
-//            )
+            findNavController().navigate(
+//                Siempre va a haber esta clase. La del maingraph
+                ClubFragmentDirections.actionClubFragmentToSeasonDetailActivity2(
+                    it.id,
+                    it.startDate,
+                    it.endDate,
+                    it.seasonName,
+                    it.description
+                )
+            )
         })
 
         rvTeams.apply {

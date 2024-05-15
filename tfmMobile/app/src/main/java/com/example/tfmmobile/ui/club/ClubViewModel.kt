@@ -2,28 +2,21 @@ package com.example.tfmmobile.ui.club
 
 import android.content.Context
 import android.content.Intent
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.tfmmobile.data.provider.TeamProvider
 import com.example.tfmmobile.domain.model.PlayerModel
 import com.example.tfmmobile.domain.model.SeasonModel
-import com.example.tfmmobile.domain.model.Team
 import com.example.tfmmobile.domain.model.TeamModel
 import com.example.tfmmobile.domain.model.usecase.GetTeamsUseCase
 import com.example.tfmmobile.domain.model.usecase.PlayerUseCase
 import com.example.tfmmobile.domain.model.usecase.SeasonUseCase
-import com.example.tfmmobile.ui.detail.TeamDetailState
 import com.example.tfmmobile.ui.home.MainActivity
-import com.example.tfmmobile.ui.signup.SignUpState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.net.URLEncoder
 import javax.inject.Inject
 
 @HiltViewModel

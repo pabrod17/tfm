@@ -1,8 +1,5 @@
 package com.example.tfmmobile.ui.login
 
-import com.example.tfmmobile.ui.detail.TeamDetailState
-import com.google.gson.annotations.SerializedName
-
 sealed class LoginState {
 
     data object Loading: LoginState()

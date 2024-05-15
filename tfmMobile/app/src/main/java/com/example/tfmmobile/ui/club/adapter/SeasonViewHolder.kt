@@ -25,7 +25,7 @@ class SeasonViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
 
         binding.tvTitleTeam.text = season.seasonName
-        binding.tvDatesValue.text = formatDate(season.startDate) + " / " + formatDate(season.startDate)
+        binding.tvDatesValue.text = formatDate(season.startDate) + " / " + formatDate(season.endDate)
         binding.cardImage.setImageResource(R.drawable.season)
     }
 
@@ -34,6 +34,7 @@ class SeasonViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val formatterBD = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ")
         val formatterDeseado = DateTimeFormatter.ofPattern("yyyy-MM-dd")
         val fecha = LocalDateTime.parse(dateToFormat, formatterBD)
-        return formatterDeseado.format(fecha)
+        val fechaMasUnDia = fecha.plusDays(1)
+        return formatterDeseado.format(fechaMasUnDia)
     }
 }
