@@ -25,8 +25,11 @@
 <!--    linear-gradient(-45deg, #120b4e 0%, #dd0808 100% )-->
     <color name="cardGame1">#120b4e</color>
     <color name="cardGame2">#dd0808</color>
+    <color name="cardGame22">#C21818</color>
+    <color name="cardGame222">#921010</color>
 
-<!--    linear-gradient(-45deg, #0f0c29 0%, #302b63 100% );-->
+
+    <!--    linear-gradient(-45deg, #0f0c29 0%, #302b63 100% );-->
     <color name="cardTraining1">#0f0c29</color>
     <color name="cardTraining2">#302b63</color>
 

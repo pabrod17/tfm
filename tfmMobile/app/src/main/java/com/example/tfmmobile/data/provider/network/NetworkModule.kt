@@ -3,13 +3,17 @@ package com.example.tfmmobile.data.provider.network
 import TokenManager
 import com.example.tfmmobile.data.core.interceptors.AuthInterceptor
 import com.example.tfmmobile.data.core.interceptors.TokenManage3
+import com.example.tfmmobile.data.provider.GameRepositoryImpl
 import com.example.tfmmobile.data.provider.PlayerRepositoryImpl
 import com.example.tfmmobile.data.provider.RepositoryImpl
 import com.example.tfmmobile.data.provider.SeasonRepositoryImpl
+import com.example.tfmmobile.data.provider.TrainingRepositoryImpl
 import com.example.tfmmobile.data.provider.UserRepositoryImpl
 import com.example.tfmmobile.domain.model.Repository
+import com.example.tfmmobile.domain.model.game.GameRepository
 import com.example.tfmmobile.domain.model.player.PlayerRepository
 import com.example.tfmmobile.domain.model.season.SeasonRepository
+import com.example.tfmmobile.domain.model.training.TrainingRepository
 import com.example.tfmmobile.domain.model.user.UserRepository
 import dagger.Module
 import dagger.Provides
@@ -108,6 +112,26 @@ object NetworkModule {
     @Provides
     fun provideSeasonRepository(apiService: SeasonApiService): SeasonRepository {
         return SeasonRepositoryImpl(apiService)
+    }
+
+    @Provides
+    fun provideGameApiService(retrofit: Retrofit): GameApiService{
+        return retrofit.create(GameApiService::class.java)
+    }
+
+    @Provides
+    fun provideGameRepository(apiService: GameApiService): GameRepository {
+        return GameRepositoryImpl(apiService)
+    }
+
+    @Provides
+    fun provideTrainingApiService(retrofit: Retrofit): TrainingApiService{
+        return retrofit.create(TrainingApiService::class.java)
+    }
+
+    @Provides
+    fun provideTrainingRepository(apiService: TrainingApiService): TrainingRepository {
+        return TrainingRepositoryImpl(apiService)
     }
 
 }

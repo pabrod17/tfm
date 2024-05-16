@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/dialog_rounded_corners"
+    android:padding="16dp"
+    android:focusableInTouchMode="true"
+    >
+
+    <RadioGroup
+        android:id="@+id/rgOption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/rbGame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="@string/game"
+            android:paddingHorizontal="10dp"
+            android:textColor="@color/cardGame2"/>
+
+        <RadioButton
+            android:id="@+id/rbTraining"
+            android:textSize="18dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/cardTeam1"
+            android:text="@string/training"
+            android:paddingHorizontal="10dp"
+            android:textColor="@color/cardPlayer2"/>
+
+
+
+    </RadioGroup>
+
+
+    <EditText
+        android:id="@+id/etDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:hint="@string/date"
+        android:textColorHint="@color/green"
+        android:textColor="@color/orange"
+        android:clickable="false"
+        android:focusable="false"
+        android:visibility="gone"
+        />
+
+
+    <EditText
+        android:id="@+id/etRival"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:hint="@string/rival"
+        android:textColorHint="@color/green"
+        android:textColor="@color/orange"
+        android:visibility="gone"
+        />
+
+    <EditText
+        android:id="@+id/etDurationMinutes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:hint="@string/duration"
+        android:textColorHint="@color/green"
+        android:textColor="@color/orange"
+        android:visibility="gone"
+        />
+
+    <EditText
+        android:id="@+id/etObjective"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:hint="@string/objective"
+        android:textColorHint="@color/green"
+        android:textColor="@color/orange"
+        android:visibility="gone"
+        />
+
+    <EditText
+        android:id="@+id/etDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:hint="@string/description"
+        android:textColorHint="@color/green"
+        android:textColor="@color/orange"
+        android:visibility="gone"
+        />
+
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/teamsOptionLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        app:boxBackgroundColor="@color/cardPlayer1"
+        app:boxCornerRadiusBottomEnd="@dimen/fab_margin"
+        app:boxCornerRadiusBottomStart="@dimen/fab_margin"
+        app:boxCornerRadiusTopEnd="@dimen/fab_margin"
+        app:boxCornerRadiusTopStart="@dimen/fab_margin"
+        android:visibility="gone"
+        >
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteTeam"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/team"
+            android:inputType="none"/>
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/seasonsOptionLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        app:boxBackgroundColor="@color/cardPlayer1"
+        app:boxCornerRadiusBottomEnd="@dimen/fab_margin"
+        app:boxCornerRadiusBottomStart="@dimen/fab_margin"
+        app:boxCornerRadiusTopEnd="@dimen/fab_margin"
+        app:boxCornerRadiusTopStart="@dimen/fab_margin"
+        android:visibility="gone"
+        >
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteSeason"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/season"
+            android:inputType="none"/>
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/addTeamButtonDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/red"
+        />
+
+
+</LinearLayout>

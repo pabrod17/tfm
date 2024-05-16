@@ -32,7 +32,11 @@
     <string name="startDate">Fecha Inicio</string>
     <string name="FinishDate">Fecha Fin</string>
     <string name="dates">Fecha Inicio / Fecha Fin</string>
+    <string name="date">Fecha</string>
 
+    <string name="rival">Rival</string>
+    <string name="duration">Duracion (min)</string>
+    <string name="objective">Objectivo</string>
 
     <string name="teamName">Nombre</string>
     <string name="arenaName">Estadio</string>
@@ -46,6 +50,14 @@
     <string name="team">Equipo</string>
     <string name="season">Temporada</string>
     <string name="player">Jugador</string>
+
+
+    <string name="games">Partidos</string>
+    <string name="trainings">Entrenamientos</string>
+
+    <string name="game">Partido</string>
+    <string name="training">Entrenamiento</string>
+
 
     <string name="injured">Lesionado</string>
 

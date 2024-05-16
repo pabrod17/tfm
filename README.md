@@ -224,3 +224,11 @@ Club section -> Players List:
 Club section -> Players List with new tabs:
 
 ![ToolBare](playerCategories.png)
+
+Events section -> Games List:
+
+![ToolBare](gamesMobile.png)
+
+Events section -> Trainings List:
+
+![ToolBare](trainingsMobile.png)

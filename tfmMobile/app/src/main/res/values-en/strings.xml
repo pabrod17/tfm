@@ -34,8 +34,11 @@
     <string name="startDate">Start Date</string>
     <string name="FinishDate">Finish Date</string>
     <string name="dates">Start Date / Finish Date</string>
+    <string name="date">Date</string>
 
-
+    <string name="rival">Rival</string>
+    <string name="duration">Duration (min)</string>
+    <string name="objective">Objective</string>
 
     <string name="teamName">Name</string>
     <string name="arenaName">Arena</string>
@@ -50,6 +53,12 @@
     <string name="team">Team</string>
     <string name="season">Season</string>
     <string name="player">Player</string>
+
+    <string name="games">Games</string>
+    <string name="trainings">Trainings</string>
+
+    <string name="game">Game</string>
+    <string name="training">Training</string>
 
     <string name="position">Position</string>
 
