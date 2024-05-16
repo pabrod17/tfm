@@ -95,6 +95,18 @@ class EventsViewModel @Inject constructor(
 //            hilo principal
             _stateGame.value = GameState.Loading
 
+            println("dentro de viewMODEL::: " + teamId)
+            println("dentro de viewMODEL::: " + teamId)
+            println("dentro de viewMODEL::: " + teamId)
+            println("dentro de viewMODEL::: " + teamId)
+            println("dentro de viewMODEL::: " + teamId)
+
+
+            println("dentro de viewMODEL season::: " + seasonId)
+            println("dentro de viewMODEL season::: " + seasonId)
+            println("dentro de viewMODEL season::: " + seasonId)
+            println("dentro de viewMODEL season::: " + seasonId)
+
             val result = withContext(Dispatchers.IO) {
                 gameUseCase(teamId, seasonId, gameDate, rival, description)
             } //hilo secundario

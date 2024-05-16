@@ -10,7 +10,7 @@ class GameAdapter (private var gameList: List<GameModel> = emptyList(),
                    private val onItemSelected:(GameModel) -> Unit) : RecyclerView.Adapter<GameViewHolder>(){
 
     fun updateList(list:List<GameModel>) {
-        gameList = list
+        gameList = list.sortedBy { it.id } // Por ejemplo, ordena por el nombre de los jugadores
         notifyDataSetChanged()
     }
 

@@ -39,6 +39,7 @@ import com.example.tfmmobile.ui.events.adapter.GameAdapter
 import com.example.tfmmobile.ui.events.adapter.TrainingAdapter
 import com.example.tfmmobile.ui.events.adapter.categories.CategoriesAdapter
 import com.example.tfmmobile.ui.home.DatePickerFragment
+import com.example.tfmmobile.ui.home.TimePickerFragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.AndroidEntryPoint
@@ -81,6 +82,8 @@ class EventsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         gameList = eventsViewModel.getGames()
         trainingList = eventsViewModel.getTrainings()
+        teamsList = clubViewModel.getTeams()
+        seasonsList = clubViewModel.getSeasons()
         initUi()
         initListeners()
         configSwipe()
@@ -93,10 +96,14 @@ class EventsFragment : Fragment() {
             val dialog = Dialog(requireActivity())
             dialog.setContentView(R.layout.dialog_add_events)
             dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
-            val etStartDate = dialog.findViewById<EditText>(R.id.etDate)
-            etStartDate.setOnClickListener {
-                showPickerDialog(etStartDate)
+            checkCategorySelected(dialog)
+            val etDate = dialog.findViewById<EditText>(R.id.etDate)
+            etDate.setOnClickListener {
+                showPickerDialog(etDate)
+            }
+            val etDurationMinutes = dialog.findViewById<EditText>(R.id.etDurationMinutes)
+            etDurationMinutes.setOnClickListener {
+                showTimePickerDialog(etDurationMinutes)
             }
 
             initTeamsOptions(dialog)
@@ -119,7 +126,7 @@ class EventsFragment : Fragment() {
                 }
             }
 
-            val addTeamButtonDialog: Button = dialog.findViewById(R.id.addTeamButtonDialog)
+            val addTeamButtonDialog: Button = dialog.findViewById(R.id.addTeamButtonDialogEvents)
 
             addTeamButtonDialog.setOnClickListener() {
                 val selectedId = rgOption.checkedRadioButtonId
@@ -138,6 +145,17 @@ class EventsFragment : Fragment() {
                         val etDate = dialog.findViewById<EditText>(R.id.etDate)
                         val etRival = dialog.findViewById<EditText>(R.id.etRival)
                         val etDescription = dialog.findViewById<EditText>(R.id.etDescription)
+                        println("dentro de viewMODEL::: " + teamSelected)
+                        println("dentro de viewMODEL::: " + teamSelected)
+                        println("dentro de viewMODEL::: " + teamSelected)
+                        println("dentro de viewMODEL::: " + teamSelected)
+                        println("dentro de viewMODEL::: " + teamSelected)
+
+
+                        println("dentro de viewMODEL season::: " + seasonSelected)
+                        println("dentro de viewMODEL season::: " + seasonSelected)
+                        println("dentro de viewMODEL season::: " + seasonSelected)
+                        println("dentro de viewMODEL season::: " + seasonSelected)
                         eventsViewModel.addGame(
                             getTeamSelected(teamSelected),
                             getSeasonSelected(seasonSelected),
@@ -245,8 +263,19 @@ class EventsFragment : Fragment() {
         val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
         dateFormat.timeZone = TimeZone.getTimeZone("UTC")
         val datestring = dateFormat.format(dateFormat.parse(formattedDate))
-
         dateClicked.setText(userFormattedDate)
+
+        showTimePickerDialog(dateClicked)
+    }
+
+    private fun showTimePickerDialog(dateClicked: EditText) {
+        val timePicker =
+            TimePickerFragment {onTimeSelected(dateClicked, it) }
+        timePicker.show(requireFragmentManager(), "time")
+    }
+
+    fun onTimeSelected(dateClicked:EditText, time: String){
+        dateClicked.setText(dateClicked.text.toString() + " " + time)
     }
 
     fun returnDateConverter(dateToFormat: String): String {
@@ -254,12 +283,16 @@ class EventsFragment : Fragment() {
 
         val year = parts[0].toInt()
         val month = parts[1].toInt()
-        val day = parts[2].toInt()
+        val dayAndTime = parts[2].split(" ")
+        val day = dayAndTime[0].toInt()
+        val time = dayAndTime[1].split(":")
+        val hour = time[0].toInt()
+        val minute = time[1].toInt()
 
-        val formattedDate = String.format("%04d-%02d-%02dT22:00:00.000Z", year, month, day)
+        val formattedDateTime = String.format("%04d-%02d-%02d %02d:%02d", year, month, day, hour, minute)
         val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
         dateFormat.timeZone = TimeZone.getTimeZone("UTC")
-        return dateFormat.format(dateFormat.parse(formattedDate))
+        return formattedDateTime
     }
 
     private fun initTeamsOptions(dialog: Dialog) {
@@ -338,6 +371,33 @@ class EventsFragment : Fragment() {
 //        initUiState()
 //        initUiStateSeason()
         hideOrShowToolbar()
+    }
+
+    private fun checkCategorySelected(dialog: Dialog) {
+        for (category in categories) {
+            // Verificar si la categoría está seleccionada
+            if (category.isSelected) {
+                // Realizar acciones específicas para la categoría seleccionada
+                when (category) {
+                    is EventsCategory.Games -> {
+                        val rbGame = dialog.findViewById<View>(R.id.rbGame)
+                        rbGame.visibility = View.VISIBLE
+
+                        val rbTraining = dialog.findViewById<View>(R.id.rbTraining)
+                        rbTraining.visibility = View.GONE
+
+                    }
+
+                    is EventsCategory.Trainings -> {
+                        val rbTraining = dialog.findViewById<View>(R.id.rbTraining)
+                        rbTraining.visibility = View.VISIBLE
+
+                        val rbGame = dialog.findViewById<View>(R.id.rbGame)
+                        rbGame.visibility = View.GONE
+                    }
+                }
+            }
+        }
     }
 
     private fun initComponent() {

@@ -23,10 +23,10 @@ interface TrainingApiService {
         @Query("objective") objective: String
     ): TrainingResponse
 
-    @POST("games")
+    @POST("trainings")
     suspend fun addTraining(
-        @Path("teamId") teamId: Long,
-        @Path("seasonId") seasonId: Long,
+        @Query("teamId") teamId: Long,
+        @Query("seasonId") seasonId: Long,
         @Query("trainingDate") trainingDate: String,
         @Query("durationMinutes") durationMinutes: String,
         @Query("description") description: String,

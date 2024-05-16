@@ -21,7 +21,9 @@
             android:textSize="18dp"
             android:text="@string/game"
             android:paddingHorizontal="10dp"
-            android:textColor="@color/cardGame2"/>
+            android:textColor="@color/cardGame2"
+            android:visibility="gone"
+            />
 
         <RadioButton
             android:id="@+id/rbTraining"
@@ -31,7 +33,9 @@
             android:buttonTint="@color/cardTeam1"
             android:text="@string/training"
             android:paddingHorizontal="10dp"
-            android:textColor="@color/cardPlayer2"/>
+            android:textColor="@color/cardPlayer2"
+            android:visibility="gone"
+            />
 
 
 
@@ -71,6 +75,8 @@
         android:hint="@string/duration"
         android:textColorHint="@color/green"
         android:textColor="@color/orange"
+        android:clickable="false"
+        android:focusable="false"
         android:visibility="gone"
         />
 
@@ -148,7 +154,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/addTeamButtonDialog"
+        android:id="@+id/addTeamButtonDialogEvents"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/add"

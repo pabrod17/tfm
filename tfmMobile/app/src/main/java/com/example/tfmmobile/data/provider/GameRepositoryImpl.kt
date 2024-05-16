@@ -47,7 +47,8 @@ class GameRepositoryImpl @Inject constructor(private val apiService: GameApiServ
         rival: String,
         description: String
     ): GameModel? {
-        runCatching { apiService.addGame(teamId, seasonId, gameDate, rival,
+        runCatching {
+            apiService.addGame(teamId, seasonId, gameDate, rival,
             description) }
             .onSuccess {
                 Log.i("FUNCIONA", "${it}")

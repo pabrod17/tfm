@@ -21,8 +21,8 @@ interface GameApiService {
                              @Query("description") description: String): GameResponse
 
     @POST("games")
-    suspend fun addGame(@Path("teamId") teamId:Long,
-                          @Path("seasonId") seasonId:Long,
+    suspend fun addGame(@Query("teamId") teamId:Long,
+                          @Query("seasonId") seasonId:Long,
                           @Query("gameDate") gameDate: String,
                           @Query("rival") rival: String,
                           @Query("description") description: String): GameResponse

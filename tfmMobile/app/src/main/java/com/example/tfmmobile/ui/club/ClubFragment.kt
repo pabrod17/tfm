@@ -36,6 +36,7 @@ import com.example.tfmmobile.ui.club.adapter.SeasonAdapter
 import com.example.tfmmobile.ui.club.adapter.TeamAdapter
 import com.example.tfmmobile.ui.club.adapter.categories.CategoriesAdapter
 import com.example.tfmmobile.ui.club.adapter.categories.PlayerCategoriesAdapter
+import com.example.tfmmobile.ui.events.EventsCategory
 import com.example.tfmmobile.ui.home.DatePickerFragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputLayout
@@ -151,6 +152,7 @@ class ClubFragment : Fragment() {
             val dialog = Dialog(requireActivity())
             dialog.setContentView(R.layout.dialog_add_team)
             dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            checkCategorySelected(dialog)
 
             val etStartDate = dialog.findViewById<EditText>(R.id.etStartDate)
             etStartDate.setOnClickListener {
@@ -426,6 +428,48 @@ class ClubFragment : Fragment() {
 //        initUiState()
 //        initUiStateSeason()
         hideOrShowToolbar()
+    }
+
+    private fun checkCategorySelected(dialog: Dialog) {
+        for (category in categories) {
+            // Verificar si la categoría está seleccionada
+            if (category.isSelected) {
+                // Realizar acciones específicas para la categoría seleccionada
+                when (category) {
+                    is ClubCategory.Teams -> {
+                        val rbTeam = dialog.findViewById<View>(R.id.rbTeam)
+                        rbTeam.visibility = View.VISIBLE
+
+
+                        val rbSeason = dialog.findViewById<View>(R.id.rbSeason)
+                        rbSeason.visibility = View.GONE
+                        val rbPlayer = dialog.findViewById<View>(R.id.rbPlayer)
+                        rbPlayer.visibility = View.GONE
+
+                    }
+
+                    is ClubCategory.Seasons -> {
+                        val rbSeason = dialog.findViewById<View>(R.id.rbSeason)
+                        rbSeason.visibility = View.VISIBLE
+
+                        val rbTeam = dialog.findViewById<View>(R.id.rbTeam)
+                        rbTeam.visibility = View.GONE
+                        val rbPlayer = dialog.findViewById<View>(R.id.rbPlayer)
+                        rbPlayer.visibility = View.GONE
+                    }
+
+                    is ClubCategory.Players -> {
+                        val rbPlayer = dialog.findViewById<View>(R.id.rbPlayer)
+                        rbPlayer.visibility = View.VISIBLE
+
+                        val rbSeason = dialog.findViewById<View>(R.id.rbSeason)
+                        rbSeason.visibility = View.GONE
+                        val rbTeam = dialog.findViewById<View>(R.id.rbTeam)
+                        rbTeam.visibility = View.GONE
+                    }
+                }
+            }
+        }
     }
 
     private fun hideOrShowToolbar() {

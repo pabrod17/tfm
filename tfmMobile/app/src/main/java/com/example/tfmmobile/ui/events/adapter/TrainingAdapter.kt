@@ -10,7 +10,7 @@ class TrainingAdapter (private var trainingList: List<TrainingModel> = emptyList
                        private val onItemSelected:(TrainingModel) -> Unit) : RecyclerView.Adapter<TrainingViewHolder>(){
 
     fun updateList(list:List<TrainingModel>) {
-        trainingList = list
+        trainingList = list.sortedBy { it.id } // Por ejemplo, ordena por el nombre de los jugadores
         notifyDataSetChanged()
     }
 
