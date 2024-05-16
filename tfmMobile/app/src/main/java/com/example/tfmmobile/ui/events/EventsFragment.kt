@@ -205,6 +205,7 @@ class EventsFragment : Fragment() {
             }
             dialog.show()
         }
+
     }
 
     private fun getTeamSelected(teamSelectd: AutoCompleteTextView): Long {

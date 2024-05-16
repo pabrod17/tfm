@@ -106,8 +106,8 @@ class ClubFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         teamsList = clubViewModel.getTeams()
-        seasonsList = clubViewModel.getSeasons()
-        playersList = clubViewModel.getPlayers()
+//        seasonsList = clubViewModel.getSeasons()
+//        playersList = clubViewModel.getPlayers()
         initUi()
         initListeners()
         configSwipe()
