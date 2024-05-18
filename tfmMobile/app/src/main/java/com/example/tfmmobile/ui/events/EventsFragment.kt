@@ -3,6 +3,7 @@ package com.example.tfmmobile.ui.events
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -15,6 +16,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -45,6 +47,11 @@ import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.LocalTime
+import java.time.ZoneId
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
 import java.util.Locale
 import java.util.TimeZone
 
@@ -78,6 +85,7 @@ class EventsFragment : Fragment() {
 
 
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         gameList = eventsViewModel.getGames()
@@ -89,6 +97,7 @@ class EventsFragment : Fragment() {
         configSwipe()
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun initListeners() {
         addTeamButton.setOnClickListener() {
 
@@ -103,7 +112,7 @@ class EventsFragment : Fragment() {
             }
             val etDurationMinutes = dialog.findViewById<EditText>(R.id.etDurationMinutes)
             etDurationMinutes.setOnClickListener {
-                showTimePickerDialog(etDurationMinutes)
+                showTimePickerDialog2(etDurationMinutes)
             }
 
             initTeamsOptions(dialog)
@@ -190,7 +199,7 @@ class EventsFragment : Fragment() {
                             getTeamSelected(teamSelected),
                             getSeasonSelected(seasonSelected),
                             returnDateConverter(etDate.text.toString()),
-                            etDurationMinutes.text.toString(),
+                            returnTimeConverter(etDurationMinutes.text.toString()),
                             etDescription.text.toString(),
                             etObjective.text.toString(), requireActivity()
                         )
@@ -295,6 +304,39 @@ class EventsFragment : Fragment() {
         dateFormat.timeZone = TimeZone.getTimeZone("UTC")
         return formattedDateTime
     }
+
+    private fun showTimePickerDialog2(dateClicked: EditText) {
+        val timePicker =
+            TimePickerFragment {onTimeSelected2(dateClicked, it) }
+        timePicker.show(requireFragmentManager(), "time")
+    }
+
+    fun onTimeSelected2(dateClicked: EditText, time: String){
+        dateClicked.setText(time)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun returnTimeConverter(timeToFormat: String): String {
+
+        val timeParts = timeToFormat.split(":")
+        val hourOfDay = timeParts[0].toInt()
+        val minute = timeParts[1].toInt()
+
+        val time = LocalTime.of(hourOfDay, minute)
+
+        // Fecha fija proporcionada
+        val date = LocalDate.now()
+
+        // Crear un objeto ZonedDateTime con la fecha y la hora deseada en la zona horaria GMT
+        val zonedDateTime = ZonedDateTime.of(date, time, ZoneId.of("GMT"))
+
+        // Formatear el ZonedDateTime al formato RFC_1123_DATE_TIME
+        val formatter = DateTimeFormatter.RFC_1123_DATE_TIME
+        val formattedDateTime = zonedDateTime.format(formatter)
+        return formattedDateTime
+    }
+
+
 
     private fun initTeamsOptions(dialog: Dialog) {
         teamsList = clubViewModel.getTeams()
