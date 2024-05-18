@@ -322,7 +322,7 @@ class EventsFragment : Fragment() {
         val hourOfDay = timeParts[0].toInt()
         val minute = timeParts[1].toInt()
 
-        val time = LocalTime.of(hourOfDay, minute)
+        val time = LocalTime.of(hourOfDay-2, minute)
 
         // Fecha fija proporcionada
         val date = LocalDate.now()

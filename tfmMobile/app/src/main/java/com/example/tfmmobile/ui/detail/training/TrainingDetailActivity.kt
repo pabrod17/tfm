@@ -215,7 +215,7 @@ class TrainingDetailActivity : AppCompatActivity() {
         val zonedDateTime = ZonedDateTime.parse(durationToFormat, formatter)
         val hour = zonedDateTime.hour
         val minute = zonedDateTime.minute
-        val formattedHour = String.format("%02d", hour)
+        val formattedHour = String.format("%02d", hour + 2)
         val formattedMinute = String.format("%02d", minute)
 
         return "$formattedHour:$formattedMinute"
