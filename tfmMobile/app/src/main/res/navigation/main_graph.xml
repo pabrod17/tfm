@@ -29,7 +29,11 @@
         android:id="@+id/eventsFragment"
         android:name="com.example.tfmmobile.ui.events.EventsFragment"
         android:label="fragment_events"
-        tools:layout="@layout/fragment_events" />
+        tools:layout="@layout/fragment_events" >
+        <action
+            android:id="@+id/action_eventsFragment_to_gameDetailActivity2"
+            app:destination="@id/gameDetailActivity" />
+    </fragment>
     <fragment
         android:id="@+id/healthFragment"
         android:name="com.example.tfmmobile.ui.health.HealthFragment"
@@ -119,5 +123,23 @@
         <argument
             android:name="teamId"
             app:argType="long" />
+    </activity>
+    <activity
+        android:id="@+id/gameDetailActivity"
+        android:name="com.example.tfmmobile.ui.detail.game.GameDetailActivity"
+        android:label="activity_game_detail"
+        tools:layout="@layout/activity_game_detail" >
+        <argument
+            android:name="id"
+            app:argType="long" />
+        <argument
+            android:name="gameDate"
+            app:argType="string" />
+        <argument
+            android:name="rival"
+            app:argType="string" />
+        <argument
+            android:name="description"
+            app:argType="string" />
     </activity>
 </navigation>
