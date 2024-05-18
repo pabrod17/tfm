@@ -1,5 +1,6 @@
 package com.example.tfmmobile.ui.detail.training
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.lifecycle.ViewModel
@@ -59,8 +60,7 @@ class TrainingDetailViewModel @Inject constructor(private val trainingUseCase: T
                     result.objective
                 )
                 println("HOLAAAAAAA ANDANDOOOOOOOOOOO")
-                val intent = Intent(context, MainActivity::class.java)
-                context.startActivity(intent)
+                (context as? Activity)?.finish() // Cerrar la actividad actual
                 println("HOLAAAAAAA ANDANDOOOOOOOOOOO 222222222222")
             } else {
                 _state.value = TrainingDetailState.Error("Ha ocurrido un error. Inténtelo más tarde.")

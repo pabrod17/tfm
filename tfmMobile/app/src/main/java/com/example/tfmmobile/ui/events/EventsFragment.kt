@@ -380,6 +380,8 @@ class EventsFragment : Fragment() {
                 initUiStateGame()
                 initUi()
                 initUiStateTraining()
+                gameList = eventsViewModel.getGames()
+                trainingList = eventsViewModel.getTrainings()
 //                seasonsList = clubViewModel.getSeasons()
 //                playersList = clubViewModel.getPlayers()
             }, 1000)
@@ -608,6 +610,12 @@ class EventsFragment : Fragment() {
     ): View {
         _binding = FragmentEventsBinding.inflate(layoutInflater, container, false)
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        gameList = eventsViewModel.getGames()
+        trainingList = eventsViewModel.getTrainings()
     }
 
 

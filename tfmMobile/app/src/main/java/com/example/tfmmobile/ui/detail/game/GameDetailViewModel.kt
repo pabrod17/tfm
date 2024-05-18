@@ -1,5 +1,6 @@
 package com.example.tfmmobile.ui.detail.game
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.lifecycle.ViewModel
@@ -56,8 +57,7 @@ class GameDetailViewModel @Inject constructor(private val gameUseCase: GameUseCa
                     result.rival, result.description
                 )
                 println("HOLAAAAAAA ANDANDOOOOOOOOOOO")
-                val intent = Intent(context, MainActivity::class.java)
-                context.startActivity(intent)
+                (context as? Activity)?.finish() // Cerrar la actividad actual
                 println("HOLAAAAAAA ANDANDOOOOOOOOOOO 222222222222")
             } else {
                 _state.value = GameDetailState.Error("Ha ocurrido un error. Inténtelo más tarde.")
