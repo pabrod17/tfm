@@ -64,6 +64,7 @@ class TrainingDetailActivity : AppCompatActivity() {
         initUiState()
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun initListeners() {
         binding.ivBack.setOnClickListener {
             onBackPressed()
@@ -154,12 +155,12 @@ class TrainingDetailActivity : AppCompatActivity() {
         val minute = timeParts[1].toInt()
 
         val time = LocalTime.of(hourOfDay, minute)
-
+        val timeUpdated = time.minusHours(2)
         // Fecha fija proporcionada
         val date = LocalDate.now()
 
         // Crear un objeto ZonedDateTime con la fecha y la hora deseada en la zona horaria GMT
-        val zonedDateTime = ZonedDateTime.of(date, time, ZoneId.of("GMT"))
+        val zonedDateTime = ZonedDateTime.of(date, timeUpdated, ZoneId.of("GMT"))
 
         // Formatear el ZonedDateTime al formato RFC_1123_DATE_TIME
         val formatter = DateTimeFormatter.RFC_1123_DATE_TIME
@@ -213,9 +214,11 @@ class TrainingDetailActivity : AppCompatActivity() {
     private fun formateDuration(durationToFormat: String) : String {
         val formatter = DateTimeFormatter.RFC_1123_DATE_TIME
         val zonedDateTime = ZonedDateTime.parse(durationToFormat, formatter)
-        val hour = zonedDateTime.hour
-        val minute = zonedDateTime.minute
-        val formattedHour = String.format("%02d", hour + 2)
+        val updatedZonedDateTime = zonedDateTime.plusHours(2)
+
+        val hour = updatedZonedDateTime.hour
+        val minute = updatedZonedDateTime.minute
+        val formattedHour = String.format("%02d", hour)
         val formattedMinute = String.format("%02d", minute)
 
         return "$formattedHour:$formattedMinute"

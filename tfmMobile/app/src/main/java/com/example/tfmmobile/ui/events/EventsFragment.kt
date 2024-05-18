@@ -322,13 +322,13 @@ class EventsFragment : Fragment() {
         val hourOfDay = timeParts[0].toInt()
         val minute = timeParts[1].toInt()
 
-        val time = LocalTime.of(hourOfDay-2, minute)
-
+        val time = LocalTime.of(hourOfDay, minute)
+        val timeUpdated = time.minusHours(2)
         // Fecha fija proporcionada
         val date = LocalDate.now()
 
         // Crear un objeto ZonedDateTime con la fecha y la hora deseada en la zona horaria GMT
-        val zonedDateTime = ZonedDateTime.of(date, time, ZoneId.of("GMT"))
+        val zonedDateTime = ZonedDateTime.of(date, timeUpdated, ZoneId.of("GMT"))
 
         // Formatear el ZonedDateTime al formato RFC_1123_DATE_TIME
         val formatter = DateTimeFormatter.RFC_1123_DATE_TIME
