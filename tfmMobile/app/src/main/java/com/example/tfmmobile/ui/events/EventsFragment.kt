@@ -511,16 +511,16 @@ class EventsFragment : Fragment() {
         trainingAdapter = TrainingAdapter(onItemSelected = {
 //            Toast.makeText(context, it.teamName, Toast.LENGTH_LONG).show()
 
-//            findNavController().navigate(
-////                Siempre va a haber esta clase. La del maingraph
-//                ClubFragmentDirections.actionClubFragmentToTeamDetailActivity(
-//                    it.id,
-//                    it.teamName,
-//                    it.arenaName,
-//                    it.ownerName,
-//                    it.description
-//                )
-//            )
+            findNavController().navigate(
+//                Siempre va a haber esta clase. La del maingraph
+                EventsFragmentDirections.actionEventsFragmentToTrainingDetailActivity(
+                    it.id,
+                    it.trainingDate,
+                    it.durationMinutes,
+                    it.description,
+                    it.objective
+                )
+            )
         })
 
         rvTeams.apply {

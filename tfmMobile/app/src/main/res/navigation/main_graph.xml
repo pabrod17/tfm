@@ -33,6 +33,9 @@
         <action
             android:id="@+id/action_eventsFragment_to_gameDetailActivity2"
             app:destination="@id/gameDetailActivity" />
+        <action
+            android:id="@+id/action_eventsFragment_to_trainingDetailActivity"
+            app:destination="@id/trainingDetailActivity" />
     </fragment>
     <fragment
         android:id="@+id/healthFragment"
@@ -140,6 +143,27 @@
             app:argType="string" />
         <argument
             android:name="description"
+            app:argType="string" />
+    </activity>
+    <activity
+        android:id="@+id/trainingDetailActivity"
+        android:name="com.example.tfmmobile.ui.detail.training.TrainingDetailActivity"
+        android:label="activity_training_detail"
+        tools:layout="@layout/activity_training_detail" >
+        <argument
+            android:name="id"
+            app:argType="long" />
+        <argument
+            android:name="trainingDate"
+            app:argType="string" />
+        <argument
+            android:name="duration"
+            app:argType="string" />
+        <argument
+            android:name="description"
+            app:argType="string" />
+        <argument
+            android:name="objective"
             app:argType="string" />
     </activity>
 </navigation>
