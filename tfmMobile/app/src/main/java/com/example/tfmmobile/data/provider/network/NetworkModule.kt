@@ -3,16 +3,22 @@ package com.example.tfmmobile.data.provider.network
 import TokenManager
 import com.example.tfmmobile.data.core.interceptors.AuthInterceptor
 import com.example.tfmmobile.data.core.interceptors.TokenManage3
+import com.example.tfmmobile.data.provider.ExerciseRepositoryImpl
 import com.example.tfmmobile.data.provider.GameRepositoryImpl
+import com.example.tfmmobile.data.provider.LesionRepositoryImpl
 import com.example.tfmmobile.data.provider.PlayerRepositoryImpl
 import com.example.tfmmobile.data.provider.RepositoryImpl
 import com.example.tfmmobile.data.provider.SeasonRepositoryImpl
+import com.example.tfmmobile.data.provider.StretchingRepositoryImpl
 import com.example.tfmmobile.data.provider.TrainingRepositoryImpl
 import com.example.tfmmobile.data.provider.UserRepositoryImpl
 import com.example.tfmmobile.domain.model.Repository
+import com.example.tfmmobile.domain.model.exercise.ExerciseRepository
 import com.example.tfmmobile.domain.model.game.GameRepository
+import com.example.tfmmobile.domain.model.lesion.LesionRepository
 import com.example.tfmmobile.domain.model.player.PlayerRepository
 import com.example.tfmmobile.domain.model.season.SeasonRepository
+import com.example.tfmmobile.domain.model.stretching.StretchingRepository
 import com.example.tfmmobile.domain.model.training.TrainingRepository
 import com.example.tfmmobile.domain.model.user.UserRepository
 import dagger.Module
@@ -132,6 +138,36 @@ object NetworkModule {
     @Provides
     fun provideTrainingRepository(apiService: TrainingApiService): TrainingRepository {
         return TrainingRepositoryImpl(apiService)
+    }
+
+    @Provides
+    fun provideLesionApiService(retrofit: Retrofit): LesionApiService{
+        return retrofit.create(LesionApiService::class.java)
+    }
+
+    @Provides
+    fun provideLesionRepository(apiService: LesionApiService): LesionRepository {
+        return LesionRepositoryImpl(apiService)
+    }
+
+    @Provides
+    fun provideExerciseApiService(retrofit: Retrofit): ExerciseApiService{
+        return retrofit.create(ExerciseApiService::class.java)
+    }
+
+    @Provides
+    fun provideExerciseRepository(apiService: ExerciseApiService): ExerciseRepository {
+        return ExerciseRepositoryImpl(apiService)
+    }
+
+    @Provides
+    fun provideStretchingApiService(retrofit: Retrofit): StretchingApiService{
+        return retrofit.create(StretchingApiService::class.java)
+    }
+
+    @Provides
+    fun provideStretchingRepository(apiService: StretchingApiService): StretchingRepository {
+        return StretchingRepositoryImpl(apiService)
     }
 
 }

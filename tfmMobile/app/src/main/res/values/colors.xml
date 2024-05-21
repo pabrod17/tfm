@@ -2,6 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="white2">#03A9F4</color>
+    <color name="white3">#0384F4</color>
+    <color name="white4">#044884</color>
 
     <color name="blue">#1628A0</color>
     <color name="red">#9E1515</color>
@@ -18,9 +21,44 @@
     <color name="back2">#2C003C</color>
     <color name="back3">#3D0B45</color>
 
-    <color name="cardExercise">#ff000040</color>
-    <color name="cardLesion">#0059ff40</color>
-    <color name="cardStretching">#ff00dd40</color>
+    <color name="cardExercise">#40FF0000</color>
+    <color name="cardExercise2">#6BFF0000</color>
+    <color name="cardExercise3">#ABFF0000</color>
+
+    <color name="cardExercise22">#ABFF5100</color>
+    <color name="cardStretchinggggg">#B918A4</color>
+    <color name="cardStretchinggggg2">#ABDA048C</color>
+    <color name="cardStretchinggggg23">#ABFF00A2</color>
+
+    <color name="cardStretchinggggg2Category">#AB990563</color>
+
+
+    <color name="pink2">#AF02E1</color>
+    <color name="pink22">#9107B9</color>
+
+
+
+    <color name="cardExercise22Card">#AB873109</color>
+
+
+    <color name="cardLesion">#590040FF</color>
+    <color name="cardLesionPrev">#590430B3</color>
+
+    <color name="cardLesion111">#595E7CD7</color>
+
+
+    <color name="cardLesion2">#790040FF</color>
+    <color name="cardLesion3">#0040FF</color>
+    <color name="cardLesion33">#0532B7</color>
+    <color name="cardLesion33333">#05ADB0</color>
+
+    <color name="cardLesion3selected">#032EB0</color>
+    <color name="cardLesion33333selected">#05A0A2</color>
+
+
+    <color name="cardStretching">#40DD00FF</color>
+    <color name="cardStretching2">#80DD00FF</color>
+    <color name="cardStretching3">#A8DD00FF</color>
 
 <!--    linear-gradient(-45deg, #120b4e 0%, #dd0808 100% )-->
     <color name="cardGame1">#120b4e</color>
@@ -48,6 +86,8 @@
 
     <color name="primary">#1f1f1f</color>
     <color name="primaryDark">#181818</color>
+    <color name="primaryDark2">#2F2D2D</color>
+
     <!--    <color name="primary">#14213d</color>-->
     <!--    <color name="primaryDark">#041E42</color>-->
     <color name="secondary">#B96537</color>
@@ -61,10 +101,31 @@
     <color name="position4">#11E228</color>
     <color name="position5">#BD00FF</color>
 
+    <color name="lesion1">#D80808</color>
+    <color name="lesion2">#FFBB00</color>
+    <color name="lesion3">#01F4EC</color>
+    <color name="lesion4">#00FF5E</color>
+    <color name="lesion5">#ff4800</color>
 
+    <color name="exercise1">#FF00DD</color>
+    <color name="exercise2">#FF0026</color>
+    <color name="exercise3">#FFD166</color>
+    <color name="exercise4">#0f9b0f</color>
+    <color name="exercise5">#897F7F</color>
+    <color name="exercise6">#0608D7</color>
+    <color name="exercise7">#8E2DE2</color>
+    <color name="exercise8">#00FFF3</color>
 
-
-
+    <color name="stretching1">#3333E8</color>
+    <color name="stretching2">#FF512F</color>
+    <color name="stretching3">#FF0000</color>
+    <color name="stretching4">#0f9b0f</color>
+    <color name="stretching5">#897F7F</color>
+    <color name="stretching6">#FF6B6B</color>
+    <color name="stretching7">#8E2DE2</color>
+    <color name="stretching8">#00FFF3</color>
+    <color name="stretching9">#FFFF00</color>
+    <color name="stretching10">#DD2476</color>
 
 
 
@@ -100,6 +161,10 @@
 
     <color name="warning_dark">#F48B29</color>
     <color name="warning">#F0A500</color>
+    <color name="warning3">#F6C047</color>
+    <color name="warning4">#FFE600</color>
+
+    <color name="warning2">#D70E08BC</color>
 
     <color name="divider">#A68B979D</color>
     <color name="outline">#39424E</color>
