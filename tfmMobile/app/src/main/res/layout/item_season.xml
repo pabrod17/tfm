@@ -82,36 +82,39 @@
             android:id="@+id/tvTitleTeam"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="wef sdf s sd fa lskdmfvds sdf sdf laksmd fdsf sd sdf  f"
+            android:text="md fdsf sd sdf  f"
             android:textColor="@color/white"
             android:textStyle="bold"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="2dp"
-            android:textSize="15dp"
+            android:textSize="20sp"
             android:maxWidth="267dp"
-            android:maxHeight="20dp"
+            android:maxHeight="50dp"
 
             />
+<!--        <TextView-->
+<!--            android:id="@+id/tvDates"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/dates"-->
+<!--            android:textColor="@color/warning"-->
+<!--            android:layout_marginLeft="15dp"-->
+<!--            android:textSize="15sp"-->
+<!--            />-->
         <TextView
-            android:id="@+id/tvDates"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/dates"
-            android:textColor="@color/warning"
-            android:layout_marginLeft="15dp"
-            android:textSize="15sp"
-            />
-        <TextView
-            android:textStyle="bold"
             android:id="@+id/tvDatesValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/arenaName"
-            android:textColor="@color/white"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="2dp"
-            android:textSize="13sp"
-            android:maxHeight="20dp"
+            android:background="@drawable/probando"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="1dp"
+            android:textColor="@color/warning"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="0.5dp"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:maxHeight="2530dp"
             />
     </LinearLayout>
 
