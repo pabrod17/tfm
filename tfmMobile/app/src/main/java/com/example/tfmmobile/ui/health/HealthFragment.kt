@@ -151,13 +151,6 @@ class HealthFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        println("ARRIBA DE TOODOOOODOOOOO")
-        println("ARRIBA DE TOODOOOODOOOOO")
-        println("ARRIBA DE TOODOOOODOOOOO")
-        println("ARRIBA DE TOODOOOODOOOOO")
-        println("ARRIBA DE TOODOOOODOOOOO")
-        println("ARRIBA DE TOODOOOODOOOOO")
-        println("ARRIBA DE TOODOOOODOOOOO")
         rvLesionCategories = binding.rvLesionCategories
 
         lesionList = healthViewModel.getLesions()
@@ -208,24 +201,8 @@ class HealthFragment : Fragment() {
     }
 
     private fun initCategories() {
-        println("en initCategories en posicion: ANTES" )
-        println("en initCategories en posicion: ANTES" )
-        println("en initCategories en posicion: ANTES" )
-        println("en initCategories en posicion: ANTES" )
-        println("en initCategories en posicion: ANTES" )
-        println("en initCategories en posicion: ANTES" )
-        println("en initCategories en posicion: ANTES" )
-        println("en initCategories en posicion: ANTES" )
-
-
-
 
         categoriesAdapter = CategoriesAdapter(categories) { position ->
-            println("en initCategories en posicion: " + position)
-            println("en initCategories en posicion: " + position)
-            println("en initCategories en posicion: " + position)
-            println("en initCategories en posicion: " + position)
-            println("en initCategories en posicion: " + position)
             updateCategories(position)
         }
         rvCategories.layoutManager =
@@ -240,11 +217,8 @@ class HealthFragment : Fragment() {
             categories[i].isSelected = (i == position)
             categoriesAdapter.notifyItemChanged(i)
         }
-        println("en updateCategories~!!!!!!!")
-        println("en updateCategories~!!!!!!!")
         when (categories[position]) {
             HealthCategory.Lesion -> {
-                println("en updateCategories~!!!!!!! LESION")
                 lesionList = healthViewModel.getLesions()
                 initLesionList()
                 updateLesionList()
@@ -254,7 +228,6 @@ class HealthFragment : Fragment() {
             }
 
             HealthCategory.Exercises -> {
-                println("en updateCategories~!!!!!!! EXERCISES")
                 exerciseList = healthViewModel.getExercises()
                 initExerciseList()
                 updateExercisesList()
@@ -264,7 +237,6 @@ class HealthFragment : Fragment() {
             }
 
             HealthCategory.Stretchings -> {
-                println("en updateCategories~!!!!!!! STRETCHINGS")
                 stretchingList = healthViewModel.getStretchings()
                 initStretchingList()
                 updateStretchingsList()
