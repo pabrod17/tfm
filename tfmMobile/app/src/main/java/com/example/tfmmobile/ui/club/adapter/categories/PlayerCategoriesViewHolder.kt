@@ -34,7 +34,7 @@ class PlayerCategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 //                    tvPlayerCategoryLayout.context,
 //                    R.drawable.gradient_background_player_category_position1
 //                )
-                tvPlayerCategoryName.setTextColor(ContextCompat.getColor(tvPlayerCategoryName.context, R.color.position1))
+                tvPlayerCategoryName.setTextColor(ContextCompat.getColor(tvPlayerCategoryName.context, R.color.position4))
                 tvPlayerCategoryLayout.setBackgroundColor(ContextCompat.getColor(tvPlayerCategoryLayout.context, R.color.primaryDark))
                 if (tvPlayerCategory.isSelected) {
 //                    tvPlayerCategoryLayout.background = ContextCompat.getDrawable(
@@ -42,7 +42,7 @@ class PlayerCategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 //                        R.drawable.gradient_background_player_category_position1_selected
 //                    )
                     tvPlayerCategoryName.setTextColor(ContextCompat.getColor(tvPlayerCategoryName.context, R.color.primaryDark))
-                    tvPlayerCategoryLayout.setBackgroundColor(ContextCompat.getColor(tvPlayerCategoryLayout.context, R.color.position1))
+                    tvPlayerCategoryLayout.setBackgroundColor(ContextCompat.getColor(tvPlayerCategoryLayout.context, R.color.position4))
                 }
             }
 
@@ -55,7 +55,7 @@ class PlayerCategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 //                    tvPlayerCategoryLayout.context,
 //                    R.drawable.gradient_background_player_category_position2
 //                )
-                tvPlayerCategoryName.setTextColor(ContextCompat.getColor(tvPlayerCategoryName.context, R.color.position2))
+                tvPlayerCategoryName.setTextColor(ContextCompat.getColor(tvPlayerCategoryName.context, R.color.position5))
                 tvPlayerCategoryLayout.setBackgroundColor(ContextCompat.getColor(tvPlayerCategoryLayout.context, R.color.primaryDark))
                 if (tvPlayerCategory.isSelected) {
 //                    tvPlayerCategoryLayout.background = ContextCompat.getDrawable(
@@ -63,7 +63,7 @@ class PlayerCategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 //                        R.drawable.gradient_background_player_category_position2_selected
 //                    )
                     tvPlayerCategoryName.setTextColor(ContextCompat.getColor(tvPlayerCategoryName.context, R.color.primaryDark))
-                    tvPlayerCategoryLayout.setBackgroundColor(ContextCompat.getColor(tvPlayerCategoryLayout.context, R.color.position2))
+                    tvPlayerCategoryLayout.setBackgroundColor(ContextCompat.getColor(tvPlayerCategoryLayout.context, R.color.position5))
                 }
             }
 
@@ -97,7 +97,7 @@ class PlayerCategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 //                    tvPlayerCategoryLayout.context,
 //                    R.drawable.gradient_background_player_category_position4
 //                )
-                tvPlayerCategoryName.setTextColor(ContextCompat.getColor(tvPlayerCategoryName.context, R.color.position4))
+                tvPlayerCategoryName.setTextColor(ContextCompat.getColor(tvPlayerCategoryName.context, R.color.position2))
                 tvPlayerCategoryLayout.setBackgroundColor(ContextCompat.getColor(tvPlayerCategoryLayout.context, R.color.primaryDark))
                 if (tvPlayerCategory.isSelected) {
 //                    tvPlayerCategoryLayout.background = ContextCompat.getDrawable(
@@ -105,7 +105,7 @@ class PlayerCategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 //                        R.drawable.gradient_background_player_category_position4_selected
 //                    )
                     tvPlayerCategoryName.setTextColor(ContextCompat.getColor(tvPlayerCategoryName.context, R.color.primaryDark))
-                    tvPlayerCategoryLayout.setBackgroundColor(ContextCompat.getColor(tvPlayerCategoryLayout.context, R.color.position4))
+                    tvPlayerCategoryLayout.setBackgroundColor(ContextCompat.getColor(tvPlayerCategoryLayout.context, R.color.position2))
                 }
             }
 
@@ -118,7 +118,7 @@ class PlayerCategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 //                    tvPlayerCategoryLayout.context,
 //                    R.drawable.gradient_background_player_category_position5
 //                )
-                tvPlayerCategoryName.setTextColor(ContextCompat.getColor(tvPlayerCategoryName.context, R.color.position5))
+                tvPlayerCategoryName.setTextColor(ContextCompat.getColor(tvPlayerCategoryName.context, R.color.position1))
                 tvPlayerCategoryLayout.setBackgroundColor(ContextCompat.getColor(tvPlayerCategoryLayout.context, R.color.primaryDark))
                 if (tvPlayerCategory.isSelected) {
 //                    tvPlayerCategoryLayout.background = ContextCompat.getDrawable(
@@ -126,7 +126,7 @@ class PlayerCategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 //                        R.drawable.gradient_background_player_category_position5_selected
 //                    )
                     tvPlayerCategoryName.setTextColor(ContextCompat.getColor(tvPlayerCategoryName.context, R.color.primaryDark))
-                    tvPlayerCategoryLayout.setBackgroundColor(ContextCompat.getColor(tvPlayerCategoryLayout.context, R.color.position5))
+                    tvPlayerCategoryLayout.setBackgroundColor(ContextCompat.getColor(tvPlayerCategoryLayout.context, R.color.position1))
                 }
             }
 
