@@ -145,7 +145,7 @@ export default {
     'project.exercises.fields.tactic' : 'Táctico',
     'project.exercises.fields.technique' : 'Técnico',
     'project.exercises.fields.physical' : 'Físico',
-    'project.exercises.fields.globalized' : 'Globalizado',
+    'project.exercises.fields.globalized' : 'Global',
     'project.exercises.fields.specific' : 'Específico',
     'project.exercises.fields.psychological' : 'Psicológico',
     'project.exercises.fields.strategy' : 'Estrategia',

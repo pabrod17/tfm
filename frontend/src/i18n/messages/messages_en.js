@@ -144,7 +144,7 @@ export default {
     'project.exercises.fields.tactic' : 'Tactic',
     'project.exercises.fields.technique' : 'Technique',
     'project.exercises.fields.physical' : 'Physical',
-    'project.exercises.fields.globalized' : 'Globalized',
+    'project.exercises.fields.globalized' : 'Global',
     'project.exercises.fields.specific' : 'Specific',
     'project.exercises.fields.psychological' : 'Psychological',
     'project.exercises.fields.strategy' : 'Strategy',
