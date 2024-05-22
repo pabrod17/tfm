@@ -34,13 +34,21 @@ import com.example.tfmmobile.domain.model.LesionModel
 import com.example.tfmmobile.domain.model.StretchingModel
 import com.example.tfmmobile.domain.model.TeamModel
 import com.example.tfmmobile.domain.model.TrainingModel
+import com.example.tfmmobile.ui.club.adapter.PlayerCategory
+import com.example.tfmmobile.ui.club.adapter.categories.PlayerCategoriesAdapter
 import com.example.tfmmobile.ui.events.EventsCategory
 import com.example.tfmmobile.ui.events.EventsFragmentDirections
 import com.example.tfmmobile.ui.events.adapter.GameAdapter
 import com.example.tfmmobile.ui.health.adapter.ExerciseAdapter
+import com.example.tfmmobile.ui.health.adapter.ExerciseCategory
 import com.example.tfmmobile.ui.health.adapter.LesionAdapter
+import com.example.tfmmobile.ui.health.adapter.LesionCategory
 import com.example.tfmmobile.ui.health.adapter.StretchingAdapter
+import com.example.tfmmobile.ui.health.adapter.StretchingCategory
 import com.example.tfmmobile.ui.health.adapter.categories.CategoriesAdapter
+import com.example.tfmmobile.ui.health.adapter.categories.ExerciseCategoriesAdapter
+import com.example.tfmmobile.ui.health.adapter.categories.LesionCategoriesAdapter
+import com.example.tfmmobile.ui.health.adapter.categories.StretchingCategoriesAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -63,8 +71,13 @@ class HealthFragment : Fragment() {
 
     private lateinit var rvCategories: RecyclerView
     private lateinit var rvTeams: RecyclerView
+    private lateinit var rvLesionCategories: RecyclerView
+
 
     private lateinit var categoriesAdapter: CategoriesAdapter
+    private lateinit var lesionCategoriesAdapter: LesionCategoriesAdapter
+    private lateinit var exerciseCategoriesAdapter: ExerciseCategoriesAdapter
+    private lateinit var stretchingCategoriesAdapter: StretchingCategoriesAdapter
 
     private val categories = listOf(
         HealthCategory.Lesion,
@@ -72,8 +85,81 @@ class HealthFragment : Fragment() {
         HealthCategory.Stretchings
     )
 
+    private val lesionCategories = listOf(
+        LesionCategory.Muscle,
+        LesionCategory.Tendon,
+        LesionCategory.Joint,
+        LesionCategory.Spine,
+        LesionCategory.Psychological
+    )
+
+    val lesionTypeMapEsToEn = mapOf(
+        "Muscular" to "Muscle",
+        "Tendinosa" to "Tendon",
+        "Articular" to "Joint",
+        "Columna Vertebral" to "Spine",
+        "Psicológica" to "Psychological"
+    )
+
+    private val exerciseCategories = listOf(
+        ExerciseCategory.Tactic,
+        ExerciseCategory.Technique,
+        ExerciseCategory.Physical,
+        ExerciseCategory.Globalized,
+        ExerciseCategory.Specific,
+        ExerciseCategory.Psychological,
+        ExerciseCategory.Strategy,
+        ExerciseCategory.PreMatch
+    )
+
+    val exerciseTypeMapEsToEn = mapOf(
+        "Táctico" to "Tactic",
+        "Técnico" to "Technique",
+        "Físico" to "Physical",
+        "Globalizado" to "Globalized",
+        "Específico" to "Specific",
+        "Psicológico" to "Psychological",
+        "Estrategia" to "Strategy",
+        "PrePartido" to "PreMatch"
+    )
+
+    private val stretchingCategories = listOf(
+        StretchingCategory.Hamstrings,
+        StretchingCategory.Buttocks,
+        StretchingCategory.Calf,
+        StretchingCategory.Adductors,
+        StretchingCategory.Shoulder,
+        StretchingCategory.Quadriceps,
+        StretchingCategory.Back,
+        StretchingCategory.Pectoral,
+        StretchingCategory.Crotch,
+        StretchingCategory.Triceps
+    )
+
+    val stretchingTypeMapEsToEn = mapOf(
+        "Isquiotibiales" to "Hamstrings",
+        "Glúteos" to "Buttocks",
+        "Gemelos" to "Calf",
+        "Adductores" to "Adductors",
+        "Hombro" to "Shoulder",
+        "Cuádriceps" to "Quadriceps",
+        "Espalda" to "Back",
+        "Pectoral" to "Pectoral",
+        "Ingle" to "Crotch",
+        "TrÍceps" to "Triceps"
+    )
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        println("ARRIBA DE TOODOOOODOOOOO")
+        println("ARRIBA DE TOODOOOODOOOOO")
+        println("ARRIBA DE TOODOOOODOOOOO")
+        println("ARRIBA DE TOODOOOODOOOOO")
+        println("ARRIBA DE TOODOOOODOOOOO")
+        println("ARRIBA DE TOODOOOODOOOOO")
+        println("ARRIBA DE TOODOOOODOOOOO")
+        rvLesionCategories = binding.rvLesionCategories
+
         lesionList = healthViewModel.getLesions()
         exerciseList = healthViewModel.getExercises()
         stretchingList = healthViewModel.getStretchings()
@@ -122,12 +208,31 @@ class HealthFragment : Fragment() {
     }
 
     private fun initCategories() {
+        println("en initCategories en posicion: ANTES" )
+        println("en initCategories en posicion: ANTES" )
+        println("en initCategories en posicion: ANTES" )
+        println("en initCategories en posicion: ANTES" )
+        println("en initCategories en posicion: ANTES" )
+        println("en initCategories en posicion: ANTES" )
+        println("en initCategories en posicion: ANTES" )
+        println("en initCategories en posicion: ANTES" )
+
+
+
+
         categoriesAdapter = CategoriesAdapter(categories) { position ->
+            println("en initCategories en posicion: " + position)
+            println("en initCategories en posicion: " + position)
+            println("en initCategories en posicion: " + position)
+            println("en initCategories en posicion: " + position)
+            println("en initCategories en posicion: " + position)
             updateCategories(position)
         }
         rvCategories.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         rvCategories.adapter = categoriesAdapter
+        val selectedPosition = categoriesAdapter.getSelectedPosition()
+        updateCategories(selectedPosition)
     }
 
     private fun updateCategories(position: Int) {
@@ -135,28 +240,126 @@ class HealthFragment : Fragment() {
             categories[i].isSelected = (i == position)
             categoriesAdapter.notifyItemChanged(i)
         }
+        println("en updateCategories~!!!!!!!")
+        println("en updateCategories~!!!!!!!")
         when (categories[position]) {
             HealthCategory.Lesion -> {
+                println("en updateCategories~!!!!!!! LESION")
                 lesionList = healthViewModel.getLesions()
                 initLesionList()
                 updateLesionList()
                 initUiStateLesion()
+
+                initLesionCategories()
             }
 
             HealthCategory.Exercises -> {
+                println("en updateCategories~!!!!!!! EXERCISES")
                 exerciseList = healthViewModel.getExercises()
                 initExerciseList()
                 updateExercisesList()
                 initUiStateExercise()
+
+                initExerciseCategories()
             }
 
             HealthCategory.Stretchings -> {
+                println("en updateCategories~!!!!!!! STRETCHINGS")
                 stretchingList = healthViewModel.getStretchings()
                 initStretchingList()
                 updateStretchingsList()
                 initUiStateStretching()
+
+                initStretchingCategories()
             }
         }
+    }
+
+    private fun initLesionCategories() {
+        lesionCategoriesAdapter = LesionCategoriesAdapter(lesionCategories) { position ->
+            updateLesionCategories(position)
+        }
+        rvLesionCategories.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        rvLesionCategories.adapter = lesionCategoriesAdapter
+    }
+
+    private fun updateLesionCategories(position: Int) {
+        lesionCategories[position].isSelected = !lesionCategories[position].isSelected
+        lesionCategoriesAdapter.notifyItemChanged(position)
+        updateLesionsListByCategories()
+    }
+
+    private fun updateLesionsListByCategories() {
+        val selectedLesionCategory: List<LesionCategory> = lesionCategories.filter { it.isSelected }
+        val newLesions = lesionList.filter { lesion ->
+            selectedLesionCategory.any { it.toString().contains(getLesionTypeEnToEs(lesion.lesionType)) }
+        }
+        lesionAdapter.lesionList = newLesions
+        lesionAdapter.notifyDataSetChanged()
+    }
+
+    private fun getLesionTypeEnToEs(typeSelected: String): String {
+        val typeSelectedSpanish = lesionTypeMapEsToEn[typeSelected]
+        return typeSelectedSpanish ?: typeSelected
+    }
+
+    private fun initExerciseCategories() {
+        exerciseCategoriesAdapter = ExerciseCategoriesAdapter(exerciseCategories) { position ->
+            updateExerciseCategories(position)
+        }
+        rvLesionCategories.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        rvLesionCategories.adapter = exerciseCategoriesAdapter
+    }
+
+    private fun updateExerciseCategories(position: Int) {
+        exerciseCategories[position].isSelected = !exerciseCategories[position].isSelected
+        exerciseCategoriesAdapter.notifyItemChanged(position)
+        updateExercisesListByCategories()
+    }
+
+    private fun updateExercisesListByCategories() {
+        val selectedExerciseCategory: List<ExerciseCategory> = exerciseCategories.filter { it.isSelected }
+        val newExercises = exerciseList.filter { exercise ->
+            selectedExerciseCategory.any { it.toString().contains(getExerciseTypeEnToEs(exercise.exerciseType)) }
+        }
+        exerciseAdapter.exercisesList = newExercises
+        exerciseAdapter.notifyDataSetChanged()
+    }
+
+    private fun getExerciseTypeEnToEs(typeSelected: String): String {
+        val typeSelectedSpanish = exerciseTypeMapEsToEn[typeSelected]
+        return typeSelectedSpanish ?: typeSelected
+    }
+
+    private fun initStretchingCategories() {
+        stretchingCategoriesAdapter = StretchingCategoriesAdapter(stretchingCategories) { position ->
+            updateStretchingCategories(position)
+        }
+        rvLesionCategories.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        rvLesionCategories.adapter = stretchingCategoriesAdapter
+    }
+
+    private fun updateStretchingCategories(position: Int) {
+        stretchingCategories[position].isSelected = !stretchingCategories[position].isSelected
+        stretchingCategoriesAdapter.notifyItemChanged(position)
+        updateStretchingsListByCategories()
+    }
+
+    private fun updateStretchingsListByCategories() {
+        val selectedStretchingCategory: List<StretchingCategory> = stretchingCategories.filter { it.isSelected }
+        val newStretchings = stretchingList.filter { stretching ->
+            selectedStretchingCategory.any { it.toString().contains(getStretchingTypeEnToEs(stretching.stretchingType)) }
+        }
+        stretchingAdapter.stretchingsList = newStretchings
+        stretchingAdapter.notifyDataSetChanged()
+    }
+
+    private fun getStretchingTypeEnToEs(typeSelected: String): String {
+        val typeSelectedSpanish = stretchingTypeMapEsToEn[typeSelected]
+        return typeSelectedSpanish ?: typeSelected
     }
 
     private fun updateLesionList() {

@@ -6,8 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tfmmobile.R
 import com.example.tfmmobile.domain.model.ExerciseModel
 
-class ExerciseAdapter (private var exercisesList: List<ExerciseModel> = emptyList(),
-                       private val onItemSelected:(ExerciseModel) -> Unit) : RecyclerView.Adapter<ExerciseViewHolder>(){
+class ExerciseAdapter (
+    var exercisesList: List<ExerciseModel> = emptyList(),
+    private val onItemSelected:(ExerciseModel) -> Unit) : RecyclerView.Adapter<ExerciseViewHolder>(){
 
     fun updateList(list:List<ExerciseModel>) {
         exercisesList = list.sortedBy { it.id }

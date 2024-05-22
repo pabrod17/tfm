@@ -525,6 +525,8 @@ class ClubFragment : Fragment() {
         rvCategories.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         rvCategories.adapter = categoriesAdapter
+        val selectedPosition = categoriesAdapter.getSelectedPosition()
+        updateCategories(selectedPosition)
     }
 
     private fun iniPlayerCategories() {

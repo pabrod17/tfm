@@ -8,13 +8,21 @@ import com.example.tfmmobile.ui.health.HealthCategory
 
 class CategoriesAdapter(private val categories:List<HealthCategory>, private val onItemSelected:(Int) -> Unit) :
     RecyclerView.Adapter<CategoriesViewHolder>() {
+
+    private var selectedPosition: Int = categories.indexOfFirst { it.isSelected }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoriesViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_health_category, parent, false)
         return CategoriesViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: CategoriesViewHolder, position: Int) {
-        holder.render(categories[position], onItemSelected)
+        holder.render(categories[position], position == selectedPosition, onItemSelected)
+
+    }
+
+    fun getSelectedPosition(): Int {
+        return selectedPosition
     }
 
     override fun getItemCount() = categories.size

@@ -19,7 +19,7 @@ class CategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val cardHealthLayout: View = view.findViewById(R.id.cardHealthLayout)
     private val cardImageHealth: AppCompatImageView = view.findViewById(R.id.cardImageHealth)
 
-    fun render(healthCategory: HealthCategory, onItemSelected: (Int) -> Unit) {
+    fun render(healthCategory: HealthCategory, isSelected: Boolean, onItemSelected: (Int) -> Unit) {
         tvCategoryNameHealth.text = "Ejemplo"
 
 

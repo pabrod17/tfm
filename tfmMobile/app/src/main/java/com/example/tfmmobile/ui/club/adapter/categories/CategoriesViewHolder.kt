@@ -17,7 +17,7 @@ class CategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val cardClubLayout: View = view.findViewById(R.id.cardClubLayout)
     private val cardImage: AppCompatImageView = view.findViewById(R.id.cardImage)
 
-    fun render(clubCategory: ClubCategory, onItemSelected: (Int) -> Unit) {
+    fun render(clubCategory: ClubCategory, isSelected: Boolean, onItemSelected: (Int) -> Unit) {
         tvCategoryName.text = "Ejemplo"
 
 

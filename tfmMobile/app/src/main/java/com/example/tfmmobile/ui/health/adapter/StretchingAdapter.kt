@@ -6,8 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tfmmobile.R
 import com.example.tfmmobile.domain.model.StretchingModel
 
-class StretchingAdapter (private var stretchingsList: List<StretchingModel> = emptyList(),
-                         private val onItemSelected:(StretchingModel) -> Unit) : RecyclerView.Adapter<StretchingViewHolder>(){
+class StretchingAdapter (
+    var stretchingsList: List<StretchingModel> = emptyList(),
+    private val onItemSelected:(StretchingModel) -> Unit) : RecyclerView.Adapter<StretchingViewHolder>(){
 
     fun updateList(list:List<StretchingModel>) {
         stretchingsList = list.sortedBy { it.id }
