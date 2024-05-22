@@ -98,6 +98,7 @@ class HealthFragment : Fragment() {
         "Tendinosa" to "Tendon",
         "Articular" to "Joint",
         "Columna Vertebral" to "Spine",
+        "ColumnaVertebral" to "Spine",
         "Psicológica" to "Psychological"
     )
 

@@ -28,9 +28,11 @@ class LesionViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
 
         binding.tvNameLesionValue.text = lesion.lesionName
-        binding.tvTypeLesionValue.text = lesion.lesionType
 
         if (lesion.lesionType.equals("Muscular")) {
+            binding.tvTypeLesionValue.text =
+                ContextCompat.getString(binding.tvTypeLesionValue.context,
+                    R.string.lesionTypeMuscle)
             binding.tvTypeLesionValue.setTextColor(
                 ContextCompat.getColor(
                     tvTypeLesionValue.context,
@@ -39,6 +41,9 @@ class LesionViewHolder(view: View): RecyclerView.ViewHolder(view) {
             )
         }
         if (lesion.lesionType.equals("Tendinosa")) {
+            binding.tvTypeLesionValue.text =
+                ContextCompat.getString(binding.tvTypeLesionValue.context,
+                    R.string.lesionTypeTendon)
             binding.tvTypeLesionValue.setTextColor(
                 ContextCompat.getColor(
                     tvTypeLesionValue.context,
@@ -47,6 +52,9 @@ class LesionViewHolder(view: View): RecyclerView.ViewHolder(view) {
             )
         }
         if (lesion.lesionType.equals("Articular")) {
+            binding.tvTypeLesionValue.text =
+                ContextCompat.getString(binding.tvTypeLesionValue.context,
+                    R.string.lesionTypeJoint)
             binding.tvTypeLesionValue.setTextColor(
                 ContextCompat.getColor(
                     tvTypeLesionValue.context,
@@ -55,6 +63,9 @@ class LesionViewHolder(view: View): RecyclerView.ViewHolder(view) {
             )
         }
         if (lesion.lesionType.equals("ColumnaVertebral")) {
+            binding.tvTypeLesionValue.text =
+                ContextCompat.getString(binding.tvTypeLesionValue.context,
+                    R.string.lesionTypeSpine)
             binding.tvTypeLesionValue.setTextColor(
                 ContextCompat.getColor(
                     tvTypeLesionValue.context,
@@ -63,6 +74,9 @@ class LesionViewHolder(view: View): RecyclerView.ViewHolder(view) {
             )
         }
         if (lesion.lesionType.equals("Psicologica")) {
+            binding.tvTypeLesionValue.text =
+                ContextCompat.getString(binding.tvTypeLesionValue.context,
+                    R.string.lesionTypePhychological)
             binding.tvTypeLesionValue.setTextColor(
                 ContextCompat.getColor(
                     tvTypeLesionValue.context,

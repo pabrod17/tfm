@@ -21,8 +21,10 @@ class PlayerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         binding.tvNameAndSurnamesValue.text =
             player.playerName + " " + player.primaryLastName + " " + player.secondLastName
-        binding.tvPositionValue.text = player.position
         if (player.position.equals("Base")) {
+            binding.tvPositionValue.text =
+                ContextCompat.getString(binding.tvPositionValue.context,
+                    R.string.position1)
             binding.tvPositionValue.setTextColor(
                 ContextCompat.getColor(
                     textPosition.context,
@@ -32,6 +34,9 @@ class PlayerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         }
         if (player.position.equals("Escolta")) {
+            binding.tvPositionValue.text =
+                ContextCompat.getString(binding.tvPositionValue.context,
+                    R.string.position2)
             binding.tvPositionValue.setTextColor(
                 ContextCompat.getColor(
                     textPosition.context,
@@ -41,6 +46,9 @@ class PlayerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         }
         if (player.position.equals("Alero")) {
+            binding.tvPositionValue.text =
+                ContextCompat.getString(binding.tvPositionValue.context,
+                    R.string.position3)
             binding.tvPositionValue.setTextColor(
                 ContextCompat.getColor(
                     textPosition.context,
@@ -49,6 +57,9 @@ class PlayerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             )
         }
         if (player.position.equals("AlaPivot")) {
+            binding.tvPositionValue.text =
+                ContextCompat.getString(binding.tvPositionValue.context,
+                    R.string.position4)
             binding.tvPositionValue.setTextColor(
                 ContextCompat.getColor(
                     textPosition.context,
@@ -57,6 +68,9 @@ class PlayerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             )
         }
         if (player.position.equals("Pivot")) {
+            binding.tvPositionValue.text =
+                ContextCompat.getString(binding.tvPositionValue.context,
+                    R.string.position5)
             binding.tvPositionValue.setTextColor(
                 ContextCompat.getColor(
                     textPosition.context,

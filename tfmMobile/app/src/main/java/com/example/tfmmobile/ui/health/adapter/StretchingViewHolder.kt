@@ -24,9 +24,11 @@ class StretchingViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
 
         binding.tvNameStretchingValue.text = stretching.stretchingName
-        binding.tvTypeStretchingValue.text = stretching.stretchingType
 
         if (stretching.stretchingType.equals("Isquiotibiales")) {
+            binding.tvTypeStretchingValue.text =
+                ContextCompat.getString(binding.tvTypeStretchingValue.context,
+                    R.string.stretchingsTypeHamstrings)
             binding.tvTypeStretchingValue.setTextColor(
                 ContextCompat.getColor(
                     tvTypeStretchingValue.context,
@@ -35,6 +37,9 @@ class StretchingViewHolder(view: View): RecyclerView.ViewHolder(view) {
             )
         }
         if (stretching.stretchingType.equals("Gluteos")) {
+            binding.tvTypeStretchingValue.text =
+                ContextCompat.getString(binding.tvTypeStretchingValue.context,
+                    R.string.stretchingsTypeButtocks)
             binding.tvTypeStretchingValue.setTextColor(
                 ContextCompat.getColor(
                     tvTypeStretchingValue.context,
@@ -43,6 +48,9 @@ class StretchingViewHolder(view: View): RecyclerView.ViewHolder(view) {
             )
         }
         if (stretching.stretchingType.equals("Gemelos")) {
+            binding.tvTypeStretchingValue.text =
+                ContextCompat.getString(binding.tvTypeStretchingValue.context,
+                    R.string.stretchingsTypeCalf)
             binding.tvTypeStretchingValue.setTextColor(
                 ContextCompat.getColor(
                     tvTypeStretchingValue.context,
@@ -51,6 +59,9 @@ class StretchingViewHolder(view: View): RecyclerView.ViewHolder(view) {
             )
         }
         if (stretching.stretchingType.equals("Adductores")) {
+            binding.tvTypeStretchingValue.text =
+                ContextCompat.getString(binding.tvTypeStretchingValue.context,
+                    R.string.stretchingsTypeAbductors)
             binding.tvTypeStretchingValue.setTextColor(
                 ContextCompat.getColor(
                     tvTypeStretchingValue.context,
@@ -59,6 +70,9 @@ class StretchingViewHolder(view: View): RecyclerView.ViewHolder(view) {
             )
         }
         if (stretching.stretchingType.equals("Hombro")) {
+            binding.tvTypeStretchingValue.text =
+                ContextCompat.getString(binding.tvTypeStretchingValue.context,
+                    R.string.stretchingsTypeShoulder)
             binding.tvTypeStretchingValue.setTextColor(
                 ContextCompat.getColor(
                     tvTypeStretchingValue.context,
@@ -67,6 +81,9 @@ class StretchingViewHolder(view: View): RecyclerView.ViewHolder(view) {
             )
         }
         if (stretching.stretchingType.equals("Cuadriceps")) {
+            binding.tvTypeStretchingValue.text =
+                ContextCompat.getString(binding.tvTypeStretchingValue.context,
+                    R.string.stretchingsTypeQuadriceps)
             binding.tvTypeStretchingValue.setTextColor(
                 ContextCompat.getColor(
                     tvTypeStretchingValue.context,
@@ -75,6 +92,9 @@ class StretchingViewHolder(view: View): RecyclerView.ViewHolder(view) {
             )
         }
         if (stretching.stretchingType.equals("Espalda")) {
+            binding.tvTypeStretchingValue.text =
+                ContextCompat.getString(binding.tvTypeStretchingValue.context,
+                    R.string.stretchingsTypeBack)
             binding.tvTypeStretchingValue.setTextColor(
                 ContextCompat.getColor(
                     tvTypeStretchingValue.context,
@@ -83,6 +103,9 @@ class StretchingViewHolder(view: View): RecyclerView.ViewHolder(view) {
             )
         }
         if (stretching.stretchingType.equals("Pectoral")) {
+            binding.tvTypeStretchingValue.text =
+                ContextCompat.getString(binding.tvTypeStretchingValue.context,
+                    R.string.stretchingsTypePectoral)
             binding.tvTypeStretchingValue.setTextColor(
                 ContextCompat.getColor(
                     tvTypeStretchingValue.context,
@@ -91,6 +114,9 @@ class StretchingViewHolder(view: View): RecyclerView.ViewHolder(view) {
             )
         }
         if (stretching.stretchingType.equals("Ingle")) {
+            binding.tvTypeStretchingValue.text =
+                ContextCompat.getString(binding.tvTypeStretchingValue.context,
+                    R.string.stretchingsTypeCrotch)
             binding.tvTypeStretchingValue.setTextColor(
                 ContextCompat.getColor(
                     tvTypeStretchingValue.context,
@@ -99,6 +125,9 @@ class StretchingViewHolder(view: View): RecyclerView.ViewHolder(view) {
             )
         }
         if (stretching.stretchingType.equals("Triceps")) {
+            binding.tvTypeStretchingValue.text =
+                ContextCompat.getString(binding.tvTypeStretchingValue.context,
+                    R.string.stretchingsTypeTriceps)
             binding.tvTypeStretchingValue.setTextColor(
                 ContextCompat.getColor(
                     tvTypeStretchingValue.context,

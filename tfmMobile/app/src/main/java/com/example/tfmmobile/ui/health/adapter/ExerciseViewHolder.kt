@@ -24,9 +24,11 @@ class ExerciseViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
 
         binding.tvNameExerciseValue.text = exercise.exerciseName
-        binding.tvTypeExerciseValue.text = exercise.exerciseType
 
         if (exercise.exerciseType.equals("Tactico")) {
+            binding.tvTypeExerciseValue.text =
+                ContextCompat.getString(binding.tvTypeExerciseValue.context,
+                    R.string.exercisesTypeTactic)
             binding.tvTypeExerciseValue.setTextColor(
                 ContextCompat.getColor(
                     tvTypeExerciseValue.context,
@@ -35,6 +37,9 @@ class ExerciseViewHolder(view: View): RecyclerView.ViewHolder(view) {
             )
         }
         if (exercise.exerciseType.equals("Tecnica")) {
+            binding.tvTypeExerciseValue.text =
+                ContextCompat.getString(binding.tvTypeExerciseValue.context,
+                    R.string.exercisesTypeTechnique)
             binding.tvTypeExerciseValue.setTextColor(
                 ContextCompat.getColor(
                     tvTypeExerciseValue.context,
@@ -43,6 +48,9 @@ class ExerciseViewHolder(view: View): RecyclerView.ViewHolder(view) {
             )
         }
         if (exercise.exerciseType.equals("Fisico")) {
+            binding.tvTypeExerciseValue.text =
+                ContextCompat.getString(binding.tvTypeExerciseValue.context,
+                    R.string.exercisesTypePhysical)
             binding.tvTypeExerciseValue.setTextColor(
                 ContextCompat.getColor(
                     tvTypeExerciseValue.context,
@@ -51,6 +59,9 @@ class ExerciseViewHolder(view: View): RecyclerView.ViewHolder(view) {
             )
         }
         if (exercise.exerciseType.equals("Global")) {
+            binding.tvTypeExerciseValue.text =
+                ContextCompat.getString(binding.tvTypeExerciseValue.context,
+                    R.string.exercisesTypeGlobalized)
             binding.tvTypeExerciseValue.setTextColor(
                 ContextCompat.getColor(
                     tvTypeExerciseValue.context,
@@ -59,6 +70,9 @@ class ExerciseViewHolder(view: View): RecyclerView.ViewHolder(view) {
             )
         }
         if (exercise.exerciseType.equals("Especifico")) {
+            binding.tvTypeExerciseValue.text =
+                ContextCompat.getString(binding.tvTypeExerciseValue.context,
+                    R.string.exercisesTypeSpecific)
             binding.tvTypeExerciseValue.setTextColor(
                 ContextCompat.getColor(
                     tvTypeExerciseValue.context,
@@ -67,6 +81,9 @@ class ExerciseViewHolder(view: View): RecyclerView.ViewHolder(view) {
             )
         }
         if (exercise.exerciseType.equals("Psicologico")) {
+            binding.tvTypeExerciseValue.text =
+                ContextCompat.getString(binding.tvTypeExerciseValue.context,
+                    R.string.exercisesTypePsychological)
             binding.tvTypeExerciseValue.setTextColor(
                 ContextCompat.getColor(
                     tvTypeExerciseValue.context,
@@ -75,6 +92,9 @@ class ExerciseViewHolder(view: View): RecyclerView.ViewHolder(view) {
             )
         }
         if (exercise.exerciseType.equals("Estrategia")) {
+            binding.tvTypeExerciseValue.text =
+                ContextCompat.getString(binding.tvTypeExerciseValue.context,
+                    R.string.exercisesTypeStrategy)
             binding.tvTypeExerciseValue.setTextColor(
                 ContextCompat.getColor(
                     tvTypeExerciseValue.context,
@@ -83,6 +103,9 @@ class ExerciseViewHolder(view: View): RecyclerView.ViewHolder(view) {
             )
         }
         if (exercise.exerciseType.equals("PrePartido")) {
+            binding.tvTypeExerciseValue.text =
+                ContextCompat.getString(binding.tvTypeExerciseValue.context,
+                    R.string.exercisesTypePreMatch)
             binding.tvTypeExerciseValue.setTextColor(
                 ContextCompat.getColor(
                     tvTypeExerciseValue.context,
