@@ -24,120 +24,152 @@ class ExerciseCategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             ExerciseCategory.Tactic -> {
                 tvLesionCategoryName.text =
                     ContextCompat.getString(tvLesionCategoryName.context, R.string.exercisesTypeTactic)
-                tvLesionCategoryLayout.background = ContextCompat.getDrawable(
-                    tvLesionCategoryLayout.context,
-                    R.drawable.gradient_background_exercise_category_exercise1
-                )
+//                tvLesionCategoryLayout.background = ContextCompat.getDrawable(
+//                    tvLesionCategoryLayout.context,
+//                    R.drawable.gradient_background_exercise_category_exercise1
+//                )
+                tvLesionCategoryName.setTextColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.exercise1))
+                tvLesionCategoryLayout.setBackgroundColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.primaryDark))
                 if (tvLesionCategory.isSelected) {
-                    tvLesionCategoryLayout.background = ContextCompat.getDrawable(
-                        tvLesionCategoryLayout.context,
-                        R.drawable.gradient_background_exercise_category_exercise1_selected
-                    )
+//                    tvLesionCategoryLayout.background = ContextCompat.getDrawable(
+//                        tvLesionCategoryLayout.context,
+//                        R.drawable.gradient_background_exercise_category_exercise1_selected
+//                    )
+                    tvLesionCategoryName.setTextColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.primaryDark))
+                    tvLesionCategoryLayout.setBackgroundColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.exercise1))
                 }
             }
 
             ExerciseCategory.Technique -> {
                 tvLesionCategoryName.text =
                     ContextCompat.getString(tvLesionCategoryName.context, R.string.exercisesTypeTechnique)
-                tvLesionCategoryLayout.background = ContextCompat.getDrawable(
-                    tvLesionCategoryLayout.context,
-                    R.drawable.gradient_background_exercise_category_exercise2
-                )
+//                tvLesionCategoryLayout.background = ContextCompat.getDrawable(
+//                    tvLesionCategoryLayout.context,
+//                    R.drawable.gradient_background_exercise_category_exercise2
+//                )
+                tvLesionCategoryName.setTextColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.exercise2))
+                tvLesionCategoryLayout.setBackgroundColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.primaryDark))
                 if (tvLesionCategory.isSelected) {
-                    tvLesionCategoryLayout.background = ContextCompat.getDrawable(
-                        tvLesionCategoryLayout.context,
-                        R.drawable.gradient_background_exercise_category_exercise2_selected
-                    )
+//                    tvLesionCategoryLayout.background = ContextCompat.getDrawable(
+//                        tvLesionCategoryLayout.context,
+//                        R.drawable.gradient_background_exercise_category_exercise2_selected
+//                    )
+                    tvLesionCategoryName.setTextColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.primaryDark))
+                    tvLesionCategoryLayout.setBackgroundColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.exercise2))
                 }
             }
 
             ExerciseCategory.Physical -> {
                 tvLesionCategoryName.text =
                     ContextCompat.getString(tvLesionCategoryName.context, R.string.exercisesTypePhysical)
-                tvLesionCategoryLayout.background = ContextCompat.getDrawable(
-                    tvLesionCategoryLayout.context,
-                    R.drawable.gradient_background_exercise_category_exercise3
-                )
+//                tvLesionCategoryLayout.background = ContextCompat.getDrawable(
+//                    tvLesionCategoryLayout.context,
+//                    R.drawable.gradient_background_exercise_category_exercise3
+//                )
+                tvLesionCategoryName.setTextColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.exercise3))
+                tvLesionCategoryLayout.setBackgroundColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.primaryDark))
                 if (tvLesionCategory.isSelected) {
-                    tvLesionCategoryLayout.background = ContextCompat.getDrawable(
-                        tvLesionCategoryLayout.context,
-                        R.drawable.gradient_background_exercise_category_exercise3_selected
-                    )
+//                    tvLesionCategoryLayout.background = ContextCompat.getDrawable(
+//                        tvLesionCategoryLayout.context,
+//                        R.drawable.gradient_background_exercise_category_exercise3_selected
+//                    )
+                    tvLesionCategoryName.setTextColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.primaryDark))
+                    tvLesionCategoryLayout.setBackgroundColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.exercise3))
                 }
             }
 
             ExerciseCategory.Globalized -> {
                 tvLesionCategoryName.text =
                     ContextCompat.getString(tvLesionCategoryName.context, R.string.exercisesTypeGlobalized)
-                tvLesionCategoryLayout.background = ContextCompat.getDrawable(
-                    tvLesionCategoryLayout.context,
-                    R.drawable.gradient_background_exercise_category_exercise4
-                )
+//                tvLesionCategoryLayout.background = ContextCompat.getDrawable(
+//                    tvLesionCategoryLayout.context,
+//                    R.drawable.gradient_background_exercise_category_exercise4
+//                )
+                tvLesionCategoryName.setTextColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.exercise4))
+                tvLesionCategoryLayout.setBackgroundColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.primaryDark))
                 if (tvLesionCategory.isSelected) {
-                    tvLesionCategoryLayout.background = ContextCompat.getDrawable(
-                        tvLesionCategoryLayout.context,
-                        R.drawable.gradient_background_exercise_category_exercise4_selected
-                    )
+//                    tvLesionCategoryLayout.background = ContextCompat.getDrawable(
+//                        tvLesionCategoryLayout.context,
+//                        R.drawable.gradient_background_exercise_category_exercise4_selected
+//                    )
+                    tvLesionCategoryName.setTextColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.primaryDark))
+                    tvLesionCategoryLayout.setBackgroundColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.exercise4))
                 }
             }
 
             ExerciseCategory.Specific -> {
                 tvLesionCategoryName.text =
                     ContextCompat.getString(tvLesionCategoryName.context, R.string.exercisesTypeSpecific)
-                tvLesionCategoryLayout.background = ContextCompat.getDrawable(
-                    tvLesionCategoryLayout.context,
-                    R.drawable.gradient_background_exercise_category_exercise5
-                )
+//                tvLesionCategoryLayout.background = ContextCompat.getDrawable(
+//                    tvLesionCategoryLayout.context,
+//                    R.drawable.gradient_background_exercise_category_exercise5
+//                )
+                tvLesionCategoryName.setTextColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.exercise5))
+                tvLesionCategoryLayout.setBackgroundColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.primaryDark))
                 if (tvLesionCategory.isSelected) {
-                    tvLesionCategoryLayout.background = ContextCompat.getDrawable(
-                        tvLesionCategoryLayout.context,
-                        R.drawable.gradient_background_exercise_category_exercise5_selected
-                    )
+//                    tvLesionCategoryLayout.background = ContextCompat.getDrawable(
+//                        tvLesionCategoryLayout.context,
+//                        R.drawable.gradient_background_exercise_category_exercise5_selected
+//                    )
+                    tvLesionCategoryName.setTextColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.primaryDark))
+                    tvLesionCategoryLayout.setBackgroundColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.exercise5))
                 }
             }
 
             ExerciseCategory.Psychological -> {
                 tvLesionCategoryName.text =
                     ContextCompat.getString(tvLesionCategoryName.context, R.string.exercisesTypePsychological)
-                tvLesionCategoryLayout.background = ContextCompat.getDrawable(
-                    tvLesionCategoryLayout.context,
-                    R.drawable.gradient_background_exercise_category_exercise6
-                )
+//                tvLesionCategoryLayout.background = ContextCompat.getDrawable(
+//                    tvLesionCategoryLayout.context,
+//                    R.drawable.gradient_background_exercise_category_exercise6
+//                )
+                tvLesionCategoryName.setTextColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.exercise6))
+                tvLesionCategoryLayout.setBackgroundColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.primaryDark))
                 if (tvLesionCategory.isSelected) {
-                    tvLesionCategoryLayout.background = ContextCompat.getDrawable(
-                        tvLesionCategoryLayout.context,
-                        R.drawable.gradient_background_exercise_category_exercise6_selected
-                    )
+//                    tvLesionCategoryLayout.background = ContextCompat.getDrawable(
+//                        tvLesionCategoryLayout.context,
+//                        R.drawable.gradient_background_exercise_category_exercise6_selected
+//                    )
+                    tvLesionCategoryName.setTextColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.primaryDark))
+                    tvLesionCategoryLayout.setBackgroundColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.exercise6))
                 }
             }
 
             ExerciseCategory.Strategy -> {
                 tvLesionCategoryName.text =
                     ContextCompat.getString(tvLesionCategoryName.context, R.string.exercisesTypeStrategy)
-                tvLesionCategoryLayout.background = ContextCompat.getDrawable(
-                    tvLesionCategoryLayout.context,
-                    R.drawable.gradient_background_exercise_category_exercise7
-                )
+//                tvLesionCategoryLayout.background = ContextCompat.getDrawable(
+//                    tvLesionCategoryLayout.context,
+//                    R.drawable.gradient_background_exercise_category_exercise7
+//                )
+                tvLesionCategoryName.setTextColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.exercise7))
+                tvLesionCategoryLayout.setBackgroundColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.primaryDark))
                 if (tvLesionCategory.isSelected) {
-                    tvLesionCategoryLayout.background = ContextCompat.getDrawable(
-                        tvLesionCategoryLayout.context,
-                        R.drawable.gradient_background_exercise_category_exercise7_selected
-                    )
+//                    tvLesionCategoryLayout.background = ContextCompat.getDrawable(
+//                        tvLesionCategoryLayout.context,
+//                        R.drawable.gradient_background_exercise_category_exercise7_selected
+//                    )
+                    tvLesionCategoryName.setTextColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.primaryDark))
+                    tvLesionCategoryLayout.setBackgroundColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.exercise7))
                 }
             }
 
             ExerciseCategory.PreMatch -> {
                 tvLesionCategoryName.text =
                     ContextCompat.getString(tvLesionCategoryName.context, R.string.exercisesTypePreMatch)
-                tvLesionCategoryLayout.background = ContextCompat.getDrawable(
-                    tvLesionCategoryLayout.context,
-                    R.drawable.gradient_background_exercise_category_exercise8
-                )
+//                tvLesionCategoryLayout.background = ContextCompat.getDrawable(
+//                    tvLesionCategoryLayout.context,
+//                    R.drawable.gradient_background_exercise_category_exercise8
+//                )
+                tvLesionCategoryName.setTextColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.exercise8))
+                tvLesionCategoryLayout.setBackgroundColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.primaryDark))
                 if (tvLesionCategory.isSelected) {
-                    tvLesionCategoryLayout.background = ContextCompat.getDrawable(
-                        tvLesionCategoryLayout.context,
-                        R.drawable.gradient_background_exercise_category_exercise8_selected
-                    )
+//                    tvLesionCategoryLayout.background = ContextCompat.getDrawable(
+//                        tvLesionCategoryLayout.context,
+//                        R.drawable.gradient_background_exercise_category_exercise8_selected
+//                    )
+                    tvLesionCategoryName.setTextColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.primaryDark))
+                    tvLesionCategoryLayout.setBackgroundColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.exercise8))
                 }
             }
 
