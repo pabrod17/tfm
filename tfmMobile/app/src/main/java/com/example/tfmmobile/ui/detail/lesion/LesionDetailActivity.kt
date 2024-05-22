@@ -85,8 +85,19 @@ class LesionDetailActivity : AppCompatActivity() {
         binding.autoCompleteLesionType.isFocusable = false
 
         binding.tvBodyLesionName.setText(state.lesionName)
+        binding.tvBodyLesionName.isClickable = false
+        binding.tvBodyLesionName.isActivated = false
+        binding.tvBodyLesionName.isFocusable = false
+
         binding.etLesionMedication.setText(state.medication)
+        binding.etLesionMedication.isClickable = false
+        binding.etLesionMedication.isActivated = false
+        binding.etLesionMedication.isFocusable = false
+
         binding.etDescription.setText(state.description)
+        binding.etDescription.isClickable = false
+        binding.etDescription.isActivated = false
+        binding.etDescription.isFocusable = false
 
         if(state.lesionType.equals("Muscular")) {
             binding.autoCompleteLesionType.setText(

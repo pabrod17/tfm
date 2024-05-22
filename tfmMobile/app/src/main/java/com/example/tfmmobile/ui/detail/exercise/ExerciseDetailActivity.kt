@@ -82,8 +82,19 @@ class ExerciseDetailActivity : AppCompatActivity() {
         binding.autoCompleteExerciseType.isFocusable = false
 
         binding.tvBodyExerciseName.setText(state.exerciseName)
+        binding.tvBodyExerciseName.isClickable = false
+        binding.tvBodyExerciseName.isActivated = false
+        binding.tvBodyExerciseName.isFocusable = false
+
         binding.etExerciseObjective.setText(state.objective)
+        binding.etExerciseObjective.isClickable = false
+        binding.etExerciseObjective.isActivated = false
+        binding.etExerciseObjective.isFocusable = false
+
         binding.etDescription.setText(state.description)
+        binding.etDescription.isClickable = false
+        binding.etDescription.isActivated = false
+        binding.etDescription.isFocusable = false
 
         if(state.exerciseType.equals("Táctico") || state.exerciseType.equals("Tactico")) {
             binding.autoCompleteExerciseType.setText(

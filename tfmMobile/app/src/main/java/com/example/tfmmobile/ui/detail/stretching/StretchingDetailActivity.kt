@@ -86,7 +86,14 @@ class StretchingDetailActivity : AppCompatActivity() {
         binding.autoCompleteStretchingType.isFocusable = false
 
         binding.tvBodyStretchingName.setText(state.stretchingName)
+        binding.tvBodyStretchingName.isClickable = false
+        binding.tvBodyStretchingName.isActivated = false
+        binding.tvBodyStretchingName.isFocusable = false
+
         binding.etDescription.setText(state.description)
+        binding.etDescription.isClickable = false
+        binding.etDescription.isActivated = false
+        binding.etDescription.isFocusable = false
 
 
         if(state.stretchingType.equals("Isquiotibiales")) {
