@@ -62,6 +62,8 @@
     <string name="injured">Lesionado</string>
 
     <string name="position">Posición</string>
+    <string name="type">Tipo</string>
+
 
     <string name="position1">Base</string>
     <string name="position2">Escolta</string>
@@ -84,7 +86,7 @@
     <string name="exercisesTypeTactic">Táctico</string>
     <string name="exercisesTypeTechnique">Técnica</string>
     <string name="exercisesTypePhysical">Físico</string>
-    <string name="exercisesTypeGlobalized">Globalizado</string>
+    <string name="exercisesTypeGlobalized">Global</string>
     <string name="exercisesTypeSpecific">Específico</string>
     <string name="exercisesTypePsychological">Psicológico</string>
     <string name="exercisesTypeStrategy">Estrategia</string>
@@ -100,7 +102,7 @@
     <string name="stretchingsTypeBack">Espalda</string>
     <string name="stretchingsTypePectoral">Pectoral</string>
     <string name="stretchingsTypeCrotch">Ingle</string>
-    <string name="stretchingsTypeTriceps">TrÍceps</string>
+    <string name="stretchingsTypeTriceps">Tríceps</string>
 
 
     <!-- Strings used for fragments for navigation -->

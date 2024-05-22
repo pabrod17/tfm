@@ -11,8 +11,8 @@ sealed class ExerciseCategory(var isSelected: Boolean = false) {
     object Physical : ExerciseCategory() {
         override fun toString() = "Physical"
     }
-    object Globalized : ExerciseCategory() {
-        override fun toString() = "Globalized"
+    object Global : ExerciseCategory() {
+        override fun toString() = "Global"
     }
     object Specific : ExerciseCategory() {
         override fun toString() = "Specific"

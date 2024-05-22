@@ -108,7 +108,7 @@ class HealthFragment : Fragment() {
         ExerciseCategory.Tactic,
         ExerciseCategory.Technique,
         ExerciseCategory.Physical,
-        ExerciseCategory.Globalized,
+        ExerciseCategory.Global,
         ExerciseCategory.Specific,
         ExerciseCategory.Psychological,
         ExerciseCategory.Strategy,
@@ -122,6 +122,7 @@ class HealthFragment : Fragment() {
         "Tecnica" to "Technique",
         "Físico" to "Physical",
         "Fisico" to "Physical",
+        "Global" to "Global",
         "Globalizado" to "Globalized",
         "Específico" to "Specific",
         "Especifico" to "Specific",
@@ -362,14 +363,15 @@ class HealthFragment : Fragment() {
         lesionAdapter = LesionAdapter(onItemSelected = {
 //            Toast.makeText(context, it.teamName, Toast.LENGTH_LONG).show()
 
-//            findNavController().navigate(
-//                EventsFragmentDirections.actionEventsFragmentToGameDetailActivity2(
-//                    it.id,
-//                    it.gameDate,
-//                    it.rival,
-//                    it.description
-//                )
-//            )
+            findNavController().navigate(
+                HealthFragmentDirections.actionHealthFragmentToLesionDetailActivity(
+                    it.id,
+                    it.lesionName,
+                    it.description,
+                    it.medication,
+                    it.lesionType
+                )
+            )
         })
 
         rvTeams.apply {
@@ -383,14 +385,15 @@ class HealthFragment : Fragment() {
         exerciseAdapter = ExerciseAdapter(onItemSelected = {
 //            Toast.makeText(context, it.teamName, Toast.LENGTH_LONG).show()
 
-//            findNavController().navigate(
-//                EventsFragmentDirections.actionEventsFragmentToGameDetailActivity2(
-//                    it.id,
-//                    it.gameDate,
-//                    it.rival,
-//                    it.description
-//                )
-//            )
+            findNavController().navigate(
+                HealthFragmentDirections.actionHealthFragmentToExerciseDetailActivity(
+                    it.id,
+                    it.exerciseName,
+                    it.description,
+                    it.objective,
+                    it.exerciseType
+                )
+            )
         })
 
         rvTeams.apply {
@@ -404,14 +407,14 @@ class HealthFragment : Fragment() {
         stretchingAdapter = StretchingAdapter(onItemSelected = {
 //            Toast.makeText(context, it.teamName, Toast.LENGTH_LONG).show()
 
-//            findNavController().navigate(
-//                EventsFragmentDirections.actionEventsFragmentToGameDetailActivity2(
-//                    it.id,
-//                    it.gameDate,
-//                    it.rival,
-//                    it.description
-//                )
-//            )
+            findNavController().navigate(
+                HealthFragmentDirections.actionHealthFragmentToStretchingDetailActivity(
+                    it.id,
+                    it.stretchingName,
+                    it.description,
+                    it.stretchingType
+                )
+            )
         })
 
         rvTeams.apply {

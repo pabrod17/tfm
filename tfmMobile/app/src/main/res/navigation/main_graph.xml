@@ -41,7 +41,17 @@
         android:id="@+id/healthFragment"
         android:name="com.example.tfmmobile.ui.health.HealthFragment"
         android:label="fragment_health"
-        tools:layout="@layout/fragment_health" />
+        tools:layout="@layout/fragment_health" >
+        <action
+            android:id="@+id/action_healthFragment_to_lesionDetailActivity"
+            app:destination="@id/lesionDetailActivity" />
+        <action
+            android:id="@+id/action_healthFragment_to_exerciseDetailActivity"
+            app:destination="@id/exerciseDetailActivity" />
+        <action
+            android:id="@+id/action_healthFragment_to_stretchingDetailActivity"
+            app:destination="@id/stretchingDetailActivity" />
+    </fragment>
     <fragment
         android:id="@+id/playsFragment"
         android:name="com.example.tfmmobile.ui.plays.PlaysFragment"
@@ -164,6 +174,66 @@
             app:argType="string" />
         <argument
             android:name="objective"
+            app:argType="string" />
+    </activity>
+    <activity
+        android:id="@+id/lesionDetailActivity"
+        android:name="com.example.tfmmobile.ui.detail.lesion.LesionDetailActivity"
+        android:label="activity_lesion_detail"
+        tools:layout="@layout/activity_lesion_detail" >
+        <argument
+            android:name="id"
+            app:argType="long" />
+        <argument
+            android:name="lesionName"
+            app:argType="string" />
+        <argument
+            android:name="description"
+            app:argType="string" />
+        <argument
+            android:name="medication"
+            app:argType="string" />
+        <argument
+            android:name="lesionType"
+            app:argType="string" />
+    </activity>
+    <activity
+        android:id="@+id/exerciseDetailActivity"
+        android:name="com.example.tfmmobile.ui.detail.exercise.ExerciseDetailActivity"
+        android:label="activity_exercise_detail"
+        tools:layout="@layout/activity_exercise_detail" >
+        <argument
+            android:name="id"
+            app:argType="long" />
+        <argument
+            android:name="exerciseName"
+            app:argType="string" />
+        <argument
+            android:name="description"
+            app:argType="string" />
+        <argument
+            android:name="objective"
+            app:argType="string" />
+        <argument
+            android:name="exerciseType"
+            app:argType="string" />
+    </activity>
+    <activity
+        android:id="@+id/stretchingDetailActivity"
+        android:name="com.example.tfmmobile.ui.detail.stretching.StretchingDetailActivity"
+        android:label="activity_stretching_detail"
+        tools:layout="@layout/activity_stretching_detail" >
+        <argument
+            android:name="id"
+            app:argType="long" />
+        <argument
+            android:name="stretchingName"
+            app:argType="string" />
+        <argument
+            android:name="description"
+            app:argType="string" />
+        <argument
+            android:name="stretchingType"
             app:argType="string" />
     </activity>
 </navigation>

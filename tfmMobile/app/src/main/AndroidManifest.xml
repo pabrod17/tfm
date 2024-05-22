@@ -17,6 +17,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ui.detail.stretching.StretchingDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.detail.lesion.LesionDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.detail.exercise.ExerciseDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.detail.training.TrainingDetailActivity"
             android:exported="false" />
         <activity

@@ -18,6 +18,7 @@
 
     <string name="add">Add</string>
     <string name="update">Update</string>
+    <string name="type">Type</string>
 
 
     <string name="playerName">Name</string>
@@ -85,7 +86,7 @@
     <string name="exercisesTypeTactic">Tactic</string>
     <string name="exercisesTypeTechnique">Technique</string>
     <string name="exercisesTypePhysical">Physical</string>
-    <string name="exercisesTypeGlobalized">Globalized</string>
+    <string name="exercisesTypeGlobalized">Global</string>
     <string name="exercisesTypeSpecific">Specific</string>
     <string name="exercisesTypePsychological">Psychological</string>
     <string name="exercisesTypeStrategy">Strategy</string>

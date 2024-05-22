@@ -78,7 +78,7 @@ class ExerciseCategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                 }
             }
 
-            ExerciseCategory.Globalized -> {
+            ExerciseCategory.Global -> {
                 tvLesionCategoryName.text =
                     ContextCompat.getString(tvLesionCategoryName.context, R.string.exercisesTypeGlobalized)
 //                tvLesionCategoryLayout.background = ContextCompat.getDrawable(
