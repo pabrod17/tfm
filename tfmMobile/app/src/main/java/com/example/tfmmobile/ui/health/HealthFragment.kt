@@ -99,7 +99,9 @@ class HealthFragment : Fragment() {
         "Articular" to "Joint",
         "Columna Vertebral" to "Spine",
         "ColumnaVertebral" to "Spine",
-        "Psicológica" to "Psychological"
+        "Psicológica" to "Psychological",
+        "Psicologica" to "Psychological"
+
     )
 
     private val exerciseCategories = listOf(
@@ -115,11 +117,16 @@ class HealthFragment : Fragment() {
 
     val exerciseTypeMapEsToEn = mapOf(
         "Táctico" to "Tactic",
-        "Técnico" to "Technique",
+        "Tactico" to "Tactic",
+        "Técnica" to "Technique",
+        "Tecnica" to "Technique",
         "Físico" to "Physical",
+        "Fisico" to "Physical",
         "Globalizado" to "Globalized",
         "Específico" to "Specific",
+        "Especifico" to "Specific",
         "Psicológico" to "Psychological",
+        "Psicologico" to "Psychological",
         "Estrategia" to "Strategy",
         "PrePartido" to "PreMatch"
     )
@@ -140,14 +147,17 @@ class HealthFragment : Fragment() {
     val stretchingTypeMapEsToEn = mapOf(
         "Isquiotibiales" to "Hamstrings",
         "Glúteos" to "Buttocks",
+        "Gluteos" to "Buttocks",
         "Gemelos" to "Calf",
         "Adductores" to "Adductors",
         "Hombro" to "Shoulder",
         "Cuádriceps" to "Quadriceps",
+        "Cuadriceps" to "Quadriceps",
         "Espalda" to "Back",
         "Pectoral" to "Pectoral",
         "Ingle" to "Crotch",
-        "TrÍceps" to "Triceps"
+        "Tríceps" to "Triceps",
+        "Triceps" to "Triceps"
     )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

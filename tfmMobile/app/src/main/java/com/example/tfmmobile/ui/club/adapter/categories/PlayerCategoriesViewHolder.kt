@@ -26,6 +26,8 @@ class PlayerCategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         when (tvPlayerCategory) {
             PlayerCategory.PointGuard -> {
+                playerCategoryPrincipal.radius = dpToPx(10f, playerCategoryPrincipal.context)
+
                 tvPlayerCategoryName.visibility = View.VISIBLE
                 ivPlayerDetailInjuredCard.visibility = View.GONE
                 tvPlayerCategoryName.text =
@@ -41,12 +43,15 @@ class PlayerCategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 //                        tvPlayerCategoryLayout.context,
 //                        R.drawable.gradient_background_player_category_position1_selected
 //                    )
+                    playerCategoryPrincipal.radius = dpToPx(10f, playerCategoryPrincipal.context)
                     tvPlayerCategoryName.setTextColor(ContextCompat.getColor(tvPlayerCategoryName.context, R.color.primaryDark))
                     tvPlayerCategoryLayout.setBackgroundColor(ContextCompat.getColor(tvPlayerCategoryLayout.context, R.color.position4))
                 }
             }
 
             PlayerCategory.ShootingGuard -> {
+                playerCategoryPrincipal.radius = dpToPx(10f, playerCategoryPrincipal.context)
+
                 tvPlayerCategoryName.visibility = View.VISIBLE
                 ivPlayerDetailInjuredCard.visibility = View.GONE
                 tvPlayerCategoryName.text =
@@ -62,12 +67,15 @@ class PlayerCategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 //                        tvPlayerCategoryLayout.context,
 //                        R.drawable.gradient_background_player_category_position2_selected
 //                    )
+                    playerCategoryPrincipal.radius = dpToPx(10f, playerCategoryPrincipal.context)
                     tvPlayerCategoryName.setTextColor(ContextCompat.getColor(tvPlayerCategoryName.context, R.color.primaryDark))
                     tvPlayerCategoryLayout.setBackgroundColor(ContextCompat.getColor(tvPlayerCategoryLayout.context, R.color.position5))
                 }
             }
 
             PlayerCategory.SmallForward -> {
+                playerCategoryPrincipal.radius = dpToPx(10f, playerCategoryPrincipal.context)
+
                 tvPlayerCategoryName.visibility = View.VISIBLE
                 ivPlayerDetailInjuredCard.visibility = View.GONE
                 tvPlayerCategoryName.text =
@@ -83,12 +91,15 @@ class PlayerCategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 //                        tvPlayerCategoryLayout.context,
 //                        R.drawable.gradient_background_player_category_position3_selected
 //                    )
+                    playerCategoryPrincipal.radius = dpToPx(10f, playerCategoryPrincipal.context)
                     tvPlayerCategoryName.setTextColor(ContextCompat.getColor(tvPlayerCategoryName.context, R.color.primaryDark))
                     tvPlayerCategoryLayout.setBackgroundColor(ContextCompat.getColor(tvPlayerCategoryLayout.context, R.color.position3))
                 }
             }
 
             PlayerCategory.PowerForward -> {
+                playerCategoryPrincipal.radius = dpToPx(10f, playerCategoryPrincipal.context)
+
                 tvPlayerCategoryName.visibility = View.VISIBLE
                 ivPlayerDetailInjuredCard.visibility = View.GONE
                 tvPlayerCategoryName.text =
@@ -104,12 +115,15 @@ class PlayerCategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 //                        tvPlayerCategoryLayout.context,
 //                        R.drawable.gradient_background_player_category_position4_selected
 //                    )
+                    playerCategoryPrincipal.radius = dpToPx(10f, playerCategoryPrincipal.context)
                     tvPlayerCategoryName.setTextColor(ContextCompat.getColor(tvPlayerCategoryName.context, R.color.primaryDark))
                     tvPlayerCategoryLayout.setBackgroundColor(ContextCompat.getColor(tvPlayerCategoryLayout.context, R.color.position2))
                 }
             }
 
             PlayerCategory.Center -> {
+                playerCategoryPrincipal.radius = dpToPx(10f, playerCategoryPrincipal.context)
+
                 tvPlayerCategoryName.visibility = View.VISIBLE
                 ivPlayerDetailInjuredCard.visibility = View.GONE
                 tvPlayerCategoryName.text =
@@ -125,6 +139,7 @@ class PlayerCategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 //                        tvPlayerCategoryLayout.context,
 //                        R.drawable.gradient_background_player_category_position5_selected
 //                    )
+                    playerCategoryPrincipal.radius = dpToPx(10f, playerCategoryPrincipal.context)
                     tvPlayerCategoryName.setTextColor(ContextCompat.getColor(tvPlayerCategoryName.context, R.color.primaryDark))
                     tvPlayerCategoryLayout.setBackgroundColor(ContextCompat.getColor(tvPlayerCategoryLayout.context, R.color.position1))
                 }
@@ -133,7 +148,13 @@ class PlayerCategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             PlayerCategory.Injured -> {
                 tvPlayerCategoryName.visibility = View.GONE
                 ivPlayerDetailInjuredCard.visibility = View.VISIBLE
-                playerCategoryPrincipal.radius = 360f
+                playerCategoryPrincipal.radius = dpToPx(360f, playerCategoryPrincipal.context)
+                ivPlayerDetailInjuredCard.setBackgroundColor(
+                    ContextCompat.getColor(
+                        ivPlayerDetailInjuredCard.context,
+                        R.color.primaryDark
+                    )
+                )
 
                 if (tvPlayerCategory.isSelected) {
                     ivPlayerDetailInjuredCard.setBackgroundColor(
@@ -142,12 +163,15 @@ class PlayerCategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                             R.color.injured
                         )
                     )
-                    playerCategoryPrincipal.radius = 360f
+                    playerCategoryPrincipal.radius = dpToPx(360f, playerCategoryPrincipal.context)
                     cardInjuredPlayer.setImageResource(R.drawable.trianglered)
                 }
 
             }
 
         }
+    }
+    private fun dpToPx(dp: Float, context: Context): Float {
+        return dp * context.resources.displayMetrics.density
     }
 }
