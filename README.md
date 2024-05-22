@@ -225,6 +225,10 @@ Club section -> Players List with new tabs:
 
 ![ToolBare](playerCategories.png)
 
+Club section -> Players List with new tabs VERSION 2:
+
+![ToolBare](playerlayout2.png)
+
 Events section -> Games List:
 
 ![ToolBare](gamesMobile.png)
@@ -232,3 +236,15 @@ Events section -> Games List:
 Events section -> Trainings List:
 
 ![ToolBare](trainingsMobile.png)
+
+Health section -> Lesion List:
+
+![ToolBare](lesionlayout2.png)
+
+Health section -> Exercises List:
+
+![ToolBare](exerciseslayout.png)
+
+Health section -> Stretchings List:
+
+![ToolBare](stretchingslayout.png)
