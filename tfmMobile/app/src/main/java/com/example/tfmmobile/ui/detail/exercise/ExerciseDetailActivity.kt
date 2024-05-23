@@ -176,7 +176,7 @@ class ExerciseDetailActivity : AppCompatActivity() {
             binding.autoCompleteExerciseType.setTextColor(
                 ContextCompat.getColor(
                     binding.autoCompleteExerciseType.context,
-                    R.color.exercise6
+                    R.color.cardPlayAttack2
                 )
             )
         }

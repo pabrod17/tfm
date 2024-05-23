@@ -123,7 +123,7 @@ class ExerciseCategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 //                    tvLesionCategoryLayout.context,
 //                    R.drawable.gradient_background_exercise_category_exercise6
 //                )
-                tvLesionCategoryName.setTextColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.exercise6))
+                tvLesionCategoryName.setTextColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.cardPlayAttack2))
                 tvLesionCategoryLayout.setBackgroundColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.primaryDark))
                 if (tvLesionCategory.isSelected) {
 //                    tvLesionCategoryLayout.background = ContextCompat.getDrawable(
@@ -131,7 +131,7 @@ class ExerciseCategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 //                        R.drawable.gradient_background_exercise_category_exercise6_selected
 //                    )
                     tvLesionCategoryName.setTextColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.primaryDark))
-                    tvLesionCategoryLayout.setBackgroundColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.exercise6))
+                    tvLesionCategoryLayout.setBackgroundColor(ContextCompat.getColor(tvLesionCategoryName.context, R.color.cardPlayAttack2))
                 }
             }
 

@@ -40,6 +40,15 @@
 
     <color name="cardExercise22Card">#AB873109</color>
 
+    <color name="cardPlay1">#41AF24</color>
+    <color name="cardPlay11">#4BCA2A</color>
+
+    <color name="cardPlay2">#062C76</color>
+
+    <color name="cardPlayDefense">#41AF24</color>
+    <color name="cardPlayAttack">#062C76</color>
+    <color name="cardPlayAttack2">#0040FF</color>
+
 
     <color name="cardLesion">#590040FF</color>
     <color name="cardLesionPrev">#590430B3</color>
@@ -87,6 +96,7 @@
     <color name="primary">#1f1f1f</color>
     <color name="primaryDark">#181818</color>
     <color name="primaryDark2">#2F2D2D</color>
+    <color name="primaryDarkblue">#081D43</color>
 
     <!--    <color name="primary">#14213d</color>-->
     <!--    <color name="primaryDark">#041E42</color>-->
@@ -127,6 +137,8 @@
     <color name="stretching9">#FFFF00</color>
     <color name="stretching10">#DD2476</color>
 
+    <color name="stretching4222">#108710</color>
+    <color name="stretching4222blue">#108710</color>
 
 
 

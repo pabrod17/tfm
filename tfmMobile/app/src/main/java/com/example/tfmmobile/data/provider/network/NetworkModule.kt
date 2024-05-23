@@ -6,6 +6,7 @@ import com.example.tfmmobile.data.core.interceptors.TokenManage3
 import com.example.tfmmobile.data.provider.ExerciseRepositoryImpl
 import com.example.tfmmobile.data.provider.GameRepositoryImpl
 import com.example.tfmmobile.data.provider.LesionRepositoryImpl
+import com.example.tfmmobile.data.provider.PlayRepositoryImpl
 import com.example.tfmmobile.data.provider.PlayerRepositoryImpl
 import com.example.tfmmobile.data.provider.RepositoryImpl
 import com.example.tfmmobile.data.provider.SeasonRepositoryImpl
@@ -16,6 +17,7 @@ import com.example.tfmmobile.domain.model.Repository
 import com.example.tfmmobile.domain.model.exercise.ExerciseRepository
 import com.example.tfmmobile.domain.model.game.GameRepository
 import com.example.tfmmobile.domain.model.lesion.LesionRepository
+import com.example.tfmmobile.domain.model.play.PlayRepository
 import com.example.tfmmobile.domain.model.player.PlayerRepository
 import com.example.tfmmobile.domain.model.season.SeasonRepository
 import com.example.tfmmobile.domain.model.stretching.StretchingRepository
@@ -168,6 +170,15 @@ object NetworkModule {
     @Provides
     fun provideStretchingRepository(apiService: StretchingApiService): StretchingRepository {
         return StretchingRepositoryImpl(apiService)
+    }
+
+    @Provides
+    fun providePlayApiService(retrofit: Retrofit): PlayApiService{
+        return retrofit.create(PlayApiService::class.java)
+    }
+    @Provides
+    fun providePlayRepository(apiService: PlayApiService): PlayRepository {
+        return PlayRepositoryImpl(apiService)
     }
 
 }

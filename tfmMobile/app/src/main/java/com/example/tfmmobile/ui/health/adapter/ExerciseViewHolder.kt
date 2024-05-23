@@ -87,7 +87,7 @@ class ExerciseViewHolder(view: View): RecyclerView.ViewHolder(view) {
             binding.tvTypeExerciseValue.setTextColor(
                 ContextCompat.getColor(
                     tvTypeExerciseValue.context,
-                    R.color.exercise6
+                    R.color.cardPlayAttack2
                 )
             )
         }
