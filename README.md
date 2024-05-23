@@ -248,3 +248,19 @@ Health section -> Exercises List:
 Health section -> Stretchings List:
 
 ![ToolBare](stretchingslayout.png)
+
+Health section -> Lesion Detail:
+
+![ToolBare](lesiondetail.png)
+
+Health section -> Exercise Detail:
+
+![ToolBare](exercisedetail.png)
+
+Health section -> Stretching Detail:
+
+![ToolBare](stretchingdetail.png)
+
+Plays section -> Plays List:
+
+![ToolBare](playslout.png)
