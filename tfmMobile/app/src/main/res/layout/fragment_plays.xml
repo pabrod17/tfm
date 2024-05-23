@@ -28,14 +28,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="12dp"
             />
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvPlaysCategories"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="15dp"
             />
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
