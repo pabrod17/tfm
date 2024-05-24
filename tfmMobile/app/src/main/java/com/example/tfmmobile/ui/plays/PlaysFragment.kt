@@ -28,6 +28,7 @@ import com.example.tfmmobile.R
 import com.example.tfmmobile.databinding.FragmentPlaysBinding
 import com.example.tfmmobile.domain.model.PlayModel
 import com.example.tfmmobile.domain.model.TeamModel
+import com.example.tfmmobile.ui.club.ClubCategory
 import com.example.tfmmobile.ui.club.ClubViewModel
 import com.example.tfmmobile.ui.events.EventsCategory
 import com.example.tfmmobile.ui.plays.adapter.PlayAdapter
@@ -100,60 +101,11 @@ class PlaysFragment : Fragment() {
             checkCategorySelected(dialog)
             initTypes(dialog)
             initTeamsOptions(dialog)
-            val rgOption: RadioGroup = dialog.findViewById(R.id.rgOption)
-            rgOption.setOnCheckedChangeListener { _, checkedId ->
-                when (checkedId) {
-                    R.id.rbPlay -> {
-                        val rbPlay: RadioButton = dialog.findViewById(R.id.rbPlay)
-                        rbPlay.visibility = View.GONE
-                        showEditTextInputsToAddPlay(dialog)
-                    }
-                }
-            }
 
             val addPlaysButtonDialog: Button = dialog.findViewById(R.id.addPlaysButtonDialog)
 
             addPlaysButtonDialog.setOnClickListener() {
-                val selectedId = rgOption.checkedRadioButtonId
-                val selectedRadioButton = rgOption.findViewById<RadioButton>(selectedId)
-
-                when (selectedRadioButton.text) {
-                    //Add new item: team, season or player
-
-                    getString(R.string.play) -> {
-                        val etTitlePLay = dialog.findViewById<EditText>(R.id.etTitlePLay)
-
-                        val typeSelected =
-                            dialog.findViewById<AutoCompleteTextView>(R.id.autoCompleteType)
-
-                        val etGesture = dialog.findViewById<EditText>(R.id.etGesture)
-
-                        val etPosition1 = dialog.findViewById<EditText>(R.id.etPosition1)
-                        val etPosition2 = dialog.findViewById<EditText>(R.id.etPosition2)
-                        val etPosition3 = dialog.findViewById<EditText>(R.id.etPosition3)
-                        val etPosition4 = dialog.findViewById<EditText>(R.id.etPosition4)
-                        val etPosition5 = dialog.findViewById<EditText>(R.id.etPosition5)
-
-                        val etDescription = dialog.findViewById<EditText>(R.id.etDescription)
-                        val teamSelected =
-                            dialog.findViewById<AutoCompleteTextView>(R.id.autoCompleteTeamPlays)
-
-                        playsViewModel.addPlay(
-                            getTeamSelected(teamSelected),
-                            etTitlePLay.text.toString(),
-                            getPlayType(typeSelected),
-                            etGesture.text.toString(),
-                            etPosition1.text.toString(),
-                            etPosition2.text.toString(),
-                            etPosition3.text.toString(),
-                            etPosition4.text.toString(),
-                            etPosition5.text.toString(),
-                            etDescription.text.toString(),
-                            requireActivity()
-                        )
-                        updatePlaysList()
-                    }
-                }
+                checkCategorySelectedToAddItem(dialog)
                 dialog.hide()
             }
             dialog.show()
@@ -233,12 +185,48 @@ class PlaysFragment : Fragment() {
             if (category.isSelected) {
                 when (category) {
                     is PlaysCategory.Plays -> {
-                        val rbPlay = dialog.findViewById<View>(R.id.rbPlay)
-                        rbPlay.visibility = View.VISIBLE
+                        val rbPlay = dialog.findViewById<RadioButton>(R.id.rbPlay)
+                        rbPlay.isChecked = true
+//                        rbPlay.visibility = View.VISIBLE
+                        showEditTextInputsToAddPlay(dialog)
                     }
                 }
             }
         }
+    }
+
+    private fun checkCategorySelectedToAddItem(dialog: Dialog) {
+                        val etTitlePLay = dialog.findViewById<EditText>(R.id.etTitlePLay)
+
+                        val typeSelected =
+                            dialog.findViewById<AutoCompleteTextView>(R.id.autoCompleteType)
+
+                        val etGesture = dialog.findViewById<EditText>(R.id.etGesture)
+
+                        val etPosition1 = dialog.findViewById<EditText>(R.id.etPosition1)
+                        val etPosition2 = dialog.findViewById<EditText>(R.id.etPosition2)
+                        val etPosition3 = dialog.findViewById<EditText>(R.id.etPosition3)
+                        val etPosition4 = dialog.findViewById<EditText>(R.id.etPosition4)
+                        val etPosition5 = dialog.findViewById<EditText>(R.id.etPosition5)
+
+                        val etDescription = dialog.findViewById<EditText>(R.id.etDescription)
+                        val teamSelected =
+                            dialog.findViewById<AutoCompleteTextView>(R.id.autoCompleteTeamPlays)
+
+                        playsViewModel.addPlay(
+                            getTeamSelected(teamSelected),
+                            etTitlePLay.text.toString(),
+                            getPlayType(typeSelected),
+                            etGesture.text.toString(),
+                            etPosition1.text.toString(),
+                            etPosition2.text.toString(),
+                            etPosition3.text.toString(),
+                            etPosition4.text.toString(),
+                            etPosition5.text.toString(),
+                            etDescription.text.toString(),
+                            requireActivity()
+                        )
+                        updatePlaysList()
     }
 
     private fun initUi() {

@@ -117,97 +117,32 @@ class EventsFragment : Fragment() {
 
             initTeamsOptions(dialog)
             initSeasonsOptions(dialog)
-            val rgOption: RadioGroup = dialog.findViewById(R.id.rgOption)
-            rgOption.setOnCheckedChangeListener { _, checkedId ->
-                when (checkedId) {
-                    R.id.rbGame -> {
-                        val rbTraining: RadioButton = dialog.findViewById(R.id.rbTraining)
-                        rbTraining.visibility = View.GONE
-                        showEditTextInputsToAddGame(dialog)
-
-                    }
-
-                    R.id.rbTraining -> {
-                        val rbGame: RadioButton = dialog.findViewById(R.id.rbGame)
-                        rbGame.visibility = View.GONE
-                        showEditTextInputsToAddTraining(dialog)
-                    }
-                }
-            }
+//            val rgOption: RadioGroup = dialog.findViewById(R.id.rgOption)
+//            rgOption.setOnCheckedChangeListener { _, checkedId ->
+//                when (checkedId) {
+//                    R.id.rbGame -> {
+//                        val rbTraining: RadioButton = dialog.findViewById(R.id.rbTraining)
+//                        rbTraining.visibility = View.GONE
+//                        showEditTextInputsToAddGame(dialog)
+//
+//                    }
+//
+//                    R.id.rbTraining -> {
+//                        val rbGame: RadioButton = dialog.findViewById(R.id.rbGame)
+//                        rbGame.visibility = View.GONE
+//                        showEditTextInputsToAddTraining(dialog)
+//                    }
+//                }
+//            }
 
             val addTeamButtonDialog: Button = dialog.findViewById(R.id.addTeamButtonDialogEvents)
 
             addTeamButtonDialog.setOnClickListener() {
-                val selectedId = rgOption.checkedRadioButtonId
-                val selectedRadioButton = rgOption.findViewById<RadioButton>(selectedId)
+
+                checkCategorySelectedToAddItem(dialog)
 
 
 
-                when (selectedRadioButton.text) {
-                    //Add new item: team, season or player
-
-                    getString(R.string.game) -> {
-                        val teamSelected =
-                            dialog.findViewById<AutoCompleteTextView>(R.id.autoCompleteTeam)
-                        val seasonSelected =
-                            dialog.findViewById<AutoCompleteTextView>(R.id.autoCompleteSeason)
-                        val etDate = dialog.findViewById<EditText>(R.id.etDate)
-                        val etRival = dialog.findViewById<EditText>(R.id.etRival)
-                        val etDescription = dialog.findViewById<EditText>(R.id.etDescription)
-                        println("dentro de viewMODEL::: " + teamSelected)
-                        println("dentro de viewMODEL::: " + teamSelected)
-                        println("dentro de viewMODEL::: " + teamSelected)
-                        println("dentro de viewMODEL::: " + teamSelected)
-                        println("dentro de viewMODEL::: " + teamSelected)
-
-
-                        println("dentro de viewMODEL season::: " + seasonSelected)
-                        println("dentro de viewMODEL season::: " + seasonSelected)
-                        println("dentro de viewMODEL season::: " + seasonSelected)
-                        println("dentro de viewMODEL season::: " + seasonSelected)
-                        eventsViewModel.addGame(
-                            getTeamSelected(teamSelected),
-                            getSeasonSelected(seasonSelected),
-                            returnDateConverter(etDate.text.toString()),
-                            etRival.text.toString(), etDescription.text.toString(), requireActivity()
-                        )
-
-                        println("gameeee")
-                        println("gameeee")
-                        println("gameeee")
-                        updateGamesList()
-
-
-                    }
-
-                    else -> {
-                        val teamSelected =
-                            dialog.findViewById<AutoCompleteTextView>(R.id.autoCompleteTeam)
-                        val seasonSelected =
-                            dialog.findViewById<AutoCompleteTextView>(R.id.autoCompleteSeason)
-                        val etDate = dialog.findViewById<EditText>(R.id.etDate)
-                        val etDurationMinutes = dialog.findViewById<EditText>(R.id.etDurationMinutes)
-                        val etDescription = dialog.findViewById<EditText>(R.id.etDescription)
-                        val etObjective = dialog.findViewById<EditText>(R.id.etObjective)
-
-                        println("training")
-                        println("training")
-                        println("training")
-                        println("training")
-                        println("training")
-                        eventsViewModel.addTraining(
-                            getTeamSelected(teamSelected),
-                            getSeasonSelected(seasonSelected),
-                            returnDateConverter(etDate.text.toString()),
-                            returnTimeConverter(etDurationMinutes.text.toString()),
-                            etDescription.text.toString(),
-                            etObjective.text.toString(), requireActivity()
-                        )
-
-                        updateTrainingsList()
-
-                    }
-                }
 
                 dialog.hide()
 
@@ -425,20 +360,104 @@ class EventsFragment : Fragment() {
                 // Realizar acciones específicas para la categoría seleccionada
                 when (category) {
                     is EventsCategory.Games -> {
-                        val rbGame = dialog.findViewById<View>(R.id.rbGame)
+                        val rbGame = dialog.findViewById<RadioButton>(R.id.rbGame)
                         rbGame.visibility = View.VISIBLE
-
-                        val rbTraining = dialog.findViewById<View>(R.id.rbTraining)
-                        rbTraining.visibility = View.GONE
+                        rbGame.isChecked = true
+//
+//                        val rbTraining = dialog.findViewById<View>(R.id.rbTraining)
+//                        rbTraining.visibility = View.GONE
+                        showEditTextInputsToAddGame(dialog)
 
                     }
 
                     is EventsCategory.Trainings -> {
-                        val rbTraining = dialog.findViewById<View>(R.id.rbTraining)
+                        val rbTraining = dialog.findViewById<RadioButton>(R.id.rbTraining)
                         rbTraining.visibility = View.VISIBLE
+                        rbTraining.isChecked = true
 
-                        val rbGame = dialog.findViewById<View>(R.id.rbGame)
-                        rbGame.visibility = View.GONE
+//
+//                        val rbGame = dialog.findViewById<View>(R.id.rbGame)
+//                        rbGame.visibility = View.GONE
+                        showEditTextInputsToAddTraining(dialog)
+
+
+
+                    }
+                }
+            }
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun checkCategorySelectedToAddItem(dialog: Dialog) {
+        for (category in categories) {
+            // Verificar si la categoría está seleccionada
+            if (category.isSelected) {
+                // Realizar acciones específicas para la categoría seleccionada
+                when (category) {
+                    is EventsCategory.Games -> {
+//                        val rbGame = dialog.findViewById<View>(R.id.rbGame)
+//                        rbGame.visibility = View.VISIBLE
+//
+//                        val rbTraining = dialog.findViewById<View>(R.id.rbTraining)
+//                        rbTraining.visibility = View.GONE
+                        val teamSelected =
+                            dialog.findViewById<AutoCompleteTextView>(R.id.autoCompleteTeam)
+                        val seasonSelected =
+                            dialog.findViewById<AutoCompleteTextView>(R.id.autoCompleteSeason)
+                        val etDate = dialog.findViewById<EditText>(R.id.etDate)
+                        val etRival = dialog.findViewById<EditText>(R.id.etRival)
+                        val etDescription = dialog.findViewById<EditText>(R.id.etDescription)
+                        println("dentro de viewMODEL::: " + teamSelected)
+                        println("dentro de viewMODEL::: " + teamSelected)
+                        println("dentro de viewMODEL::: " + teamSelected)
+                        println("dentro de viewMODEL::: " + teamSelected)
+                        println("dentro de viewMODEL::: " + teamSelected)
+
+
+                        println("dentro de viewMODEL season::: " + seasonSelected)
+                        println("dentro de viewMODEL season::: " + seasonSelected)
+                        println("dentro de viewMODEL season::: " + seasonSelected)
+                        println("dentro de viewMODEL season::: " + seasonSelected)
+                        eventsViewModel.addGame(
+                            getTeamSelected(teamSelected),
+                            getSeasonSelected(seasonSelected),
+                            returnDateConverter(etDate.text.toString()),
+                            etRival.text.toString(), etDescription.text.toString(), requireActivity()
+                        )
+                    }
+
+                    is EventsCategory.Trainings -> {
+//                        val rbTraining = dialog.findViewById<View>(R.id.rbTraining)
+//                        rbTraining.visibility = View.VISIBLE
+//
+//                        val rbGame = dialog.findViewById<View>(R.id.rbGame)
+//                        rbGame.visibility = View.GONE
+                        val teamSelected =
+                            dialog.findViewById<AutoCompleteTextView>(R.id.autoCompleteTeam)
+                        val seasonSelected =
+                            dialog.findViewById<AutoCompleteTextView>(R.id.autoCompleteSeason)
+                        val etDate = dialog.findViewById<EditText>(R.id.etDate)
+                        val etDurationMinutes = dialog.findViewById<EditText>(R.id.etDurationMinutes)
+                        val etDescription = dialog.findViewById<EditText>(R.id.etDescription)
+                        val etObjective = dialog.findViewById<EditText>(R.id.etObjective)
+
+                        println("training")
+                        println("training")
+                        println("training")
+                        println("training")
+                        println("training")
+                        eventsViewModel.addTraining(
+                            getTeamSelected(teamSelected),
+                            getSeasonSelected(seasonSelected),
+                            returnDateConverter(etDate.text.toString()),
+                            returnTimeConverter(etDurationMinutes.text.toString()),
+                            etDescription.text.toString(),
+                            etObjective.text.toString(), requireActivity()
+                        )
+
+                        updateTrainingsList()
+
                     }
                 }
             }
