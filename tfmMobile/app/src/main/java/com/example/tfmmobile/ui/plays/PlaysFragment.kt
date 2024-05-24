@@ -1,11 +1,20 @@
 package com.example.tfmmobile.ui.plays
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
+import android.widget.Button
+import android.widget.EditText
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -18,11 +27,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tfmmobile.R
 import com.example.tfmmobile.databinding.FragmentPlaysBinding
 import com.example.tfmmobile.domain.model.PlayModel
+import com.example.tfmmobile.domain.model.TeamModel
+import com.example.tfmmobile.ui.club.ClubViewModel
+import com.example.tfmmobile.ui.events.EventsCategory
 import com.example.tfmmobile.ui.plays.adapter.PlayAdapter
 import com.example.tfmmobile.ui.plays.adapter.PlayCategory
 import com.example.tfmmobile.ui.plays.adapter.categories.CategoriesAdapter
 import com.example.tfmmobile.ui.plays.adapter.categories.PlayCategoriesAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -33,10 +46,12 @@ class PlaysFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val playsViewModel by viewModels<PlaysViewModel>()
+    private val clubViewModel by viewModels<ClubViewModel>()
 
     private lateinit var playAdapter: PlayAdapter
 
     lateinit var playList: List<PlayModel>
+    lateinit var teamsList: List<TeamModel>
 
     private lateinit var rvCategories: RecyclerView
     private lateinit var rvTeams: RecyclerView
@@ -53,22 +68,175 @@ class PlaysFragment : Fragment() {
         PlayCategory.Defense,
         PlayCategory.Attack
     )
+    val playTypeMap = mapOf(
+        "Defense" to "Defensa",
+        "Attack" to "Ataque"
+    )
     val playTypeMapEsToEn = mapOf(
         "Defensa" to "Defense",
         "Ataque" to "Attack"
     )
 
 
-    private lateinit var addTeamButton: FloatingActionButton
+    private lateinit var addPlaysButton: FloatingActionButton
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         rvPlaysCategories = binding.rvPlaysCategories
-
+        teamsList = clubViewModel.getTeams()
         playList = playsViewModel.getPlays()
         initUi()
-//        initListeners()
+        initListeners()
         configSwipe()
+    }
+
+    private fun initListeners() {
+        addPlaysButton.setOnClickListener() {
+
+
+            val dialog = Dialog(requireActivity())
+            dialog.setContentView(R.layout.dialog_add_plays)
+            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            checkCategorySelected(dialog)
+            initTypes(dialog)
+            initTeamsOptions(dialog)
+            val rgOption: RadioGroup = dialog.findViewById(R.id.rgOption)
+            rgOption.setOnCheckedChangeListener { _, checkedId ->
+                when (checkedId) {
+                    R.id.rbPlay -> {
+                        val rbPlay: RadioButton = dialog.findViewById(R.id.rbPlay)
+                        rbPlay.visibility = View.GONE
+                        showEditTextInputsToAddPlay(dialog)
+                    }
+                }
+            }
+
+            val addPlaysButtonDialog: Button = dialog.findViewById(R.id.addPlaysButtonDialog)
+
+            addPlaysButtonDialog.setOnClickListener() {
+                val selectedId = rgOption.checkedRadioButtonId
+                val selectedRadioButton = rgOption.findViewById<RadioButton>(selectedId)
+
+                when (selectedRadioButton.text) {
+                    //Add new item: team, season or player
+
+                    getString(R.string.play) -> {
+                        val etTitlePLay = dialog.findViewById<EditText>(R.id.etTitlePLay)
+
+                        val typeSelected =
+                            dialog.findViewById<AutoCompleteTextView>(R.id.autoCompleteType)
+
+                        val etGesture = dialog.findViewById<EditText>(R.id.etGesture)
+
+                        val etPosition1 = dialog.findViewById<EditText>(R.id.etPosition1)
+                        val etPosition2 = dialog.findViewById<EditText>(R.id.etPosition2)
+                        val etPosition3 = dialog.findViewById<EditText>(R.id.etPosition3)
+                        val etPosition4 = dialog.findViewById<EditText>(R.id.etPosition4)
+                        val etPosition5 = dialog.findViewById<EditText>(R.id.etPosition5)
+
+                        val etDescription = dialog.findViewById<EditText>(R.id.etDescription)
+                        val teamSelected =
+                            dialog.findViewById<AutoCompleteTextView>(R.id.autoCompleteTeamPlays)
+
+                        playsViewModel.addPlay(
+                            getTeamSelected(teamSelected),
+                            etTitlePLay.text.toString(),
+                            getPlayType(typeSelected),
+                            etGesture.text.toString(),
+                            etPosition1.text.toString(),
+                            etPosition2.text.toString(),
+                            etPosition3.text.toString(),
+                            etPosition4.text.toString(),
+                            etPosition5.text.toString(),
+                            etDescription.text.toString(),
+                            requireActivity()
+                        )
+                        updatePlaysList()
+                    }
+                }
+                dialog.hide()
+            }
+            dialog.show()
+        }
+    }
+
+    private fun updatePlaysList() {
+        playAdapter.notifyDataSetChanged()
+    }
+
+    private fun initTeamsOptions(dialog: Dialog) {
+        teamsList = clubViewModel.getTeams()
+        val teamsNames: List<String> = teamsList.map { it.teamName }
+        val autoCompleteTeam: AutoCompleteTextView = dialog.findViewById(R.id.autoCompleteTeamPlays)
+        val adapter = ArrayAdapter(requireActivity(), R.layout.position_item, teamsNames)
+        autoCompleteTeam.setAdapter(adapter)
+    }
+
+    private fun initTypes(dialog: Dialog) {
+        val types = listOf(
+            getString(R.string.playsDefense),
+            getString(R.string.playsAttack)
+        )
+        val autoCompletePosition: AutoCompleteTextView =
+            dialog.findViewById(R.id.autoCompleteType)
+        val adapter = ArrayAdapter(requireActivity(), R.layout.position_item, types)
+        autoCompletePosition.setAdapter(adapter)
+
+    }
+
+    private fun getTeamSelected(teamSelectd: AutoCompleteTextView): Long {
+        val teamIdsAndNames: List<Pair<String, Long>> = teamsList.map { it.teamName to it.id }
+        return teamIdsAndNames.firstOrNull { it.first == teamSelectd.text.toString() }?.second ?: 0
+
+    }
+
+    private fun getPlayType(typeSelected: AutoCompleteTextView): String {
+        val typeNormal = typeSelected.text.toString()
+        val typeSelectedSpanish = playTypeMap[typeNormal]
+        return typeSelectedSpanish ?: typeNormal
+    }
+
+    fun showEditTextInputsToAddPlay(dialog: Dialog) {
+        val typeLayout: TextInputLayout = dialog.findViewById(R.id.typeLayout)
+
+        val etTitlePLay = dialog.findViewById<EditText>(R.id.etTitlePLay)
+        val etGesture = dialog.findViewById<EditText>(R.id.etGesture)
+
+        val etPosition1 = dialog.findViewById<EditText>(R.id.etPosition1)
+        val etPosition2 = dialog.findViewById<EditText>(R.id.etPosition2)
+        val etPosition3 = dialog.findViewById<EditText>(R.id.etPosition3)
+        val etPosition4 = dialog.findViewById<EditText>(R.id.etPosition4)
+        val etPosition5 = dialog.findViewById<EditText>(R.id.etPosition5)
+
+        val etDescription = dialog.findViewById<EditText>(R.id.etDescription)
+        val teamsLayout: TextInputLayout = dialog.findViewById(R.id.teamsOptionLayoutPlays)
+
+        typeLayout.visibility = View.VISIBLE
+
+        etTitlePLay.visibility = View.VISIBLE
+        etGesture.visibility = View.VISIBLE
+
+        etPosition1.visibility = View.VISIBLE
+        etPosition2.visibility = View.VISIBLE
+        etPosition3.visibility = View.VISIBLE
+        etPosition4.visibility = View.VISIBLE
+        etPosition5.visibility = View.VISIBLE
+
+        etDescription.visibility = View.VISIBLE
+        teamsLayout.visibility = View.VISIBLE
+    }
+
+    private fun checkCategorySelected(dialog: Dialog) {
+        for (category in categories) {
+            if (category.isSelected) {
+                when (category) {
+                    is PlaysCategory.Plays -> {
+                        val rbPlay = dialog.findViewById<View>(R.id.rbPlay)
+                        rbPlay.visibility = View.VISIBLE
+                    }
+                }
+            }
+        }
     }
 
     private fun initUi() {
@@ -118,6 +286,7 @@ class PlaysFragment : Fragment() {
         activity.findViewById<View>(R.id.toolbar).visibility = View.GONE
         activity.findViewById<View>(R.id.bottomNavView).visibility = View.GONE
         activity.findViewById<View>(R.id.rvCategories).visibility = View.GONE
+        activity.findViewById<View>(R.id.addPlaysButton).visibility = View.GONE
 
     }
 
@@ -126,6 +295,7 @@ class PlaysFragment : Fragment() {
         activity.findViewById<View>(R.id.toolbar).visibility = View.VISIBLE
         activity.findViewById<View>(R.id.bottomNavView).visibility = View.VISIBLE
         activity.findViewById<View>(R.id.rvCategories).visibility = View.VISIBLE
+        activity.findViewById<View>(R.id.addPlaysButton).visibility = View.VISIBLE
     }
 
     private fun configSwipe() {
@@ -156,6 +326,7 @@ class PlaysFragment : Fragment() {
     private fun initComponent() {
         rvCategories = binding.rvCategories
         rvTeams = binding.rvTeams
+        addPlaysButton = binding.addPlaysButton
     }
 
     private fun initCategories() {

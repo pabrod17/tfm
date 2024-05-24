@@ -8,6 +8,7 @@
     <string name="events">Eventos</string>
     <string name="health">Salud</string>
     <string name="plays">Jugadas</string>
+    <string name="play">Jugada</string>
     <string name="calendar">Calendario</string>
 
     <string name="profile">Perfil</string>
@@ -15,6 +16,9 @@
 
     <string name="add">Añadir</string>
     <string name="update">Actualizar</string>
+
+    <string name="title">Título</string>
+    <string name="gesture">Gesto</string>
 
 
     <string name="playerName">Nombre</string>
