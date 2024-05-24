@@ -134,8 +134,7 @@ class ClubViewModel @Inject constructor(
                     result.ownerName, result.description
                 )
                 println("HOLAAAAAAA ANDANDOOOOOOOOOOO")
-                val intent = Intent(context, MainActivity::class.java)
-                context.startActivity(intent)
+                getTeams()
                 println("HOLAAAAAAA ANDANDOOOOOOOOOOO 222222222222")
             } else {
                 _stateTeam.value = TeamState.Error("Ha ocurrido un error. Inténtelo más tarde.")
@@ -164,8 +163,7 @@ class ClubViewModel @Inject constructor(
                     result.endDate, result.seasonName, result.description
                 )
                 println("HOLAAAAAAA ANDANDOOOOOOOOOOO")
-                val intent = Intent(context, MainActivity::class.java)
-                context.startActivity(intent)
+                getSeasons()
                 println("HOLAAAAAAA ANDANDOOOOOOOOOOO 222222222222")
             } else {
                 _stateSeason.value = SeasonState.Error("Ha ocurrido un error. Inténtelo más tarde.")
@@ -211,8 +209,7 @@ class ClubViewModel @Inject constructor(
                     result.dni, result.teamId, injured
                 )
                 println("HOLAAAAAAA ANDANDOOOOOOOOOOO")
-                val intent = Intent(context, MainActivity::class.java)
-                context.startActivity(intent)
+                getPlayers()
                 println("HOLAAAAAAA ANDANDOOOOOOOOOOO 222222222222")
             } else {
                 _statePlayer.value = PlayerState.Error("Ha ocurrido un error. Inténtelo más tarde.")

@@ -104,8 +104,7 @@ class PlaysViewModel @Inject constructor(
                     result.centerText, result.description
                 )
                 println("HOLAAAAAAA ANDANDOOOOOOOOOOO")
-                val intent = Intent(context, MainActivity::class.java)
-                context.startActivity(intent)
+                getPlays()
                 println("HOLAAAAAAA ANDANDOOOOOOOOOOO 222222222222")
             } else {
                 _statePlay.value = PlayState.Error("Ha ocurrido un error. Inténtelo más tarde.")

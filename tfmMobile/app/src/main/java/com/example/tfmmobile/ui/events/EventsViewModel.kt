@@ -116,8 +116,7 @@ class EventsViewModel @Inject constructor(
                     result.rival, result.description
                 )
                 println("HOLAAAAAAA ANDANDOOOOOOOOOOO")
-                val intent = Intent(context, MainActivity::class.java)
-                context.startActivity(intent)
+                getGames()
                 println("HOLAAAAAAA ANDANDOOOOOOOOOOO 222222222222")
             } else {
                 _stateGame.value = GameState.Error("Ha ocurrido un error. Inténtelo más tarde.")
@@ -148,8 +147,7 @@ class EventsViewModel @Inject constructor(
                     result.durationMinutes, result.description, result.objective
                 )
                 println("HOLAAAAAAA ANDANDOOOOOOOOOOO")
-                val intent = Intent(context, MainActivity::class.java)
-                context.startActivity(intent)
+                getTrainings()
                 println("HOLAAAAAAA ANDANDOOOOOOOOOOO 222222222222")
             } else {
                 _stateTraining.value = TrainingState.Error("Ha ocurrido un error. Inténtelo más tarde.")

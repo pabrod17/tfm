@@ -160,6 +160,8 @@ class PlaysFragment : Fragment() {
         }
     }
 
+
+
     private fun updatePlaysList() {
         playAdapter.notifyDataSetChanged()
     }
