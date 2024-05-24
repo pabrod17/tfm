@@ -56,7 +56,11 @@
         android:id="@+id/playsFragment"
         android:name="com.example.tfmmobile.ui.plays.PlaysFragment"
         android:label="fragment_plays"
-        tools:layout="@layout/fragment_plays" />
+        tools:layout="@layout/fragment_plays" >
+        <action
+            android:id="@+id/action_playsFragment_to_playDetailActivity"
+            app:destination="@id/playDetailActivity" />
+    </fragment>
     <activity
         android:id="@+id/teamDetailActivity"
         android:name="com.example.tfmmobile.ui.detail.team.TeamDetailActivity"
@@ -234,6 +238,42 @@
             app:argType="string" />
         <argument
             android:name="stretchingType"
+            app:argType="string" />
+    </activity>
+    <activity
+        android:id="@+id/playDetailActivity"
+        android:name="com.example.tfmmobile.ui.detail.play.PlayDetailActivity"
+        android:label="activity_play_detail"
+        tools:layout="@layout/activity_play_detail" >
+        <argument
+            android:name="id"
+            app:argType="long" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="playType"
+            app:argType="string" />
+        <argument
+            android:name="gesture"
+            app:argType="string" />
+        <argument
+            android:name="pointGuardText"
+            app:argType="string" />
+        <argument
+            android:name="shootingGuardText"
+            app:argType="string" />
+        <argument
+            android:name="smallForwardText"
+            app:argType="string" />
+        <argument
+            android:name="powerForwardText"
+            app:argType="string" />
+        <argument
+            android:name="centerText"
+            app:argType="string" />
+        <argument
+            android:name="description"
             app:argType="string" />
     </activity>
 </navigation>

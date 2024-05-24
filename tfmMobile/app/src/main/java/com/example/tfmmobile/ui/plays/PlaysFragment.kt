@@ -21,6 +21,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -389,14 +390,20 @@ class PlaysFragment : Fragment() {
         playAdapter = PlayAdapter(onItemSelected = {
 //            Toast.makeText(context, it.teamName, Toast.LENGTH_LONG).show()
 
-//            findNavController().navigate(
-//                HealthFragmentDirections.actionHealthFragmentToStretchingDetailActivity(
-//                    it.id,
-//                    it.stretchingName,
-//                    it.description,
-//                    it.stretchingType
-//                )
-//            )
+            findNavController().navigate(
+                PlaysFragmentDirections.actionPlaysFragmentToPlayDetailActivity(
+                    it.id,
+                    it.title,
+                    it.playType,
+                    it.gesture,
+                    it.pointGuardText,
+                    it.shootingGuardText,
+                    it.smallForwardText,
+                    it.powerForwardText,
+                    it.centerText,
+                    it.description
+                )
+            )
         })
 
         rvTeams.apply {
