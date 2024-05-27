@@ -16,6 +16,10 @@ data class LoginResponse(
     fun toDomain(): UserModel {
         prefs.saveAuthToken(serviceToken)
         prefs.saveUserId(user.id.toString())
+        prefs.saveUserName(user.userName)
+        prefs.saveUserFirstName(user.firstName)
+        prefs.saveUserSurnames(user.lastName)
+        prefs.saveUserEmail(user.email)
         prefs.saveLoginState("opened")
         return UserModel(
             id = user.id,

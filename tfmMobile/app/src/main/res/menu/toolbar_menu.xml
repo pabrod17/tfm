@@ -4,6 +4,9 @@
         android:id="@+id/profile"
         android:title="@string/profile"/>
     <item
+        android:id="@+id/change_password"
+        android:title="@string/login_hint_password"/>
+    <item
         android:id="@+id/logout"
         android:title="@string/logout"/>
 </menu>

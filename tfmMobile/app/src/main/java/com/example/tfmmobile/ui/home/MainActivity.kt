@@ -19,6 +19,7 @@ import com.example.tfmmobile.TfmMobileApp.Companion.prefs
 import com.example.tfmmobile.databinding.ActivityMainBinding
 import com.example.tfmmobile.ui.login.LoginActivity
 import com.example.tfmmobile.ui.signup.SignUpActivity
+import com.example.tfmmobile.ui.users.ProfileActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -89,6 +90,21 @@ class MainActivity : AppCompatActivity() {
             prefs.removeAuthToken()
             prefs.removeUserId()
             prefs.removeLoginState()
+
+            prefs.removeUserName()
+            prefs.removeUserFirstName()
+            prefs.removeUserSurnames()
+            prefs.removeUserEmail()
+            prefs.removeUserPassword()
+
+            val intent = Intent(this, LoginActivity::class.java)
+            this.startActivity(intent)
+        }
+        if(item.itemId == R.id.profile) {
+            val intent = Intent(this, ProfileActivity::class.java)
+            this.startActivity(intent)
+        }
+        if(item.itemId == R.id.change_password) {
             val intent = Intent(this, LoginActivity::class.java)
             this.startActivity(intent)
         }
