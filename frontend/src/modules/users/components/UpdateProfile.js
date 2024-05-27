@@ -38,7 +38,9 @@ const UpdateProfile = () => {
                 {id: user.id,
                 firstName: firstName.trim(),
                 lastName: lastName.trim(),
-                email: email.trim()},
+                email: email.trim(),
+				userName: userName.trim(),
+			},
                 () => window.location.reload('true'),
                 errors => setBackendErrors(errors)));
     }
