@@ -264,3 +264,7 @@ Health section -> Stretching Detail:
 Plays section -> Plays List:
 
 ![ToolBare](playslout.png)
+
+Login section:
+
+![ToolBare](login222.png)
