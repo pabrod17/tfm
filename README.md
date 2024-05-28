@@ -268,3 +268,7 @@ Plays section -> Plays List:
 Login section:
 
 ![ToolBare](login222.png)
+
+Update Profile section:
+
+![ToolBare](updateProfile1.png)
