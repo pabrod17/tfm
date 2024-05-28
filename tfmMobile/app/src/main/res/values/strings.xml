@@ -9,13 +9,21 @@
     <string name="health">Salud</string>
     <string name="plays">Jugadas</string>
     <string name="play">Jugada</string>
-    <string name="calendar">Calendario</string>ç
+    <string name="calendar">Calendario</string>
+
+    <string name="errorSignUp">Error creating account</string>
+    <string name="required">Requerido</string>
+    <string name="invalidEmail">Email No Válido</string>
+
+
 
     <string name="changePassword">Actualizar Contraseña</string>
 
     <string name="currentPassword">Contraseña Actual</string>
     <string name="newPassword">Nueva Contraseña</string>
     <string name="confirmPassword">Confirmar Contraseña</string>
+    <string name="confirmPasswordCheck">Passwords do not match</string>
+
 
     <string name="profile">Perfil</string>
     <string name="logout">Cerrar sesión</string>

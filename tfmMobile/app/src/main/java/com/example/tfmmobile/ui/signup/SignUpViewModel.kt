@@ -3,8 +3,10 @@ package com.example.tfmmobile.ui.signup
 import android.content.Context
 import android.content.Intent
 import android.util.Patterns
+import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.tfmmobile.R
 import com.example.tfmmobile.domain.model.usecase.SignUpUseCase
 import com.example.tfmmobile.ui.home.MainActivity
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -38,10 +40,16 @@ class SignUpViewModel @Inject constructor(private val signUpUseCase: SignUpUseCa
                 context.startActivity(intent)
             } else {
                 _state.value = SignUpState.Error("Ha ocurrido un error. SignUp.")
+                Toast.makeText(context, R.string.errorSignUp, Toast.LENGTH_LONG).show()
+
             }
 //            hilo principal
         }
 
+    }
+
+    fun onSignUpSelected2(userName: String, firtName: String, lastName: String, email: String,  password: String, context: Context) {
+            signUp(userName, firtName, lastName, email, password, context)
     }
 
     fun onSignUpSelected(userName: String, firtName: String, lastName: String, email: String,  password: String, context: Context) {

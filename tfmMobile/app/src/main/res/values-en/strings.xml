@@ -14,11 +14,18 @@
     <string name="play">Play</string>
     <string name="calendar">Calendar</string>
 
+    <string name="errorSignUp">Error creando cuenta</string>
+    <string name="required">Required</string>
+    <string name="invalidEmail">Invalid Email</string>
+
     <string name="changePassword">Change Password</string>
 
     <string name="currentPassword">Current Password</string>
     <string name="newPassword">New Password</string>
     <string name="confirmPassword">Confirm Password</string>
+    <string name="confirmPasswordCheck">Contraseñas no coinciden</string>
+
+
 
     <string name="profile">Profile</string>
     <string name="logout">Logout</string>
