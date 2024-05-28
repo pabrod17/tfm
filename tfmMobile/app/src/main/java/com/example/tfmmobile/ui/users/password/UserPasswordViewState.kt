@@ -1,6 +1,6 @@
-package com.example.tfmmobile.ui.users
+package com.example.tfmmobile.ui.users.password
 
-data class UserViewState (
+data class UserPasswordViewState (
     val isLoading: Boolean = false,
 //    val isValidEmail: Boolean = true,
     val isValidPassword: Boolean = true

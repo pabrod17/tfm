@@ -1,14 +1,11 @@
-package com.example.tfmmobile.ui.users
+package com.example.tfmmobile.ui.users.profile
 
 import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.util.Patterns
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.tfmmobile.domain.model.usecase.SignUpUseCase
 import com.example.tfmmobile.domain.model.usecase.UserUseCase
-import com.example.tfmmobile.ui.home.MainActivity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -31,11 +28,13 @@ class ProfileViewModel @Inject constructor(private val userUseCase: UserUseCase)
     fun updateProfile(id:Long, userName:String, firtName: String, lastName: String, email: String, context: Context){
         viewModelScope.launch {
 //            hilo principal
-            _state.value=UserState.Loading
+            _state.value= UserState.Loading
             val result = withContext(Dispatchers.IO) { userUseCase(id, userName, firtName, lastName, email) } //hilo secundario
             if (result!=null){
-                _state.value = UserState.Success(result.id, result.userName, result.firstName,
-                    result.lastName, result.email, result.role)
+                _state.value = UserState.Success(
+                    result.id, result.userName, result.firstName,
+                    result.lastName, result.email, result.role
+                )
                 (context as? Activity)?.finish() // Cerrar la actividad actual
             } else {
                 _state.value = UserState.Error("Ha ocurrido un error. SignUp.")

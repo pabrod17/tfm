@@ -1,4 +1,4 @@
-package com.example.tfmmobile.ui.users
+package com.example.tfmmobile.ui.users.profile
 
 import android.content.Context
 import android.content.Intent
@@ -12,7 +12,6 @@ import com.aristidevs.nuwelogin.core.ex.dismissKeyboard
 import com.example.tfmmobile.R
 import com.example.tfmmobile.TfmMobileApp.Companion.prefs
 import com.example.tfmmobile.databinding.ActivityProfileBinding
-import com.example.tfmmobile.ui.signup.SignUpActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

@@ -4,8 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.widget.FrameLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -18,8 +16,8 @@ import com.example.tfmmobile.R
 import com.example.tfmmobile.TfmMobileApp.Companion.prefs
 import com.example.tfmmobile.databinding.ActivityMainBinding
 import com.example.tfmmobile.ui.login.LoginActivity
-import com.example.tfmmobile.ui.signup.SignUpActivity
-import com.example.tfmmobile.ui.users.ProfileActivity
+import com.example.tfmmobile.ui.users.password.ChangePasswordActivity
+import com.example.tfmmobile.ui.users.profile.ProfileActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -105,7 +103,7 @@ class MainActivity : AppCompatActivity() {
             this.startActivity(intent)
         }
         if(item.itemId == R.id.change_password) {
-            val intent = Intent(this, LoginActivity::class.java)
+            val intent = Intent(this, ChangePasswordActivity::class.java)
             this.startActivity(intent)
         }
         return super.onOptionsItemSelected(item)

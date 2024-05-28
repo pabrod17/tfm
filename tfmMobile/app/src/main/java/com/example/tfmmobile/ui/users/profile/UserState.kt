@@ -1,4 +1,4 @@
-package com.example.tfmmobile.ui.users
+package com.example.tfmmobile.ui.users.profile
 
 sealed class UserState {
 
