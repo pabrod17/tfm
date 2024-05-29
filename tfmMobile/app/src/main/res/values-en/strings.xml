@@ -6,16 +6,26 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="errorUpdatePlayer">Player Update Error</string>
-    <string name="errorUpdateTeam">Team Update Error</string>
-    <string name="errorUpdateSeason">Season Update Error</string>
+    <string name="errorUpdatePlayer">Update Player Error</string>
+    <string name="errorUpdateTeam">Update Team Error</string>
+    <string name="errorUpdateSeason">Update Season Error</string>
 
-    <string name="errorUpdateGame">Game Update Error</string>
-    <string name="errorUpdateTraining">Training Update Error</string>
+    <string name="errorUpdateGame">Update Game Error</string>
+    <string name="errorUpdateTraining">Update Training Error</string>
 
-    <string name="errorUpdatePlay">Play Update Error</string>
-    <string name="errorUpdateUserProfile">User Profile Update Error</string>
+    <string name="errorUpdatePlay">Update Play Error</string>
+    <string name="errorUpdateUserProfile">Update User Profile Error</string>
 
+
+
+    <string name="errorAddSeason">Add Season Error</string>
+    <string name="errorAddTeam">Add Team Error</string>
+    <string name="errorAddPlayer">Add Player Error</string>
+
+    <string name="errorAddGame">Add Game Error</string>
+    <string name="errorAddTraining">Add Training Error</string>
+
+    <string name="errorAddPlay">Add Play Error</string>
 
 
 

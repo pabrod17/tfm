@@ -2,8 +2,10 @@ package com.example.tfmmobile.ui.club
 
 import android.content.Context
 import android.content.Intent
+import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.tfmmobile.R
 import com.example.tfmmobile.domain.model.PlayerModel
 import com.example.tfmmobile.domain.model.SeasonModel
 import com.example.tfmmobile.domain.model.TeamModel
@@ -137,6 +139,7 @@ class ClubViewModel @Inject constructor(
                 getTeams()
                 println("HOLAAAAAAA ANDANDOOOOOOOOOOO 222222222222")
             } else {
+                Toast.makeText(context, R.string.errorAddTeam, Toast.LENGTH_LONG).show()
                 _stateTeam.value = TeamState.Error("Ha ocurrido un error. Inténtelo más tarde.")
             }
 //            hilo principal
@@ -166,6 +169,7 @@ class ClubViewModel @Inject constructor(
                 getSeasons()
                 println("HOLAAAAAAA ANDANDOOOOOOOOOOO 222222222222")
             } else {
+                Toast.makeText(context, R.string.errorAddSeason, Toast.LENGTH_LONG).show()
                 _stateSeason.value = SeasonState.Error("Ha ocurrido un error. Inténtelo más tarde.")
             }
 //            hilo principal
@@ -212,6 +216,7 @@ class ClubViewModel @Inject constructor(
                 getPlayers()
                 println("HOLAAAAAAA ANDANDOOOOOOOOOOO 222222222222")
             } else {
+                Toast.makeText(context, R.string.errorAddPlayer, Toast.LENGTH_LONG).show()
                 _statePlayer.value = PlayerState.Error("Ha ocurrido un error. Inténtelo más tarde.")
             }
 //            hilo principal

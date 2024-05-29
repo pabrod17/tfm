@@ -2,8 +2,10 @@ package com.example.tfmmobile.ui.events
 
 import android.content.Context
 import android.content.Intent
+import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.tfmmobile.R
 import com.example.tfmmobile.domain.model.GameModel
 import com.example.tfmmobile.domain.model.SeasonModel
 import com.example.tfmmobile.domain.model.TrainingModel
@@ -119,6 +121,7 @@ class EventsViewModel @Inject constructor(
                 getGames()
                 println("HOLAAAAAAA ANDANDOOOOOOOOOOO 222222222222")
             } else {
+                Toast.makeText(context, R.string.errorAddGame, Toast.LENGTH_LONG).show()
                 _stateGame.value = GameState.Error("Ha ocurrido un error. Inténtelo más tarde.")
             }
 //            hilo principal
@@ -150,6 +153,7 @@ class EventsViewModel @Inject constructor(
                 getTrainings()
                 println("HOLAAAAAAA ANDANDOOOOOOOOOOO 222222222222")
             } else {
+                Toast.makeText(context, R.string.errorAddTraining, Toast.LENGTH_LONG).show()
                 _stateTraining.value = TrainingState.Error("Ha ocurrido un error. Inténtelo más tarde.")
             }
 //            hilo principal

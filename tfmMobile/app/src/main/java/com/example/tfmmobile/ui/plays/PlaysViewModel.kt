@@ -2,8 +2,10 @@ package com.example.tfmmobile.ui.plays
 
 import android.content.Context
 import android.content.Intent
+import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.tfmmobile.R
 import com.example.tfmmobile.domain.model.ExerciseModel
 import com.example.tfmmobile.domain.model.GameModel
 import com.example.tfmmobile.domain.model.LesionModel
@@ -107,6 +109,7 @@ class PlaysViewModel @Inject constructor(
                 getPlays()
                 println("HOLAAAAAAA ANDANDOOOOOOOOOOO 222222222222")
             } else {
+                Toast.makeText(context, R.string.errorAddPlay, Toast.LENGTH_LONG).show()
                 _statePlay.value = PlayState.Error("Ha ocurrido un error. Inténtelo más tarde.")
             }
 //            hilo principal

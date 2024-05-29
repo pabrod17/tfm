@@ -12,6 +12,19 @@
 
     <string name="errorUpdatePlay">Error actualizando Jugada</string>
     <string name="errorUpdateUserProfile">Error actualizando Perfil de Usuario</string>
+
+
+    <string name="errorAddSeason">Error añadiendo Temporada</string>
+    <string name="errorAddTeam">Error añadiendo Equipo</string>
+    <string name="errorAddPlayer">Error añadiendo Jugador</string>
+
+    <string name="errorAddGame">Error añadiendo Partido</string>
+    <string name="errorAddTraining">Error añadiendo Entrenamiento</string>
+
+    <string name="errorAddPlay">Error añadiendo Jugada</string>
+
+
+
     <!--    BottomBar-->
     <string name="club">Club</string>
     <string name="events">Eventos</string>
