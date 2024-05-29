@@ -11,7 +11,7 @@
     <string name="errorUpdateTraining">Error actualizando Entrenamiento</string>
 
     <string name="errorUpdatePlay">Error actualizando Jugada</string>
-
+    <string name="errorUpdateUserProfile">Error actualizando Perfil de Usuario</string>
     <!--    BottomBar-->
     <string name="club">Club</string>
     <string name="events">Eventos</string>
@@ -22,6 +22,7 @@
 
     <string name="errorSignUp">Error creando cuenta</string>
     <string name="errorLogin">Error de Login</string>
+
 
     <string name="required">Requerido</string>
     <string name="invalidEmail">Email No Válido</string>

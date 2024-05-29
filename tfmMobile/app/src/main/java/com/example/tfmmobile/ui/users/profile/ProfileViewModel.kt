@@ -3,8 +3,10 @@ package com.example.tfmmobile.ui.users.profile
 import android.app.Activity
 import android.content.Context
 import android.util.Patterns
+import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.tfmmobile.R
 import com.example.tfmmobile.domain.model.usecase.UserUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -37,6 +39,7 @@ class ProfileViewModel @Inject constructor(private val userUseCase: UserUseCase)
                 )
                 (context as? Activity)?.finish() // Cerrar la actividad actual
             } else {
+                Toast.makeText(context, R.string.errorUpdateUserProfile, Toast.LENGTH_LONG).show()
                 _state.value = UserState.Error("Ha ocurrido un error. SignUp.")
             }
 //            hilo principal
