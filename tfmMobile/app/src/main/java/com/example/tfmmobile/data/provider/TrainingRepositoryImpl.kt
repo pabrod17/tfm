@@ -48,7 +48,10 @@ class TrainingRepositoryImpl @Inject constructor(private val apiService: Trainin
         description: String,
         objective: String
     ): TrainingModel? {
-        runCatching { apiService.addTraining(teamId, seasonId, trainingDate, durationMinutes,
+        runCatching {
+            val adjustedTeamId = if (teamId < 1) null else teamId
+            val adjustedSeasonId = if (seasonId < 1) null else seasonId
+            apiService.addTraining(adjustedTeamId, adjustedSeasonId, trainingDate, durationMinutes,
             description, objective) }
             .onSuccess {
                 Log.i("FUNCIONA", "${it}")

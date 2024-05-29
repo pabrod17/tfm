@@ -2,6 +2,7 @@ package com.example.tfmmobile.ui.club
 
 import android.content.Context
 import android.content.Intent
+import android.util.Patterns
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -19,6 +20,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.regex.Pattern
 import javax.inject.Inject
 
 @HiltViewModel
@@ -189,6 +191,21 @@ class ClubViewModel @Inject constructor(
         injured: Boolean,
         context: Context
     ) {
+
+        if(!validateEmail(email) || !validateEmail(email) || !validateEmail(email)) {
+
+            if(!validateEmail(email)) {
+                Toast.makeText(context, R.string.invalidEmail, Toast.LENGTH_LONG).show()
+            }
+            if(!validatePhoneNumber(phoneNumber)) {
+                Toast.makeText(context, R.string.invalidPhoneNumber, Toast.LENGTH_LONG).show()
+            }
+            if(!validateDNI(dni)) {
+                Toast.makeText(context, R.string.invalidDni, Toast.LENGTH_LONG).show()
+            }
+
+        } else {
+
         viewModelScope.launch {
 //            hilo principal
             _statePlayer.value = PlayerState.Loading
@@ -205,22 +222,41 @@ class ClubViewModel @Inject constructor(
                     dni
                 )
             } //hilo secundario
-            if (result != null) {
-                _statePlayer.value = PlayerState.Success(
-                    result.id, result.playerName,
-                    result.primaryLastName, result.secondLastName, result.position,
-                    result.trends, result.phoneNumber, result.email,
-                    result.dni, result.teamId, injured
-                )
-                println("HOLAAAAAAA ANDANDOOOOOOOOOOO")
-                getPlayers()
-                println("HOLAAAAAAA ANDANDOOOOOOOOOOO 222222222222")
-            } else {
-                Toast.makeText(context, R.string.errorAddPlayer, Toast.LENGTH_LONG).show()
-                _statePlayer.value = PlayerState.Error("Ha ocurrido un error. Inténtelo más tarde.")
-            }
+
+                if (result != null) {
+                    _statePlayer.value = PlayerState.Success(
+                        result.id, result.playerName,
+                        result.primaryLastName, result.secondLastName, result.position,
+                        result.trends, result.phoneNumber, result.email,
+                        result.dni, result.teamId, injured
+                    )
+                    println("HOLAAAAAAA ANDANDOOOOOOOOOOO")
+                    getPlayers()
+                    println("HOLAAAAAAA ANDANDOOOOOOOOOOO 222222222222")
+                } else {
+                    Toast.makeText(context, R.string.errorAddPlayer, Toast.LENGTH_LONG).show()
+                    _statePlayer.value = PlayerState.Error("Ha ocurrido un error. Inténtelo más tarde.")
+                }
+
+        }
+
 //            hilo principal
         }
+    }
+
+    private fun validateEmail(email: String): Boolean {
+        val pattern: Pattern = Patterns.EMAIL_ADDRESS
+        return pattern.matcher(email).matches()
+    }
+
+    private fun validatePhoneNumber(phone: String): Boolean {
+        val phonePattern = Regex("^\\+?[0-9\\-\\s()]{10,17}$")
+        return phonePattern.matches(phone)
+    }
+
+    private fun validateDNI(dni: String): Boolean {
+        val dniPattern = Regex("^[A-Za-z0-9]{5,20}$")
+        return dniPattern.matches(dni)
     }
 
     init {

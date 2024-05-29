@@ -45,7 +45,7 @@ class ChangePasswordViewModel @Inject constructor(private val userUseCase: UserU
         )
     }
 
-    fun onFieldsChanged(email: String, password: String) {
+    fun onFieldsChanged(password: String) {
         _viewState.value = UserPasswordViewState(
             isValidPassword = isValidPassword(password)
         )
@@ -58,4 +58,6 @@ class ChangePasswordViewModel @Inject constructor(private val userUseCase: UserU
 
     private fun isValidPassword(password: String): Boolean =
         password.length >= MIN_PASSWORD_LENGTH || password.isEmpty()
+
+
 }

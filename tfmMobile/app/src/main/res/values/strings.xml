@@ -24,6 +24,12 @@
     <string name="errorAddPlay">Error añadiendo Jugada</string>
 
 
+    <string name="errorFields">Por favor, rellena todos los campos</string>
+
+    <string name="invalidPhoneNumber">Número de Teléfono No Válido</string>
+    <string name="invalidDni">Dni No Válido</string>
+
+
 
     <!--    BottomBar-->
     <string name="club">Club</string>

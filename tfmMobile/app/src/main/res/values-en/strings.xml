@@ -27,7 +27,10 @@
 
     <string name="errorAddPlay">Add Play Error</string>
 
+    <string name="errorFields">Please fill in all fields</string>
 
+    <string name="invalidPhoneNumber">Invalid Phone Number</string>
+    <string name="invalidDni">Invalid Dni</string>
 
     <!--    BottomBar-->
     <string name="club">Club</string>

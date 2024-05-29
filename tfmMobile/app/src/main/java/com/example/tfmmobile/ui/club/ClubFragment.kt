@@ -6,6 +6,10 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.text.Editable
+import android.text.TextUtils
+import android.text.TextWatcher
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -45,6 +49,7 @@ import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Locale
 import java.util.TimeZone
+import java.util.regex.Pattern
 
 @AndroidEntryPoint
 class ClubFragment : Fragment() {
@@ -167,14 +172,320 @@ class ClubFragment : Fragment() {
             initTeamsOptions(dialog)
 
             val addTeamButtonDialog: Button = dialog.findViewById(R.id.addTeamButtonDialog)
+            dialog.findViewById<EditText>(R.id.etEmail).addTextChangedListener(object : TextWatcher {
+                override fun afterTextChanged(s: Editable?) {
+                    validarFormEmail(dialog)
+                }
 
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            })
             addTeamButtonDialog.setOnClickListener() {
-                checkCategorySelectedToAddItem(dialog)
-                dialog.hide()
+                if(validarForm(dialog)) {
+                    checkCategorySelectedToAddItem(dialog)
+                    dialog.hide()
+                } else {
+                    fieldListeners(dialog)
+                }
             }
             dialog.show()
         }
     }
+
+    private fun validarFormEmail(dialog: Dialog): Boolean {
+        var esValido = true
+        if (TextUtils.isEmpty(dialog.findViewById<EditText>(R.id.etEmail).text.toString())) {
+            dialog.findViewById<EditText>(R.id.etEmail).error = ContextCompat.getString(dialog.findViewById<EditText>(R.id.etEmail).context, R.string.required)
+//            binding.tilEmail.error = ContextCompat.getString(binding.etEmail.context, R.string.required)
+            esValido = false
+        } else {
+            dialog.findViewById<EditText>(R.id.etEmail).error = null
+
+            if(!validateEmail(dialog.findViewById<EditText>(R.id.etEmail).text.toString())) {
+                dialog.findViewById<EditText>(R.id.etEmail).error = ContextCompat.getString(dialog.findViewById<EditText>(R.id.etEmail).context, R.string.invalidEmail)
+            } else {
+                dialog.findViewById<EditText>(R.id.etEmail).error = null
+            }
+        }
+        return esValido
+    }
+
+    private fun validarForm(dialog: Dialog): Boolean {
+        var esValido = true
+
+        for (category in categories) {
+            // Verificar si la categoría está seleccionada
+            if (category.isSelected) {
+                // Realizar acciones específicas para la categoría seleccionada
+                when (category) {
+                    is ClubCategory.Seasons -> {
+                        if (TextUtils.isEmpty(dialog.findViewById<EditText>(R.id.etStartDate).text.toString())) {
+                            dialog.findViewById<EditText>(R.id.etStartDate).error = ContextCompat.getString(dialog.findViewById<EditText>(R.id.etStartDate).context, R.string.required)
+                            esValido = false
+
+                        } else {
+                            dialog.findViewById<EditText>(R.id.etStartDate).error = null
+                        }
+
+                        if (TextUtils.isEmpty(dialog.findViewById<EditText>(R.id.etFinishDate).text.toString())) {
+                            dialog.findViewById<EditText>(R.id.etFinishDate).error = ContextCompat.getString(dialog.findViewById<EditText>(R.id.etFinishDate).context, R.string.required)
+                            esValido = false
+
+                        } else {
+                            dialog.findViewById<EditText>(R.id.etFinishDate).error = null
+                        }
+                    }
+
+                    ClubCategory.Teams -> {
+                        if (TextUtils.isEmpty(dialog.findViewById<EditText>(R.id.etName).text.toString())) {
+                            dialog.findViewById<EditText>(R.id.etName).error = ContextCompat.getString(dialog.findViewById<EditText>(R.id.etName).context, R.string.required)
+                            esValido = false
+
+                        } else {
+                            dialog.findViewById<EditText>(R.id.etName).error = null
+                        }
+                        if (TextUtils.isEmpty(dialog.findViewById<EditText>(R.id.etArena).text.toString())) {
+                            dialog.findViewById<EditText>(R.id.etArena).error = ContextCompat.getString(dialog.findViewById<EditText>(R.id.etArena).context, R.string.required)
+                            esValido = false
+
+                        } else {
+                            dialog.findViewById<EditText>(R.id.etArena).error = null
+                        }
+                        if (TextUtils.isEmpty(dialog.findViewById<EditText>(R.id.etOwner).text.toString())) {
+                            dialog.findViewById<EditText>(R.id.etOwner).error = ContextCompat.getString(dialog.findViewById<EditText>(R.id.etOwner).context, R.string.required)
+                            esValido = false
+
+                        } else {
+                            dialog.findViewById<EditText>(R.id.etOwner).error = null
+                        }
+                    }
+
+                    ClubCategory.Players -> {
+                        if (TextUtils.isEmpty(dialog.findViewById<AutoCompleteTextView>(R.id.autoCompleteTeam).text.toString())) {
+                            dialog.findViewById<AutoCompleteTextView>(R.id.autoCompleteTeam).error = ContextCompat.getString(dialog.findViewById<AutoCompleteTextView>(R.id.autoCompleteTeam).context, R.string.required)
+                            esValido = false
+
+                        } else {
+                            dialog.findViewById<AutoCompleteTextView>(R.id.autoCompleteTeam).error = null
+                        }
+                        if (TextUtils.isEmpty(dialog.findViewById<AutoCompleteTextView>(R.id.autoCompletePosition).text.toString())) {
+                            dialog.findViewById<AutoCompleteTextView>(R.id.autoCompletePosition).error = ContextCompat.getString(dialog.findViewById<AutoCompleteTextView>(R.id.autoCompletePosition).context, R.string.required)
+                            esValido = false
+
+                        } else {
+                            dialog.findViewById<AutoCompleteTextView>(R.id.autoCompletePosition).error = null
+                        }
+
+                        if (TextUtils.isEmpty(dialog.findViewById<EditText>(R.id.etPlayerName).text.toString())) {
+                            dialog.findViewById<EditText>(R.id.etPlayerName).error = ContextCompat.getString(dialog.findViewById<EditText>(R.id.etPlayerName).context, R.string.required)
+                            esValido = false
+
+                        } else {
+                            dialog.findViewById<EditText>(R.id.etPlayerName).error = null
+                        }
+                        if (TextUtils.isEmpty(dialog.findViewById<EditText>(R.id.etPrimaryLastName).text.toString())) {
+                            dialog.findViewById<EditText>(R.id.etPrimaryLastName).error = ContextCompat.getString(dialog.findViewById<EditText>(R.id.etPrimaryLastName).context, R.string.required)
+                            esValido = false
+
+                        } else {
+                            dialog.findViewById<EditText>(R.id.etPrimaryLastName).error = null
+                        }
+                        if (TextUtils.isEmpty(dialog.findViewById<EditText>(R.id.etSecondLastName).text.toString())) {
+                            dialog.findViewById<EditText>(R.id.etSecondLastName).error = ContextCompat.getString(dialog.findViewById<EditText>(R.id.etSecondLastName).context, R.string.required)
+                            esValido = false
+
+                        } else {
+                            dialog.findViewById<EditText>(R.id.etSecondLastName).error = null
+                        }
+
+                        if (TextUtils.isEmpty(dialog.findViewById<EditText>(R.id.etPhoneNumber).text.toString())) {
+                            dialog.findViewById<EditText>(R.id.etPhoneNumber).error = ContextCompat.getString(dialog.findViewById<EditText>(R.id.etPhoneNumber).context, R.string.required)
+                            esValido = false
+
+                        } else {
+                            dialog.findViewById<EditText>(R.id.etPhoneNumber).error = null
+                        }
+                        if (TextUtils.isEmpty(dialog.findViewById<EditText>(R.id.etEmail).text.toString())) {
+                            dialog.findViewById<EditText>(R.id.etEmail).error = ContextCompat.getString(dialog.findViewById<EditText>(R.id.etEmail).context, R.string.required)
+                            esValido = false
+
+                        } else {
+//                            dialog.findViewById<EditText>(R.id.etEmail).error = null
+                            if(!validateEmail(dialog.findViewById<EditText>(R.id.etEmail).text.toString())) {
+                                dialog.findViewById<EditText>(R.id.etEmail).error = ContextCompat.getString(dialog.findViewById<EditText>(R.id.etEmail).context, R.string.invalidEmail)
+                            } else {
+                                dialog.findViewById<EditText>(R.id.etEmail).error = null
+                            }
+
+                        }
+                        if (TextUtils.isEmpty(dialog.findViewById<EditText>(R.id.etDni).text.toString())) {
+                            dialog.findViewById<EditText>(R.id.etDni).error = ContextCompat.getString(dialog.findViewById<EditText>(R.id.etDni).context, R.string.required)
+                            esValido = false
+
+                        } else {
+                            dialog.findViewById<EditText>(R.id.etDni).error = null
+                        }
+
+                    }
+
+                }
+            }
+        }
+        return esValido
+    }
+
+    private fun validateEmail(email: String): Boolean {
+        val pattern: Pattern = Patterns.EMAIL_ADDRESS
+        return pattern.matcher(email).matches()
+    }
+
+
+    private fun fieldListeners(dialog: Dialog) {
+        for (category in categories) {
+            // Verificar si la categoría está seleccionada
+            if (category.isSelected) {
+                // Realizar acciones específicas para la categoría seleccionada
+                when (category) {
+                    ClubCategory.Seasons -> {
+                        dialog.findViewById<EditText>(R.id.etStartDate).addTextChangedListener(object :
+                            TextWatcher {
+                            override fun afterTextChanged(s: Editable?) {
+                                validarForm(dialog)
+                            }
+                            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+                            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+                        })
+                        dialog.findViewById<EditText>(R.id.etFinishDate).addTextChangedListener(object :
+                            TextWatcher {
+                            override fun afterTextChanged(s: Editable?) {
+                                validarForm(dialog)
+                            }
+                            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+                            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+                        })
+
+                    }
+
+                    is ClubCategory.Teams -> {
+                        dialog.findViewById<EditText>(R.id.etName).addTextChangedListener(object :
+                            TextWatcher {
+                            override fun afterTextChanged(s: Editable?) {
+                                validarForm(dialog)
+                            }
+                            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+                            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+                        })
+                        dialog.findViewById<EditText>(R.id.etArena).addTextChangedListener(object :
+                            TextWatcher {
+                            override fun afterTextChanged(s: Editable?) {
+                                validarForm(dialog)
+                            }
+                            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+                            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+                        })
+                        dialog.findViewById<EditText>(R.id.etOwner).addTextChangedListener(object :
+                            TextWatcher {
+                            override fun afterTextChanged(s: Editable?) {
+                                validarForm(dialog)
+                            }
+                            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+                            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+                        })
+                    }
+
+                    ClubCategory.Players -> {
+                        dialog.findViewById<AutoCompleteTextView>(R.id.autoCompleteTeam).addTextChangedListener(object :
+                            TextWatcher {
+                            override fun afterTextChanged(s: Editable?) {
+                                validarForm(dialog)
+                            }
+                            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+                            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+                        })
+                        dialog.findViewById<AutoCompleteTextView>(R.id.autoCompletePosition).addTextChangedListener(object :
+                            TextWatcher {
+                            override fun afterTextChanged(s: Editable?) {
+                                validarForm(dialog)
+                            }
+                            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+                            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+                        })
+
+                        dialog.findViewById<EditText>(R.id.etPlayerName).addTextChangedListener(object :
+                            TextWatcher {
+                            override fun afterTextChanged(s: Editable?) {
+                                validarForm(dialog)
+                            }
+                            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+                            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+                        })
+                        dialog.findViewById<EditText>(R.id.etPrimaryLastName).addTextChangedListener(object :
+                            TextWatcher {
+                            override fun afterTextChanged(s: Editable?) {
+                                validarForm(dialog)
+                            }
+                            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+                            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+                        })
+                        dialog.findViewById<EditText>(R.id.etSecondLastName).addTextChangedListener(object :
+                            TextWatcher {
+                            override fun afterTextChanged(s: Editable?) {
+                                validarForm(dialog)
+                            }
+                            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+                            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+                        })
+
+                        dialog.findViewById<EditText>(R.id.etPhoneNumber).addTextChangedListener(object :
+                            TextWatcher {
+                            override fun afterTextChanged(s: Editable?) {
+                                validarForm(dialog)
+                            }
+                            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+                            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+                        })
+                        dialog.findViewById<EditText>(R.id.etEmail).addTextChangedListener(object :
+                            TextWatcher {
+                            override fun afterTextChanged(s: Editable?) {
+                                validarForm(dialog)
+                            }
+                            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+                            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+                        })
+                        dialog.findViewById<EditText>(R.id.etDni).addTextChangedListener(object :
+                            TextWatcher {
+                            override fun afterTextChanged(s: Editable?) {
+                                validarForm(dialog)
+                            }
+                            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+                            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+                        })
+
+                    }
+                }
+            }
+        }
+
+
+
+    }
+
+
+
 
     private fun showPickerDialog(dateClicked: EditText) {
         val datePicker =

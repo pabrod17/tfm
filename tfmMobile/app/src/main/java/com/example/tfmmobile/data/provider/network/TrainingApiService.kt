@@ -25,8 +25,8 @@ interface TrainingApiService {
 
     @POST("trainings")
     suspend fun addTraining(
-        @Query("teamId") teamId: Long,
-        @Query("seasonId") seasonId: Long,
+        @Query("teamId") teamId: Long?,
+        @Query("seasonId") seasonId: Long?,
         @Query("trainingDate") trainingDate: String,
         @Query("durationMinutes") durationMinutes: String,
         @Query("description") description: String,

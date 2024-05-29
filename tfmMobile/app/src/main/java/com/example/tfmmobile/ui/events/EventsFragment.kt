@@ -7,6 +7,9 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.text.Editable
+import android.text.TextUtils
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -138,17 +141,107 @@ class EventsFragment : Fragment() {
             val addTeamButtonDialog: Button = dialog.findViewById(R.id.addTeamButtonDialogEvents)
 
             addTeamButtonDialog.setOnClickListener() {
-
-                checkCategorySelectedToAddItem(dialog)
-
-
-
-
-                dialog.hide()
-
+                if(validarForm(dialog)) {
+                    checkCategorySelectedToAddItem(dialog)
+                    dialog.hide()
+                } else {
+                    fieldListeners(dialog)
+                }
             }
             dialog.show()
         }
+
+    }
+
+    private fun validarForm(dialog: Dialog): Boolean {
+        var esValido = true
+
+        for (category in categories) {
+            // Verificar si la categoría está seleccionada
+            if (category.isSelected) {
+                // Realizar acciones específicas para la categoría seleccionada
+                when (category) {
+                    is EventsCategory.Trainings -> {
+                        if (TextUtils.isEmpty(dialog.findViewById<EditText>(R.id.etDate).text.toString())) {
+                            dialog.findViewById<EditText>(R.id.etDate).error = ContextCompat.getString(dialog.findViewById<EditText>(R.id.etDate).context, R.string.required)
+                            esValido = false
+
+                        } else {
+                            dialog.findViewById<EditText>(R.id.etDate).error = null
+                        }
+
+                        if (TextUtils.isEmpty(dialog.findViewById<EditText>(R.id.etDurationMinutes).text.toString())) {
+                            dialog.findViewById<EditText>(R.id.etDurationMinutes).error = ContextCompat.getString(dialog.findViewById<EditText>(R.id.etDurationMinutes).context, R.string.required)
+                            esValido = false
+
+                        } else {
+                            dialog.findViewById<EditText>(R.id.etDurationMinutes).error = null
+                        }
+                    }
+
+                    EventsCategory.Games -> {
+                        if (TextUtils.isEmpty(dialog.findViewById<EditText>(R.id.etDate).text.toString())) {
+                            dialog.findViewById<EditText>(R.id.etDate).error = ContextCompat.getString(dialog.findViewById<EditText>(R.id.etDate).context, R.string.required)
+                            esValido = false
+
+                        } else {
+                            dialog.findViewById<EditText>(R.id.etDate).error = null
+                        }
+                    }
+                }
+            }
+        }
+        return esValido
+    }
+
+    private fun fieldListeners(dialog: Dialog) {
+
+
+
+
+        for (category in categories) {
+            // Verificar si la categoría está seleccionada
+            if (category.isSelected) {
+                // Realizar acciones específicas para la categoría seleccionada
+                when (category) {
+                    is EventsCategory.Trainings -> {
+                        dialog.findViewById<EditText>(R.id.etDate).addTextChangedListener(object :
+                            TextWatcher {
+                            override fun afterTextChanged(s: Editable?) {
+                                validarForm(dialog)
+                            }
+                            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+                            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+                        })
+
+                        dialog.findViewById<EditText>(R.id.etDate).addTextChangedListener(object :
+                            TextWatcher {
+                            override fun afterTextChanged(s: Editable?) {
+                                validarForm(dialog)
+                            }
+                            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+                            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+                        })
+                    }
+
+                    EventsCategory.Games -> {
+                        dialog.findViewById<EditText>(R.id.etDate).addTextChangedListener(object :
+                            TextWatcher {
+                            override fun afterTextChanged(s: Editable?) {
+                                validarForm(dialog)
+                            }
+                            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+                            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+                        })
+                    }
+                }
+            }
+        }
+
+
 
     }
 

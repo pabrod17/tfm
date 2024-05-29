@@ -6,6 +6,9 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.text.Editable
+import android.text.TextUtils
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -106,8 +109,13 @@ class PlaysFragment : Fragment() {
             val addPlaysButtonDialog: Button = dialog.findViewById(R.id.addPlaysButtonDialog)
 
             addPlaysButtonDialog.setOnClickListener() {
-                checkCategorySelectedToAddItem(dialog)
-                dialog.hide()
+
+                if(validarForm(dialog)) {
+                    checkCategorySelectedToAddItem(dialog)
+                    dialog.hide()
+                } else {
+                    fieldListeners(dialog)
+                }
             }
             dialog.show()
         }
@@ -228,6 +236,67 @@ class PlaysFragment : Fragment() {
                             requireActivity()
                         )
                         updatePlaysList()
+    }
+
+    private fun fieldListeners(dialog: Dialog) {
+        dialog.findViewById<EditText>(R.id.etTitlePLay).addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                validarForm(dialog)
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
+        dialog.findViewById<AutoCompleteTextView>(R.id.autoCompleteType).addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                validarForm(dialog)
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
+        dialog.findViewById<AutoCompleteTextView>(R.id.autoCompleteTeamPlays).addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                validarForm(dialog)
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
+
+    }
+
+    private fun validarForm(dialog: Dialog): Boolean {
+        var esValido = true
+
+        if (TextUtils.isEmpty(dialog.findViewById<EditText>(R.id.etTitlePLay).text.toString())) {
+            dialog.findViewById<EditText>(R.id.etTitlePLay).error = ContextCompat.getString(dialog.findViewById<EditText>(R.id.etTitlePLay).context, R.string.required)
+            esValido = false
+
+        } else {
+            dialog.findViewById<EditText>(R.id.etTitlePLay).error = null
+        }
+
+        if (TextUtils.isEmpty(dialog.findViewById<AutoCompleteTextView>(R.id.autoCompleteType).text.toString())) {
+            dialog.findViewById<AutoCompleteTextView>(R.id.autoCompleteType).error = ContextCompat.getString(dialog.findViewById<AutoCompleteTextView>(R.id.autoCompleteType).context, R.string.required)
+            esValido = false
+
+        } else {
+            dialog.findViewById<AutoCompleteTextView>(R.id.autoCompleteType).error = null
+        }
+
+        if (TextUtils.isEmpty(dialog.findViewById<AutoCompleteTextView>(R.id.autoCompleteTeamPlays).text.toString())) {
+            dialog.findViewById<AutoCompleteTextView>(R.id.autoCompleteTeamPlays).error = ContextCompat.getString(dialog.findViewById<AutoCompleteTextView>(R.id.autoCompleteTeamPlays).context, R.string.required)
+            esValido = false
+
+        } else {
+            dialog.findViewById<AutoCompleteTextView>(R.id.autoCompleteTeamPlays).error = null
+        }
+
+        return esValido
     }
 
     private fun initUi() {

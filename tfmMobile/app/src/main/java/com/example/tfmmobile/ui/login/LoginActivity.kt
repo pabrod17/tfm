@@ -146,9 +146,6 @@ class LoginActivity : AppCompatActivity() {
             binding.etPassword.error = null
 
         }
-
-
-
         return esValido
     }
 

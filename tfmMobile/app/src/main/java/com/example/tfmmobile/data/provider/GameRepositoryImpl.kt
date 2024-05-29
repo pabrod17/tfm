@@ -2,7 +2,6 @@ package com.example.tfmmobile.data.provider
 
 import android.util.Log
 import com.example.tfmmobile.data.provider.network.GameApiService
-import com.example.tfmmobile.data.provider.network.SeasonApiService
 import com.example.tfmmobile.domain.model.GameModel
 import com.example.tfmmobile.domain.model.game.GameRepository
 import javax.inject.Inject
@@ -48,8 +47,11 @@ class GameRepositoryImpl @Inject constructor(private val apiService: GameApiServ
         description: String
     ): GameModel? {
         runCatching {
-            apiService.addGame(teamId, seasonId, gameDate, rival,
-            description) }
+            val adjustedTeamId = if (teamId < 1) null else teamId
+            val adjustedSeasonId = if (seasonId < 1) null else seasonId
+            apiService.addGame(adjustedTeamId, adjustedSeasonId, gameDate, rival,
+                    description)
+        }
             .onSuccess {
                 Log.i("FUNCIONA", "${it}")
                 return it.toDomain() }
