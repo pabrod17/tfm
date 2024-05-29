@@ -3,12 +3,17 @@ package com.example.tfmmobile.ui.detail.player
 import android.app.Dialog
 import android.os.Build
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextUtils
+import android.text.TextWatcher
+import android.util.Patterns
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
@@ -25,6 +30,7 @@ import com.example.tfmmobile.ui.detail.season.SeasonDetailState
 import com.example.tfmmobile.ui.detail.season.SeasonDetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.util.regex.Pattern
 
 @AndroidEntryPoint
 class PlayerDetailActivity : AppCompatActivity() {
@@ -89,6 +95,16 @@ class PlayerDetailActivity : AppCompatActivity() {
             onBackPressed()
         }
 
+        binding.etEmail.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                validarFormEmail()
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
+
         binding.btnUpdate.setOnClickListener {
             it.dismissKeyboard()
             playerDetailViewModel.updatePlayer(
@@ -106,6 +122,29 @@ class PlayerDetailActivity : AppCompatActivity() {
                 this
             )
         }
+    }
+
+    private fun validarFormEmail(): Boolean {
+        var esValido = true
+        if (TextUtils.isEmpty(binding.etEmail.text.toString())) {
+            binding.etEmail.error = ContextCompat.getString(binding.etEmail.context, R.string.required)
+//            binding.tilEmail.error = ContextCompat.getString(binding.etEmail.context, R.string.required)
+            esValido = false
+        } else {
+            binding.etEmail.error = null
+
+            if(!validateEmail(binding.etEmail.text.toString())) {
+                binding.tilEmail.error = ContextCompat.getString(binding.etEmail.context, R.string.invalidEmail)
+            } else {
+                binding.tilEmail.error = null
+            }
+        }
+        return esValido
+    }
+
+    private fun validateEmail(email: String): Boolean {
+        val pattern: Pattern = Patterns.EMAIL_ADDRESS
+        return pattern.matcher(email).matches()
     }
 
     private fun initUiState() {
