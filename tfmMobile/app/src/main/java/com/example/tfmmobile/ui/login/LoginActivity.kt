@@ -4,12 +4,14 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
+import android.text.TextUtils
 import android.text.TextWatcher
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
@@ -81,12 +83,18 @@ class LoginActivity : AppCompatActivity() {
 //        binding.viewBottom.tvFooter.setOnClickListener { loginViewModel.onSignInSelected() }
 
         binding.btnLogin.setOnClickListener {
-            it.dismissKeyboard()
-            loginViewModel.onLoginSelected(
-                binding.etEmail.text.toString(),
-                binding.etPassword.text.toString(),
-                this
-            )
+
+            if(validarForm()) {
+                it.dismissKeyboard()
+                loginViewModel.onLoginSelected(
+                    binding.etEmail.text.toString(),
+                    binding.etPassword.text.toString(),
+                    this
+                )
+            } else {
+                fieldListeners()
+            }
+
         }
 
 
@@ -95,6 +103,53 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this, SignUpActivity::class.java)
             this.startActivity(intent)
         }
+    }
+
+    private fun fieldListeners() {
+        binding.etEmail.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                validarForm()
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
+        binding.etPassword.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                validarForm()
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
+    }
+
+    private fun validarForm(): Boolean {
+        var esValido = true
+
+
+        if (TextUtils.isEmpty(binding.etEmail.text.toString())) {
+            binding.etEmail.error = ContextCompat.getString(binding.etEmail.context, R.string.required)
+            esValido = false
+
+        } else {
+            binding.etEmail.error = null
+
+        }
+        if (TextUtils.isEmpty(binding.etPassword.text.toString())) {
+            binding.etPassword.error = ContextCompat.getString(binding.etEmail.context, R.string.required)
+            esValido = false
+
+        } else {
+            binding.etPassword.error = null
+
+        }
+
+
+
+        return esValido
     }
 
     private fun initObservers() {

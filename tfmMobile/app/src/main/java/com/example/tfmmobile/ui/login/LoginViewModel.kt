@@ -4,11 +4,13 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.util.Patterns
+import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.tfmmobile.R
 import com.example.tfmmobile.TfmMobileApp.Companion.prefs
 import com.example.tfmmobile.domain.model.usecase.LoginUseCase
 import com.example.tfmmobile.ui.home.MainActivity
@@ -54,6 +56,8 @@ class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase)
             } else {
                 _showErrorDialog.value =
                     UserLogin(password = password, showErrorDialog = true)
+                Toast.makeText(context, R.string.errorLogin, Toast.LENGTH_LONG).show()
+
                 _state.value = LoginState.Error("Ha ocurrido un error. LOGIN.")
             }
 //            hilo principal
