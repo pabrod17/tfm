@@ -2,8 +2,10 @@ package com.example.tfmmobile.ui.detail.team
 
 import android.content.Context
 import android.content.Intent
+import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.tfmmobile.R
 import com.example.tfmmobile.domain.model.usecase.GetTeamsUseCase
 import com.example.tfmmobile.ui.home.MainActivity
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -59,6 +61,7 @@ class TeamDetailViewModel @Inject constructor(private val teamsUseCase: GetTeams
                 context.startActivity(intent)
                 println("HOLAAAAAAA ANDANDOOOOOOOOOOO 222222222222")
             } else {
+                Toast.makeText(context, R.string.errorUpdateTeam, Toast.LENGTH_LONG).show()
                 _state.value = TeamDetailState.Error("Ha ocurrido un error. Inténtelo más tarde.")
             }
 //            hilo principal

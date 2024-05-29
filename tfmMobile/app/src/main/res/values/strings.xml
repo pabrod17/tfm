@@ -3,6 +3,15 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="errorUpdatePlayer">Error actualizando Jugador</string>
+    <string name="errorUpdateTeam">Error actualizando Equipo</string>
+    <string name="errorUpdateSeason">Error actualizando Temporada</string>
+
+    <string name="errorUpdateGame">Error actualizando Partido</string>
+    <string name="errorUpdateTraining">Error actualizando Entrenamiento</string>
+
+    <string name="errorUpdatePlay">Error actualizando Jugada</string>
+
     <!--    BottomBar-->
     <string name="club">Club</string>
     <string name="events">Eventos</string>
@@ -11,7 +20,9 @@
     <string name="play">Jugada</string>
     <string name="calendar">Calendario</string>
 
-    <string name="errorSignUp">Error creating account</string>
+    <string name="errorSignUp">Error creando cuenta</string>
+    <string name="errorLogin">Error de Login</string>
+
     <string name="required">Requerido</string>
     <string name="invalidEmail">Email No Válido</string>
 
@@ -22,7 +33,7 @@
     <string name="currentPassword">Contraseña Actual</string>
     <string name="newPassword">Nueva Contraseña</string>
     <string name="confirmPassword">Confirmar Contraseña</string>
-    <string name="confirmPasswordCheck">Passwords do not match</string>
+    <string name="confirmPasswordCheck">Contraseñas no coinciden</string>
 
 
     <string name="profile">Perfil</string>

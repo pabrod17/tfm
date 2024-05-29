@@ -2,8 +2,10 @@ package com.example.tfmmobile.ui.detail.player
 
 import android.content.Context
 import android.content.Intent
+import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.tfmmobile.R
 import com.example.tfmmobile.domain.model.usecase.PlayerUseCase
 import com.example.tfmmobile.ui.detail.season.SeasonDetailState
 import com.example.tfmmobile.ui.home.MainActivity
@@ -71,6 +73,7 @@ class PlayerDetailViewModel @Inject constructor(private val playersUseCase: Play
                 context.startActivity(intent)
                 println("HOLAAAAAAA ANDANDOOOOOOOOOOO 222222222222")
             } else {
+                Toast.makeText(context, R.string.errorUpdatePlayer, Toast.LENGTH_LONG).show()
                 _state.value = PlayerDetailState.Error("Ha ocurrido un error. Inténtelo más tarde.")
             }
 //            hilo principal

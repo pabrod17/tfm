@@ -6,6 +6,18 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="errorUpdatePlayer">Player Update Error</string>
+    <string name="errorUpdateTeam">Team Update Error</string>
+    <string name="errorUpdateSeason">Season Update Error</string>
+
+    <string name="errorUpdateGame">Game Update Error</string>
+    <string name="errorUpdateTraining">Training Update Error</string>
+
+    <string name="errorUpdatePlay">Play Update Error</string>
+
+
+
+
     <!--    BottomBar-->
     <string name="club">Club</string>
     <string name="events">Events</string>
@@ -14,7 +26,9 @@
     <string name="play">Play</string>
     <string name="calendar">Calendar</string>
 
-    <string name="errorSignUp">Error creando cuenta</string>
+
+    <string name="errorSignUp">Error creating account</string>
+    <string name="errorLogin">Login Error</string>
     <string name="required">Required</string>
     <string name="invalidEmail">Invalid Email</string>
 
@@ -23,7 +37,7 @@
     <string name="currentPassword">Current Password</string>
     <string name="newPassword">New Password</string>
     <string name="confirmPassword">Confirm Password</string>
-    <string name="confirmPasswordCheck">Contraseñas no coinciden</string>
+    <string name="confirmPasswordCheck">Passwords do not match</string>
 
 
 

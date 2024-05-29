@@ -3,8 +3,10 @@ package com.example.tfmmobile.ui.detail.training
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.tfmmobile.R
 import com.example.tfmmobile.domain.model.usecase.TrainingUseCase
 import com.example.tfmmobile.ui.detail.game.GameDetailState
 import com.example.tfmmobile.ui.home.MainActivity
@@ -63,6 +65,7 @@ class TrainingDetailViewModel @Inject constructor(private val trainingUseCase: T
                 (context as? Activity)?.finish() // Cerrar la actividad actual
                 println("HOLAAAAAAA ANDANDOOOOOOOOOOO 222222222222")
             } else {
+                Toast.makeText(context, R.string.errorUpdateTraining, Toast.LENGTH_LONG).show()
                 _state.value = TrainingDetailState.Error("Ha ocurrido un error. Inténtelo más tarde.")
             }
 //            hilo principal

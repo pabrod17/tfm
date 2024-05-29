@@ -180,7 +180,7 @@
                     style="@style/FormEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/signin_form_repeat_password"
+                    android:hint="@string/confirmPassword"
                     android:imeOptions="actionDone"
                     android:inputType="textPassword"
                     android:textColorHighlight="@color/error_dark"

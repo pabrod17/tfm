@@ -2,8 +2,10 @@ package com.example.tfmmobile.ui.detail.season
 
 import android.content.Context
 import android.content.Intent
+import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.tfmmobile.R
 import com.example.tfmmobile.domain.model.usecase.SeasonUseCase
 import com.example.tfmmobile.ui.detail.team.TeamDetailState
 import com.example.tfmmobile.ui.home.MainActivity
@@ -61,6 +63,7 @@ class SeasonDetailViewModel @Inject constructor(private val seasonUseCase: Seaso
                 context.startActivity(intent)
                 println("HOLAAAAAAA ANDANDOOOOOOOOOOO 222222222222")
             } else {
+                Toast.makeText(context, R.string.errorUpdateSeason, Toast.LENGTH_LONG).show()
                 _state.value = SeasonDetailState.Error("Ha ocurrido un error. Inténtelo más tarde.")
             }
 //            hilo principal
