@@ -3,6 +3,7 @@
     <item>
 
         <shape>
+            <corners android:radius="360dp" /> <!-- Radio de las esquinas redondeadas -->
 
             <gradient
                 android:startColor="@color/orange"
