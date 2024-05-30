@@ -61,6 +61,9 @@ dependencies {
     //Swipe Refresh Layout
     implementation ("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
+    //Calendar
+    implementation("com.prolificinteractive:material-calendarview:1.4.3")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

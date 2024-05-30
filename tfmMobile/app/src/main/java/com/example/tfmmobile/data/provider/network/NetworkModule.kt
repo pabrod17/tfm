@@ -3,6 +3,7 @@ package com.example.tfmmobile.data.provider.network
 import TokenManager
 import com.example.tfmmobile.data.core.interceptors.AuthInterceptor
 import com.example.tfmmobile.data.core.interceptors.TokenManage3
+import com.example.tfmmobile.data.provider.EventRepositoryImpl
 import com.example.tfmmobile.data.provider.ExerciseRepositoryImpl
 import com.example.tfmmobile.data.provider.GameRepositoryImpl
 import com.example.tfmmobile.data.provider.LesionRepositoryImpl
@@ -14,6 +15,7 @@ import com.example.tfmmobile.data.provider.StretchingRepositoryImpl
 import com.example.tfmmobile.data.provider.TrainingRepositoryImpl
 import com.example.tfmmobile.data.provider.UserRepositoryImpl
 import com.example.tfmmobile.domain.model.Repository
+import com.example.tfmmobile.domain.model.event.EventRepository
 import com.example.tfmmobile.domain.model.exercise.ExerciseRepository
 import com.example.tfmmobile.domain.model.game.GameRepository
 import com.example.tfmmobile.domain.model.lesion.LesionRepository
@@ -179,6 +181,15 @@ object NetworkModule {
     @Provides
     fun providePlayRepository(apiService: PlayApiService): PlayRepository {
         return PlayRepositoryImpl(apiService)
+    }
+
+    @Provides
+    fun provideEventApiService(retrofit: Retrofit): EventApiService{
+        return retrofit.create(EventApiService::class.java)
+    }
+    @Provides
+    fun provideEventRepository(apiService: EventApiService): EventRepository {
+        return EventRepositoryImpl(apiService)
     }
 
 }

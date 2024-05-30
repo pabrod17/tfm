@@ -9,6 +9,10 @@
         android:title="@string/events"
         android:icon="@drawable/ic_events1"/>
     <item
+        android:id="@+id/calendarFragment"
+        android:title="@string/calendar"
+        android:icon="@drawable/ic_calendar1"/>
+    <item
         android:id="@+id/healthFragment"
         android:title="@string/health"
         android:icon="@drawable/ic_health"/>
@@ -16,8 +20,4 @@
         android:id="@+id/playsFragment"
         android:title="@string/plays"
         android:icon="@drawable/ic_plays"/>
-    <item
-        android:id="@+id/calendarFragment"
-        android:title="@string/calendar"
-        android:icon="@drawable/ic_calendar1"/>
 </menu>

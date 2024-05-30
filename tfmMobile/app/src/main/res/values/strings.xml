@@ -23,6 +23,9 @@
 
     <string name="errorAddPlay">Error añadiendo Jugada</string>
 
+    <string name="errorAddEvent">Error añadiendo Evento</string>
+
+
 
     <string name="errorFields">Por favor, rellena todos los campos</string>
 

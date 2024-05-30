@@ -1,0 +1,9 @@
+package com.example.tfmmobile.domain.model
+
+data class EventModel (
+    val id: Long,
+    val title: String,
+    val startDate: String,
+    val finishDate: String,
+    val eventType: String
+)

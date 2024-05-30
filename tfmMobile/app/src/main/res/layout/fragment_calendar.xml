@@ -3,13 +3,72 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.calendar.CalendarFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical"
+        >
+
+    <!--text view for displaying the selected date-->
+
+
+    <!-- Add CalendarView to display the Calendar -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="50dp"
+        android:layout_marginTop="30dp"
+        android:elevation="10dp"
+        app:cardElevation="10dp"
+
+        >
+        <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:mcv_showOtherDates="all"
+            android:id="@+id/calendar2"
+            app:mcv_selectionColor="@color/red"
+            android:background="@drawable/gradient_background1"
+
+            />
+
+<!--        android:background="@color/back2"-->
+    </androidx.cardview.widget.CardView>
+
+<!--    <androidx.cardview.widget.CardView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        app:cardCornerRadius="50dp"-->
+<!--        android:elevation="10dp"-->
+<!--        app:cardElevation="10dp"-->
+<!--        >-->
+
+<!--&lt;!&ndash;        <com.prolificinteractive.materialcalendarview.MaterialCalendarView&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_height="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;            ></com.prolificinteractive.materialcalendarview.MaterialCalendarView>&ndash;&gt;-->
+
+
+<!--        <CalendarView-->
+<!--            android:id="@+id/calendarView"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/gradient_background1"-->
+<!--            />-->
+
+<!--&lt;!&ndash;                <TextView&ndash;&gt;-->
+<!--&lt;!&ndash;            android:id="@+id/calendarView2"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_height="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:background="@drawable/gradient_background11"&ndash;&gt;-->
+<!--&lt;!&ndash;            />&ndash;&gt;-->
+<!--        &lt;!&ndash;        android:background="@color/back2"&ndash;&gt;-->
+<!--    </androidx.cardview.widget.CardView>-->
+
+
+    </LinearLayout>
 
 </FrameLayout>
