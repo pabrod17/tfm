@@ -17,4 +17,6 @@ class EventUseCase @Inject constructor(private val eventRepository: EventReposit
     suspend operator fun invoke(title:String,
                                 startDate: String,
                                 finishDate: String) = eventRepository.addEvent(title, startDate, finishDate)
+    suspend operator fun invoke(eventId:Long,
+                                isGetEvent: Boolean) = eventRepository.removeEvent(eventId)
 }

@@ -34,9 +34,18 @@
 
 
 
+
+    <string name="deleteEventGeneralTitle">Eliminar Evento General</string>
+    <string name="deleteEventGeneralTitleQuestion">¿Estas seguro de querer eliminar este Evento General?</string>
+    <string name="delete">Eliminar</string>
+
+
+
+
     <!--    BottomBar-->
     <string name="club">Club</string>
     <string name="events">Eventos</string>
+    <string name="eventGeneral">Evento General</string>
     <string name="health">Salud</string>
     <string name="plays">Jugadas</string>
     <string name="play">Jugada</string>

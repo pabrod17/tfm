@@ -48,6 +48,9 @@
 
     <color name="cardPlay2">#062C76</color>
 
+    <color name="redDelete">#e41111</color>
+
+
     <color name="cardPlayDefense">#41AF24</color>
     <color name="cardPlayAttack">#062C76</color>
     <color name="cardPlayAttack2">#0040FF</color>

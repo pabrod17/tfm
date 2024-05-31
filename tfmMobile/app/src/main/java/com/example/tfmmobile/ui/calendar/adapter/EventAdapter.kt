@@ -9,8 +9,10 @@ import com.example.tfmmobile.R
 import com.example.tfmmobile.domain.model.EventModel
 import com.example.tfmmobile.domain.model.GameModel
 
-class EventAdapter (private var eventList: List<EventModel> = emptyList(),
-                    private val onItemSelected:(EventModel) -> Unit) : RecyclerView.Adapter<EventViewHolder>(){
+class EventAdapter (
+    var eventList: List<EventModel> = emptyList(),
+    private val onItemSelected:(EventModel) -> Unit,
+    private val onDeleteIconClicked:(EventModel) -> Unit) : RecyclerView.Adapter<EventViewHolder>(){
 
     fun updateList(list:List<EventModel>) {
         eventList = list.sortedBy { it.id }
@@ -25,7 +27,7 @@ class EventAdapter (private var eventList: List<EventModel> = emptyList(),
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
-        holder.render(eventList[position], onItemSelected )
+        holder.render(eventList[position], onItemSelected, onDeleteIconClicked )
     }
 
     override fun getItemCount() = eventList.size

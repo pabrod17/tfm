@@ -2,6 +2,7 @@ package com.example.tfmmobile.data.provider.network
 
 import com.example.tfmmobile.data.provider.network.response.EventResponse
 import com.example.tfmmobile.data.provider.network.response.GameResponse
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.PUT
@@ -25,5 +26,8 @@ interface EventApiService {
     suspend fun addEvent(@Query("title") title: String,
                         @Query("startDate") startDate: String,
                         @Query("finishDate") finishDate: String): EventResponse
+
+    @DELETE("events/{eventId}")
+    suspend fun removeEvent(@Path("eventId") eventId:Long)
 
 }

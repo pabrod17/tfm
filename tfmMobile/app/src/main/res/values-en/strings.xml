@@ -34,9 +34,20 @@
     <string name="invalidPhoneNumber">Invalid Phone Number</string>
     <string name="invalidDni">Invalid Dni</string>
 
+
+
+    <string name="deleteEventGeneralTitle">Delete General Event</string>
+    <string name="deleteEventGeneralTitleQuestion">Are you sure you want to delete this general event?</string>
+    <string name="delete">Delete</string>
+
+
+
+
+
     <!--    BottomBar-->
     <string name="club">Club</string>
     <string name="events">Events</string>
+    <string name="eventGeneral">General Event</string>
     <string name="health">Health</string>
     <string name="plays">Plays</string>
     <string name="play">Play</string>

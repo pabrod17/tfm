@@ -56,4 +56,14 @@ class EventRepositoryImpl @Inject constructor(private val apiService: EventApiSe
             .onFailure { Log.i("FALLOOOOOOOO APIII", "/EVENTS ADD NEW FALLO: ${it}") }
         return null
     }
+
+    override suspend fun removeEvent(eventId: Long    ) {
+        runCatching {
+            apiService.removeEvent(eventId)
+        }
+            .onSuccess {
+                Log.i("FUNCIONA", "${it}")
+                return it }
+            .onFailure { Log.i("FALLOOOOOOOO APIII", "/EVENTS ADD NEW FALLO: ${it}") }
+    }
 }

@@ -1,13 +1,16 @@
 package com.example.tfmmobile.ui.calendar
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.tfmmobile.R
+import com.example.tfmmobile.TfmMobileApp
 import com.example.tfmmobile.domain.model.EventModel
 import com.example.tfmmobile.domain.model.usecase.EventUseCase
+import com.example.tfmmobile.ui.users.password.UserPasswordState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -74,5 +77,16 @@ class CalendarViewModel @Inject constructor(
 //            hilo principal
         }
     }
+
+    fun deleteEvent(id:Long, context: Context){
+        viewModelScope.launch {
+//            hilo principal
+            _stateEvent.value= EventState.Loading
+            val result = withContext(Dispatchers.IO) { eventUseCase(id, false) } //hilo secundario
+            getEvents()
+        }
+//            hilo principal
+    }
+
 
 }

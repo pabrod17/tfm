@@ -16,4 +16,7 @@ interface EventRepository {
     suspend fun addEvent(title:String,
                          startDate: String,
                          finishDate: String): EventModel?
+
+    suspend fun removeEvent(eventId:Long)
+
 }
