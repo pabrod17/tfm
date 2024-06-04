@@ -247,12 +247,18 @@ class EventsFragment : Fragment() {
 
     private fun getTeamSelected(teamSelectd: AutoCompleteTextView): Long {
         val teamIdsAndNames: List<Pair<String, Long>> = teamsList.map { it.teamName to it.id }
+        if(teamSelectd.text.isEmpty()) {
+            return 0
+        }
         return teamIdsAndNames.firstOrNull { it.first == teamSelectd.text.toString() }?.second ?: 0
 
     }
 
     private fun getSeasonSelected(seasonSelected: AutoCompleteTextView): Long {
         val seasonIdsAndNames: List<Pair<String, Long>> = seasonsList.map { it.seasonName to it.id }
+        if(seasonSelected.text.isEmpty()) {
+            return 0
+        }
         return seasonIdsAndNames.firstOrNull { it.first == seasonSelected.text.toString() }?.second ?: 0
 
     }
