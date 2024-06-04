@@ -101,7 +101,7 @@ class EventActivity : AppCompatActivity() {
         deleteEventButton.setOnClickListener() {
             eventDetailViewModel.deleteEvent(args.id, this)
 //                Toast.makeText(requireContext(), "Event deleted: ${event.title}", Toast.LENGTH_SHORT).show()
-            dialog.hide()
+            dialog.dismiss()
         }
         dialog.show()
     }

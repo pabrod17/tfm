@@ -22,6 +22,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.core.app.ActivityCompat.recreate
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -30,6 +31,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tfmmobile.R
 import com.example.tfmmobile.databinding.FragmentCalendarBinding
@@ -100,14 +102,17 @@ class CalendarFragment : Fragment() {
         println("CREATEDDDDDDDD")
         println("CREATEDDDDDDDD")
 
-        calendarViewModel.clearEvents()
+//        calendarViewModel.clearEvents()
         calendar2 = binding.compactcalendarView
-        calendar2.removeAllEvents()
+
+//        calendar2.setEventIndicatorStyle(CompactCalendarView.FILL_LARGE_INDICATOR)
+        calendar2.setEventIndicatorStyle(CompactCalendarView.SMALL_INDICATOR)
+
+//        calendar2.removeAllEvents()
         addEventssButton = binding.addEventssButton
         monthTitleCalendar = binding.monthTitleCalendar
         monthTitleCalendar.text = dateFormatForMonth.format(calendar2.firstDayOfCurrentMonth)
         rvEvents = binding.rvEvents
-
 //        val ev1 = Event(Color.GREEN, 1717618140000, EventModel(1,"titulo", "", "", "General"))
 //        calendar2.addEvent(ev1);
         calendar2.setUseThreeLetterAbbreviation(true);
@@ -115,23 +120,22 @@ class CalendarFragment : Fragment() {
 //        calendar2.setOnClickListener {
 //            Toast.makeText(requireContext(), "Event deleted: ${it.id}", Toast.LENGTH_SHORT).show()
 //        }
-
         eventList = calendarViewModel.getEvents()
-//        lifecycleScope.launchWhenStarted {
-//            calendarViewModel.events.collect { events ->
-//                if(events.isNotEmpty()) {
-//                    eventList = events
-//                    initEventList()
+        lifecycleScope.launchWhenStarted {
+            calendarViewModel.events.collect { events ->
+                if(events.isNotEmpty()) {
+                    eventList = events
+                    initEventList()
 //                    updateEventsList()
-//                    initUiStateEvent()
-//                    showEvents(eventList)
-//                }
-//            }
-//        }
-        println("2222222 11111111")
-                            initEventList()
                     initUiStateEvent()
                     showEvents(eventList)
+                }
+            }
+        }
+        println("2222222 11111111")
+//                            initEventList()
+//                    initUiStateEvent()
+//                    showEvents(eventList)
 
 
         initListeners()
@@ -162,8 +166,23 @@ class CalendarFragment : Fragment() {
         binding.swipe.setOnRefreshListener {
             Handler(Looper.getMainLooper()).postDelayed({
                 binding.swipe.isRefreshing = false
-                initEventList()
-                initUiStateEvent()
+                calendar2.removeAllEvents()
+                eventList = emptyList()
+                calendarViewModel.clearEvents()
+                calendarViewModel.getEvents()
+                lifecycleScope.launchWhenStarted {
+                    calendarViewModel.events.collect { events ->
+                        if(events.isNotEmpty()) {
+                            eventList = events
+                            initEventList()
+                            updateEventsList()
+//                    initUiStateEvent()
+                            showEvents(eventList)
+                        }
+                    }
+                }
+
+
                 val activity = requireActivity()
                 activity.findViewById<View>(R.id.toolbar).visibility = View.VISIBLE
                 activity.findViewById<View>(R.id.bottomNavView).visibility = View.VISIBLE
@@ -258,14 +277,14 @@ class CalendarFragment : Fragment() {
                     }
                 }
 
+
             }
-
-
-
             ,
 //            onDeleteIconClicked = { event -> showDeleteDialog(event) }
             onDeleteIconClicked = { event -> }
         )
+        rvEvents.layoutManager = GridLayoutManager(context, 1)
+        rvEvents.adapter = eventAdapter
 
     }
 //    @RequiresApi(Build.VERSION_CODES.O)
@@ -422,7 +441,22 @@ class CalendarFragment : Fragment() {
             returnDateConverter(etFinishDateGeneralEvent.text.toString()),
             requireActivity()
         )
-        updateEventsList()
+        calendar2.removeAllEvents()
+        eventList = emptyList()
+        calendarViewModel.clearEvents()
+        lifecycleScope.launchWhenStarted {
+            calendarViewModel.events.collect { events ->
+                if(events.isNotEmpty()) {
+                    eventList = events
+                    initEventList()
+                    updateEventsList()
+//                    initUiStateEvent()
+                    showEvents(eventList)
+                }
+            }
+        }
+
+
 //        calendar2.removeAllEvents()
 //        calendarViewModel.getEvents()
 //        lifecycleScope.launchWhenStarted {
@@ -499,42 +533,12 @@ class CalendarFragment : Fragment() {
         })
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun updateLesionsListByCategories(selectedDate: Date ) {
-        val newEvents = eventList.filter { event ->
-            selectedDate.equals(event.startDate)
-
-
-
-        }
-//        println("sacando fecha seleccionada: " + selectedDate)
-//        println("sacando fecha seleccionada: " + selectedDate)
-//        println("sacando fecha seleccionada: " + selectedDate)
-//        println("-----------------")
-//        println("-----------------")
-//        println("EVENTO FECHA 1: " + eventList.get(0).startDate)
-//        println("EVENTO FECHA 1: " + eventList.get(0).startDate)
-//        println("EVENTO FECHA 1: " + eventList.get(0).startDate)
-//        println("-----------------")
-//        println("-----------------")
-//        println("-----------------")
-//        println("-----------------")
-//        println("-----------------")
-        eventAdapter.eventList = newEvents
-
-        rvEvents.apply {
-            rvEvents.layoutManager = GridLayoutManager(context, 1)
-            rvEvents.adapter = eventAdapter
-        }
-
-        eventAdapter.notifyDataSetChanged()
-    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun showEvents(eventList:List<EventModel>) {
-        println("dentro de los listenerssssssss: " + eventList.size)
-        println("dentro de los listenerssssssss: " + eventList.size)
-        println("dentro de los listenerssssssss: " + eventList.size)
+        println("dentro de los SHOW EVENTS: " + eventList.size)
+        println("dentro de los SHOW EVENTS: " + eventList.size)
+        println("dentro de los SHOW EVENTS: " + eventList.size)
         calendar2.removeAllEvents()
 
         eventList.forEach { event ->
@@ -553,7 +557,10 @@ class CalendarFragment : Fragment() {
 //                        calendar2.context,
 //                        R.drawable.gradient_background_calendar_event_training
 //                    )
-                    val ev1 = Event(Color.BLUE, dateFormatForMillis(event.startDate), event)
+                    //                divider.setBackgroundColor(ContextCompat.getColor(divider.context, R.color.cardPlayer2))
+
+
+                    val ev1 = Event(Color.parseColor("#FF7800"), dateFormatForMillis(event.startDate), event)
                     calendar2.addEvent(ev1);
 
                 }
