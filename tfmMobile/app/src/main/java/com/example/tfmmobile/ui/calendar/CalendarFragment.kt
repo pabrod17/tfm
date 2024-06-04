@@ -363,10 +363,6 @@ class CalendarFragment : Fragment() {
             etStartDateGeneralEvent.setOnClickListener {
                 showPickerDialog(etStartDateGeneralEvent)
             }
-            val etFinishDateGeneralEvent = dialog.findViewById<EditText>(R.id.etFinishDateGeneralEvent)
-            etFinishDateGeneralEvent.setOnClickListener {
-                showPickerDialog(etFinishDateGeneralEvent)
-            }
 
             val addTeamButtonDialogGeneralEvent: Button = dialog.findViewById(R.id.addTeamButtonDialogGeneralEvent)
             addTeamButtonDialogGeneralEvent.setOnClickListener() {
@@ -433,12 +429,11 @@ class CalendarFragment : Fragment() {
         val etGeneralEventTitle = dialog.findViewById<EditText>(R.id.etGeneralEventTitle)
 
         val etStartDateGeneralEvent = dialog.findViewById<EditText>(R.id.etStartDateGeneralEvent)
-        val etFinishDateGeneralEvent = dialog.findViewById<EditText>(R.id.etFinishDateGeneralEvent)
 
         calendarViewModel.addEvent(
             etGeneralEventTitle.text.toString(),
             returnDateConverter(etStartDateGeneralEvent.text.toString()),
-            returnDateConverter(etFinishDateGeneralEvent.text.toString()),
+            returnDateConverter(etStartDateGeneralEvent.text.toString()),
             requireActivity()
         )
         calendar2.removeAllEvents()
@@ -491,14 +486,6 @@ class CalendarFragment : Fragment() {
             dialog.findViewById<EditText>(R.id.etStartDateGeneralEvent).error = null
         }
 
-        if (TextUtils.isEmpty(dialog.findViewById<EditText>(R.id.etFinishDateGeneralEvent).text.toString())) {
-            dialog.findViewById<EditText>(R.id.etFinishDateGeneralEvent).error = ContextCompat.getString(dialog.findViewById<EditText>(R.id.etFinishDateGeneralEvent).context, R.string.required)
-            esValido = false
-
-        } else {
-            dialog.findViewById<EditText>(R.id.etFinishDateGeneralEvent).error = null
-        }
-
         return esValido
     }
 
@@ -514,15 +501,6 @@ class CalendarFragment : Fragment() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
         dialog.findViewById<EditText>(R.id.etStartDateGeneralEvent).addTextChangedListener(object :
-            TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                validarForm(dialog)
-            }
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-        })
-        dialog.findViewById<EditText>(R.id.etFinishDateGeneralEvent).addTextChangedListener(object :
             TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 validarForm(dialog)

@@ -33,25 +33,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
-        android:hint="@string/startDate"
+        android:hint="@string/date"
         android:textColorHint="@color/green"
         android:textColor="@color/orange"
         android:clickable="false"
         android:focusable="false"
         />
-
-    <EditText
-        android:id="@+id/etFinishDateGeneralEvent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
-        android:hint="@string/FinishDate"
-        android:textColorHint="@color/green"
-        android:textColor="@color/orange"
-        android:clickable="false"
-        android:focusable="false"
-        />
-
 
     <EditText
         android:id="@+id/etGeneralEventTitle"
