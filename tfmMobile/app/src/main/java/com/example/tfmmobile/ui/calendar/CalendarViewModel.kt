@@ -69,7 +69,8 @@ class CalendarViewModel @Inject constructor(
                     result.id, result.title,
                     result.startDate, result.finishDate, result.eventType
                 )
-//                getEvents()
+                clearEvents()
+                getEvents()
             } else {
                 Toast.makeText(context, R.string.errorAddEvent, Toast.LENGTH_LONG).show()
                 _stateEvent.value = EventState.Error("Ha ocurrido un error. Inténtelo más tarde.")

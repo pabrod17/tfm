@@ -100,7 +100,7 @@ class CalendarFragment : Fragment() {
         println("CREATEDDDDDDDD")
         println("CREATEDDDDDDDD")
 
-
+        calendarViewModel.clearEvents()
         calendar2 = binding.compactcalendarView
         calendar2.removeAllEvents()
         addEventssButton = binding.addEventssButton
@@ -117,20 +117,29 @@ class CalendarFragment : Fragment() {
 //        }
 
         eventList = calendarViewModel.getEvents()
-        lifecycleScope.launchWhenStarted {
-            calendarViewModel.events.collect { events ->
-                if(events.isNotEmpty()) {
-                    eventList = events
-                    initEventList()
-                    updateEventsList()
+//        lifecycleScope.launchWhenStarted {
+//            calendarViewModel.events.collect { events ->
+//                if(events.isNotEmpty()) {
+//                    eventList = events
+//                    initEventList()
+//                    updateEventsList()
+//                    initUiStateEvent()
+//                    showEvents(eventList)
+//                }
+//            }
+//        }
+        println("2222222 11111111")
+                            initEventList()
                     initUiStateEvent()
                     showEvents(eventList)
-                }
-            }
-        }
+
+
         initListeners()
+        println("2222222")
         hideOrShowToolbar()
+        println("2222222 3333333")
         configSwipe()
+        println("2222222 444444")
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -526,7 +535,7 @@ class CalendarFragment : Fragment() {
         println("dentro de los listenerssssssss: " + eventList.size)
         println("dentro de los listenerssssssss: " + eventList.size)
         println("dentro de los listenerssssssss: " + eventList.size)
-
+        calendar2.removeAllEvents()
 
         eventList.forEach { event ->
             when (event.eventType) {
@@ -588,6 +597,7 @@ class CalendarFragment : Fragment() {
         println("RESUMIENDOOOOO")
         println("RESUMIENDOOOOO")
         calendar2.removeAllEvents()
+        eventList = emptyList()
         calendarViewModel.clearEvents()
         calendarViewModel.getEvents()
         lifecycleScope.launchWhenStarted {
@@ -596,7 +606,7 @@ class CalendarFragment : Fragment() {
                     eventList = events
                     initEventList()
                     updateEventsList()
-                    initUiStateEvent()
+//                    initUiStateEvent()
                     showEvents(eventList)
                 }
             }
