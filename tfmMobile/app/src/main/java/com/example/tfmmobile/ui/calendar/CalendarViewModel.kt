@@ -69,13 +69,17 @@ class CalendarViewModel @Inject constructor(
                     result.id, result.title,
                     result.startDate, result.finishDate, result.eventType
                 )
-                getEvents()
+//                getEvents()
             } else {
                 Toast.makeText(context, R.string.errorAddEvent, Toast.LENGTH_LONG).show()
                 _stateEvent.value = EventState.Error("Ha ocurrido un error. Inténtelo más tarde.")
             }
 //            hilo principal
         }
+    }
+
+    fun clearEvents() {
+        _events.value = emptyList()
     }
 
 //    fun deleteEvent(id:Long, context: Context){

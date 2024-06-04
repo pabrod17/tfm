@@ -48,6 +48,7 @@ import com.prolificinteractive.materialcalendarview.DayViewDecorator
 import com.prolificinteractive.materialcalendarview.DayViewFacade
 import com.prolificinteractive.materialcalendarview.format.WeekDayFormatter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.text.DateFormatSymbols
 import java.text.SimpleDateFormat
@@ -89,7 +90,19 @@ class CalendarFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        println("CREATEDDDDDDDD")
+        println("CREATEDDDDDDDD")
+        println("CREATEDDDDDDDD")
+        println("CREATEDDDDDDDD")
+        println("CREATEDDDDDDDD")
+        println("CREATEDDDDDDDD")
+        println("CREATEDDDDDDDD")
+        println("CREATEDDDDDDDD")
+        println("CREATEDDDDDDDD")
+
+
         calendar2 = binding.compactcalendarView
+        calendar2.removeAllEvents()
         addEventssButton = binding.addEventssButton
         monthTitleCalendar = binding.monthTitleCalendar
         monthTitleCalendar.text = dateFormatForMonth.format(calendar2.firstDayOfCurrentMonth)
@@ -99,13 +112,11 @@ class CalendarFragment : Fragment() {
 //        calendar2.addEvent(ev1);
         calendar2.setUseThreeLetterAbbreviation(true);
 
-        calendar2.setOnClickListener {
-            Toast.makeText(requireContext(), "Event deleted: ${it.id}", Toast.LENGTH_SHORT).show()
+//        calendar2.setOnClickListener {
+//            Toast.makeText(requireContext(), "Event deleted: ${it.id}", Toast.LENGTH_SHORT).show()
+//        }
 
-
-        }
-
-        calendarViewModel.getEvents()
+        eventList = calendarViewModel.getEvents()
         lifecycleScope.launchWhenStarted {
             calendarViewModel.events.collect { events ->
                 if(events.isNotEmpty()) {
@@ -113,7 +124,7 @@ class CalendarFragment : Fragment() {
                     initEventList()
                     updateEventsList()
                     initUiStateEvent()
-                    showEvents()
+                    showEvents(eventList)
                 }
             }
         }
@@ -389,6 +400,7 @@ class CalendarFragment : Fragment() {
     }
 
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun checkCategorySelectedToAddItem(dialog: Dialog) {
         val etGeneralEventTitle = dialog.findViewById<EditText>(R.id.etGeneralEventTitle)
 
@@ -401,15 +413,27 @@ class CalendarFragment : Fragment() {
             returnDateConverter(etFinishDateGeneralEvent.text.toString()),
             requireActivity()
         )
-
         updateEventsList()
+//        calendar2.removeAllEvents()
+//        calendarViewModel.getEvents()
+//        lifecycleScope.launchWhenStarted {
+//            calendarViewModel.events.collect { events ->
+//                if(events.isNotEmpty()) {
+//                    eventList = events
+////                    initEventList()
+////                    updateEventsList()
+////                    initUiStateEvent()
+//                    showEvents(eventList)
+//                }
+//            }
+//        }
     }
 
     private fun validarForm(dialog: Dialog): Boolean {
         var esValido = true
 
         if (TextUtils.isEmpty(dialog.findViewById<EditText>(R.id.etGeneralEventTitle).text.toString())) {
-            dialog.findViewById<EditText>(R.id.etGeneralEventTitle).error = ContextCompat.getString(dialog.findViewById<EditText>(R.id.etTitlePLay).context, R.string.required)
+            dialog.findViewById<EditText>(R.id.etGeneralEventTitle).error = ContextCompat.getString(dialog.findViewById<EditText>(R.id.etGeneralEventTitle).context, R.string.required)
             esValido = false
 
         } else {
@@ -417,7 +441,7 @@ class CalendarFragment : Fragment() {
         }
 
         if (TextUtils.isEmpty(dialog.findViewById<EditText>(R.id.etStartDateGeneralEvent).text.toString())) {
-            dialog.findViewById<EditText>(R.id.etStartDateGeneralEvent).error = ContextCompat.getString(dialog.findViewById<EditText>(R.id.etStartDate).context, R.string.required)
+            dialog.findViewById<EditText>(R.id.etStartDateGeneralEvent).error = ContextCompat.getString(dialog.findViewById<EditText>(R.id.etStartDateGeneralEvent).context, R.string.required)
             esValido = false
 
         } else {
@@ -425,7 +449,7 @@ class CalendarFragment : Fragment() {
         }
 
         if (TextUtils.isEmpty(dialog.findViewById<EditText>(R.id.etFinishDateGeneralEvent).text.toString())) {
-            dialog.findViewById<EditText>(R.id.etFinishDateGeneralEvent).error = ContextCompat.getString(dialog.findViewById<EditText>(R.id.etFinishDate).context, R.string.required)
+            dialog.findViewById<EditText>(R.id.etFinishDateGeneralEvent).error = ContextCompat.getString(dialog.findViewById<EditText>(R.id.etFinishDateGeneralEvent).context, R.string.required)
             esValido = false
 
         } else {
@@ -498,7 +522,7 @@ class CalendarFragment : Fragment() {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun showEvents() {
+    private fun showEvents(eventList:List<EventModel>) {
         println("dentro de los listenerssssssss: " + eventList.size)
         println("dentro de los listenerssssssss: " + eventList.size)
         println("dentro de los listenerssssssss: " + eventList.size)
@@ -552,6 +576,31 @@ class CalendarFragment : Fragment() {
         return binding.root
     }
 
-
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun onResume() {
+        super.onResume()
+        println("RESUMIENDOOOOO")
+        println("RESUMIENDOOOOO")
+        println("RESUMIENDOOOOO")
+        println("RESUMIENDOOOOO")
+        println("RESUMIENDOOOOO")
+        println("RESUMIENDOOOOO")
+        println("RESUMIENDOOOOO")
+        println("RESUMIENDOOOOO")
+        calendar2.removeAllEvents()
+        calendarViewModel.clearEvents()
+        calendarViewModel.getEvents()
+        lifecycleScope.launchWhenStarted {
+            calendarViewModel.events.collect { events ->
+                if(events.isNotEmpty()) {
+                    eventList = events
+                    initEventList()
+                    updateEventsList()
+                    initUiStateEvent()
+                    showEvents(eventList)
+                }
+            }
+        }
+    }
 
 }
