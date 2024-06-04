@@ -17,27 +17,32 @@
 <!--        android:layout_marginTop="30dp"-->
     <!-- Add CalendarView to display the Calendar -->
 
-        <TextView
-            android:id="@+id/monthTitleCalendar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="month"
-            android:gravity="center"
-            android:layout_marginTop="12dp"
-            android:padding="10dp"
-            />
+
+            <TextView
+                android:id="@+id/monthTitleCalendar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="month"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:padding="10dp"
+                />
+
+
+
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="30dp"
-        android:layout_marginTop="12dp"
         android:layout_marginBottom="5dp"
         android:layout_marginHorizontal="8dp"
         android:elevation="10dp"
         app:cardElevation="10dp"
 
         >
+
 <!--        <com.prolificinteractive.materialcalendarview.MaterialCalendarView-->
 <!--            android:layout_width="match_parent"-->
 <!--            android:layout_height="wrap_content"-->
@@ -58,10 +63,10 @@
             android:layout_height="250dp"
             app:compactCalendarTargetHeight="250dp"
             app:compactCalendarTextSize="12sp"
-            app:compactCalendarBackgroundColor="#ffe95451"
+            app:compactCalendarBackgroundColor="@color/back2"
             app:compactCalendarTextColor="#fff"
-            app:compactCalendarCurrentSelectedDayBackgroundColor="#E57373"
-            app:compactCalendarCurrentDayBackgroundColor="#B71C1C"
+            app:compactCalendarCurrentSelectedDayBackgroundColor="@color/cardStretchinggggg2"
+            app:compactCalendarCurrentDayBackgroundColor="@color/cardStretchinggggg"
             app:compactCalendarMultiEventIndicatorColor="#fff"
             />
 
@@ -116,7 +121,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
-        android:layout_margin="10dp"
+        android:layout_margin="32dp"
         android:backgroundTint="@color/cardGame2"
         android:src="@android:drawable/ic_input_add"
         app:layout_constraintBottom_toBottomOf="parent"

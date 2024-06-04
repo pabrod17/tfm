@@ -86,7 +86,7 @@ class CalendarFragment : Fragment() {
 
     private lateinit var addEventssButton: FloatingActionButton
 
-    private val dateFormatForMonth = SimpleDateFormat("MMMM- yyyy", Locale.getDefault())
+    private val dateFormatForMonth = SimpleDateFormat("MMMM yyyy", Locale.getDefault())
 
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -116,7 +116,6 @@ class CalendarFragment : Fragment() {
 //        val ev1 = Event(Color.GREEN, 1717618140000, EventModel(1,"titulo", "", "", "General"))
 //        calendar2.addEvent(ev1);
         calendar2.setUseThreeLetterAbbreviation(true);
-
 //        calendar2.setOnClickListener {
 //            Toast.makeText(requireContext(), "Event deleted: ${it.id}", Toast.LENGTH_SHORT).show()
 //        }
