@@ -26,20 +26,15 @@
     <string name="errorAddEvent">Error añadiendo Evento</string>
 
 
-
     <string name="errorFields">Por favor, rellena todos los campos</string>
 
     <string name="invalidPhoneNumber">Número de Teléfono No Válido</string>
     <string name="invalidDni">Dni No Válido</string>
 
 
-
-
     <string name="deleteEventGeneralTitle">Eliminar Evento General</string>
     <string name="deleteEventGeneralTitleQuestion">¿Estas seguro de querer eliminar este Evento General?</string>
     <string name="delete">Eliminar</string>
-
-
 
 
     <!--    BottomBar-->
@@ -57,7 +52,6 @@
 
     <string name="required">Requerido</string>
     <string name="invalidEmail">Email No Válido</string>
-
 
 
     <string name="changePassword">Actualizar Contraseña</string>

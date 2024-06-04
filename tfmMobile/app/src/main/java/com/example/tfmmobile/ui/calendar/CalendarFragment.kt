@@ -226,12 +226,12 @@ class CalendarFragment : Fragment() {
                     else -> {
                         findNavController().navigate(
 //                Siempre va a haber esta clase. La del maingraph
-                            CalendarFragmentDirections.actionCalendarFragmentToTrainingDetailActivity(
+                            CalendarFragmentDirections.actionCalendarFragmentToEventActivity(
                                 it.id,
+                                it.title,
                                 it.startDate,
-                                "",
-                                "",
-                                it.title
+                                it.finishDate,
+                                it.eventType
                             )
                         )
 
@@ -243,31 +243,32 @@ class CalendarFragment : Fragment() {
 
 
             ,
-            onDeleteIconClicked = { event -> showDeleteDialog(event) }
+//            onDeleteIconClicked = { event -> showDeleteDialog(event) }
+            onDeleteIconClicked = { event -> }
         )
 
     }
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun showDeleteDialog(event: EventModel) {
-
-        val dialog = Dialog(requireActivity())
-        dialog.setContentView(R.layout.dialog_delete_event_general)
-        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
-        val deleteEventButton: Button = dialog.findViewById(R.id.deleteEventButton)
-
-        deleteEventButton.setOnClickListener() {
-                calendarViewModel.deleteEvent(event.id, requireActivity())
-//                Toast.makeText(requireContext(), "Event deleted: ${event.title}", Toast.LENGTH_SHORT).show()
-                updateEventsList()
-            calendarViewModel.getEvents()
-            initEventList()
-            initUiStateEvent()
-            showEvents()
-            dialog.hide()
-        }
-        dialog.show()
-    }
+//    @RequiresApi(Build.VERSION_CODES.O)
+//    private fun showDeleteDialog(event: EventModel) {
+//
+//        val dialog = Dialog(requireActivity())
+//        dialog.setContentView(R.layout.dialog_delete_event_general)
+//        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+//
+//        val deleteEventButton: Button = dialog.findViewById(R.id.deleteEventButton)
+//
+//        deleteEventButton.setOnClickListener() {
+//                calendarViewModel.deleteEvent(event.id, requireActivity())
+////                Toast.makeText(requireContext(), "Event deleted: ${event.title}", Toast.LENGTH_SHORT).show()
+//                updateEventsList()
+//            calendarViewModel.getEvents()
+//            initEventList()
+//            initUiStateEvent()
+//            showEvents()
+//            dialog.hide()
+//        }
+//        dialog.show()
+//    }
     private fun initUiStateEvent() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {

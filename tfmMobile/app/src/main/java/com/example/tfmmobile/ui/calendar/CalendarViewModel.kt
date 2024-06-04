@@ -78,15 +78,15 @@ class CalendarViewModel @Inject constructor(
         }
     }
 
-    fun deleteEvent(id:Long, context: Context){
-        viewModelScope.launch {
-//            hilo principal
-            _stateEvent.value= EventState.Loading
-            val result = withContext(Dispatchers.IO) { eventUseCase(id, false) } //hilo secundario
-            getEvents()
-        }
-//            hilo principal
-    }
+//    fun deleteEvent(id:Long, context: Context){
+//        viewModelScope.launch {
+////            hilo principal
+//            _stateEvent.value= EventState.Loading
+//            val result = withContext(Dispatchers.IO) { eventUseCase(id, false) } //hilo secundario
+//            getEvents()
+//        }
+////            hilo principal
+//    }
 
 
 }

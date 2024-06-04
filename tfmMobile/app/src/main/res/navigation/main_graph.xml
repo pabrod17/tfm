@@ -13,9 +13,12 @@
         <action
             android:id="@+id/action_calendarFragment_to_gameDetailActivity"
             app:destination="@id/gameDetailActivity" />
-        <action
+         <action
             android:id="@+id/action_calendarFragment_to_trainingDetailActivity"
             app:destination="@id/trainingDetailActivity" />
+        <action
+            android:id="@+id/action_calendarFragment_to_eventActivity"
+            app:destination="@id/eventActivity" />
     </fragment>
     <fragment
         android:id="@+id/clubFragment"
@@ -281,6 +284,27 @@
             app:argType="string" />
         <argument
             android:name="description"
+            app:argType="string" />
+    </activity>
+    <activity
+        android:id="@+id/eventActivity"
+        android:name="com.example.tfmmobile.ui.detail.event.EventActivity"
+        android:label="activity_event"
+        tools:layout="@layout/activity_event" >
+        <argument
+            android:name="id"
+            app:argType="long" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="startDate"
+            app:argType="string" />
+        <argument
+            android:name="finishDate"
+            app:argType="string" />
+        <argument
+            android:name="eventType"
             app:argType="string" />
     </activity>
 </navigation>
