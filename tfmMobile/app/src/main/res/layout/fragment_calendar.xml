@@ -16,6 +16,17 @@
 
 <!--        android:layout_marginTop="30dp"-->
     <!-- Add CalendarView to display the Calendar -->
+
+        <TextView
+            android:id="@+id/monthTitleCalendar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="month"
+            android:gravity="center"
+            android:layout_marginTop="12dp"
+            android:padding="10dp"
+            />
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,15 +38,32 @@
         app:cardElevation="10dp"
 
         >
-        <com.prolificinteractive.materialcalendarview.MaterialCalendarView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:mcv_showOtherDates="all"
-            android:id="@+id/calendar2"
-            app:mcv_selectionColor="@color/pink"
-            android:background="@drawable/gradient_background11"
-            />
+<!--        <com.prolificinteractive.materialcalendarview.MaterialCalendarView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:mcv_showOtherDates="all"-->
+<!--            android:id="@+id/calendar2"-->
+<!--            app:mcv_selectionColor="@color/pink"-->
+<!--            android:background="@drawable/gradient_background11"-->
+<!--            />-->
 
+
+
+        <com.github.sundeepk.compactcalendarview.CompactCalendarView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/compactcalendar_view"
+            android:layout_width="match_parent"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:layout_height="250dp"
+            app:compactCalendarTargetHeight="250dp"
+            app:compactCalendarTextSize="12sp"
+            app:compactCalendarBackgroundColor="#ffe95451"
+            app:compactCalendarTextColor="#fff"
+            app:compactCalendarCurrentSelectedDayBackgroundColor="#E57373"
+            app:compactCalendarCurrentDayBackgroundColor="#B71C1C"
+            app:compactCalendarMultiEventIndicatorColor="#fff"
+            />
 
 
 <!--        android:background="@color/back2"-->

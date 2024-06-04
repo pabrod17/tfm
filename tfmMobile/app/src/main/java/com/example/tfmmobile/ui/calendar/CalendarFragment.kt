@@ -1,6 +1,5 @@
 package com.example.tfmmobile.ui.calendar
 
-import android.app.AlertDialog
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -17,38 +16,34 @@ import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.CalendarView
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tfmmobile.R
 import com.example.tfmmobile.databinding.FragmentCalendarBinding
 import com.example.tfmmobile.domain.model.EventModel
 import com.example.tfmmobile.ui.calendar.adapter.EventAdapter
-import com.example.tfmmobile.ui.events.EventsFragmentDirections
-import com.example.tfmmobile.ui.events.adapter.GameAdapter
-import com.example.tfmmobile.ui.health.adapter.LesionCategory
 import com.example.tfmmobile.ui.home.DatePickerFragment
 import com.example.tfmmobile.ui.home.TimePickerFragment
+import com.github.sundeepk.compactcalendarview.CompactCalendarView
+import com.github.sundeepk.compactcalendarview.CompactCalendarView.CompactCalendarViewListener
+import com.github.sundeepk.compactcalendarview.domain.Event
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.prolificinteractive.materialcalendarview.DayViewDecorator
 import com.prolificinteractive.materialcalendarview.DayViewFacade
-import com.prolificinteractive.materialcalendarview.MaterialCalendarView
 import com.prolificinteractive.materialcalendarview.format.WeekDayFormatter
-import com.prolificinteractive.materialcalendarview.spans.DotSpan
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.text.DateFormatSymbols
@@ -56,8 +51,10 @@ import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.Calendar
+import java.util.Date
 import java.util.Locale
 import java.util.TimeZone
+
 
 @AndroidEntryPoint
 class CalendarFragment : Fragment() {
@@ -70,22 +67,40 @@ class CalendarFragment : Fragment() {
     private lateinit var eventAdapter: EventAdapter
     private lateinit var calendarView: CalendarView
 
-    private lateinit var calendar2: MaterialCalendarView
+//    private lateinit var calendar2: MaterialCalendarView
+        private lateinit var calendar2: CompactCalendarView
+
 
     private lateinit var rvEvents: RecyclerView
 
 
     lateinit var eventList: List<EventModel>
 
+    lateinit var monthTitleCalendar : TextView
+
     private lateinit var addEventssButton: FloatingActionButton
+
+    private val dateFormatForMonth = SimpleDateFormat("MMMM- yyyy", Locale.getDefault())
 
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        calendar2 = binding.calendar2
-        rvEvents = binding.rvEvents
+        calendar2 = binding.compactcalendarView
         addEventssButton = binding.addEventssButton
+        monthTitleCalendar = binding.monthTitleCalendar
+        monthTitleCalendar.text = dateFormatForMonth.format(calendar2.firstDayOfCurrentMonth)
+        rvEvents = binding.rvEvents
+
+//        val ev1 = Event(Color.GREEN, 1717618140000, EventModel(1,"titulo", "", "", "General"))
+//        calendar2.addEvent(ev1);
+        calendar2.setUseThreeLetterAbbreviation(true);
+
+        calendar2.setOnClickListener {
+            Toast.makeText(requireContext(), "Event deleted: ${it.id}", Toast.LENGTH_SHORT).show()
+
+
+        }
 
         calendarViewModel.getEvents()
         lifecycleScope.launchWhenStarted {
@@ -179,24 +194,13 @@ class CalendarFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     private fun initEventList() {
         eventAdapter = EventAdapter(
-            onItemSelected = { event -> /* Lógica para cuando se selecciona un elemento */ },
-            onDeleteIconClicked = { event -> showDeleteDialog(event) } // Mostrar el diálogo cuando se hace clic en el ícono de eliminación
+            onItemSelected = { event ->  },
+            onDeleteIconClicked = { event -> showDeleteDialog(event) }
         )
     }
     @RequiresApi(Build.VERSION_CODES.O)
     private fun showDeleteDialog(event: EventModel) {
-//        AlertDialog.Builder(requireContext()).apply {
-//            setTitle("Delete Event")
-//            setMessage("Are you sure you want to delete this event?")
-//            setPositiveButton("Yes") { dialog, _ ->
-////                calendarViewModel.deleteEvent(event)
-//                Toast.makeText(requireContext(), "Event deleted: ${event.title}", Toast.LENGTH_SHORT).show()
-//                dialog.dismiss()
-//            }
-//            setNegativeButton("No") { dialog, _ ->
-//                dialog.dismiss()
-//            }
-//        }.create().show()
+
         val dialog = Dialog(requireActivity())
         dialog.setContentView(R.layout.dialog_delete_event_general)
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
@@ -237,13 +241,28 @@ class CalendarFragment : Fragment() {
         println("dentrro listenerrsss")
         println("dentrro listenerrsss")
         println("dentrro listenerrsss")
-        calendar2.setOnDateChangedListener { widget, date, selected ->
-            val dateText = "${date.year}-${date.month + 1}-${date.day}"
-//            Toast.makeText(requireContext(), "Fecha seleccionada: $dateText", Toast.LENGTH_SHORT).show()
-            println("SELECCIONADO NORMAL: " + date)
-            println("SELECCIONADO formateada: " + dateText)
-            updateLesionsListByCategories(date)
-        }
+
+        calendar2.setListener(object : CompactCalendarViewListener {
+            override fun onDayClick(dateClicked: Date) {
+                val events: List<Event> = calendar2.getEvents(dateClicked)
+//                Toast.makeText(requireContext(), "Day was clicked: $dateClicked with events $events\"", Toast.LENGTH_SHORT).show()
+//                updateLesionsListByCategories(dateClicked)
+                val newEvents: List<EventModel> = events.map { it.data as EventModel }
+
+                eventAdapter.eventList = newEvents
+
+                rvEvents.apply {
+                    rvEvents.layoutManager = GridLayoutManager(context, 1)
+                    rvEvents.adapter = eventAdapter
+                }
+                eventAdapter.notifyDataSetChanged()
+            }
+
+            override fun onMonthScroll(firstDayOfNewMonth: Date) {
+                monthTitleCalendar.text = dateFormatForMonth.format(firstDayOfNewMonth)
+//                Toast.makeText(requireContext(), "Month was scrolled to: $firstDayOfNewMonth", Toast.LENGTH_SHORT).show()
+            }
+        })
 
         addEventssButton.setOnClickListener {
             val dialog = Dialog(requireActivity())
@@ -332,6 +351,7 @@ class CalendarFragment : Fragment() {
             returnDateConverter(etFinishDateGeneralEvent.text.toString()),
             requireActivity()
         )
+
         updateEventsList()
     }
 
@@ -397,9 +417,26 @@ class CalendarFragment : Fragment() {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun updateLesionsListByCategories(selectedDate: CalendarDay ) {
+    private fun updateLesionsListByCategories(selectedDate: Date ) {
         val newEvents = eventList.filter { event ->
-            selectedDate.equals(parseDate(event.startDate)) }
+            selectedDate.equals(event.startDate)
+
+
+
+        }
+//        println("sacando fecha seleccionada: " + selectedDate)
+//        println("sacando fecha seleccionada: " + selectedDate)
+//        println("sacando fecha seleccionada: " + selectedDate)
+//        println("-----------------")
+//        println("-----------------")
+//        println("EVENTO FECHA 1: " + eventList.get(0).startDate)
+//        println("EVENTO FECHA 1: " + eventList.get(0).startDate)
+//        println("EVENTO FECHA 1: " + eventList.get(0).startDate)
+//        println("-----------------")
+//        println("-----------------")
+//        println("-----------------")
+//        println("-----------------")
+//        println("-----------------")
         eventAdapter.eventList = newEvents
 
         rvEvents.apply {
@@ -412,95 +449,50 @@ class CalendarFragment : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun showEvents() {
-//        calendarView = binding.calendarView
-        calendar2.setWeekDayFormatter(CustomWeekDayFormatter(Color.MAGENTA))
-        calendar2.addDecorator(AllDaysTextColorDecorator(Color.WHITE))
-        calendar2.addDecorator(OutOfMonthDecorator(Color.GRAY))
-
         println("dentro de los listenerssssssss: " + eventList.size)
         println("dentro de los listenerssssssss: " + eventList.size)
         println("dentro de los listenerssssssss: " + eventList.size)
 
-//        val dates = listOf(
-//            CalendarDay.from(2024, 5, 10),
-//            CalendarDay.from(2024, 5, 15),
-//            CalendarDay.from(2024, 5, 20)
-//        )
-//
-//        val dates2 = listOf(
-//            CalendarDay.from(2024, 4, 10),
-//            CalendarDay.from(2024, 4, 15),
-//            CalendarDay.from(2024, 4, 20)
-//        )
-//
-//        calendar2.addDecorator(ContextCompat.getDrawable(
-//            calendar2.context,
-//            R.drawable.gradient_background_club_category_player_selected
-//        )?.let {
-//            EventDecorator(
-//                it, dates)
-//        })
-//        calendar2.addDecorator(ContextCompat.getDrawable(
-//            calendar2.context,
-//            R.drawable.gradient_background_stretching_category_stretching9
-//        )?.let {
-//            EventDecorator(
-//                it, dates2)
-//        })
 
-
-        val dateToDrawableMap = mutableMapOf<CalendarDay, Drawable>()
         eventList.forEach { event ->
-            val eventStartDate = parseDate(event.startDate)
+            when (event.eventType) {
+                "Game" -> {
+//                    ContextCompat.getDrawable(
+//                        calendar2.context,
+//                        R.drawable.gradient_background_calendar_event_game
+//                    )
 
-            println("evento FECHA: " + eventStartDate)
-            println("evento FECHA: " + event.startDate)
-            println("------------------------")
-            println("------------------------")
+                    val ev1 = Event(Color.RED, dateFormatForMillis(event.startDate), event)
+                    calendar2.addEvent(ev1);
+                }
+                "Training" -> {
+//                    ContextCompat.getDrawable(
+//                        calendar2.context,
+//                        R.drawable.gradient_background_calendar_event_training
+//                    )
+                    val ev1 = Event(Color.BLUE, dateFormatForMillis(event.startDate), event)
+                    calendar2.addEvent(ev1);
 
-            val drawable = when (event.eventType) {
-                "Game" -> ContextCompat.getDrawable(calendar2.context, R.drawable.gradient_background_calendar_event_game)
-                "Training" -> ContextCompat.getDrawable(calendar2.context, R.drawable.gradient_background_calendar_event_training)
-                else -> ContextCompat.getDrawable(calendar2.context, R.drawable.gradient_background_calendar_event_general)
+                }
+                else -> {
+//                    ContextCompat.getDrawable(
+//                        calendar2.context,
+//                        R.drawable.gradient_background_calendar_event_general
+//                    )
+                    val ev1 = Event(Color.GREEN, dateFormatForMillis(event.startDate), event)
+                    calendar2.addEvent(ev1);
+
+                }
             }
-            drawable?.let {
-                dateToDrawableMap[eventStartDate] = it
-            }
-        }
-        dateToDrawableMap.forEach { (date, drawable) ->
-            calendar2.addDecorator(EventDecorator(drawable, listOf(date)))
-        }
 
-
-//
-//        eventList.forEach { event ->
-//            // Hacer algo con el evento, por ejemplo, imprimir su información
-//            println("Evento: ${event.id}, ${event.startDate}, ${event.startDate}, ${event.finishDate}, ${event.eventType}")
-//        }
-//
-//
-//        calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
-//            val selectedDateInMillis = getDateInMillis(year, month, dayOfMonth)
-//
-//
-////            Toast.makeText(context, "Evento agregador", Toast.LENGTH_LONG).show()
-//            calendarView.setDate(selectedDateInMillis)
-//            calendarView.setBackgroundColor(ContextCompat.getColor(calendarView.context, R.color.cardSeason1))
-//        }
-    }
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun parseDate(dateString: String): CalendarDay {
-        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ")
-        val localDateTime = LocalDateTime.parse(dateString, formatter)
-        return CalendarDay.from(localDateTime.year, localDateTime.monthValue, localDateTime.dayOfMonth)
+        }
     }
 
-//    private fun getDateInMillis(year: Int, month: Int, dayOfMonth: Int): Long {
-//        val calendar = Calendar.getInstance()
-//        calendar.set(year, month, dayOfMonth)
-//        return calendar.timeInMillis
-//    }
-
+    fun dateFormatForMillis(dateString: String): Long {
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.getDefault())
+        val date = dateFormat.parse(dateString)
+        return date?.time ?: 0L
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -512,51 +504,4 @@ class CalendarFragment : Fragment() {
 
 
 
-}
-
-class AllDaysTextColorDecorator(private val color: Int) : DayViewDecorator {
-    override fun shouldDecorate(day: CalendarDay): Boolean {
-        return true
-    }
-
-    override fun decorate(view: DayViewFacade) {
-        view.addSpan(ForegroundColorSpan(color))
-    }
-}
-
-class CustomWeekDayFormatter(private val color: Int) : WeekDayFormatter {
-    private val weekdays = DateFormatSymbols().shortWeekdays
-
-    override fun format(dayOfWeek: Int): CharSequence {
-        val weekday = weekdays[dayOfWeek]
-        val spannable = SpannableString(weekday)
-        spannable.setSpan(ForegroundColorSpan(color), 0, weekday.length, 0)
-        return spannable
-    }
-}
-
-class OutOfMonthDecorator(private val color: Int) : DayViewDecorator {
-    override fun shouldDecorate(day: CalendarDay): Boolean {
-        val today = Calendar.getInstance()
-        val month = today.get(Calendar.MONTH)
-        val year = today.get(Calendar.YEAR)
-        return day.month != month || day.year != year
-    }
-
-    override fun decorate(view: DayViewFacade) {
-        view.addSpan(ForegroundColorSpan(color))
-    }
-}
-
-class EventDecorator(private val backgroundColor: Drawable, dates: Collection<CalendarDay>) : DayViewDecorator {
-
-    private val dates: HashSet<CalendarDay> = HashSet(dates)
-
-    override fun shouldDecorate(day: CalendarDay): Boolean {
-        return dates.contains(day)
-    }
-
-    override fun decorate(view: DayViewFacade) {
-        view.setBackgroundDrawable(backgroundColor)
-    }
 }

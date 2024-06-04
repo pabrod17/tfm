@@ -63,6 +63,7 @@ dependencies {
 
     //Calendar
     implementation("com.prolificinteractive:material-calendarview:1.4.3")
+    implementation("com.github.sundeepk:compact-calendar-view:3.0.0")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

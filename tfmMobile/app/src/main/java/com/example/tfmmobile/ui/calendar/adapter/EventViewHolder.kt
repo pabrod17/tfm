@@ -114,10 +114,10 @@ class EventViewHolder(view: View): RecyclerView.ViewHolder(view) {
     @RequiresApi(Build.VERSION_CODES.O)
     private fun formatDate(dateToFormat: String) : String {
         val formatterBD = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ")
-        val formatterDeseado = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+        val formatterDeseado = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
         val fecha = LocalDateTime.parse(dateToFormat, formatterBD)
-        val fechaMasUnDia = fecha.plusDays(1)
-        return formatterDeseado.format(fechaMasUnDia)
+        val fechaMas2Horas = fecha.plusHours(2)
+        return formatterDeseado.format(fechaMas2Horas)
     }
 
 }
