@@ -69,6 +69,8 @@ object NetworkModule {
             .Builder()
             .client(okHttpClient)
             .baseUrl("http://10.0.2.2:8080/")
+//            Esta es la ip del wifi. Para poder conectarme desde un dispositivo fisico movil
+//            .baseUrl("http://192.168.1.50:8080/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
