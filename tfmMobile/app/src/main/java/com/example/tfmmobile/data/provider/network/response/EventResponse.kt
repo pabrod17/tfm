@@ -8,7 +8,9 @@ class EventResponse (@SerializedName("id") val id: Long,
                      @SerializedName("title") val title:String,
                      @SerializedName("startDate") val startDate: String,
                      @SerializedName("finishDate") val finishDate: String,
-                    @SerializedName("eventType") val eventType: String) {
+                    @SerializedName("eventType") val eventType: String,
+                     @SerializedName("gameId") val gameId: Long,
+                     @SerializedName("trainingId") val trainingId: Long) {
 
     fun toDomain(): EventModel {
         return EventModel(
@@ -16,6 +18,8 @@ class EventResponse (@SerializedName("id") val id: Long,
             title = title,
             startDate = startDate,
             finishDate = finishDate,
-            eventType = eventType)
+            eventType = eventType,
+            gameId = gameId,
+            trainingId = trainingId)
     }
 }

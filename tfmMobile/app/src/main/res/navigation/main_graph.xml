@@ -9,7 +9,14 @@
         android:id="@+id/calendarFragment"
         android:name="com.example.tfmmobile.ui.calendar.CalendarFragment"
         android:label="fragment_calendar"
-        tools:layout="@layout/fragment_calendar" />
+        tools:layout="@layout/fragment_calendar" >
+        <action
+            android:id="@+id/action_calendarFragment_to_gameDetailActivity"
+            app:destination="@id/gameDetailActivity" />
+        <action
+            android:id="@+id/action_calendarFragment_to_trainingDetailActivity"
+            app:destination="@id/trainingDetailActivity" />
+    </fragment>
     <fragment
         android:id="@+id/clubFragment"
         android:name="com.example.tfmmobile.ui.club.ClubFragment"

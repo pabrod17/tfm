@@ -5,5 +5,6 @@ data class EventModel (
     val title: String,
     val startDate: String,
     val finishDate: String,
-    val eventType: String
-)
+    val eventType: String,
+    val gameId: Long,
+    val trainingId: Long)

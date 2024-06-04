@@ -28,12 +28,15 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tfmmobile.R
 import com.example.tfmmobile.databinding.FragmentCalendarBinding
 import com.example.tfmmobile.domain.model.EventModel
 import com.example.tfmmobile.ui.calendar.adapter.EventAdapter
+import com.example.tfmmobile.ui.events.EventsFragmentDirections
+import com.example.tfmmobile.ui.events.adapter.TrainingAdapter
 import com.example.tfmmobile.ui.home.DatePickerFragment
 import com.example.tfmmobile.ui.home.TimePickerFragment
 import com.github.sundeepk.compactcalendarview.CompactCalendarView
@@ -194,9 +197,55 @@ class CalendarFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     private fun initEventList() {
         eventAdapter = EventAdapter(
-            onItemSelected = { event ->  },
+            onItemSelected = {
+                when (it.eventType) {
+                    "Game" -> {
+                        findNavController().navigate(
+//                Siempre va a haber esta clase. La del maingraph
+                            CalendarFragmentDirections.actionCalendarFragmentToGameDetailActivity(
+                                it.gameId,
+                                it.startDate,
+                                it.title,
+                                ""
+                            )
+                        )
+                    }
+                    "Training" -> {
+                        findNavController().navigate(
+//                Siempre va a haber esta clase. La del maingraph
+                            CalendarFragmentDirections.actionCalendarFragmentToTrainingDetailActivity(
+                                it.trainingId,
+                                it.startDate,
+                                "",
+                                "",
+                                it.title
+                            )
+                        )
+
+                    }
+                    else -> {
+                        findNavController().navigate(
+//                Siempre va a haber esta clase. La del maingraph
+                            CalendarFragmentDirections.actionCalendarFragmentToTrainingDetailActivity(
+                                it.id,
+                                it.startDate,
+                                "",
+                                "",
+                                it.title
+                            )
+                        )
+
+                    }
+                }
+
+            }
+
+
+
+            ,
             onDeleteIconClicked = { event -> showDeleteDialog(event) }
         )
+
     }
     @RequiresApi(Build.VERSION_CODES.O)
     private fun showDeleteDialog(event: EventModel) {
