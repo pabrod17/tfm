@@ -1,7 +1,10 @@
 package com.example.tfmmobile.ui.events.adapter.categories
 
+import android.graphics.Color
+import android.os.Build
 import android.view.View
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getString
@@ -9,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tfmmobile.R
 import com.example.tfmmobile.ui.club.ClubCategory
 import com.example.tfmmobile.ui.events.EventsCategory
+import com.google.android.material.card.MaterialCardView
 
 class CategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
@@ -17,7 +21,9 @@ class CategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     //    private val divider:View = view.findViewById(R.id.divider)
     private val cardEventsLayout: View = view.findViewById(R.id.cardEventsLayout)
     private val cardImageEvents: AppCompatImageView = view.findViewById(R.id.cardImageEvents)
+    private val eventsCategoryPrincipal: MaterialCardView = view.findViewById(R.id.eventsCategoryPrincipal)
 
+    @RequiresApi(Build.VERSION_CODES.P)
     fun render(eventsCategory: EventsCategory, onItemSelected: (Int) -> Unit) {
         tvCategoryNameEvent.text = "Ejemplo"
 
@@ -30,14 +36,22 @@ class CategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                 tvCategoryNameEvent.text = getString(tvCategoryNameEvent.context, R.string.games)
                 cardEventsLayout.background = ContextCompat.getDrawable(
                     cardEventsLayout.context,
-                    R.drawable.gradient_background_events_category_game2
+                    R.drawable.gradient_background_events_category_game2_new
                 )
                 cardImageEvents.setImageResource(R.drawable.game)
+                eventsCategoryPrincipal.strokeWidth = 0
+                eventsCategoryPrincipal.cardElevation = 10F
+                eventsCategoryPrincipal.outlineSpotShadowColor = Color.TRANSPARENT
+
                 if (eventsCategory.isSelected) {
-                    cardEventsLayout.background = ContextCompat.getDrawable(
-                        cardEventsLayout.context,
-                        R.drawable.gradient_background_events_category_game_selected
-                    )
+//                    cardEventsLayout.background = ContextCompat.getDrawable(
+//                        cardEventsLayout.context,
+//                        R.drawable.gradient_background_events_category_game_selected
+//                    )
+                    eventsCategoryPrincipal.strokeWidth = 4
+                    eventsCategoryPrincipal.strokeColor = Color.WHITE
+                    eventsCategoryPrincipal.outlineSpotShadowColor = Color.WHITE
+                    eventsCategoryPrincipal.cardElevation = 40F
                 }
 
 
@@ -51,11 +65,20 @@ class CategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                     R.drawable.gradient_background_events_category_training2
                 )
                 cardImageEvents.setImageResource(R.drawable.training)
+                cardImageEvents.setImageResource(R.drawable.game)
+                eventsCategoryPrincipal.strokeWidth = 0
+                eventsCategoryPrincipal.cardElevation = 10F
+                eventsCategoryPrincipal.outlineSpotShadowColor = Color.TRANSPARENT
+
                 if (eventsCategory.isSelected) {
-                    cardEventsLayout.background = ContextCompat.getDrawable(
-                        cardEventsLayout.context,
-                        R.drawable.gradient_background_events_category_training_selected
-                    )
+//                    cardEventsLayout.background = ContextCompat.getDrawable(
+//                        cardEventsLayout.context,
+//                        R.drawable.gradient_background_events_category_training_selected
+//                    )
+                    eventsCategoryPrincipal.strokeWidth = 4
+                    eventsCategoryPrincipal.strokeColor = Color.WHITE
+                    eventsCategoryPrincipal.outlineSpotShadowColor = Color.WHITE
+                    eventsCategoryPrincipal.cardElevation = 40F
                 }
             }
         }
