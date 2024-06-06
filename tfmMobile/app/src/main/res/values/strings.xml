@@ -40,6 +40,17 @@
     <!--    BottomBar-->
     <string name="club">Club</string>
     <string name="events">Eventos</string>
+
+    <string name="clubCategories">Categorías de Club</string>
+    <string name="eventsCategories">Categorías de Eventos</string>
+    <string name="healthCategories">Categorías de Salud</string>
+    <string name="playsCategories">Categorías de Jugadas</string>
+
+    <string name="clubItems">Elementos de Club</string>
+    <string name="eventsItems">Elementos de Eventos</string>
+    <string name="healthItems">Elementos de Salud</string>
+    <string name="playsItems">Elementos de Jugadas</string>
+
     <string name="eventGeneral">Evento General</string>
     <string name="health">Salud</string>
     <string name="plays">Jugadas</string>

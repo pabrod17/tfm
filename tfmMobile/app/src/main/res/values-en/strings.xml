@@ -47,6 +47,17 @@
     <!--    BottomBar-->
     <string name="club">Club</string>
     <string name="events">Events</string>
+
+    <string name="clubCategories">Club Categories</string>
+    <string name="eventsCategories">Events Categories</string>
+    <string name="healthCategories">Health Categories</string>
+    <string name="playsCategories">Plays Categories</string>
+
+    <string name="clubItems">Club Items</string>
+    <string name="eventsItems">Events Items</string>
+    <string name="healthItems">Health Items</string>
+    <string name="playsItems">Plays Items</string>
+
     <string name="eventGeneral">General Event</string>
     <string name="health">Health</string>
     <string name="plays">Plays</string>
