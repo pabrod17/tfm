@@ -71,7 +71,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="32dp"
-        android:backgroundTint="@color/cardGame2"
+        android:backgroundTint="@color/cardGame222"
         android:src="@android:drawable/ic_input_add"
         app:fabSize="normal"
         app:tint="@color/white" />
