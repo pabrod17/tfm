@@ -64,7 +64,7 @@
 
             android:textSize="18dp"
             android:textStyle="bold"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="12dp"
             />
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvTeams"
