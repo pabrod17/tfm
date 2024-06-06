@@ -56,7 +56,7 @@
         app:menu="@menu/bottom_menu"
         app:itemBackground="@drawable/gradient_background_new_bottombar"
         app:itemActiveIndicatorStyle="@null"
-        app:labelVisibilityMode="labeled"
     />
+<!--    app:labelVisibilityMode="labeled"-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
