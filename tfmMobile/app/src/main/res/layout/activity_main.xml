@@ -49,13 +49,14 @@
         app:itemIconTint="@color/bottom_nav_selector"
         app:itemTextColor="@color/bottom_nav_selector"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_menu"
         app:itemBackground="@drawable/gradient_background_new_bottombar"
         app:itemActiveIndicatorStyle="@null"
-        />
+        app:labelVisibilityMode="labeled"
+    />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
