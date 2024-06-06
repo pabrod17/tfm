@@ -150,6 +150,8 @@
         <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tvBodyarenaName"
                 style="@style/Body"
+            android:background="#1D1E33"
+            android:backgroundTint="#1D1E33"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/arenaName"
@@ -180,6 +182,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tvBodyownerName"
                 style="@style/Body"
+                android:background="#1D1E33"
+                android:backgroundTint="#1D1E33"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -210,6 +214,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tvBodyTeamDetail"
                 style="@style/Body"
+                android:background="#1D1E33"
+                android:backgroundTint="#1D1E33"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/description"

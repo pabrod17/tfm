@@ -145,6 +145,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etGesture"
                         style="@style/Body"
+                        android:background="#1D1E33"
+                        android:backgroundTint="#1D1E33"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/gesture"
@@ -175,6 +177,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etPosition1"
                         style="@style/Body"
+                        android:background="#1D1E33"
+                        android:backgroundTint="#1D1E33"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -205,6 +209,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etPosition2"
                         style="@style/Body"
+                        android:background="#1D1E33"
+                        android:backgroundTint="#1D1E33"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/position2"
@@ -236,6 +242,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etPosition3"
                         style="@style/Body"
+                        android:background="#1D1E33"
+                        android:backgroundTint="#1D1E33"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -265,6 +273,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etPosition4"
                         style="@style/Body"
+                        android:background="#1D1E33"
+                        android:backgroundTint="#1D1E33"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -294,6 +304,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etPosition5"
                         style="@style/Body"
+                        android:background="#1D1E33"
+                        android:backgroundTint="#1D1E33"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -324,6 +336,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etDescription"
                         style="@style/Body"
+                        android:background="#1D1E33"
+                        android:backgroundTint="#1D1E33"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"

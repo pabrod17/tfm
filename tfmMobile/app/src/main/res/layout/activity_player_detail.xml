@@ -144,6 +144,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etPrimaryLastName"
                         style="@style/Body"
+                        android:background="#1D1E33"
+                        android:backgroundTint="#1D1E33"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/primaryLastName"
@@ -174,6 +176,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etSecondLastName"
                         style="@style/Body"
+                        android:background="#1D1E33"
+                        android:backgroundTint="#1D1E33"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -204,6 +208,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etTrends"
                         style="@style/Body"
+                        android:background="#1D1E33"
+                        android:backgroundTint="#1D1E33"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/trends"
@@ -235,6 +241,8 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etPhoneNumber"
                             style="@style/Body"
+                            android:background="#1D1E33"
+                            android:backgroundTint="#1D1E33"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
@@ -264,6 +272,8 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etEmail"
                             style="@style/Body"
+                            android:background="#1D1E33"
+                            android:backgroundTint="#1D1E33"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
@@ -293,6 +303,8 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etDni"
                             style="@style/Body"
+                            android:background="#1D1E33"
+                            android:backgroundTint="#1D1E33"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"

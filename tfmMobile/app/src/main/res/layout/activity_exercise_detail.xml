@@ -145,6 +145,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etExerciseObjective"
                         style="@style/Body"
+                        android:background="#1D1E33"
+                        android:backgroundTint="#1D1E33"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/objective"
@@ -176,6 +178,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etDescription"
                         style="@style/Body"
+                        android:background="#1D1E33"
+                        android:backgroundTint="#1D1E33"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/trends"

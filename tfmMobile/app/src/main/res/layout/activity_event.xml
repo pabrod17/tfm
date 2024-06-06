@@ -116,6 +116,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etStartDate"
                         style="@style/Body"
+                        android:background="#1D1E33"
+                        android:backgroundTint="#1D1E33"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/startDate"
@@ -148,6 +150,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etFinishDate"
                         style="@style/Body"
+                        android:background="#1D1E33"
+                        android:backgroundTint="#1D1E33"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/FinishDate"
