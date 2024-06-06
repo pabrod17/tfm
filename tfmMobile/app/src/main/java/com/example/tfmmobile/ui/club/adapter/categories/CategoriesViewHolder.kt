@@ -45,9 +45,9 @@ class CategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                 clubCategoryPrincipal.cardElevation = 10F
                 clubCategoryPrincipal.outlineSpotShadowColor = Color.TRANSPARENT
 
-                ivTeamDetail.strokeWidth = 0
-                ivTeamDetail.cardElevation = 10F
-                ivTeamDetail.outlineSpotShadowColor = Color.TRANSPARENT
+//                ivTeamDetail.strokeWidth = 0
+//                ivTeamDetail.cardElevation = 10F
+//                ivTeamDetail.outlineSpotShadowColor = Color.TRANSPARENT
 
                 if (clubCategory.isSelected) {
 //                    cardClubLayout.background = ContextCompat.getDrawable(
@@ -59,10 +59,10 @@ class CategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                     clubCategoryPrincipal.outlineSpotShadowColor = Color.WHITE
                     clubCategoryPrincipal.cardElevation = 40F
 
-                    ivTeamDetail.strokeWidth = 4
-                    ivTeamDetail.strokeColor = Color.WHITE
-                    ivTeamDetail.outlineSpotShadowColor = Color.WHITE
-                    ivTeamDetail.cardElevation = 40F
+//                    ivTeamDetail.strokeWidth = 4
+//                    ivTeamDetail.strokeColor = Color.WHITE
+//                    ivTeamDetail.outlineSpotShadowColor = Color.WHITE
+//                    ivTeamDetail.cardElevation = 40F
                 }
 
 
@@ -80,9 +80,9 @@ class CategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                 clubCategoryPrincipal.cardElevation = 10F
                 clubCategoryPrincipal.outlineSpotShadowColor = Color.TRANSPARENT
 
-                ivTeamDetail.strokeWidth = 0
-                ivTeamDetail.cardElevation = 10F
-                ivTeamDetail.outlineSpotShadowColor = Color.TRANSPARENT
+//                ivTeamDetail.strokeWidth = 0
+//                ivTeamDetail.cardElevation = 10F
+//                ivTeamDetail.outlineSpotShadowColor = Color.TRANSPARENT
 
                 if (clubCategory.isSelected) {
 //                    cardClubLayout.background = ContextCompat.getDrawable(
@@ -94,10 +94,10 @@ class CategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                     clubCategoryPrincipal.outlineSpotShadowColor = Color.WHITE
                     clubCategoryPrincipal.cardElevation = 40F
 
-                    ivTeamDetail.strokeWidth = 4
-                    ivTeamDetail.strokeColor = Color.WHITE
-                    ivTeamDetail.outlineSpotShadowColor = Color.WHITE
-                    ivTeamDetail.cardElevation = 40F
+//                    ivTeamDetail.strokeWidth = 4
+//                    ivTeamDetail.strokeColor = Color.WHITE
+//                    ivTeamDetail.outlineSpotShadowColor = Color.WHITE
+//                    ivTeamDetail.cardElevation = 40F
                 }
             }
 
@@ -113,9 +113,9 @@ class CategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                 clubCategoryPrincipal.cardElevation = 10F
                 clubCategoryPrincipal.outlineSpotShadowColor = Color.TRANSPARENT
 
-                ivTeamDetail.strokeWidth = 0
-                ivTeamDetail.cardElevation = 10F
-                ivTeamDetail.outlineSpotShadowColor = Color.TRANSPARENT
+//                ivTeamDetail.strokeWidth = 0
+//                ivTeamDetail.cardElevation = 10F
+//                ivTeamDetail.outlineSpotShadowColor = Color.TRANSPARENT
 
                 if (clubCategory.isSelected) {
 //                    cardClubLayout.background = ContextCompat.getDrawable(
@@ -127,10 +127,10 @@ class CategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                     clubCategoryPrincipal.outlineSpotShadowColor = Color.WHITE
                     clubCategoryPrincipal.cardElevation = 40F
 
-                    ivTeamDetail.strokeWidth = 4
-                    ivTeamDetail.strokeColor = Color.WHITE
-                    ivTeamDetail.outlineSpotShadowColor = Color.WHITE
-                    ivTeamDetail.cardElevation = 40F
+//                    ivTeamDetail.strokeWidth = 4
+//                    ivTeamDetail.strokeColor = Color.WHITE
+//                    ivTeamDetail.outlineSpotShadowColor = Color.WHITE
+//                    ivTeamDetail.cardElevation = 40F
                 }
             }
         }
