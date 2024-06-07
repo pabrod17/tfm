@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getString
 import androidx.recyclerview.widget.RecyclerView
@@ -21,7 +22,7 @@ class CategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     //    private val divider:View = view.findViewById(R.id.divider)
     private val cardEventsLayout: View = view.findViewById(R.id.cardEventsLayout)
     private val cardImageEvents: AppCompatImageView = view.findViewById(R.id.cardImageEvents)
-    private val eventsCategoryPrincipal: MaterialCardView = view.findViewById(R.id.eventsCategoryPrincipal)
+    private val eventsCategoryPrincipal: CardView = view.findViewById(R.id.eventsCategoryPrincipal)
 
     @RequiresApi(Build.VERSION_CODES.P)
     fun render(eventsCategory: EventsCategory, onItemSelected: (Int) -> Unit) {
@@ -39,7 +40,6 @@ class CategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                     R.drawable.gradient_background_events_category_game2_new
                 )
                 cardImageEvents.setImageResource(R.drawable.game)
-                eventsCategoryPrincipal.strokeWidth = 0
                 eventsCategoryPrincipal.cardElevation = 10F
                 eventsCategoryPrincipal.outlineSpotShadowColor = Color.TRANSPARENT
 
@@ -48,8 +48,6 @@ class CategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 //                        cardEventsLayout.context,
 //                        R.drawable.gradient_background_events_category_game_selected
 //                    )
-                    eventsCategoryPrincipal.strokeWidth = 4
-                    eventsCategoryPrincipal.strokeColor = Color.WHITE
                     eventsCategoryPrincipal.outlineSpotShadowColor = Color.WHITE
                     eventsCategoryPrincipal.cardElevation = 40F
                 }
@@ -65,8 +63,6 @@ class CategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                     R.drawable.gradient_background_events_category_training2
                 )
                 cardImageEvents.setImageResource(R.drawable.training)
-                eventsCategoryPrincipal.strokeWidth = 0
-                eventsCategoryPrincipal.cardElevation = 10F
                 eventsCategoryPrincipal.outlineSpotShadowColor = Color.TRANSPARENT
 
                 if (eventsCategory.isSelected) {
@@ -74,8 +70,6 @@ class CategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 //                        cardEventsLayout.context,
 //                        R.drawable.gradient_background_events_category_training_selected
 //                    )
-                    eventsCategoryPrincipal.strokeWidth = 4
-                    eventsCategoryPrincipal.strokeColor = Color.WHITE
                     eventsCategoryPrincipal.outlineSpotShadowColor = Color.WHITE
                     eventsCategoryPrincipal.cardElevation = 40F
                 }

@@ -236,6 +236,8 @@ class HealthFragment : Fragment() {
                         if(events.isEmpty()) {
                             lesionList = healthViewModel.getLesions()
 
+                        } else {
+                            lesionList = events
                         }
                     }
                 }
@@ -254,6 +256,8 @@ class HealthFragment : Fragment() {
                         if(events.isEmpty()) {
                             exerciseList = healthViewModel.getExercises()
 
+                        } else {
+                            exerciseList = events
                         }
                     }
                 }
@@ -270,6 +274,8 @@ class HealthFragment : Fragment() {
                         if(events.isEmpty()) {
                             stretchingList = healthViewModel.getStretchings()
 
+                        } else {
+                            stretchingList = events
                         }
                     }
                 }
@@ -573,6 +579,8 @@ class HealthFragment : Fragment() {
         healthViewModel.lesions.collect { events ->
             if(events.isEmpty()) {
                 lesionList = healthViewModel.getLesions()
+            } else {
+                lesionList = events
             }
         }
     }
@@ -580,6 +588,8 @@ class HealthFragment : Fragment() {
             healthViewModel.exercises.collect { events ->
                 if(events.isEmpty()) {
                     exerciseList = healthViewModel.getExercises()
+                } else {
+                    exerciseList = events
                 }
             }
         }
@@ -587,6 +597,8 @@ class HealthFragment : Fragment() {
             healthViewModel.stretchings.collect { events ->
                 if(events.isEmpty()) {
                     stretchingList = healthViewModel.getStretchings()
+                } else {
+                    stretchingList = events
                 }
             }
         }

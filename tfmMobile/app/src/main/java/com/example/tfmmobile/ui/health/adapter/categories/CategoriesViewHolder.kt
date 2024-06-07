@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getString
 import androidx.recyclerview.widget.RecyclerView
@@ -22,7 +23,7 @@ class CategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     //    private val divider:View = view.findViewById(R.id.divider)
     private val cardHealthLayout: View = view.findViewById(R.id.cardHealthLayout)
     private val cardImageHealth: AppCompatImageView = view.findViewById(R.id.cardImageHealth)
-    private val healthCategoryPrincipal: MaterialCardView = view.findViewById(R.id.healthCategoryPrincipal)
+    private val healthCategoryPrincipal: CardView = view.findViewById(R.id.healthCategoryPrincipal)
 
     @RequiresApi(Build.VERSION_CODES.P)
     fun render(healthCategory: HealthCategory, isSelected: Boolean, onItemSelected: (Int) -> Unit) {
@@ -40,7 +41,6 @@ class CategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                     R.drawable.gradient_background_healthj_category_lesion_card
                 )
                 cardImageHealth.setImageResource(R.drawable.lesion)
-                healthCategoryPrincipal.strokeWidth = 0
                 healthCategoryPrincipal.cardElevation = 10F
                 healthCategoryPrincipal.outlineSpotShadowColor = Color.TRANSPARENT
 
@@ -49,8 +49,6 @@ class CategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 //                        cardHealthLayout.context,
 //                        R.drawable.gradient_background_healthj_category_lesion_card_selected
 //                    )
-                    healthCategoryPrincipal.strokeWidth = 4
-                    healthCategoryPrincipal.strokeColor = Color.WHITE
                     healthCategoryPrincipal.outlineSpotShadowColor = Color.WHITE
                     healthCategoryPrincipal.cardElevation = 40F
                 }
@@ -66,7 +64,6 @@ class CategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                     R.drawable.gradient_background_healthj_category_exercise_card
                 )
                 cardImageHealth.setImageResource(R.drawable.exercise)
-                healthCategoryPrincipal.strokeWidth = 0
                 healthCategoryPrincipal.cardElevation = 10F
                 healthCategoryPrincipal.outlineSpotShadowColor = Color.TRANSPARENT
 
@@ -75,8 +72,6 @@ class CategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 //                        cardHealthLayout.context,
 //                        R.drawable.gradient_background_healthj_category_exercise_card_selected
 //                    )
-                    healthCategoryPrincipal.strokeWidth = 4
-                    healthCategoryPrincipal.strokeColor = Color.WHITE
                     healthCategoryPrincipal.outlineSpotShadowColor = Color.WHITE
                     healthCategoryPrincipal.cardElevation = 40F
                 }
@@ -90,7 +85,6 @@ class CategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                     R.drawable.gradient_background_healthj_category_stretching_card
                 )
                 cardImageHealth.setImageResource(R.drawable.stretching)
-                healthCategoryPrincipal.strokeWidth = 0
                 healthCategoryPrincipal.cardElevation = 10F
                 healthCategoryPrincipal.outlineSpotShadowColor = Color.TRANSPARENT
 
@@ -99,8 +93,6 @@ class CategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 //                        cardHealthLayout.context,
 //                        R.drawable.gradient_background_healthj_category_stretching_card_selected
 //                    )
-                    healthCategoryPrincipal.strokeWidth = 4
-                    healthCategoryPrincipal.strokeColor = Color.WHITE
                     healthCategoryPrincipal.outlineSpotShadowColor = Color.WHITE
                     healthCategoryPrincipal.cardElevation = 40F
                 }

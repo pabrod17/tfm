@@ -92,6 +92,8 @@ class PlaysFragment : Fragment() {
             clubViewModel.team.collect { events ->
                 if(events.isEmpty()) {
                     teamsList = clubViewModel.getTeams()
+                } else {
+                    teamsList = events
                 }
             }
         }
@@ -421,6 +423,8 @@ class PlaysFragment : Fragment() {
                         if(events.isEmpty()) {
                             playList = playsViewModel.getPlays()
 
+                        } else {
+                            playList = events
                         }
                     }
                 }
