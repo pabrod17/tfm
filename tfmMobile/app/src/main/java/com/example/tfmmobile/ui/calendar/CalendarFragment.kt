@@ -175,10 +175,10 @@ class CalendarFragment : Fragment() {
         binding.swipe.setColorSchemeColors(
             ContextCompat.getColor(
                 requireContext(),
-                R.color.cardLesion3
+                R.color.cardStretchinggggg2
             ), ContextCompat.getColor(
                 requireContext(),
-                R.color.cardStretching3
+                R.color.cardPlay1
             )
         )
         binding.swipe.setProgressBackgroundColorSchemeColor(
