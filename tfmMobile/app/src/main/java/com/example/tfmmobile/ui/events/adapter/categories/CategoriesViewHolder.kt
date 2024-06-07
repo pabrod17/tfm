@@ -65,7 +65,6 @@ class CategoriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                     R.drawable.gradient_background_events_category_training2
                 )
                 cardImageEvents.setImageResource(R.drawable.training)
-                cardImageEvents.setImageResource(R.drawable.game)
                 eventsCategoryPrincipal.strokeWidth = 0
                 eventsCategoryPrincipal.cardElevation = 10F
                 eventsCategoryPrincipal.outlineSpotShadowColor = Color.TRANSPARENT

@@ -42,8 +42,7 @@
                     android:id="@+id/cardImageEvents"
                     android:layout_width="170dp"
                     android:layout_height="180dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/training" />
+                    android:scaleType="centerCrop"/>
             </com.google.android.material.card.MaterialCardView>
 
             <TextView
