@@ -165,9 +165,10 @@ class HealthFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         rvLesionCategories = binding.rvLesionCategories
 
-        lesionList = healthViewModel.getLesions()
-        exerciseList = healthViewModel.getExercises()
-        stretchingList = healthViewModel.getStretchings()
+//        lesionList = healthViewModel.getLesions()
+//        exerciseList = healthViewModel.getExercises()
+//        stretchingList = healthViewModel.getStretchings()
+        initComponent()
         initUi()
 //        initListeners()
         configSwipe()
@@ -176,7 +177,6 @@ class HealthFragment : Fragment() {
 
 
     private fun initUi() {
-        initComponent()
 //        initPlayerList()
 //        initTeamList()
 //        initSeasonList()
@@ -231,7 +231,16 @@ class HealthFragment : Fragment() {
         }
         when (categories[position]) {
             HealthCategory.Lesion -> {
-                lesionList = healthViewModel.getLesions()
+                lifecycleScope.launchWhenStarted {
+                    healthViewModel.lesions.collect { events ->
+                        if(events.isEmpty()) {
+                            lesionList = healthViewModel.getLesions()
+
+                        }
+                    }
+                }
+
+
                 initLesionList()
                 updateLesionList()
                 initUiStateLesion()
@@ -240,7 +249,14 @@ class HealthFragment : Fragment() {
             }
 
             HealthCategory.Exercises -> {
-                exerciseList = healthViewModel.getExercises()
+                lifecycleScope.launchWhenStarted {
+                    healthViewModel.exercises.collect { events ->
+                        if(events.isEmpty()) {
+                            exerciseList = healthViewModel.getExercises()
+
+                        }
+                    }
+                }
                 initExerciseList()
                 updateExercisesList()
                 initUiStateExercise()
@@ -249,7 +265,14 @@ class HealthFragment : Fragment() {
             }
 
             HealthCategory.Stretchings -> {
-                stretchingList = healthViewModel.getStretchings()
+                lifecycleScope.launchWhenStarted {
+                    healthViewModel.stretchings.collect { events ->
+                        if(events.isEmpty()) {
+                            stretchingList = healthViewModel.getStretchings()
+
+                        }
+                    }
+                }
                 initStretchingList()
                 updateStretchingsList()
                 initUiStateStretching()
@@ -546,9 +569,28 @@ class HealthFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        lesionList = healthViewModel.getLesions()
-        exerciseList = healthViewModel.getExercises()
-        stretchingList = healthViewModel.getStretchings()
+    lifecycleScope.launchWhenStarted {
+        healthViewModel.lesions.collect { events ->
+            if(events.isEmpty()) {
+                lesionList = healthViewModel.getLesions()
+            }
+        }
+    }
+        lifecycleScope.launchWhenStarted {
+            healthViewModel.exercises.collect { events ->
+                if(events.isEmpty()) {
+                    exerciseList = healthViewModel.getExercises()
+                }
+            }
+        }
+        lifecycleScope.launchWhenStarted {
+            healthViewModel.stretchings.collect { events ->
+                if(events.isEmpty()) {
+                    stretchingList = healthViewModel.getStretchings()
+                }
+            }
+        }
+
     }
 
 

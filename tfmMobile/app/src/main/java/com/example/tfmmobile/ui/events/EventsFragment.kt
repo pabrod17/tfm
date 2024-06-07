@@ -91,10 +91,23 @@ class EventsFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        gameList = eventsViewModel.getGames()
-        trainingList = eventsViewModel.getTrainings()
-        teamsList = clubViewModel.getTeams()
-        seasonsList = clubViewModel.getSeasons()
+//        gameList = eventsViewModel.getGames()
+//        trainingList = eventsViewModel.getTrainings()
+        lifecycleScope.launchWhenStarted {
+            clubViewModel.team.collect { events ->
+                if(events.isEmpty()) {
+                    teamsList = clubViewModel.getTeams()
+                }
+                }
+            }
+        lifecycleScope.launchWhenStarted {
+            clubViewModel.seasons.collect { events ->
+                if(events.isEmpty()) {
+                    seasonsList = clubViewModel.getSeasons()
+                }
+            }
+        }
+        initComponent()
         initUi()
         initListeners()
         configSwipe()
@@ -423,7 +436,6 @@ class EventsFragment : Fragment() {
     }
 
     private fun initUi() {
-        initComponent()
 //        initPlayerList()
 //        initTeamList()
 //        initSeasonList()
@@ -585,14 +597,29 @@ class EventsFragment : Fragment() {
         }
         when (categories[position]) {
             EventsCategory.Games -> {
-                gameList = eventsViewModel.getGames()
+                lifecycleScope.launchWhenStarted {
+                    eventsViewModel.games.collect { events ->
+                        if(events.isEmpty()) {
+                            gameList = eventsViewModel.getGames()
+
+                        }
+                    }
+                }
+
                 initGameList()
                 updateGamesList()
                 initUiStateGame()
             }
 
             EventsCategory.Trainings -> {
-                trainingList = eventsViewModel.getTrainings()
+                    lifecycleScope.launchWhenStarted {
+                        eventsViewModel.trainings.collect { events ->
+                            if(events.isEmpty()) {
+                                trainingList = eventsViewModel.getTrainings()
+
+                            }
+                        }
+                    }
                 initTrainingList()
                 updateTrainingsList()
                 initUiStateTraining()

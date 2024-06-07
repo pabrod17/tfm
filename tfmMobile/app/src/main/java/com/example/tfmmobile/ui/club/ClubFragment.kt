@@ -110,9 +110,22 @@ class ClubFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        teamsList = clubViewModel.getTeams()
+        println("CREATEDDDDD")
+        println("CREATEDDDDD")
+        println("CREATEDDDDD")
+        println("CREATEDDDDD")
+        println("CREATEDDDDD")
+        println("CREATEDDDDD")
+        println("CREATEDDDDD")
+        println("CREATEDDDDD")
+        println("CREATEDDDDD")
+        initComponent()
+
+//        teamsList = clubViewModel.getTeams()
 //        seasonsList = clubViewModel.getSeasons()
 //        playersList = clubViewModel.getPlayers()
+
+
         initUi()
         initListeners()
         configSwipe()
@@ -585,7 +598,6 @@ class ClubFragment : Fragment() {
 
 
     private fun initUi() {
-        initComponent()
 //        initPlayerList()
 //        initTeamList()
 //        initSeasonList()
@@ -828,28 +840,57 @@ class ClubFragment : Fragment() {
         }
         when (categories[position]) {
             ClubCategory.Seasons -> {
-                seasonsList = clubViewModel.getSeasons()
+
+                lifecycleScope.launchWhenStarted {
+                    clubViewModel.seasons.collect { events ->
+                        if(events.isEmpty()) {
+                            seasonsList = clubViewModel.getSeasons()
+
+                        }
+                    }
+                }
                 initSeasonList()
                 updateSeasonsList()
                 initUiStateSeason()
+
                 rvPlayerCategories = binding.rvPlayerCategories
                 rvPlayerCategories.visibility = View.GONE
             }
 
             ClubCategory.Teams -> {
-                teamsList = clubViewModel.getTeams()
+                lifecycleScope.launchWhenStarted {
+                    clubViewModel.team.collect { events ->
+                        if(events.isEmpty()) {
+                            teamsList = clubViewModel.getTeams()
+
+                        }
+                    }
+                }
                 initTeamList()
                 updateTeamsList()
                 initUiState()
+
+
+
+
                 rvPlayerCategories = binding.rvPlayerCategories
                 rvPlayerCategories.visibility = View.GONE
             }
 
             ClubCategory.Players -> {
-                playersList = clubViewModel.getPlayers()
+                lifecycleScope.launchWhenStarted {
+                    clubViewModel.players.collect { events ->
+                        if(events.isEmpty()) {
+                            playersList = clubViewModel.getPlayers()
+
+                        }
+                    }
+                }
+
                 initPlayerList()
                 updatePlayersList()
                 initUiStatePlayer()
+
                 rvPlayerCategories = binding.rvPlayerCategories
                 rvPlayerCategories.visibility = View.VISIBLE
                 iniPlayerCategories()

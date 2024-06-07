@@ -88,8 +88,15 @@ class PlaysFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         rvPlaysCategories = binding.rvPlaysCategories
-        teamsList = clubViewModel.getTeams()
-        playList = playsViewModel.getPlays()
+        lifecycleScope.launchWhenStarted {
+            clubViewModel.team.collect { events ->
+                if(events.isEmpty()) {
+                    teamsList = clubViewModel.getTeams()
+                }
+            }
+        }
+//        playList = playsViewModel.getPlays()
+        initComponent()
         initUi()
         initListeners()
         configSwipe()
@@ -300,7 +307,6 @@ class PlaysFragment : Fragment() {
     }
 
     private fun initUi() {
-        initComponent()
         initCategories()
         for (category in categories) {
             if (category.isSelected) {
@@ -377,6 +383,7 @@ class PlaysFragment : Fragment() {
         binding.swipe.setOnRefreshListener {
             Handler(Looper.getMainLooper()).postDelayed({
                 binding.swipe.isRefreshing = false
+                playList = playsViewModel.getPlays()
                 initPlayList()
                 initUi()
             }, 1000)
@@ -409,7 +416,15 @@ class PlaysFragment : Fragment() {
         }
         when (categories[position]) {
             PlaysCategory.Plays -> {
-                playList = playsViewModel.getPlays()
+                lifecycleScope.launchWhenStarted {
+                    playsViewModel.plays.collect { events ->
+                        if(events.isEmpty()) {
+                            playList = playsViewModel.getPlays()
+
+                        }
+                    }
+                }
+
                 initPlayList()
                 updatePlayList()
                 initUiStatePlay()

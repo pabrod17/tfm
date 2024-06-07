@@ -144,7 +144,7 @@ class CalendarFragment : Fragment() {
 //        calendar2.setOnClickListener {
 //            Toast.makeText(requireContext(), "Event deleted: ${it.id}", Toast.LENGTH_SHORT).show()
 //        }
-        eventList = calendarViewModel.getEvents()
+//        eventList = calendarViewModel.getEvents()
         lifecycleScope.launchWhenStarted {
             calendarViewModel.events.collect { events ->
                 if(events.isNotEmpty()) {
