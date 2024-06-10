@@ -5,8 +5,9 @@
         <shape>
 
             <gradient
-                android:startColor="@color/cardPlay2"
-                android:endColor="@color/cardPlay1"
+                android:startColor="#05143A"
+                android:centerColor="#146A0A"
+                android:endColor="#2BC51A"
                 android:angle="90"
                 android:endX="1"
                 >
