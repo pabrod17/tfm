@@ -12,7 +12,7 @@
                 android:angle="90"
                 >
             </gradient>
-
+            <!--            android:endColor="#000D3C" -->
         </shape>
 
     </item>
