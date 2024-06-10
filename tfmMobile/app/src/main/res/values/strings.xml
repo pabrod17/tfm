@@ -104,6 +104,8 @@
     <string name="duration">Duracion (min)</string>
     <string name="objective">Objectivo</string>
 
+    <string name="medication">Medicación</string>
+
     <string name="teamName">Nombre</string>
     <string name="arenaName">Estadio</string>
     <string name="ownerName">Propietario</string>

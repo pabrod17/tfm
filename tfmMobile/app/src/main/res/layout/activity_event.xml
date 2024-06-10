@@ -191,7 +191,7 @@
                         style="@style/Body"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/rival"
+                        android:hint="@string/title"
                         android:background="#1D1E33"
                         android:backgroundTint="#1D1E33"
                         android:imeOptions="actionNext"

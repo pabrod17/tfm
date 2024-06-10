@@ -14,13 +14,6 @@ import javax.inject.Inject
 class AuthInterceptor @Inject constructor():Interceptor {
     @SuppressLint("SuspiciousIndentation")
     override fun intercept(chain: Interceptor.Chain): Response {
-        val userId = 1L // Tu lógica para obtener el userId aquí
-
-//            .header("Authorization", tokenManager.getToken())
-
-//            Aqui tendria que meter este token en la llamada:
-//        tokenManager.getAuthToken()
-//            .header("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VySWQiOjEsInJvbGUiOiJDT0FDSCIsImV4cCI6MTcxNDg1ODEzMX0.1b3M3dHevtIDx3i4KuJHAnlNoEW0eiVH0DduSslcje1JQxM6jy7OIIGMxHMB1nhkfGJ2bxduoH-frdCh-OhYzQ")
         val request = chain.request()
                     .newBuilder()
                     .header("Authorization", "Bearer " + prefs.getAuthToken()!!)

@@ -150,7 +150,7 @@
                         android:backgroundTint="#1D1E33"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/objective"
+                        android:hint="@string/medication"
                         android:imeOptions="actionNext"
                         android:gravity="center"
                         tools:text="asdofia afpsoidfk aasdfasidfj asdfoiajsdf asdofijasf asldifjalsdifj asldifnm asdlfimn fasdfa alsdkfmas falskdfm laksdmf" />

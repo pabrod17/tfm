@@ -112,6 +112,9 @@
     <string name="duration">Duration (min)</string>
     <string name="objective">Objective</string>
 
+    <string name="medication">Medication</string>
+
+
     <string name="teamName">Name</string>
     <string name="arenaName">Arena</string>
     <string name="ownerName">Owner</string>
