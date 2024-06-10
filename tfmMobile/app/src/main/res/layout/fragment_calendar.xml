@@ -63,12 +63,13 @@
             android:layout_height="250dp"
             app:compactCalendarTargetHeight="250dp"
             app:compactCalendarTextSize="12sp"
-            app:compactCalendarBackgroundColor="@color/back2"
+            app:compactCalendarBackgroundColor="#161037"
             app:compactCalendarTextColor="#fff"
-            app:compactCalendarCurrentSelectedDayBackgroundColor="@color/cardStretchinggggg2"
-            app:compactCalendarCurrentDayBackgroundColor="@color/cardStretchinggggg"
+            app:compactCalendarCurrentSelectedDayBackgroundColor="#AB0432DA"
+            app:compactCalendarCurrentDayBackgroundColor="#0E58D7"
             app:compactCalendarMultiEventIndicatorColor="#fff"
             />
+<!--        app:compactCalendarBackgroundColor="@color/back2"-->
 
 
 <!--        android:background="@color/back2"-->
