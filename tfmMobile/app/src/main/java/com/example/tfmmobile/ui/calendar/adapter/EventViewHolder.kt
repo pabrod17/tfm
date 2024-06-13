@@ -52,7 +52,7 @@ class EventViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
                 cardEventsLayout.background = ContextCompat.getDrawable(
                     cardEventsLayout.context,
-                    R.drawable.gradient_background_plays_category_play_card
+                    R.drawable.gradient_background_plays_category_play_card_for_events
                 )
             }
         }
