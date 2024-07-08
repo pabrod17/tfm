@@ -77,11 +77,11 @@ const UsersByCoachHome = () => {
 	const columnsUsers = [
 		{ field: 'id', headerName: 'ID', width: 46.9, headerClassName: 'firstname-header' },
 		{ field: 'firstName', headerName: <FormattedMessage id="project.global.fields.firstName"/>, width: 160.8, headerClassName: 'firstname-header'},
-        { field: 'role', headerName: <FormattedMessage id="project.global.fields.role" />, width: 107.2, headerClassName: 'firstname-header',
+        { field: 'role', headerName: <FormattedMessage id="project.global.fields.role" />, width: 135.2, headerClassName: 'firstname-header',
         renderCell: (params) => (
             <div style={{ backgroundColor: 
-                params.row.role === 'COACH' ? '#0f9b0f' : // Azul oscuro
-                params.row.role === 'USER' ? '#ac6a06' : // Verde esmeralda
+                params.row.role === 'ENTRENADOR' ? '#0f9b0f' : // Azul oscuro
+                params.row.role === 'JUGADOR' ? '#ac6a06' : // Verde esmeralda
                 'green', // Por defecto
                 borderRadius: '13.4px',
             }}>
@@ -98,9 +98,15 @@ const UsersByCoachHome = () => {
 
     if (users) {
 		users.map(user => {
+            let roleDisplay = user.role;
+            if (user.role === 'USER') {
+              roleDisplay = 'JUGADOR';
+            } else if (user.role === 'COACH') {
+              roleDisplay = 'ENTRENADOR';
+            }
 			rowsUsers.push({
 				id: user.id,
-                role: user.role,
+                role: roleDisplay,
 				firstName: user.firstName,
 				lastName: user.lastName,
                 email: user.email,
