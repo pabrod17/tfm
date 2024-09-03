@@ -67,7 +67,7 @@ public class PlayerServiceTest {
         User user = createUser("usuario");
         Team team = createTeam(user.getId(), "team");
 
-        Player player = playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "PointGuard", 
+        Player player = playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "Base",
         "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065", "paco@gmail.com", "46095900J");
 
         Player playerFound = playerService.findPlayerByIdOfTeam(player.getId(), team.getId());
@@ -80,8 +80,8 @@ public class PlayerServiceTest {
             IncorrectDniException, IncorrectEmailException, IncorrectPhoneNumberException {
         User user = createUser("usuario");
         Team team = createTeam(user.getId(), "team");
-        Lesion lesion2 = lesionService.addLesion("Nombre de la lesion2", "Aqui pongo una descripcion de la lesion2", "Aqui pongo los medicamentos", "Joint");
-        Player player = playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "PointGuard", 
+        Lesion lesion2 = lesionService.addLesion("Nombre de la lesion2", "Aqui pongo una descripcion de la lesion2", "Aqui pongo los medicamentos", "Articular");
+        Player player = playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "Base",
         "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065", "paco@gmail.com", "46095900J");
 
         Player playerFound = playerService.findPlayerByIdOfTeam(player.getId(), team.getId());
@@ -105,7 +105,7 @@ public class PlayerServiceTest {
         User user = createUser("usuario");
         Team team = createTeam(user.getId(), "team");
 
-        playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "PointGuard", 
+        playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "Base",
         "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065", "paco@gmail.com", "46095900J");
 
 		assertThrows(InstanceNotFoundException.class, () -> playerService.findPlayerByIdOfTeam(NON_EXISTENT_ID, team.getId()));
@@ -117,7 +117,7 @@ public class PlayerServiceTest {
         User user = createUser("usuario");
         Team team = createTeam(user.getId(), "team");
 
-		assertThrows(IncorrectPhoneNumberException.class, () -> playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "PointGuard", 
+		assertThrows(IncorrectPhoneNumberException.class, () -> playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "Base",
         "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "63867706554684", "paco@gmail.com", "46095900J"));
     }
 
@@ -127,7 +127,7 @@ public class PlayerServiceTest {
         User user = createUser("usuario");
         Team team = createTeam(user.getId(), "team");
 
-		assertThrows(IncorrectEmailException.class, () -> playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "PointGuard", 
+		assertThrows(IncorrectEmailException.class, () -> playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "Base",
         "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065", "paco4684", "46095900J"));
     }
 
@@ -137,7 +137,7 @@ public class PlayerServiceTest {
         User user = createUser("usuario");
         Team team = createTeam(user.getId(), "team");
 
-		assertThrows(IncorrectDniException.class, () -> playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "PointGuard", 
+		assertThrows(IncorrectDniException.class, () -> playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "Base",
         "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065", "paco@gmail.com", "46095900fasedfasdf"));
     }
 
@@ -158,7 +158,7 @@ public class PlayerServiceTest {
         Team team = createTeam(user.getId(), "team");
         Team team2 = createTeam(user.getId(), "team2");
 
-        Player player = playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "PointGuard", 
+        Player player = playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "Base",
         "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065", "paco@gmail.com", "46095900J");
 
         playerService.changePlayerToTeam(player.getId(), team2.getId());
@@ -172,9 +172,9 @@ public class PlayerServiceTest {
             IncorrectDniException, IncorrectEmailException, IncorrectPhoneNumberException {
         User user = createUser("usuario");
         Team team = createTeam(user.getId(), "team");
-        Player player = playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "ShootingGuard", 
+        Player player = playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "Alero",
         "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065", "paco@gmail.com", "87930523M");
-        Player player2 = playerService.addPlayer(team.getId(), "jugador2", "apellido11", "apellido22", "SmallForward", 
+        Player player2 = playerService.addPlayer(team.getId(), "jugador2", "apellido11", "apellido22", "AlaPivot",
         "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065", "paco2@gmail.com", "53984323B");
 
         List<Player> players = playerService.findAPlayersOfTeam(team.getId());
@@ -191,9 +191,9 @@ public class PlayerServiceTest {
         Team team = createTeam(user.getId(), "team");
         Team team2 = createTeam(user.getId(), "team2");
 
-        Player player = playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "ShootingGuard", 
+        Player player = playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "Alero",
         "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065", "paco@gmail.com", "87930523M");
-        Player player2 = playerService.addPlayer(team2.getId(), "jugador2", "apellido11", "apellido22", "SmallForward", 
+        Player player2 = playerService.addPlayer(team2.getId(), "jugador2", "apellido11", "apellido22", "AlaPivot",
         "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065", "paco2@gmail.com", "53984323B");
 
         Player player1Found = playerService.findPlayerByIdOfTeam(player.getId(), team.getId());
@@ -213,11 +213,11 @@ public class PlayerServiceTest {
             IncorrectDniException, IncorrectEmailException, IncorrectPhoneNumberException {
         User user = createUser("usuario");
         Team team = createTeam(user.getId(), "team");
-        playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "ShootingGuard", 
+        playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "Alero",
         "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065", "paco@gmail.com", "87930523M");
-        Player player2 = playerService.addPlayer(team.getId(), "jugador2", "apellido11", "apellido22", "SmallForward", 
+        Player player2 = playerService.addPlayer(team.getId(), "jugador2", "apellido11", "apellido22", "AlaPivot",
         "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065", "paco2@gmail.com", "53984323B");
-        Player player3 = playerService.addPlayer(team.getId(), "jugador2", "apellido11", "apellido22", "SmallForward", 
+        Player player3 = playerService.addPlayer(team.getId(), "jugador2", "apellido11", "apellido22", "AlaPivot",
         "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065", "paco3@gmail.com", "27458552W");
 
         List<Player> players = playerService.findPlayersByCompletedNameOfTeam(team.getId(), "jugador2", "", "apellido22");
@@ -232,11 +232,11 @@ public class PlayerServiceTest {
             IncorrectDniException, IncorrectEmailException, IncorrectPhoneNumberException {
         User user = createUser("usuario");
         Team team = createTeam(user.getId(), "team");
-        playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "ShootingGuard", 
+        playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "Alero",
         "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065", "paco@gmail.com", "87930523M");
-        Player player2 = playerService.addPlayer(team.getId(), "jugador2", "apellido11", "apellido22", "SmallForward", 
+        Player player2 = playerService.addPlayer(team.getId(), "jugador2", "apellido11", "apellido22", "AlaPivot",
         "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065", "paco2@gmail.com", "53984323B");
-        playerService.addPlayer(team.getId(), "jugador2", "apellido11", "apellido22", "SmallForward", 
+        playerService.addPlayer(team.getId(), "jugador2", "apellido11", "apellido22", "AlaPivot",
         "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065", "paco3@gmail.com", "27458552W");
 
         Player playerFound = playerService.findPlayerByDniOfTeam(team.getId(), "53984323B");
@@ -249,14 +249,14 @@ public class PlayerServiceTest {
             IncorrectDniException, IncorrectEmailException, IncorrectPhoneNumberException {
         User user = createUser("usuario");
         Team team = createTeam(user.getId(), "team");
-        playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "ShootingGuard", 
+        playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "Alero",
         "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065", "paco@gmail.com", "87930523M");
-        Player player2 = playerService.addPlayer(team.getId(), "jugador2", "apellido11", "apellido22", "SmallForward", 
+        Player player2 = playerService.addPlayer(team.getId(), "jugador2", "apellido11", "apellido22", "AlaPivot",
         "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065", "paco2@gmail.com", "53984323B");
-        Player player3 = playerService.addPlayer(team.getId(), "jugador2", "apellido11", "apellido22", "SmallForward", 
+        Player player3 = playerService.addPlayer(team.getId(), "jugador2", "apellido11", "apellido22", "AlaPivot",
         "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065", "paco3@gmail.com", "27458552W");
 
-        List<Player> players = playerService.findPlayersByPositionAndTeam(team.getId(), "SmallForward");
+        List<Player> players = playerService.findPlayersByPositionAndTeam(team.getId(), "AlaPivot");
 
         assertEquals(2, players.size());
         assertEquals(player2, players.get(0));
@@ -269,15 +269,15 @@ public class PlayerServiceTest {
         User user = createUser("usuario");
         Team team = createTeam(user.getId(), "team");
         
-        Player player = playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "ShootingGuard", 
+        Player player = playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "Alero",
         "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065", "paco@gmail.com", "87930523M");
-        playerService.addPlayer(team.getId(), "jugador2", "apellido1", "apellido2", "ShootingGuard", 
+        playerService.addPlayer(team.getId(), "jugador2", "apellido1", "apellido2", "Alero",
         "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065", "paco5@gmail.com", "53984323B");
-        Player player3 = playerService.addPlayer(team.getId(), "jugador2", "apellido1", "apellido2", "ShootingGuard", 
+        Player player3 = playerService.addPlayer(team.getId(), "jugador2", "apellido1", "apellido2", "Alero",
         "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065", "paco7@gmail.com", "27458552W");
 
         Lesion lesion = lesionService.addLesion("Nombre de la lesion", "Aqui pongo una descripcion de la lesion",
-                "Aqui pongo los medicamentos", "Muscle");
+                "Aqui pongo los medicamentos", "Muscular");
 
         lesionService.addLesionToPlayer(player.getId(), lesion.getId());
         lesionService.addLesionToPlayer(player3.getId(), lesion.getId());
@@ -295,26 +295,26 @@ public class PlayerServiceTest {
         User user = createUser("usuario");
         Team team = createTeam(user.getId(), "team");
         
-        Player player = playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "ShootingGuard", 
+        Player player = playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "Alero",
         "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065", "paco@gmail.com", "87930523M");
-        playerService.addPlayer(team.getId(), "jugador2", "apellido1", "apellido2", "ShootingGuard", 
+        playerService.addPlayer(team.getId(), "jugador2", "apellido1", "apellido2", "Alero",
         "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065", "paco5@gmail.com", "53984323B");
-        Player player3 = playerService.addPlayer(team.getId(), "jugador2", "apellido1", "apellido2", "ShootingGuard", 
+        Player player3 = playerService.addPlayer(team.getId(), "jugador2", "apellido1", "apellido2", "Alero",
         "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065", "paco7@gmail.com", "46095900J");
-        Player player4 = playerService.addPlayer(team.getId(), "jugador2", "apellido1", "apellido2", "ShootingGuard", 
+        Player player4 = playerService.addPlayer(team.getId(), "jugador2", "apellido1", "apellido2", "Alero",
         "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065", "paco9@gmail.com", "27458552W");
 
         Lesion lesion = lesionService.addLesion("Nombre de la lesion", "Aqui pongo una descripcion de la lesion",
-                "Aqui pongo los medicamentos", "Muscle");
+                "Aqui pongo los medicamentos", "Muscular");
         Lesion lesion2 = lesionService.addLesion("Nombre de la lesion2", "Aqui pongo una descripcion de la lesion2",
-                "Aqui pongo los medicamentos", "Joint");
+                "Aqui pongo los medicamentos", "Articular");
 
         lesionService.addLesionToPlayer(player.getId(), lesion.getId());
         lesionService.addLesionToPlayer(player3.getId(), lesion.getId());
         lesionService.addLesionToPlayer(player4.getId(), lesion2.getId());
 
-        List<Player> playersWithMuscle = playerService.findPlayersWithOneTypeLesion("Muscle", team.getId());
-        List<Player> playersWithJoint = playerService.findPlayersWithOneTypeLesion("Joint", team.getId());
+        List<Player> playersWithMuscle = playerService.findPlayersWithOneTypeLesion("Muscular", team.getId());
+        List<Player> playersWithJoint = playerService.findPlayersWithOneTypeLesion("Articular", team.getId());
 
         assertEquals(2, playersWithMuscle.size());
         assertEquals(1, playersWithJoint.size());
@@ -329,11 +329,11 @@ public class PlayerServiceTest {
             IncorrectEmailException, IncorrectPhoneNumberException {
         User user = createUser("usuario");
         Team team = createTeam(user.getId(), "team");
-        Player player = playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "ShootingGuard", 
+        Player player = playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "Alero",
         "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065", "paco@gmail.com", "87930523M");
-        Player player2 = playerService.addPlayer(team.getId(), "jugador2", "apellido11", "apellido22", "SmallForward", 
+        Player player2 = playerService.addPlayer(team.getId(), "jugador2", "apellido11", "apellido22", "AlaPivot",
         "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065", "paco2@gmail.com", "53984323B");
-        Player player3 = playerService.addPlayer(team.getId(), "jugador2", "apellido11", "apellido22", "SmallForward", 
+        Player player3 = playerService.addPlayer(team.getId(), "jugador2", "apellido11", "apellido22", "AlaPivot",
         "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065", "paco3@gmail.com", "27458552W");
 
         playerService.removePlayer(team.getId(), player2.getId());
@@ -382,10 +382,10 @@ public class PlayerServiceTest {
         User user = createUser("usuario");
         Team team = createTeam(user.getId(), "team");
         Team team2 = createTeam(user.getId(), "team2");
-        Player player = playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "ShootingGuard", 
+        Player player = playerService.addPlayer(team2.getId(), "jugador1", "apellido1", "apellido2", "Alero",
         "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065", "paco@gmail.com", "87930523M");
 
-        playerService.updatePlayer(player.getId(), "updated", "updated2", "updated3", "SmallForward", "Mucha tendencia de tiro de 3", "638677065", "paco3@gmail.com", "53984323B");
+        playerService.updatePlayer(player.getId(), "updated", "updated2", "updated3", "AlaPivot", "Mucha tendencia de tiro de 3", "638677065", "paco3@gmail.com", "53984323B");
 
         Player playerFound = playerService.findPlayerByIdOfTeam(player.getId(), team2.getId());
         List<Player> players2 = playerService.findAPlayersOfTeam(team2.getId());
@@ -394,7 +394,7 @@ public class PlayerServiceTest {
         assertEquals(playerFound.getPlayerName(), "updated");
         assertEquals(playerFound.getPrimaryLastName(), "updated2");
         assertEquals(playerFound.getSecondLastName(), "updated3");
-        assertEquals(playerFound.getPosition(), "SmallForward");
+        assertEquals(playerFound.getPosition(), "AlaPivot");
         assertEquals(playerFound.getTrends(), "Mucha tendencia de tiro de 3");
         assertEquals(playerFound.getPhoneNumber(), "638677065");
         assertEquals(playerFound.getEmail(), "paco3@gmail.com");
@@ -407,13 +407,13 @@ public class PlayerServiceTest {
         User user = createUser("usuario");
         Team team = createTeam(user.getId(), "team");
         Team team2 = createTeam(user.getId(), "team2");
-        Player player = playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "ShootingGuard", 
+        Player player = playerService.addPlayer(team2.getId(), "jugador1", "apellido1", "apellido2", "Alero",
         "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065", "paco@gmail.com", "87930523M");
-        Lesion lesion2 = lesionService.addLesion("Nombre de la lesion2", "Aqui pongo una descripcion de la lesion2", "Aqui pongo los medicamentos", "Joint");
+        Lesion lesion2 = lesionService.addLesion("Nombre de la lesion2", "Aqui pongo una descripcion de la lesion2", "Aqui pongo los medicamentos", "Articular");
 
         lesionService.addLesionToPlayer(player.getId(), lesion2.getId());
 
-        playerService.updatePlayer(player.getId(), "updated", "updated2", "updated3", "SmallForward", "Mucha tendencia de tiro de 3", "638677065", "paco3@gmail.com", "53984323B");
+        playerService.updatePlayer(player.getId(), "updated", "updated2", "updated3", "AlaPivot", "Mucha tendencia de tiro de 3", "638677065", "paco3@gmail.com", "53984323B");
 
         Player playerFound = playerService.findPlayerByIdOfTeam(player.getId(), team2.getId());
         List<Player> players2 = playerService.findAPlayersOfTeam(team2.getId());
@@ -425,7 +425,7 @@ public class PlayerServiceTest {
         assertEquals(playerFound.getPlayerName(), "updated");
         assertEquals(playerFound.getPrimaryLastName(), "updated2");
         assertEquals(playerFound.getSecondLastName(), "updated3");
-        assertEquals(playerFound.getPosition(), "SmallForward");
+        assertEquals(playerFound.getPosition(), "AlaPivot");
         assertEquals(playerFound.getTrends(), "Mucha tendencia de tiro de 3");
         assertEquals(playerFound.getPhoneNumber(), "638677065");
         assertEquals(playerFound.getEmail(), "paco3@gmail.com");

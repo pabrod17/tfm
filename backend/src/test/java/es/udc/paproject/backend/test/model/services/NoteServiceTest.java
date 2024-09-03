@@ -35,9 +35,9 @@ public class NoteServiceTest {
     private final Long NON_EXISTENT_ID = new Long(-1);
 
     private final LocalDateTime startDate1 = LocalDateTime.of(2020, 5, 12, 15, 56);
-    private final LocalDateTime endDate1 = LocalDateTime.of(2021, 7, 14, 15, 56);
+    private final LocalDateTime endDate1 = LocalDateTime.of(2029, 7, 14, 15, 56);
     private final LocalDateTime startDate2 = LocalDateTime.of(2021, 4, 30, 15, 56);
-    private final LocalDateTime endDate2 = LocalDateTime.of(2021, 5, 30, 15, 56);
+    private final LocalDateTime endDate2 = LocalDateTime.of(2029, 5, 30, 15, 56);
 
     @Autowired
     private NoteService noteService;
@@ -63,7 +63,7 @@ public class NoteServiceTest {
 
     private Player createPlayer1(Long teamId) throws InstanceNotFoundException, IncorrectDniException,
             IncorrectEmailException, IncorrectPhoneNumberException {
-        Player player = playerService.addPlayer(teamId, "jugador1", "apellido1", "apellido2", "PointGuard",
+        Player player = playerService.addPlayer(teamId, "jugador1", "apellido1", "apellido2", "Base",
                 "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065",
                 "paco@gmail.com", "16599412J");
         return player;
@@ -71,7 +71,7 @@ public class NoteServiceTest {
 
     private Player createPlayer2(Long teamId) throws InstanceNotFoundException, IncorrectDniException,
             IncorrectEmailException, IncorrectPhoneNumberException {
-        Player player = playerService.addPlayer(teamId, "jugador1", "apellido1", "apellido2", "PointGuard",
+        Player player = playerService.addPlayer(teamId, "jugador1", "apellido1", "apellido2", "Base",
                 "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065",
                 "paco2@gmail.com", "35492472E");
         return player;

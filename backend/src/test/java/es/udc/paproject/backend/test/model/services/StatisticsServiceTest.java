@@ -65,14 +65,14 @@ public class StatisticsServiceTest {
 
     private Player createPlayer(Long teamId) throws InstanceNotFoundException, IncorrectDniException,
             IncorrectEmailException, IncorrectPhoneNumberException {
-        return playerService.addPlayer(teamId, "jugador1", "apellido1", "apellido2", "PointGuard",
+        return playerService.addPlayer(teamId, "jugador1", "apellido1", "apellido2", "Base",
                 "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065",
                 "paco@gmail.com", "46095900J");
     }
 
     private Player createPlayer2(Long teamId) throws InstanceNotFoundException, IncorrectDniException,
             IncorrectEmailException, IncorrectPhoneNumberException {
-        return playerService.addPlayer(teamId, "jugador2", "apellido11", "apellido22", "SmallForward",
+        return playerService.addPlayer(teamId, "jugador2", "apellido11", "apellido22", "Escolta",
                 "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065",
                 "paco2@gmail.com", "53984323B");
     }

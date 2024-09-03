@@ -71,7 +71,7 @@ public class ExerciseServiceTest {
     @Test
     public void testAddExerciseAndFindExerciseById() throws InstanceNotFoundException {
 
-        Exercise exercise = exerciseService.addExercise("exerciseName", "description", "objective", "Tactic");
+        Exercise exercise = exerciseService.addExercise("exerciseName", "description", "objective", "Tactico");
 
         Exercise exerciseFound = exerciseService.findExerciseById(exercise.getId());
 
@@ -81,11 +81,11 @@ public class ExerciseServiceTest {
     @Test
     public void testFindAllExercises() throws InstanceNotFoundException {
 
-        exerciseService.addExercise("exerciseName", "description", "objective", "Tactic");
-        exerciseService.addExercise("exerciseName", "description", "objective", "Physical");
-        exerciseService.addExercise("exerciseName", "description", "objective", "Globalized");
-        exerciseService.addExercise("exerciseName", "description", "objective", "Physical");
-        exerciseService.addExercise("exerciseName", "description", "objective", "PreMatch");
+        exerciseService.addExercise("exerciseName", "description", "objective", "Tactico");
+        exerciseService.addExercise("exerciseName", "description", "objective", "Fisico");
+        exerciseService.addExercise("exerciseName", "description", "objective", "Global");
+        exerciseService.addExercise("exerciseName", "description", "objective", "Fisico");
+        exerciseService.addExercise("exerciseName", "description", "objective", "PrePartido");
 
         List<Exercise> exercises = exerciseService.findAllExercises();
 
@@ -95,15 +95,15 @@ public class ExerciseServiceTest {
     @Test
     public void testFindExercisesByType() throws InstanceNotFoundException {
 
-        exerciseService.addExercise("exerciseName", "description", "objective", "Tactic");
-        exerciseService.addExercise("exerciseName", "description", "objective", "Physical");
-        exerciseService.addExercise("exerciseName", "description", "objective", "Globalized");
-        exerciseService.addExercise("exerciseName", "description", "objective", "Physical");
-        exerciseService.addExercise("exerciseName", "description", "objective", "PreMatch");
+        exerciseService.addExercise("exerciseName", "description", "objective", "Tactico");
+        exerciseService.addExercise("exerciseName", "description", "objective", "Fisico");
+        exerciseService.addExercise("exerciseName", "description", "objective", "Global");
+        exerciseService.addExercise("exerciseName", "description", "objective", "Fisico");
+        exerciseService.addExercise("exerciseName", "description", "objective", "PrePartido");
 
-        List<Exercise> exercises = exerciseService.findExercisesByType("Physical");
-        List<Exercise> exercises1 = exerciseService.findExercisesByType("Tactic");
-        List<Exercise> exercises2 = exerciseService.findExercisesByType("PreMatch");
+        List<Exercise> exercises = exerciseService.findExercisesByType("Fisico");
+        List<Exercise> exercises1 = exerciseService.findExercisesByType("Tactico");
+        List<Exercise> exercises2 = exerciseService.findExercisesByType("PrePartido");
 
         assertEquals(exercises.size(), 2);
         assertEquals(exercises1.size(), 1);
@@ -118,11 +118,11 @@ public class ExerciseServiceTest {
         Training training = createTraining(team.getId());
         Training training2 = createTraining(team.getId());
 
-        Exercise exercise = exerciseService.addExercise("exerciseName", "description", "objective", "Tactic");
-        Exercise exercise2 = exerciseService.addExercise("exerciseName", "description", "objective", "Physical");
-        Exercise exercise3 = exerciseService.addExercise("exerciseName", "description", "objective", "Globalized");
-        exerciseService.addExercise("exerciseName", "description", "objective", "Physical");
-        exerciseService.addExercise("exerciseName", "description", "objective", "PreMatch");
+        Exercise exercise = exerciseService.addExercise("exerciseName", "description", "objective", "Tactico");
+        Exercise exercise2 = exerciseService.addExercise("exerciseName", "description", "objective", "Fisico");
+        Exercise exercise3 = exerciseService.addExercise("exerciseName", "description", "objective", "Global");
+        exerciseService.addExercise("exerciseName", "description", "objective", "Fisico");
+        exerciseService.addExercise("exerciseName", "description", "objective", "PrePartido");
 
         exerciseService.addExerciseToTraining(training.getId(), exercise.getId());
         exerciseService.addExerciseToTraining(training.getId(), exercise2.getId());
@@ -148,11 +148,11 @@ public class ExerciseServiceTest {
         Training training = createTraining(team.getId());
         Training training2 = createTraining(team.getId());
 
-        Exercise exercise = exerciseService.addExercise("exerciseName", "description", "objective", "Tactic");
-        Exercise exercise2 = exerciseService.addExercise("exerciseName", "description", "objective", "Physical");
-        Exercise exercise3 = exerciseService.addExercise("exerciseName", "description", "objective", "Globalized");
-        exerciseService.addExercise("exerciseName", "description", "objective", "Physical");
-        exerciseService.addExercise("exerciseName", "description", "objective", "PreMatch");
+        Exercise exercise = exerciseService.addExercise("exerciseName", "description", "objective", "Tactico");
+        Exercise exercise2 = exerciseService.addExercise("exerciseName", "description", "objective", "Fisico");
+        Exercise exercise3 = exerciseService.addExercise("exerciseName", "description", "objective", "Global");
+        exerciseService.addExercise("exerciseName", "description", "objective", "Fisico");
+        exerciseService.addExercise("exerciseName", "description", "objective", "PrePartido");
 
         exerciseService.addExerciseToTraining(training.getId(), exercise.getId());
         exerciseService.addExerciseToTraining(training.getId(), exercise2.getId());
@@ -181,11 +181,11 @@ public class ExerciseServiceTest {
         Game game = createGame(team.getId());
         Game game2 = createGame(team.getId());
 
-        Exercise exercise = exerciseService.addExercise("exerciseName", "description", "objective", "Tactic");
-        Exercise exercise2 = exerciseService.addExercise("exerciseName", "description", "objective", "Physical");
-        Exercise exercise3 = exerciseService.addExercise("exerciseName", "description", "objective", "Globalized");
-        exerciseService.addExercise("exerciseName", "description", "objective", "Physical");
-        exerciseService.addExercise("exerciseName", "description", "objective", "PreMatch");
+        Exercise exercise = exerciseService.addExercise("exerciseName", "description", "objective", "Tactico");
+        Exercise exercise2 = exerciseService.addExercise("exerciseName", "description", "objective", "Fisico");
+        Exercise exercise3 = exerciseService.addExercise("exerciseName", "description", "objective", "Global");
+        exerciseService.addExercise("exerciseName", "description", "objective", "Fisico");
+        exerciseService.addExercise("exerciseName", "description", "objective", "PrePartido");
 
         exerciseService.addExerciseToGame(game.getId(), exercise.getId());
         exerciseService.addExerciseToGame(game.getId(), exercise2.getId());
@@ -211,11 +211,11 @@ public class ExerciseServiceTest {
         Game game = createGame(team.getId());
         Game game2 = createGame(team.getId());
 
-        Exercise exercise = exerciseService.addExercise("exerciseName", "description", "objective", "Tactic");
-        Exercise exercise2 = exerciseService.addExercise("exerciseName", "description", "objective", "Physical");
-        Exercise exercise3 = exerciseService.addExercise("exerciseName", "description", "objective", "Globalized");
-        exerciseService.addExercise("exerciseName", "description", "objective", "Physical");
-        exerciseService.addExercise("exerciseName", "description", "objective", "PreMatch");
+        Exercise exercise = exerciseService.addExercise("exerciseName", "description", "objective", "Tactico");
+        Exercise exercise2 = exerciseService.addExercise("exerciseName", "description", "objective", "Fisico");
+        Exercise exercise3 = exerciseService.addExercise("exerciseName", "description", "objective", "Global");
+        exerciseService.addExercise("exerciseName", "description", "objective", "Fisico");
+        exerciseService.addExercise("exerciseName", "description", "objective", "PrePartido");
 
         exerciseService.addExerciseToGame(game.getId(), exercise.getId());
         exerciseService.addExerciseToGame(game.getId(), exercise2.getId());
@@ -240,11 +240,11 @@ public class ExerciseServiceTest {
     public void testRemoveExercise()
             throws InstanceNotFoundException, DuplicateInstanceException, UsedExerciseException {
 
-        exerciseService.addExercise("exerciseName", "description", "objective", "Tactic");
-        Exercise exercise2 = exerciseService.addExercise("exerciseName", "description", "objective", "Physical");
-        Exercise exercise3 = exerciseService.addExercise("exerciseName", "description", "objective", "Globalized");
-        exerciseService.addExercise("exerciseName", "description", "objective", "Physical");
-        exerciseService.addExercise("exerciseName", "description", "objective", "PreMatch");
+        exerciseService.addExercise("exerciseName", "description", "objective", "Tactico");
+        Exercise exercise2 = exerciseService.addExercise("exerciseName", "description", "objective", "Fisico");
+        Exercise exercise3 = exerciseService.addExercise("exerciseName", "description", "objective", "Global");
+        exerciseService.addExercise("exerciseName", "description", "objective", "Fisico");
+        exerciseService.addExercise("exerciseName", "description", "objective", "PrePartido");
 
         exerciseService.removeExercise(exercise2.getId());
         exerciseService.removeExercise(exercise3.getId());
@@ -263,7 +263,7 @@ public class ExerciseServiceTest {
         Team team = createTeam(user.getId(), "team");
         Training training = createTraining(team.getId());
 
-        Exercise exercise = exerciseService.addExercise("exerciseName", "description", "objective", "Tactic");
+        Exercise exercise = exerciseService.addExercise("exerciseName", "description", "objective", "Tactico");
 
         exerciseService.addExerciseToTraining(training.getId(), exercise.getId());
 
@@ -279,12 +279,12 @@ public class ExerciseServiceTest {
         Training training = createTraining(team.getId());
         Game game = createGame(team.getId());
 
-        Exercise exercise2 = exerciseService.addExercise("exerciseName", "description", "objective", "Physical");
+        Exercise exercise2 = exerciseService.addExercise("exerciseName", "description", "objective", "Fisico");
 
         exerciseService.addExerciseToTraining(training.getId(), exercise2.getId());
         exerciseService.addExerciseToGame(game.getId(), exercise2.getId());
 
-        Exercise exerciseUpdated = exerciseService.updatExercise(exercise2.getId(), "cambiando", "je je je", "me parto", "Tactic");
+        Exercise exerciseUpdated = exerciseService.updatExercise(exercise2.getId(), "cambiando", "je je je", "me parto", "Tactico");
 
         Exercise exerciseFound = exerciseService.findExerciseById(exercise2.getId());
 
@@ -296,7 +296,7 @@ public class ExerciseServiceTest {
         assertEquals(exerciseFound.getExerciseName(), "cambiando");
         assertEquals(exerciseFound.getDescription(), "je je je");
         assertEquals(exerciseFound.getObjective(), "me parto");
-        assertEquals(exerciseFound.getExerciseType(), "Tactic");
+        assertEquals(exerciseFound.getExerciseType(), "Tactico");
 
         assertEquals(exercises1.get(0), exerciseUpdated);
         assertEquals(exercises2.get(0), exerciseUpdated);

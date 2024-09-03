@@ -65,7 +65,7 @@ public class LesionServiceTest {
     public void testAddLesionAndFinLesionById() throws InstanceNotFoundException {
 
         Lesion lesion = lesionService.addLesion("Nombre de la lesion", "Aqui pongo una descripcion de la lesion",
-                "Aqui pongo los medicamentos", "Muscle");
+                "Aqui pongo los medicamentos", "Muscular");
         Lesion lesionFound = lesionService.findLesionById(lesion.getId());
 
         assertEquals(lesion, lesionFound);
@@ -78,11 +78,11 @@ public class LesionServiceTest {
         User user = createUser("usuario");
         Team team = createTeam(user.getId(), "team");
 
-        Player player = playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "PointGuard",
+        Player player = playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "Base",
                 "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065",
                 "paco@gmail.com", "46095900J");
         Lesion lesion = lesionService.addLesion("Nombre de la lesion", "Aqui pongo una descripcion de la lesion",
-                "Aqui pongo los medicamentos", "Muscle");
+                "Aqui pongo los medicamentos", "Muscular");
 
         lesionService.addLesionToPlayer(player.getId(), lesion.getId());
         List<PlayerLesion> playerLesions = playerLesionDao.findByPlayerId(player.getId());
@@ -97,11 +97,11 @@ public class LesionServiceTest {
             IncorrectEmailException, IncorrectPhoneNumberException {
 
         Lesion lesion = lesionService.addLesion("Nombre de la lesion", "Aqui pongo una descripcion de la lesion",
-                "Aqui pongo los medicamentos", "Muscle");
+                "Aqui pongo los medicamentos", "Muscular");
         Lesion lesion2 = lesionService.addLesion("Nombre de la lesion2", "Aqui pongo una descripcion de la lesion2",
-                "Aqui pongo los medicamentos", "Joint");
+                "Aqui pongo los medicamentos", "Articular");
         Lesion lesion3 = lesionService.addLesion("Nombre de la lesion3", "Aqui pongo una descripcion de la lesion3",
-                "Aqui pongo los medicamentos", "Tendon");
+                "Aqui pongo los medicamentos", "Tendinosa");
 
         List<Lesion> lesions2 = new ArrayList<>();
         lesions2.add(lesion);
@@ -127,26 +127,26 @@ public class LesionServiceTest {
     @Test
     public void testFindLesionByType() throws InstanceNotFoundException {
         lesionService.addLesion("Nombre de la lesion", "Aqui pongo una descripcion de la lesion",
-                "Aqui pongo los medicamentos", "Muscle");
+                "Aqui pongo los medicamentos", "Muscular");
         Lesion lesion2 = lesionService.addLesion("Nombre de la lesion2", "Aqui pongo una descripcion de la lesion2",
-                "Aqui pongo los medicamentos", "Joint");
+                "Aqui pongo los medicamentos", "Articular");
         Lesion lesion3 = lesionService.addLesion("Nombre de la lesion3", "Aqui pongo una descripcion de la lesion3",
-                "Aqui pongo los medicamentos", "Tendon");
+                "Aqui pongo los medicamentos", "Tendinosa");
         Lesion lesion4 = lesionService.addLesion("Nombre de la lesion3", "Aqui pongo una descripcion de la lesion3",
-                "Aqui pongo los medicamentos", "Tendon");
+                "Aqui pongo los medicamentos", "Tendinosa");
         lesionService.addLesion("Nombre de la lesion3", "Aqui pongo una descripcion de la lesion3",
-                "Aqui pongo los medicamentos", "Psychological");
+                "Aqui pongo los medicamentos", "Psicologica");
         Lesion lesion6 = lesionService.addLesion("Nombre de la lesion3", "Aqui pongo una descripcion de la lesion3",
-                "Aqui pongo los medicamentos", "Tendon");
+                "Aqui pongo los medicamentos", "Tendinosa");
 
-        Block<Lesion> lesions = lesionService.findLesionByType("Tendon",0, 10);
+        Block<Lesion> lesions = lesionService.findLesionByType("Tendinosa",0, 10);
 
         assertEquals(3, lesions.getItems().size());
         assertEquals(lesion3, lesions.getItems().get(0));
         assertEquals(lesion4, lesions.getItems().get(1));
         assertEquals(lesion6, lesions.getItems().get(2));
 
-        Block<Lesion> lesions2 = lesionService.findLesionByType("Joint", 0, 10);
+        Block<Lesion> lesions2 = lesionService.findLesionByType("Articular", 0, 10);
         assertEquals(1, lesions2.getItems().size());
         assertEquals(lesion2, lesions2.getItems().get(0));
 }
@@ -154,9 +154,9 @@ public class LesionServiceTest {
     @Test
     public void testFindLesionByBadType() throws InstanceNotFoundException {
         lesionService.addLesion("Nombre de la lesion", "Aqui pongo una descripcion de la lesion",
-                "Aqui pongo los medicamentos", "Muscle");
+                "Aqui pongo los medicamentos", "Muscular");
         lesionService.addLesion("Nombre de la lesion2", "Aqui pongo una descripcion de la lesion2",
-                "Aqui pongo los medicamentos", "Joint");
+                "Aqui pongo los medicamentos", "Articular");
 
 		assertThrows(InstanceNotFoundException.class, () -> lesionService.findLesionByType("hola"));
         }
@@ -168,12 +168,12 @@ public class LesionServiceTest {
         User user = createUser("usuario");
         Team team = createTeam(user.getId(), "team");
 
-        Player player = playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "PointGuard",
+        Player player = playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "Base",
                 "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065",
                 "paco@gmail.com", "46095900J");
-        lesionService.addLesion("Nombre de la lesion", "Aqui pongo una descripcion de la lesion", "Aqui pongo los medicamentos", "Muscle");
-        Lesion lesion2 = lesionService.addLesion("Nombre de la lesion2", "Aqui pongo una descripcion de la lesion2", "Aqui pongo los medicamentos", "Joint");
-        Lesion lesion3 = lesionService.addLesion("Nombre de la lesion3", "Aqui pongo una descripcion de la lesion3", "Aqui pongo los medicamentos", "Tendon");
+        lesionService.addLesion("Nombre de la lesion", "Aqui pongo una descripcion de la lesion", "Aqui pongo los medicamentos", "Muscular");
+        Lesion lesion2 = lesionService.addLesion("Nombre de la lesion2", "Aqui pongo una descripcion de la lesion2", "Aqui pongo los medicamentos", "Articular");
+        Lesion lesion3 = lesionService.addLesion("Nombre de la lesion3", "Aqui pongo una descripcion de la lesion3", "Aqui pongo los medicamentos", "Tendinosa");
 
         lesionService.addLesionToPlayer(player.getId(), lesion2.getId());
         lesionService.addLesionToPlayer(player.getId(), lesion3.getId());
@@ -190,9 +190,9 @@ public class LesionServiceTest {
     @Test
     public void testRemoveLesion() throws InstanceNotFoundException, UsedLesionException {
         
-        Lesion lesion = lesionService.addLesion("Nombre de la lesion", "Aqui pongo una descripcion de la lesion", "Aqui pongo los medicamentos", "Muscle");
-        Lesion lesion2 = lesionService.addLesion("Nombre de la lesion2", "Aqui pongo una descripcion de la lesion2", "Aqui pongo los medicamentos", "Joint");
-        Lesion lesion3 = lesionService.addLesion("Nombre de la lesion3", "Aqui pongo una descripcion de la lesion3", "Aqui pongo los medicamentos", "Tendon");
+        Lesion lesion = lesionService.addLesion("Nombre de la lesion", "Aqui pongo una descripcion de la lesion", "Aqui pongo los medicamentos", "Muscular");
+        Lesion lesion2 = lesionService.addLesion("Nombre de la lesion2", "Aqui pongo una descripcion de la lesion2", "Aqui pongo los medicamentos", "Articular");
+        Lesion lesion3 = lesionService.addLesion("Nombre de la lesion3", "Aqui pongo una descripcion de la lesion3", "Aqui pongo los medicamentos", "Tendinosa");
 
         lesionService.removeLesion(lesion2.getId());
 
@@ -208,15 +208,15 @@ public class LesionServiceTest {
             DuplicateInstanceException, IncorrectDniException, IncorrectEmailException, IncorrectPhoneNumberException {
         User user = createUser("usuario");
         Team team = createTeam(user.getId(), "team");
-        Player player = playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "PointGuard",
+        Player player = playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "Base",
                 "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065",
                 "paco@gmail.com", "46095900J");
         
-        lesionService.addLesion("Nombre de la lesion", "Aqui pongo una descripcion de la lesion", "Aqui pongo los medicamentos", "Muscle");
+        lesionService.addLesion("Nombre de la lesion", "Aqui pongo una descripcion de la lesion", "Aqui pongo los medicamentos", "Muscular");
         
-        Lesion lesion2 = lesionService.addLesion("Nombre de la lesion2", "Aqui pongo una descripcion de la lesion2", "Aqui pongo los medicamentos", "Joint");
+        Lesion lesion2 = lesionService.addLesion("Nombre de la lesion2", "Aqui pongo una descripcion de la lesion2", "Aqui pongo los medicamentos", "Articular");
         
-        lesionService.addLesion("Nombre de la lesion3", "Aqui pongo una descripcion de la lesion3", "Aqui pongo los medicamentos", "Tendon");
+        lesionService.addLesion("Nombre de la lesion3", "Aqui pongo una descripcion de la lesion3", "Aqui pongo los medicamentos", "Tendinosa");
         lesionService.addLesionToPlayer(player.getId(), lesion2.getId());
 
 		assertThrows(UsedLesionException.class, () -> lesionService.removeLesion(lesion2.getId()));
@@ -229,12 +229,12 @@ public class LesionServiceTest {
         User user = createUser("usuario");
         Team team = createTeam(user.getId(), "team");
 
-        Player player = playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "PointGuard",
+        Player player = playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "Base",
                 "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065",
                 "paco@gmail.com", "46095900J");
-        lesionService.addLesion("Nombre de la lesion", "Aqui pongo una descripcion de la lesion", "Aqui pongo los medicamentos", "Muscle");
-        Lesion lesion2 = lesionService.addLesion("Nombre de la lesion2", "Aqui pongo una descripcion de la lesion2", "Aqui pongo los medicamentos", "Joint");
-        Lesion lesion3 = lesionService.addLesion("Nombre de la lesion3", "Aqui pongo una descripcion de la lesion3", "Aqui pongo los medicamentos", "Tendon");
+        lesionService.addLesion("Nombre de la lesion", "Aqui pongo una descripcion de la lesion", "Aqui pongo los medicamentos", "Muscular");
+        Lesion lesion2 = lesionService.addLesion("Nombre de la lesion2", "Aqui pongo una descripcion de la lesion2", "Aqui pongo los medicamentos", "Articular");
+        Lesion lesion3 = lesionService.addLesion("Nombre de la lesion3", "Aqui pongo una descripcion de la lesion3", "Aqui pongo los medicamentos", "Tendinosa");
 
         lesionService.addLesionToPlayer(player.getId(), lesion2.getId());
         lesionService.addLesionToPlayer(player.getId(), lesion3.getId());
@@ -253,19 +253,19 @@ public class LesionServiceTest {
     @Test
     public void testUpdateLesion() throws InstanceNotFoundException {
         
-        lesionService.addLesion("Nombre de la lesion", "Aqui pongo una descripcion de la lesion", "Aqui pongo los medicamentos", "Muscle");
-        Lesion lesion2 = lesionService.addLesion("Nombre de la lesion2", "Aqui pongo una descripcion de la lesion2", "Aqui pongo los medicamentos", "Joint");
-        lesionService.addLesion("Nombre de la lesion3", "Aqui pongo una descripcion de la lesion3", "Aqui pongo los medicamentos", "Tendon");
+        lesionService.addLesion("Nombre de la lesion", "Aqui pongo una descripcion de la lesion", "Aqui pongo los medicamentos", "Muscular");
+        Lesion lesion2 = lesionService.addLesion("Nombre de la lesion2", "Aqui pongo una descripcion de la lesion2", "Aqui pongo los medicamentos", "Articular");
+        lesionService.addLesion("Nombre de la lesion3", "Aqui pongo una descripcion de la lesion3", "Aqui pongo los medicamentos", "Tendinosa");
 
-        Lesion lesion2Updated = lesionService.updateLesion(lesion2.getId(), "Nuevo nombre", null, "Nueva medicacion", "Tendon");
+        Lesion lesion2Updated = lesionService.updateLesion(lesion2.getId(), "Nuevo nombre", null, "Nueva medicacion", "Tendinosa");
 
-        List<Lesion> lesions = lesionService.findLesionByType("Tendon");
+        List<Lesion> lesions = lesionService.findLesionByType("Tendinosa");
         assertEquals(2, lesions.size());
         
         assertEquals(lesion2Updated.getLesionName(), "Nuevo nombre");
         assertEquals(lesion2Updated.getDescription(), "Aqui pongo una descripcion de la lesion2");
         assertEquals(lesion2Updated.getMedication(), "Nueva medicacion");
-        assertEquals(lesion2Updated.getLesionType(), "Tendon");
+        assertEquals(lesion2Updated.getLesionType(), "Tendinosa");
     }
 
     @Test
@@ -274,18 +274,18 @@ public class LesionServiceTest {
         User user = createUser("usuario");
         Team team = createTeam(user.getId(), "team");
 
-        Player player = playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "PointGuard",
+        Player player = playerService.addPlayer(team.getId(), "jugador1", "apellido1", "apellido2", "Base",
                 "Este jugador tiene tendencia a defender bajo, y a salir demasiado rapido al contraataque", "638677065",
                 "paco@gmail.com", "46095900J");
-        lesionService.addLesion("Nombre de la lesion", "Aqui pongo una descripcion de la lesion", "Aqui pongo los medicamentos", "Muscle");
-        Lesion lesion2 = lesionService.addLesion("Nombre de la lesion2", "Aqui pongo una descripcion de la lesion2", "Aqui pongo los medicamentos", "Joint");
-        lesionService.addLesion("Nombre de la lesion3", "Aqui pongo una descripcion de la lesion3", "Aqui pongo los medicamentos", "Tendon");
+        lesionService.addLesion("Nombre de la lesion", "Aqui pongo una descripcion de la lesion", "Aqui pongo los medicamentos", "Muscular");
+        Lesion lesion2 = lesionService.addLesion("Nombre de la lesion2", "Aqui pongo una descripcion de la lesion2", "Aqui pongo los medicamentos", "Articular");
+        lesionService.addLesion("Nombre de la lesion3", "Aqui pongo una descripcion de la lesion3", "Aqui pongo los medicamentos", "Tendinosa");
 
         lesionService.addLesionToPlayer(player.getId(), lesion2.getId());
 
-        lesionService.updateLesion(lesion2.getId(), "Nuevo nombre", null, "Nueva medicacion", "Tendon");
+        lesionService.updateLesion(lesion2.getId(), "Nuevo nombre", null, "Nueva medicacion", "Tendinosa");
 
-        List<Lesion> lesions = lesionService.findLesionByType("Tendon");
+        List<Lesion> lesions = lesionService.findLesionByType("Tendinosa");
         List<PlayerLesion> playerLesion = (List<PlayerLesion>) playerLesionDao.findAll();
         Lesion lesionUpdated = lesionService.findLesionById(lesion2.getId());
         assertEquals(2, lesions.size());
@@ -294,6 +294,6 @@ public class LesionServiceTest {
         assertEquals(lesionUpdated.getLesionName(), "Nuevo nombre");
         assertEquals(lesionUpdated.getDescription(), "Aqui pongo una descripcion de la lesion2");
         assertEquals(lesionUpdated.getMedication(), "Nueva medicacion");
-        assertEquals(lesionUpdated.getLesionType(), "Tendon");
+        assertEquals(lesionUpdated.getLesionType(), "Tendinosa");
     }
 }
