@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/clubFragment">
+
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="com.example.tfmmobile.ui.calendar.CalendarFragment"
+        android:label="fragment_calendar"
+        tools:layout="@layout/fragment_calendar" >
+        <action
+            android:id="@+id/action_calendarFragment_to_gameDetailActivity"
+            app:destination="@id/gameDetailActivity" />
+         <action
+            android:id="@+id/action_calendarFragment_to_trainingDetailActivity"
+            app:destination="@id/trainingDetailActivity" />
+        <action
+            android:id="@+id/action_calendarFragment_to_eventActivity"
+            app:destination="@id/eventActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/clubFragment"
+        android:name="com.example.tfmmobile.ui.club.ClubFragment"
+        android:label="fragment_club"
+        tools:layout="@layout/fragment_club" >
+        <action
+            android:id="@+id/action_clubFragment_to_teamDetailActivity"
+            app:destination="@id/teamDetailActivity" />
+        <action
+            android:id="@+id/action_clubFragment_to_seasonDetailActivity2"
+            app:destination="@id/seasonDetailActivity" />
+        <action
+            android:id="@+id/action_clubFragment_to_playerDetailActivity"
+            app:destination="@id/playerDetailActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventsFragment"
+        android:name="com.example.tfmmobile.ui.events.EventsFragment"
+        android:label="fragment_events"
+        tools:layout="@layout/fragment_events" >
+        <action
+            android:id="@+id/action_eventsFragment_to_gameDetailActivity2"
+            app:destination="@id/gameDetailActivity" />
+        <action
+            android:id="@+id/action_eventsFragment_to_trainingDetailActivity"
+            app:destination="@id/trainingDetailActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/healthFragment"
+        android:name="com.example.tfmmobile.ui.health.HealthFragment"
+        android:label="fragment_health"
+        tools:layout="@layout/fragment_health" >
+        <action
+            android:id="@+id/action_healthFragment_to_lesionDetailActivity"
+            app:destination="@id/lesionDetailActivity" />
+        <action
+            android:id="@+id/action_healthFragment_to_exerciseDetailActivity"
+            app:destination="@id/exerciseDetailActivity" />
+        <action
+            android:id="@+id/action_healthFragment_to_stretchingDetailActivity"
+            app:destination="@id/stretchingDetailActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/playsFragment"
+        android:name="com.example.tfmmobile.ui.plays.PlaysFragment"
+        android:label="fragment_plays"
+        tools:layout="@layout/fragment_plays" >
+        <action
+            android:id="@+id/action_playsFragment_to_playDetailActivity"
+            app:destination="@id/playDetailActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/teamDetailActivity"
+        android:name="com.example.tfmmobile.ui.detail.team.TeamDetailActivity"
+        android:label="activity_team_detail"
+        tools:layout="@layout/activity_team_detail" >
+        <argument
+            android:name="id"
+            app:argType="long" />
+        <argument
+            android:name="teamName"
+            app:argType="string" />
+        <argument android:name="arenaName"
+            app:argType="string" />
+        <argument
+            android:name="ownerName"
+            app:argType="string" />
+        <argument
+            android:name="description"
+            app:argType="string" />
+    </activity>
+    <activity
+        android:id="@+id/seasonDetailActivity"
+        android:name="com.example.tfmmobile.ui.detail.season.SeasonDetailActivity"
+        android:label="activity_season_detail"
+        tools:layout="@layout/activity_season_detail" >
+        <argument
+            android:name="id"
+            app:argType="long" />
+        <argument
+            android:name="startDate"
+            app:argType="string" />
+        <argument
+            android:name="endDate"
+            app:argType="string" />
+        <argument
+            android:name="seasonName"
+            app:argType="string" />
+        <argument
+            android:name="description"
+            app:argType="string" />
+    </activity>
+    <activity
+        android:id="@+id/playerDetailActivity"
+        android:name="com.example.tfmmobile.ui.detail.player.PlayerDetailActivity"
+        android:label="activity_player_detail"
+        tools:layout="@layout/activity_player_detail" >
+        <argument
+            android:name="id"
+            app:argType="long" />
+        <argument
+            android:name="playerName"
+            app:argType="string" />
+        <argument
+            android:name="primaryLastName"
+            app:argType="string" />
+        <argument
+            android:name="secondLastName"
+            app:argType="string" />
+        <argument
+            android:name="position"
+            app:argType="string" />
+        <argument
+            android:name="trends"
+            app:argType="string" />
+        <argument
+            android:name="phoneNumber"
+            app:argType="string" />
+        <argument
+            android:name="email"
+            app:argType="string" />
+        <argument
+            android:name="dni"
+            app:argType="string" />
+        <argument
+            android:name="injured"
+            app:argType="boolean" />
+        <argument
+            android:name="teamId"
+            app:argType="long" />
+    </activity>
+    <activity
+        android:id="@+id/gameDetailActivity"
+        android:name="com.example.tfmmobile.ui.detail.game.GameDetailActivity"
+        android:label="activity_game_detail"
+        tools:layout="@layout/activity_game_detail" >
+        <argument
+            android:name="id"
+            app:argType="long" />
+        <argument
+            android:name="gameDate"
+            app:argType="string" />
+        <argument
+            android:name="rival"
+            app:argType="string" />
+        <argument
+            android:name="description"
+            app:argType="string" />
+    </activity>
+    <activity
+        android:id="@+id/trainingDetailActivity"
+        android:name="com.example.tfmmobile.ui.detail.training.TrainingDetailActivity"
+        android:label="activity_training_detail"
+        tools:layout="@layout/activity_training_detail" >
+        <argument
+            android:name="id"
+            app:argType="long" />
+        <argument
+            android:name="trainingDate"
+            app:argType="string" />
+        <argument
+            android:name="duration"
+            app:argType="string" />
+        <argument
+            android:name="description"
+            app:argType="string" />
+        <argument
+            android:name="objective"
+            app:argType="string" />
+    </activity>
+    <activity
+        android:id="@+id/lesionDetailActivity"
+        android:name="com.example.tfmmobile.ui.detail.lesion.LesionDetailActivity"
+        android:label="activity_lesion_detail"
+        tools:layout="@layout/activity_lesion_detail" >
+        <argument
+            android:name="id"
+            app:argType="long" />
+        <argument
+            android:name="lesionName"
+            app:argType="string" />
+        <argument
+            android:name="description"
+            app:argType="string" />
+        <argument
+            android:name="medication"
+            app:argType="string" />
+        <argument
+            android:name="lesionType"
+            app:argType="string" />
+    </activity>
+    <activity
+        android:id="@+id/exerciseDetailActivity"
+        android:name="com.example.tfmmobile.ui.detail.exercise.ExerciseDetailActivity"
+        android:label="activity_exercise_detail"
+        tools:layout="@layout/activity_exercise_detail" >
+        <argument
+            android:name="id"
+            app:argType="long" />
+        <argument
+            android:name="exerciseName"
+            app:argType="string" />
+        <argument
+            android:name="description"
+            app:argType="string" />
+        <argument
+            android:name="objective"
+            app:argType="string" />
+        <argument
+            android:name="exerciseType"
+            app:argType="string" />
+    </activity>
+    <activity
+        android:id="@+id/stretchingDetailActivity"
+        android:name="com.example.tfmmobile.ui.detail.stretching.StretchingDetailActivity"
+        android:label="activity_stretching_detail"
+        tools:layout="@layout/activity_stretching_detail" >
+        <argument
+            android:name="id"
+            app:argType="long" />
+        <argument
+            android:name="stretchingName"
+            app:argType="string" />
+        <argument
+            android:name="description"
+            app:argType="string" />
+        <argument
+            android:name="stretchingType"
+            app:argType="string" />
+    </activity>
+    <activity
+        android:id="@+id/playDetailActivity"
+        android:name="com.example.tfmmobile.ui.detail.play.PlayDetailActivity"
+        android:label="activity_play_detail"
+        tools:layout="@layout/activity_play_detail" >
+        <argument
+            android:name="id"
+            app:argType="long" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="playType"
+            app:argType="string" />
+        <argument
+            android:name="gesture"
+            app:argType="string" />
+        <argument
+            android:name="pointGuardText"
+            app:argType="string" />
+        <argument
+            android:name="shootingGuardText"
+            app:argType="string" />
+        <argument
+            android:name="smallForwardText"
+            app:argType="string" />
+        <argument
+            android:name="powerForwardText"
+            app:argType="string" />
+        <argument
+            android:name="centerText"
+            app:argType="string" />
+        <argument
+            android:name="description"
+            app:argType="string" />
+    </activity>
+    <activity
+        android:id="@+id/eventActivity"
+        android:name="com.example.tfmmobile.ui.detail.event.EventActivity"
+        android:label="activity_event"
+        tools:layout="@layout/activity_event" >
+        <argument
+            android:name="id"
+            app:argType="long" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="startDate"
+            app:argType="string" />
+        <argument
+            android:name="finishDate"
+            app:argType="string" />
+        <argument
+            android:name="eventType"
+            app:argType="string" />
+    </activity>
+</navigation>

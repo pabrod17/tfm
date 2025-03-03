@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--<FrameLayout-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    >-->
+
+
+
+
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    app:cardCornerRadius="30dp"
+    android:id="@id/parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:elevation="20dp"
+    app:cardElevation="20dp"
+    android:layout_marginVertical="5dp"
+    android:layout_marginHorizontal="8dp"
+    >
+        <androidx.cardview.widget.CardView
+            android:id="@+id/ivPlayerDetailInjured"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:elevation="20dp"
+            app:cardCornerRadius="360dp"
+            app:cardElevation="20dp"
+            android:layout_gravity="end"
+            android:layout_marginHorizontal="18dp"
+            android:layout_marginVertical="12dp"
+            app:cardBackgroundColor="@color/injured"
+            android:visibility="gone"
+            >
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/cardInjured"
+                android:paddingLeft="5dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/trianglered"
+                app:cardCornerRadius="360dp" />
+        </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:background="@drawable/gradient_background_club_category_player_card"
+
+        >
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/ivPlayerDetail"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            app:cardCornerRadius="360dp"
+            android:elevation="20dp"
+            app:cardElevation="20dp"
+            android:layout_marginTop="11dp"
+            >
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/cardImage"
+
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/player"
+                android:scaleType="centerCrop"
+                app:cardCornerRadius="360dp" />
+
+        </androidx.cardview.widget.CardView>
+
+<!--        <TextView-->
+<!--            android:id="@+id/tvTitleTeam"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textSize="28sp"-->
+<!--            android:text="hola"-->
+<!--            android:layout_marginHorizontal="10dp"-->
+<!--            android:textColor="@color/white"-->
+<!--            />-->
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingVertical="5dp"
+        >
+        <TextView
+            android:id="@+id/tvNameAndurnames"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nameAndSurnames"
+            android:textColor="@color/warning"
+            android:layout_marginLeft="15dp"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:id="@+id/tvNameAndSurnamesValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="2dp"
+            android:maxHeight="27dp"
+            android:maxWidth="220dp"
+            android:textStyle="bold"
+            android:text="xafsfda fasdf asdf asdf asdf as fdsd aa sdfa asdf asfd"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+
+            />
+<!--        <TextView-->
+<!--            android:id="@+id/tvPosition"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/position"-->
+<!--            android:textColor="@color/warning"-->
+<!--            android:layout_marginLeft="15dp"-->
+<!--            android:textSize="15sp"-->
+<!--            />-->
+        <TextView
+            android:id="@+id/tvPositionValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/arenaName"
+            android:background="@drawable/probando"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="1dp"
+            android:textColor="@color/white"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="0.5dp"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:maxHeight="2530dp"
+            />
+    </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+<!--    <androidx.appcompat.widget.AppCompatImageView-->
+<!--        android:id="@+id/ivTeam"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="200dp"-->
+
+<!--        />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvTitleTeam"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textSize="28sp"-->
+<!--        android:padding="0dp"-->
+<!--        android:textColor="@color/secondary"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/ivTeam"/>-->
+
+
+    <!--Para poner la imagen o card REDONDA!-->
+    <!--    <androidx.cardview.widget.CardView-->
+    <!--        android:id="@+id/ivTeam"-->
+
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        app:cardCornerRadius="360dp"-->
+    <!--        android:layout_margin="5dp"-->
+    <!--        android:elevation="10dp">-->
+
+    <!--        <androidx.appcompat.widget.AppCompatImageView-->
+    <!--            android:id="@+id/ivTeam2"-->
+
+    <!--            app:layout_constraintTop_toTopOf="parent"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="180dp"-->
+    <!--            android:scaleType="centerCrop"-->
+    <!--            />-->
+    <!--    </androidx.cardview.widget.CardView>-->
+
+
+</androidx.cardview.widget.CardView>
+<!--    <androidx.cardview.widget.CardView-->
+<!--        android:id="@+id/ivPlayerDetailInjured"-->
+<!--        android:layout_width="35dp"-->
+<!--        android:layout_height="35dp"-->
+<!--        android:elevation="20dp"-->
+<!--        app:cardCornerRadius="360dp"-->
+<!--        app:cardElevation="20dp"-->
+<!--        android:layout_gravity="end"-->
+<!--        android:layout_marginHorizontal="18dp"-->
+<!--        android:layout_marginVertical="12dp"-->
+<!--        app:cardBackgroundColor="@color/injured"-->
+<!--        >-->
+
+<!--        <androidx.appcompat.widget.AppCompatImageView-->
+<!--            android:id="@+id/cardInjured"-->
+<!--            android:paddingLeft="5dp"-->
+<!--            android:layout_width="30dp"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:src="@drawable/trianglered"-->
+<!--            app:cardCornerRadius="360dp" />-->
+<!--    </androidx.cardview.widget.CardView>-->
+<!--</FrameLayout>-->

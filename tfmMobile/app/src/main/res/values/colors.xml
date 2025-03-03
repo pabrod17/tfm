@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="white2">#03A9F4</color>
+    <color name="white3">#0384F4</color>
+    <color name="white4">#044884</color>
+
+
+    <color name="colorCreateAccount">#1D1E33</color>
+
+    <color name="blue">#1628A0</color>
+    <color name="red">#9E1515</color>
+    <color name="injured">#23D9D6</color>
+
+    <color name="grey">#7D807D</color>
+
+    <color name="pink">#871C86</color>
+    <color name="orange">#B95D21</color>
+    <color name="green">#48AB2D</color>
+    <color name="green2">#044704</color>
+    <color name="purple">#5D138B</color>
+    <color name="yellow">#C7BD26</color>
+
+    <color name="back1">#571954</color>
+    <color name="back2">#2C003C</color>
+    <color name="back3">#3D0B45</color>
+
+    <color name="cardExercise">#40FF0000</color>
+    <color name="cardExercise2">#6BFF0000</color>
+    <color name="cardExercise3">#ABFF0000</color>
+
+    <color name="cardExercise22">#ABFF5100</color>
+    <color name="cardStretchinggggg">#B918A4</color>
+    <color name="cardStretchinggggg2">#ABDA048C</color>
+    <color name="cardStretchinggggg23">#ABFF00A2</color>
+
+    <color name="cardStretchinggggg2Category">#AB990563</color>
+
+
+    <color name="pink2">#AF02E1</color>
+    <color name="pink22">#9107B9</color>
+    <color name="pink3">#C600FF</color>
+
+
+
+    <color name="cardExercise22Card">#AB873109</color>
+
+    <color name="cardPlay1">#41AF24</color>
+    <color name="cardPlay11">#4BCA2A</color>
+
+    <color name="cardPlay2">#062C76</color>
+
+    <color name="redDelete">#e41111</color>
+
+
+    <color name="cardPlayDefense">#41AF24</color>
+    <color name="cardPlayAttack">#062C76</color>
+    <color name="cardPlayAttack2">#0040FF</color>
+
+
+    <color name="cardLesion">#590040FF</color>
+    <color name="cardLesionPrev">#590430B3</color>
+
+    <color name="cardLesion111">#595E7CD7</color>
+
+
+    <color name="cardLesion2">#790040FF</color>
+    <color name="cardLesion3">#0040FF</color>
+    <color name="cardLesion33">#0532B7</color>
+    <color name="cardLesion33333">#05ADB0</color>
+
+    <color name="cardLesion3selected">#032EB0</color>
+    <color name="cardLesion33333selected">#05A0A2</color>
+
+
+    <color name="cardStretching">#40DD00FF</color>
+    <color name="cardStretching2">#80DD00FF</color>
+    <color name="cardStretching3">#A8DD00FF</color>
+
+<!--    linear-gradient(-45deg, #120b4e 0%, #dd0808 100% )-->
+    <color name="cardGame1">#120b4e</color>
+    <color name="cardGame2">#dd0808</color>
+    <color name="cardGame22">#C21818</color>
+    <color name="cardGame222">#921010</color>
+
+
+    <!--    linear-gradient(-45deg, #0f0c29 0%, #302b63 100% );-->
+    <color name="cardTraining1">#0f0c29</color>
+    <color name="cardTraining2">#302b63</color>
+
+<!--    linear-gradient(-180deg, #ff4800 0%, #000000 60% );-->
+    <color name="cardTeam1">#ff4800</color>
+    <color name="cardTeam2">#000000</color>
+
+<!--    linear-gradient(-45deg, #711ce0 0%, #000046 60% );-->
+    <color name="cardSeason1">#711ce0</color>
+    <color name="cardSeason2">#000046</color>
+
+<!--    linear-gradient(180deg, #3b041a 30%,#2f00ff);-->
+    <color name="cardPlayer1">#3b041a</color>
+    <color name="cardPlayer2">#2f00ff</color>
+
+
+    <color name="primary">#1f1f1f</color>
+    <color name="primaryDark">#181818</color>
+    <color name="primaryDark2">#2F2D2D</color>
+    <color name="primaryDarkblue">#081D43</color>
+
+    <!--    <color name="primary">#14213d</color>-->
+    <!--    <color name="primaryDark">#041E42</color>-->
+    <color name="secondary">#B96537</color>
+    <color name="accent">#FFFFFF</color>
+    <color name="gold">#ff378f</color>
+    <color name="black_alpha">#98000000</color>
+
+    <color name="position1">#FF6400</color>
+    <color name="position2">#FF00AE</color>
+    <color name="position3">#F2E40A</color>
+    <color name="position4">#11E228</color>
+    <color name="position5">#BD00FF</color>
+
+    <color name="lesion1">#D80808</color>
+    <color name="lesion2">#FFBB00</color>
+    <color name="lesion3">#01F4EC</color>
+    <color name="lesion4">#00FF5E</color>
+    <color name="lesion5">#ff4800</color>
+
+    <color name="exercise1">#FF00DD</color>
+    <color name="exercise2">#FF0026</color>
+    <color name="exercise3">#FFD166</color>
+    <color name="exercise4">#0f9b0f</color>
+    <color name="exercise5">#897F7F</color>
+    <color name="exercise6">#0608D7</color>
+    <color name="exercise7">#8E2DE2</color>
+    <color name="exercise8">#00FFF3</color>
+
+    <color name="stretching1">#3333E8</color>
+    <color name="stretching2">#FF512F</color>
+    <color name="stretching3">#FF0000</color>
+    <color name="stretching4">#0f9b0f</color>
+    <color name="stretching5">#897F7F</color>
+    <color name="stretching6">#FF6B6B</color>
+    <color name="stretching7">#8E2DE2</color>
+    <color name="stretching8">#00FFF3</color>
+    <color name="stretching9">#FFFF00</color>
+    <color name="stretching10">#DD2476</color>
+
+    <color name="stretching4222">#108710</color>
+    <color name="stretching4222blue">#108710</color>
+
+
+
+
+
+
+
+    <color name="primary_dark">#4F934A</color>
+    <color name="primary1">#569B51</color>
+    <color name="primary_light">#6AB972</color>
+
+    <color name="secondary_dark">#CDCDCD</color>
+    <color name="secondary1">#F0F0F0</color>
+    <color name="secondary_light">#FFFFFF</color>
+    <color name="secondary_light_60">#99FFFFFF</color>
+
+    <color name="background">#232730</color>
+    <color name="background_dark">#1B1D29</color>
+
+    <color name="deepblue">#1B0756</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+
+
+
+    <color name="paper">#2E353F</color>
+
+    <color name="error">#e84545</color>
+    <color name="error_dark">#d32f2f</color>
+
+    <color name="warning_dark">#F48B29</color>
+    <color name="warning">#F0A500</color>
+    <color name="warning3">#F6C047</color>
+    <color name="warning4">#FFE600</color>
+
+    <color name="warning2">#D70E08BC</color>
+
+    <color name="divider">#A68B979D</color>
+    <color name="outline">#39424E</color>
+
+
+<!--    <gradient-->
+<!--        android:startColor="#ff2d9a59"-->
+<!--        android:endColor="#ff23729a"-->
+<!--        android:angle="90" />-->
+
+</resources>

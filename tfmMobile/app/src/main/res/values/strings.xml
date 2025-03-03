@@ -1,0 +1,263 @@
+<resources>
+    <string name="app_name">TeamHub</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="errorUpdatePlayer">Error actualizando Jugador</string>
+    <string name="errorUpdateTeam">Error actualizando Equipo</string>
+    <string name="errorUpdateSeason">Error actualizando Temporada</string>
+
+    <string name="errorUpdateGame">Error actualizando Partido</string>
+    <string name="errorUpdateTraining">Error actualizando Entrenamiento</string>
+
+    <string name="errorUpdatePlay">Error actualizando Jugada</string>
+    <string name="errorUpdateUserProfile">Error actualizando Perfil de Usuario</string>
+
+
+    <string name="errorAddSeason">Error añadiendo Temporada</string>
+    <string name="errorAddTeam">Error añadiendo Equipo</string>
+    <string name="errorAddPlayer">Error añadiendo Jugador</string>
+
+    <string name="errorAddGame">Error añadiendo Partido</string>
+    <string name="errorAddTraining">Error añadiendo Entrenamiento</string>
+
+    <string name="errorAddPlay">Error añadiendo Jugada</string>
+
+    <string name="errorAddEvent">Error añadiendo Evento</string>
+
+
+    <string name="errorFields">Por favor, rellena todos los campos</string>
+
+    <string name="invalidPhoneNumber">Número de Teléfono No Válido</string>
+    <string name="invalidDni">Dni No Válido</string>
+
+
+    <string name="deleteEventGeneralTitle">Eliminar Evento General</string>
+    <string name="deleteEventGeneralTitleQuestion">¿Estas seguro de querer eliminar este Evento General?</string>
+    <string name="delete">Eliminar</string>
+
+
+    <!--    BottomBar-->
+    <string name="club">Club</string>
+    <string name="events">Eventos</string>
+
+    <string name="clubCategories">Categorías de Club</string>
+    <string name="eventsCategories">Categorías de Eventos</string>
+    <string name="healthCategories">Categorías de Salud</string>
+    <string name="playsCategories">Categorías de Jugadas</string>
+
+    <string name="clubItems">Elementos de Club</string>
+    <string name="eventsItems">Elementos de Eventos</string>
+    <string name="healthItems">Elementos de Salud</string>
+    <string name="playsItems">Elementos de Jugadas</string>
+
+    <string name="eventGeneral">Evento General</string>
+    <string name="health">Salud</string>
+    <string name="plays">Jugadas</string>
+    <string name="play">Jugada</string>
+    <string name="calendar">Calendario</string>
+
+    <string name="errorSignUp">Error creando cuenta</string>
+    <string name="errorLogin">Error de Login</string>
+
+
+    <string name="required">Requerido</string>
+    <string name="invalidEmail">Email No Válido</string>
+
+
+    <string name="changePassword">Actualizar Contraseña</string>
+
+    <string name="currentPassword">Contraseña Actual</string>
+    <string name="newPassword">Nueva Contraseña</string>
+    <string name="confirmPassword">Confirmar Contraseña</string>
+    <string name="confirmPasswordCheck">Contraseñas no coinciden</string>
+
+
+    <string name="profile">Perfil</string>
+    <string name="logout">Cerrar sesión</string>
+
+    <string name="add">Añadir</string>
+    <string name="update">Actualizar</string>
+
+    <string name="title">Título</string>
+    <string name="gesture">Gesto</string>
+
+
+    <string name="playerName">Nombre</string>
+    <string name="surnames">Apellidos</string>
+    <string name="nameAndSurnames">Nombre y Apellidos</string>
+
+
+    <string name="primaryLastName">Primer Apellido</string>
+    <string name="secondLastName">Segundo Apellido</string>
+    <string name="trends">Tendencias</string>
+    <string name="phoneNumber">Teléfono</string>
+    <string name="email">Correo Electrónico</string>
+    <string name="dni">Dni</string>
+
+    <string name="startDate">Fecha Inicio</string>
+    <string name="FinishDate">Fecha Fin</string>
+    <string name="dates">Fecha Inicio / Fecha Fin</string>
+    <string name="date">Fecha</string>
+
+    <string name="rival">Rival</string>
+    <string name="duration">Duracion (min)</string>
+    <string name="objective">Objectivo</string>
+
+    <string name="medication">Medicación</string>
+
+    <string name="teamName">Nombre</string>
+    <string name="arenaName">Estadio</string>
+    <string name="ownerName">Propietario</string>
+    <string name="description">Descripción</string>
+
+    <string name="teams">Equipos</string>
+    <string name="seasons">Temporadas</string>
+    <string name="players">Jugadores</string>
+
+    <string name="team">Equipo</string>
+    <string name="season">Temporada</string>
+    <string name="player">Jugador</string>
+
+
+    <string name="games">Partidos</string>
+    <string name="trainings">Entrenamientos</string>
+
+    <string name="game">Partido</string>
+    <string name="training">Entrenamiento</string>
+
+
+    <string name="injured">Lesionado</string>
+
+    <string name="position">Posición</string>
+    <string name="type">Tipo</string>
+
+
+    <string name="position1">Base</string>
+    <string name="position2">Escolta</string>
+    <string name="position3">Alero</string>
+    <string name="position4">AlaPvot</string>
+    <string name="position5">Pivot</string>
+
+    <string name="playsAttack">Ataque</string>
+    <string name="playsDefense">Defensa</string>
+
+
+    <string name="lesion">Lesiones</string>
+    <string name="lesionTypeMuscle">Muscular</string>
+    <string name="lesionTypeTendon">Tendinosa</string>
+    <string name="lesionTypeJoint">Articular</string>
+    <string name="lesionTypeSpine">Columna Vertebral</string>
+    <string name="lesionTypePhychological">Psicológica</string>
+
+    <string name="exercises">Ejercicios</string>
+    <string name="exercisesTypeTactic">Táctico</string>
+    <string name="exercisesTypeTechnique">Técnica</string>
+    <string name="exercisesTypePhysical">Físico</string>
+    <string name="exercisesTypeGlobalized">Global</string>
+    <string name="exercisesTypeSpecific">Específico</string>
+    <string name="exercisesTypePsychological">Psicológico</string>
+    <string name="exercisesTypeStrategy">Estrategia</string>
+    <string name="exercisesTypePreMatch">PrePartido</string>
+
+    <string name="stretchings">Estiramientos</string>
+    <string name="stretchingsTypeHamstrings">Isquiotibiales</string>
+    <string name="stretchingsTypeButtocks">Glúteos</string>
+    <string name="stretchingsTypeCalf">Gemelos</string>
+    <string name="stretchingsTypeAbductors">Aductores</string>
+    <string name="stretchingsTypeShoulder">Hombro</string>
+    <string name="stretchingsTypeQuadriceps">Cuádriceps</string>
+    <string name="stretchingsTypeBack">Espalda</string>
+    <string name="stretchingsTypePectoral">Pectoral</string>
+    <string name="stretchingsTypeCrotch">Ingle</string>
+    <string name="stretchingsTypeTriceps">Tríceps</string>
+
+
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="lorem_ipsum">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
+        volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
+        dui nec risus. Maecenas non sodales nisi, vel dictum dolor. Class aptent taciti sociosqu ad
+        litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse blandit eleifend
+        diam, vel rutrum tellus vulputate quis. Aliquam eget libero aliquet, imperdiet nisl a,
+        ornare ex. Sed rhoncus est ut libero porta lobortis. Fusce in dictum tellus.\n\n
+        Suspendisse interdum ornare ante. Aliquam nec cursus lorem. Morbi id magna felis. Vivamus
+        egestas, est a condimentum egestas, turpis nisl iaculis ipsum, in dictum tellus dolor sed
+        neque. Morbi tellus erat, dapibus ut sem a, iaculis tincidunt dui. Interdum et malesuada
+        fames ac ante ipsum primis in faucibus. Curabitur et eros porttitor, ultricies urna vitae,
+        molestie nibh. Phasellus at commodo eros, non aliquet metus. Sed maximus nisl nec dolor
+        bibendum, vel congue leo egestas.\n\n
+        Sed interdum tortor nibh, in sagittis risus mollis quis. Curabitur mi odio, condimentum sit
+        amet auctor at, mollis non turpis. Nullam pretium libero vestibulum, finibus orci vel,
+        molestie quam. Fusce blandit tincidunt nulla, quis sollicitudin libero facilisis et. Integer
+        interdum nunc ligula, et fermentum metus hendrerit id. Vestibulum lectus felis, dictum at
+        lacinia sit amet, tristique id quam. Cras eu consequat dui. Suspendisse sodales nunc ligula,
+        in lobortis sem porta sed. Integer id ultrices magna, in luctus elit. Sed a pellentesque
+        est.\n\n
+        Aenean nunc velit, lacinia sed dolor sed, ultrices viverra nulla. Etiam a venenatis nibh.
+        Morbi laoreet, tortor sed facilisis varius, nibh orci rhoncus nulla, id elementum leo dui
+        non lorem. Nam mollis ipsum quis auctor varius. Quisque elementum eu libero sed commodo. In
+        eros nisl, imperdiet vel imperdiet et, scelerisque a mauris. Pellentesque varius ex nunc,
+        quis imperdiet eros placerat ac. Duis finibus orci et est auctor tincidunt. Sed non viverra
+        ipsum. Nunc quis augue egestas, cursus lorem at, molestie sem. Morbi a consectetur ipsum, a
+        placerat diam. Etiam vulputate dignissim convallis. Integer faucibus mauris sit amet finibus
+        convallis.\n\n
+        Phasellus in aliquet mi. Pellentesque habitant morbi tristique senectus et netus et
+        malesuada fames ac turpis egestas. In volutpat arcu ut felis sagittis, in finibus massa
+        gravida. Pellentesque id tellus orci. Integer dictum, lorem sed efficitur ullamcorper,
+        libero justo consectetur ipsum, in mollis nisl ex sed nisl. Donec maximus ullamcorper
+        sodales. Praesent bibendum rhoncus tellus nec feugiat. In a ornare nulla. Donec rhoncus
+        libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
+        vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
+    </string>
+
+    <string name="login_hint_firstname">Nombre</string>
+    <string name="login_hint_lastname">Apellidos</string>
+
+    <string name="login_subtitle"><![CDATA[Empoyering tech amazing individuals to shine trough hackathons, talks & challenges]]></string>
+    <string name="login_sign_in">¿Todavía no tienes cuenta? Regístrate</string>
+    <string name="login_button_loggin">INICIAR SESIÓN</string>
+    <string name="login_hint_password">Contraseña</string>
+    <string name="login_hint_user">Nombre de Usuario</string>
+    <string name="login_error_mail">El email no es válido</string>
+    <string name="login_error_password">Debe contener al menos 6 caracteres</string>
+    <string name="login_footer_unselected">¿Todavía no tienes cuenta?</string>
+    <string name="login_footer_selected">Regístrate</string>
+    <string name="login_error_dialog_title">No hemos encontrado el usuario</string>
+    <string name="login_error_dialog_body">Verifique los datos o vuelva a intentarlo</string>
+    <string name="login_error_dialog_negative_action">Cancelar</string>
+    <string name="login_error_dialog_positive_action">Reintentar</string>
+
+    <string name="introduction_button_signin">Crear cuenta</string>
+
+    <string name="signin_form_real_name">Nombre completo</string>
+    <string name="signin_form_nickname">Nombre de usuario</string>
+    <string name="signin_form_email">Correo electrónico</string>
+    <string name="signin_form_password">Contraseña</string>
+    <string name="signin_form_repeat_password">Repetir contraseña</string>
+    <string name="signin_error_mail">El email no es válido</string>
+    <string name="signin_error_nickname">Debe contener al menos 6 caracteres</string>
+    <string name="signin_error_realname">Debe contener al menos 6 caracteres</string>
+    <string name="signin_error_password">Las 2 contraseñas debes ser iguales</string>
+    <string name="signin_footer_unselected">¿Ya tienes cuenta?</string>
+    <string name="signin_footer_selected">Inicia sesión</string>
+    <string name="signin_error_dialog_title">Ha ocurrido un error</string>
+    <string name="signin_error_dialog_body">No hemos podido crear tu cuenta, inténtalo de nuevo más tarde</string>
+    <string name="signin_error_dialog_positive_action">Okey :(</string>
+
+    <string name="verification_button_go_to_nuwe">Vamos a nuwe</string>
+    <string name="verification_check_mail">Para acceder a la aplicación verifica tu correo electrónico (recuerda mirar en SPAM).</string>
+
+    <string name="dialog_success_title">¡Demo completa!</string>
+    <string name="dialog_success_body">"Espero que te haya gustado este login usando buenas prácticas y buen rollo :) "</string>
+    <string name="dialog_success_positive">¡Gracias!</string>
+
+    <string name="feature_not_allowed">Feature no solicitada :)</string>
+    <string name="signin_button_createaccount">Crear mi cuenta</string>
+
+</resources>

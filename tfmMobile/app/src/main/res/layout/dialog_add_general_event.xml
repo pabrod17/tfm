@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/dialog_rounded_corners"
+    android:padding="16dp"
+    android:focusableInTouchMode="true"
+    >
+
+    <RadioGroup
+        android:id="@+id/rgOption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/rbGame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="@string/eventGeneral"
+            android:paddingHorizontal="10dp"
+            android:checked="true"
+            android:textColor="@color/cardPlay1"
+            />
+
+    </RadioGroup>
+
+
+    <EditText
+        android:id="@+id/etStartDateGeneralEvent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:hint="@string/date"
+        android:textColorHint="@color/green"
+        android:textColor="@color/orange"
+        android:clickable="false"
+        android:focusable="false"
+        />
+
+    <EditText
+        android:id="@+id/etGeneralEventTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:hint="@string/title"
+        android:textColorHint="@color/green"
+        android:textColor="@color/orange"
+        />
+
+
+    <Button
+        android:id="@+id/addTeamButtonDialogGeneralEvent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/red"
+        />
+
+
+</LinearLayout>
