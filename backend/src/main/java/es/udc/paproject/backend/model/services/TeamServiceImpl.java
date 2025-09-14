@@ -116,12 +116,13 @@ public class TeamServiceImpl implements TeamService {
     public Team findTeamById(Long userId, Long teamId) throws InstanceNotFoundException {
 
         List<SeasonTeam> seasonTeams = new ArrayList<>();
-        User user = userService.loginFromId(userId);
-        if(user.getRole().name().equals("ADMIN")) {
-            seasonTeams = (List<SeasonTeam>) seasonTeamDao.findAll();
-        } else {
-            seasonTeams = seasonTeamDao.findByUserId(user.getId());
-        }
+        seasonTeams = (List<SeasonTeam>) seasonTeamDao.findAll();
+//        User user = userService.loginFromId(userId);
+//        if(user.getRole().name().equals("ADMIN")) {
+//            seasonTeams = (List<SeasonTeam>) seasonTeamDao.findAll();
+//        } else {
+//            seasonTeams = seasonTeamDao.findByUserId(user.getId());
+//        }
 
         Team team = null;
 

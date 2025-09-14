@@ -225,7 +225,7 @@ public class PlayerController {
     }
 
     @DeleteMapping("/{playerId}")
-    public void removePlayer(@RequestParam Long teamId, @PathVariable Long playerId)
+    public void removePlayer(@RequestParam(required=false) Long teamId, @PathVariable Long playerId)
             throws InstanceNotFoundException {
         playerService.removePlayer(teamId, playerId);
     }

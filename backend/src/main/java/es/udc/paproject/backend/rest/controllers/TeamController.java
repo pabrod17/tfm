@@ -92,6 +92,15 @@ public class TeamController {
         return toTeamDto(teamService.findTeamByName(userId, name));
     }
 
+
+    /*
+    @GetMapping("/hola")
+    public TeamDto findTeamById(@RequestAttribute Long userId)
+            throws InstanceNotFoundException {
+        return toTeamDto(teamService.findTeamById(userId, 1L));
+    }
+     */
+
     @GetMapping("/{id}")
     public TeamDto findTeamById(@RequestAttribute Long userId, @PathVariable Long id)
             throws InstanceNotFoundException {

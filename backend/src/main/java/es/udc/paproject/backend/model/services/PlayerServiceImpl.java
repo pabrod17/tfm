@@ -874,9 +874,9 @@ public class PlayerServiceImpl implements PlayerService {
     @Override
     public void removePlayer(Long teamId, Long playerId) throws InstanceNotFoundException {
 
-        if (!teamDao.existsById(teamId)) {
+        /*if (!teamDao.existsById(teamId)) {
             throw new InstanceNotFoundException("project.entities.team");
-        }
+        }*/
         if (!playerDao.existsById(playerId)) {
             throw new InstanceNotFoundException("project.entities.player");
         }
