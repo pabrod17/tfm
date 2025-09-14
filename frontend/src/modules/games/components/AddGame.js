@@ -117,13 +117,12 @@ const AddGame = () => {
                 () => reloadWindow(),
                 errors => setBackendErrors(errors),
                 ));
-            // } else {
-            //     dispatch(actions.addGame(teamId, seasonId,dateConversor(gameDate), rival.trim(), description.trim(),
-            //     () => reloadWindow(),
-            //     errors => setBackendErrors(errors),
-            //     ));
-            // }
-			}
+            } else {
+                dispatch(actions.addGame(teamId, seasonId,dateConversor(gameDate), rival.trim(), description.trim(),
+                () => reloadWindow(),
+                errors => setBackendErrors(errors),
+                ));
+            }
         }
         const reloadWindow = () =>{
             history('/games/home');
