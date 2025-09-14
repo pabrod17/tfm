@@ -103,9 +103,9 @@ const SeasonsHome = () => {
     </LocalizationProvider>
             </div>
             <div className="mt-2">
-                {/* <button type="button" className="button_all_buscar" onClick={handleSubmit}>
+                <button type="button" className="button_all_buscar" onClick={handleSubmit}>
                 <FormattedMessage id="project.global.buttons.find" />
-                </button> */}
+                </button> 
                 <button type="button" className="button_all" onClick={() => handleSetAllSeasons(dispatch)}>
                     All
                 </button>

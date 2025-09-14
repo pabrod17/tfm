@@ -241,11 +241,11 @@ const handleFindTrainingsToPlayer = (playerId, dispatch, history) => {
                 <div className="flip-card-back">
                   <div className="card_player">
                   <a class="button_apple ">
-                      <span className="desc desc3 scroll_efect_stretching">{item.email}</span>
+                      <span className="desc desc3 scroll_efect_player_gmail">{item.email}</span>
                     </a>
                     <hr></hr>
                     <a onClick={() => handleOpenDescriptionModal(item.trends)} class="button_apple ">
-                      <span className="desc desc3 scroll_efect_stretching">{item.trends}</span>
+                      <span className="desc desc3 scroll_efect_training">{item.trends}</span>
                     </a>
                     <hr></hr>
                   </div>

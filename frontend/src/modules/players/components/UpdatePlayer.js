@@ -50,8 +50,12 @@ const UpdatePlayer = () => {
 
     const [value, setValue] = useState(0);
     let form;
-
+    const handleChange2 = (event, newValue) => {
+        setValue(newValue);
+    };
     const teamUser = useSelector(selectorsTeams.getTeam);
+
+
 
     useEffect(() => {
         if (!player) {
@@ -232,7 +236,7 @@ const UpdatePlayer = () => {
     }}>
 
 <Box sx={{boxShadow:"0 6.7px 33.5px rgb(0, 0, 0)" }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example"  
+        <Tabs value={value} onChange={handleChange2} aria-label="basic tabs example"  
                         sx={{
                             background: "linear-gradient(45deg, rgb(59, 4, 26) 30%,rgb(47, 0, 255))",
                             bgcolor:"red",

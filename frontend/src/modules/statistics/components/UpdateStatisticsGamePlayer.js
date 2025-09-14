@@ -1067,9 +1067,9 @@ const UpdateStatisticsGamePlayer = () => {
 											<PieChart
 												series={[
 													{
-														data: [{ value: failFreeShots, label: intl.formatMessage({ id: 'project.statistics.fields.totalFreeShotsRival' }), color: '#1e1e24' }, 
-														{ value: failSetShots, label: intl.formatMessage({ id: 'project.statistics.fields.totalSetShotsRival' }), color: '#92140c' },
-														 { value: failThreePointShots, label: intl.formatMessage({ id: 'project.statistics.fields.totalThreePointShotsRival' }), color: '#fff8f0' }],
+														data: [{ value: failFreeShots, label: intl.formatMessage({ id: 'project.statistics.fields.failFreeShots' }), color: '#1e1e24' }, 
+														{ value: failSetShots, label: intl.formatMessage({ id: 'project.statistics.fields.failSetShots' }), color: '#92140c' },
+														 { value: failThreePointShots, label: intl.formatMessage({ id: 'project.statistics.fields.failThreePointShots' }), color: '#fff8f0' }],
 														faded: { innerRadius: 30, additionalRadius: -30, color: 'gray' },
 														highlightScope: { faded: 'global', highlighted: 'item' },
 													},

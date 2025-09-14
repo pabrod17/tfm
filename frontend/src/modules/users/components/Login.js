@@ -37,10 +37,7 @@ const Login = () => {
         event.preventDefault();
 
         if (form.checkValidity() && checkConfirmPassword()) {
-            console.log("11111")
-            console.log("11111")
-            console.log("11111")
-            console.log("11111")
+
             
             dispatch(actions.signUp(
                 {userName: userName.trim(),
@@ -58,7 +55,6 @@ const Login = () => {
             
 
         } else if (form.checkValidity()) {
-            console.log("11111 2222222")
             dispatch(actions.login(
                 userName.trim(),
                 password,
