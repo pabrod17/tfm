@@ -11,7 +11,7 @@ import es.udc.paproject.backend.model.exceptions.UsedTrainingException;
 public interface TrainingService {
     
     //Busco un SeasonTeam con el teamId y cojo ese
-    Training addTraining(Long teamId, Long seasonId, LocalDateTime trainingDate, String durationMinutes, String description, String objective) throws InstanceNotFoundException;
+    Training addTraining(Long teamId, Long seasonId, LocalDateTime trainingDate, Integer durationMinutes, String description, String objective) throws InstanceNotFoundException;
 
     void addPlayerToTraining(Long trainingId, Long playerId) throws InstanceNotFoundException;
 
@@ -33,5 +33,5 @@ public interface TrainingService {
     
     void removePlayerToTraining(Long playerId, Long trainingId) throws InstanceNotFoundException, UsedTrainingException;
 
-    Training updateTraining(Long trainingId, LocalDateTime trainingDate, String durationMinutes, String description, String objective) throws InstanceNotFoundException;
+    Training updateTraining(Long trainingId, LocalDateTime trainingDate, Integer durationMinutes, String description, String objective) throws InstanceNotFoundException;
 }

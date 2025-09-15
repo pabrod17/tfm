@@ -9,7 +9,7 @@ public class Training {
     
     private Long id;
     private LocalDateTime trainingDate;
-    private String durationMinutes;
+    private Integer durationMinutes;
     private String description;
     private String objective;
     private SeasonTeam seasonTeam;
@@ -19,7 +19,7 @@ public class Training {
     public Training() {
     }
 
-    public Training(LocalDateTime trainingDate, String durationMinutes, String description, String objective,
+    public Training(LocalDateTime trainingDate, Integer durationMinutes, String description, String objective,
             SeasonTeam seasonTeam) {
         this.trainingDate = trainingDate;
         this.durationMinutes = durationMinutes;
@@ -46,11 +46,11 @@ public class Training {
         this.trainingDate = trainingDate;
     }
 
-    public String getDurationMinutes() {
+    public Integer getDurationMinutes() {
         return durationMinutes;
     }
 
-    public void setDurationMinutes(String durationMinutes) {
+    public void setDurationMinutes(Integer durationMinutes) {
         this.durationMinutes = durationMinutes;
     }
 

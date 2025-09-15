@@ -98,7 +98,7 @@ public class TrainingServiceTest {
 
         User user = createUser("paco");
         Team team = createTeam(user.getId(), "team");
-        Training training = trainingService.addTraining(team.getId(), null, trainingDate, "150", "describiendo",
+        Training training = trainingService.addTraining(team.getId(), null, trainingDate, 150, "describiendo",
                 "objetivo");
         Training trainingFound = trainingService.findTrainingById(training.getId());
         assertEquals(training, trainingFound);
@@ -112,9 +112,9 @@ public class TrainingServiceTest {
         Player player = createPlayer(team.getId());
         Player player2 = createPlayer2(team.getId());
         Player player3 = createPlayer3(team.getId());
-        Training training = trainingService.addTraining(team.getId(), null, trainingDate, "150", "describiendo",
+        Training training = trainingService.addTraining(team.getId(), null, trainingDate, 150, "describiendo",
                 "objetivo");
-        Training training2 = trainingService.addTraining(team.getId(), null, trainingDate, "150", "describiendo",
+        Training training2 = trainingService.addTraining(team.getId(), null, trainingDate, 150, "describiendo",
                 "objetivo");
 
         trainingService.addPlayerToTraining(training.getId(), player.getId());
@@ -138,9 +138,9 @@ public class TrainingServiceTest {
         Player player = createPlayer(team.getId());
         Player player2 = createPlayer2(team.getId());
         Player player3 = createPlayer3(team.getId());
-        Training training = trainingService.addTraining(team.getId(), null, trainingDate, "150", "describiendo",
+        Training training = trainingService.addTraining(team.getId(), null, trainingDate, 150, "describiendo",
                 "objetivo");
-        Training training2 = trainingService.addTraining(team.getId(), null, trainingDate, "150", "describiendo",
+        Training training2 = trainingService.addTraining(team.getId(), null, trainingDate, 150, "describiendo",
                 "objetivo");
 
         trainingService.addPlayerToTraining(training.getId(), player.getId());
@@ -163,9 +163,9 @@ public class TrainingServiceTest {
 
         User user = createUser("paco");
         Team team = createTeam(user.getId(), "team");
-        trainingService.addTraining(team.getId(), null, trainingDate, "150", "describiendo", "objetivo");
-        trainingService.addTraining(team.getId(), null, trainingDate2, "150", "describiendo", "objetivo");
-        trainingService.addTraining(team.getId(), null, trainingDate3, "150", "describiendo", "objetivo");
+        trainingService.addTraining(team.getId(), null, trainingDate, 150, "describiendo", "objetivo");
+        trainingService.addTraining(team.getId(), null, trainingDate2, 150, "describiendo", "objetivo");
+        trainingService.addTraining(team.getId(), null, trainingDate3, 150, "describiendo", "objetivo");
 
         List<Training> trainings = trainingService.findTrainingsByTwoDatesAndTeamIdOrSeasonId(user.getId(), team.getId(), null,
                 startDate, endDate);
@@ -181,11 +181,11 @@ public class TrainingServiceTest {
         User user = createUser("paco");
         Team team = createTeam(user.getId(), "team");
         Team team2 = createTeam(user.getId(), "team2");
-        trainingService.addTraining(team.getId(), null, trainingDate, "150", "describiendo", "objetivo");
-        trainingService.addTraining(team.getId(), null, trainingDate2, "150", "describiendo", "objetivo");
-        trainingService.addTraining(team.getId(), null, trainingDate3, "150", "describiendo", "objetivo");
+        trainingService.addTraining(team.getId(), null, trainingDate, 150, "describiendo", "objetivo");
+        trainingService.addTraining(team.getId(), null, trainingDate2, 150, "describiendo", "objetivo");
+        trainingService.addTraining(team.getId(), null, trainingDate3, 150, "describiendo", "objetivo");
 
-        trainingService.addTraining(team2.getId(), null, trainingDate2, "150", "describiendo", "objetivo");
+        trainingService.addTraining(team2.getId(), null, trainingDate2, 150, "describiendo", "objetivo");
 
         List<Training> trainings = trainingService.findTrainingsByTeamId(team.getId());
         List<Training> trainings2 = trainingService.findTrainingsByTeamId(team2.getId());
@@ -204,12 +204,12 @@ public class TrainingServiceTest {
         Team team2 = createTeam(user.getId(), "team2");
         Season season2 = createSeason(user.getId(), "calendario2");
 
-        trainingService.addTraining(team.getId(), null, trainingDate, "150", "describiendo", "objetivo");
-        trainingService.addTraining(team.getId(), null, trainingDate2, "150", "describiendo", "objetivo");
-        trainingService.addTraining(team.getId(), null, trainingDate3, "150", "describiendo", "objetivo");
+        trainingService.addTraining(team.getId(), null, trainingDate, 150, "describiendo", "objetivo");
+        trainingService.addTraining(team.getId(), null, trainingDate2, 150, "describiendo", "objetivo");
+        trainingService.addTraining(team.getId(), null, trainingDate3, 150, "describiendo", "objetivo");
 
-        trainingService.addTraining(team2.getId(), null, trainingDate2, "150", "describiendo", "objetivo");
-        trainingService.addTraining(null, season2.getId(), trainingDate2, "150", "describiendo", "objetivo");
+        trainingService.addTraining(team2.getId(), null, trainingDate2, 150, "describiendo", "objetivo");
+        trainingService.addTraining(null, season2.getId(), trainingDate2, 150, "describiendo", "objetivo");
 
         List<Training> trainings = trainingService.findTrainingsByUserId(user.getId());
 
@@ -224,13 +224,13 @@ public class TrainingServiceTest {
         User user = createUser("paco");
         Season season = createSeason(user.getId(), "calendario");
         Season season2 = createSeason(user.getId(), "calendario2");
-        trainingService.addTraining(null, season.getId(), trainingDate, "150", "describiendo", "objetivo");
-        Training training2 = trainingService.addTraining(null, season.getId(), trainingDate2, "150", "describiendo",
+        trainingService.addTraining(null, season.getId(), trainingDate, 150, "describiendo", "objetivo");
+        Training training2 = trainingService.addTraining(null, season.getId(), trainingDate2, 150, "describiendo",
                 "objetivo");
-        Training training3 = trainingService.addTraining(null, season2.getId(), trainingDate3, "150", "describiendo",
+        Training training3 = trainingService.addTraining(null, season2.getId(), trainingDate3, 150, "describiendo",
                 "objetivo");
 
-        trainingService.addTraining(null, season.getId(), trainingDate2, "150", "describiendo", "objetivo");
+        trainingService.addTraining(null, season.getId(), trainingDate2, 150, "describiendo", "objetivo");
 
         List<Training> trainings = trainingService.findTrainingsBySeasonId(season.getId());
         List<Training> trainings2 = trainingService.findTrainingsBySeasonId(season2.getId());
@@ -249,11 +249,11 @@ public class TrainingServiceTest {
         User user = createUser("paco");
         Season season = createSeason(user.getId(), "calendario");
         Season season2 = createSeason(user.getId(), "calendario2");
-        trainingService.addTraining(null, season.getId(), trainingDate, "150", "describiendo", "objetivo");
-        Training training2 = trainingService.addTraining(null, season.getId(), trainingDate2, "150", "describiendo", "objetivo");
-        trainingService.addTraining(null, season2.getId(), trainingDate3, "150", "describiendo", "objetivo");
+        trainingService.addTraining(null, season.getId(), trainingDate, 150, "describiendo", "objetivo");
+        Training training2 = trainingService.addTraining(null, season.getId(), trainingDate2, 150, "describiendo", "objetivo");
+        trainingService.addTraining(null, season2.getId(), trainingDate3, 150, "describiendo", "objetivo");
 
-        Training training22 = trainingService.addTraining(null, season.getId(),trainingDate2, "150", "describiendo", "objetivo");
+        Training training22 = trainingService.addTraining(null, season.getId(),trainingDate2, 150, "describiendo", "objetivo");
 
         trainingService.removeTraining(training2.getId());
 
@@ -271,27 +271,27 @@ public class TrainingServiceTest {
         User user = createUser("paco");
         Season season = createSeason(user.getId(), "calendario");
         Season season2 = createSeason(user.getId(), "calendario2");
-        trainingService.addTraining(null, season.getId(), trainingDate, "150", "describiendo", "objetivo");
-        Training training2 = trainingService.addTraining(null, season.getId(), trainingDate2, "150", "describiendo", "objetivo");
-        trainingService.addTraining(null, season2.getId(), trainingDate3, "150", "describiendo", "objetivo");
+        trainingService.addTraining(null, season.getId(), trainingDate, 150, "describiendo", "objetivo");
+        Training training2 = trainingService.addTraining(null, season.getId(), trainingDate2, 150, "describiendo", "objetivo");
+        trainingService.addTraining(null, season2.getId(), trainingDate3, 150, "describiendo", "objetivo");
 
-        trainingService.addTraining(null, season.getId(),trainingDate2, "150", "describiendo", "objetivo");
+        trainingService.addTraining(null, season.getId(),trainingDate2, 150, "describiendo", "objetivo");
 
-        Training training2Updated = trainingService.updateTraining(training2.getId(), trainingDate3, "25", "cambio", "jeje jaja");
+        Training training2Updated = trainingService.updateTraining(training2.getId(), trainingDate3, 25, "cambio", "jeje jaja");
 
         List<Training> trainings = trainingService.findTrainingsBySeasonId(season.getId());
 
         assertEquals(trainings.size(), 3);
         assertEquals(trainings.get(1), training2Updated);
         assertEquals(trainings.get(1).getTrainingDate(), trainingDate3);
-        assertEquals(trainings.get(1).getDurationMinutes(), "25");
+        assertEquals(trainings.get(1).getDurationMinutes(), 25);
         assertEquals(trainings.get(1).getDescription(), "cambio");
         assertEquals(trainings.get(1).getObjective(), "jeje jaja");
     }
 
     @Test
     public void testFindTrainingWithBadId() throws InstanceNotFoundException, DuplicateInstanceException {
-		assertThrows(InstanceNotFoundException.class, () -> trainingService.addTraining(NON_EXISTENT_ID, null, trainingDate, "150", "describiendo",
+		assertThrows(InstanceNotFoundException.class, () -> trainingService.addTraining(NON_EXISTENT_ID, null, trainingDate, 150, "describiendo",
         "objetivo"));
     }
 
@@ -300,9 +300,9 @@ public class TrainingServiceTest {
 
         User user = createUser("paco");
         Team team = createTeam(user.getId(), "team");
-        trainingService.addTraining(team.getId(), null, trainingDate, "150", "describiendo", "objetivo");
-        trainingService.addTraining(team.getId(), null, trainingDate2, "150", "describiendo", "objetivo");
-        trainingService.addTraining(team.getId(), null, trainingDate3, "150", "describiendo", "objetivo");
+        trainingService.addTraining(team.getId(), null, trainingDate, 150, "describiendo", "objetivo");
+        trainingService.addTraining(team.getId(), null, trainingDate2, 150, "describiendo", "objetivo");
+        trainingService.addTraining(team.getId(), null, trainingDate3, 150, "describiendo", "objetivo");
     
 		assertThrows(StartDateAfterEndDateException.class, () -> trainingService.findTrainingsByTwoDatesAndTeamIdOrSeasonId(user.getId(),team.getId(),null, endDate, startDate));
     }

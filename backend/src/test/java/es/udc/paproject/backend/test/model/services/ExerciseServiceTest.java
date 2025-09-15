@@ -58,7 +58,7 @@ public class ExerciseServiceTest {
     }
 
     private Training createTraining(Long teamId) throws InstanceNotFoundException {
-        return trainingService.addTraining(teamId, null, startDate, "120", "description", "objective");
+        return trainingService.addTraining(teamId, null, startDate, 120, "description", "objective");
     }
 
     private Game createGame(Long teamId) throws InstanceNotFoundException {
