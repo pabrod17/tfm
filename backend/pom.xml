@@ -18,10 +18,12 @@
     </parent>
     
     <properties>
-    
+
         <!--  Data source properties -->
-        <dataSource.user>pa</dataSource.user>
-        <dataSource.password>pa</dataSource.password>
+<!--        <dataSource.user>pa</dataSource.user>-->
+<!--        <dataSource.password>pa</dataSource.password>-->
+        <dataSource.user>admin</dataSource.user>
+        <dataSource.password>xTrPmok5le3*c?</dataSource.password>
         <testDataSource.user>${dataSource.user}</testDataSource.user>
         <testDataSource.password>${dataSource.password}</testDataSource.password>
     
@@ -52,7 +54,8 @@
                 <jdbcDriver.className>com.mysql.cj.jdbc.Driver</jdbcDriver.className>
 
                 <!--  Data source properties -->
-                <dataSource.baseUrl>jdbc:mysql://localhost/paproject</dataSource.baseUrl>
+<!--                <dataSource.baseUrl>jdbc:mysql://localhost/paproject</dataSource.baseUrl>-->
+                <dataSource.baseUrl>jdbc:mysql://teamhub-aws.c3agcg2kswei.eu-north-1.rds.amazonaws.com:3306/paproject</dataSource.baseUrl>
                 <dataSource.url>${dataSource.baseUrl}?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=Europe/Madrid</dataSource.url>
                 <testDataSource.url>${dataSource.baseUrl}test?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=Europe/Madrid</testDataSource.url>
                 <dataSource.createTablesScript>1-MySQLCreateTables.sql</dataSource.createTablesScript>
