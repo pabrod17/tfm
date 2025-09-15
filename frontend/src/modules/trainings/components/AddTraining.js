@@ -134,7 +134,12 @@ const AddTraining = () => {
 			});
 		})
 	}
-
+	function toMinutes(value) {
+		if (!value || !value.isValid?.()) return 0; // value puede ser null
+		const h = value.hour();
+		const m = value.minute();
+		return h * 60 + m;
+	  }
 
 
 	
@@ -144,19 +149,19 @@ const AddTraining = () => {
 		event.preventDefault();
 
 			if (teamId == null) {
-				dispatch(actions.addTrainingWithSeason(seasonId[0], dateConversor(trainingDate), timeConversor(durationMinutes),
+				dispatch(actions.addTrainingWithSeason(seasonId, dateConversor(trainingDate), durationMinutes,
 					description.trim(), objective.trim(),
 					() => reloadWindow(),
 					errors => setBackendErrors(errors),
 				));
 			} else if (seasonId==null) {
-				dispatch(actions.addTrainingWithTeam(teamId[0], dateConversor(trainingDate), timeConversor(durationMinutes),
+				dispatch(actions.addTrainingWithTeam(teamId, dateConversor(trainingDate), durationMinutes,
 					description.trim(), objective.trim(),
 					() => reloadWindow(),
 					errors => setBackendErrors(errors),
 				));
 			} else {
-				dispatch(actions.addTraining(teamId[0], seasonId[0], dateConversor(trainingDate), timeConversor(durationMinutes),
+				dispatch(actions.addTraining(teamId, seasonId, dateConversor(trainingDate), durationMinutes,
 					description.trim(), objective.trim(),
 					() => reloadWindow(),
 					errors => setBackendErrors(errors),
@@ -192,8 +197,8 @@ const AddTraining = () => {
 				const hours = String(dateObj.getHours()).padStart(2, '0'); 
 				const minutes = String(dateObj.getMinutes()).padStart(2, '0'); 
 				const finalTime = `${year}-${month}-${day}T${hours}:${minutes}`;
-				return finalTime;
-	}
+				return `${hours}:${minutes}`;
+			}
 
 
 
@@ -285,7 +290,9 @@ const AddTraining = () => {
 										<DemoContainer components={['TimePicker']}>
 											<TimePicker
 											    id="time-picker"
-
+												ampm={false}
+												views={['hours','minutes']}
+												format="HH:mm"
 												sx={{
 													border: '1.34px solid grey',
 													background: "linear-gradient(-45deg, #41295a 0%, #2F0743 100% )",
@@ -298,8 +305,9 @@ const AddTraining = () => {
 												}}
 
 												onChange={(durationMinutes) => {
-													setDurationMinutes(durationMinutes)
-													console.log("holaaa222; ", durationMinutes)
+													const mins = toMinutes(durationMinutes);
+													setDurationMinutes(mins)
+													console.log('duración en minutos ->', mins);
 												}}
 												/>
 												

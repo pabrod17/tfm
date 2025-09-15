@@ -83,6 +83,13 @@ function obtenerHoraFormateada(fechaHoraString) {
   return horaFormateada;
 }
 
+function formatDuration(total) {
+  if (total == null) return '—'; // o '' si prefieres vacío
+  const h = Math.floor(total / 60);
+  const m = total % 60;
+  return String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0');
+}
+
 
 const TrainingCardUser = ({ dispatch, history, item, handleOpenDescriptionModal }) => {
   return (
@@ -108,7 +115,7 @@ const TrainingCardUser = ({ dispatch, history, item, handleOpenDescriptionModal 
                 </div>
                 <div class="flip-card-back">
             <div class="card_training">
-            <span class="title" style={{marginBottom:"0px"}}>{obtenerHoraFormateada(item.durationMinutes)} &nbsp;
+            <span class="title" style={{marginBottom:"0px"}}>{formatDuration(item.durationMinutes)} &nbsp;
             </span>
             <hr></hr>
           <a onClick={() => handleOpenDescriptionModal(item.description)} class="button_apple" style={{marginTop:"-5px", marginBottom:"-5px"}}>

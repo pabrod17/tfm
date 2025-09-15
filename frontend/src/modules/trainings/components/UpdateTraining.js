@@ -48,7 +48,7 @@ const UpdateTraining = () => {
             dispatch(actions.findTrainingById(id, () => history(`/trainings/update/${id}`)));
         } else {
             setTrainingDate(dayjs(training.trainingDate));
-            setDurationMinutes(dayjs(training.durationMinutes));
+            setDurationMinutes(training.durationMinutes);
             setDescription(training.description);
             setObjective(training.objective);
 
@@ -111,7 +111,18 @@ const UpdateTraining = () => {
 
             return formattedDate;
         }
+		
+		  function fromMinutes(total) {
+			return dayjs().startOf('day').add(total, 'minute');
+		  }
 
+		  function toMinutes(value) {
+			if (!value || !value.isValid?.()) return 0;
+			const h = value.hour();
+			const m = value.minute();
+			return h * 60 + m;
+		  }
+		  
     return(
         <Box
             display="flex"
@@ -251,12 +262,9 @@ const UpdateTraining = () => {
                                                     borderColor:"black",
 													boxShadow:"0 6.7px 6.7px rgb(0, 0, 0)",
 												}}
-                                                value={durationMinutes}
+                                                value={fromMinutes(durationMinutes)}
 												label={<FormattedMessage id="project.statistics.fields.duration" />} 
-												onChange={(durationMinutes) => {
-													setDurationMinutes(durationMinutes)
-													console.log("holaaa222; ", durationMinutes)
-												}}
+												onChange={(v) => setDurationMinutes(toMinutes(v))}
 												/>
 												
 										</DemoContainer>
