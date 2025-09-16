@@ -35,6 +35,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
+import com.example.tfmmobile.TfmMobileApp.Companion.prefs
 
 
 @Module
@@ -71,7 +72,9 @@ object NetworkModule {
 //            .baseUrl("http://10.0.2.2:8080/")
 //            Esta es la ip del wifi. Para poder conectarme desde un dispositivo fisico movil
 //            .baseUrl("http://192.168.1.50:8080/")
-            .baseUrl("http://192.168.175.69:8080/")
+//            .baseUrl("http://192.168.175.69:8080/")
+            .baseUrl("http://teamhub-basket-aws-env.eu-north-1.elasticbeanstalk.com/")
+
 
             .addConverterFactory(GsonConverterFactory.create())
             .build()
