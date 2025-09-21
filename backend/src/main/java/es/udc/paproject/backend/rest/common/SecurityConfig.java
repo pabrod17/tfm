@@ -96,6 +96,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		config.addAllowedOrigin("https://teamhub-basket-aws-env.eu-north-1.elasticbeanstalk.com");
 		config.addAllowedOrigin("https://teamhub-basket-bfzbwox1e-pabrod17-gmailcoms-projects.vercel.app");
 		config.addAllowedOrigin("https://teamhub-basket.vercel.app");
+		config.addAllowedOrigin("https://teamhubbasket.com");
+		config.addAllowedOrigin("https://www.teamhubbasket.com");
+		config.addAllowedOrigin("https://api.teamhubbasket.com");
 
 		//config.addAllowedOrigin("*");
 	    config.addAllowedHeader("*");

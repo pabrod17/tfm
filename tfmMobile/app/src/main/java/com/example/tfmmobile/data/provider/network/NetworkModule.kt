@@ -73,7 +73,8 @@ object NetworkModule {
 //            Esta es la ip del wifi. Para poder conectarme desde un dispositivo fisico movil
 //            .baseUrl("http://192.168.1.50:8080/")
 //            .baseUrl("http://192.168.175.69:8080/")
-            .baseUrl("http://teamhub-basket-aws-env.eu-north-1.elasticbeanstalk.com/")
+//            .baseUrl("http://teamhub-basket-aws-env.eu-north-1.elasticbeanstalk.com/")
+            .baseUrl("https://api.teamhubbasket.com/")
 
 
             .addConverterFactory(GsonConverterFactory.create())
