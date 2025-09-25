@@ -43,7 +43,6 @@
     - [🔍 Database](#-database)
     - [🔍 Compile](#-compile)
     - [🔍 Execution](#-execution)
-  - [🤝 Contribute](#-contribute)
   - [👥 Authors](#-authors)
   - [🛠️ Stack](#️-stack)
 
@@ -163,4 +162,4 @@ yarn start
 ![AWS](https://img.shields.io/badge/AWS-232F3E?logo=amazonaws&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-000000?logo=vercel&logoColor=white)
 
-Made with ❤️ by [comuafor 🐀](https://discord.com/invite/comuafor)
+Made with ❤️
