@@ -1,6 +1,64 @@
-# PA Project 
+<div align="center">
 
-## Requirements
+# 🏀⚡ TeamHub  
+### Web + Mobile app to boost your basketball experience
+
+![GitHub stars](https://img.shields.io/github/stars/pabrod17/tfm?style=social)
+![GitHub issues](https://img.shields.io/github/issues/pabrod17/tfm)
+![Contributors](https://img.shields.io/github/contributors/pabrod17/tfm)
+![GitHub top language](https://img.shields.io/github/languages/top/pabrod17/tfm)
+![GitHub license](https://img.shields.io/github/license/pabrod17/tfm)
+
+
+<p align="center">
+  <a href="https://teamhubbasket.com">
+    <img src="https://img.shields.io/badge/ Visit%20TeamHub-5122be?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Website"/>
+  </a>
+</p>
+
+
+
+<!-- 
+[![🌐 Live Demo](https://img.shields.io/badge/🌐_Live_Demo-4285F4?style=for-the-badge)](https://tu-web.com)
+[![📱 Mobile App](https://img.shields.io/badge/📱_Mobile_App-FF6B35?style=for-the-badge)](https://tu-app.com)
+-->
+
+
+
+
+</div>
+
+## Screenshots
+
+![image](https://github.com/user-attachments/assets/ab8f72ad-abd7-4ed1-9c53-f870e5ecb4d9)
+
+![image](https://github.com/user-attachments/assets/fb37df98-0af7-4c9f-b710-bfed2309064b)
+
+## 📚 Table of Contents
+
+- [🏀⚡ TeamHub](#-TeamHub)
+  - [📚 Table of Contents](#-table-of-contents)
+  - [🚀 Getting Started](#-getting-started)
+    - [📦 Requirements](#-requirements)
+    - [🔍 Database](#-database)
+    - [🔍 Compile](#-compile)
+    - [🔍 Execution](#-execution)
+  - [🤝 Contribute](#-contribute)
+  - [👥 Authors](#-authors)
+  - [🛠️ Stack](#️-stack)
+
+## 🚀 Getting Started
+
+
+1. Clone or fork this repository
+
+   ```sh
+   git clone https://github.com/pabrod17/tfm.git
+   ```
+
+
+
+### 📦 Requirements
 
 - Node 12.14.0+.
 - Yarn 1.21.1+.
@@ -8,7 +66,7 @@
 - Maven 3+.
 - MySQL 8+.
 
-## Database creation
+### 🔍 Database
 
 ```
 Start Mysql server if not running (e.g. mysqld).
@@ -56,7 +114,7 @@ Compruebo acceso con usuario pa: ( mysql -u pa -p pa )
 
 ```
 
-## Compile
+### 🔍 Compile
 ```
 Inicializacion de la bd y compilacion/configuracion:
 
@@ -67,7 +125,7 @@ Inicializacion de la bd y compilacion/configuracion:
 
 ```
 
-## Run
+### 🔍 Execution
 
 ```
 cd backend
@@ -79,196 +137,30 @@ yarn install (only first time to download libraries)
 yarn start
 ```
 
-## First design web version
+## 👥 Authors
 
-Sidebar and Home
-Topbar removed (I'm still wondering if it will be necessary to add it)
 
+[![Contributors](https://contrib.rocks/image?repo=pabrod17/tfm&)](https://github.com/pabrod17/tfm/graphs/contributors)
 
-![DiagramaClases](dashboard_first_version.png)
 
-New Topbar added
+## 🛠️ Stack
 
-![ToolBare](toolbar.png)
+![Java](https://img.shields.io/badge/Java-ED8B00?logo=openjdk&logoColor=white)
+![Kotlin](https://img.shields.io/badge/Kotlin-0095D5?logo=kotlin&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
 
-New Login page created
+![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?logo=springboot&logoColor=white)
+![Hibernate](https://img.shields.io/badge/Hibernate-59666C?logo=hibernate&logoColor=white)
 
-![ToolBare](login.png)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)
 
-Login Second version
+![Gradle](https://img.shields.io/badge/Gradle-02303A?logo=gradle&logoColor=white)
+![Maven](https://img.shields.io/badge/Maven-C71A36?logo=apachemaven&logoColor=white)
 
-![ToolBare](login2.png)
+![AWS](https://img.shields.io/badge/AWS-232F3E?logo=amazonaws&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?logo=vercel&logoColor=white)
 
-Lesion cards
-
-![ToolBare](lesion_cards.png)
-
-Lesion form
-
-![ToolBare](lesionForm.png)
-
-Lesion cards NEW DESIGN 1:
-
-![ToolBare](lesionHome1.png)
-
-Lesion cards NEW DESIGN 2:
-
-![ToolBare](lesionHome2.png)
-
-Lesion cards NEW DESIGN 3:
-
-![ToolBare](lesionHome3.png)
-
-Lesion cards NEW DESIGN 4:
-
-![ToolBare](lesionHome4.png)
-
-Lesion cards NEW DESIGN 5 with blur:
-
-![ToolBare](lesionHome5.png)
-
-Lesion form new design
-
-![ToolBare](lesionForm2.png)
-
-### Final home designs
-
-Lesion home final design:
-
-![ToolBare](lesionHome3.png)
-
-Exercise home final design:
-
-![ToolBare](exerciseHome.png)
-
-Stretching home final design:
-
-![ToolBare](stretchingHome1.png)
-
-Trainings home final design:
-
-![ToolBare](trainingHome.png)
-
-Trainings form design:
-
-![ToolBare](trainingForm.png)
-
-Games form design:
-
-![ToolBare](gameForm.png)
-
-Games home final design:
-
-![ToolBare](gamesHome.png)
-
-Game Statistics Form:
-
-![ToolBare](UpdateGameStatisticsForm.png)
-
-Game Statistics layout:
-
-![ToolBare](gameStatistics.png)
-
-Court board design:
-
-![ToolBare](courtDrawHome.png)
-
-Plays animator design:
-
-![ToolBare](playsAnimatorHome1.png)
-
-Calendar Home design:
-
-![ToolBare](CalendarHome1.png)
-
-Mobile Gradient Home design. Option 1:
-
-![ToolBare](gradient1.png)
-
-Mobile Gradient Home design. Option 2:
-
-![ToolBare](gradient2.png)
-
-Mobile Gradient Home design. Option 3:
-
-![ToolBare](gradient3.png)
-
-Mobile Gradient Home design. Option 4:
-
-![ToolBare](gradient4.png)
-
-Main layout mockup:
-
-![ToolBare](mainLayout2.png)
-
-Club teams section:
-
-![ToolBare](clubTeamsCards.png)
-
-Club section -> Add dialog:
-
-![ToolBare](addDialog.png)
-
-Club section -> Seasons List:
-
-![ToolBare](listaSeasons.png)
-
-Club section -> Teams List:
-
-![ToolBare](listaTeams.png)
-
-Club section -> Players List:
-
-![ToolBare](listaPlayers.png)
-
-Club section -> Players List with new tabs:
-
-![ToolBare](playerCategories.png)
-
-Club section -> Players List with new tabs VERSION 2:
-
-![ToolBare](playerlayout2.png)
-
-Events section -> Games List:
-
-![ToolBare](gamesMobile.png)
-
-Events section -> Trainings List:
-
-![ToolBare](trainingsMobile.png)
-
-Health section -> Lesion List:
-
-![ToolBare](lesionlayout2.png)
-
-Health section -> Exercises List:
-
-![ToolBare](exerciseslayout.png)
-
-Health section -> Stretchings List:
-
-![ToolBare](stretchingslayout.png)
-
-Health section -> Lesion Detail:
-
-![ToolBare](lesiondetail.png)
-
-Health section -> Exercise Detail:
-
-![ToolBare](exercisedetail.png)
-
-Health section -> Stretching Detail:
-
-![ToolBare](stretchingdetail.png)
-
-Plays section -> Plays List:
-
-![ToolBare](playslout.png)
-
-Login section:
-
-![ToolBare](login222.png)
-
-Update Profile section:
-
-![ToolBare](updateProfile1.png)
+Made with ❤️ by [comuafor 🐀](https://discord.com/invite/comuafor)
