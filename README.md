@@ -39,10 +39,10 @@
 - [🏀⚡ TeamHub](#-TeamHub)
   - [📚 Table of Contents](#-table-of-contents)
   - [🚀 Getting Started](#-getting-started)
-    - [📦 Requirements](#-requirements)
-    - [🔍 Database](#-database)
-    - [🔍 Compile](#-compile)
-    - [🔍 Execution](#-execution)
+    - [📋 Requirements](#-requirements)
+    - [🗄️ Database](#-database)
+    - [🔨 Compile](#-compile)
+    - [▶️ Execution](#-execution)
   - [👥 Authors](#-authors)
   - [🛠️ Stack](#️-stack)
 
@@ -57,7 +57,7 @@
 
 
 
-### 📦 Requirements
+### 📋 Requirements
 
 - Node 12.14.0+.
 - Yarn 1.21.1+.
@@ -65,7 +65,7 @@
 - Maven 3+.
 - MySQL 8+.
 
-### 🔍 Database
+### 🗄️ Database
 
 ```
 Start Mysql server if not running (e.g. mysqld).
@@ -113,7 +113,7 @@ Compruebo acceso con usuario pa: ( mysql -u pa -p pa )
 
 ```
 
-### 🔍 Compile
+### 🔨 Compile
 ```
 Inicializacion de la bd y compilacion/configuracion:
 
@@ -124,7 +124,7 @@ Inicializacion de la bd y compilacion/configuracion:
 
 ```
 
-### 🔍 Execution
+### ▶️ Execution
 
 ```
 cd backend
@@ -162,4 +162,3 @@ yarn start
 ![AWS](https://img.shields.io/badge/AWS-232F3E?logo=amazonaws&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-000000?logo=vercel&logoColor=white)
 
-Made with ❤️
