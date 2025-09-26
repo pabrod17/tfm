@@ -32,9 +32,14 @@
 
 ## 📸 Screenshots
 
+![image](https://github.com/user-attachments/assets/97a62c31-f0ad-40f1-bc36-2c509e535e3e)
+
+
+<!-- 
 | 💻 Web Application | 📱 Mobile Application |
 |:---:|:---:|
 | ![Web App](https://github.com/user-attachments/assets/ab8f72ad-abd7-4ed1-9c53-f870e5ecb4d9) | ![Mobile App](https://github.com/user-attachments/assets/fb37df98-0af7-4c9f-b710-bfed2309064b) |
+-->
 
 ## 📚 Table of Contents
 
