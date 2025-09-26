@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/calendarFragment"
-        android:name="com.example.tfmmobile.ui.calendar.CalendarFragment"
+        android:name="com.teamhub1.tfmmobile.ui.calendar.CalendarFragment"
         android:label="fragment_calendar"
         tools:layout="@layout/fragment_calendar" >
         <action
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/clubFragment"
-        android:name="com.example.tfmmobile.ui.club.ClubFragment"
+        android:name="com.teamhub1.tfmmobile.ui.club.ClubFragment"
         android:label="fragment_club"
         tools:layout="@layout/fragment_club" >
         <action
@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/eventsFragment"
-        android:name="com.example.tfmmobile.ui.events.EventsFragment"
+        android:name="com.teamhub1.tfmmobile.ui.events.EventsFragment"
         android:label="fragment_events"
         tools:layout="@layout/fragment_events" >
         <action
@@ -49,7 +49,7 @@
     </fragment>
     <fragment
         android:id="@+id/healthFragment"
-        android:name="com.example.tfmmobile.ui.health.HealthFragment"
+        android:name="com.teamhub1.tfmmobile.ui.health.HealthFragment"
         android:label="fragment_health"
         tools:layout="@layout/fragment_health" >
         <action
@@ -64,7 +64,7 @@
     </fragment>
     <fragment
         android:id="@+id/playsFragment"
-        android:name="com.example.tfmmobile.ui.plays.PlaysFragment"
+        android:name="com.teamhub1.tfmmobile.ui.plays.PlaysFragment"
         android:label="fragment_plays"
         tools:layout="@layout/fragment_plays" >
         <action
@@ -73,7 +73,7 @@
     </fragment>
     <activity
         android:id="@+id/teamDetailActivity"
-        android:name="com.example.tfmmobile.ui.detail.team.TeamDetailActivity"
+        android:name="com.teamhub1.tfmmobile.ui.detail.team.TeamDetailActivity"
         android:label="activity_team_detail"
         tools:layout="@layout/activity_team_detail" >
         <argument
@@ -93,7 +93,7 @@
     </activity>
     <activity
         android:id="@+id/seasonDetailActivity"
-        android:name="com.example.tfmmobile.ui.detail.season.SeasonDetailActivity"
+        android:name="com.teamhub1.tfmmobile.ui.detail.season.SeasonDetailActivity"
         android:label="activity_season_detail"
         tools:layout="@layout/activity_season_detail" >
         <argument
@@ -114,7 +114,7 @@
     </activity>
     <activity
         android:id="@+id/playerDetailActivity"
-        android:name="com.example.tfmmobile.ui.detail.player.PlayerDetailActivity"
+        android:name="com.teamhub1.tfmmobile.ui.detail.player.PlayerDetailActivity"
         android:label="activity_player_detail"
         tools:layout="@layout/activity_player_detail" >
         <argument
@@ -153,7 +153,7 @@
     </activity>
     <activity
         android:id="@+id/gameDetailActivity"
-        android:name="com.example.tfmmobile.ui.detail.game.GameDetailActivity"
+        android:name="com.teamhub1.tfmmobile.ui.detail.game.GameDetailActivity"
         android:label="activity_game_detail"
         tools:layout="@layout/activity_game_detail" >
         <argument
@@ -171,7 +171,7 @@
     </activity>
     <activity
         android:id="@+id/trainingDetailActivity"
-        android:name="com.example.tfmmobile.ui.detail.training.TrainingDetailActivity"
+        android:name="com.teamhub1.tfmmobile.ui.detail.training.TrainingDetailActivity"
         android:label="activity_training_detail"
         tools:layout="@layout/activity_training_detail" >
         <argument
@@ -192,7 +192,7 @@
     </activity>
     <activity
         android:id="@+id/lesionDetailActivity"
-        android:name="com.example.tfmmobile.ui.detail.lesion.LesionDetailActivity"
+        android:name="com.teamhub1.tfmmobile.ui.detail.lesion.LesionDetailActivity"
         android:label="activity_lesion_detail"
         tools:layout="@layout/activity_lesion_detail" >
         <argument
@@ -213,7 +213,7 @@
     </activity>
     <activity
         android:id="@+id/exerciseDetailActivity"
-        android:name="com.example.tfmmobile.ui.detail.exercise.ExerciseDetailActivity"
+        android:name="com.teamhub1.tfmmobile.ui.detail.exercise.ExerciseDetailActivity"
         android:label="activity_exercise_detail"
         tools:layout="@layout/activity_exercise_detail" >
         <argument
@@ -234,7 +234,7 @@
     </activity>
     <activity
         android:id="@+id/stretchingDetailActivity"
-        android:name="com.example.tfmmobile.ui.detail.stretching.StretchingDetailActivity"
+        android:name="com.teamhub1.tfmmobile.ui.detail.stretching.StretchingDetailActivity"
         android:label="activity_stretching_detail"
         tools:layout="@layout/activity_stretching_detail" >
         <argument
@@ -252,7 +252,7 @@
     </activity>
     <activity
         android:id="@+id/playDetailActivity"
-        android:name="com.example.tfmmobile.ui.detail.play.PlayDetailActivity"
+        android:name="com.teamhub1.tfmmobile.ui.detail.play.PlayDetailActivity"
         android:label="activity_play_detail"
         tools:layout="@layout/activity_play_detail" >
         <argument
@@ -288,7 +288,7 @@
     </activity>
     <activity
         android:id="@+id/eventActivity"
-        android:name="com.example.tfmmobile.ui.detail.event.EventActivity"
+        android:name="com.teamhub1.tfmmobile.ui.detail.event.EventActivity"
         android:label="activity_event"
         tools:layout="@layout/activity_event" >
         <argument

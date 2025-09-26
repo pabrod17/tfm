@@ -8,14 +8,14 @@
  }
 
 android {
-    namespace = "com.example.tfmmobile"
-    compileSdk = 34
+    namespace = "com.teamhub1.tfmmobile"
+    compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.tfmmobile"
+        applicationId = "com.teamhub1.tfmmobile"
         minSdk = 24
-        targetSdk = 34
-        versionCode = 1
+        targetSdk = 35
+        versionCode = 3
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
