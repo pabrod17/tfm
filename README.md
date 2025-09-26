@@ -30,7 +30,7 @@
 
 
 
-## 📸 Screenshots
+## Screenshots
 
 ![image](https://github.com/user-attachments/assets/97a62c31-f0ad-40f1-bc36-2c509e535e3e)
 
