@@ -1,10 +1,6 @@
 {
-  "builds": [
-    { "src": "package.json", "use": "@vercel/static-build", "config": { "distDir": "build" } }
-  ],
-  "routes": [
-    { "src": "/api/(.*)", "dest": "https://api.teamhubbasket.com/:path*" },
-    { "handle": "filesystem" },
-    { "src": "/.*", "dest": "/index.html" }
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "https://api.teamhubbasket.com/$1" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

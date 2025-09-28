@@ -175,8 +175,8 @@ const AddTraining = () => {
 
 	function dateConversor(djs) {
 		if (!djs || !djs.isValid?.()) return '';
-		return djs.format('YYYY-MM-DD HH:mm');
-	}
+		return dayjs(djs).format('YYYY-MM-DD HH:mm');
+	  }
 	
 	//hago esta conversion para luego poder pasar el valor de la bd previo cuando se actualice: 
 		//defaultValue={dayjs('2022-04-17T15:30')}

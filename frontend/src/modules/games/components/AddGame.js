@@ -23,6 +23,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import naranja from '../../games/components/ballunsplash.jpeg';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
+import dayjs from 'dayjs';
 
 const AddGame = () => {
     const dispatch = useDispatch();
@@ -131,8 +132,8 @@ const AddGame = () => {
 
         function dateConversor(djs) {
             if (!djs || !djs.isValid?.()) return '';
-            return djs.format('YYYY-MM-DD HH:mm');
-        }
+            return dayjs(djs).format('YYYY-MM-DD HH:mm');
+          }
 
 
         return(

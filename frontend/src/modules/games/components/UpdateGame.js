@@ -115,8 +115,8 @@ const UpdateGame = () => {
         // }
         function dateConversor(djs) {
             if (!djs || !djs.isValid?.()) return '';
-            return djs.format('YYYY-MM-DD HH:mm');
-        }
+            return dayjs(djs).format('YYYY-MM-DD HH:mm');
+          }
 
 
         return(
