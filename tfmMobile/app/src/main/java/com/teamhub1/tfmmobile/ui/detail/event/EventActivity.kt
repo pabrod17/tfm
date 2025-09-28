@@ -74,6 +74,11 @@ class EventActivity : AppCompatActivity() {
             showPickerDialog(etStartDate)
         }
 
+        val etFinishDate = binding.etFinishDate
+        etFinishDate.setOnClickListener {
+            showPickerDialog(etFinishDate)
+        }
+
         binding.btnUpdate.setOnClickListener {
             it.dismissKeyboard()
             eventDetailViewModel.updateEvent(
