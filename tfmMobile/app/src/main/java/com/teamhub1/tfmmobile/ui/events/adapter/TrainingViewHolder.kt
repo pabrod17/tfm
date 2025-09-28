@@ -31,7 +31,6 @@ class TrainingViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val formatterBD = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ")
         val formatterDeseado = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
         val fecha = LocalDateTime.parse(dateToFormat, formatterBD)
-        val fechaMasUnDia = fecha.plusHours(2)
-        return formatterDeseado.format(fechaMasUnDia)
+        return formatterDeseado.format(fecha)
     }
 }

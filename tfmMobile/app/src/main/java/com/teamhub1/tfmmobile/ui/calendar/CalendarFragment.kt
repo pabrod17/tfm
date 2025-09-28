@@ -262,7 +262,7 @@ class CalendarFragment : Fragment() {
                             CalendarFragmentDirections.actionCalendarFragmentToTrainingDetailActivity(
                                 it.trainingId,
                                 it.startDate,
-                                "",
+                                0,
                                 "",
                                 it.title
                             )

@@ -352,14 +352,35 @@ class EventsFragment : Fragment() {
         return formattedDateTime
     }
 
-    private fun showTimePickerDialog2(dateClicked: EditText) {
-        val timePicker =
-            TimePickerFragment {onTimeSelected2(dateClicked, it) }
+    private fun extractDurationMinutes(et: EditText): Int {
+        (et.tag as? Int)?.let { return it }
+
+        et.text.toString().trim().toIntOrNull()?.let { return it }
+
+        val parts = et.text.toString().trim().split(":", limit = 2)
+        val h = parts.getOrNull(0)?.toIntOrNull()
+        val m = parts.getOrNull(1)?.toIntOrNull()
+        if (h != null && m != null) return h * 60 + m
+        return 0
+    }
+
+    private fun showTimePickerDialog2(target: EditText) {
+        val timePicker = TimePickerFragment { timeStr: String ->
+            onTimeSelected2(target, timeStr)
+        }
         timePicker.show(requireFragmentManager(), "time")
     }
 
-    fun onTimeSelected2(dateClicked: EditText, time: String){
-        dateClicked.setText(time)
+    private fun onTimeSelected2(target: EditText, timeStr: String) {
+        // Espera "HH:mm" o "H:mm"
+        val parts = timeStr.trim().split(":", limit = 2)
+        val hour = parts.getOrNull(0)?.toIntOrNull() ?: 0
+        val minute = parts.getOrNull(1)?.toIntOrNull() ?: 0
+        val minutesTotal = hour * 60 + minute
+
+        target.setText(String.format("%d h %02d m", hour, minute)) // texto amigable
+        target.tag = minutesTotal                                   // guarda minutos (Int) para el back
+        target.keyListener = null                                    // opcional: forzar uso del picker
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -550,6 +571,13 @@ class EventsFragment : Fragment() {
                             dialog.findViewById<AutoCompleteTextView>(R.id.autoCompleteSeason)
                         val etDate = dialog.findViewById<EditText>(R.id.etDate)
                         val etDurationMinutes = dialog.findViewById<EditText>(R.id.etDurationMinutes)
+                        val durationMinutes = extractDurationMinutes(etDurationMinutes)
+                        if (durationMinutes <= 0) {
+                            etDurationMinutes.error = getString(R.string.required) // o "Selecciona una duración válida"
+                            return
+                        }
+
+
                         val etDescription = dialog.findViewById<EditText>(R.id.etDescription)
                         val etObjective = dialog.findViewById<EditText>(R.id.etObjective)
 
@@ -562,7 +590,7 @@ class EventsFragment : Fragment() {
                             getTeamSelected(teamSelected),
                             getSeasonSelected(seasonSelected),
                             returnDateConverter(etDate.text.toString()),
-                            returnTimeConverter(etDurationMinutes.text.toString()),
+                            durationMinutes,
                             etDescription.text.toString(),
                             etObjective.text.toString(), requireActivity()
                         )

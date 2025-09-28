@@ -6,7 +6,7 @@ sealed class TrainingState {
     data class Error(var error:String): TrainingState()
     data class Success(val id: Long,
                        val trainingDate: String,
-                       val durationMinutes: String,
+                       val durationMinutes: Int,
                        val description: String,
                        val objective: String): TrainingState()
 }

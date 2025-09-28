@@ -42,7 +42,7 @@ class TrainingDetailViewModel @Inject constructor(private val trainingUseCase: T
 
     fun updateTraining(id: Long,
                        trainingDate: String,
-                       durationMinutes: String,
+                       durationMinutes: Int,
                        description: String,
                        objective: String,
                        context: Context

@@ -126,7 +126,7 @@ class EventsViewModel @Inject constructor(
         teamId: Long,
         seasonId: Long,
         trainingDate: String,
-        durationMinutes: String,
+        durationMinutes: Int,
         description: String,
         objective: String,
         context: Context

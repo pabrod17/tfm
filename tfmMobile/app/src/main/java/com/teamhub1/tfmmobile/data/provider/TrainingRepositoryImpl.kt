@@ -28,7 +28,7 @@ class TrainingRepositoryImpl @Inject constructor(private val apiService: Trainin
     override suspend fun updateTraining(
         trainingId: Long,
         trainingDate: String,
-        durationMinutes: String,
+        durationMinutes: Int,
         description: String,
         objective: String
     ): TrainingModel? {
@@ -44,7 +44,7 @@ class TrainingRepositoryImpl @Inject constructor(private val apiService: Trainin
         teamId: Long,
         seasonId: Long,
         trainingDate: String,
-        durationMinutes: String,
+        durationMinutes: Int,
         description: String,
         objective: String
     ): TrainingModel? {

@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 class TrainingResponse (@SerializedName("id") val id: Long,
                         @SerializedName("trainingDate") val trainingDate:String,
-                        @SerializedName("durationMinutes") val durationMinutes: String,
+                        @SerializedName("durationMinutes") val durationMinutes: Int,
                         @SerializedName("description") val description: String,
                         @SerializedName("objective") val objective: String) {
 

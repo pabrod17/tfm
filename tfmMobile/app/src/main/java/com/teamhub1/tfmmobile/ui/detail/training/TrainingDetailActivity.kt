@@ -70,17 +70,22 @@ class TrainingDetailActivity : AppCompatActivity() {
         etTrainingDate.setOnClickListener {
             showPickerDialog(etTrainingDate)
         }
-        val etDurationMinutes =  binding.etTrainingDuration
-        etDurationMinutes.setOnClickListener {
-            showTimePickerDialog(etDurationMinutes)
+        binding.etTrainingDuration.setOnClickListener {
+            showTimePickerDialog(binding.etTrainingDuration)
         }
 
         binding.btnUpdate.setOnClickListener {
             it.dismissKeyboard()
+
+            val durationMinutes = extractDurationMinutes(binding.etTrainingDuration)
+            if (durationMinutes <= 0) {
+                binding.etTrainingDuration.error = getString(R.string.required)
+                return@setOnClickListener
+            }
             trainingDetailViewModel.updateTraining(
                 args.id,
                 returnDateConverter(binding.etTrainingDate.text.toString()),
-                returnTimeConverter(binding.etTrainingDuration.text.toString()),
+                durationMinutes,
                 binding.tvDescription.text.toString(),
                 binding.tvBodyTrainingObjective.text.toString(),
                 this
@@ -108,15 +113,23 @@ class TrainingDetailActivity : AppCompatActivity() {
         showTimePickerDialog2(dateClicked)
     }
 
-    private fun showTimePickerDialog(dateClicked: EditText) {
-        val timePicker =
-            TimePickerFragment {onTimeSelected2(dateClicked, it) }
+    private fun showTimePickerDialog(target: EditText) {
+        val timePicker = TimePickerFragment { timeStr ->
+            onTimeSelected2(target, timeStr)
+        }
         timePicker.show(supportFragmentManager, "time")
     }
-    fun onTimeSelected2(dateClicked: EditText, time: String){
-        dateClicked.setText(time)
-    }
+    fun onTimeSelected2(target: EditText, time: String) {
+        // Espera "HH:mm" o "H:mm"
+        val parts = time.trim().split(":", limit = 2)
+        val hour = parts.getOrNull(0)?.toIntOrNull() ?: 0
+        val minute = parts.getOrNull(1)?.toIntOrNull() ?: 0
+        val minutesTotal = hour * 60 + minute
 
+        target.setText(String.format("%02d:%02d", hour, minute)) // visible al usuario
+        target.tag = minutesTotal                                // <-- guarda minutos (Int)
+        target.keyListener = null                                 // opcional: forzar uso del picker
+    }
 
     private fun showTimePickerDialog2(dateClicked: EditText) {
         val timePicker =
@@ -144,25 +157,20 @@ class TrainingDetailActivity : AppCompatActivity() {
         return formattedDateTime
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun returnTimeConverter(timeToFormat: String): String {
+    private fun extractDurationMinutes(et: EditText): Int {
+        // 1) Preferir lo que guardamos en el tag
+        (et.tag as? Int)?.let { return it }
 
-        val timeParts = timeToFormat.split(":")
-        val hourOfDay = timeParts[0].toInt()
-        val minute = timeParts[1].toInt()
+        // 2) Si el usuario escribió "120"
+        et.text.toString().trim().toIntOrNull()?.let { return it }
 
-        val time = LocalTime.of(hourOfDay, minute)
-        val timeUpdated = time.minusHours(2)
-        // Fecha fija proporcionada
-        val date = LocalDate.now()
+        // 3) Si escribió "HH:mm"
+        val parts = et.text.toString().trim().split(":", limit = 2)
+        val h = parts.getOrNull(0)?.toIntOrNull()
+        val m = parts.getOrNull(1)?.toIntOrNull()
+        if (h != null && m != null) return h * 60 + m
 
-        // Crear un objeto ZonedDateTime con la fecha y la hora deseada en la zona horaria GMT
-        val zonedDateTime = ZonedDateTime.of(date, timeUpdated, ZoneId.of("GMT"))
-
-        // Formatear el ZonedDateTime al formato RFC_1123_DATE_TIME
-        val formatter = DateTimeFormatter.RFC_1123_DATE_TIME
-        val formattedDateTime = zonedDateTime.format(formatter)
-        return formattedDateTime
+        return 0
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -194,27 +202,37 @@ class TrainingDetailActivity : AppCompatActivity() {
         binding.pb.isVisible = false
 
         binding.etTrainingDate.setText(formatDate(state.trainingDate))
-        binding.etTrainingDuration.setText(formateDuration(state.durationMinutes))
+        val mins = state.durationMinutes
+        binding.etTrainingDuration.setText(formatDuration(mins))
+        binding.etTrainingDuration.tag = mins
+
+        binding.tvDescription.setText(state.description)
+        binding.tvBodyTrainingObjective.setText(state.objective)
+
         binding.tvDescription.setText(state.description)
         binding.tvBodyTrainingObjective.setText(state.objective)
     }
 
+    private fun formatDuration(minutes: Int?): String {
+        val m = minutes ?: return ""
+        val h = m / 60
+        val min = m % 60
+        return String.format("%02d:%02d", h, min) // muestra HH:mm
+    }
     @RequiresApi(Build.VERSION_CODES.O)
     private fun formatDate(dateToFormat: String) : String {
         val formatterBD = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ")
         val formatterDeseado = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
         val fecha = LocalDateTime.parse(dateToFormat, formatterBD)
-        val fechaMasUnDia = fecha.plusHours(2)
-        return formatterDeseado.format(fechaMasUnDia)
+        return formatterDeseado.format(fecha)
     }
     @RequiresApi(Build.VERSION_CODES.O)
     private fun formateDuration(durationToFormat: String) : String {
         val formatter = DateTimeFormatter.RFC_1123_DATE_TIME
         val zonedDateTime = ZonedDateTime.parse(durationToFormat, formatter)
-        val updatedZonedDateTime = zonedDateTime.plusHours(2)
 
-        val hour = updatedZonedDateTime.hour
-        val minute = updatedZonedDateTime.minute
+        val hour = zonedDateTime.hour
+        val minute = zonedDateTime.minute
         val formattedHour = String.format("%02d", hour)
         val formattedMinute = String.format("%02d", minute)
 

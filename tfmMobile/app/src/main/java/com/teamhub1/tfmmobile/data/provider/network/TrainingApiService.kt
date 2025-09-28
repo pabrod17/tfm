@@ -18,7 +18,7 @@ interface TrainingApiService {
     @PUT("trainings/{trainingId}")
     suspend fun updateTraining(
         @Path("trainingId") trainingId: Long, @Query("trainingDate") trainingDate: String,
-        @Query("durationMinutes") durationMinutes: String,
+        @Query("durationMinutes") durationMinutes: Int,
         @Query("description") description: String,
         @Query("objective") objective: String
     ): TrainingResponse
@@ -28,7 +28,7 @@ interface TrainingApiService {
         @Query("teamId") teamId: Long?,
         @Query("seasonId") seasonId: Long?,
         @Query("trainingDate") trainingDate: String,
-        @Query("durationMinutes") durationMinutes: String,
+        @Query("durationMinutes") durationMinutes: Int,
         @Query("description") description: String,
         @Query("objective") objective: String
     ): TrainingResponse

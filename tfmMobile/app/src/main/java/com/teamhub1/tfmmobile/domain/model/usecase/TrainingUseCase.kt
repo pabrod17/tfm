@@ -11,7 +11,7 @@ class TrainingUseCase @Inject constructor(private val trainingRepository: Traini
     suspend operator fun invoke(
         trainingId: Long,
         trainingDate: String,
-        durationMinutes: String,
+        durationMinutes: Int,
         description: String,
         objective: String
     ) = trainingRepository.updateTraining(
@@ -26,7 +26,7 @@ class TrainingUseCase @Inject constructor(private val trainingRepository: Traini
         teamId: Long,
         seasonId: Long,
         trainingDate: String,
-        durationMinutes: String,
+        durationMinutes: Int,
         description: String,
         objective: String
     ) = trainingRepository.addTraining(

@@ -9,7 +9,7 @@ interface TrainingRepository {
     suspend fun updateTraining(
         trainingId: Long,
         trainingDate: String,
-        durationMinutes: String,
+        durationMinutes: Int,
         description: String,
         objective: String
     ): TrainingModel?
@@ -18,7 +18,7 @@ interface TrainingRepository {
         teamId: Long,
         seasonId: Long,
         trainingDate: String,
-        durationMinutes: String,
+        durationMinutes: Int,
         description: String,
         objective: String
     ): TrainingModel?
