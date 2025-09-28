@@ -113,20 +113,10 @@ const UpdateGame = () => {
         //     const trainingDateUpdated = dateObj2.toISOString();
         //     return trainingDateUpdated;
         // }
-        function dateConversor(gameDate) {
-            const dateObj = new Date(gameDate);
-            const year = dateObj.getFullYear();
-            const month = (dateObj.getMonth() + 1).toString().padStart(2, '0');
-            const day = dateObj.getDate().toString().padStart(2, '0');
-            const hours = dateObj.getHours().toString().padStart(2, '0');
-            const minutes = dateObj.getMinutes().toString().padStart(2, '0');
-        
-            const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}`;
-            console.log("SANCANDOOOO FECHA:; ", formattedDate)
-
-            return formattedDate;
+        function dateConversor(djs) {
+            if (!djs || !djs.isValid?.()) return '';
+            return djs.format('YYYY-MM-DD HH:mm');
         }
-
 
 
         return(
@@ -241,14 +231,7 @@ const UpdateGame = () => {
                                                 value={gameDate}
 												onChange={(newDate) =>
 													{
-
-														console.log("AHORA: ",newDate.toISOString())
-														//console.log("formattedDate:", newDate.$d.toISOString());
-
 														setGameDate(newDate)
-														console.log("formattedDate:", newDate);
-													
-													
 													}
 													
 												

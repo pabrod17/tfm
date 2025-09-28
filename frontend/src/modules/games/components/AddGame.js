@@ -129,18 +129,9 @@ const AddGame = () => {
             window.location.reload('true');
         }
 
-        function dateConversor(gameDate) {
-            const dateObj = new Date(gameDate);
-            const year = dateObj.getFullYear();
-            const month = (dateObj.getMonth() + 1).toString().padStart(2, '0');
-            const day = dateObj.getDate().toString().padStart(2, '0');
-            const hours = dateObj.getHours().toString().padStart(2, '0');
-            const minutes = dateObj.getMinutes().toString().padStart(2, '0');
-        
-            const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}`;
-            console.log("SANCANDOOOO FECHA:; ", formattedDate)
-
-            return formattedDate;
+        function dateConversor(djs) {
+            if (!djs || !djs.isValid?.()) return '';
+            return djs.format('YYYY-MM-DD HH:mm');
         }
 
 
@@ -214,9 +205,6 @@ const AddGame = () => {
                                                 onChange={(newDate) =>
                                                     {
                                                         setGameDate(newDate)
-                                                        console.log("formattedDate:", newDate.$d.toISOString());
-                                                    
-                                                    
                                                     }
                                                     
                                                 
