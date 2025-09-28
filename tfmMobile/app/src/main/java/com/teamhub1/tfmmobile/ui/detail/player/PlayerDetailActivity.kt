@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
+import android.util.Log
 import android.util.Patterns
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
@@ -23,6 +24,7 @@ import com.teamhub1.tfmmobile.R
 import com.teamhub1.tfmmobile.databinding.ActivityPlayerDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.util.Locale
 import java.util.regex.Pattern
 
 @AndroidEntryPoint
@@ -170,12 +172,30 @@ class PlayerDetailActivity : AppCompatActivity() {
         binding.etPrimaryLastName.setText(state.primaryLastName)
         binding.etSecondLastName.setText(state.secondLastName)
 
-        binding.autoCompletePosition.setText(state.position, false)
+        val translatedPosition = translatePosition(state.position)
+        binding.autoCompletePosition.setText(translatedPosition, false)
+        Log.i("DENTROOOOOOOOOO", translatedPosition)
+
+//        binding.autoCompletePosition.setText(state.position, false)
 
         binding.etTrends.setText(state.trends)
         binding.etPhoneNumber.setText(state.phoneNumber)
         binding.etEmail.setText(state.email)
         binding.etDni.setText(state.dni)
+    }
+
+    private fun translatePosition(position: String): String {
+        val locale = Locale.getDefault().language // "es" o "en"
+
+        val translations = mapOf(
+            "Base" to mapOf("es" to "Base", "en" to "PointGuard"),
+            "Escolta" to mapOf("es" to "Escolta", "en" to "ShootingGuard"),
+            "Alero" to mapOf("es" to "Alero", "en" to "SmallForward"),
+            "AlaPivot" to mapOf("es" to "AlaPivot", "en" to "PowerForward"),
+            "Pivot" to mapOf("es" to "Pivot", "en" to "Center")
+        )
+
+        return translations[position]?.get(locale) ?: position
     }
 
     private fun getPlayerPosition(positionSelected: AutoCompleteTextView): String {

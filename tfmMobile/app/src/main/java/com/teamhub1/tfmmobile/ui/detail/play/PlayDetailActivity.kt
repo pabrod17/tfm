@@ -18,6 +18,7 @@ import com.teamhub1.tfmmobile.R
 import com.teamhub1.tfmmobile.databinding.ActivityPlayDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.util.Locale
 
 @AndroidEntryPoint
 class PlayDetailActivity : AppCompatActivity() {
@@ -123,7 +124,12 @@ class PlayDetailActivity : AppCompatActivity() {
         binding.pb.isVisible = false
 
         binding.tvBodyTitle.setText(state.title)
-        binding.autoCompleteType.setText(state.playType, false)
+
+
+        val translatedPlayType = translatePlayType(state.playType)
+        binding.autoCompleteType.setText(translatedPlayType, false)
+
+//        binding.autoCompleteType.setText(state.playType, false)
 
         binding.etGesture.setText(state.gesture)
         binding.etPosition1.setText(state.pointGuardText)
@@ -133,6 +139,17 @@ class PlayDetailActivity : AppCompatActivity() {
         binding.etPosition5.setText(state.centerText)
 
         binding.etDescription.setText(state.description)
+    }
+
+    private fun translatePlayType(position: String): String {
+        val locale = Locale.getDefault().language // "es" o "en"
+
+        val translations = mapOf(
+            "Ataque" to mapOf("es" to "Ataque", "en" to "Attack"),
+            "Defensa" to mapOf("es" to "Defensa", "en" to "Defense")
+        )
+
+        return translations[position]?.get(locale) ?: position
     }
 
 }

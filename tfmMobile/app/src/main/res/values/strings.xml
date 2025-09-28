@@ -136,7 +136,7 @@
     <string name="position1">Base</string>
     <string name="position2">Escolta</string>
     <string name="position3">Alero</string>
-    <string name="position4">AlaPvot</string>
+    <string name="position4">AlaPivot</string>
     <string name="position5">Pivot</string>
 
     <string name="playsAttack">Ataque</string>
